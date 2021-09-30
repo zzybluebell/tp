@@ -255,73 +255,577 @@ _{Explain here how the data archiving feature will be implemented}_
 
 ### Product scope
 
-**Target user profile**:
+**Target user profile story**:
 
-* has a need to manage a significant number of contacts
+Ben is a restaurant manager. He found that restaurants are becoming more and more popular, the number of members is increasing, and there are a large number of reservations every day. Every day the front desk staffs spend a lot of time in excel or paper to record new members, record reservations, and find reservations. With the need to handle multiple tasks at the same time, the staffs are also prone to make careless mistakes at work due to fatigue. 😞
+
+More importantly, the member list is only stored in excel, it makes it difficult for Ben to manage and analyze members to formulate targeted promotional strategies, which will have bad impact on the profit expansion of the restaurant. 😞
+
+As a manager who is proficient in technology and has commendable experience in Unix, Ben hopes to develop an easy-to-operate application to improve the work efficiency of himself and the staffs. 🤩
+
+**Target user profile summary**:
+
+Managers and staffs who
+
+* work in a highly popular restaurant and the number of members is increasing
+* are responsible for managing a large number of member registrations and reservations daily
+* are required to multi-task (manage member registrations and reservations)
+* need automatic reminder
+* need to manage and analyze members to formulate promotional strategies
+* are proficient in technology
+* want to get things done quickly
+* are tired of tracking member details from paper or excel
 * prefer desktop apps over other types
 * can type fast
-* prefers typing to mouse interactions
-* is reasonably comfortable using CLI apps
+* prefer typing to mouse interactions
+* are reasonably comfortable using CLI apps
 
-**Value proposition**: manage contacts faster than a typical mouse/GUI driven app
+**Value proposition**: 
 
+helps restaurants keep track of their ever-growing list of members. Restaurant managers and staffs can easily view and update member status (e.g. personal information, tier, reservation, transaction, etc.) to manage and analyze members based on various criteria faster than a typical mouse/GUI driven application.
 
 ### User stories
 
 Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unlikely to have) - `*`
 
-| Priority | As a …​                                    | I want to …​                     | So that I can…​                                                        |
-| -------- | ------------------------------------------ | ------------------------------ | ---------------------------------------------------------------------- |
-| `* * *`  | new user                                   | see usage instructions         | refer to instructions when I forget how to use the App                 |
-| `* * *`  | user                                       | add a new person               |                                                                        |
-| `* * *`  | user                                       | delete a person                | remove entries that I no longer need                                   |
-| `* * *`  | user                                       | find a person by name          | locate details of persons without having to go through the entire list |
-| `* *`    | user                                       | hide private contact details   | minimize chance of someone else seeing them by accident                |
-| `*`      | user with many persons in the address book | sort persons by name           | locate a person easily                                                 |
+| Priority | As a …​  | I want to …​                                               | So that I can …​                                                        |
+| -------- | --------| --------------------------------------------------------- | ---------------------------------------------------------------------- |
+| `* * *`  | staff   | view help                                                 | easily check how to use the commands and access the user guide         |
+| `* * *`  | staff   | exit the program                                          |                                                                        |
+| `* * *`  | staff   | list out a certain number of members                      | easily view and access the member basic information                    |
+| `* * *`  | staff   | add new members                                           | easily the track member statuses                                       |
+| `* * *`  | staff   | search members by name                                    | easily find the specific members to check their details                |
+| `* * *`  | staff   | search member by phone                                    | easily find the specific member to check his/her details               |
+| `* * *`  | staff   | search member by email                                    | easily find the specific member to check his/her details               |
+| `* * *`  | staff   | search members by registration date                       | easily find a member to check their details                            |
+| `* * *`  | staff   | search member by member ID                                | easily find the specific member to check his/her details               |
+| `* * *`  | staff   | view member profile                                       | easily check the specific member's details                             |
+| `* * *`  | staff   | add transaction for members                               | easily track the transaction history of members                        |
+| `* * *`  | staff   | redeem a member’s points                                  |                                                                        |
+| `* * *`  | staff   | mark reservation for member                               |                                                                        |
+| `* * *`  | manager | clear the program                                         | Initialize the entire program                                          |
+| `* * *`  | manager | login as a manager                                        | access manager-only features, e.g. modify the membership level         |
+| `* * *`  | manager | logout as a manager                                       | prevent staff from accessing manager-only features                     |
+| `* * *`  | manager | sort members by tier                                      | easily analyze the members' consumption and distribution               |
+| `* * *`  | manager | sort members by credit                                    | easily offer promotions to the members with the highest consumption    |
+| `* * *`  | manager | edit member name                                          | update member information to latest                                    |
+| `* * *`  | manager | edit member phone                                         | update member information to latest                                    |
+| `* * *`  | manager | edit member email                                         | update member information to latest                                    |
+| `* * *`  | manager | delete member by member ID                                | remove member that I no longer need                                    |
+| `* *  `  | staff   | unmark reservation for member                             | remove reservation for member that I no longer need                    |
+| `* *  `  | staff   | edit reservation for member                               | update reservation for member to latest                                |
+| `* *  `  | staff   | search reservations by date                               | easily find the coming reservations                                    |
+| `* *  `  | staff   | be automatically reminded when a reservation is coming    | prepare for seats for the member in time                               |
+| `*    `  | staff   | undo previous command                                     | easily cancel previous command with accidental mistakes                |
+| `*    `  | staff   | redo previous command                                     | easily speed up the typing speed of command                            |
+| `*    `  | staff   | retrieve previous command                                 | easily speed up the typing speed of command                            |
+| `*    `  | manager | delete a transaction detail                               | correct any accidental mistakes                                        |
+| `*    `  | manager | edit a transaction detail                                 | correct any accidental mistakes                                        |
+| `*    `  | manager | view a visualisation of the summary in a certain period   | know the summary details in a certain period, e.g. total registrations |
+| `*    `  | manager | edit the amount of credit needed for each membership tier | easily control the number of members for each tier                     |
+| `*    `  | manager | list number of registrations in a certain month           | easily manage and analyze members                                      |
+| `*    `  | manager | list number of registrations in a few past weeks          | easily manage and analyze members                                      |
+| `*    `  | manager | list number of registrations in a certain period          | easily manage and analyze members                                      |
+| `*    `  | Manager | add promo code for members                                | easily implement promotional strategies                                |
 
 *{More to be added}*
 
 ### Use cases
 
-(For all use cases below, the **System** is the `AddressBook` and the **Actor** is the `user`, unless specified otherwise)
+(For all use cases below, the **System** is the `ezFoodie` and the **Actor** is the `Staff` or only the `Manager`, unless specified otherwise)
 
-**Use case: Delete a person**
+**Use case: UC01 - View help**
+
+**Actors: Staff**
 
 **MSS**
 
-1.  User requests to list persons
-2.  AddressBook shows a list of persons
-3.  User requests to delete a specific person in the list
-4.  AddressBook deletes the person
+1.  Staff requests to view help.
+2.  ezFoodie shows a dialog contains how to use the commands and access the user guide.
 
     Use case ends.
 
 **Extensions**
 
+* 1a. The given input is invalid.
+
+    * 1a1. ezFoodie shows an error message.
+
+      Use case ends.
+
+**Use case: UC02 - Exit the program**
+
+**Actors: Staff**
+
+**MSS**
+
+1.  Staff requests to exits the program.
+2.  ezFoodie exits.
+
+    Use case ends.
+
+**Extensions**
+
+* 1a. The given input is invalid.
+
+    * 1a1. ezFoodie shows an error message.
+
+      Use case ends.
+
+**Use case: <label id="UC03">UC03<label> - List out a certain number of members**
+
+**Actors: Staff**
+
+**MSS**
+
+1.  Staff requests to list out a certain number of members by page.
+2.  ezFoodie shows a list of members by page.
+
+    Use case ends.
+
+**Extensions**
+
+* 1a. The given input is invalid.
+
+    * 1a1. ezFoodie shows an error message.
+
+      Use case ends.
+
+* 1b. The given page number exceeded the maximum number of pages.
+
+    * 1b1. ezFoodie shows an error message.
+
+      Use case ends.
+
 * 2a. The list is empty.
 
   Use case ends.
 
-* 3a. The given index is invalid.
+**Use Case: UC04 - Add a member**
 
-    * 3a1. AddressBook shows an error message.
+**Actors: Staff**
 
-      Use case resumes at step 2.
+**MSS**
+
+1.  Staff requests to add the information of a member to the list.
+2.  The member is created in ezFoodie with the given information.
+
+    Use case ends.
+
+**Extensions**
+
+* 1a. The given input is invalid.
+
+    * 1a1. ezFoodie shows an error message.
+      
+      Use case ends.
+
+* 1b. The member (phone or email) already exists in the list.
+
+    * 1b1. ezFoodie shows an error message.
+
+      Use case ends.
+
+**Use case: <label id="UC05">UC05<label> - Search a member by [field]**
+
+**Actors: Staff**
+
+**MSS**
+
+1.  Staff requests to search for a member by [field] with keywords, [field] can be member ID, name, phone, email or registration date.
+2.  ezFoodie shows a list of members whose [field] matches the keywords.
+
+    Use case ends.
+
+**Extensions**
+
+* 1a. The given input is invalid.
+
+    * 1a1. ezFoodie shows an error message.
+
+      Use case ends.
+
+* 2a. The list is empty.
+
+  Use case ends.
+
+**Use case: UC06 - View member profile**
+
+**Actors: Staff**
+
+**MSS**
+
+1.  Staff requests to <u>list a set of members ([UC03](#UC03) or [UC05](#UC05))</u>.
+2.  Staff requests to view a specific member in the list by member ID.
+3.  ezFoodie shows the specific member's details.
+
+    Use case ends.
+
+**Extensions**
+
+* 2a. The given input is invalid.
+
+    * 2a1. ezFoodie shows an error message.
+
+      Use case resumes at step 1.
+
+* 2b. The given member ID does not exist in the list.
+
+    * 2b1. ezFoodie shows an error message.
+
+      Use case resumes at step 1.
+
+**Use case: UC07 - Add a transaction for a member**
+
+**Actors: Staff**
+
+**MSS**
+
+1.  Staff requests to <u>list a set of members ([UC03](#UC03) or [UC05](#UC05))</u>.
+2.  Staff requests to add transaction details for a member by member ID.
+3.  The transaction of the member is created in ezFoodie.
+
+    Use case ends.
+
+**Extensions**
+
+* 2a. The given input is invalid.
+
+    * 2a1. ezFoodie shows an error message.
+
+      Use case resumes at step 1.
+
+* 2b. The given member ID does not exist in the list.
+
+    * 2b1. ezFoodie shows an error message.
+
+      Use case resumes at step 1.
+
+**Use case: UC08 - Redeem a member’s points**
+
+**Actors: Staff**
+
+**MSS**
+
+1.  Staff requests to <u>list a set of members ([UC03](#UC03) or [UC05](#UC05))</u>.
+2.  Staff requests to redeem one gift (e.g. 1 item = 100 points) for a member by member ID.
+3.  The points of the member are deducted (e.g. -100 points) in ezFoodie.
+
+**Extensions**
+
+* 2a. The given input is invalid.
+
+    * 2a1. ezFoodie shows an error message.
+
+      Use case resumes at step 1.
+
+* 2b. The given member ID does not exist in the list.
+
+    * 2b1. ezFoodie shows an error message.
+
+      Use case resumes at step 1.
+
+* 2c. The member does not have enough points.
+
+    * 2c1. ezFoodie shows an error message.
+
+      Use case resumes at step 1.
+
+**Use case: UC09 - Mark reservation for member**
+
+**Actors: Staff**
+
+**MSS**
+
+1.  Staff requests to <u>list a set of members ([UC03](#UC03) or [UC05](#UC05))</u>.
+2.  Staff requests to mark reservation for the member by member ID.
+3.  A reservation date time of the member is marked in ezFoodie.
+
+**Extensions**
+
+* 2a. The given input is invalid.
+
+    * 2a1. ezFoodie shows an error message.
+
+      Use case resumes at step 1.
+
+* 2b. The given member ID does not exist in the list.
+
+    * 2b1. ezFoodie shows an error message.
+
+      Use case resumes at step 1.
+
+* 2c. The reservation date time is not after the current date time.
+
+    * 2c1. ezFoodie shows an error message.
+
+      Use case resumes at step 1.
+
+**Use case: UC10 - Clear the program**
+
+**Actors: Manager**
+
+**Preconditions**
+
+Manager is logged in
+
+**MSS**
+
+1.  Manager requests to clear and initialize the entire program.
+2.  All the data in ezFoodie is removed.
+
+**Extensions**
+
+* 1a. The given input is invalid.
+
+    * 1a1. ezFoodie shows an error message.
+
+      Use case ends.
+
+**Use case: UC11 - Login as a manager**
+
+**Actors: Manager**
+
+**MSS**
+
+1.  Manager requests to login as a manager.
+2.  ezFoodie switch to Manager Mode.
+
+**Extensions**
+
+* 1a. The given input is invalid.
+
+    * 1a1. ezFoodie shows an error message.
+
+      Use case ends.
+
+* 1b. The password is not correct.
+
+    * 1b1. ezFoodie shows an error message.
+
+      Use case ends.
+
+**Use case: UC12 - Logout as a manager**
+
+**Actors: Manager**
+
+**Preconditions**
+
+Manager is logged in
+
+**MSS**
+
+1.  Manager requests to logout as a manager.
+2.  ezFoodie switch to Normal Mode.
+
+**Extensions**
+
+* 1a. The given input is invalid.
+
+    * 1a1. ezFoodie shows an error message.
+
+      Use case ends.
+
+**Use case: UC13 - Sort members by [field]**
+
+**Actors: Manager**
+
+**Preconditions**
+
+Manager is logged in
+
+**MSS**
+
+1.  Manager requests to sort members by [field], [field] can be name, phone or email.
+2.  ezFoodie shows a list of members sorted by the [field].
+
+    Use case ends.
+
+**Extensions**
+
+* 1a. The given input is invalid.
+
+    * 1a1. ezFoodie shows an error message.
+
+      Use case ends.
+
+* 2a. The list is empty.
+
+  Use case ends.
+
+**Use case: UC14 - Edit member [field]**
+
+**Actors: Manager**
+
+**Preconditions**
+
+Manager is logged in
+
+**MSS**
+
+1.  Manager requests to <u>list a set of members ([UC03](#UC03) or [UC05](#UC05))</u>.
+2.  Manager requests to edit member [field] by member ID, [field] can be name, phone or email.
+3.  ezFoodie shows the updated information of the member.
+
+    Use case ends.
+
+**Extensions**
+
+* 2a. The given input is invalid.
+
+    * 2a1. ezFoodie shows an error message.
+
+      Use case resumes at step 1.
+
+* 2b. The given member ID does not exist in the list.
+
+    * 2b1. ezFoodie shows an error message.
+
+      Use case resumes at step 1.
+
+* 2c. The new phone or email already exists in the list.
+
+    * 2c1. ezFoodie shows an error message.
+
+      Use case resumes at step 1.
+
+**Use case: UC15 - Delete member by member ID**
+
+**Actors: Manager**
+
+**Preconditions**
+
+Manager is logged in
+
+**MSS**
+
+1.  Manager requests to <u>list a set of members ([UC03](#UC03) or [UC05](#UC05))</u>.
+2.  Manager requests to delete the member by member ID.
+3.  The member is deleted from ezFoodie.
+
+    Use case ends.
+
+**Extensions**
+
+* 2a. The given input is invalid.
+
+    * 2a1. ezFoodie shows an error message.
+
+      Use case resumes at step 1.
+
+* 2b. The given member ID does not exist in the list.
+
+    * 2b1. ezFoodie shows an error message.
+
+      Use case resumes at step 1.
+
+**Use case: UC16 - Unmark reservation for member**
+
+**Actors: Staff**
+
+**MSS**
+
+1.  Staff requests to <u>list a set of members ([UC03](#UC03) or [UC05](#UC05))</u>.
+2.  Staff requests to unmark reservation for the member by member ID.
+3.  A reservation date time of the member is unmarked in ezFoodie.
+
+**Extensions**
+
+* 2a. The given input is invalid.
+
+    * 2a1. ezFoodie shows an error message.
+
+      Use case resumes at step 1.
+
+* 2b. The given member ID does not exist in the list.
+
+    * 2b1. ezFoodie shows an error message.
+
+      Use case resumes at step 1.
+
+**Use case: UC17 - Edit reservation for member**
+
+**Actors: Staff**
+
+**MSS**
+
+1.  Staff requests to <u>list a set of members ([UC03](#UC03) or [UC05](#UC05))</u>.
+2.  Staff requests to edit reservation for the member by member ID.
+3.  A reservation date time of the member is updated in ezFoodie.
+
+**Extensions**
+
+* 2a. The given input is invalid.
+
+    * 2a1. ezFoodie shows an error message.
+
+      Use case resumes at step 1.
+
+* 2b. The given member ID does not exist in the list.
+
+    * 2b1. ezFoodie shows an error message.
+
+      Use case resumes at step 1.
+
+* 2c. The reservation date time is not after the current date time.
+
+    * 2c1. ezFoodie shows an error message.
+
+      Use case resumes at step 1.
+
+**Use case: UC18 - Search reservations by date**
+
+**Actors: Staff**
+
+**MSS**
+
+1.  Staff requests to search for reservations by date.
+2.  ezFoodie shows a list of reservations for the date.
+
+    Use case ends.
+
+**Extensions**
+
+* 1a. The given input is invalid.
+
+    * 1a1. ezFoodie shows an error message.
+
+      Use case ends.
+
+* 2a. The list is empty.
+
+  Use case ends.
 
 *{More to be added}*
 
 ### Non-Functional Requirements
 
 1.  Should work on any _mainstream OS_ as long as it has Java `11` or above installed.
-2.  Should be able to hold up to 1000 persons without a noticeable sluggishness in performance for typical usage.
-3.  A user with above average typing speed for regular English text (i.e. not code, not system admin commands) should be able to accomplish most of the tasks faster using commands than using the mouse.
+2.  Should be able to hold up to 1000 members without a noticeable sluggishness in performance for typical usage.
+3.  Should be able to hold up to 5000 transactions without a noticeable sluggishness in performance for typical usage.
+4.  A user with above average typing speed for regular English text (i.e. not code, not system admin commands) should be able to accomplish most of the tasks faster using commands than using the mouse.
+5.  The source code should be open source.
+6.  The application should not exceed 50mb in size.
+7.  The documentation should be easy to understand.
 
 *{More to be added}*
 
 ### Glossary
 
 * **Mainstream OS**: Windows, Linux, Unix, OS-X
-* **Private contact detail**: A contact detail that is not meant to be shared with others
+* **CSV File**: A comma-separated values file is a delimited text file that uses a comma to separate values. Each line of the file is a data record. Each record consists of one or more fields, separated by commas. And it can be opened using Microsoft Excel. (Ref: https://en.wikipedia.org/wiki/Comma-separated_values)
+* **Staff**: All employees of the restaurant who will be using the product
+* **Manager**: A special subset of staff with higher permission who can get special access to certain higher level features
+* **Normal Mode**: The mode before the manager login, Normal Mode by default
+* **Manager Mode**: The mode after the manager login
+* **Membership Tiers**: Different membership tiers give members different benefits. Tiers include Silver, Gold, and Platinum
+* **Member Details**: Member ID, Name, Phone, Membership Tiers, Registration Date, Email, Credits, Points, Transaction
+* **Credits**: Represents total amount of money spent at the restaurant (S$1 = 1 credit), accumulated and cannot be decreased
+* **Points**: Earned by 6 times of spending money, can be used to redeem gifts and will be spent
+* **Transaction**: A payment made by a customer at the restaurant
+* **Promo Code**: A string that when used by the customer, gives customer benefits such as discounts or free items
+* **Redemption**: Points that a member has can be redeemed for free items, and the points will then be deducted from the member’s account
+* **Reservation**: A tag contains specific date time represents when the member will come for a meal
 
 --------------------------------------------------------------------------------------------------------------------
 
