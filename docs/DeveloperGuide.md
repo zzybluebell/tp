@@ -372,7 +372,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
       Use case ends.
 
-<b>Use case: <label id="UC03">UC03<label> - List out a certain number of members</b>
+<b>Use case: <label id="UC03">UC03</label> - List out a certain number of members</b>
 
 **Actors: Staff**
 
@@ -426,7 +426,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
       Use case ends.
 
-<b>Use case: <label id="UC05">UC05<label> - Search a member by [field]</b>
+<b>Use case: <label id="UC05">UC05</label> - Search a member by [field]</b>
 
 **Actors: Staff**
 
