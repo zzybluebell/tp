@@ -1,4 +1,4 @@
-#ezFoodie :takeout_box:
+# ezFoodie :takeout_box:
 
 [![CI Status](https://github.com/AY2122S1-CS2103T-F12-4/tp/workflows/Java%20CI/badge.svg)](https://github.com/AY2122S1-CS2103T-F12-4/tp/actions)
 [![codecov](https://codecov.io/gh/AY2122S1-CS2103T-F12-4/tp/branch/master/graph/badge.svg)](https://codecov.io/gh/AY2122S1-CS2103T-F12-4/tp)
@@ -18,7 +18,7 @@ ezFoodie can get your member management tasks done faster than traditional GUI a
 
 * If you are interested in developing `ezFoodie`, the [**Developer Guide**](https://ay2021s1-cs2103t-f12-4.github.io/tp/DeveloperGuide.html) is a good place to start.
 
-##Acknowledgements
+## Acknowledgements
 
 Libraries used: Java8, JavaFX, Jackson, JUnit5
 This project developed based on the AddressBook-Level3 project. Which is a part of the se-education.org initiative. 
