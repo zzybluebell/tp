@@ -20,6 +20,7 @@ ezFoodie can get your member management tasks done faster than traditional GUI a
 
 ## Acknowledgements
 
-Libraries used: Java8, JavaFX, Jackson, JUnit5
+Libraries used: Java11, JavaFX, Jackson, JUnit5
+
 This project developed based on the AddressBook-Level3 project. Which is a part of the se-education.org initiative. 
 If you would like to contribute code to this project, see se-education.org for more info.
