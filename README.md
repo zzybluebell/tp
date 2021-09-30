@@ -9,9 +9,9 @@
 * Have you faced some issues when managing the members in your restaurant? `ezFoodie` is here!
 
 
-* ezFoodie is a desktop application for managing members in a restaurant, optimized for use via a Command Line Interface (CLI)
-while still having the benefits of a Graphical User Interface (GUI). If you can type fast, 
-ezFoodie can get your member management tasks done faster than traditional GUI applications.
+* `ezFoodie` is a desktop application for managing members in a restaurant, optimized for use via a Command Line Interface (CLI). 
+  while still having the benefits of a Graphical User Interface (GUI). If you can type fast, 
+  ezFoodie can get your member management tasks done faster than traditional GUI applications.
 
 
 * If you are interested in using `ezFoodie`, head over to the [_Quick Start_ section of the **User Guide**](https://ay2122s1-cs2103t-f12-4.github.io/tp/UserGuide.html#quick-start).
@@ -20,7 +20,7 @@ ezFoodie can get your member management tasks done faster than traditional GUI a
 
 ## Acknowledgements
 
-Libraries used: Java11, JavaFX, Jackson, JUnit5
+Libraries used: [JavaFX](https://openjfx.io/), [Jackson](https://github.com/FasterXML/jackson), [JUnit5](https://github.com/junit-team/junit5)
 
 This project developed based on the AddressBook-Level3 project. Which is a part of the se-education.org initiative. 
-If you would like to contribute code to this project, see se-education.org for more info.
+If you would like to contribute code to this project, see se-education.org for more information.
