@@ -14,7 +14,7 @@ while still having the benefits of a Graphical User Interface (GUI). If you can 
 ezFoodie can get your member management tasks done faster than traditional GUI applications.
 
 
-* If you are interested in using `ezFoodie`, head over to the [_Quick Start_ section of the **User Guide**](https://ay2122s2-cs2103t-f12-4.github.io/tp/UserGuide.html#quick-start).
+* If you are interested in using `ezFoodie`, head over to the [_Quick Start_ section of the **User Guide**](https://ay2122s1-cs2103t-f12-4.github.io/tp/UserGuide.html#quick-start).
 
 * If you are interested in developing `ezFoodie`, the [**Developer Guide**](https://ay2122s1-cs2103t-f12-4.github.io/tp/DeveloperGuide.html) is a good place to start.
 
