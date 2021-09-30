@@ -372,7 +372,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
       Use case ends.
 
-**Use case: <label id="UC03">UC03<label> - List out a certain number of members**
+<b>Use case: <label id="UC03">UC03<label> - List out a certain number of members</b>
 
 **Actors: Staff**
 
@@ -426,7 +426,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
       Use case ends.
 
-**Use case: <label id="UC05">UC05<label> - Search a member by [field]**
+<b>Use case: <label id="UC05">UC05<label> - Search a member by [field]</b>
 
 **Actors: Staff**
 
@@ -455,7 +455,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 **MSS**
 
-1.  Staff requests to <u>list a set of members ([UC03](#UC03) or [UC05](#UC05))</u>.
+1.  Staff requests to <u>list a set of members (<a href="#UC03">UC03</a> or <a href="#UC05">UC05</a>)</u>.
 2.  Staff requests to view a specific member in the list by member ID.
 3.  ezFoodie shows the specific member's details.
 
@@ -481,7 +481,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 **MSS**
 
-1.  Staff requests to <u>list a set of members ([UC03](#UC03) or [UC05](#UC05))</u>.
+1.  Staff requests to <u>list a set of members (<a href="#UC03">UC03</a> or <a href="#UC05">UC05</a>)</u>.
 2.  Staff requests to add transaction details for a member by member ID.
 3.  The transaction of the member is created in ezFoodie.
 
@@ -507,7 +507,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 **MSS**
 
-1.  Staff requests to <u>list a set of members ([UC03](#UC03) or [UC05](#UC05))</u>.
+1.  Staff requests to <u>list a set of members (<a href="#UC03">UC03</a> or <a href="#UC05">UC05</a>)</u>.
 2.  Staff requests to redeem one gift (e.g. 1 item = 100 points) for a member by member ID.
 3.  The points of the member are deducted (e.g. -100 points) in ezFoodie.
 
@@ -537,7 +537,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 **MSS**
 
-1.  Staff requests to <u>list a set of members ([UC03](#UC03) or [UC05](#UC05))</u>.
+1.  Staff requests to <u>list a set of members (<a href="#UC03">UC03</a> or <a href="#UC05">UC05</a>)</u>.
 2.  Staff requests to mark reservation for the member by member ID.
 3.  A reservation date time of the member is marked in ezFoodie.
 
@@ -663,7 +663,7 @@ Manager is logged in
 
 **MSS**
 
-1.  Manager requests to <u>list a set of members ([UC03](#UC03) or [UC05](#UC05))</u>.
+1.  Manager requests to <u>list a set of members (<a href="#UC03">UC03</a> or <a href="#UC05">UC05</a>)</u>.
 2.  Manager requests to edit member [field] by member ID, [field] can be name, phone or email.
 3.  ezFoodie shows the updated information of the member.
 
@@ -699,7 +699,7 @@ Manager is logged in
 
 **MSS**
 
-1.  Manager requests to <u>list a set of members ([UC03](#UC03) or [UC05](#UC05))</u>.
+1.  Manager requests to <u>list a set of members (<a href="#UC03">UC03</a> or <a href="#UC05">UC05</a>)</u>.
 2.  Manager requests to delete the member by member ID.
 3.  The member is deleted from ezFoodie.
 
@@ -725,7 +725,7 @@ Manager is logged in
 
 **MSS**
 
-1.  Staff requests to <u>list a set of members ([UC03](#UC03) or [UC05](#UC05))</u>.
+1.  Staff requests to <u>list a set of members (<a href="#UC03">UC03</a> or <a href="#UC05">UC05</a>)</u>.
 2.  Staff requests to unmark reservation for the member by member ID.
 3.  A reservation date time of the member is unmarked in ezFoodie.
 
@@ -749,7 +749,7 @@ Manager is logged in
 
 **MSS**
 
-1.  Staff requests to <u>list a set of members ([UC03](#UC03) or [UC05](#UC05))</u>.
+1.  Staff requests to <u>list a set of members (<a href="#UC03">UC03</a> or <a href="#UC05">UC05</a>)</u>.
 2.  Staff requests to edit reservation for the member by member ID.
 3.  A reservation date time of the member is updated in ezFoodie.
 
