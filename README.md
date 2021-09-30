@@ -1,18 +1,13 @@
-# ezFoodie :takeout_box:
+#ezFoodie :takeout_box:
 
 [![CI Status](https://github.com/AY2122S1-CS2103T-F12-4/tp/workflows/Java%20CI/badge.svg)](https://github.com/AY2122S1-CS2103T-F12-4/tp/actions)
 [![codecov](https://codecov.io/gh/AY2122S1-CS2103T-F12-4/tp/branch/master/graph/badge.svg)](https://codecov.io/gh/AY2122S1-CS2103T-F12-4/tp)
 
 ![Ui](docs/images/Ui.png)
 
-
 * Have you faced some issues when managing the members in your restaurant? `ezFoodie` is here!
 
-
-* `ezFoodie` is a desktop application for managing members in a restaurant, optimized for use via a Command Line Interface (CLI). 
-  while still having the benefits of a Graphical User Interface (GUI). If you can type fast, 
-  ezFoodie can get your member management tasks done faster than traditional GUI applications.
-
+* `ezFoodie` is a desktop application for managing members in a restaurant, optimized for use via a Command Line Interface (CLI). while still having the benefits of a Graphical User Interface (GUI). If you can type fast, ezFoodie can get your member management tasks done faster than traditional GUI applications.
 
 * If you are interested in using `ezFoodie`, head over to the [_Quick Start_ section of the **User Guide**](https://ay2122s1-cs2103t-f12-4.github.io/tp/UserGuide.html#quick-start).
 
@@ -22,5 +17,5 @@
 
 Libraries used: [JavaFX](https://openjfx.io/), [Jackson](https://github.com/FasterXML/jackson), [JUnit5](https://github.com/junit-team/junit5)
 
-This project developed based on the AddressBook-Level3 project. Which is a part of the se-education.org initiative. 
-If you would like to contribute code to this project, see se-education.org for more information.
+This project developed based on the **[Address Book Product Website](https://se-education.org/addressbook-level3)** project. Which is a part of the se-education.org initiative. 
+If you would like to contribute code to this project, see [se-education.org](https://se-education.org#https://se-education.org/#contributing) for more information.
