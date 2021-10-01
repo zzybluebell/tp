@@ -4,6 +4,7 @@ You can reach us via email, as indicated below.
 
 ## Project team
 
+---
 ### Hu Jiajun `e0556371@u.nus.edu`
 
 <img src="images/holmesjj.png" width="200px">
@@ -12,25 +13,24 @@ You can reach us via email, as indicated below.
 
 * Role: Tech lead, Git expert
 * Responsibilities: Scheduling and tracking
-
-### Mukund `mukundrs001@gmail.com`
+---
+### Raja Sudalaimuthu Mukund `mukundrs001@gmail.com`
 
 <img src="images/mukundrs.png" width="200px">
 
 [[github@mukundrs](https://github.com/mukundrs)]
 
 * Role: Developer
-* Responsibilities: Documentation, Deliverables and deadlines
-
+* Responsibilities: Documentation, deliverables and deadlines
+---
 ### Zhang Zhiyao `e0449925@u.nus.edu`
 
 <img src="images/zzybluebell.png" width="200px">
 
 [[github@zzybluebell](http://github.com/zzybluebell)]
-
 * Role: Developer
 * Responsibilities: Testing
-
+---
 ### Chen Shi Yao, Stephanie `stephaniechenshiyao@gmail.com`
 
 <img src="images/stephanie-csy.png" width="200px">
@@ -39,7 +39,7 @@ You can reach us via email, as indicated below.
 
 * Role: Developer
 * Responsibilities: Code quality
-
+---
 ### Yang Yuzhao `e0425130@u.nus.edu`
 
 <img src="images/Morrow1ndy.png" width="200px">
@@ -48,3 +48,4 @@ You can reach us via email, as indicated below.
 
 * Role: Developer
 * Responsibilities: Integration
+---
