@@ -2,7 +2,7 @@ We are a team based in the [School of Computing, National University of Singapor
 
 You can reach us via email, as indicated below.
 
-## Project team
+# Project team
 
 ---
 ### Hu Jiajun `e0556371@u.nus.edu`
