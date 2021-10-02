@@ -1,60 +1,52 @@
----
-layout: page
-title: About Us
----
-
 We are a team based in the [School of Computing, National University of Singapore](http://www.comp.nus.edu.sg).
 
-You can reach us at the email `seer[at]comp.nus.edu.sg`
+You can reach us via email, as indicated below.
 
-## Project team
+# Project team
 
-### Mukund
+---
+### Hu Jiajun `e0556371@u.nus.edu`
 
-<img src="images/johndoe.png" width="200px">
+<img src="images/holmesjj.png" width="200px">
 
-[[homepage](http://www.comp.nus.edu.sg/~damithch)]
-[[github](https://github.com/johndoe)]
-[[portfolio](team/johndoe.md)]
+[[github@holmesjj](http://github.com/holmesjj)]]
 
-* Role:  
-* Responsibilities: 
+* Role: Tech lead, Git expert
+* Responsibilities: Scheduling and tracking
+---
+### Raja Sudalaimuthu Mukund `mukundrs001@gmail.com`
 
-### Zhang Zhiyao
+<img src="images/mukundrs.png" width="200px">
 
-<img src="images/johndoe.png" width="200px">
+[[github@mukundrs](https://github.com/mukundrs)]
 
-[[github](http://github.com/johndoe)]
-[[portfolio](team/johndoe.md)]
+* Role: Developer
+* Responsibilities: Documentation, deliverables and deadlines
+---
+### Zhang Zhiyao `e0449925@u.nus.edu`
 
-* Role: 
-* Responsibilities: 
+<img src="images/zzybluebell.png" width="200px">
 
-### Steph
+[[github@zzybluebell](http://github.com/zzybluebell)]
+* Role: Developer
+* Responsibilities: Testing
+---
+### Chen Shi Yao, Stephanie `stephaniechenshiyao@gmail.com`
 
-<img src="images/johndoe.png" width="200px">
+<img src="images/stephanie-csy.png" width="200px">
 
-[[github](http://github.com/johndoe)] [[portfolio](team/johndoe.md)]
+[[github@stephanie-csy](http://github.com/stephanie-csy)]
 
-* Role: 
-* Responsibilities: 
+* Role: Developer
+* Responsibilities: Code quality
+---
+### Yang Yuzhao `e0425130@u.nus.edu`
 
-### Hu Jiajun
+<img src="images/Morrow1ndy.png" width="200px">
 
-<img src="images/johndoe.png" width="200px">
+[[github@Morrow1ndy](http://github.com/Morrow1ndy)]
 
-[[github](http://github.com/johndoe)]
-[[portfolio](team/johndoe.md)]
+* Role: Developer
+* Responsibilities: Integration
+---
 
-* Role: 
-* Responsibilities:
-
-### Yang Yuzhao
-
-<img src="images/johndoe.png" width="200px">
-
-[[github](http://github.com/johndoe)]
-[[portfolio](team/johndoe.md)]
-
-* Role: 
-* Responsibilities: 
