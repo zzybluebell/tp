@@ -1,3 +1,8 @@
+---
+layout: page
+title: About Us
+---
+
 We are a team based in the [School of Computing, National University of Singapore](http://www.comp.nus.edu.sg).
 
 You can reach us via email, as indicated below.
@@ -42,7 +47,7 @@ You can reach us via email, as indicated below.
 ---
 ### Yang Yuzhao `e0425130@u.nus.edu`
 
-<img src="images/Morrow1ndy.png" width="200px">
+<img src="images/morrow1ndy.png" width="200px">
 
 [[github@Morrow1ndy](http://github.com/Morrow1ndy)]
 
