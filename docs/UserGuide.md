@@ -18,7 +18,7 @@ Have you faced some issues when managing the members in your restaurant? ezFoodi
 
 ezFoodie is a desktop application that helps restaurants **keep track of their ever-growing list of members**. Restaurant managers and staffs can easily view and update member status (e.g. personal information, tier, reservation, transaction, etc.) to manage and analyze members.
 
-ezFoodie is simple and user-friendly. It is optimized for use via a **Command Line Interface (CLI)** while still having the benefits of a Graphical User Interface (GUI). If you can type fast, ezFoodie can get your member management tasks done faster than traditional GUI applications.
+ezFoodie is simple and user-friendly. It is optimized for using via a **Command Line Interface (CLI)** while still having the benefits of a Graphical User Interface (GUI). If you can type fast, ezFoodie can get your member management tasks done faster than traditional GUI applications.
 
 **Looks cool and interested?** 🤩 Continue reading on to explore the wonders of ezFoodie and enhance the way you manage and analyze your members.
 
