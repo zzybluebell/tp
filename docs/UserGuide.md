@@ -160,7 +160,7 @@ Format: `find -m -d <REGISTRATION_DATE> [-pg <PAGE>]`
 Example: 
 * `find -m -d 12-01-2021`
 
-#### Searching member by member ID : `find -m -id`
+#### Searching member by member ID
 
 Format: `find -m -id <MEMBER_ID>`
 
