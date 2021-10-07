@@ -1,6 +1,5 @@
 ---
-layout: page
-title: User Guide
+User Guide
 ---
 
 ezFoodie is a **desktop application for managing members in a restaurant, optimized for use via a Command Line Interface 
@@ -148,10 +147,15 @@ the data of your previous AddressBook home folder.
 
 Action | Format, Examples
 --------|------------------
-**Add** | `add n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS [t/TAG]…​` <br> e.g., `add n/James Ho p/22224444 e/jamesho@example.com a/123, Clementi Rd, 1234665 t/friend t/colleague`
-**Clear** | `clear`
-**Delete** | `delete INDEX`<br> e.g., `delete 3`
-**Edit** | `edit INDEX [n/NAME] [p/PHONE_NUMBER] [e/EMAIL] [a/ADDRESS] [t/TAG]…​`<br> e.g.,`edit 2 n/James Lee e/jameslee@example.com`
-**Find** | `find KEYWORD [MORE_KEYWORDS]`<br> e.g., `find James Jake`
-**List** | `list`
-**Help** | `help`
+**Help**| `help`
+**Add** | *Format*: <br> `add -m -n <NAME> -p <PHONE_NUMBER> -e <EMAIL>` <br> *Example*: <br> `add -m -n John Doe -p 98765432 -e johndoe@gmail.com`
+**Search by name** | *Format*: <br>` find -m -u <NAME>` <br> *Example*: <br> ` find -m -u John Doe`
+**Search by phone number** | *Format*: <br> `find -m -p <PHONE_NUMBER>` <br> *Example*: <br> ` find -m -p 98765432`
+**Search by email** | *Format*: <br> ` find -m -e <EMAIL>` <br> *Example*: <br> `find -m -e johndoe@gmail.com`
+**Search by registration date** | *Format*: <br> ` find -m -d <REGISTRATION_DATE>`<br> *Example*: <br> ` find -m -d 12-01-2021`
+**Search by member id** | *Format*: <br> `find -m -id <MEMBER_ID>` <br> *Example*:<br> `find -m -id 1`
+**List** | *Format*: <br> `find -m` <br> *Example*: <br> `find -m`
+**View member** | *Format*: <br> `show -m -id <MEMBER_ID>` <br> *Example*: <br> `show -m -id 1`
+**Delete member** | *Format*: <br> `del -m -id <MEMBER_ID>` <br> *Example*: <br> `del -m -id 1`
+**Add Transaction** | *Format*: <br> `add -t -id <MEMBER_ID> -b <BILLING>`<br> *Example*: <br> ` add -t -id 1 -b 200.00`
+
