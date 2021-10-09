@@ -3,10 +3,10 @@ package seedu.address.storage;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static seedu.address.testutil.Assert.assertThrows;
-import static seedu.address.testutil.TypicalPersons.ALICE;
-import static seedu.address.testutil.TypicalPersons.HOON;
-import static seedu.address.testutil.TypicalPersons.IDA;
-import static seedu.address.testutil.TypicalPersons.getTypicalEzFoodie;
+import static seedu.address.testutil.TypicalMembers.ALICE;
+import static seedu.address.testutil.TypicalMembers.HOON;
+import static seedu.address.testutil.TypicalMembers.IDA;
+import static seedu.address.testutil.TypicalMembers.getTypicalEzFoodie;
 
 import java.io.IOException;
 import java.nio.file.Path;
@@ -51,13 +51,13 @@ public class JsonEzFoodieStorageTest {
     }
 
     @Test
-    public void readEzFoodie_invalidPersonEzFoodie_throwDataConversionException() {
-        assertThrows(DataConversionException.class, () -> readEzFoodie("invalidPersonEzFoodie.json"));
+    public void readEzFoodie_invalidMemberEzFoodie_throwDataConversionException() {
+        assertThrows(DataConversionException.class, () -> readEzFoodie("invalidMemberEzFoodie.json"));
     }
 
     @Test
-    public void readEzFoodie_invalidAndValidPersonEzFoodie_throwDataConversionException() {
-        assertThrows(DataConversionException.class, () -> readEzFoodie("invalidAndValidPersonEzFoodie.json"));
+    public void readEzFoodie_invalidAndValidMemberEzFoodie_throwDataConversionException() {
+        assertThrows(DataConversionException.class, () -> readEzFoodie("invalidAndValidMemberEzFoodie.json"));
     }
 
     @Test
@@ -72,14 +72,14 @@ public class JsonEzFoodieStorageTest {
         assertEquals(original, new EzFoodie(readBack));
 
         // Modify data, overwrite exiting file, and read back
-        original.addPerson(HOON);
-        original.removePerson(ALICE);
+        original.addMember(HOON);
+        original.removeMember(ALICE);
         jsonEzFoodieStorage.saveEzFoodie(original, filePath);
         readBack = jsonEzFoodieStorage.readEzFoodie(filePath).get();
         assertEquals(original, new EzFoodie(readBack));
 
         // Save and read without specifying file path
-        original.addPerson(IDA);
+        original.addMember(IDA);
         jsonEzFoodieStorage.saveEzFoodie(original); // file path not specified
         readBack = jsonEzFoodieStorage.readEzFoodie().get(); // file path not specified
         assertEquals(original, new EzFoodie(readBack));

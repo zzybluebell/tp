@@ -1,6 +1,6 @@
 {
-  "_comment": "EzFoodie save file which contains the same Person values as in TypicalPersons#getTypicalEzFoodie()",
-  "persons" : [ {
+  "_comment": "EzFoodie save file which contains the same Member values as in TypicalMembers#getTypicalEzFoodie()",
+  "members" : [ {
     "name" : "Alice Pauline",
     "phone" : "94351253",
     "email" : "alice@example.com",

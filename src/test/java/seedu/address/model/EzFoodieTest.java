@@ -6,8 +6,8 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_ADDRESS_BOB;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_TAG_HUSBAND;
 import static seedu.address.testutil.Assert.assertThrows;
-import static seedu.address.testutil.TypicalPersons.ALICE;
-import static seedu.address.testutil.TypicalPersons.getTypicalEzFoodie;
+import static seedu.address.testutil.TypicalMembers.ALICE;
+import static seedu.address.testutil.TypicalMembers.getTypicalEzFoodie;
 
 import java.util.Arrays;
 import java.util.Collection;
@@ -18,9 +18,9 @@ import org.junit.jupiter.api.Test;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import seedu.address.model.person.Person;
-import seedu.address.model.person.exceptions.DuplicatePersonException;
-import seedu.address.testutil.PersonBuilder;
+import seedu.address.model.person.Member;
+import seedu.address.model.person.exceptions.DuplicateMemberException;
+import seedu.address.testutil.MemberBuilder;
 
 public class EzFoodieTest {
 
@@ -28,7 +28,7 @@ public class EzFoodieTest {
 
     @Test
     public void constructor() {
-        assertEquals(Collections.emptyList(), ezFoodie.getPersonList());
+        assertEquals(Collections.emptyList(), ezFoodie.getMemberList());
     }
 
     @Test
@@ -44,58 +44,58 @@ public class EzFoodieTest {
     }
 
     @Test
-    public void resetData_withDuplicatePersons_throwsDuplicatePersonException() {
-        // Two persons with the same identity fields
-        Person editedAlice = new PersonBuilder(ALICE).withAddress(VALID_ADDRESS_BOB).withTags(VALID_TAG_HUSBAND)
+    public void resetData_withDuplicateMembers_throwsDuplicateMemberException() {
+        // Two members with the same identity fields
+        Member editedAlice = new MemberBuilder(ALICE).withAddress(VALID_ADDRESS_BOB).withTags(VALID_TAG_HUSBAND)
                 .build();
-        List<Person> newPersons = Arrays.asList(ALICE, editedAlice);
-        EzFoodieStub newData = new EzFoodieStub(newPersons);
+        List<Member> newMembers = Arrays.asList(ALICE, editedAlice);
+        EzFoodieStub newData = new EzFoodieStub(newMembers);
 
-        assertThrows(DuplicatePersonException.class, () -> ezFoodie.resetData(newData));
+        assertThrows(DuplicateMemberException.class, () -> ezFoodie.resetData(newData));
     }
 
     @Test
-    public void hasPerson_nullPerson_throwsNullPointerException() {
-        assertThrows(NullPointerException.class, () -> ezFoodie.hasPerson(null));
+    public void hasMember_nullMember_throwsNullPointerException() {
+        assertThrows(NullPointerException.class, () -> ezFoodie.hasMember(null));
     }
 
     @Test
-    public void hasPerson_personNotInEzFoodie_returnsFalse() {
-        assertFalse(ezFoodie.hasPerson(ALICE));
+    public void hasMember_memberNotInEzFoodie_returnsFalse() {
+        assertFalse(ezFoodie.hasMember(ALICE));
     }
 
     @Test
-    public void hasPerson_personInEzFoodie_returnsTrue() {
-        ezFoodie.addPerson(ALICE);
-        assertTrue(ezFoodie.hasPerson(ALICE));
+    public void hasMember_memberInEzFoodie_returnsTrue() {
+        ezFoodie.addMember(ALICE);
+        assertTrue(ezFoodie.hasMember(ALICE));
     }
 
     @Test
-    public void hasPerson_personWithSameIdentityFieldsInEzFoodie_returnsTrue() {
-        ezFoodie.addPerson(ALICE);
-        Person editedAlice = new PersonBuilder(ALICE).withAddress(VALID_ADDRESS_BOB).withTags(VALID_TAG_HUSBAND)
+    public void hasMember_memberWithSameIdentityFieldsInEzFoodie_returnsTrue() {
+        ezFoodie.addMember(ALICE);
+        Member editedAlice = new MemberBuilder(ALICE).withAddress(VALID_ADDRESS_BOB).withTags(VALID_TAG_HUSBAND)
                 .build();
-        assertTrue(ezFoodie.hasPerson(editedAlice));
+        assertTrue(ezFoodie.hasMember(editedAlice));
     }
 
     @Test
-    public void getPersonList_modifyList_throwsUnsupportedOperationException() {
-        assertThrows(UnsupportedOperationException.class, () -> ezFoodie.getPersonList().remove(0));
+    public void getMemberList_modifyList_throwsUnsupportedOperationException() {
+        assertThrows(UnsupportedOperationException.class, () -> ezFoodie.getMemberList().remove(0));
     }
 
     /**
-     * A stub ReadOnlyEzFoodie whose persons list can violate interface constraints.
+     * A stub ReadOnlyEzFoodie whose members list can violate interface constraints.
      */
     private static class EzFoodieStub implements ReadOnlyEzFoodie {
-        private final ObservableList<Person> persons = FXCollections.observableArrayList();
+        private final ObservableList<Member> members = FXCollections.observableArrayList();
 
-        EzFoodieStub(Collection<Person> persons) {
-            this.persons.setAll(persons);
+        EzFoodieStub(Collection<Member> members) {
+            this.members.setAll(members);
         }
 
         @Override
-        public ObservableList<Person> getPersonList() {
-            return persons;
+        public ObservableList<Member> getMemberList() {
+            return members;
         }
     }
 
