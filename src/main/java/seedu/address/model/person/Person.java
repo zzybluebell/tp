@@ -17,27 +17,36 @@ public class Person {
 
     // Identity fields
     private final Name name;
+    private final Id id;
     private final Phone phone;
     private final Email email;
 
     // Data fields
     private final Address address;
     private final Set<Tag> tags = new HashSet<>();
+    private final TransactionHistory transactionHistory;
 
     /**
      * Every field must be present and not null.
      */
-    public Person(Name name, Phone phone, Email email, Address address, Set<Tag> tags) {
-        requireAllNonNull(name, phone, email, address, tags);
+    public Person(Name name, Id id, Phone phone, Email email, Address address,
+                  Set<Tag> tags, TransactionHistory transactionHistory) {
+        requireAllNonNull(name, phone, email, address, tags, transactionHistory);
         this.name = name;
+        this.id = id;
         this.phone = phone;
         this.email = email;
         this.address = address;
         this.tags.addAll(tags);
+        this.transactionHistory = transactionHistory;
     }
 
     public Name getName() {
         return name;
+    }
+
+    public Id getId() {
+        return id;
     }
 
     public Phone getPhone() {
@@ -58,6 +67,10 @@ public class Person {
      */
     public Set<Tag> getTags() {
         return Collections.unmodifiableSet(tags);
+    }
+
+    public TransactionHistory getTransactionHistory() {
+        return transactionHistory;
     }
 
     /**
@@ -89,22 +102,26 @@ public class Person {
 
         Person otherPerson = (Person) other;
         return otherPerson.getName().equals(getName())
+                && otherPerson.getId().equals(getId())
                 && otherPerson.getPhone().equals(getPhone())
                 && otherPerson.getEmail().equals(getEmail())
                 && otherPerson.getAddress().equals(getAddress())
-                && otherPerson.getTags().equals(getTags());
+                && otherPerson.getTags().equals(getTags())
+                && otherPerson.getTransactionHistory().equals(getTransactionHistory());
     }
 
     @Override
     public int hashCode() {
         // use this method for custom fields hashing instead of implementing your own
-        return Objects.hash(name, phone, email, address, tags);
+        return Objects.hash(name, id, phone, email, address, tags, transactionHistory);
     }
 
     @Override
     public String toString() {
         final StringBuilder builder = new StringBuilder();
         builder.append(getName())
+                .append("; ID: ")
+                .append(getId())
                 .append("; Phone: ")
                 .append(getPhone())
                 .append("; Email: ")
@@ -117,6 +134,9 @@ public class Person {
             builder.append("; Tags: ");
             tags.forEach(builder::append);
         }
+
+        builder.append("; Transaction history: ")
+                .append(getTransactionHistory());
         return builder.toString();
     }
 
