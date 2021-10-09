@@ -35,44 +35,44 @@ public interface Model {
     void setGuiSettings(GuiSettings guiSettings);
 
     /**
-     * Returns the user prefs' address book file path.
+     * Returns the user prefs' ezFoodie file path.
      */
-    Path getAddressBookFilePath();
+    Path getEzFoodieFilePath();
 
     /**
-     * Sets the user prefs' address book file path.
+     * Sets the user prefs' ezFoodie file path.
      */
-    void setAddressBookFilePath(Path addressBookFilePath);
+    void setEzFoodieFilePath(Path ezFoodieFilePath);
 
     /**
-     * Replaces address book data with the data in {@code addressBook}.
+     * Replaces ezFoodie data with the data in {@code ezFoodie}.
      */
-    void setAddressBook(ReadOnlyAddressBook addressBook);
+    void setEzFoodie(ReadOnlyEzFoodie ezFoodie);
 
-    /** Returns the AddressBook */
-    ReadOnlyAddressBook getAddressBook();
+    /** Returns the EzFoodie */
+    ReadOnlyEzFoodie getEzFoodie();
 
     /**
-     * Returns true if a person with the same identity as {@code person} exists in the address book.
+     * Returns true if a person with the same identity as {@code person} exists in the ezFoodie.
      */
     boolean hasPerson(Person person);
 
     /**
      * Deletes the given person.
-     * The person must exist in the address book.
+     * The person must exist in the ezFoodie.
      */
     void deletePerson(Person target);
 
     /**
      * Adds the given person.
-     * {@code person} must not already exist in the address book.
+     * {@code person} must not already exist in the ezFoodie.
      */
     void addPerson(Person person);
 
     /**
      * Replaces the given person {@code target} with {@code editedPerson}.
-     * {@code target} must exist in the address book.
-     * The person identity of {@code editedPerson} must not be the same as another existing person in the address book.
+     * {@code target} must exist in the ezFoodie.
+     * The person identity of {@code editedPerson} must not be the same as another existing person in the ezFoodie.
      */
     void setPerson(Person target, Person editedPerson);
 
