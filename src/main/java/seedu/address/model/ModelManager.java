@@ -14,31 +14,31 @@ import seedu.address.commons.core.LogsCenter;
 import seedu.address.model.person.Person;
 
 /**
- * Represents the in-memory model of the address book data.
+ * Represents the in-memory model of the ezFoodie data.
  */
 public class ModelManager implements Model {
     private static final Logger logger = LogsCenter.getLogger(ModelManager.class);
 
-    private final AddressBook addressBook;
+    private final EzFoodie ezFoodie;
     private final UserPrefs userPrefs;
     private final FilteredList<Person> filteredPersons;
 
     /**
-     * Initializes a ModelManager with the given addressBook and userPrefs.
+     * Initializes a ModelManager with the given ezFoodie and userPrefs.
      */
-    public ModelManager(ReadOnlyAddressBook addressBook, ReadOnlyUserPrefs userPrefs) {
+    public ModelManager(ReadOnlyEzFoodie ezFoodie, ReadOnlyUserPrefs userPrefs) {
         super();
-        requireAllNonNull(addressBook, userPrefs);
+        requireAllNonNull(ezFoodie, userPrefs);
 
-        logger.fine("Initializing with address book: " + addressBook + " and user prefs " + userPrefs);
+        logger.fine("Initializing with ezFoodie: " + ezFoodie + " and user prefs " + userPrefs);
 
-        this.addressBook = new AddressBook(addressBook);
+        this.ezFoodie = new EzFoodie(ezFoodie);
         this.userPrefs = new UserPrefs(userPrefs);
-        filteredPersons = new FilteredList<>(this.addressBook.getPersonList());
+        filteredPersons = new FilteredList<>(this.ezFoodie.getPersonList());
     }
 
     public ModelManager() {
-        this(new AddressBook(), new UserPrefs());
+        this(new EzFoodie(), new UserPrefs());
     }
 
     //=========== UserPrefs ==================================================================================
@@ -66,42 +66,42 @@ public class ModelManager implements Model {
     }
 
     @Override
-    public Path getAddressBookFilePath() {
-        return userPrefs.getAddressBookFilePath();
+    public Path getEzFoodieFilePath() {
+        return userPrefs.getEzFoodieFilePath();
     }
 
     @Override
-    public void setAddressBookFilePath(Path addressBookFilePath) {
-        requireNonNull(addressBookFilePath);
-        userPrefs.setAddressBookFilePath(addressBookFilePath);
+    public void setEzFoodieFilePath(Path ezFoodieFilePath) {
+        requireNonNull(ezFoodieFilePath);
+        userPrefs.setEzFoodieFilePath(ezFoodieFilePath);
     }
 
-    //=========== AddressBook ================================================================================
+    //=========== EzFoodie ===================================================================================
 
     @Override
-    public void setAddressBook(ReadOnlyAddressBook addressBook) {
-        this.addressBook.resetData(addressBook);
+    public void setEzFoodie(ReadOnlyEzFoodie ezFoodie) {
+        this.ezFoodie.resetData(ezFoodie);
     }
 
     @Override
-    public ReadOnlyAddressBook getAddressBook() {
-        return addressBook;
+    public ReadOnlyEzFoodie getEzFoodie() {
+        return ezFoodie;
     }
 
     @Override
     public boolean hasPerson(Person person) {
         requireNonNull(person);
-        return addressBook.hasPerson(person);
+        return ezFoodie.hasPerson(person);
     }
 
     @Override
     public void deletePerson(Person target) {
-        addressBook.removePerson(target);
+        ezFoodie.removePerson(target);
     }
 
     @Override
     public void addPerson(Person person) {
-        addressBook.addPerson(person);
+        ezFoodie.addPerson(person);
         updateFilteredPersonList(PREDICATE_SHOW_ALL_PERSONS);
     }
 
@@ -109,14 +109,14 @@ public class ModelManager implements Model {
     public void setPerson(Person target, Person editedPerson) {
         requireAllNonNull(target, editedPerson);
 
-        addressBook.setPerson(target, editedPerson);
+        ezFoodie.setPerson(target, editedPerson);
     }
 
     //=========== Filtered Person List Accessors =============================================================
 
     /**
      * Returns an unmodifiable view of the list of {@code Person} backed by the internal list of
-     * {@code versionedAddressBook}
+     * {@code versionedEzFoodie}
      */
     @Override
     public ObservableList<Person> getFilteredPersonList() {
@@ -143,7 +143,7 @@ public class ModelManager implements Model {
 
         // state check
         ModelManager other = (ModelManager) obj;
-        return addressBook.equals(other.addressBook)
+        return ezFoodie.equals(other.ezFoodie)
                 && userPrefs.equals(other.userPrefs)
                 && filteredPersons.equals(other.filteredPersons);
     }
