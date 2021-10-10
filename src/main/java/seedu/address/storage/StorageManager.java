@@ -47,7 +47,7 @@ public class StorageManager implements Storage {
     }
 
 
-    // ================ ezFoodie methods ==============================
+    // ================ EzFoodie methods ==============================
 
     @Override
     public Path getAddressBookFilePath() {
