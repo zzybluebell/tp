@@ -7,7 +7,7 @@
 
 * Have you faced some issues when managing the members in your restaurant? `ezFoodie` is here!
 
-* `ezFoodie` is a desktop application that helps restaurants **keep track of their ever-growing list of members**. It is optimized for using via a **Command Line Interface (CLI)** while still having the benefits of a Graphical User Interface (GUI). If you can type fast, ezFoodie can get your member management tasks done faster than traditional GUI applications.
+* `ezFoodie` is a desktop application that helps restaurants **keep track of their ever-growing list of members**. It is optimized for using via a **Command Line Interface (CLI)** while still having the benefits of a **Graphical User Interface (GUI)**. If you can type fast, ezFoodie can get your member management tasks done faster than traditional GUI applications.
 
 * If you are interested in using `ezFoodie`, head over to the [_Quick Start_ section of the **User Guide**](https://ay2122s1-cs2103t-f12-4.github.io/tp/UserGuide.html#quick-start).
 
