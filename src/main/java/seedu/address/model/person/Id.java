@@ -10,8 +10,8 @@ import static seedu.address.commons.util.AppUtil.checkArgument;
 public class Id {
 
     public static final String MESSAGE_CONSTRAINTS =
-            "Ids should only contain alphanumeric characters, and it should not be blank";
-    public static final String VALIDATION_REGEX = "[\\p{Alnum}]*";
+            "Ids should only contain digits, and it should not be blank";
+    public static final String VALIDATION_REGEX = "[\\p{Digit}]*";
     public final String value;
 
     /**

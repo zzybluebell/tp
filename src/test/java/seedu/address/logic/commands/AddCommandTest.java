@@ -129,6 +129,11 @@ public class AddCommandTest {
         }
 
         @Override
+        public boolean hasMember(Member member, Predicate<Member> predicate) {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
         public void deleteMember(Member target) {
             throw new AssertionError("This method should not be called.");
         }

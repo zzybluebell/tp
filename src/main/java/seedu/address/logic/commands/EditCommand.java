@@ -21,6 +21,7 @@ import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.Model;
 import seedu.address.model.person.Address;
 import seedu.address.model.person.Email;
+import seedu.address.model.person.Id;
 import seedu.address.model.person.Member;
 import seedu.address.model.person.Name;
 import seedu.address.model.person.Phone;
@@ -77,7 +78,7 @@ public class EditCommand extends Command {
         Member memberToEdit = lastShownList.get(index.getZeroBased());
         Member editedMember = createEditedMember(memberToEdit, editMemberDescriptor);
 
-        if (!memberToEdit.isSameMember(editedMember) && model.hasMember(editedMember)) {
+        if (model.hasMember(editedMember, member -> member.getId() != editedMember.getId())) {
             throw new CommandException(MESSAGE_DUPLICATE_MEMBER);
         }
 
@@ -93,13 +94,14 @@ public class EditCommand extends Command {
     private static Member createEditedMember(Member memberToEdit, EditMemberDescriptor editMemberDescriptor) {
         assert memberToEdit != null;
 
+        Id id = memberToEdit.getId();
         Name updatedName = editMemberDescriptor.getName().orElse(memberToEdit.getName());
         Phone updatedPhone = editMemberDescriptor.getPhone().orElse(memberToEdit.getPhone());
         Email updatedEmail = editMemberDescriptor.getEmail().orElse(memberToEdit.getEmail());
         Address updatedAddress = editMemberDescriptor.getAddress().orElse(memberToEdit.getAddress());
         Set<Tag> updatedTags = editMemberDescriptor.getTags().orElse(memberToEdit.getTags());
 
-        return new Member(updatedName, updatedPhone, updatedEmail, updatedAddress, updatedTags);
+        return new Member(id, updatedName, updatedPhone, updatedEmail, updatedAddress, updatedTags);
     }
 
     @Override

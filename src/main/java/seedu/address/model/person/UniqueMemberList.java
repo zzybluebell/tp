@@ -5,6 +5,7 @@ import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
 
 import java.util.Iterator;
 import java.util.List;
+import java.util.function.Predicate;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -34,6 +35,15 @@ public class UniqueMemberList implements Iterable<Member> {
     public boolean contains(Member toCheck) {
         requireNonNull(toCheck);
         return internalList.stream().anyMatch(toCheck::isSameMember);
+    }
+
+    /**
+     * Returns true if the filtered list contains an equivalent member as the given argument.
+     * {@code predicate} is the filter condition for the filtered list.
+     */
+    public boolean contains(Member toCheck, Predicate<Member> predicate) {
+        requireNonNull(toCheck);
+        return internalList.stream().filter(predicate).anyMatch(toCheck::isSameMember);
     }
 
     /**

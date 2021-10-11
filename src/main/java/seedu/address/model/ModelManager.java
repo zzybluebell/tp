@@ -95,6 +95,12 @@ public class ModelManager implements Model {
     }
 
     @Override
+    public boolean hasMember(Member member, Predicate<Member> predicate) {
+        requireNonNull(member);
+        return ezFoodie.hasMember(member, predicate);
+    }
+
+    @Override
     public void deleteMember(Member target) {
         ezFoodie.removeMember(target);
     }

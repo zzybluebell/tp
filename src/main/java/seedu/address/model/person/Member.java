@@ -67,7 +67,7 @@ public class Member {
     }
 
     /**
-     * Returns true if both members have the same id.
+     * Returns true if both members have the same id, phone or email.
      * This defines a weaker notion of equality between two members.
      */
     public boolean isSameMember(Member otherMember) {
@@ -76,7 +76,46 @@ public class Member {
         }
 
         return otherMember != null
+                && (isSameId(otherMember) || isSameEmail(otherMember) || isSamePhone(otherMember));
+    }
+
+    /**
+     * Returns true if both members have the same id.
+     * This defines a weaker notion of equality between two members.
+     */
+    public boolean isSameId(Member otherMember) {
+        if (otherMember == this) {
+            return true;
+        }
+
+        return otherMember != null
                 && otherMember.getId().equals(getId());
+    }
+
+    /**
+     * Returns true if both members have the same phone.
+     * This defines a weaker notion of equality between two members.
+     */
+    public boolean isSamePhone(Member otherMember) {
+        if (otherMember == this) {
+            return true;
+        }
+
+        return otherMember != null
+                && otherMember.getPhone().equals(getPhone());
+    }
+
+    /**
+     * Returns true if both members have the same email.
+     * This defines a weaker notion of equality between two members.
+     */
+    public boolean isSameEmail(Member otherMember) {
+        if (otherMember == this) {
+            return true;
+        }
+
+        return otherMember != null
+                && otherMember.getEmail().equals(getEmail());
     }
 
     /**
