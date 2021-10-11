@@ -19,7 +19,7 @@ import seedu.address.model.person.Name;
 import seedu.address.model.person.Phone;
 
 public class JsonAdaptedMemberTest {
-    private static final String INVALID_ID = "3$001";
+    private static final String INVALID_ID = "3A001";
     private static final String INVALID_NAME = "R@chel";
     private static final String INVALID_PHONE = "+651234";
     private static final String INVALID_ADDRESS = " ";

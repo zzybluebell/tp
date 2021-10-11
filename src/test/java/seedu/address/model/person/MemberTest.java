@@ -5,7 +5,6 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_ADDRESS_AMY;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_ADDRESS_BOB;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_EMAIL_BOB;
-import static seedu.address.logic.commands.CommandTestUtil.VALID_ID_AMY;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_ID_BOB;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_NAME_AMY;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_NAME_BOB;
@@ -56,11 +55,11 @@ public class MemberTest {
                 .withPhone(VALID_PHONE_BOB).withAddress(VALID_ADDRESS_BOB).withTags(VALID_TAG_HUSBAND).build();
         assertTrue(ALICE.isSameMember(editedAlice));
 
-        // email differs in case, all other attributes different -> returns false
-        Member editedBob = new MemberBuilder(BOB).withEmail(VALID_EMAIL_BOB.toUpperCase()).withId(VALID_ID_AMY)
-                .withName(VALID_NAME_AMY).withPhone(VALID_PHONE_AMY).withAddress(VALID_ADDRESS_AMY)
+        // email differs in case, all other attributes same -> returns false
+        editedAlice = new MemberBuilder(ALICE).withId(VALID_ID_BOB).withName(VALID_NAME_AMY)
+                .withPhone(VALID_PHONE_AMY).withEmail(VALID_EMAIL_BOB.toUpperCase()).withAddress(VALID_ADDRESS_AMY)
                 .withTags(VALID_TAG_HUSBAND).build();
-        assertFalse(BOB.isSameMember(editedBob));
+        assertFalse(ALICE.isSameMember(editedAlice));
     }
 
     @Test

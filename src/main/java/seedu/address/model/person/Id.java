@@ -11,6 +11,7 @@ public class Id {
 
     public static final String MESSAGE_CONSTRAINTS =
             "Ids should only contain digits, and it should not be blank";
+    public static final String PATTERN = "%05d";
     public static final String VALIDATION_REGEX = "[\\p{Digit}]*";
     public final String value;
 
@@ -31,7 +32,6 @@ public class Id {
     public static boolean isValidId(String test) {
         return test.matches(VALIDATION_REGEX);
     }
-
 
     @Override
     public String toString() {
