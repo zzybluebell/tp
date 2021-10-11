@@ -15,20 +15,20 @@ import seedu.address.commons.core.LogsCenter;
  */
 public class HelpWindow extends UiPart<Stage> {
 
-    public static final String USERGUIDE_URL =
-            "https://github.com/AY2122S1-CS2103T-F12-4/tp/blob/master/docs/UserGuide.md";
+    public static final String OFFICIAL_URL =
+            "https://ay2122s1-cs2103t-f12-4.github.io/tp/";
     public static final String HELP_MESSAGE = "Features:\n"
                                               + "Add member: add -m -n <NAME> -p <PHONE> -e <EMAIL>\n"
                                               + "Search by name: find -m -n <NAME>\n"
                                               + "Search by phone: find -m -p <PHONE>\n"
-                                              + "Search by email: find -m -e <EMAIL>\u200B\n"
+                                              + "Search by email: find -m -e <EMAIL>\n"
                                               + "Search by registration date: find -m -d <REGISTRATION_DATE>\n"
-                                              + "Search by member id: find -m -id <MEMBER_ID>\n"
+                                              + "Search by member ID: find -m -id <MEMBER_ID>\n"
                                               + "Adding transaction: add -t -id <MEMBER_ID> -b <BILLING>\n"
                                               + "View member: show -m -id <MEMBER_ID>\n"
                                               + "Delete member: del -m -id <MEMBER_ID>\n"
                                               + "Exit Application: exit\n"
-                                              + "To view full user guide: " + USERGUIDE_URL;
+                                              + "To view full user guide: " + OFFICIAL_URL;
 
     private static final Logger logger = LogsCenter.getLogger(HelpWindow.class);
     private static final String FXML = "HelpWindow.fxml";
@@ -108,7 +108,7 @@ public class HelpWindow extends UiPart<Stage> {
     private void copyUrl() {
         final Clipboard clipboard = Clipboard.getSystemClipboard();
         final ClipboardContent url = new ClipboardContent();
-        url.putString(USERGUIDE_URL);
+        url.putString(OFFICIAL_URL);
         clipboard.setContent(url);
     }
 }
