@@ -34,7 +34,7 @@ public class LogicManager implements Logic {
     public LogicManager(Model model, Storage storage) {
         this.model = model;
         this.storage = storage;
-        ezFoodieParser = new EzFoodieParser();
+        ezFoodieParser = new EzFoodieParser(model);
     }
 
     @Override
