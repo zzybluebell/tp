@@ -2,7 +2,7 @@ package seedu.address.storage;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
-import static seedu.address.testutil.TypicalPersons.getTypicalAddressBook;
+import static seedu.address.testutil.TypicalMembers.getTypicalEzFoodie;
 
 import java.nio.file.Path;
 
@@ -11,8 +11,8 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.io.TempDir;
 
 import seedu.address.commons.core.GuiSettings;
-import seedu.address.model.AddressBook;
-import seedu.address.model.ReadOnlyAddressBook;
+import seedu.address.model.EzFoodie;
+import seedu.address.model.ReadOnlyEzFoodie;
 import seedu.address.model.UserPrefs;
 
 public class StorageManagerTest {
@@ -24,9 +24,9 @@ public class StorageManagerTest {
 
     @BeforeEach
     public void setUp() {
-        JsonAddressBookStorage addressBookStorage = new JsonAddressBookStorage(getTempFilePath("ab"));
+        JsonEzFoodieStorage ezFoodieStorage = new JsonEzFoodieStorage(getTempFilePath("ef"));
         JsonUserPrefsStorage userPrefsStorage = new JsonUserPrefsStorage(getTempFilePath("prefs"));
-        storageManager = new StorageManager(addressBookStorage, userPrefsStorage);
+        storageManager = new StorageManager(ezFoodieStorage, userPrefsStorage);
     }
 
     private Path getTempFilePath(String fileName) {
@@ -48,21 +48,21 @@ public class StorageManagerTest {
     }
 
     @Test
-    public void addressBookReadSave() throws Exception {
+    public void ezFoodieReadSave() throws Exception {
         /*
          * Note: This is an integration test that verifies the StorageManager is properly wired to the
-         * {@link JsonAddressBookStorage} class.
-         * More extensive testing of UserPref saving/reading is done in {@link JsonAddressBookStorageTest} class.
+         * {@link JsonEzFoodieStorage} class.
+         * More extensive testing of UserPref saving/reading is done in {@link JsonEzFoodieStorageTest} class.
          */
-        AddressBook original = getTypicalAddressBook();
-        storageManager.saveAddressBook(original);
-        ReadOnlyAddressBook retrieved = storageManager.readAddressBook().get();
-        assertEquals(original, new AddressBook(retrieved));
+        EzFoodie original = getTypicalEzFoodie();
+        storageManager.saveEzFoodie(original);
+        ReadOnlyEzFoodie retrieved = storageManager.readEzFoodie().get();
+        assertEquals(original, new EzFoodie(retrieved));
     }
 
     @Test
-    public void getAddressBookFilePath() {
-        assertNotNull(storageManager.getAddressBookFilePath());
+    public void getEzFoodieFilePath() {
+        assertNotNull(storageManager.getEzFoodieFilePath());
     }
 
 }
