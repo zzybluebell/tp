@@ -5,6 +5,7 @@ import java.util.Set;
 
 import seedu.address.model.person.Address;
 import seedu.address.model.person.Email;
+import seedu.address.model.person.Id;
 import seedu.address.model.person.Member;
 import seedu.address.model.person.Name;
 import seedu.address.model.person.Phone;
@@ -16,11 +17,13 @@ import seedu.address.model.util.SampleDataUtil;
  */
 public class MemberBuilder {
 
+    public static final String DEFAULT_ID = "00101";
     public static final String DEFAULT_NAME = "Amy Bee";
     public static final String DEFAULT_PHONE = "85355255";
     public static final String DEFAULT_EMAIL = "amy@gmail.com";
     public static final String DEFAULT_ADDRESS = "123, Jurong West Ave 6, #08-111";
 
+    private Id id;
     private Name name;
     private Phone phone;
     private Email email;
@@ -31,6 +34,7 @@ public class MemberBuilder {
      * Creates a {@code MemberBuilder} with the default details.
      */
     public MemberBuilder() {
+        id = new Id(DEFAULT_ID);
         name = new Name(DEFAULT_NAME);
         phone = new Phone(DEFAULT_PHONE);
         email = new Email(DEFAULT_EMAIL);
@@ -42,11 +46,20 @@ public class MemberBuilder {
      * Initializes the MemberBuilder with the data of {@code memberToCopy}.
      */
     public MemberBuilder(Member memberToCopy) {
+        id = memberToCopy.getId();
         name = memberToCopy.getName();
         phone = memberToCopy.getPhone();
         email = memberToCopy.getEmail();
         address = memberToCopy.getAddress();
         tags = new HashSet<>(memberToCopy.getTags());
+    }
+
+    /**
+     * Sets the {@code Id} of the {@code Member} that we are building.
+     */
+    public MemberBuilder withId(String id) {
+        this.id = new Id(id);
+        return this;
     }
 
     /**
@@ -90,7 +103,7 @@ public class MemberBuilder {
     }
 
     public Member build() {
-        return new Member(name, phone, email, address, tags);
+        return new Member(id, name, phone, email, address, tags);
     }
 
 }

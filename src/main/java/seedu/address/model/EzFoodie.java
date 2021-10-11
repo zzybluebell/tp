@@ -3,6 +3,7 @@ package seedu.address.model;
 import static java.util.Objects.requireNonNull;
 
 import java.util.List;
+import java.util.function.Predicate;
 
 import javafx.collections.ObservableList;
 import seedu.address.model.person.Member;
@@ -64,6 +65,15 @@ public class EzFoodie implements ReadOnlyEzFoodie {
     public boolean hasMember(Member member) {
         requireNonNull(member);
         return members.contains(member);
+    }
+
+    /**
+     * Returns true if a member with the same identity as {@code member} exists in the filtered ezFoodie.
+     * {@code predicate} is the filter condition for the filtered ezFoodie.
+     */
+    public boolean hasMember(Member member, Predicate<Member> predicate) {
+        requireNonNull(member);
+        return members.contains(member, predicate);
     }
 
     /**

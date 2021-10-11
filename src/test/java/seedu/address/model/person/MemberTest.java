@@ -2,9 +2,14 @@ package seedu.address.model.person;
 
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_ADDRESS_AMY;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_ADDRESS_BOB;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_EMAIL_BOB;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_ID_AMY;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_ID_BOB;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_NAME_AMY;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_NAME_BOB;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_PHONE_AMY;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_PHONE_BOB;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_TAG_HUSBAND;
 import static seedu.address.testutil.Assert.assertThrows;
@@ -31,22 +36,30 @@ public class MemberTest {
         // null -> returns false
         assertFalse(ALICE.isSameMember(null));
 
-        // same name, all other attributes different -> returns true
-        Member editedAlice = new MemberBuilder(ALICE).withPhone(VALID_PHONE_BOB).withEmail(VALID_EMAIL_BOB)
-                .withAddress(VALID_ADDRESS_BOB).withTags(VALID_TAG_HUSBAND).build();
-        assertTrue(ALICE.isSameMember(editedAlice));
-
-        // different name, all other attributes same -> returns false
-        editedAlice = new MemberBuilder(ALICE).withName(VALID_NAME_BOB).build();
+        // different id, phone and email, all other attributes same -> returns false
+        Member editedAlice = new MemberBuilder(ALICE).withId(VALID_ID_BOB).withPhone(VALID_PHONE_BOB)
+                .withEmail(VALID_EMAIL_BOB).build();
         assertFalse(ALICE.isSameMember(editedAlice));
 
-        // name differs in case, all other attributes same -> returns false
-        Member editedBob = new MemberBuilder(BOB).withName(VALID_NAME_BOB.toLowerCase()).build();
-        assertFalse(BOB.isSameMember(editedBob));
+        // same id, all other attributes different -> returns true
+        editedAlice = new MemberBuilder(ALICE).withName(VALID_NAME_BOB).withPhone(VALID_PHONE_BOB)
+                .withEmail(VALID_EMAIL_BOB).withAddress(VALID_ADDRESS_BOB).withTags(VALID_TAG_HUSBAND).build();
+        assertTrue(ALICE.isSameMember(editedAlice));
 
-        // name has trailing spaces, all other attributes same -> returns false
-        String nameWithTrailingSpaces = VALID_NAME_BOB + " ";
-        editedBob = new MemberBuilder(BOB).withName(nameWithTrailingSpaces).build();
+        // same phone, all other attributes different -> returns true
+        editedAlice = new MemberBuilder(ALICE).withId(VALID_ID_BOB).withName(VALID_NAME_BOB)
+                .withEmail(VALID_EMAIL_BOB).withAddress(VALID_ADDRESS_BOB).withTags(VALID_TAG_HUSBAND).build();
+        assertTrue(ALICE.isSameMember(editedAlice));
+
+        // same email, all other attributes different -> returns true
+        editedAlice = new MemberBuilder(ALICE).withId(VALID_ID_BOB).withName(VALID_NAME_BOB)
+                .withPhone(VALID_PHONE_BOB).withAddress(VALID_ADDRESS_BOB).withTags(VALID_TAG_HUSBAND).build();
+        assertTrue(ALICE.isSameMember(editedAlice));
+
+        // email differs in case, all other attributes different -> returns false
+        Member editedBob = new MemberBuilder(BOB).withEmail(VALID_EMAIL_BOB.toUpperCase()).withId(VALID_ID_AMY)
+                .withName(VALID_NAME_AMY).withPhone(VALID_PHONE_AMY).withAddress(VALID_ADDRESS_AMY)
+                .withTags(VALID_TAG_HUSBAND).build();
         assertFalse(BOB.isSameMember(editedBob));
     }
 
@@ -68,8 +81,12 @@ public class MemberTest {
         // different member -> returns false
         assertFalse(ALICE.equals(BOB));
 
+        // different id -> returns false
+        Member editedAlice = new MemberBuilder(ALICE).withId(VALID_ID_BOB).build();
+        assertFalse(ALICE.equals(editedAlice));
+
         // different name -> returns false
-        Member editedAlice = new MemberBuilder(ALICE).withName(VALID_NAME_BOB).build();
+        editedAlice = new MemberBuilder(ALICE).withName(VALID_NAME_BOB).build();
         assertFalse(ALICE.equals(editedAlice));
 
         // different phone -> returns false

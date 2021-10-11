@@ -58,6 +58,12 @@ public interface Model {
     boolean hasMember(Member member);
 
     /**
+     * Returns true if a member with the same identity as {@code member} exists in the filtered ezFoodie.
+     * {@code predicate} is the filter condition for the filtered ezFoodie.
+     */
+    boolean hasMember(Member member, Predicate<Member> predicate);
+
+    /**
      * Deletes the given member.
      * The member must exist in the ezFoodie.
      */
