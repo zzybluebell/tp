@@ -5,14 +5,14 @@ import java.util.function.Predicate;
 
 import javafx.collections.ObservableList;
 import seedu.address.commons.core.GuiSettings;
-import seedu.address.model.person.Person;
+import seedu.address.model.person.Member;
 
 /**
  * The API of the Model component.
  */
 public interface Model {
     /** {@code Predicate} that always evaluate to true */
-    Predicate<Person> PREDICATE_SHOW_ALL_PERSONS = unused -> true;
+    Predicate<Member> PREDICATE_SHOW_ALL_MEMBERS = unused -> true;
 
     /**
      * Replaces user prefs data with the data in {@code userPrefs}.
@@ -35,53 +35,59 @@ public interface Model {
     void setGuiSettings(GuiSettings guiSettings);
 
     /**
-     * Returns the user prefs' address book file path.
+     * Returns the user prefs' ezFoodie file path.
      */
-    Path getAddressBookFilePath();
+    Path getEzFoodieFilePath();
 
     /**
-     * Sets the user prefs' address book file path.
+     * Sets the user prefs' ezFoodie file path.
      */
-    void setAddressBookFilePath(Path addressBookFilePath);
+    void setEzFoodieFilePath(Path ezFoodieFilePath);
 
     /**
-     * Replaces address book data with the data in {@code addressBook}.
+     * Replaces ezFoodie data with the data in {@code ezFoodie}.
      */
-    void setAddressBook(ReadOnlyAddressBook addressBook);
+    void setEzFoodie(ReadOnlyEzFoodie ezFoodie);
 
-    /** Returns the AddressBook */
-    ReadOnlyAddressBook getAddressBook();
+    /** Returns the EzFoodie */
+    ReadOnlyEzFoodie getEzFoodie();
 
     /**
-     * Returns true if a person with the same identity as {@code person} exists in the address book.
+     * Returns true if a member with the same identity as {@code member} exists in the ezFoodie.
      */
-    boolean hasPerson(Person person);
+    boolean hasMember(Member member);
 
     /**
-     * Deletes the given person.
-     * The person must exist in the address book.
+     * Returns true if a member with the same identity as {@code member} exists in the filtered ezFoodie.
+     * {@code predicate} is the filter condition for the filtered ezFoodie.
      */
-    void deletePerson(Person target);
+    boolean hasMember(Member member, Predicate<Member> predicate);
 
     /**
-     * Adds the given person.
-     * {@code person} must not already exist in the address book.
+     * Deletes the given member.
+     * The member must exist in the ezFoodie.
      */
-    void addPerson(Person person);
+    void deleteMember(Member target);
 
     /**
-     * Replaces the given person {@code target} with {@code editedPerson}.
-     * {@code target} must exist in the address book.
-     * The person identity of {@code editedPerson} must not be the same as another existing person in the address book.
+     * Adds the given member.
+     * {@code member} must not already exist in the ezFoodie.
      */
-    void setPerson(Person target, Person editedPerson);
-
-    /** Returns an unmodifiable view of the filtered person list */
-    ObservableList<Person> getFilteredPersonList();
+    void addMember(Member member);
 
     /**
-     * Updates the filter of the filtered person list to filter by the given {@code predicate}.
+     * Replaces the given member {@code target} with {@code editedMember}.
+     * {@code target} must exist in the ezFoodie.
+     * The member identity of {@code editedMember} must not be the same as another existing member in the ezFoodie.
+     */
+    void setMember(Member target, Member editedMember);
+
+    /** Returns an unmodifiable view of the filtered member list */
+    ObservableList<Member> getFilteredMemberList();
+
+    /**
+     * Updates the filter of the filtered member list to filter by the given {@code predicate}.
      * @throws NullPointerException if {@code predicate} is null.
      */
-    void updateFilteredPersonList(Predicate<Person> predicate);
+    void updateFilteredMemberList(Predicate<Member> predicate);
 }
