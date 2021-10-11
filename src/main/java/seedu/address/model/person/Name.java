@@ -4,7 +4,7 @@ import static java.util.Objects.requireNonNull;
 import static seedu.address.commons.util.AppUtil.checkArgument;
 
 /**
- * Represents a Person's name in the ezFoodie.
+ * Represents a Member's name in the ezFoodie.
  * Guarantees: immutable; is valid as declared in {@link #isValidName(String)}
  */
 public class Name {
