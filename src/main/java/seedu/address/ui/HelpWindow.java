@@ -13,7 +13,7 @@ import seedu.address.commons.core.LogsCenter;
 /**
  * Controller for a help page
  */
-public class HelpWindow extends UiPart<Stage> {  
+public class HelpWindow extends UiPart<Stage> {
     public static final String OFFICIAL_URL =
             "https://ay2122s1-cs2103t-f12-4.github.io/tp/";
     public static final String HELP_MESSAGE = "Features:\n"
