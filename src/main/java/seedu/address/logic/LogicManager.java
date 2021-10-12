@@ -14,7 +14,7 @@ import seedu.address.logic.parser.EzFoodieParser;
 import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.model.Model;
 import seedu.address.model.ReadOnlyEzFoodie;
-import seedu.address.model.person.Person;
+import seedu.address.model.person.Member;
 import seedu.address.storage.Storage;
 
 /**
@@ -34,7 +34,7 @@ public class LogicManager implements Logic {
     public LogicManager(Model model, Storage storage) {
         this.model = model;
         this.storage = storage;
-        ezFoodieParser = new EzFoodieParser();
+        ezFoodieParser = new EzFoodieParser(model);
     }
 
     @Override
@@ -60,8 +60,8 @@ public class LogicManager implements Logic {
     }
 
     @Override
-    public ObservableList<Person> getFilteredPersonList() {
-        return model.getFilteredPersonList();
+    public ObservableList<Member> getFilteredMemberList() {
+        return model.getFilteredMemberList();
     }
 
     @Override

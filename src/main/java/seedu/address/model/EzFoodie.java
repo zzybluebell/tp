@@ -3,18 +3,19 @@ package seedu.address.model;
 import static java.util.Objects.requireNonNull;
 
 import java.util.List;
+import java.util.function.Predicate;
 
 import javafx.collections.ObservableList;
-import seedu.address.model.person.Person;
-import seedu.address.model.person.UniquePersonList;
+import seedu.address.model.person.Member;
+import seedu.address.model.person.UniqueMemberList;
 
 /**
  * Wraps all data at the ezFoodie level
- * Duplicates are not allowed (by .isSamePerson comparison)
+ * Duplicates are not allowed (by .isSameMember comparison)
  */
 public class EzFoodie implements ReadOnlyEzFoodie {
 
-    private final UniquePersonList persons;
+    private final UniqueMemberList members;
 
     /*
      * The 'unusual' code block below is a non-static initialization block, sometimes used to avoid duplication
@@ -24,13 +25,13 @@ public class EzFoodie implements ReadOnlyEzFoodie {
      *   among constructors.
      */
     {
-        persons = new UniquePersonList();
+        members = new UniqueMemberList();
     }
 
     public EzFoodie() {}
 
     /**
-     * Creates an ezFoodie using the Persons in the {@code toBeCopied}
+     * Creates an ezFoodie using the Members in the {@code toBeCopied}
      */
     public EzFoodie(ReadOnlyEzFoodie toBeCopied) {
         this();
@@ -40,11 +41,11 @@ public class EzFoodie implements ReadOnlyEzFoodie {
     //// list overwrite operations
 
     /**
-     * Replaces the contents of the person list with {@code persons}.
-     * {@code persons} must not contain duplicate persons.
+     * Replaces the contents of the member list with {@code members}.
+     * {@code members} must not contain duplicate members.
      */
-    public void setPersons(List<Person> persons) {
-        this.persons.setPersons(persons);
+    public void setMembers(List<Member> members) {
+        this.members.setMembers(members);
     }
 
     /**
@@ -53,68 +54,77 @@ public class EzFoodie implements ReadOnlyEzFoodie {
     public void resetData(ReadOnlyEzFoodie newData) {
         requireNonNull(newData);
 
-        setPersons(newData.getPersonList());
+        setMembers(newData.getMemberList());
     }
 
-    //// person-level operations
+    //// member-level operations
 
     /**
-     * Returns true if a person with the same identity as {@code person} exists in the ezFoodie.
+     * Returns true if a member with the same identity as {@code member} exists in the ezFoodie.
      */
-    public boolean hasPerson(Person person) {
-        requireNonNull(person);
-        return persons.contains(person);
+    public boolean hasMember(Member member) {
+        requireNonNull(member);
+        return members.contains(member);
     }
 
     /**
-     * Adds a person to the ezFoodie.
-     * The person must not already exist in the ezFoodie.
+     * Returns true if a member with the same identity as {@code member} exists in the filtered ezFoodie.
+     * {@code predicate} is the filter condition for the filtered ezFoodie.
      */
-    public void addPerson(Person p) {
-        persons.add(p);
+    public boolean hasMember(Member member, Predicate<Member> predicate) {
+        requireNonNull(member);
+        return members.contains(member, predicate);
     }
 
     /**
-     * Replaces the given person {@code target} in the list with {@code editedPerson}.
+     * Adds a member to the ezFoodie.
+     * The member must not already exist in the ezFoodie.
+     */
+    public void addMember(Member p) {
+        members.add(p);
+    }
+
+    /**
+     * Replaces the given member {@code target} in the list with {@code editedMember}.
      * {@code target} must exist in the ezFoodie.
-     * The person identity of {@code editedPerson} must not be the same as another existing person in the ezFoodie.
+     * The member identity of {@code editedMember} must not be the same as another existing member in the ezFoodie.
      */
-    public void setPerson(Person target, Person editedPerson) {
-        requireNonNull(editedPerson);
+    public void setMember(Member target, Member editedMember) {
+        requireNonNull(editedMember);
 
-        persons.setPerson(target, editedPerson);
+        members.setMember(target, editedMember);
     }
 
     /**
      * Removes {@code key} from this {@code EzFoodie}.
      * {@code key} must exist in the ezFoodie.
      */
-    public void removePerson(Person key) {
-        persons.remove(key);
+    public void removeMember(Member key) {
+        members.remove(key);
     }
 
     //// util methods
 
     @Override
     public String toString() {
-        return persons.asUnmodifiableObservableList().size() + " persons";
+        return members.asUnmodifiableObservableList().size() + " members";
         // TODO: refine later
     }
 
     @Override
-    public ObservableList<Person> getPersonList() {
-        return persons.asUnmodifiableObservableList();
+    public ObservableList<Member> getMemberList() {
+        return members.asUnmodifiableObservableList();
     }
 
     @Override
     public boolean equals(Object other) {
         return other == this // short circuit if same object
                 || (other instanceof EzFoodie // instanceof handles nulls
-                && persons.equals(((EzFoodie) other).persons));
+                && members.equals(((EzFoodie) other).members));
     }
 
     @Override
     public int hashCode() {
-        return persons.hashCode();
+        return members.hashCode();
     }
 }

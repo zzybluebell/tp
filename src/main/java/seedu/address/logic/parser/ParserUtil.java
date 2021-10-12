@@ -11,9 +11,11 @@ import seedu.address.commons.util.StringUtil;
 import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.model.person.Address;
 import seedu.address.model.person.Email;
+import seedu.address.model.person.Id;
 import seedu.address.model.person.Name;
 import seedu.address.model.person.Phone;
 import seedu.address.model.tag.Tag;
+import seedu.address.model.transaction.Transaction;
 
 /**
  * Contains utility methods used for parsing strings in the various *Parser classes.
@@ -33,6 +35,21 @@ public class ParserUtil {
             throw new ParseException(MESSAGE_INVALID_INDEX);
         }
         return Index.fromOneBased(Integer.parseInt(trimmedIndex));
+    }
+
+    /**
+     * Parses a {@code String id} into a {@code Id}.
+     * Leading and trailing whitespaces will be trimmed.
+     *
+     * @throws ParseException if the given {@code id} is invalid.
+     */
+    public static Id parseId(String id) throws ParseException {
+        requireNonNull(id);
+        String trimmedId = id.trim();
+        if (!Id.isValidId(trimmedId)) {
+            throw new ParseException(Id.MESSAGE_CONSTRAINTS);
+        }
+        return new Id(trimmedId);
     }
 
     /**
@@ -120,5 +137,32 @@ public class ParserUtil {
             tagSet.add(parseTag(tagName));
         }
         return tagSet;
+    }
+
+    /**
+     * Parses a {@code String transaction} into a {@code Transaction}.
+     * Leading and trailing whitespaces will be trimmed.
+     *
+     * @throws ParseException if the given {@code transaction} is invalid.
+     */
+    public static Transaction parseTransaction(String transaction) throws ParseException {
+        requireNonNull(transaction);
+        String trimmedTransaction = transaction.trim();
+        if (!Transaction.isValidTransactionAmount(trimmedTransaction)) {
+            throw new ParseException(Tag.MESSAGE_CONSTRAINTS);
+        }
+        return new Transaction(trimmedTransaction);
+    }
+
+    /**
+     * Parses {@code Collection<String> transactions} into a {@code Set<Transaction>}.
+     */
+    public static Set<Transaction> parseTransactions(Collection<String> transactions) throws ParseException {
+        requireNonNull(transactions);
+        final Set<Transaction> transactionSet = new HashSet<>();
+        for (String transactionAmount : transactions) {
+            transactionSet.add(parseTransaction(transactionAmount));
+        }
+        return transactionSet;
     }
 }

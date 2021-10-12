@@ -1,12 +1,12 @@
 package seedu.address.testutil;
 
 import seedu.address.model.EzFoodie;
-import seedu.address.model.person.Person;
+import seedu.address.model.person.Member;
 
 /**
  * A utility class to help with building EzFoodie objects.
  * Example usage: <br>
- *     {@code EzFoodie ef = new EzFoodieBuilder().withPerson("John", "Doe").build();}
+ *     {@code EzFoodie ef = new EzFoodieBuilder().withMember("John", "Doe").build();}
  */
 public class EzFoodieBuilder {
 
@@ -21,10 +21,10 @@ public class EzFoodieBuilder {
     }
 
     /**
-     * Adds a new {@code Person} to the {@code EzFoodie} that we are building.
+     * Adds a new {@code Member} to the {@code EzFoodie} that we are building.
      */
-    public EzFoodieBuilder withPerson(Person person) {
-        ezFoodie.addPerson(person);
+    public EzFoodieBuilder withMember(Member member) {
+        ezFoodie.addMember(member);
         return this;
     }
 
