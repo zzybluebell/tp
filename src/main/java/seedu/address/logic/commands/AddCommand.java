@@ -18,7 +18,6 @@ public class AddCommand extends Command {
 
     public static final String COMMAND_WORD = "add";
 
-    //TODO: add ID and transaction history
     public static final String MESSAGE_USAGE = COMMAND_WORD + ": Adds a person to the ezFoodie. "
             + "Parameters: "
             + PREFIX_NAME + "NAME "

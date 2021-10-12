@@ -12,14 +12,11 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import seedu.address.commons.exceptions.IllegalValueException;
 import seedu.address.model.person.Address;
 import seedu.address.model.person.Email;
-import seedu.address.model.person.Id;
 import seedu.address.model.person.Name;
 import seedu.address.model.person.Person;
 import seedu.address.model.person.Phone;
-import seedu.address.model.person.TransactionHistory;
 import seedu.address.model.tag.Tag;
 
-//TODO: add ID and transaction history
 /**
  * Jackson-friendly version of {@link Person}.
  */
@@ -106,9 +103,7 @@ class JsonAdaptedPerson {
         final Address modelAddress = new Address(address);
 
         final Set<Tag> modelTags = new HashSet<>(personTags);
-        //TODO: replace with modelId, modelTransactionHistory
-        return new Person(modelName, new Id("1111"), modelPhone, modelEmail, modelAddress, modelTags,
-                new TransactionHistory());
+        return new Person(modelName, modelPhone, modelEmail, modelAddress, modelTags);
     }
 
 }

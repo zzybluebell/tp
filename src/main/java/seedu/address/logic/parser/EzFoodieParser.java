@@ -17,7 +17,6 @@ import seedu.address.logic.commands.HelpCommand;
 import seedu.address.logic.commands.ListCommand;
 import seedu.address.logic.parser.exceptions.ParseException;
 
-//TODO: add support for AddTransactionCommand
 /**
  * Parses user input.
  */

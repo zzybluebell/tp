@@ -5,11 +5,9 @@ import java.util.Set;
 
 import seedu.address.model.person.Address;
 import seedu.address.model.person.Email;
-import seedu.address.model.person.Id;
 import seedu.address.model.person.Name;
 import seedu.address.model.person.Person;
 import seedu.address.model.person.Phone;
-import seedu.address.model.person.TransactionHistory;
 import seedu.address.model.tag.Tag;
 import seedu.address.model.util.SampleDataUtil;
 
@@ -91,9 +89,8 @@ public class PersonBuilder {
         return this;
     }
 
-    //TODO: replace with actual ID and transaction history
     public Person build() {
-        return new Person(name, new Id("1234"), phone, email, address, tags, new TransactionHistory());
+        return new Person(name, phone, email, address, tags);
     }
 
 }

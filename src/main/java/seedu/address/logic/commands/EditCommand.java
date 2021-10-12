@@ -21,11 +21,9 @@ import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.Model;
 import seedu.address.model.person.Address;
 import seedu.address.model.person.Email;
-import seedu.address.model.person.Id;
 import seedu.address.model.person.Name;
 import seedu.address.model.person.Person;
 import seedu.address.model.person.Phone;
-import seedu.address.model.person.TransactionHistory;
 import seedu.address.model.tag.Tag;
 
 /**
@@ -35,7 +33,6 @@ public class EditCommand extends Command {
 
     public static final String COMMAND_WORD = "edit";
 
-    //TODO: add in ID and transaction history
     public static final String MESSAGE_USAGE = COMMAND_WORD + ": Edits the details of the person identified "
             + "by the index number used in the displayed person list. "
             + "Existing values will be overwritten by the input values.\n"
@@ -97,16 +94,12 @@ public class EditCommand extends Command {
         assert personToEdit != null;
 
         Name updatedName = editPersonDescriptor.getName().orElse(personToEdit.getName());
-        Id updatedId = editPersonDescriptor.getId().orElse(personToEdit.getId());
         Phone updatedPhone = editPersonDescriptor.getPhone().orElse(personToEdit.getPhone());
         Email updatedEmail = editPersonDescriptor.getEmail().orElse(personToEdit.getEmail());
         Address updatedAddress = editPersonDescriptor.getAddress().orElse(personToEdit.getAddress());
         Set<Tag> updatedTags = editPersonDescriptor.getTags().orElse(personToEdit.getTags());
-        TransactionHistory updatedTransactionHistory = editPersonDescriptor.getTransactionHistory()
-                .orElse(personToEdit.getTransactionHistory());
 
-        return new Person(updatedName, updatedId, updatedPhone, updatedEmail, updatedAddress, updatedTags,
-                updatedTransactionHistory);
+        return new Person(updatedName, updatedPhone, updatedEmail, updatedAddress, updatedTags);
     }
 
     @Override
@@ -133,12 +126,10 @@ public class EditCommand extends Command {
      */
     public static class EditPersonDescriptor {
         private Name name;
-        private Id id;
         private Phone phone;
         private Email email;
         private Address address;
         private Set<Tag> tags;
-        private TransactionHistory transactionHistory;
 
         public EditPersonDescriptor() {}
 
@@ -148,12 +139,10 @@ public class EditCommand extends Command {
          */
         public EditPersonDescriptor(EditPersonDescriptor toCopy) {
             setName(toCopy.name);
-            setId(toCopy.id);
             setPhone(toCopy.phone);
             setEmail(toCopy.email);
             setAddress(toCopy.address);
             setTags(toCopy.tags);
-            setTransactionHistory(toCopy.transactionHistory);
         }
 
         /**
@@ -169,14 +158,6 @@ public class EditCommand extends Command {
 
         public Optional<Name> getName() {
             return Optional.ofNullable(name);
-        }
-
-        public void setId(Id id) {
-            this.id = id;
-        }
-
-        public Optional<Id> getId() {
-            return Optional.ofNullable(id);
         }
 
         public void setPhone(Phone phone) {
@@ -220,14 +201,6 @@ public class EditCommand extends Command {
             return (tags != null) ? Optional.of(Collections.unmodifiableSet(tags)) : Optional.empty();
         }
 
-        public void setTransactionHistory(TransactionHistory transactionHistory) {
-            this.transactionHistory = transactionHistory;
-        }
-
-        public Optional<TransactionHistory> getTransactionHistory() {
-            return Optional.ofNullable(transactionHistory);
-        }
-
         @Override
         public boolean equals(Object other) {
             // short circuit if same object
@@ -244,12 +217,10 @@ public class EditCommand extends Command {
             EditPersonDescriptor e = (EditPersonDescriptor) other;
 
             return getName().equals(e.getName())
-                    && getId().equals(e.getId())
                     && getPhone().equals(e.getPhone())
                     && getEmail().equals(e.getEmail())
                     && getAddress().equals(e.getAddress())
-                    && getTags().equals(e.getTags())
-                    && getTransactionHistory().equals(e.getTransactionHistory());
+                    && getTags().equals(e.getTags());
         }
     }
 }

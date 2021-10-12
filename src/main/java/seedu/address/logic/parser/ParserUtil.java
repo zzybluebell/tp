@@ -11,10 +11,8 @@ import seedu.address.commons.util.StringUtil;
 import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.model.person.Address;
 import seedu.address.model.person.Email;
-import seedu.address.model.person.Id;
 import seedu.address.model.person.Name;
 import seedu.address.model.person.Phone;
-import seedu.address.model.person.TransactionHistory;
 import seedu.address.model.tag.Tag;
 
 /**
@@ -50,21 +48,6 @@ public class ParserUtil {
             throw new ParseException(Name.MESSAGE_CONSTRAINTS);
         }
         return new Name(trimmedName);
-    }
-
-    /**
-     * Parses a {@code String ID} into a {@code Id}.
-     * Leading and trailing whitespaces will be trimmed.
-     *
-     * @throws ParseException if the given {@code ID} is invalid.
-     */
-    public static Id parseId(String id) throws ParseException {
-        requireNonNull(id);
-        String trimmedId = id.trim();
-        if (!Id.isValidId(trimmedId)) {
-            throw new ParseException(Id.MESSAGE_CONSTRAINTS);
-        }
-        return new Id(trimmedId);
     }
 
     /**
@@ -137,17 +120,5 @@ public class ParserUtil {
             tagSet.add(parseTag(tagName));
         }
         return tagSet;
-    }
-
-    // TODO: implement this
-    /**
-     * Parses a {@code String transaction history} into a {@code TransactionHistory}.
-     * Leading and trailing whitespaces will be trimmed.
-     *
-     * @throws ParseException if the given {@code transaction history} is invalid.
-     */
-    public static TransactionHistory parseTransactionHistory(String transactionHistory) throws ParseException {
-        requireNonNull(transactionHistory);
-        return new TransactionHistory();
     }
 }
