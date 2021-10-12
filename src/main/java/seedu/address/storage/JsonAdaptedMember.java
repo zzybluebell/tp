@@ -42,6 +42,7 @@ class JsonAdaptedMember {
             @JsonProperty("phone") String phone, @JsonProperty("email") String email,
             @JsonProperty("address") String address, @JsonProperty("tagged") List<JsonAdaptedTag> tagged,
             @JsonProperty("transactions") List<JsonAdaptedTransaction> transactions) {
+
         this.id = id;
         this.name = name;
         this.phone = phone;

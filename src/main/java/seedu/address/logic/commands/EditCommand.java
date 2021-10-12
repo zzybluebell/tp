@@ -106,6 +106,7 @@ public class EditCommand extends Command {
 
         return new Member(id, updatedName, updatedPhone, updatedEmail,
                 updatedAddress, updatedTags, updatedTransactions);
+
     }
 
     @Override

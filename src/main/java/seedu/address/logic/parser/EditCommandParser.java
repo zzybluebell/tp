@@ -62,6 +62,7 @@ public class EditCommandParser implements Parser<EditCommand> {
         parseTransactionsForEdit(argMultimap.getAllValues(PREFIX_TRANSACTION))
                 .ifPresent(editMemberDescriptor::setTransactions);
 
+
         if (!editMemberDescriptor.isAnyFieldEdited()) {
             throw new ParseException(EditCommand.MESSAGE_NOT_EDITED);
         }
