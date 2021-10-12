@@ -11,7 +11,7 @@ import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
 import seedu.address.commons.core.GuiSettings;
 import seedu.address.commons.core.LogsCenter;
-import seedu.address.model.person.Member;
+import seedu.address.model.member.Member;
 
 /**
  * Represents the in-memory model of the ezFoodie data.

@@ -8,7 +8,7 @@ import seedu.address.logic.commands.CommandResult;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.model.ReadOnlyEzFoodie;
-import seedu.address.model.person.Member;
+import seedu.address.model.member.Member;
 
 /**
  * API of the Logic component
