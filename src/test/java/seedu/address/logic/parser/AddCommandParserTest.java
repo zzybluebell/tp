@@ -30,6 +30,7 @@ import static seedu.address.testutil.TypicalMembers.AMY;
 
 import org.junit.jupiter.api.Test;
 
+import seedu.address.commons.core.ExecutionStatus;
 import seedu.address.logic.commands.AddCommand;
 import seedu.address.model.Model;
 import seedu.address.model.ModelManager;
@@ -43,8 +44,8 @@ import seedu.address.testutil.MemberBuilder;
 
 public class AddCommandParserTest {
 
-    private final Model model = new ModelManager();
-    private AddCommandParser parser = new AddCommandParser(model);
+    private Model model = new ModelManager();
+    private AddCommandParser parser = new AddCommandParser(model, ExecutionStatus.TEST);
 
     @Test
     public void parse_allFieldsPresent_success() {
