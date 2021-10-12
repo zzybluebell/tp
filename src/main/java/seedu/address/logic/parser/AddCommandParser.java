@@ -29,6 +29,9 @@ import seedu.address.model.tag.Tag;
  */
 public class AddCommandParser implements Parser<AddCommand> {
 
+    private static final String ID_STUB = "00001";
+    private static final String REGISTRATION_TIMESTAMP_STUB = "1609459200000";
+
     private final Model model;
     private final ExecutionStatus executionStatus;
 
@@ -50,7 +53,7 @@ public class AddCommandParser implements Parser<AddCommand> {
     }
 
     private String generateIdStub() {
-        return "00001";
+        return ID_STUB;
     }
 
     private String generateRegistrationTimestamp() {
@@ -58,7 +61,7 @@ public class AddCommandParser implements Parser<AddCommand> {
     }
 
     private String generateRegistrationTimestampStub() {
-        return "1609459200000";
+        return REGISTRATION_TIMESTAMP_STUB;
     }
 
     /**
