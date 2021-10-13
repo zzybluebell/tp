@@ -6,6 +6,7 @@ import static seedu.address.commons.core.Messages.MESSAGE_UNKNOWN_COMMAND;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import seedu.address.commons.core.ExecutionStatus;
 import seedu.address.logic.commands.AddCommand;
 import seedu.address.logic.commands.ClearCommand;
 import seedu.address.logic.commands.Command;
@@ -29,12 +30,22 @@ public class EzFoodieParser {
     private static final Pattern BASIC_COMMAND_FORMAT = Pattern.compile("(?<commandWord>\\S+)(?<arguments>.*)");
 
     private final Model model;
+    private final ExecutionStatus executionStatus;
 
     /**
      * Constructs a {@code EzFoodieParser} with the given {@code Model}.
      */
     public EzFoodieParser(Model model) {
         this.model = model;
+        this.executionStatus = ExecutionStatus.NORMAL;
+    }
+
+    /**
+     * Constructs a {@code EzFoodieParser} with the given {@code Model} and {@code ExecutionStatus}.
+     */
+    public EzFoodieParser(Model model, ExecutionStatus executionStatus) {
+        this.model = model;
+        this.executionStatus = executionStatus;
     }
 
     /**
@@ -55,7 +66,7 @@ public class EzFoodieParser {
         switch (commandWord) {
 
         case AddCommand.COMMAND_WORD:
-            return new AddCommandParser(model).parse(arguments);
+            return new AddCommandParser(model, executionStatus).parse(arguments);
 
         case EditCommand.COMMAND_WORD:
             return new EditCommandParser().parse(arguments);

@@ -6,8 +6,8 @@ import java.util.List;
 import java.util.function.Predicate;
 
 import javafx.collections.ObservableList;
-import seedu.address.model.person.Member;
-import seedu.address.model.person.UniqueMemberList;
+import seedu.address.model.member.Member;
+import seedu.address.model.member.UniqueMemberList;
 
 /**
  * Wraps all data at the ezFoodie level

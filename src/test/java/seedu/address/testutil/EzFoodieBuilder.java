@@ -1,7 +1,7 @@
 package seedu.address.testutil;
 
 import seedu.address.model.EzFoodie;
-import seedu.address.model.person.Member;
+import seedu.address.model.member.Member;
 
 /**
  * A utility class to help with building EzFoodie objects.

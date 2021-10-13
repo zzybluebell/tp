@@ -17,8 +17,8 @@ import seedu.address.commons.core.index.Index;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.EzFoodie;
 import seedu.address.model.Model;
-import seedu.address.model.person.Member;
-import seedu.address.model.person.NameContainsKeywordsPredicate;
+import seedu.address.model.member.Member;
+import seedu.address.model.member.NameContainsKeywordsPredicate;
 import seedu.address.testutil.EditMemberDescriptorBuilder;
 
 /**
@@ -36,6 +36,8 @@ public class CommandTestUtil {
     public static final String VALID_EMAIL_BOB = "bob@example.com";
     public static final String VALID_ADDRESS_AMY = "Block 312, Amy Street 1";
     public static final String VALID_ADDRESS_BOB = "Block 123, Bobby Street 3";
+    public static final String VALID_REGISTRATION_TIMESTAMP_AMY = "1609459200000";
+    public static final String VALID_REGISTRATION_TIMESTAMP_BOB = "1609542000000";
     public static final String VALID_TAG_HUSBAND = "husband";
     public static final String VALID_TAG_FRIEND = "friend";
 

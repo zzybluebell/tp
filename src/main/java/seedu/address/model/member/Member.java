@@ -1,4 +1,4 @@
-package seedu.address.model.person;
+package seedu.address.model.member;
 
 import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
 
@@ -24,6 +24,7 @@ public class Member {
 
     // Data fields
     private final Address address;
+    private final RegistrationTimestamp registrationTimestamp;
     private final Set<Tag> tags = new HashSet<>();
     private final Set<Transaction> transactions = new HashSet<>();
 
@@ -31,13 +32,14 @@ public class Member {
      * Every field must be present and not null.
      */
     public Member(Id id, Name name, Phone phone, Email email, Address address,
-                  Set<Tag> tags, Set<Transaction> transactions) {
-        requireAllNonNull(id, name, phone, email, address, tags, transactions);
+                  RegistrationTimestamp registrationTimestamp, Set<Tag> tags, Set<Transaction> transactions) {
+        requireAllNonNull(id, name, phone, email, address, registrationTimestamp, tags, transactions);
         this.id = id;
         this.name = name;
         this.phone = phone;
         this.email = email;
         this.address = address;
+        this.registrationTimestamp = registrationTimestamp;
         this.tags.addAll(tags);
         this.transactions.addAll(transactions);
     }
@@ -60,6 +62,10 @@ public class Member {
 
     public Address getAddress() {
         return address;
+    }
+
+    public RegistrationTimestamp getRegistrationTimestamp() {
+        return registrationTimestamp;
     }
 
     /**
@@ -172,7 +178,9 @@ public class Member {
                 .append("; Email: ")
                 .append(getEmail())
                 .append("; Address: ")
-                .append(getAddress());
+                .append(getAddress())
+                .append("; Registration Timestamp: ")
+                .append(getRegistrationTimestamp());
 
         Set<Tag> tags = getTags();
         if (!tags.isEmpty()) {

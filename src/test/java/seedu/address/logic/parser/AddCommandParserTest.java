@@ -30,21 +30,22 @@ import static seedu.address.testutil.TypicalMembers.AMY;
 
 import org.junit.jupiter.api.Test;
 
+import seedu.address.commons.core.ExecutionStatus;
 import seedu.address.logic.commands.AddCommand;
 import seedu.address.model.Model;
 import seedu.address.model.ModelManager;
-import seedu.address.model.person.Address;
-import seedu.address.model.person.Email;
-import seedu.address.model.person.Member;
-import seedu.address.model.person.Name;
-import seedu.address.model.person.Phone;
+import seedu.address.model.member.Address;
+import seedu.address.model.member.Email;
+import seedu.address.model.member.Member;
+import seedu.address.model.member.Name;
+import seedu.address.model.member.Phone;
 import seedu.address.model.tag.Tag;
 import seedu.address.testutil.MemberBuilder;
 
 public class AddCommandParserTest {
 
-    private final Model model = new ModelManager();
-    private AddCommandParser parser = new AddCommandParser(model);
+    private Model model = new ModelManager();
+    private AddCommandParser parser = new AddCommandParser(model, ExecutionStatus.TEST);
 
     @Test
     public void parse_allFieldsPresent_success() {
