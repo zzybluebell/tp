@@ -9,10 +9,12 @@ import java.util.Set;
 import seedu.address.commons.core.index.Index;
 import seedu.address.commons.util.StringUtil;
 import seedu.address.logic.parser.exceptions.ParseException;
-import seedu.address.model.person.Address;
-import seedu.address.model.person.Email;
-import seedu.address.model.person.Name;
-import seedu.address.model.person.Phone;
+import seedu.address.model.member.Address;
+import seedu.address.model.member.Email;
+import seedu.address.model.member.Id;
+import seedu.address.model.member.Name;
+import seedu.address.model.member.Phone;
+import seedu.address.model.member.RegistrationTimestamp;
 import seedu.address.model.tag.Tag;
 
 /**
@@ -33,6 +35,21 @@ public class ParserUtil {
             throw new ParseException(MESSAGE_INVALID_INDEX);
         }
         return Index.fromOneBased(Integer.parseInt(trimmedIndex));
+    }
+
+    /**
+     * Parses a {@code String id} into a {@code Id}.
+     * Leading and trailing whitespaces will be trimmed.
+     *
+     * @throws ParseException if the given {@code id} is invalid.
+     */
+    public static Id parseId(String id) throws ParseException {
+        requireNonNull(id);
+        String trimmedId = id.trim();
+        if (!Id.isValidId(trimmedId)) {
+            throw new ParseException(Id.MESSAGE_CONSTRAINTS);
+        }
+        return new Id(trimmedId);
     }
 
     /**
@@ -78,6 +95,18 @@ public class ParserUtil {
             throw new ParseException(Address.MESSAGE_CONSTRAINTS);
         }
         return new Address(trimmedAddress);
+    }
+
+    /**
+     * Parses a {@code String registrationTimestamp} into an {@code RegistrationTimestamp}.
+     */
+    public static RegistrationTimestamp parseRegistrationTimestamp(String registrationTimestamp) throws ParseException {
+        requireNonNull(registrationTimestamp);
+        String trimmedRegistrationTimestamp = registrationTimestamp.trim();
+        if (!RegistrationTimestamp.isValidRegistrationTimestamp(trimmedRegistrationTimestamp)) {
+            throw new ParseException(RegistrationTimestamp.MESSAGE_CONSTRAINTS);
+        }
+        return new RegistrationTimestamp(trimmedRegistrationTimestamp);
     }
 
     /**

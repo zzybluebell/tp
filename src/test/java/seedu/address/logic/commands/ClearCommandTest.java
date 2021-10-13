@@ -1,7 +1,7 @@
 package seedu.address.logic.commands;
 
 import static seedu.address.logic.commands.CommandTestUtil.assertCommandSuccess;
-import static seedu.address.testutil.TypicalPersons.getTypicalEzFoodie;
+import static seedu.address.testutil.TypicalMembers.getTypicalEzFoodie;
 
 import org.junit.jupiter.api.Test;
 

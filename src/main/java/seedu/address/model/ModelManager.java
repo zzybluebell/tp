@@ -11,7 +11,7 @@ import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
 import seedu.address.commons.core.GuiSettings;
 import seedu.address.commons.core.LogsCenter;
-import seedu.address.model.person.Person;
+import seedu.address.model.member.Member;
 
 /**
  * Represents the in-memory model of the ezFoodie data.
@@ -21,7 +21,7 @@ public class ModelManager implements Model {
 
     private final EzFoodie ezFoodie;
     private final UserPrefs userPrefs;
-    private final FilteredList<Person> filteredPersons;
+    private final FilteredList<Member> filteredMembers;
 
     /**
      * Initializes a ModelManager with the given ezFoodie and userPrefs.
@@ -34,7 +34,7 @@ public class ModelManager implements Model {
 
         this.ezFoodie = new EzFoodie(ezFoodie);
         this.userPrefs = new UserPrefs(userPrefs);
-        filteredPersons = new FilteredList<>(this.ezFoodie.getPersonList());
+        filteredMembers = new FilteredList<>(this.ezFoodie.getMemberList());
     }
 
     public ModelManager() {
@@ -89,44 +89,50 @@ public class ModelManager implements Model {
     }
 
     @Override
-    public boolean hasPerson(Person person) {
-        requireNonNull(person);
-        return ezFoodie.hasPerson(person);
+    public boolean hasMember(Member member) {
+        requireNonNull(member);
+        return ezFoodie.hasMember(member);
     }
 
     @Override
-    public void deletePerson(Person target) {
-        ezFoodie.removePerson(target);
+    public boolean hasMember(Member member, Predicate<Member> predicate) {
+        requireNonNull(member);
+        return ezFoodie.hasMember(member, predicate);
     }
 
     @Override
-    public void addPerson(Person person) {
-        ezFoodie.addPerson(person);
-        updateFilteredPersonList(PREDICATE_SHOW_ALL_PERSONS);
+    public void deleteMember(Member target) {
+        ezFoodie.removeMember(target);
     }
 
     @Override
-    public void setPerson(Person target, Person editedPerson) {
-        requireAllNonNull(target, editedPerson);
-
-        ezFoodie.setPerson(target, editedPerson);
+    public void addMember(Member member) {
+        ezFoodie.addMember(member);
+        updateFilteredMemberList(PREDICATE_SHOW_ALL_MEMBERS);
     }
 
-    //=========== Filtered Person List Accessors =============================================================
+    @Override
+    public void setMember(Member target, Member editedMember) {
+        requireAllNonNull(target, editedMember);
+
+        ezFoodie.setMember(target, editedMember);
+    }
+
+    //=========== Filtered Member List Accessors =============================================================
 
     /**
-     * Returns an unmodifiable view of the list of {@code Person} backed by the internal list of
+     * Returns an unmodifiable view of the list of {@code Member} backed by the internal list of
      * {@code versionedEzFoodie}
      */
     @Override
-    public ObservableList<Person> getFilteredPersonList() {
-        return filteredPersons;
+    public ObservableList<Member> getFilteredMemberList() {
+        return filteredMembers;
     }
 
     @Override
-    public void updateFilteredPersonList(Predicate<Person> predicate) {
+    public void updateFilteredMemberList(Predicate<Member> predicate) {
         requireNonNull(predicate);
-        filteredPersons.setPredicate(predicate);
+        filteredMembers.setPredicate(predicate);
     }
 
     @Override
@@ -145,7 +151,7 @@ public class ModelManager implements Model {
         ModelManager other = (ModelManager) obj;
         return ezFoodie.equals(other.ezFoodie)
                 && userPrefs.equals(other.userPrefs)
-                && filteredPersons.equals(other.filteredPersons);
+                && filteredMembers.equals(other.filteredMembers);
     }
 
 }
