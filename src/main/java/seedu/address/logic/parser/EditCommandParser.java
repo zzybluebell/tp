@@ -88,7 +88,7 @@ public class EditCommandParser implements Parser<EditCommand> {
      * Parses {@code Collection<String> transactions} into a {@code Set<Transaction>} if {@code transactions}
      * is non-empty.
      * If {@code transactions} contain only one element which is an empty string, it will be parsed into a
-     * {@code Set<Transaction>} containing zero tags.
+     * {@code Set<Transaction>} containing zero transactions.
      */
     private Optional<Set<Transaction>> parseTransactionsForEdit(Collection<String> transactions) throws ParseException {
         assert transactions != null;

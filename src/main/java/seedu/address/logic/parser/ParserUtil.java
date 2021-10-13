@@ -149,7 +149,7 @@ public class ParserUtil {
         requireNonNull(transaction);
         String trimmedTransaction = transaction.trim();
         if (!Transaction.isValidTransactionAmount(trimmedTransaction)) {
-            throw new ParseException(Tag.MESSAGE_CONSTRAINTS);
+            throw new ParseException(Transaction.MESSAGE_CONSTRAINTS);
         }
         return new Transaction(trimmedTransaction);
     }

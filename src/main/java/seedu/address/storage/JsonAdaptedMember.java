@@ -130,6 +130,7 @@ class JsonAdaptedMember {
 
         final Set<Tag> modelTags = new HashSet<>(memberTags);
         final Set<Transaction> modelTransactions = new HashSet<>(memberTransactions);
+        
         return new Member(modelId, modelName, modelPhone, modelEmail, modelAddress, modelTags, modelTransactions);
     }
 

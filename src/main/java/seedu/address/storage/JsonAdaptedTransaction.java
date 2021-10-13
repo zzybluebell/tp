@@ -34,9 +34,9 @@ class JsonAdaptedTransaction {
     }
 
     /**
-     * Converts this Jackson-friendly adapted tag object into the model's {@code Tag} object.
+     * Converts this Jackson-friendly adapted transaction object into the model's {@code Transaction} object.
      *
-     * @throws IllegalValueException if there were any data constraints violated in the adapted tag.
+     * @throws IllegalValueException if there were any data constraints violated in the adapted transaction.
      */
     public Transaction toModelType() throws IllegalValueException {
         if (!Transaction.isValidTransactionAmount(transactionAmount)) {
