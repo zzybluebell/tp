@@ -10,9 +10,11 @@ import static seedu.address.commons.util.AppUtil.checkArgument;
 public class Id {
 
     public static final String MESSAGE_CONSTRAINTS =
-            "Ids should only contain digits, and it should not be blank";
-    public static final String PATTERN = "%05d";
+            "Ids should only contain 5 digits, and it should not be blank";
     public static final String VALIDATION_REGEX = "[\\p{Digit}]*";
+    public static final String PATTERN = "%05d";
+    public static final int LENGTH = 5;
+
     public final String value;
 
     /**
@@ -30,7 +32,7 @@ public class Id {
      * Returns true if a given string is a valid id.
      */
     public static boolean isValidId(String test) {
-        return test.matches(VALIDATION_REGEX);
+        return test.matches(VALIDATION_REGEX) && test.length() == LENGTH;
     }
 
     @Override

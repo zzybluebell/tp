@@ -37,7 +37,8 @@ public class EditCommandTest {
     @Test
     public void execute_allFieldsSpecifiedUnfilteredList_success() {
         Member memberToEdit = model.getFilteredMemberList().get(0);
-        Member editedMember = new MemberBuilder().withId(memberToEdit.getId().value).build();
+        Member editedMember = new MemberBuilder().withId(memberToEdit.getId().value)
+                .withRegistrationTimestamp(memberToEdit.getRegistrationTimestamp().value).build();
         EditMemberDescriptor descriptor = new EditMemberDescriptorBuilder(editedMember).build();
         EditCommand editCommand = new EditCommand(INDEX_FIRST_MEMBER, descriptor);
 

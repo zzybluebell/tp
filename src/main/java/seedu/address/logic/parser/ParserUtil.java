@@ -14,6 +14,7 @@ import seedu.address.model.person.Email;
 import seedu.address.model.person.Id;
 import seedu.address.model.person.Name;
 import seedu.address.model.person.Phone;
+import seedu.address.model.person.RegistrationTimestamp;
 import seedu.address.model.tag.Tag;
 
 /**
@@ -94,6 +95,18 @@ public class ParserUtil {
             throw new ParseException(Address.MESSAGE_CONSTRAINTS);
         }
         return new Address(trimmedAddress);
+    }
+
+    /**
+     * Parses a {@code String registrationTimestamp} into an {@code RegistrationTimestamp}.
+     */
+    public static RegistrationTimestamp parseRegistrationTimestamp(String registrationTimestamp) throws ParseException {
+        requireNonNull(registrationTimestamp);
+        String trimmedRegistrationTimestamp = registrationTimestamp.trim();
+        if (!RegistrationTimestamp.isValidRegistrationTimestamp(trimmedRegistrationTimestamp)) {
+            throw new ParseException(RegistrationTimestamp.MESSAGE_CONSTRAINTS);
+        }
+        return new RegistrationTimestamp(trimmedRegistrationTimestamp);
     }
 
     /**

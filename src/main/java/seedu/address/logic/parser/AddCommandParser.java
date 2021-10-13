@@ -11,6 +11,7 @@ import java.util.List;
 import java.util.Set;
 import java.util.stream.Stream;
 
+import seedu.address.commons.core.ExecutionStatus;
 import seedu.address.logic.commands.AddCommand;
 import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.model.Model;
@@ -20,6 +21,7 @@ import seedu.address.model.person.Id;
 import seedu.address.model.person.Member;
 import seedu.address.model.person.Name;
 import seedu.address.model.person.Phone;
+import seedu.address.model.person.RegistrationTimestamp;
 import seedu.address.model.tag.Tag;
 
 /**
@@ -27,13 +29,18 @@ import seedu.address.model.tag.Tag;
  */
 public class AddCommandParser implements Parser<AddCommand> {
 
+    private static final String ID_STUB = "00001";
+    private static final String REGISTRATION_TIMESTAMP_STUB = "1609459200000";
+
     private final Model model;
+    private final ExecutionStatus executionStatus;
 
     /**
-     * Constructs a {@code AddCommandParser} with the given {@code Model}.
+     * Constructs a {@code AddCommandParser} with the given {@code Model} and {@code ExecutionStatus}.
      */
-    public AddCommandParser(Model model) {
+    public AddCommandParser(Model model, ExecutionStatus executionStatus) {
         this.model = model;
+        this.executionStatus = executionStatus;
     }
 
     private String generateId() {
@@ -43,6 +50,18 @@ public class AddCommandParser implements Parser<AddCommand> {
             latestId = Long.parseLong(memberList.get(memberList.size() - 1).getId().value);
         }
         return String.format(Id.PATTERN, latestId + 1);
+    }
+
+    private String generateIdStub() {
+        return ID_STUB;
+    }
+
+    private String generateRegistrationTimestamp() {
+        return String.valueOf(System.currentTimeMillis());
+    }
+
+    private String generateRegistrationTimestampStub() {
+        return REGISTRATION_TIMESTAMP_STUB;
     }
 
     /**
@@ -60,14 +79,19 @@ public class AddCommandParser implements Parser<AddCommand> {
             throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, AddCommand.MESSAGE_USAGE));
         }
 
-        Id id = ParserUtil.parseId(generateId());
+        Id id = executionStatus == ExecutionStatus.NORMAL
+                ? ParserUtil.parseId(generateId())
+                : ParserUtil.parseId(generateIdStub());
         Name name = ParserUtil.parseName(argMultimap.getValue(PREFIX_NAME).get());
         Phone phone = ParserUtil.parsePhone(argMultimap.getValue(PREFIX_PHONE).get());
         Email email = ParserUtil.parseEmail(argMultimap.getValue(PREFIX_EMAIL).get());
         Address address = ParserUtil.parseAddress(argMultimap.getValue(PREFIX_ADDRESS).get());
+        RegistrationTimestamp registrationTimestamp = executionStatus == ExecutionStatus.NORMAL
+                ? ParserUtil.parseRegistrationTimestamp(generateRegistrationTimestamp())
+                : ParserUtil.parseRegistrationTimestamp(generateRegistrationTimestampStub());
         Set<Tag> tagList = ParserUtil.parseTags(argMultimap.getAllValues(PREFIX_TAG));
 
-        Member member = new Member(id, name, phone, email, address, tagList);
+        Member member = new Member(id, name, phone, email, address, registrationTimestamp, tagList);
 
         return new AddCommand(member);
     }

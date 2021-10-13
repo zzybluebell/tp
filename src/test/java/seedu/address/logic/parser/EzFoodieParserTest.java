@@ -4,9 +4,9 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static seedu.address.commons.core.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
 import static seedu.address.commons.core.Messages.MESSAGE_UNKNOWN_COMMAND;
-import static seedu.address.logic.commands.CommandTestUtil.VALID_ID_AMY;
 import static seedu.address.testutil.Assert.assertThrows;
 import static seedu.address.testutil.TypicalIndexes.INDEX_FIRST_MEMBER;
+import static seedu.address.testutil.TypicalMembers.AMY;
 
 import java.util.Arrays;
 import java.util.List;
@@ -14,6 +14,7 @@ import java.util.stream.Collectors;
 
 import org.junit.jupiter.api.Test;
 
+import seedu.address.commons.core.ExecutionStatus;
 import seedu.address.logic.commands.AddCommand;
 import seedu.address.logic.commands.ClearCommand;
 import seedu.address.logic.commands.DeleteCommand;
@@ -34,12 +35,12 @@ import seedu.address.testutil.MemberUtil;
 
 public class EzFoodieParserTest {
 
-    private final Model model = new ModelManager();
-    private final EzFoodieParser parser = new EzFoodieParser(model);
+    private Model model = new ModelManager();
+    private final EzFoodieParser parser = new EzFoodieParser(model, ExecutionStatus.TEST);
 
     @Test
     public void parseCommand_add() throws Exception {
-        Member member = new MemberBuilder().withId(VALID_ID_AMY).build();
+        Member member = new MemberBuilder(AMY).build();
         AddCommand command = (AddCommand) parser.parseCommand(MemberUtil.getAddCommand(member));
         assertEquals(new AddCommand(member), command);
     }
