@@ -40,8 +40,6 @@ public class MemberCard extends UiPart<Region> {
     private Label email;
     @FXML
     private FlowPane tags;
-    @FXML
-    private FlowPane transactions;
 
     /**
      * Creates a {@code MemberCode} with the given {@code Member} and index to display.
@@ -57,9 +55,6 @@ public class MemberCard extends UiPart<Region> {
         member.getTags().stream()
                 .sorted(Comparator.comparing(tag -> tag.tagName))
                 .forEach(tag -> tags.getChildren().add(new Label(tag.tagName)));
-        //member.getTransactions().stream()
-        //.sorted(Comparator.comparing(transaction -> transaction.transactionAmount))
-        //.forEach(transaction -> transactions.getChildren().add(new Label(transaction.transactionAmount)));
     }
 
     @Override

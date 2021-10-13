@@ -8,6 +8,7 @@ import static seedu.address.logic.parser.CliSyntax.PREFIX_PHONE;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_TAG;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_TRANSACTION;
 
+import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 import java.util.stream.Stream;
@@ -93,7 +94,7 @@ public class AddCommandParser implements Parser<AddCommand> {
                 ? ParserUtil.parseRegistrationTimestamp(generateRegistrationTimestamp())
                 : ParserUtil.parseRegistrationTimestamp(generateRegistrationTimestampStub());
         Set<Tag> tagList = ParserUtil.parseTags(argMultimap.getAllValues(PREFIX_TAG));
-        Set<Transaction> transactionList = ParserUtil.parseTransactions(argMultimap.getAllValues(PREFIX_TRANSACTION));
+        Set<Transaction> transactionList = new HashSet<>();
 
         Member member = new Member(id, name, phone, email, address, registrationTimestamp, tagList, transactionList);
 
