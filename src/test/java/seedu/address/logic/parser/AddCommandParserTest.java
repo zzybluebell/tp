@@ -30,7 +30,7 @@ import static seedu.address.testutil.TypicalMembers.AMY;
 
 import org.junit.jupiter.api.Test;
 
-import seedu.address.commons.core.ExecutionStatus;
+import seedu.address.commons.status.ExecutionStatus;
 import seedu.address.logic.commands.AddCommand;
 import seedu.address.model.Model;
 import seedu.address.model.ModelManager;

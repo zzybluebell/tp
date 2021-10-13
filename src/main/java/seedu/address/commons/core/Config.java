@@ -5,12 +5,15 @@ import java.nio.file.Paths;
 import java.util.Objects;
 import java.util.logging.Level;
 
+import seedu.address.commons.status.LoginStatus;
+
 /**
  * Config values used by the app
  */
 public class Config {
 
     public static final Path DEFAULT_CONFIG_FILE = Paths.get("config.json");
+    private static LoginStatus loginStatus = LoginStatus.STAFF;
 
     // Config values customizable through config file
     private Level logLevel = Level.INFO;
@@ -30,6 +33,14 @@ public class Config {
 
     public void setUserPrefsFilePath(Path userPrefsFilePath) {
         this.userPrefsFilePath = userPrefsFilePath;
+    }
+
+    public static LoginStatus getLoginStatus() {
+        return loginStatus;
+    }
+
+    public static void setLoginStatus(LoginStatus mLoginStatus) {
+        loginStatus = mLoginStatus;
     }
 
     @Override
