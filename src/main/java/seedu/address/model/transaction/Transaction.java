@@ -25,11 +25,7 @@ public class Transaction {
         checkArgument(isValidTransactionAmount(transactionAmount), MESSAGE_CONSTRAINTS);
         this.transactionAmount = transactionAmount;
     }
-
-    public int getTransactionAmount() {
-        return Integer.parseInt(transactionAmount);
-    }
-
+    
     /**
      * Returns true if a given string is a valid transaction amount.
      */
