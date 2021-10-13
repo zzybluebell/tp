@@ -1,4 +1,4 @@
-package seedu.address.model.person;
+package seedu.address.model.member;
 
 import static java.util.Objects.requireNonNull;
 import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
@@ -9,8 +9,8 @@ import java.util.function.Predicate;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import seedu.address.model.person.exceptions.DuplicateMemberException;
-import seedu.address.model.person.exceptions.MemberNotFoundException;
+import seedu.address.model.member.exceptions.DuplicateMemberException;
+import seedu.address.model.member.exceptions.MemberNotFoundException;
 
 /**
  * A list of members that enforces uniqueness between its elements and does not allow nulls.

@@ -11,7 +11,7 @@ import com.fasterxml.jackson.annotation.JsonRootName;
 import seedu.address.commons.exceptions.IllegalValueException;
 import seedu.address.model.EzFoodie;
 import seedu.address.model.ReadOnlyEzFoodie;
-import seedu.address.model.person.Member;
+import seedu.address.model.member.Member;
 
 /**
  * An Immutable EzFoodie that is serializable to JSON format.

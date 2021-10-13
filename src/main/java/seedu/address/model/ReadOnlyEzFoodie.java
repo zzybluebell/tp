@@ -1,7 +1,7 @@
 package seedu.address.model;
 
 import javafx.collections.ObservableList;
-import seedu.address.model.person.Member;
+import seedu.address.model.member.Member;
 
 /**
  * Unmodifiable view of an ezFoodie

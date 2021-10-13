@@ -20,7 +20,7 @@ import java.util.Arrays;
 import java.util.List;
 
 import seedu.address.model.EzFoodie;
-import seedu.address.model.person.Member;
+import seedu.address.model.member.Member;
 
 /**
  * A utility class containing a list of {@code Member} objects to be used in tests.
