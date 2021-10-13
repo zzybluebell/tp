@@ -88,7 +88,6 @@ class JsonAdaptedMember {
         final List<Tag> memberTags = new ArrayList<>();
         for (JsonAdaptedTag tag : tagged) {
             memberTags.add(tag.toModelType());
-
         }
 
         final List<Transaction> memberTransactions = new ArrayList<>();
@@ -149,7 +148,6 @@ class JsonAdaptedMember {
         final Set<Transaction> modelTransactions = new HashSet<>(memberTransactions);
         return new Member(modelId, modelName, modelPhone, modelEmail, modelAddress, modelRegistrationTimestamp,
                 modelTags, modelTransactions);
-
     }
 
 }

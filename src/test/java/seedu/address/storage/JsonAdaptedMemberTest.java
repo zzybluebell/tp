@@ -19,6 +19,7 @@ import seedu.address.model.member.Name;
 import seedu.address.model.member.Phone;
 import seedu.address.model.member.RegistrationTimestamp;
 
+
 public class JsonAdaptedMemberTest {
     private static final String INVALID_ID = "3A001";
     private static final String INVALID_NAME = "R@chel";
@@ -35,6 +36,7 @@ public class JsonAdaptedMemberTest {
     private static final String VALID_EMAIL = BENSON.getEmail().toString();
     private static final String VALID_ADDRESS = BENSON.getAddress().toString();
     private static final String VALID_REGISTRATION_TIMESTAMP = BENSON.getRegistrationTimestamp().toString();
+
     private static final List<JsonAdaptedTag> VALID_TAGS = BENSON.getTags().stream()
             .map(JsonAdaptedTag::new)
             .collect(Collectors.toList());
@@ -53,6 +55,7 @@ public class JsonAdaptedMemberTest {
         JsonAdaptedMember member =
                 new JsonAdaptedMember(INVALID_ID, VALID_NAME, VALID_PHONE, VALID_EMAIL, VALID_ADDRESS,
                         VALID_REGISTRATION_TIMESTAMP, VALID_TAGS, VALID_TRANSACTIONS);
+
         String expectedMessage = Id.MESSAGE_CONSTRAINTS;
         assertThrows(IllegalValueException.class, expectedMessage, member::toModelType);
     }
@@ -173,6 +176,7 @@ public class JsonAdaptedMemberTest {
         JsonAdaptedMember member =
                 new JsonAdaptedMember(VALID_ID, VALID_NAME, VALID_PHONE, VALID_EMAIL, VALID_ADDRESS,
                         VALID_REGISTRATION_TIMESTAMP, VALID_TAGS, invalidTransactions);
+        assertThrows(IllegalValueException.class, member::toModelType);
     }
 
 }
