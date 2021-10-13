@@ -206,6 +206,32 @@ ezFoodie data are saved as a JSON file `[JAR file location]/data/ezFoodie.json`.
 If your changes to the data file makes its format invalid, ezFoodie will discard all data and start with an empty data file at the next run.
 </div>
 
+
+### Editing a member : `edit -m -id <MEMBER_ID>`
+
+Edits different fields in a member's profile, where the member is specified by member ID.
+
+#### Editing member name
+
+Format: `edit -m -id <MEMBER_ID> -n <NAME>`
+
+Example:
+* `edit -m -id 1 -n John Doe`
+
+#### Editing member phone
+
+Format: `edit -m -id <MEMBER_ID> -p <PHONE>`
+
+Example:
+* `edit -m -id 1 -p 98765432`
+
+#### Editing member email
+
+Format: `edit -m -id <MEMBER_ID> -e <EMAIL>`
+
+Example:
+* `edit -m -id 1 -e johndoe@gmail.com`
+
 ### Archiving data files `[coming in v1.3]`
 
 ### Redeeming a member’s points `[coming in v1.3]`
@@ -221,12 +247,6 @@ If your changes to the data file makes its format invalid, ezFoodie will discard
 ### Sorting members by tier `[coming in v1.3]`
 
 ### Sorting members by credit `[coming in v1.3]`
-
-### Editing member name `[coming in v1.3]`
-
-### Editing member phone `[coming in v1.3]`
-
-### Editing member email `[coming in v1.3]`
 
 _Details coming soon ..._
 
