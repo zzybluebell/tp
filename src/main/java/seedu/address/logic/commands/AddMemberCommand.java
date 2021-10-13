@@ -4,11 +4,15 @@ import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.Model;
 import seedu.address.model.member.Member;
 
-import static java.util.Objects.requireNonNull;
-import static seedu.address.logic.parser.CliSyntax.*;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_ADDRESS;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_EMAIL;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_NAME;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_TAG;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_PHONE;
 
-public class AddMemberCommand extends AddCommand{
+import static java.util.Objects.requireNonNull;
+
+public class AddMemberCommand extends AddCommand {
 
     public static final String MESSAGE_USAGE = COMMAND_WORD + ": Adds a member to the ezFoodie. "
             + "Parameters: "
@@ -31,6 +35,9 @@ public class AddMemberCommand extends AddCommand{
 
     private final Member toAdd;
 
+    /**
+     * Creates an AddMemberCommand to add the specified {@code Member}
+     */
     public AddMemberCommand(Member member) {
         requireNonNull(member);
         toAdd = member;
@@ -54,5 +61,4 @@ public class AddMemberCommand extends AddCommand{
                 || (other instanceof AddCommand // instanceof handles nulls
                 && toAdd.equals(((AddMemberCommand) other).toAdd));
     }
-
 }
