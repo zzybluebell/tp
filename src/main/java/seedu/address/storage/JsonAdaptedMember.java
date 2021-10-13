@@ -10,12 +10,13 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import seedu.address.commons.exceptions.IllegalValueException;
-import seedu.address.model.person.Address;
-import seedu.address.model.person.Email;
-import seedu.address.model.person.Id;
-import seedu.address.model.person.Member;
-import seedu.address.model.person.Name;
-import seedu.address.model.person.Phone;
+import seedu.address.model.member.Address;
+import seedu.address.model.member.Email;
+import seedu.address.model.member.Id;
+import seedu.address.model.member.Member;
+import seedu.address.model.member.Name;
+import seedu.address.model.member.Phone;
+import seedu.address.model.member.RegistrationTimestamp;
 import seedu.address.model.tag.Tag;
 
 /**
@@ -30,6 +31,7 @@ class JsonAdaptedMember {
     private final String phone;
     private final String email;
     private final String address;
+    private final String registrationTimestamp;
     private final List<JsonAdaptedTag> tagged = new ArrayList<>();
 
     /**
@@ -38,12 +40,15 @@ class JsonAdaptedMember {
     @JsonCreator
     public JsonAdaptedMember(@JsonProperty("id") String id, @JsonProperty("name") String name,
             @JsonProperty("phone") String phone, @JsonProperty("email") String email,
-            @JsonProperty("address") String address, @JsonProperty("tagged") List<JsonAdaptedTag> tagged) {
+            @JsonProperty("address") String address,
+            @JsonProperty("registrationTimestamp") String registrationTimestamp,
+            @JsonProperty("tagged") List<JsonAdaptedTag> tagged) {
         this.id = id;
         this.name = name;
         this.phone = phone;
         this.email = email;
         this.address = address;
+        this.registrationTimestamp = registrationTimestamp;
         if (tagged != null) {
             this.tagged.addAll(tagged);
         }
@@ -58,6 +63,7 @@ class JsonAdaptedMember {
         phone = source.getPhone().value;
         email = source.getEmail().value;
         address = source.getAddress().value;
+        registrationTimestamp = source.getRegistrationTimestamp().value;
         tagged.addAll(source.getTags().stream()
                 .map(JsonAdaptedTag::new)
                 .collect(Collectors.toList()));
@@ -114,8 +120,19 @@ class JsonAdaptedMember {
         }
         final Address modelAddress = new Address(address);
 
+        if (registrationTimestamp == null) {
+            throw new IllegalValueException(
+                    String.format(MISSING_FIELD_MESSAGE_FORMAT, RegistrationTimestamp.class.getSimpleName()));
+        }
+        if (!RegistrationTimestamp.isValidRegistrationTimestamp(registrationTimestamp)) {
+            throw new IllegalValueException(RegistrationTimestamp.MESSAGE_CONSTRAINTS);
+        }
+        final RegistrationTimestamp modelRegistrationTimestamp = new RegistrationTimestamp(registrationTimestamp);
+
         final Set<Tag> modelTags = new HashSet<>(memberTags);
-        return new Member(modelId, modelName, modelPhone, modelEmail, modelAddress, modelTags);
+
+        return new Member(modelId, modelName, modelPhone, modelEmail, modelAddress, modelRegistrationTimestamp,
+                modelTags);
     }
 
 }

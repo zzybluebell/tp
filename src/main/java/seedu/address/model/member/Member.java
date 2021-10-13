@@ -1,4 +1,4 @@
-package seedu.address.model.person;
+package seedu.address.model.member;
 
 import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
 
@@ -23,18 +23,21 @@ public class Member {
 
     // Data fields
     private final Address address;
+    private final RegistrationTimestamp registrationTimestamp;
     private final Set<Tag> tags = new HashSet<>();
 
     /**
      * Every field must be present and not null.
      */
-    public Member(Id id, Name name, Phone phone, Email email, Address address, Set<Tag> tags) {
-        requireAllNonNull(id, name, phone, email, address, tags);
+    public Member(Id id, Name name, Phone phone, Email email, Address address,
+                  RegistrationTimestamp registrationTimestamp, Set<Tag> tags) {
+        requireAllNonNull(id, name, phone, email, address, registrationTimestamp, tags);
         this.id = id;
         this.name = name;
         this.phone = phone;
         this.email = email;
         this.address = address;
+        this.registrationTimestamp = registrationTimestamp;
         this.tags.addAll(tags);
     }
 
@@ -56,6 +59,10 @@ public class Member {
 
     public Address getAddress() {
         return address;
+    }
+
+    public RegistrationTimestamp getRegistrationTimestamp() {
+        return registrationTimestamp;
     }
 
     /**
@@ -138,13 +145,14 @@ public class Member {
                 && otherMember.getPhone().equals(getPhone())
                 && otherMember.getEmail().equals(getEmail())
                 && otherMember.getAddress().equals(getAddress())
+                && otherMember.getRegistrationTimestamp().equals(getRegistrationTimestamp())
                 && otherMember.getTags().equals(getTags());
     }
 
     @Override
     public int hashCode() {
         // use this method for custom fields hashing instead of implementing your own
-        return Objects.hash(id, name, phone, email, address, tags);
+        return Objects.hash(id, name, phone, email, address, registrationTimestamp, tags);
     }
 
     @Override
@@ -159,7 +167,9 @@ public class Member {
                 .append("; Email: ")
                 .append(getEmail())
                 .append("; Address: ")
-                .append(getAddress());
+                .append(getAddress())
+                .append("; Registration Timestamp: ")
+                .append(getRegistrationTimestamp());
 
         Set<Tag> tags = getTags();
         if (!tags.isEmpty()) {
