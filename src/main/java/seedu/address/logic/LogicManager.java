@@ -5,6 +5,7 @@ import java.nio.file.Path;
 import java.util.logging.Logger;
 
 import javafx.collections.ObservableList;
+import seedu.address.commons.core.ExecutionStatus;
 import seedu.address.commons.core.GuiSettings;
 import seedu.address.commons.core.LogsCenter;
 import seedu.address.logic.commands.Command;
@@ -14,7 +15,7 @@ import seedu.address.logic.parser.EzFoodieParser;
 import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.model.Model;
 import seedu.address.model.ReadOnlyEzFoodie;
-import seedu.address.model.person.Person;
+import seedu.address.model.member.Member;
 import seedu.address.storage.Storage;
 
 /**
@@ -34,7 +35,16 @@ public class LogicManager implements Logic {
     public LogicManager(Model model, Storage storage) {
         this.model = model;
         this.storage = storage;
-        ezFoodieParser = new EzFoodieParser();
+        ezFoodieParser = new EzFoodieParser(model);
+    }
+
+    /**
+     * Constructs a {@code LogicManager} with the given {@code Model}, {@code Storage} and {@code ExecutionStatus}.
+     */
+    public LogicManager(Model model, Storage storage, ExecutionStatus executionStatus) {
+        this.model = model;
+        this.storage = storage;
+        ezFoodieParser = new EzFoodieParser(model, executionStatus);
     }
 
     @Override
@@ -60,8 +70,8 @@ public class LogicManager implements Logic {
     }
 
     @Override
-    public ObservableList<Person> getFilteredPersonList() {
-        return model.getFilteredPersonList();
+    public ObservableList<Member> getFilteredMemberList() {
+        return model.getFilteredMemberList();
     }
 
     @Override

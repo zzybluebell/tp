@@ -7,22 +7,62 @@ import static seedu.address.logic.parser.CliSyntax.PREFIX_NAME;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_PHONE;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_TAG;
 
+import java.util.List;
 import java.util.Set;
 import java.util.stream.Stream;
 
+import seedu.address.commons.core.ExecutionStatus;
 import seedu.address.logic.commands.AddCommand;
 import seedu.address.logic.parser.exceptions.ParseException;
-import seedu.address.model.person.Address;
-import seedu.address.model.person.Email;
-import seedu.address.model.person.Name;
-import seedu.address.model.person.Person;
-import seedu.address.model.person.Phone;
+import seedu.address.model.Model;
+import seedu.address.model.member.Address;
+import seedu.address.model.member.Email;
+import seedu.address.model.member.Id;
+import seedu.address.model.member.Member;
+import seedu.address.model.member.Name;
+import seedu.address.model.member.Phone;
+import seedu.address.model.member.RegistrationTimestamp;
 import seedu.address.model.tag.Tag;
 
 /**
  * Parses input arguments and creates a new AddCommand object
  */
 public class AddCommandParser implements Parser<AddCommand> {
+
+    private static final String ID_STUB = "00001";
+    private static final String REGISTRATION_TIMESTAMP_STUB = "1609459200000";
+
+    private final Model model;
+    private final ExecutionStatus executionStatus;
+
+    /**
+     * Constructs a {@code AddCommandParser} with the given {@code Model} and {@code ExecutionStatus}.
+     */
+    public AddCommandParser(Model model, ExecutionStatus executionStatus) {
+        this.model = model;
+        this.executionStatus = executionStatus;
+    }
+
+    private String generateId() {
+        List<Member> memberList = model.getEzFoodie().getMemberList();
+        long latestId = 0;
+        if (memberList.size() > 0) {
+            latestId = Long.parseLong(memberList.get(memberList.size() - 1).getId().value);
+        }
+        return String.format(Id.PATTERN, latestId + 1);
+    }
+
+    private String generateIdStub() {
+        return ID_STUB;
+    }
+
+    private String generateRegistrationTimestamp() {
+        return String.valueOf(System.currentTimeMillis());
+    }
+
+    private String generateRegistrationTimestampStub() {
+        return REGISTRATION_TIMESTAMP_STUB;
+    }
 
     /**
      * Parses the given {@code String} of arguments in the context of the AddCommand
@@ -31,22 +71,29 @@ public class AddCommandParser implements Parser<AddCommand> {
      */
     public AddCommand parse(String args) throws ParseException {
         ArgumentMultimap argMultimap =
-                ArgumentTokenizer.tokenize(args, PREFIX_NAME, PREFIX_PHONE, PREFIX_EMAIL, PREFIX_ADDRESS, PREFIX_TAG);
+                ArgumentTokenizer.tokenize(args, PREFIX_NAME, PREFIX_PHONE, PREFIX_EMAIL,
+                        PREFIX_ADDRESS, PREFIX_TAG);
 
         if (!arePrefixesPresent(argMultimap, PREFIX_NAME, PREFIX_ADDRESS, PREFIX_PHONE, PREFIX_EMAIL)
                 || !argMultimap.getPreamble().isEmpty()) {
             throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, AddCommand.MESSAGE_USAGE));
         }
 
+        Id id = executionStatus == ExecutionStatus.NORMAL
+                ? ParserUtil.parseId(generateId())
+                : ParserUtil.parseId(generateIdStub());
         Name name = ParserUtil.parseName(argMultimap.getValue(PREFIX_NAME).get());
         Phone phone = ParserUtil.parsePhone(argMultimap.getValue(PREFIX_PHONE).get());
         Email email = ParserUtil.parseEmail(argMultimap.getValue(PREFIX_EMAIL).get());
         Address address = ParserUtil.parseAddress(argMultimap.getValue(PREFIX_ADDRESS).get());
+        RegistrationTimestamp registrationTimestamp = executionStatus == ExecutionStatus.NORMAL
+                ? ParserUtil.parseRegistrationTimestamp(generateRegistrationTimestamp())
+                : ParserUtil.parseRegistrationTimestamp(generateRegistrationTimestampStub());
         Set<Tag> tagList = ParserUtil.parseTags(argMultimap.getAllValues(PREFIX_TAG));
 
-        Person person = new Person(name, phone, email, address, tagList);
+        Member member = new Member(id, name, phone, email, address, registrationTimestamp, tagList);
 
-        return new AddCommand(person);
+        return new AddCommand(member);
     }
 
     /**
