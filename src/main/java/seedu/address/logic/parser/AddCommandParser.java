@@ -9,6 +9,7 @@ import java.util.stream.Stream;
 
 import seedu.address.commons.core.ExecutionStatus;
 import seedu.address.logic.commands.AddCommand;
+import seedu.address.logic.commands.AddMemberCommand;
 import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.model.Model;
 import seedu.address.model.member.Address;
@@ -72,7 +73,7 @@ public class AddCommandParser implements Parser<AddCommand> {
 
         if (!arePrefixesPresent(argMultimap, PREFIX_MEMBER, PREFIX_NAME, PREFIX_ADDRESS, PREFIX_PHONE, PREFIX_EMAIL)
                 || !argMultimap.getPreamble().isEmpty()) {
-            throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, AddCommand.MESSAGE_USAGE));
+            throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, AddMemberCommand.MESSAGE_USAGE));
         }
 
         Id id = executionStatus == ExecutionStatus.NORMAL
@@ -89,7 +90,7 @@ public class AddCommandParser implements Parser<AddCommand> {
 
         Member member = new Member(id, name, phone, email, address, registrationTimestamp, tagList);
 
-        return new AddCommand(member);
+        return new AddMemberCommand(member);
     }
 
     /**

@@ -15,15 +15,8 @@ import java.util.stream.Collectors;
 import org.junit.jupiter.api.Test;
 
 import seedu.address.commons.core.ExecutionStatus;
-import seedu.address.logic.commands.AddCommand;
-import seedu.address.logic.commands.ClearCommand;
-import seedu.address.logic.commands.DeleteCommand;
-import seedu.address.logic.commands.EditCommand;
+import seedu.address.logic.commands.*;
 import seedu.address.logic.commands.EditCommand.EditMemberDescriptor;
-import seedu.address.logic.commands.ExitCommand;
-import seedu.address.logic.commands.FindCommand;
-import seedu.address.logic.commands.HelpCommand;
-import seedu.address.logic.commands.ListCommand;
 import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.model.Model;
 import seedu.address.model.ModelManager;
@@ -42,7 +35,7 @@ public class EzFoodieParserTest {
     public void parseCommand_add() throws Exception {
         Member member = new MemberBuilder(AMY).build();
         AddCommand command = (AddCommand) parser.parseCommand(MemberUtil.getAddCommand(member));
-        assertEquals(new AddCommand(member), command);
+        assertEquals(new AddMemberCommand(member), command);
     }
 
     @Test
