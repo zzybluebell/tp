@@ -7,6 +7,7 @@ import static seedu.address.logic.parser.CliSyntax.PREFIX_NAME;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_PHONE;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_TAG;
 
+import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 import java.util.stream.Stream;
@@ -23,6 +24,7 @@ import seedu.address.model.member.Name;
 import seedu.address.model.member.Phone;
 import seedu.address.model.member.RegistrationTimestamp;
 import seedu.address.model.tag.Tag;
+import seedu.address.model.transaction.Transaction;
 
 /**
  * Parses input arguments and creates a new AddCommand object
@@ -82,6 +84,7 @@ public class AddCommandParser implements Parser<AddCommand> {
         Id id = executionStatus == ExecutionStatus.NORMAL
                 ? ParserUtil.parseId(generateId())
                 : ParserUtil.parseId(generateIdStub());
+
         Name name = ParserUtil.parseName(argMultimap.getValue(PREFIX_NAME).get());
         Phone phone = ParserUtil.parsePhone(argMultimap.getValue(PREFIX_PHONE).get());
         Email email = ParserUtil.parseEmail(argMultimap.getValue(PREFIX_EMAIL).get());
@@ -90,8 +93,9 @@ public class AddCommandParser implements Parser<AddCommand> {
                 ? ParserUtil.parseRegistrationTimestamp(generateRegistrationTimestamp())
                 : ParserUtil.parseRegistrationTimestamp(generateRegistrationTimestampStub());
         Set<Tag> tagList = ParserUtil.parseTags(argMultimap.getAllValues(PREFIX_TAG));
+        Set<Transaction> transactionList = new HashSet<>();
 
-        Member member = new Member(id, name, phone, email, address, registrationTimestamp, tagList);
+        Member member = new Member(id, name, phone, email, address, registrationTimestamp, tagList, transactionList);
 
         return new AddCommand(member);
     }
