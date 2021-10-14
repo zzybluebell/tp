@@ -3,6 +3,7 @@ package seedu.address.logic.commands;
 import static java.util.Objects.requireNonNull;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_ADDRESS;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_EMAIL;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_MEMBER;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_NAME;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_PHONE;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_TAG;
@@ -15,7 +16,7 @@ public class AddMemberCommand extends AddCommand {
 
     public static final String MESSAGE_USAGE = COMMAND_WORD + ": Adds a member to the ezFoodie. "
             + "Parameters: "
-            + "-m "
+            + PREFIX_MEMBER
             + PREFIX_NAME + "NAME "
             + PREFIX_PHONE + "PHONE "
             + PREFIX_EMAIL + "EMAIL "
@@ -57,7 +58,7 @@ public class AddMemberCommand extends AddCommand {
     @Override
     public boolean equals(Object other) {
         return other == this // short circuit if same object
-                || (other instanceof AddCommand // instanceof handles nulls
+                || (other instanceof AddMemberCommand // instanceof handles nulls
                 && toAdd.equals(((AddMemberCommand) other).toAdd));
     }
 }

@@ -14,7 +14,7 @@ import seedu.address.model.member.Member;
 import seedu.address.testutil.MemberBuilder;
 
 /**
- * Contains integration tests (interaction with the Model) for {@code AddCommand}.
+ * Contains integration tests (interaction with the Model) for {@code AddMemberCommand}.
  */
 public class AddCommandIntegrationTest {
 

@@ -44,11 +44,11 @@ public class AddCommandTest {
     @Test
     public void execute_duplicateMember_throwsCommandException() {
         Member validMember = new MemberBuilder().build();
-        AddCommand addCommand = new AddMemberCommand(validMember);
+        AddMemberCommand addMemberCommand = new AddMemberCommand(validMember);
         ModelStub modelStub = new ModelStubWithMember(validMember);
 
         assertThrows(CommandException.class,
-                    AddMemberCommand.MESSAGE_DUPLICATE_MEMBER, () -> addCommand.execute(modelStub));
+                    AddMemberCommand.MESSAGE_DUPLICATE_MEMBER, () -> addMemberCommand.execute(modelStub));
     }
 
     @Test
