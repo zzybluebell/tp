@@ -18,6 +18,7 @@ import seedu.address.model.member.Name;
 import seedu.address.model.member.Phone;
 import seedu.address.model.member.RegistrationTimestamp;
 import seedu.address.model.tag.Tag;
+import seedu.address.model.transaction.Transaction;
 
 /**
  * Jackson-friendly version of {@link Member}.
@@ -33,6 +34,7 @@ class JsonAdaptedMember {
     private final String address;
     private final String registrationTimestamp;
     private final List<JsonAdaptedTag> tagged = new ArrayList<>();
+    private final List<JsonAdaptedTransaction> transactions = new ArrayList<>();
 
     /**
      * Constructs a {@code JsonAdaptedMember} with the given member details.
@@ -42,7 +44,9 @@ class JsonAdaptedMember {
             @JsonProperty("phone") String phone, @JsonProperty("email") String email,
             @JsonProperty("address") String address,
             @JsonProperty("registrationTimestamp") String registrationTimestamp,
-            @JsonProperty("tagged") List<JsonAdaptedTag> tagged) {
+            @JsonProperty("tagged") List<JsonAdaptedTag> tagged,
+            @JsonProperty("transactions") List<JsonAdaptedTransaction> transactions) {
+
         this.id = id;
         this.name = name;
         this.phone = phone;
@@ -51,6 +55,9 @@ class JsonAdaptedMember {
         this.registrationTimestamp = registrationTimestamp;
         if (tagged != null) {
             this.tagged.addAll(tagged);
+        }
+        if (transactions != null) {
+            this.transactions.addAll(transactions);
         }
     }
 
@@ -67,6 +74,9 @@ class JsonAdaptedMember {
         tagged.addAll(source.getTags().stream()
                 .map(JsonAdaptedTag::new)
                 .collect(Collectors.toList()));
+        transactions.addAll(source.getTransactions().stream()
+                .map(JsonAdaptedTransaction::new)
+                .collect(Collectors.toList()));
     }
 
     /**
@@ -78,6 +88,11 @@ class JsonAdaptedMember {
         final List<Tag> memberTags = new ArrayList<>();
         for (JsonAdaptedTag tag : tagged) {
             memberTags.add(tag.toModelType());
+        }
+
+        final List<Transaction> memberTransactions = new ArrayList<>();
+        for (JsonAdaptedTransaction transaction : transactions) {
+            memberTransactions.add(transaction.toModelType());
         }
 
         if (id == null) {
@@ -130,9 +145,9 @@ class JsonAdaptedMember {
         final RegistrationTimestamp modelRegistrationTimestamp = new RegistrationTimestamp(registrationTimestamp);
 
         final Set<Tag> modelTags = new HashSet<>(memberTags);
-
+        final Set<Transaction> modelTransactions = new HashSet<>(memberTransactions);
         return new Member(modelId, modelName, modelPhone, modelEmail, modelAddress, modelRegistrationTimestamp,
-                modelTags);
+                modelTags, modelTransactions);
     }
 
 }
