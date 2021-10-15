@@ -13,7 +13,7 @@ import seedu.address.model.Model;
 public class LogoutCommand extends Command {
 
     public static final String COMMAND_WORD = "logout";
-    public static final String MESSAGE_SUCCESS = "Logout successfully!";
+    public static final String MESSAGE_SUCCESS = "Logged out successfully!";
     public static final String MESSAGE_ALREADY_IN_STATUS = "You are already in STAFF login status!";
 
     @Override
