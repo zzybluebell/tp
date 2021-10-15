@@ -6,6 +6,7 @@ import static seedu.address.logic.parser.CliSyntax.PREFIX_MEMBER;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_NAME;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_PHONE;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_TAG;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_TRANSACTION;
 
 import java.util.Set;
 
@@ -13,6 +14,7 @@ import seedu.address.logic.commands.AddMemberCommand;
 import seedu.address.logic.commands.EditCommand.EditMemberDescriptor;
 import seedu.address.model.member.Member;
 import seedu.address.model.tag.Tag;
+import seedu.address.model.transaction.Transaction;
 
 /**
  * A utility class for Member.
@@ -39,6 +41,9 @@ public class MemberUtil {
         member.getTags().stream().forEach(
             s -> sb.append(PREFIX_TAG + s.tagName + " ")
         );
+        member.getTransactions().stream().forEach(
+            s -> sb.append(PREFIX_TRANSACTION + s.transactionAmount + " ")
+        );
         return sb.toString();
     }
 
@@ -54,9 +59,17 @@ public class MemberUtil {
         if (descriptor.getTags().isPresent()) {
             Set<Tag> tags = descriptor.getTags().get();
             if (tags.isEmpty()) {
-                sb.append(PREFIX_TAG);
+                sb.append(PREFIX_TAG).append(" ");
             } else {
                 tags.forEach(s -> sb.append(PREFIX_TAG).append(s.tagName).append(" "));
+            }
+        }
+        if (descriptor.getTransactions().isPresent()) {
+            Set<Transaction> transactions = descriptor.getTransactions().get();
+            if (transactions.isEmpty()) {
+                sb.append(PREFIX_TRANSACTION);
+            } else {
+                transactions.forEach(s -> sb.append(PREFIX_TRANSACTION).append(s.transactionAmount).append(" "));
             }
         }
         return sb.toString();

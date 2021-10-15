@@ -50,7 +50,7 @@ public class AddCommandParserTest {
 
     @Test
     public void parse_allFieldsPresent_success() {
-        Member expectedMember = new MemberBuilder(AMY).withTags(VALID_TAG_FRIEND).build();
+        Member expectedMember = new MemberBuilder(AMY).withTags(VALID_TAG_FRIEND).withTransactions().build();
 
         // whitespace only preamble
         assertParseSuccess(parser, PREAMBLE_WHITESPACE + MEMBER_DESC + NAME_DESC_AMY + PHONE_DESC_AMY
@@ -74,7 +74,7 @@ public class AddCommandParserTest {
 
         // multiple tags - all accepted
         Member expectedMemberMultipleTags = new MemberBuilder(AMY).withTags(VALID_TAG_FRIEND, VALID_TAG_HUSBAND)
-                .build();
+                .withTransactions().build();
         assertParseSuccess(parser, MEMBER_DESC + NAME_DESC_AMY + PHONE_DESC_AMY + EMAIL_DESC_AMY
                 + ADDRESS_DESC_AMY + TAG_DESC_HUSBAND + TAG_DESC_FRIEND,
                 new AddMemberCommand(expectedMemberMultipleTags));

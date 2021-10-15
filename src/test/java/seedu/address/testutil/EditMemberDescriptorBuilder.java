@@ -11,6 +11,7 @@ import seedu.address.model.member.Member;
 import seedu.address.model.member.Name;
 import seedu.address.model.member.Phone;
 import seedu.address.model.tag.Tag;
+import seedu.address.model.transaction.Transaction;
 
 /**
  * A utility class to help with building EditMemberDescriptor objects.
@@ -37,6 +38,7 @@ public class EditMemberDescriptorBuilder {
         descriptor.setEmail(member.getEmail());
         descriptor.setAddress(member.getAddress());
         descriptor.setTags(member.getTags());
+        descriptor.setTransactions(member.getTransactions());
     }
 
     /**s
@@ -78,6 +80,16 @@ public class EditMemberDescriptorBuilder {
     public EditMemberDescriptorBuilder withTags(String... tags) {
         Set<Tag> tagSet = Stream.of(tags).map(Tag::new).collect(Collectors.toSet());
         descriptor.setTags(tagSet);
+        return this;
+    }
+
+    /**
+     * Parses the {@code transaction} into a {@code Set<Transaction>} and set it to the {@code EditMemberDescriptor}
+     * that we are building.
+     */
+    public EditMemberDescriptorBuilder withTransactions(String... transaction) {
+        Set<Transaction> transactionSet = Stream.of(transaction).map(Transaction::new).collect(Collectors.toSet());
+        descriptor.setTransactions(transactionSet);
         return this;
     }
 
