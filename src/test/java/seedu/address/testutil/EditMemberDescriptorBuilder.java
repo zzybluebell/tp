@@ -39,7 +39,7 @@ public class EditMemberDescriptorBuilder {
         descriptor.setTags(member.getTags());
     }
 
-    /**
+    /**s
      * Sets the {@code Name} of the {@code EditMemberDescriptor} that we are building.
      */
     public EditMemberDescriptorBuilder withName(String name) {
