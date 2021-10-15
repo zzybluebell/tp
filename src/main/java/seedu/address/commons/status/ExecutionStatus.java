@@ -1,4 +1,4 @@
-package seedu.address.commons.core;
+package seedu.address.commons.status;
 
 public enum ExecutionStatus {
     NORMAL, TEST
