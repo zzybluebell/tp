@@ -36,6 +36,7 @@ public class EditMemberDescriptorBuilder {
         descriptor.setPhone(member.getPhone());
         descriptor.setEmail(member.getEmail());
         descriptor.setAddress(member.getAddress());
+        descriptor.setTags (member.getTags());
     }
 
     /**s
