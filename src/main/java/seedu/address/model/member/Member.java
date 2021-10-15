@@ -8,6 +8,7 @@ import java.util.Objects;
 import java.util.Set;
 
 import seedu.address.model.tag.Tag;
+import seedu.address.model.transaction.Transaction;
 
 /**
  * Represents a Member in the ezFoodie.
@@ -25,13 +26,14 @@ public class Member {
     private final Address address;
     private final RegistrationTimestamp registrationTimestamp;
     private final Set<Tag> tags = new HashSet<>();
+    private final Set<Transaction> transactions = new HashSet<>();
 
     /**
      * Every field must be present and not null.
      */
     public Member(Id id, Name name, Phone phone, Email email, Address address,
-                  RegistrationTimestamp registrationTimestamp, Set<Tag> tags) {
-        requireAllNonNull(id, name, phone, email, address, registrationTimestamp, tags);
+                  RegistrationTimestamp registrationTimestamp, Set<Tag> tags, Set<Transaction> transactions) {
+        requireAllNonNull(id, name, phone, email, address, registrationTimestamp, tags, transactions);
         this.id = id;
         this.name = name;
         this.phone = phone;
@@ -39,6 +41,7 @@ public class Member {
         this.address = address;
         this.registrationTimestamp = registrationTimestamp;
         this.tags.addAll(tags);
+        this.transactions.addAll(transactions);
     }
 
     public Id getId() {
@@ -71,6 +74,14 @@ public class Member {
      */
     public Set<Tag> getTags() {
         return Collections.unmodifiableSet(tags);
+    }
+
+    /**
+     * Returns an immutable transaction set, which throws {@code UnsupportedOperationException}
+     * if modification is attempted.
+     */
+    public Set<Transaction> getTransactions() {
+        return Collections.unmodifiableSet(transactions);
     }
 
     /**
@@ -146,13 +157,14 @@ public class Member {
                 && otherMember.getEmail().equals(getEmail())
                 && otherMember.getAddress().equals(getAddress())
                 && otherMember.getRegistrationTimestamp().equals(getRegistrationTimestamp())
-                && otherMember.getTags().equals(getTags());
+                && otherMember.getTags().equals(getTags())
+                && otherMember.getTransactions().equals(getTransactions());
     }
 
     @Override
     public int hashCode() {
         // use this method for custom fields hashing instead of implementing your own
-        return Objects.hash(id, name, phone, email, address, registrationTimestamp, tags);
+        return Objects.hash(id, name, phone, email, address, registrationTimestamp, tags, transactions);
     }
 
     @Override
@@ -176,6 +188,13 @@ public class Member {
             builder.append("; Tags: ");
             tags.forEach(builder::append);
         }
+
+        Set<Transaction> transactions = getTransactions();
+        if (!transactions.isEmpty()) {
+            builder.append("; Transactions: ");
+            transactions.forEach(builder::append);
+        }
+
         return builder.toString();
     }
 

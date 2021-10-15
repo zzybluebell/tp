@@ -18,7 +18,7 @@ public class LoginCommand extends Command {
         + Password.DEFAULT_PLAINTEXT_PASSWORD + ")\n"
         + "Example: " + COMMAND_WORD + " " + Password.DEFAULT_PLAINTEXT_PASSWORD;
 
-    public static final String MESSAGE_SUCCESS = "Login successfully!";
+    public static final String MESSAGE_SUCCESS = "Logged in successfully!";
     public static final String MESSAGE_FAILURE = "Failed to login!";
     public static final String MESSAGE_ALREADY_IN_STATUS = "You are already in MANAGER login status!";
 

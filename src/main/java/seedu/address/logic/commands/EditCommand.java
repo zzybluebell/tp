@@ -6,6 +6,7 @@ import static seedu.address.logic.parser.CliSyntax.PREFIX_EMAIL;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_NAME;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_PHONE;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_TAG;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_TRANSACTION;
 import static seedu.address.model.Model.PREDICATE_SHOW_ALL_MEMBERS;
 
 import java.util.Collections;
@@ -27,6 +28,7 @@ import seedu.address.model.member.Name;
 import seedu.address.model.member.Phone;
 import seedu.address.model.member.RegistrationTimestamp;
 import seedu.address.model.tag.Tag;
+import seedu.address.model.transaction.Transaction;
 
 /**
  * Edits the details of an existing member in the ezFoodie.
@@ -43,7 +45,8 @@ public class EditCommand extends Command {
             + "[" + PREFIX_PHONE + "PHONE] "
             + "[" + PREFIX_EMAIL + "EMAIL] "
             + "[" + PREFIX_ADDRESS + "ADDRESS] "
-            + "[" + PREFIX_TAG + "TAG]...\n"
+            + "[" + PREFIX_TAG + "TAG]..."
+            + "[" + PREFIX_TRANSACTION + "TRANSACTION]...\n"
             + "Example: " + COMMAND_WORD + " 1 "
             + PREFIX_PHONE + "91234567 "
             + PREFIX_EMAIL + "johndoe@example.com";
@@ -102,9 +105,11 @@ public class EditCommand extends Command {
         Address updatedAddress = editMemberDescriptor.getAddress().orElse(memberToEdit.getAddress());
         RegistrationTimestamp registrationTimestamp = memberToEdit.getRegistrationTimestamp();
         Set<Tag> updatedTags = editMemberDescriptor.getTags().orElse(memberToEdit.getTags());
+        Set<Transaction> updatedTransactions = editMemberDescriptor.getTransactions()
+                .orElse((memberToEdit.getTransactions()));
 
-        return new Member(id, updatedName, updatedPhone, updatedEmail, updatedAddress, registrationTimestamp,
-                updatedTags);
+        return new Member(id, updatedName, updatedPhone, updatedEmail,
+                updatedAddress, registrationTimestamp, updatedTags, updatedTransactions);
     }
 
     @Override
@@ -135,6 +140,7 @@ public class EditCommand extends Command {
         private Email email;
         private Address address;
         private Set<Tag> tags;
+        private Set<Transaction> transactions;
 
         public EditMemberDescriptor() {}
 
@@ -148,13 +154,14 @@ public class EditCommand extends Command {
             setEmail(toCopy.email);
             setAddress(toCopy.address);
             setTags(toCopy.tags);
+            setTransactions(toCopy.transactions);
         }
 
         /**
          * Returns true if at least one field is edited.
          */
         public boolean isAnyFieldEdited() {
-            return CollectionUtil.isAnyNonNull(name, phone, email, address, tags);
+            return CollectionUtil.isAnyNonNull(name, phone, email, address, tags, transactions);
         }
 
         public void setName(Name name) {
@@ -206,6 +213,23 @@ public class EditCommand extends Command {
             return (tags != null) ? Optional.of(Collections.unmodifiableSet(tags)) : Optional.empty();
         }
 
+        /**
+         * Sets {@code transactions} to this object's {@code transactions}.
+         * A defensive copy of {@code transactions} is used internally.
+         */
+        public void setTransactions(Set<Transaction> transactions) {
+            this.transactions = (transactions != null) ? new HashSet<>(transactions) : null;
+        }
+
+        /**
+         * Returns an unmodifiable transaction set, which throws {@code UnsupportedOperationException}
+         * if modification is attempted.
+         * Returns {@code Optional#empty()} if {@code transactions} is null.
+         */
+        public Optional<Set<Transaction>> getTransactions() {
+            return (transactions != null) ? Optional.of(Collections.unmodifiableSet(transactions)) : Optional.empty();
+        }
+
         @Override
         public boolean equals(Object other) {
             // short circuit if same object
@@ -225,7 +249,8 @@ public class EditCommand extends Command {
                     && getPhone().equals(e.getPhone())
                     && getEmail().equals(e.getEmail())
                     && getAddress().equals(e.getAddress())
-                    && getTags().equals(e.getTags());
+                    && getTags().equals(e.getTags())
+                    && getTransactions().equals(e.getTransactions());
         }
     }
 }

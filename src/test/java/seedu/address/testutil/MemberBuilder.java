@@ -11,6 +11,7 @@ import seedu.address.model.member.Name;
 import seedu.address.model.member.Phone;
 import seedu.address.model.member.RegistrationTimestamp;
 import seedu.address.model.tag.Tag;
+import seedu.address.model.transaction.Transaction;
 import seedu.address.model.util.SampleDataUtil;
 
 /**
@@ -32,6 +33,7 @@ public class MemberBuilder {
     private Address address;
     private RegistrationTimestamp registrationTimestamp;
     private Set<Tag> tags;
+    private Set<Transaction> transactions;
 
     /**
      * Creates a {@code MemberBuilder} with the default details.
@@ -44,6 +46,7 @@ public class MemberBuilder {
         address = new Address(DEFAULT_ADDRESS);
         registrationTimestamp = new RegistrationTimestamp(DEFAULT_REGISTRATION_TIMESTAMP);
         tags = new HashSet<>();
+        transactions = new HashSet<>();
     }
 
     /**
@@ -57,6 +60,7 @@ public class MemberBuilder {
         address = memberToCopy.getAddress();
         registrationTimestamp = memberToCopy.getRegistrationTimestamp();
         tags = new HashSet<>(memberToCopy.getTags());
+        transactions = new HashSet<>(memberToCopy.getTransactions());
     }
 
     /**
@@ -72,22 +76,6 @@ public class MemberBuilder {
      */
     public MemberBuilder withName(String name) {
         this.name = new Name(name);
-        return this;
-    }
-
-    /**
-     * Parses the {@code tags} into a {@code Set<Tag>} and set it to the {@code Member} that we are building.
-     */
-    public MemberBuilder withTags(String ... tags) {
-        this.tags = SampleDataUtil.getTagSet(tags);
-        return this;
-    }
-
-    /**
-     * Sets the {@code Address} of the {@code Member} that we are building.
-     */
-    public MemberBuilder withAddress(String address) {
-        this.address = new Address(address);
         return this;
     }
 
@@ -108,6 +96,14 @@ public class MemberBuilder {
     }
 
     /**
+     * Sets the {@code Address} of the {@code Member} that we are building.
+     */
+    public MemberBuilder withAddress(String address) {
+        this.address = new Address(address);
+        return this;
+    }
+
+    /**
      * Sets the {@code RegistrationTimestamp} of the {@code Member} that we are building.
      */
     public MemberBuilder withRegistrationTimestamp(String registrationTimestamp) {
@@ -115,8 +111,25 @@ public class MemberBuilder {
         return this;
     }
 
+    /**
+     * Parses the {@code tags} into a {@code Set<Tag>} and set it to the {@code Member} that we are building.
+     */
+    public MemberBuilder withTags(String ... tags) {
+        this.tags = SampleDataUtil.getTagSet(tags);
+        return this;
+    }
+
+    /**
+     * Parses the {@code transactions} into a {@code Set<Transaction>} and set it to the {@code Member}
+     * that we are building.
+     */
+    public MemberBuilder withTransactions(String ... transactions) {
+        this.transactions = SampleDataUtil.getTransactionSet(transactions);
+        return this;
+    }
+
     public Member build() {
-        return new Member(id, name, phone, email, address, registrationTimestamp, tags);
+        return new Member(id, name, phone, email, address, registrationTimestamp, tags, transactions);
     }
 
 }
