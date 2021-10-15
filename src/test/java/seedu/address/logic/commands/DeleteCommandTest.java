@@ -13,6 +13,7 @@ import org.junit.jupiter.api.Test;
 
 import seedu.address.commons.core.Messages;
 import seedu.address.commons.core.index.Index;
+import seedu.address.model.Account;
 import seedu.address.model.Model;
 import seedu.address.model.ModelManager;
 import seedu.address.model.UserPrefs;
@@ -24,7 +25,7 @@ import seedu.address.model.member.Member;
  */
 public class DeleteCommandTest {
 
-    private Model model = new ModelManager(getTypicalEzFoodie(), new UserPrefs());
+    private Model model = new ModelManager(new Account(), getTypicalEzFoodie(), new UserPrefs());
 
     @Test
     public void execute_validIndexUnfilteredList_success() {
@@ -33,7 +34,7 @@ public class DeleteCommandTest {
 
         String expectedMessage = String.format(DeleteCommand.MESSAGE_DELETE_MEMBER_SUCCESS, memberToDelete);
 
-        ModelManager expectedModel = new ModelManager(model.getEzFoodie(), new UserPrefs());
+        ModelManager expectedModel = new ModelManager(new Account(), model.getEzFoodie(), new UserPrefs());
         expectedModel.deleteMember(memberToDelete);
 
         assertCommandSuccess(deleteCommand, model, expectedMessage, expectedModel);
@@ -56,7 +57,7 @@ public class DeleteCommandTest {
 
         String expectedMessage = String.format(DeleteCommand.MESSAGE_DELETE_MEMBER_SUCCESS, memberToDelete);
 
-        Model expectedModel = new ModelManager(model.getEzFoodie(), new UserPrefs());
+        Model expectedModel = new ModelManager(new Account(), model.getEzFoodie(), new UserPrefs());
         expectedModel.deleteMember(memberToDelete);
         showNoMember(expectedModel);
 

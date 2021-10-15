@@ -18,6 +18,7 @@ import seedu.address.commons.core.GuiSettings;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.EzFoodie;
 import seedu.address.model.Model;
+import seedu.address.model.ReadOnlyAccount;
 import seedu.address.model.ReadOnlyEzFoodie;
 import seedu.address.model.ReadOnlyUserPrefs;
 import seedu.address.model.member.Member;
@@ -99,12 +100,32 @@ public class AddCommandTest {
         }
 
         @Override
+        public Path getAccountFilePath() {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public void setAccountFilePath(Path accountFilePath) {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
         public Path getEzFoodieFilePath() {
             throw new AssertionError("This method should not be called.");
         }
 
         @Override
         public void setEzFoodieFilePath(Path ezFoodieFilePath) {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public void setAccount(ReadOnlyAccount account) {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public ReadOnlyAccount getAccount() {
             throw new AssertionError("This method should not be called.");
         }
 

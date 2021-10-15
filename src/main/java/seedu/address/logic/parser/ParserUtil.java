@@ -2,13 +2,16 @@ package seedu.address.logic.parser;
 
 import static java.util.Objects.requireNonNull;
 
+import java.security.NoSuchAlgorithmException;
 import java.util.Collection;
 import java.util.HashSet;
 import java.util.Set;
 
 import seedu.address.commons.core.index.Index;
+import seedu.address.commons.util.EncryptUtil;
 import seedu.address.commons.util.StringUtil;
 import seedu.address.logic.parser.exceptions.ParseException;
+import seedu.address.model.account.Password;
 import seedu.address.model.member.Address;
 import seedu.address.model.member.Email;
 import seedu.address.model.member.Id;
@@ -149,5 +152,25 @@ public class ParserUtil {
             tagSet.add(parseTag(tagName));
         }
         return tagSet;
+    }
+
+    /**
+     * Parses {@code password} into a {@code Password} and returns it.
+     * Leading and trailing whitespaces will be trimmed.
+     *
+     * @throws ParseException if the given {@code password} is invalid.
+     */
+    public static Password parsePassword(String password) throws ParseException {
+        String trimmedPassword = password.trim();
+        String hashedTrimmedPassword;
+        try {
+            hashedTrimmedPassword = EncryptUtil.hash(trimmedPassword);
+        } catch (NoSuchAlgorithmException e) {
+            hashedTrimmedPassword = "";
+        }
+        if (!Password.isValidPassword(hashedTrimmedPassword)) {
+            throw new ParseException(Password.MESSAGE_CONSTRAINTS);
+        }
+        return new Password(hashedTrimmedPassword);
     }
 }

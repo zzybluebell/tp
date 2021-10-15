@@ -1,11 +1,16 @@
 package seedu.address.model.util;
 
+import java.security.NoSuchAlgorithmException;
 import java.util.Arrays;
 import java.util.Set;
 import java.util.stream.Collectors;
 
+import seedu.address.commons.util.EncryptUtil;
+import seedu.address.model.Account;
 import seedu.address.model.EzFoodie;
+import seedu.address.model.ReadOnlyAccount;
 import seedu.address.model.ReadOnlyEzFoodie;
+import seedu.address.model.account.Password;
 import seedu.address.model.member.Address;
 import seedu.address.model.member.Email;
 import seedu.address.model.member.Id;
@@ -40,6 +45,16 @@ public class SampleDataUtil {
                 new Email("royb@example.com"), new Address("Blk 45 Aljunied Street 85, #11-31"),
                 new RegistrationTimestamp("1609563600000"), getTagSet("colleagues"))
         };
+    }
+
+    public static ReadOnlyAccount getDefaultPassword() {
+        Password password;
+        try {
+            password = new Password(EncryptUtil.hash(Password.DEFAULT_PLAINTEXT_PASSWORD));
+        } catch (NoSuchAlgorithmException e) {
+            password = new Password("");
+        }
+        return new Account(password);
     }
 
     public static ReadOnlyEzFoodie getSampleEzFoodie() {
