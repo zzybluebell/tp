@@ -4,6 +4,12 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static seedu.address.commons.core.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
 import static seedu.address.commons.core.Messages.MESSAGE_UNKNOWN_COMMAND;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_EMAIL;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_ID;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_MEMBER;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_NAME;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_PHONE;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_REGISTRATION_DATE;
 import static seedu.address.testutil.Assert.assertThrows;
 import static seedu.address.testutil.TypicalIndexes.INDEX_FIRST_MEMBER;
 import static seedu.address.testutil.TypicalMembers.AMY;
@@ -27,8 +33,12 @@ import seedu.address.logic.commands.ListCommand;
 import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.model.Model;
 import seedu.address.model.ModelManager;
+import seedu.address.model.member.EmailContainsKeywordsPredicate;
+import seedu.address.model.member.IdContainsKeywordsPredicate;
 import seedu.address.model.member.Member;
 import seedu.address.model.member.NameContainsKeywordsPredicate;
+import seedu.address.model.member.PhoneContainsKeywordsPredicate;
+import seedu.address.model.member.RegistrationDateContainsKeywordsPredicate;
 import seedu.address.testutil.EditMemberDescriptorBuilder;
 import seedu.address.testutil.MemberBuilder;
 import seedu.address.testutil.MemberUtil;
@@ -74,11 +84,48 @@ public class EzFoodieParserTest {
     }
 
     @Test
-    public void parseCommand_find() throws Exception {
+    public void parseCommand_findById() throws Exception {
+        List<String> keywords = Arrays.asList("10001", "10002", "10003");
+        FindCommand command = (FindCommand) parser.parseCommand(
+                FindCommand.COMMAND_WORD + " " + PREFIX_MEMBER + " " + PREFIX_ID + " "
+                        + keywords.stream().collect(Collectors.joining(" ")));
+        assertEquals(new FindCommand(new IdContainsKeywordsPredicate(keywords)), command);
+    }
+
+    @Test
+    public void parseCommand_findByName() throws Exception {
         List<String> keywords = Arrays.asList("foo", "bar", "baz");
         FindCommand command = (FindCommand) parser.parseCommand(
-                FindCommand.COMMAND_WORD + " " + keywords.stream().collect(Collectors.joining(" ")));
+                FindCommand.COMMAND_WORD + " " + PREFIX_MEMBER + " " + PREFIX_NAME + " "
+                        + keywords.stream().collect(Collectors.joining(" ")));
         assertEquals(new FindCommand(new NameContainsKeywordsPredicate(keywords)), command);
+    }
+
+    @Test
+    public void parseCommand_findByPhone() throws Exception {
+        List<String> keywords = Arrays.asList("87328807", "99272758", "62784325");
+        FindCommand command = (FindCommand) parser.parseCommand(
+                FindCommand.COMMAND_WORD + " " + PREFIX_MEMBER + " " + PREFIX_PHONE + " "
+                        + keywords.stream().collect(Collectors.joining(" ")));
+        assertEquals(new FindCommand(new PhoneContainsKeywordsPredicate(keywords)), command);
+    }
+
+    @Test
+    public void parseCommand_findByEmail() throws Exception {
+        List<String> keywords = Arrays.asList("ben@gmail.com", "sunny@gmail.com", "jerry@gmail.com");
+        FindCommand command = (FindCommand) parser.parseCommand(
+                FindCommand.COMMAND_WORD + " " + PREFIX_MEMBER + " " + PREFIX_EMAIL + " "
+                        + keywords.stream().collect(Collectors.joining(" ")));
+        assertEquals(new FindCommand(new EmailContainsKeywordsPredicate(keywords)), command);
+    }
+
+    @Test
+    public void parseCommand_findByRegistrationDate() throws Exception {
+        List<String> keywords = Arrays.asList("2021-01-01", "2021-01-02", "2021-01-10");
+        FindCommand command = (FindCommand) parser.parseCommand(
+                FindCommand.COMMAND_WORD + " " + PREFIX_MEMBER + " " + PREFIX_REGISTRATION_DATE + " "
+                        + keywords.stream().collect(Collectors.joining(" ")));
+        assertEquals(new FindCommand(new RegistrationDateContainsKeywordsPredicate(keywords)), command);
     }
 
     @Test

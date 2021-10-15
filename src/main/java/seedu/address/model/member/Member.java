@@ -156,6 +156,7 @@ public class Member {
                 && otherMember.getPhone().equals(getPhone())
                 && otherMember.getEmail().equals(getEmail())
                 && otherMember.getAddress().equals(getAddress())
+                && otherMember.getRegistrationTimestamp().equals(getRegistrationTimestamp())
                 && otherMember.getTags().equals(getTags())
                 && otherMember.getTransactions().equals(getTransactions());
     }
@@ -163,7 +164,7 @@ public class Member {
     @Override
     public int hashCode() {
         // use this method for custom fields hashing instead of implementing your own
-        return Objects.hash(id, name, phone, email, address, tags, transactions);
+        return Objects.hash(id, name, phone, email, address, registrationTimestamp, tags, transactions);
     }
 
     @Override
