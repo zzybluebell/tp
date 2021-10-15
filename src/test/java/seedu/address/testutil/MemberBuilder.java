@@ -80,22 +80,6 @@ public class MemberBuilder {
     }
 
     /**
-     * Parses the {@code tags} into a {@code Set<Tag>} and set it to the {@code Member} that we are building.
-     */
-    public MemberBuilder withTags(String ... tags) {
-        this.tags = SampleDataUtil.getTagSet(tags);
-        return this;
-    }
-
-    /**
-     * Sets the {@code Address} of the {@code Member} that we are building.
-     */
-    public MemberBuilder withAddress(String address) {
-        this.address = new Address(address);
-        return this;
-    }
-
-    /**
      * Sets the {@code Phone} of the {@code Member} that we are building.
      */
     public MemberBuilder withPhone(String phone) {
@@ -112,10 +96,35 @@ public class MemberBuilder {
     }
 
     /**
+     * Sets the {@code Address} of the {@code Member} that we are building.
+     */
+    public MemberBuilder withAddress(String address) {
+        this.address = new Address(address);
+        return this;
+    }
+
+    /**
      * Sets the {@code RegistrationTimestamp} of the {@code Member} that we are building.
      */
     public MemberBuilder withRegistrationTimestamp(String registrationTimestamp) {
         this.registrationTimestamp = new RegistrationTimestamp(registrationTimestamp);
+        return this;
+    }
+
+    /**
+     * Parses the {@code tags} into a {@code Set<Tag>} and set it to the {@code Member} that we are building.
+     */
+    public MemberBuilder withTags(String ... tags) {
+        this.tags = SampleDataUtil.getTagSet(tags);
+        return this;
+    }
+
+    /**
+     * Parses the {@code transactions} into a {@code Set<Transaction>} and set it to the {@code Member}
+     * that we are building.
+     */
+    public MemberBuilder withTransactions(String ... transactions) {
+        this.transactions = SampleDataUtil.getTransactionSet(transactions);
         return this;
     }
 
