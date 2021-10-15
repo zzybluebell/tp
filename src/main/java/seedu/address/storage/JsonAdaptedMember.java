@@ -145,7 +145,9 @@ class JsonAdaptedMember {
         final RegistrationTimestamp modelRegistrationTimestamp = new RegistrationTimestamp(registrationTimestamp);
 
         final Set<Tag> modelTags = new HashSet<>(memberTags);
+
         final Set<Transaction> modelTransactions = new HashSet<>(memberTransactions);
+
         return new Member(modelId, modelName, modelPhone, modelEmail, modelAddress, modelRegistrationTimestamp,
                 modelTags, modelTransactions);
     }
