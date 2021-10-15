@@ -25,9 +25,11 @@ import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.model.Model;
 import seedu.address.model.ModelManager;
+import seedu.address.model.ReadOnlyAccount;
 import seedu.address.model.ReadOnlyEzFoodie;
 import seedu.address.model.UserPrefs;
 import seedu.address.model.member.Member;
+import seedu.address.storage.JsonAccountStorage;
 import seedu.address.storage.JsonEzFoodieStorage;
 import seedu.address.storage.JsonUserPrefsStorage;
 import seedu.address.storage.StorageManager;
@@ -44,10 +46,12 @@ public class LogicManagerTest {
 
     @BeforeEach
     public void setUp() {
+        JsonAccountStorage accountStorage =
+                new JsonAccountStorage(temporaryFolder.resolve("account.json"));
         JsonEzFoodieStorage ezFoodieStorage =
                 new JsonEzFoodieStorage(temporaryFolder.resolve("ezfoodie.json"));
         JsonUserPrefsStorage userPrefsStorage = new JsonUserPrefsStorage(temporaryFolder.resolve("userPrefs.json"));
-        StorageManager storage = new StorageManager(ezFoodieStorage, userPrefsStorage);
+        StorageManager storage = new StorageManager(accountStorage, ezFoodieStorage, userPrefsStorage);
         logic = new LogicManager(model, storage, ExecutionStatus.TEST);
     }
 
@@ -72,11 +76,13 @@ public class LogicManagerTest {
     @Test
     public void execute_storageThrowsIoException_throwsCommandException() {
         // Setup LogicManager with JsonEzFoodieIoExceptionThrowingStub
+        JsonAccountStorage accountStorage =
+                new JsonAccountIoExceptionThrowingStub(temporaryFolder.resolve("ioExceptionAccount.json"));
         JsonEzFoodieStorage ezFoodieStorage =
                 new JsonEzFoodieIoExceptionThrowingStub(temporaryFolder.resolve("ioExceptionEzFoodie.json"));
         JsonUserPrefsStorage userPrefsStorage =
                 new JsonUserPrefsStorage(temporaryFolder.resolve("ioExceptionUserPrefs.json"));
-        StorageManager storage = new StorageManager(ezFoodieStorage, userPrefsStorage);
+        StorageManager storage = new StorageManager(accountStorage, ezFoodieStorage, userPrefsStorage);
         logic = new LogicManager(model, storage, ExecutionStatus.TEST);
 
         // Execute add command
@@ -130,7 +136,7 @@ public class LogicManagerTest {
      */
     private void assertCommandFailure(String inputCommand, Class<? extends Throwable> expectedException,
             String expectedMessage) {
-        Model expectedModel = new ModelManager(model.getEzFoodie(), new UserPrefs());
+        Model expectedModel = new ModelManager(model.getAccount(), model.getEzFoodie(), new UserPrefs());
         assertCommandFailure(inputCommand, expectedException, expectedMessage, expectedModel);
     }
 
@@ -145,6 +151,20 @@ public class LogicManagerTest {
             String expectedMessage, Model expectedModel) {
         assertThrows(expectedException, expectedMessage, () -> logic.execute(inputCommand));
         assertEquals(expectedModel, model);
+    }
+
+    /**
+     * A stub class to throw an {@code IOException} when the save method is called.
+     */
+    private static class JsonAccountIoExceptionThrowingStub extends JsonAccountStorage {
+        private JsonAccountIoExceptionThrowingStub(Path filePath) {
+            super(filePath);
+        }
+
+        @Override
+        public void saveAccount(ReadOnlyAccount acount, Path filePath) throws IOException {
+            throw DUMMY_IO_EXCEPTION;
+        }
     }
 
     /**

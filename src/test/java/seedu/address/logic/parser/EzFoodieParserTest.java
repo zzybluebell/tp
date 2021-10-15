@@ -30,10 +30,12 @@ import seedu.address.logic.commands.ExitCommand;
 import seedu.address.logic.commands.FindCommand;
 import seedu.address.logic.commands.HelpCommand;
 import seedu.address.logic.commands.ListCommand;
+import seedu.address.logic.commands.LoginCommand;
 import seedu.address.logic.commands.LogoutCommand;
 import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.model.Model;
 import seedu.address.model.ModelManager;
+import seedu.address.model.account.Password;
 import seedu.address.model.member.EmailContainsKeywordsPredicate;
 import seedu.address.model.member.IdContainsKeywordsPredicate;
 import seedu.address.model.member.Member;
@@ -76,6 +78,12 @@ public class EzFoodieParserTest {
         EditCommand command = (EditCommand) parser.parseCommand(EditCommand.COMMAND_WORD + " "
                 + INDEX_FIRST_MEMBER.getOneBased() + " " + MemberUtil.getEditMemberDescriptorDetails(descriptor));
         assertEquals(new EditCommand(INDEX_FIRST_MEMBER, descriptor), command);
+    }
+
+    @Test
+    public void parseCommand_login() throws Exception {
+        assertTrue(parser.parseCommand(LoginCommand.COMMAND_WORD + " "
+                + Password.DEFAULT_PLAINTEXT_PASSWORD) instanceof LoginCommand);
     }
 
     @Test

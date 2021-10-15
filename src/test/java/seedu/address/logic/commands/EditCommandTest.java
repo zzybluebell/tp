@@ -19,6 +19,7 @@ import org.junit.jupiter.api.Test;
 import seedu.address.commons.core.Messages;
 import seedu.address.commons.core.index.Index;
 import seedu.address.logic.commands.EditCommand.EditMemberDescriptor;
+import seedu.address.model.Account;
 import seedu.address.model.EzFoodie;
 import seedu.address.model.Model;
 import seedu.address.model.ModelManager;
@@ -32,7 +33,7 @@ import seedu.address.testutil.MemberBuilder;
  */
 public class EditCommandTest {
 
-    private Model model = new ModelManager(getTypicalEzFoodie(), new UserPrefs());
+    private Model model = new ModelManager(new Account(), getTypicalEzFoodie(), new UserPrefs());
 
     @Test
     public void execute_allFieldsSpecifiedUnfilteredList_success() {
@@ -44,7 +45,7 @@ public class EditCommandTest {
 
         String expectedMessage = String.format(EditCommand.MESSAGE_EDIT_MEMBER_SUCCESS, editedMember);
 
-        Model expectedModel = new ModelManager(new EzFoodie(model.getEzFoodie()), new UserPrefs());
+        Model expectedModel = new ModelManager(new Account(), new EzFoodie(model.getEzFoodie()), new UserPrefs());
         expectedModel.setMember(memberToEdit, editedMember);
 
         assertCommandSuccess(editCommand, model, expectedMessage, expectedModel);
@@ -65,7 +66,7 @@ public class EditCommandTest {
 
         String expectedMessage = String.format(EditCommand.MESSAGE_EDIT_MEMBER_SUCCESS, editedMember);
 
-        Model expectedModel = new ModelManager(new EzFoodie(model.getEzFoodie()), new UserPrefs());
+        Model expectedModel = new ModelManager(new Account(), new EzFoodie(model.getEzFoodie()), new UserPrefs());
         expectedModel.setMember(lastMember, editedMember);
 
         assertCommandSuccess(editCommand, model, expectedMessage, expectedModel);
@@ -78,7 +79,7 @@ public class EditCommandTest {
 
         String expectedMessage = String.format(EditCommand.MESSAGE_EDIT_MEMBER_SUCCESS, editedMember);
 
-        Model expectedModel = new ModelManager(new EzFoodie(model.getEzFoodie()), new UserPrefs());
+        Model expectedModel = new ModelManager(new Account(), new EzFoodie(model.getEzFoodie()), new UserPrefs());
 
         assertCommandSuccess(editCommand, model, expectedMessage, expectedModel);
     }
@@ -94,7 +95,7 @@ public class EditCommandTest {
 
         String expectedMessage = String.format(EditCommand.MESSAGE_EDIT_MEMBER_SUCCESS, editedMember);
 
-        Model expectedModel = new ModelManager(new EzFoodie(model.getEzFoodie()), new UserPrefs());
+        Model expectedModel = new ModelManager(new Account(), new EzFoodie(model.getEzFoodie()), new UserPrefs());
         expectedModel.setMember(model.getFilteredMemberList().get(0), editedMember);
 
         assertCommandSuccess(editCommand, model, expectedMessage, expectedModel);

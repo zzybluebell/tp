@@ -15,6 +15,7 @@ import java.util.Collections;
 
 import org.junit.jupiter.api.Test;
 
+import seedu.address.model.Account;
 import seedu.address.model.Model;
 import seedu.address.model.ModelManager;
 import seedu.address.model.UserPrefs;
@@ -24,8 +25,8 @@ import seedu.address.model.member.NameContainsKeywordsPredicate;
  * Contains integration tests (interaction with the Model) for {@code FindCommand}.
  */
 public class FindCommandTest {
-    private Model model = new ModelManager(getTypicalEzFoodie(), new UserPrefs());
-    private Model expectedModel = new ModelManager(getTypicalEzFoodie(), new UserPrefs());
+    private Model model = new ModelManager(new Account(), getTypicalEzFoodie(), new UserPrefs());
+    private Model expectedModel = new ModelManager(new Account(), getTypicalEzFoodie(), new UserPrefs());
 
     @Test
     public void equals() {

@@ -19,26 +19,29 @@ import seedu.address.model.member.Member;
 public class ModelManager implements Model {
     private static final Logger logger = LogsCenter.getLogger(ModelManager.class);
 
+    private final Account account;
     private final EzFoodie ezFoodie;
     private final UserPrefs userPrefs;
     private final FilteredList<Member> filteredMembers;
 
     /**
-     * Initializes a ModelManager with the given ezFoodie and userPrefs.
+     * Initializes a ModelManager with the given account, ezFoodie and userPrefs.
      */
-    public ModelManager(ReadOnlyEzFoodie ezFoodie, ReadOnlyUserPrefs userPrefs) {
+    public ModelManager(ReadOnlyAccount account, ReadOnlyEzFoodie ezFoodie, ReadOnlyUserPrefs userPrefs) {
         super();
-        requireAllNonNull(ezFoodie, userPrefs);
+        requireAllNonNull(account, ezFoodie, userPrefs);
 
-        logger.fine("Initializing with ezFoodie: " + ezFoodie + " and user prefs " + userPrefs);
+        logger.fine("Initializing with account: " + account + ", + ezFoodie: " + ezFoodie
+                + " and user prefs " + userPrefs);
 
+        this.account = new Account(account);
         this.ezFoodie = new EzFoodie(ezFoodie);
         this.userPrefs = new UserPrefs(userPrefs);
         filteredMembers = new FilteredList<>(this.ezFoodie.getMemberList());
     }
 
     public ModelManager() {
-        this(new EzFoodie(), new UserPrefs());
+        this(new Account(), new EzFoodie(), new UserPrefs());
     }
 
     //=========== UserPrefs ==================================================================================
@@ -66,6 +69,17 @@ public class ModelManager implements Model {
     }
 
     @Override
+    public Path getAccountFilePath() {
+        return userPrefs.getAccountFilePath();
+    }
+
+    @Override
+    public void setAccountFilePath(Path accountFilePath) {
+        requireNonNull(accountFilePath);
+        userPrefs.setAccountFilePath(accountFilePath);
+    }
+
+    @Override
     public Path getEzFoodieFilePath() {
         return userPrefs.getEzFoodieFilePath();
     }
@@ -74,6 +88,19 @@ public class ModelManager implements Model {
     public void setEzFoodieFilePath(Path ezFoodieFilePath) {
         requireNonNull(ezFoodieFilePath);
         userPrefs.setEzFoodieFilePath(ezFoodieFilePath);
+    }
+
+    //=========== Account ====================================================================================
+
+    @Override
+    public void setAccount(ReadOnlyAccount account) {
+        requireNonNull(account);
+        this.account.resetData(account);
+    }
+
+    @Override
+    public ReadOnlyAccount getAccount() {
+        return account;
     }
 
     //=========== EzFoodie ===================================================================================

@@ -35,6 +35,16 @@ public interface Model {
     void setGuiSettings(GuiSettings guiSettings);
 
     /**
+     * Returns the user prefs' account path.
+     */
+    Path getAccountFilePath();
+
+    /**
+     * Sets the user prefs' account path.
+     */
+    void setAccountFilePath(Path accountFilePath);
+
+    /**
      * Returns the user prefs' ezFoodie file path.
      */
     Path getEzFoodieFilePath();
@@ -43,6 +53,14 @@ public interface Model {
      * Sets the user prefs' ezFoodie file path.
      */
     void setEzFoodieFilePath(Path ezFoodieFilePath);
+
+    /**
+     * Replaces account with the data in {@code account}.
+     */
+    void setAccount(ReadOnlyAccount account);
+
+    /** Returns the Account */
+    ReadOnlyAccount getAccount();
 
     /**
      * Replaces ezFoodie data with the data in {@code ezFoodie}.
