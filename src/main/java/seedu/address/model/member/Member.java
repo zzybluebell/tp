@@ -193,6 +193,7 @@ public class Member {
             builder.append("; Transactions: ");
             transactions.forEach(builder::append);
         }
+
         return builder.toString();
     }
 
