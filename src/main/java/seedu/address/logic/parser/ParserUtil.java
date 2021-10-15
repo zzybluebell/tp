@@ -16,6 +16,7 @@ import seedu.address.model.member.Name;
 import seedu.address.model.member.Phone;
 import seedu.address.model.member.RegistrationTimestamp;
 import seedu.address.model.tag.Tag;
+import seedu.address.model.transaction.Transaction;
 
 /**
  * Contains utility methods used for parsing strings in the various *Parser classes.
@@ -149,5 +150,32 @@ public class ParserUtil {
             tagSet.add(parseTag(tagName));
         }
         return tagSet;
+    }
+
+    /**
+     * Parses a {@code String transaction} into a {@code Transaction}.
+     * Leading and trailing whitespaces will be trimmed.
+     *
+     * @throws ParseException if the given {@code transaction} is invalid.
+     */
+    public static Transaction parseTransaction(String transaction) throws ParseException {
+        requireNonNull(transaction);
+        String trimmedTransaction = transaction.trim();
+        if (!Transaction.isValidTransactionAmount(trimmedTransaction)) {
+            throw new ParseException(Transaction.MESSAGE_CONSTRAINTS);
+        }
+        return new Transaction(trimmedTransaction);
+    }
+
+    /**
+     * Parses {@code Collection<String> transactions} into a {@code Set<Transaction>}.
+     */
+    public static Set<Transaction> parseTransactions(Collection<String> transactions) throws ParseException {
+        requireNonNull(transactions);
+        final Set<Transaction> transactionSet = new HashSet<>();
+        for (String transactionAmount : transactions) {
+            transactionSet.add(parseTransaction(transactionAmount));
+        }
+        return transactionSet;
     }
 }

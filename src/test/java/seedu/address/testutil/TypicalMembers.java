@@ -14,6 +14,8 @@ import static seedu.address.logic.commands.CommandTestUtil.VALID_REGISTRATION_TI
 import static seedu.address.logic.commands.CommandTestUtil.VALID_REGISTRATION_TIMESTAMP_BOB;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_TAG_FRIEND;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_TAG_HUSBAND;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_TRANSACTION_200;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_TRANSACTION_300;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -29,16 +31,18 @@ public class TypicalMembers {
 
     public static final Member ALICE = new MemberBuilder().withId("00001").withName("Alice Pauline")
             .withAddress("123, Jurong West Ave 6, #08-111").withEmail("alice@example.com")
-            .withPhone("94351253").withTags("friends").withRegistrationTimestamp("1609459200000").build();
+            .withPhone("94351253").withRegistrationTimestamp("1609459200000")
+            .withTags("friends").withTransactions("567.54", "43.34").build();
     public static final Member BENSON = new MemberBuilder().withId("00002").withName("Benson Meier")
-            .withAddress("311, Clementi Ave 2, #02-25").withEmail("johnd@example.com").withPhone("98765432")
-            .withTags("owesMoney", "friends").withRegistrationTimestamp("1609462800000").build();
+            .withAddress("311, Clementi Ave 2, #02-25").withEmail("johnd@example.com")
+            .withPhone("98765432").withRegistrationTimestamp("1609462800000")
+            .withTags("owesMoney", "friends").withTransactions("645.39").build();
     public static final Member CARL = new MemberBuilder().withId("00003").withName("Carl Kurz")
             .withPhone("95352563").withEmail("heinz@example.com").withAddress("wall street")
-            .withRegistrationTimestamp("1609466400000").build();
+            .withRegistrationTimestamp("1609466400000").withTransactions("272.57").build();
     public static final Member DANIEL = new MemberBuilder().withId("00004").withName("Daniel Meier")
             .withPhone("87652533").withEmail("cornelia@example.com").withAddress("10th street")
-            .withTags("friends").withRegistrationTimestamp("1609470000000").build();
+            .withRegistrationTimestamp("1609470000000").withTags("friends").build();
     public static final Member ELLE = new MemberBuilder().withId("00005").withName("Elle Meyer")
             .withPhone("9482224").withEmail("werner@example.com").withAddress("michegan ave")
             .withRegistrationTimestamp("1609473600000").build();
@@ -60,11 +64,13 @@ public class TypicalMembers {
     // Manually added - Member's details found in {@code CommandTestUtil}
     public static final Member AMY = new MemberBuilder().withId(VALID_ID_AMY).withName(VALID_NAME_AMY)
             .withPhone(VALID_PHONE_AMY).withEmail(VALID_EMAIL_AMY).withAddress(VALID_ADDRESS_AMY)
-            .withRegistrationTimestamp(VALID_REGISTRATION_TIMESTAMP_AMY).withTags(VALID_TAG_FRIEND).build();
+            .withRegistrationTimestamp(VALID_REGISTRATION_TIMESTAMP_AMY)
+            .withTags(VALID_TAG_FRIEND).withTransactions(VALID_TRANSACTION_200).build();
     public static final Member BOB = new MemberBuilder().withId(VALID_ID_BOB).withName(VALID_NAME_BOB)
             .withPhone(VALID_PHONE_BOB).withEmail(VALID_EMAIL_BOB).withAddress(VALID_ADDRESS_BOB)
-            .withRegistrationTimestamp(VALID_REGISTRATION_TIMESTAMP_BOB).withTags(VALID_TAG_HUSBAND, VALID_TAG_FRIEND)
-            .build();
+            .withRegistrationTimestamp(VALID_REGISTRATION_TIMESTAMP_BOB)
+            .withTags(VALID_TAG_HUSBAND, VALID_TAG_FRIEND)
+            .withTransactions(VALID_TRANSACTION_200, VALID_TRANSACTION_300).build();
 
     public static final String KEYWORD_MATCHING_MEIER = "Meier"; // A keyword that matches MEIER
 
