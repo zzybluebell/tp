@@ -7,7 +7,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import seedu.address.commons.core.ExecutionStatus;
-import seedu.address.logic.commands.AddMemberCommand;
+import seedu.address.logic.commands.AddCommand;
 import seedu.address.logic.commands.ClearCommand;
 import seedu.address.logic.commands.Command;
 import seedu.address.logic.commands.DeleteCommand;
@@ -65,7 +65,7 @@ public class EzFoodieParser {
         final String arguments = matcher.group("arguments");
         switch (commandWord) {
 
-        case AddMemberCommand.COMMAND_WORD:
+        case AddCommand.COMMAND_WORD:
             return new AddCommandParser(model, executionStatus).parse(arguments);
 
         case EditCommand.COMMAND_WORD:

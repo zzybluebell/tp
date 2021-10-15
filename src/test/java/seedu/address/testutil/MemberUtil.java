@@ -2,14 +2,13 @@ package seedu.address.testutil;
 
 import static seedu.address.logic.parser.CliSyntax.PREFIX_ADDRESS;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_EMAIL;
-import static seedu.address.logic.parser.CliSyntax.PREFIX_MEMBER;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_NAME;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_PHONE;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_TAG;
 
 import java.util.Set;
 
-import seedu.address.logic.commands.AddMemberCommand;
+import seedu.address.logic.commands.AddCommand;
 import seedu.address.logic.commands.EditCommand.EditMemberDescriptor;
 import seedu.address.model.member.Member;
 import seedu.address.model.tag.Tag;
@@ -23,7 +22,7 @@ public class MemberUtil {
      * Returns an add command string for adding the {@code member}.
      */
     public static String getAddCommand(Member member) {
-        return AddMemberCommand.COMMAND_WORD + " " + getMemberDetails(member);
+        return AddCommand.COMMAND_WORD + " " + getMemberDetails(member);
     }
 
     /**
@@ -31,7 +30,6 @@ public class MemberUtil {
      */
     public static String getMemberDetails(Member member) {
         StringBuilder sb = new StringBuilder();
-        sb.append(PREFIX_MEMBER + " ");
         sb.append(PREFIX_NAME + member.getName().fullName + " ");
         sb.append(PREFIX_PHONE + member.getPhone().value + " ");
         sb.append(PREFIX_EMAIL + member.getEmail().value + " ");

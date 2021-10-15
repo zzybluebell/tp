@@ -27,7 +27,7 @@ public class AddCommandTest {
 
     @Test
     public void constructor_nullMember_throwsNullPointerException() {
-        assertThrows(NullPointerException.class, () -> new AddMemberCommand(null));
+        assertThrows(NullPointerException.class, () -> new AddCommand(null));
     }
 
     @Test
@@ -35,34 +35,33 @@ public class AddCommandTest {
         ModelStubAcceptingMemberAdded modelStub = new ModelStubAcceptingMemberAdded();
         Member validMember = new MemberBuilder().build();
 
-        CommandResult commandResult = new AddMemberCommand(validMember).execute(modelStub);
+        CommandResult commandResult = new AddCommand(validMember).execute(modelStub);
 
-        assertEquals(String.format(AddMemberCommand.MESSAGE_SUCCESS, validMember), commandResult.getFeedbackToUser());
+        assertEquals(String.format(AddCommand.MESSAGE_SUCCESS, validMember), commandResult.getFeedbackToUser());
         assertEquals(Arrays.asList(validMember), modelStub.membersAdded);
     }
 
     @Test
     public void execute_duplicateMember_throwsCommandException() {
         Member validMember = new MemberBuilder().build();
-        AddMemberCommand addMemberCommand = new AddMemberCommand(validMember);
+        AddCommand addCommand = new AddCommand(validMember);
         ModelStub modelStub = new ModelStubWithMember(validMember);
 
-        assertThrows(CommandException.class,
-                    AddMemberCommand.MESSAGE_DUPLICATE_MEMBER, () -> addMemberCommand.execute(modelStub));
+        assertThrows(CommandException.class, AddCommand.MESSAGE_DUPLICATE_MEMBER, () -> addCommand.execute(modelStub));
     }
 
     @Test
     public void equals() {
         Member alice = new MemberBuilder().withName("Alice").build();
         Member bob = new MemberBuilder().withName("Bob").build();
-        AddMemberCommand addAliceCommand = new AddMemberCommand(alice);
-        AddMemberCommand addBobCommand = new AddMemberCommand(bob);
+        AddCommand addAliceCommand = new AddCommand(alice);
+        AddCommand addBobCommand = new AddCommand(bob);
 
         // same object -> returns true
         assertTrue(addAliceCommand.equals(addAliceCommand));
 
         // same values -> returns true
-        AddMemberCommand addAliceCommandCopy = new AddMemberCommand(alice);
+        AddCommand addAliceCommandCopy = new AddCommand(alice);
         assertTrue(addAliceCommand.equals(addAliceCommandCopy));
 
         // different types -> returns false
