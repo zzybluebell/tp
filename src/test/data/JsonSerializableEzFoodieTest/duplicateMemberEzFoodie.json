@@ -6,6 +6,7 @@
     "email": "alice@example.com",
     "address": "123, Jurong West Ave 6, #08-111",
     "registrationTimestamp": "1609459200000",
+    "credit": "0",
     "tagged": [ "friends" ]
   }, {
     "id": "00001",
@@ -13,6 +14,7 @@
     "phone": "94351253",
     "email": "pauline@example.com",
     "address": "4th street",
-    "registrationTimestamp": "1609459200000"
+    "registrationTimestamp": "1609462800000",
+    "credit": "0"
   } ]
 }

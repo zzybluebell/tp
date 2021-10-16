@@ -21,6 +21,7 @@ import seedu.address.commons.util.CollectionUtil;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.Model;
 import seedu.address.model.member.Address;
+import seedu.address.model.member.Credit;
 import seedu.address.model.member.Email;
 import seedu.address.model.member.Id;
 import seedu.address.model.member.Member;
@@ -107,9 +108,11 @@ public class EditCommand extends Command {
         Set<Tag> updatedTags = editMemberDescriptor.getTags().orElse(memberToEdit.getTags());
         Set<Transaction> updatedTransactions = editMemberDescriptor.getTransactions()
                 .orElse((memberToEdit.getTransactions()));
+        Credit credit = new Credit("" + updatedTransactions.stream()
+                .mapToInt(transaction -> (int) Double.parseDouble(transaction.transactionAmount)).sum());
 
-        return new Member(id, updatedName, updatedPhone, updatedEmail,
-                updatedAddress, registrationTimestamp, updatedTags, updatedTransactions);
+        return new Member(id, updatedName, updatedPhone, updatedEmail, updatedAddress, registrationTimestamp, credit,
+                updatedTags, updatedTransactions);
     }
 
     @Override
