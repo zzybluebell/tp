@@ -1,6 +1,5 @@
 package seedu.address.logic.commands;
 
-import seedu.address.commons.core.Config;
 import seedu.address.commons.status.LoginStatus;
 import seedu.address.model.Model;
 import seedu.address.model.account.Password;
@@ -30,13 +29,13 @@ public class LoginCommand extends Command {
 
     @Override
     public CommandResult execute(Model model) {
-        if (Config.getLoginStatus() == LoginStatus.MANAGER) {
+        if (LoginStatus.getLoginStatus() == LoginStatus.MANAGER) {
             return new CommandResult(MESSAGE_ALREADY_IN_STATUS);
         }
         String inputPassword = password.value;
         String readPassword = model.getAccount().getPassword().value;
         if (inputPassword.equals(readPassword)) {
-            Config.setLoginStatus(LoginStatus.MANAGER);
+            LoginStatus.setLoginStatus(LoginStatus.MANAGER);
             return new CommandResult(MESSAGE_SUCCESS);
         }
         return new CommandResult(MESSAGE_FAILURE);

@@ -19,4 +19,12 @@ public class DateTimeUtil {
         long end = dateToTimestamp.getTime() + ONE_DAY_MILLISECONDS;
         return timestamp >= start && timestamp < end;
     }
+
+    /**
+     * Returns date converted by {@code timestamp}.
+     */
+    public static Date timestampToDate(long timestamp) {
+        Timestamp stamp = new Timestamp(timestamp);
+        return new Date(stamp.getTime());
+    }
 }

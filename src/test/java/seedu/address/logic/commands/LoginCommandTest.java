@@ -4,7 +4,6 @@ import static seedu.address.logic.commands.CommandTestUtil.assertCommandSuccess;
 
 import org.junit.jupiter.api.Test;
 
-import seedu.address.commons.core.Config;
 import seedu.address.commons.status.LoginStatus;
 import seedu.address.commons.util.EncryptUtil;
 import seedu.address.model.Model;
@@ -18,7 +17,7 @@ public class LoginCommandTest {
 
     @Test
     public void execute_inStaffLoginStatus_success() throws Exception {
-        Config.setLoginStatus(LoginStatus.STAFF);
+        LoginStatus.setLoginStatus(LoginStatus.STAFF);
         Model model = new ModelManager();
         Model expectedModel = new ModelManager();
         Password password = new Password(EncryptUtil.hash(CORRECT_PLAINTEXT_PASSWORD));
@@ -28,7 +27,7 @@ public class LoginCommandTest {
 
     @Test
     public void execute_inStaffLoginStatus_failure() throws Exception {
-        Config.setLoginStatus(LoginStatus.STAFF);
+        LoginStatus.setLoginStatus(LoginStatus.STAFF);
         Model model = new ModelManager();
         Model expectedModel = new ModelManager();
         Password password = new Password(EncryptUtil.hash(WRONG_PLAINTEXT_PASSWORD));
@@ -38,7 +37,7 @@ public class LoginCommandTest {
 
     @Test
     public void execute_inManagerLoginStatus_success() throws Exception {
-        Config.setLoginStatus(LoginStatus.MANAGER);
+        LoginStatus.setLoginStatus(LoginStatus.MANAGER);
         Model model = new ModelManager();
         Model expectedModel = new ModelManager();
         Password password = new Password(EncryptUtil.hash(CORRECT_PLAINTEXT_PASSWORD));
