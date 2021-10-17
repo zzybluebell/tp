@@ -113,17 +113,17 @@ public class CommandTestUtil {
      * Executes the given {@code command}, confirms that <br>
      * - a {@code CommandException} is thrown <br>
      * - the CommandException message matches {@code expectedMessage} <br>
-     * - the ezFoodie, filtered member list and selected member in {@code actualModel} remain unchanged
+     * - the ezFoodie, updated member list and selected member in {@code actualModel} remain unchanged
      */
     public static void assertCommandFailure(Command command, Model actualModel, String expectedMessage) {
         // we are unable to defensively copy the model for comparison later, so we can
         // only do so by copying its components.
         EzFoodie expectedEzFoodie = new EzFoodie(actualModel.getEzFoodie());
-        List<Member> expectedFilteredList = new ArrayList<>(actualModel.getUpdatedMemberList());
+        List<Member> expectedUpdatedList = new ArrayList<>(actualModel.getUpdatedMemberList());
 
         assertThrows(CommandException.class, expectedMessage, () -> command.execute(actualModel));
         assertEquals(expectedEzFoodie, actualModel.getEzFoodie());
-        assertEquals(expectedFilteredList, actualModel.getUpdatedMemberList());
+        assertEquals(expectedUpdatedList, actualModel.getUpdatedMemberList());
     }
 
     /**

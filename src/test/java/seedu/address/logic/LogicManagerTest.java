@@ -19,7 +19,9 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.io.TempDir;
 
+import seedu.address.commons.exceptions.PermissionException;
 import seedu.address.commons.status.ExecutionStatus;
+import seedu.address.commons.status.LoginStatus;
 import seedu.address.logic.commands.AddCommand;
 import seedu.address.logic.commands.CommandResult;
 import seedu.address.logic.commands.DeleteCommand;
@@ -66,8 +68,10 @@ public class LogicManagerTest {
 
     @Test
     public void execute_commandExecutionError_throwsCommandException() {
+        LoginStatus.setLoginStatus(LoginStatus.MANAGER);
         String deleteCommand = DeleteCommand.COMMAND_WORD + " " + PREFIX_MEMBER + " " + PREFIX_INDEX + " 9";
         assertCommandException(deleteCommand, MESSAGE_INVALID_MEMBER_DISPLAYED_INDEX);
+        LoginStatus.setLoginStatus(LoginStatus.STAFF);
     }
 
     @Test
@@ -99,7 +103,7 @@ public class LogicManagerTest {
     }
 
     @Test
-    public void getFilteredMemberList_modifyList_throwsUnsupportedOperationException() {
+    public void getUpdatedMemberList_modifyList_throwsUnsupportedOperationException() {
         assertThrows(UnsupportedOperationException.class, () -> logic.getUpdatedMemberList().remove(0));
     }
 
@@ -111,7 +115,7 @@ public class LogicManagerTest {
      * @see #assertCommandFailure(String, Class, String, Model)
      */
     private void assertCommandSuccess(String inputCommand, String expectedMessage,
-            Model expectedModel) throws CommandException, ParseException {
+            Model expectedModel) throws CommandException, ParseException, PermissionException {
         CommandResult result = logic.execute(inputCommand);
         assertEquals(expectedMessage, result.getFeedbackToUser());
         assertEquals(expectedModel, model);

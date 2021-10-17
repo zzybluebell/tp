@@ -6,7 +6,10 @@ import static seedu.address.commons.core.Messages.MESSAGE_UNKNOWN_COMMAND;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import seedu.address.commons.core.Messages;
+import seedu.address.commons.exceptions.PermissionException;
 import seedu.address.commons.status.ExecutionStatus;
+import seedu.address.commons.status.LoginStatus;
 import seedu.address.logic.commands.AddCommand;
 import seedu.address.logic.commands.ClearCommand;
 import seedu.address.logic.commands.Command;
@@ -57,8 +60,9 @@ public class EzFoodieParser {
      * @param userInput full user input string
      * @return the command based on the user input
      * @throws ParseException if the user input does not conform the expected format
+     * @throws PermissionException if the user does not have insufficient permission
      */
-    public Command parseCommand(String userInput) throws ParseException {
+    public Command parseCommand(String userInput) throws ParseException, PermissionException {
         final Matcher matcher = BASIC_COMMAND_FORMAT.matcher(userInput.trim());
         if (!matcher.matches()) {
             throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, HelpCommand.MESSAGE_USAGE));
@@ -78,7 +82,11 @@ public class EzFoodieParser {
             return new EditCommandParser().parse(arguments);
 
         case DeleteCommand.COMMAND_WORD:
-            return new DeleteCommandParser().parse(arguments);
+            if (LoginStatus.getLoginStatus() == LoginStatus.MANAGER) {
+                return new DeleteCommandParser().parse(arguments);
+            } else {
+                throw new PermissionException(Messages.MESSAGE_PERMISSION_DENIED);
+            }
 
         case ClearCommand.COMMAND_WORD:
             return new ClearCommand();
@@ -87,7 +95,11 @@ public class EzFoodieParser {
             return new ListCommandParser().parse(arguments);
 
         case SortCommand.COMMAND_WORD:
-            return new SortCommandParser().parse(arguments);
+            if (LoginStatus.getLoginStatus() == LoginStatus.MANAGER) {
+                return new SortCommandParser().parse(arguments);
+            } else {
+                throw new PermissionException(Messages.MESSAGE_PERMISSION_DENIED);
+            }
 
         case ExitCommand.COMMAND_WORD:
             return new ExitCommand();
