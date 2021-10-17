@@ -9,6 +9,7 @@ import static seedu.address.testutil.Assert.assertThrows;
 import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Comparator;
 import java.util.function.Predicate;
 
 import org.junit.jupiter.api.Test;
@@ -165,12 +166,17 @@ public class AddCommandTest {
         }
 
         @Override
-        public ObservableList<Member> getFilteredMemberList() {
+        public ObservableList<Member> getUpdatedMemberList() {
             throw new AssertionError("This method should not be called.");
         }
 
         @Override
         public void updateFilteredMemberList(Predicate<Member> predicate) {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public void updateSortedMemberList(Comparator<Member> comparator) {
             throw new AssertionError("This method should not be called.");
         }
     }

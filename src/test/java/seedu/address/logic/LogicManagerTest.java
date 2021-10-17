@@ -100,7 +100,7 @@ public class LogicManagerTest {
 
     @Test
     public void getFilteredMemberList_modifyList_throwsUnsupportedOperationException() {
-        assertThrows(UnsupportedOperationException.class, () -> logic.getFilteredMemberList().remove(0));
+        assertThrows(UnsupportedOperationException.class, () -> logic.getUpdatedMemberList().remove(0));
     }
 
     /**

@@ -15,6 +15,8 @@ import java.util.Arrays;
 import org.junit.jupiter.api.Test;
 
 import seedu.address.commons.core.GuiSettings;
+import seedu.address.commons.status.SortStatus;
+import seedu.address.model.member.CreditSortComparator;
 import seedu.address.model.member.NameContainsKeywordsPredicate;
 import seedu.address.testutil.EzFoodieBuilder;
 
@@ -90,7 +92,7 @@ public class ModelManagerTest {
 
     @Test
     public void getFilteredMemberList_modifyList_throwsUnsupportedOperationException() {
-        assertThrows(UnsupportedOperationException.class, () -> modelManager.getFilteredMemberList().remove(0));
+        assertThrows(UnsupportedOperationException.class, () -> modelManager.getUpdatedMemberList().remove(0));
     }
 
     @Test
@@ -120,6 +122,10 @@ public class ModelManagerTest {
         // different filteredList -> returns false
         String[] keywords = ALICE.getName().fullName.split("\\s+");
         modelManager.updateFilteredMemberList(new NameContainsKeywordsPredicate(Arrays.asList(keywords)));
+        assertFalse(modelManager.equals(new ModelManager(account, ezFoodie, userPrefs)));
+
+        // different sortedList -> returns false
+        modelManager.updateSortedMemberList(new CreditSortComparator(SortStatus.DESC));
         assertFalse(modelManager.equals(new ModelManager(account, ezFoodie, userPrefs)));
 
         // resets modelManager to initial state for upcoming tests

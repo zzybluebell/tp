@@ -12,6 +12,8 @@ public class Credit {
     public static final String MESSAGE_CONSTRAINTS =
             "Credits should only contain digits, and it should not be blank";
     public static final String VALIDATION_REGEX = "[\\p{Digit}]*";
+    public static final int MAX = 99999999;
+    public static final int LENGTH = 8; // Max credit is 99999999
 
     public final String value;
 
@@ -30,7 +32,14 @@ public class Credit {
      * Returns true if a given string is a valid credit.
      */
     public static boolean isValidCredit(String test) {
-        return test.matches(VALIDATION_REGEX);
+        return test.matches(VALIDATION_REGEX) && test.length() <= LENGTH;
+    }
+
+    /**
+     * Returns int value of credit.
+     */
+    public int getIntValue() {
+        return Integer.parseInt(value);
     }
 
     @Override

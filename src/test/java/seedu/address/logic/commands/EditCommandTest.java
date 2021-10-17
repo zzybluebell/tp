@@ -40,7 +40,7 @@ public class EditCommandTest {
 
     @Test
     public void execute_allFieldsSpecifiedUnfilteredList_success() {
-        Member memberToEdit = model.getFilteredMemberList().get(0);
+        Member memberToEdit = model.getUpdatedMemberList().get(0);
         Member editedMember = new MemberBuilder().withId(memberToEdit.getId().value)
                 .withRegistrationTimestamp(memberToEdit.getRegistrationTimestamp().value)
                 .withCredit("0").build();
@@ -57,8 +57,8 @@ public class EditCommandTest {
 
     @Test
     public void execute_someFieldsSpecifiedUnfilteredList_success() {
-        Index indexLastMember = Index.fromOneBased(model.getFilteredMemberList().size());
-        Member lastMember = model.getFilteredMemberList().get(indexLastMember.getZeroBased());
+        Index indexLastMember = Index.fromOneBased(model.getUpdatedMemberList().size());
+        Member lastMember = model.getUpdatedMemberList().get(indexLastMember.getZeroBased());
 
         MemberBuilder memberInList = new MemberBuilder(lastMember);
         Member editedMember = memberInList.withName(VALID_NAME_BOB).withPhone(VALID_PHONE_BOB)
@@ -81,7 +81,7 @@ public class EditCommandTest {
     @Test
     public void execute_noFieldSpecifiedUnfilteredList_success() {
         EditCommand editCommand = new EditCommand(INDEX_FIRST_MEMBER, new EditMemberDescriptor());
-        Member editedMember = model.getFilteredMemberList().get(INDEX_FIRST_MEMBER.getZeroBased());
+        Member editedMember = model.getUpdatedMemberList().get(INDEX_FIRST_MEMBER.getZeroBased());
 
         String expectedMessage = String.format(EditCommand.MESSAGE_EDIT_MEMBER_SUCCESS, editedMember);
 
@@ -94,7 +94,7 @@ public class EditCommandTest {
     public void execute_filteredList_success() {
         showMemberAtIndex(model, INDEX_FIRST_MEMBER);
 
-        Member memberInFilteredList = model.getFilteredMemberList().get(INDEX_FIRST_MEMBER.getZeroBased());
+        Member memberInFilteredList = model.getUpdatedMemberList().get(INDEX_FIRST_MEMBER.getZeroBased());
         Member editedMember = new MemberBuilder(memberInFilteredList).withName(VALID_NAME_BOB).build();
         EditCommand editCommand = new EditCommand(INDEX_FIRST_MEMBER,
                 new EditMemberDescriptorBuilder().withName(VALID_NAME_BOB).build());
@@ -102,14 +102,14 @@ public class EditCommandTest {
         String expectedMessage = String.format(EditCommand.MESSAGE_EDIT_MEMBER_SUCCESS, editedMember);
 
         Model expectedModel = new ModelManager(new Account(), new EzFoodie(model.getEzFoodie()), new UserPrefs());
-        expectedModel.setMember(model.getFilteredMemberList().get(0), editedMember);
+        expectedModel.setMember(model.getUpdatedMemberList().get(0), editedMember);
 
         assertCommandSuccess(editCommand, model, expectedMessage, expectedModel);
     }
 
     @Test
     public void execute_duplicateMemberUnfilteredList_failure() {
-        Member firstMember = model.getFilteredMemberList().get(INDEX_FIRST_MEMBER.getZeroBased());
+        Member firstMember = model.getUpdatedMemberList().get(INDEX_FIRST_MEMBER.getZeroBased());
         EditMemberDescriptor descriptor = new EditMemberDescriptorBuilder(firstMember).build();
         EditCommand editCommand = new EditCommand(INDEX_SECOND_MEMBER, descriptor);
 
@@ -130,7 +130,7 @@ public class EditCommandTest {
 
     @Test
     public void execute_invalidMemberIndexUnfilteredList_failure() {
-        Index outOfBoundIndex = Index.fromOneBased(model.getFilteredMemberList().size() + 1);
+        Index outOfBoundIndex = Index.fromOneBased(model.getUpdatedMemberList().size() + 1);
         EditMemberDescriptor descriptor = new EditMemberDescriptorBuilder().withName(VALID_NAME_BOB).build();
         EditCommand editCommand = new EditCommand(outOfBoundIndex, descriptor);
 

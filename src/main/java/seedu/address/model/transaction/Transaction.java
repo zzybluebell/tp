@@ -12,6 +12,7 @@ public class Transaction {
     public static final String MESSAGE_CONSTRAINTS =
             "Transactions amounts should be numeric with 2 decimal places";
     public static final String VALIDATION_REGEX = "\\d*\\.\\d{2}$";
+    public static final int LENGTH = 7; // Max amount is 9999.99
 
     public final String transactionAmount;
 
@@ -25,11 +26,19 @@ public class Transaction {
         checkArgument(isValidTransactionAmount(transactionAmount), MESSAGE_CONSTRAINTS);
         this.transactionAmount = transactionAmount;
     }
+
     /**
      * Returns true if a given string is a valid transaction amount.
      */
     public static boolean isValidTransactionAmount(String test) {
-        return test.matches(VALIDATION_REGEX);
+        return test.matches(VALIDATION_REGEX) && test.length() <= LENGTH;
+    }
+
+    /**
+     * Returns double value of transaction amount.
+     */
+    public double getDoubleValue() {
+        return Double.parseDouble(transactionAmount);
     }
 
     @Override
