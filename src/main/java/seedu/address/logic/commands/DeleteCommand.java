@@ -28,30 +28,30 @@ public class DeleteCommand extends Command {
             + " (INDEX must be a positive integer)\n"
             + "Delete by member ID: " + PREFIX_MEMBER + " [" + PREFIX_ID + " ID]\n"
             + "Example:\n"
-            + "Delete by index number: " + COMMAND_WORD + " " + PREFIX_MEMBER + " [" + PREFIX_INDEX + " 1]\n"
-            + "Delete by member ID: " + COMMAND_WORD + " " + PREFIX_MEMBER + " [" + PREFIX_ID + " 10001]";
+            + "Delete by index number: " + COMMAND_WORD + " " + PREFIX_MEMBER + " " + PREFIX_INDEX + " 1\n"
+            + "Delete by member ID: " + COMMAND_WORD + " " + PREFIX_MEMBER + " " + PREFIX_ID + " 10001";
 
     public static final String MESSAGE_DELETE_MEMBER_SUCCESS = "Deleted Member: %1$s";
 
-    private final Index targetIndex;
-    private final Id memberId;
+    private final Index index;
+    private final Id id;
 
     /**
      * Creates an DeleteCommand to delete the specified {@code Member} by index number
      */
-    public DeleteCommand(Index targetIndex) {
-        requireNonNull(targetIndex);
-        this.targetIndex = targetIndex;
-        memberId = null;
+    public DeleteCommand(Index index) {
+        requireNonNull(index);
+        this.index = index;
+        id = null;
     }
 
     /**
      * Creates an DeleteCommand to delete the specified {@code Member} by member ID
      */
-    public DeleteCommand(Id memberId) {
-        requireNonNull(memberId);
-        this.memberId = memberId;
-        targetIndex = null;
+    public DeleteCommand(Id id) {
+        requireNonNull(id);
+        this.id = id;
+        index = null;
     }
 
     @Override
@@ -60,16 +60,16 @@ public class DeleteCommand extends Command {
         List<Member> lastShownList = model.getUpdatedMemberList();
 
         Member memberToDelete = null;
-        if (targetIndex != null) {
-            if (targetIndex.getZeroBased() < lastShownList.size()) {
-                memberToDelete = lastShownList.get(targetIndex.getZeroBased());
+        if (index != null) {
+            if (index.getZeroBased() < lastShownList.size()) {
+                memberToDelete = lastShownList.get(index.getZeroBased());
             } else {
                 throw new CommandException(Messages.MESSAGE_INVALID_MEMBER_DISPLAYED_INDEX);
             }
         }
-        if (memberId != null) {
+        if (id != null) {
             memberToDelete = lastShownList.stream()
-                    .filter(member -> memberId.equals(member.getId())).findAny().orElse(null);
+                    .filter(member -> id.equals(member.getId())).findAny().orElse(null);
         }
         if (memberToDelete != null) {
             model.deleteMember(memberToDelete);
@@ -84,7 +84,7 @@ public class DeleteCommand extends Command {
     public boolean equals(Object other) {
         return other == this // short circuit if same object
                 || (other instanceof DeleteCommand // instanceof handles nulls
-                && (targetIndex == null || targetIndex.equals(((DeleteCommand) other).targetIndex))
-                && (memberId == null || memberId.equals(((DeleteCommand) other).memberId))); // state check
+                && (index == null || index.equals(((DeleteCommand) other).index))
+                && (id == null || id.equals(((DeleteCommand) other).id))); // state check
     }
 }

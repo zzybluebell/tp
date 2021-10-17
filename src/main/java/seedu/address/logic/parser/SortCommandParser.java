@@ -29,7 +29,9 @@ public class SortCommandParser implements Parser<SortCommand> {
                 PREFIX_DESC);
 
         if (argMultimap.getSize() != PREFIX_SIZE || argMultimap.getValue(PREFIX_MEMBER).isEmpty()
-                || argMultimap.getValue(PREFIX_CREDIT).isEmpty() || !argMultimap.getPreamble().isEmpty()) {
+                || argMultimap.getValue(PREFIX_CREDIT).isEmpty()
+                || (argMultimap.getValue(PREFIX_ASC).isEmpty() && argMultimap.getValue(PREFIX_DESC).isEmpty())
+                || !argMultimap.getPreamble().isEmpty()) {
             throw new ParseException(
                     String.format(MESSAGE_INVALID_COMMAND_FORMAT, SortCommand.MESSAGE_USAGE));
         }

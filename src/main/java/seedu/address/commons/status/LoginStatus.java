@@ -15,6 +15,9 @@ public enum LoginStatus {
         this.value = value;
     }
 
+    /**
+     * Returns {@code LoginStatus}.
+     */
     public static LoginStatus getLoginStatus() {
         if (CURRENT_STATUS.getValue().equals(STAFF.value)) {
             return STAFF;
@@ -23,6 +26,9 @@ public enum LoginStatus {
         }
     }
 
+    /**
+     * Resets {@code CURRENT_STATUS} by {@code LoginStatus}.
+     */
     public static void setLoginStatus(LoginStatus loginStatus) {
         CURRENT_STATUS.setValue(loginStatus.value);
     }

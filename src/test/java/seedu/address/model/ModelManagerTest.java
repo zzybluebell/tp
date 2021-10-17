@@ -91,7 +91,7 @@ public class ModelManagerTest {
     }
 
     @Test
-    public void getFilteredMemberList_modifyList_throwsUnsupportedOperationException() {
+    public void getUpdatedMemberList_modifyList_throwsUnsupportedOperationException() {
         assertThrows(UnsupportedOperationException.class, () -> modelManager.getUpdatedMemberList().remove(0));
     }
 

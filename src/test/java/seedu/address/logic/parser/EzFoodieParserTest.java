@@ -4,6 +4,9 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static seedu.address.commons.core.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
 import static seedu.address.commons.core.Messages.MESSAGE_UNKNOWN_COMMAND;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_ASC;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_CREDIT;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_DESC;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_EMAIL;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_ID;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_INDEX;
@@ -22,6 +25,8 @@ import java.util.stream.Collectors;
 import org.junit.jupiter.api.Test;
 
 import seedu.address.commons.status.ExecutionStatus;
+import seedu.address.commons.status.LoginStatus;
+import seedu.address.commons.status.SortStatus;
 import seedu.address.logic.commands.AddCommand;
 import seedu.address.logic.commands.ClearCommand;
 import seedu.address.logic.commands.DeleteCommand;
@@ -33,10 +38,12 @@ import seedu.address.logic.commands.HelpCommand;
 import seedu.address.logic.commands.ListCommand;
 import seedu.address.logic.commands.LoginCommand;
 import seedu.address.logic.commands.LogoutCommand;
+import seedu.address.logic.commands.SortCommand;
 import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.model.Model;
 import seedu.address.model.ModelManager;
 import seedu.address.model.account.Password;
+import seedu.address.model.member.CreditSortComparator;
 import seedu.address.model.member.EmailContainsKeywordsPredicate;
 import seedu.address.model.member.Id;
 import seedu.address.model.member.IdContainsKeywordsPredicate;
@@ -68,6 +75,7 @@ public class EzFoodieParserTest {
 
     @Test
     public void parseCommand_deleteByIndex() throws Exception {
+        LoginStatus.setLoginStatus(LoginStatus.MANAGER);
         DeleteCommand command = (DeleteCommand) parser.parseCommand(DeleteCommand.COMMAND_WORD + " "
                 + PREFIX_MEMBER + " " + PREFIX_INDEX + " " + INDEX_FIRST_MEMBER.getOneBased());
         assertEquals(new DeleteCommand(INDEX_FIRST_MEMBER), command);
@@ -76,9 +84,26 @@ public class EzFoodieParserTest {
     @Test
     public void parseCommand_deleteById() throws Exception {
         Id id = new Id("10001");
+        LoginStatus.setLoginStatus(LoginStatus.MANAGER);
         DeleteCommand command = (DeleteCommand) parser.parseCommand(DeleteCommand.COMMAND_WORD + " "
                 + PREFIX_MEMBER + " " + PREFIX_ID + " " + id.value);
         assertEquals(new DeleteCommand(id), command);
+    }
+
+    @Test
+    public void parseCommand_sortAsc() throws Exception {
+        LoginStatus.setLoginStatus(LoginStatus.MANAGER);
+        SortCommand command = (SortCommand) parser.parseCommand(SortCommand.COMMAND_WORD + " "
+                + PREFIX_MEMBER + " " + PREFIX_CREDIT + " " + PREFIX_ASC);
+        assertEquals(new SortCommand(new CreditSortComparator(SortStatus.ASC)), command);
+    }
+
+    @Test
+    public void parseCommand_sortDesc() throws Exception {
+        LoginStatus.setLoginStatus(LoginStatus.MANAGER);
+        SortCommand command = (SortCommand) parser.parseCommand(SortCommand.COMMAND_WORD + " "
+                + PREFIX_MEMBER + " " + PREFIX_CREDIT + " " + PREFIX_DESC);
+        assertEquals(new SortCommand(new CreditSortComparator(SortStatus.DESC)), command);
     }
 
     @Test
@@ -86,7 +111,8 @@ public class EzFoodieParserTest {
         Member member = new MemberBuilder().build();
         EditMemberDescriptor descriptor = new EditMemberDescriptorBuilder(member).build();
         EditCommand command = (EditCommand) parser.parseCommand(EditCommand.COMMAND_WORD + " "
-                + INDEX_FIRST_MEMBER.getOneBased() + " " + MemberUtil.getEditMemberDescriptorDetails(descriptor));
+                + PREFIX_MEMBER + " " + PREFIX_INDEX + " " + INDEX_FIRST_MEMBER.getOneBased() + " "
+                + MemberUtil.getEditMemberDescriptorDetails(descriptor));
         assertEquals(new EditCommand(INDEX_FIRST_MEMBER, descriptor), command);
     }
 
