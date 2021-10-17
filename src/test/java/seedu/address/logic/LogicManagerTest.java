@@ -91,7 +91,7 @@ public class LogicManagerTest {
         // Execute add command
         String addCommand = AddCommand.COMMAND_WORD + NAME_DESC_AMY + PHONE_DESC_AMY + EMAIL_DESC_AMY
                 + ADDRESS_DESC_AMY;
-        Member expectedMember = new MemberBuilder(AMY).withTags().withTransactions().build();
+        Member expectedMember = new MemberBuilder(AMY).withCredit("0").withTags().withTransactions().build();
         ModelManager expectedModel = new ModelManager();
         expectedModel.addMember(expectedMember);
         String expectedMessage = LogicManager.FILE_OPS_ERROR_MESSAGE + DUMMY_IO_EXCEPTION;

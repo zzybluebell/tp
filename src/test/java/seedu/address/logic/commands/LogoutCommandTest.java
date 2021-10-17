@@ -4,7 +4,6 @@ import static seedu.address.logic.commands.CommandTestUtil.assertCommandSuccess;
 
 import org.junit.jupiter.api.Test;
 
-import seedu.address.commons.core.Config;
 import seedu.address.commons.status.LoginStatus;
 import seedu.address.model.Model;
 import seedu.address.model.ModelManager;
@@ -13,7 +12,7 @@ public class LogoutCommandTest {
 
     @Test
     public void execute_inStaffLoginStatus_success() {
-        Config.setLoginStatus(LoginStatus.STAFF);
+        LoginStatus.setLoginStatus(LoginStatus.STAFF);
         Model model = new ModelManager();
         Model expectedModel = new ModelManager();
 
@@ -22,7 +21,7 @@ public class LogoutCommandTest {
 
     @Test
     public void execute_inManagerLoginStatus_success() {
-        Config.setLoginStatus(LoginStatus.MANAGER);
+        LoginStatus.setLoginStatus(LoginStatus.MANAGER);
         Model model = new ModelManager();
         Model expectedModel = new ModelManager();
 

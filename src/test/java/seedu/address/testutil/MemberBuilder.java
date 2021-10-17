@@ -4,6 +4,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 import seedu.address.model.member.Address;
+import seedu.address.model.member.Credit;
 import seedu.address.model.member.Email;
 import seedu.address.model.member.Id;
 import seedu.address.model.member.Member;
@@ -25,6 +26,7 @@ public class MemberBuilder {
     public static final String DEFAULT_EMAIL = "amy@gmail.com";
     public static final String DEFAULT_ADDRESS = "123, Jurong West Ave 6, #08-111";
     public static final String DEFAULT_REGISTRATION_TIMESTAMP = "1610236800000";
+    public static final String DEFAULT_CREDIT = "200";
 
     private Id id;
     private Name name;
@@ -32,6 +34,7 @@ public class MemberBuilder {
     private Email email;
     private Address address;
     private RegistrationTimestamp registrationTimestamp;
+    private Credit credit;
     private Set<Tag> tags;
     private Set<Transaction> transactions;
 
@@ -45,6 +48,7 @@ public class MemberBuilder {
         email = new Email(DEFAULT_EMAIL);
         address = new Address(DEFAULT_ADDRESS);
         registrationTimestamp = new RegistrationTimestamp(DEFAULT_REGISTRATION_TIMESTAMP);
+        credit = new Credit(DEFAULT_CREDIT);
         tags = new HashSet<>();
         transactions = new HashSet<>();
     }
@@ -59,6 +63,7 @@ public class MemberBuilder {
         email = memberToCopy.getEmail();
         address = memberToCopy.getAddress();
         registrationTimestamp = memberToCopy.getRegistrationTimestamp();
+        credit = memberToCopy.getCredit();
         tags = new HashSet<>(memberToCopy.getTags());
         transactions = new HashSet<>(memberToCopy.getTransactions());
     }
@@ -112,6 +117,14 @@ public class MemberBuilder {
     }
 
     /**
+     * Sets the {@code Credit} of the {@code Member} that we are building.
+     */
+    public MemberBuilder withCredit(String credit) {
+        this.credit = new Credit(credit);
+        return this;
+    }
+
+    /**
      * Parses the {@code tags} into a {@code Set<Tag>} and set it to the {@code Member} that we are building.
      */
     public MemberBuilder withTags(String ... tags) {
@@ -129,7 +142,7 @@ public class MemberBuilder {
     }
 
     public Member build() {
-        return new Member(id, name, phone, email, address, registrationTimestamp, tags, transactions);
+        return new Member(id, name, phone, email, address, registrationTimestamp, credit, tags, transactions);
     }
 
 }

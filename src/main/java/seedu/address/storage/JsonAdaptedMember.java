@@ -11,6 +11,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 import seedu.address.commons.exceptions.IllegalValueException;
 import seedu.address.model.member.Address;
+import seedu.address.model.member.Credit;
 import seedu.address.model.member.Email;
 import seedu.address.model.member.Id;
 import seedu.address.model.member.Member;
@@ -33,6 +34,7 @@ class JsonAdaptedMember {
     private final String email;
     private final String address;
     private final String registrationTimestamp;
+    private final String credit;
     private final List<JsonAdaptedTag> tagged = new ArrayList<>();
     private final List<JsonAdaptedTransaction> transactions = new ArrayList<>();
 
@@ -44,6 +46,7 @@ class JsonAdaptedMember {
             @JsonProperty("phone") String phone, @JsonProperty("email") String email,
             @JsonProperty("address") String address,
             @JsonProperty("registrationTimestamp") String registrationTimestamp,
+            @JsonProperty("credit") String credit,
             @JsonProperty("tagged") List<JsonAdaptedTag> tagged,
             @JsonProperty("transactions") List<JsonAdaptedTransaction> transactions) {
 
@@ -53,6 +56,7 @@ class JsonAdaptedMember {
         this.email = email;
         this.address = address;
         this.registrationTimestamp = registrationTimestamp;
+        this.credit = credit;
         if (tagged != null) {
             this.tagged.addAll(tagged);
         }
@@ -71,6 +75,7 @@ class JsonAdaptedMember {
         email = source.getEmail().value;
         address = source.getAddress().value;
         registrationTimestamp = source.getRegistrationTimestamp().value;
+        credit = source.getCredit().value;
         tagged.addAll(source.getTags().stream()
                 .map(JsonAdaptedTag::new)
                 .collect(Collectors.toList()));
@@ -144,12 +149,20 @@ class JsonAdaptedMember {
         }
         final RegistrationTimestamp modelRegistrationTimestamp = new RegistrationTimestamp(registrationTimestamp);
 
+        if (credit == null) {
+            throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT, Credit.class.getSimpleName()));
+        }
+        if (!Credit.isValidCredit(credit)) {
+            throw new IllegalValueException(Credit.MESSAGE_CONSTRAINTS);
+        }
+        final Credit modelCredit = new Credit(credit);
+
         final Set<Tag> modelTags = new HashSet<>(memberTags);
 
         final Set<Transaction> modelTransactions = new HashSet<>(memberTransactions);
 
         return new Member(modelId, modelName, modelPhone, modelEmail, modelAddress, modelRegistrationTimestamp,
-                modelTags, modelTransactions);
+                modelCredit, modelTags, modelTransactions);
     }
 
 }

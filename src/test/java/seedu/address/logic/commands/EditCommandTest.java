@@ -4,9 +4,12 @@ import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static seedu.address.logic.commands.CommandTestUtil.DESC_AMY;
 import static seedu.address.logic.commands.CommandTestUtil.DESC_BOB;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_CREDIT_BOB;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_NAME_BOB;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_PHONE_BOB;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_TAG_HUSBAND;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_TRANSACTION_200;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_TRANSACTION_300;
 import static seedu.address.logic.commands.CommandTestUtil.assertCommandFailure;
 import static seedu.address.logic.commands.CommandTestUtil.assertCommandSuccess;
 import static seedu.address.logic.commands.CommandTestUtil.showMemberAtIndex;
@@ -39,7 +42,8 @@ public class EditCommandTest {
     public void execute_allFieldsSpecifiedUnfilteredList_success() {
         Member memberToEdit = model.getFilteredMemberList().get(0);
         Member editedMember = new MemberBuilder().withId(memberToEdit.getId().value)
-                .withRegistrationTimestamp(memberToEdit.getRegistrationTimestamp().value).build();
+                .withRegistrationTimestamp(memberToEdit.getRegistrationTimestamp().value)
+                .withCredit("0").build();
         EditMemberDescriptor descriptor = new EditMemberDescriptorBuilder(editedMember).build();
         EditCommand editCommand = new EditCommand(INDEX_FIRST_MEMBER, descriptor);
 
@@ -58,10 +62,12 @@ public class EditCommandTest {
 
         MemberBuilder memberInList = new MemberBuilder(lastMember);
         Member editedMember = memberInList.withName(VALID_NAME_BOB).withPhone(VALID_PHONE_BOB)
-                .withTags(VALID_TAG_HUSBAND).build();
+                .withCredit(VALID_CREDIT_BOB).withTags(VALID_TAG_HUSBAND)
+                .withTransactions(VALID_TRANSACTION_200, VALID_TRANSACTION_300).build();
 
         EditMemberDescriptor descriptor = new EditMemberDescriptorBuilder().withName(VALID_NAME_BOB)
-                .withPhone(VALID_PHONE_BOB).withTags(VALID_TAG_HUSBAND).build();
+                .withPhone(VALID_PHONE_BOB).withTags(VALID_TAG_HUSBAND)
+                .withTransactions(VALID_TRANSACTION_200, VALID_TRANSACTION_300).build();
         EditCommand editCommand = new EditCommand(indexLastMember, descriptor);
 
         String expectedMessage = String.format(EditCommand.MESSAGE_EDIT_MEMBER_SUCCESS, editedMember);
