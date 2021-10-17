@@ -119,24 +119,25 @@ public class CommandTestUtil {
         // we are unable to defensively copy the model for comparison later, so we can
         // only do so by copying its components.
         EzFoodie expectedEzFoodie = new EzFoodie(actualModel.getEzFoodie());
-        List<Member> expectedFilteredList = new ArrayList<>(actualModel.getFilteredMemberList());
+        List<Member> expectedFilteredList = new ArrayList<>(actualModel.getUpdatedMemberList());
 
         assertThrows(CommandException.class, expectedMessage, () -> command.execute(actualModel));
         assertEquals(expectedEzFoodie, actualModel.getEzFoodie());
-        assertEquals(expectedFilteredList, actualModel.getFilteredMemberList());
+        assertEquals(expectedFilteredList, actualModel.getUpdatedMemberList());
     }
+
     /**
      * Updates {@code model}'s filtered list to show only the member at the given {@code targetIndex} in the
      * {@code model}'s ezFoodie.
      */
     public static void showMemberAtIndex(Model model, Index targetIndex) {
-        assertTrue(targetIndex.getZeroBased() < model.getFilteredMemberList().size());
+        assertTrue(targetIndex.getZeroBased() < model.getUpdatedMemberList().size());
 
-        Member member = model.getFilteredMemberList().get(targetIndex.getZeroBased());
+        Member member = model.getUpdatedMemberList().get(targetIndex.getZeroBased());
         final String[] splitName = member.getName().fullName.split("\\s+");
         model.updateFilteredMemberList(new NameContainsKeywordsPredicate(Arrays.asList(splitName[0])));
 
-        assertEquals(1, model.getFilteredMemberList().size());
+        assertEquals(1, model.getUpdatedMemberList().size());
     }
 
 }

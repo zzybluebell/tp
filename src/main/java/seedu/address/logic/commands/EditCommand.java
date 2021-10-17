@@ -74,7 +74,7 @@ public class EditCommand extends Command {
     @Override
     public CommandResult execute(Model model) throws CommandException {
         requireNonNull(model);
-        List<Member> lastShownList = model.getFilteredMemberList();
+        List<Member> lastShownList = model.getUpdatedMemberList();
 
         if (index.getZeroBased() >= lastShownList.size()) {
             throw new CommandException(Messages.MESSAGE_INVALID_MEMBER_DISPLAYED_INDEX);
@@ -106,10 +106,12 @@ public class EditCommand extends Command {
         Address updatedAddress = editMemberDescriptor.getAddress().orElse(memberToEdit.getAddress());
         RegistrationTimestamp registrationTimestamp = memberToEdit.getRegistrationTimestamp();
         Set<Tag> updatedTags = editMemberDescriptor.getTags().orElse(memberToEdit.getTags());
+        // Todo: This is not the proper way to add transactions and calculate the sum
+        //  need to check if the sum will overflow
         Set<Transaction> updatedTransactions = editMemberDescriptor.getTransactions()
                 .orElse((memberToEdit.getTransactions()));
-        Credit credit = new Credit("" + updatedTransactions.stream()
-                .mapToInt(transaction -> (int) Double.parseDouble(transaction.transactionAmount)).sum());
+        Credit credit = new Credit("" + Math.min(updatedTransactions.stream()
+                .mapToInt(transaction -> (int) transaction.getDoubleValue()).sum(), Credit.MAX));
 
         return new Member(id, updatedName, updatedPhone, updatedEmail, updatedAddress, registrationTimestamp, credit,
                 updatedTags, updatedTransactions);

@@ -30,8 +30,8 @@ public interface Logic {
      */
     ReadOnlyEzFoodie getEzFoodie();
 
-    /** Returns an unmodifiable view of the filtered list of members */
-    ObservableList<Member> getFilteredMemberList();
+    /** Returns an unmodifiable view of the sorted or filtered list of members */
+    ObservableList<Member> getUpdatedMemberList();
 
     /**
      * Returns the user prefs' ezFoodie file path.

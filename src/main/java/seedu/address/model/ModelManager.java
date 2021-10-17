@@ -4,11 +4,13 @@ import static java.util.Objects.requireNonNull;
 import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
 
 import java.nio.file.Path;
+import java.util.Comparator;
 import java.util.function.Predicate;
 import java.util.logging.Logger;
 
 import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
+import javafx.collections.transformation.SortedList;
 import seedu.address.commons.core.GuiSettings;
 import seedu.address.commons.core.LogsCenter;
 import seedu.address.model.member.Member;
@@ -23,6 +25,7 @@ public class ModelManager implements Model {
     private final EzFoodie ezFoodie;
     private final UserPrefs userPrefs;
     private final FilteredList<Member> filteredMembers;
+    private final SortedList<Member> sortedMembers;
 
     /**
      * Initializes a ModelManager with the given account, ezFoodie and userPrefs.
@@ -38,6 +41,7 @@ public class ModelManager implements Model {
         this.ezFoodie = new EzFoodie(ezFoodie);
         this.userPrefs = new UserPrefs(userPrefs);
         filteredMembers = new FilteredList<>(this.ezFoodie.getMemberList());
+        sortedMembers = new SortedList<>(filteredMembers); // Wrap the FilteredList in a SortedList
     }
 
     public ModelManager() {
@@ -145,21 +149,29 @@ public class ModelManager implements Model {
         ezFoodie.setMember(target, editedMember);
     }
 
-    //=========== Filtered Member List Accessors =============================================================
-
     /**
      * Returns an unmodifiable view of the list of {@code Member} backed by the internal list of
      * {@code versionedEzFoodie}
      */
     @Override
-    public ObservableList<Member> getFilteredMemberList() {
-        return filteredMembers;
+    public ObservableList<Member> getUpdatedMemberList() {
+        return sortedMembers;
     }
+
+    //=========== Filtered Member List Accessors =============================================================
 
     @Override
     public void updateFilteredMemberList(Predicate<Member> predicate) {
         requireNonNull(predicate);
         filteredMembers.setPredicate(predicate);
+    }
+
+    //=========== Sorted Member List Accessors ===============================================================
+
+    @Override
+    public void updateSortedMemberList(Comparator<Member> comparator) {
+        requireNonNull(comparator);
+        sortedMembers.setComparator(comparator);
     }
 
     @Override
@@ -178,7 +190,8 @@ public class ModelManager implements Model {
         ModelManager other = (ModelManager) obj;
         return ezFoodie.equals(other.ezFoodie)
                 && userPrefs.equals(other.userPrefs)
-                && filteredMembers.equals(other.filteredMembers);
+                && filteredMembers.equals(other.filteredMembers)
+                && sortedMembers.equals(other.sortedMembers);
     }
 
 }
