@@ -148,7 +148,7 @@ public class EditCommand extends Command {
         Address updatedAddress = editMemberDescriptor.getAddress().orElse(memberToEdit.getAddress());
         RegistrationTimestamp registrationTimestamp = memberToEdit.getRegistrationTimestamp();
         Set<Tag> updatedTags = editMemberDescriptor.getTags().orElse(memberToEdit.getTags());
-        // Todo: This is not the proper way to add transactions and calculate the sum
+        // TODO: This is not the proper way to add transactions and calculate the sum
         //  need to check if the sum will overflow
         Set<Transaction> updatedTransactions = editMemberDescriptor.getTransactions()
                 .orElse((memberToEdit.getTransactions()));
