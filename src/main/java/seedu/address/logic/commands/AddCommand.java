@@ -10,6 +10,7 @@ public abstract class AddCommand extends Command {
 
     public static final String COMMAND_WORD = "add";
 
+    @Override
     public abstract CommandResult execute(Model model) throws CommandException;
 
 }

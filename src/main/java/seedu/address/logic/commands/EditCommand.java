@@ -44,7 +44,6 @@ public class EditCommand extends Command {
     public static final String MESSAGE_USAGE = COMMAND_WORD + ": Edits the details of the member identified "
             + "by the index number used in the displayed member list. "
             + "Existing values will be overwritten by the input values.\n"
-
             + "Parameters:\n"
             + "Edit by index number: " + PREFIX_MEMBER + " [" + PREFIX_INDEX + " INDEX] "
             + "(INDEX must be a positive integer) "

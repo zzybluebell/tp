@@ -13,7 +13,6 @@ import seedu.address.model.Model;
 import seedu.address.model.member.Member;
 
 public class AddMemberCommand extends AddCommand {
-
     public static final String MESSAGE_USAGE = COMMAND_WORD + ": Adds a member to the ezFoodie. "
             + "Parameters: "
             + PREFIX_MEMBER + " "

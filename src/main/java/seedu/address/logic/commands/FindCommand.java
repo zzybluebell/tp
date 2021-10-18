@@ -27,7 +27,6 @@ public class FindCommand extends Command {
 
     public static final String COMMAND_WORD = "find";
 
-
     public static final String MESSAGE_USAGE = COMMAND_WORD
             + ": Finds all members whose ids, names, phones or emails contain any of "
             + "the specified keywords (case-insensitive) or within a specific of registration dates "
