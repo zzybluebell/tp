@@ -47,7 +47,6 @@ public class EditCommand extends Command {
             + "Parameters:\n"
             + "Edit by index number: " + PREFIX_MEMBER + " [" + PREFIX_INDEX + " INDEX] "
             + "(INDEX must be a positive integer) "
-            + "[" + PREFIX_MEMBER + "] "
             + "[" + PREFIX_NAME + " NAME] "
             + "[" + PREFIX_PHONE + " PHONE] "
             + "[" + PREFIX_EMAIL + " EMAIL] "
