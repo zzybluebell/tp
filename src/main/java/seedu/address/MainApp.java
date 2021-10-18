@@ -15,14 +15,18 @@ import seedu.address.commons.util.ConfigUtil;
 import seedu.address.commons.util.StringUtil;
 import seedu.address.logic.Logic;
 import seedu.address.logic.LogicManager;
+import seedu.address.model.Account;
 import seedu.address.model.EzFoodie;
 import seedu.address.model.Model;
 import seedu.address.model.ModelManager;
+import seedu.address.model.ReadOnlyAccount;
 import seedu.address.model.ReadOnlyEzFoodie;
 import seedu.address.model.ReadOnlyUserPrefs;
 import seedu.address.model.UserPrefs;
 import seedu.address.model.util.SampleDataUtil;
+import seedu.address.storage.AccountStorage;
 import seedu.address.storage.EzFoodieStorage;
+import seedu.address.storage.JsonAccountStorage;
 import seedu.address.storage.JsonEzFoodieStorage;
 import seedu.address.storage.JsonUserPrefsStorage;
 import seedu.address.storage.Storage;
@@ -56,8 +60,9 @@ public class MainApp extends Application {
 
         UserPrefsStorage userPrefsStorage = new JsonUserPrefsStorage(config.getUserPrefsFilePath());
         UserPrefs userPrefs = initPrefs(userPrefsStorage);
+        AccountStorage accountStorage = new JsonAccountStorage(userPrefs.getAccountFilePath());
         EzFoodieStorage ezFoodieStorage = new JsonEzFoodieStorage(userPrefs.getEzFoodieFilePath());
-        storage = new StorageManager(ezFoodieStorage, userPrefsStorage);
+        storage = new StorageManager(accountStorage, ezFoodieStorage, userPrefsStorage);
 
         initLogging(config);
 
@@ -69,11 +74,41 @@ public class MainApp extends Application {
     }
 
     /**
-     * Returns a {@code ModelManager} with the data from {@code storage}'s ezFoodie and {@code userPrefs}. <br>
+     * The data from the sample ezFoodie will be used instead if {@code storage}'s account is not found,
+     * or an empty account will be used instead if errors occur when reading {@code storage}'s account.
+     */
+    private ReadOnlyAccount initAccount(Storage storage) {
+        Optional<ReadOnlyAccount> accountOptional;
+        ReadOnlyAccount initialData;
+        try {
+            accountOptional = storage.readAccount();
+            if (!accountOptional.isPresent()) {
+                logger.info("Account file not found. Will be starting with a sample account");
+            }
+            initialData = accountOptional.orElseGet(SampleDataUtil::getDefaultPassword);
+        } catch (DataConversionException e) {
+            logger.warning("Data file not in the correct format. Will be starting with an empty ezFoodie");
+            initialData = new Account();
+        } catch (IOException e) {
+            logger.warning("Problem while reading from the file. Will be starting with an empty ezFoodie");
+            initialData = new Account();
+        }
+
+        //Update account file in case it was missing to begin with or there are any new updates.
+        try {
+            storage.saveAccount(initialData);
+        } catch (IOException e) {
+            logger.warning("Failed to save account file : " + StringUtil.getDetails(e));
+        }
+
+        return initialData;
+    }
+
+    /**
      * The data from the sample ezFoodie will be used instead if {@code storage}'s ezFoodie is not found,
      * or an empty ezFoodie will be used instead if errors occur when reading {@code storage}'s ezFoodie.
      */
-    private Model initModelManager(Storage storage, ReadOnlyUserPrefs userPrefs) {
+    private ReadOnlyEzFoodie initEzFoodie(Storage storage) {
         Optional<ReadOnlyEzFoodie> ezFoodieOptional;
         ReadOnlyEzFoodie initialData;
         try {
@@ -90,7 +125,18 @@ public class MainApp extends Application {
             initialData = new EzFoodie();
         }
 
-        return new ModelManager(initialData, userPrefs);
+        return initialData;
+    }
+
+    /**
+     * Returns a {@code ModelManager} with the data from {@code storage}'s account and ezFoodie
+     * and {@code userPrefs}.
+     */
+    private Model initModelManager(Storage storage, ReadOnlyUserPrefs userPrefs) {
+        ReadOnlyAccount initAccount = initAccount(storage);
+        ReadOnlyEzFoodie initEzFoodie = initEzFoodie(storage);
+
+        return new ModelManager(initAccount, initEzFoodie, userPrefs);
     }
 
     private void initLogging(Config config) {

@@ -8,6 +8,7 @@ import static seedu.address.testutil.TypicalMembers.getTypicalEzFoodie;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import seedu.address.model.Account;
 import seedu.address.model.Model;
 import seedu.address.model.ModelManager;
 import seedu.address.model.UserPrefs;
@@ -22,8 +23,8 @@ public class ListCommandTest {
 
     @BeforeEach
     public void setUp() {
-        model = new ModelManager(getTypicalEzFoodie(), new UserPrefs());
-        expectedModel = new ModelManager(model.getEzFoodie(), new UserPrefs());
+        model = new ModelManager(new Account(), getTypicalEzFoodie(), new UserPrefs());
+        expectedModel = new ModelManager(new Account(), model.getEzFoodie(), new UserPrefs());
     }
 
     @Test

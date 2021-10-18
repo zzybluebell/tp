@@ -7,6 +7,7 @@ import java.util.logging.Logger;
 
 import seedu.address.commons.core.LogsCenter;
 import seedu.address.commons.exceptions.DataConversionException;
+import seedu.address.model.ReadOnlyAccount;
 import seedu.address.model.ReadOnlyEzFoodie;
 import seedu.address.model.ReadOnlyUserPrefs;
 import seedu.address.model.UserPrefs;
@@ -17,14 +18,18 @@ import seedu.address.model.UserPrefs;
 public class StorageManager implements Storage {
 
     private static final Logger logger = LogsCenter.getLogger(StorageManager.class);
+    private AccountStorage accountStorage;
     private EzFoodieStorage ezFoodieStorage;
     private UserPrefsStorage userPrefsStorage;
 
     /**
-     * Creates a {@code StorageManager} with the given {@code ezFoodieStorage} and {@code UserPrefStorage}.
+     * Creates a {@code StorageManager} with the given {@code AccountStorage}, {@code ezFoodieStorage}
+     * and {@code UserPrefStorage}.
      */
-    public StorageManager(EzFoodieStorage ezFoodieStorage, UserPrefsStorage userPrefsStorage) {
+    public StorageManager(AccountStorage accountStorage, EzFoodieStorage ezFoodieStorage,
+            UserPrefsStorage userPrefsStorage) {
         super();
+        this.accountStorage = accountStorage;
         this.ezFoodieStorage = ezFoodieStorage;
         this.userPrefsStorage = userPrefsStorage;
     }
@@ -46,6 +51,34 @@ public class StorageManager implements Storage {
         userPrefsStorage.saveUserPrefs(userPrefs);
     }
 
+    // ================== Account methods ===============================
+
+    @Override
+    public Path getAccountFilePath() {
+        return accountStorage.getAccountFilePath();
+    }
+
+    @Override
+    public Optional<ReadOnlyAccount> readAccount() throws DataConversionException, IOException {
+        return accountStorage.readAccount();
+    }
+
+    @Override
+    public Optional<ReadOnlyAccount> readAccount(Path filePath) throws DataConversionException, IOException {
+        logger.fine("Attempting to read account from file: " + filePath);
+        return accountStorage.readAccount(filePath);
+    }
+
+    @Override
+    public void saveAccount(ReadOnlyAccount account) throws IOException {
+        accountStorage.saveAccount(account);
+    }
+
+    @Override
+    public void saveAccount(ReadOnlyAccount account, Path filePath) throws IOException {
+        logger.fine("Attempting to write to account file: " + filePath);
+        accountStorage.saveAccount(account, filePath);
+    }
 
     // ================== EzFoodie methods ===============================
 

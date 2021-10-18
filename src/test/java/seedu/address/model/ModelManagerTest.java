@@ -15,6 +15,8 @@ import java.util.Arrays;
 import org.junit.jupiter.api.Test;
 
 import seedu.address.commons.core.GuiSettings;
+import seedu.address.commons.status.SortStatus;
+import seedu.address.model.member.CreditSortComparator;
 import seedu.address.model.member.NameContainsKeywordsPredicate;
 import seedu.address.testutil.EzFoodieBuilder;
 
@@ -89,19 +91,20 @@ public class ModelManagerTest {
     }
 
     @Test
-    public void getFilteredMemberList_modifyList_throwsUnsupportedOperationException() {
-        assertThrows(UnsupportedOperationException.class, () -> modelManager.getFilteredMemberList().remove(0));
+    public void getUpdatedMemberList_modifyList_throwsUnsupportedOperationException() {
+        assertThrows(UnsupportedOperationException.class, () -> modelManager.getUpdatedMemberList().remove(0));
     }
 
     @Test
     public void equals() {
+        Account account = new Account();
         EzFoodie ezFoodie = new EzFoodieBuilder().withMember(ALICE).withMember(BENSON).build();
         EzFoodie differentEzFoodie = new EzFoodie();
         UserPrefs userPrefs = new UserPrefs();
 
         // same values -> returns true
-        modelManager = new ModelManager(ezFoodie, userPrefs);
-        ModelManager modelManagerCopy = new ModelManager(ezFoodie, userPrefs);
+        modelManager = new ModelManager(account, ezFoodie, userPrefs);
+        ModelManager modelManagerCopy = new ModelManager(account, ezFoodie, userPrefs);
         assertTrue(modelManager.equals(modelManagerCopy));
 
         // same object -> returns true
@@ -114,12 +117,16 @@ public class ModelManagerTest {
         assertFalse(modelManager.equals(5));
 
         // different ezFoodie -> returns false
-        assertFalse(modelManager.equals(new ModelManager(differentEzFoodie, userPrefs)));
+        assertFalse(modelManager.equals(new ModelManager(account, differentEzFoodie, userPrefs)));
 
         // different filteredList -> returns false
         String[] keywords = ALICE.getName().fullName.split("\\s+");
         modelManager.updateFilteredMemberList(new NameContainsKeywordsPredicate(Arrays.asList(keywords)));
-        assertFalse(modelManager.equals(new ModelManager(ezFoodie, userPrefs)));
+        assertFalse(modelManager.equals(new ModelManager(account, ezFoodie, userPrefs)));
+
+        // different sortedList -> returns false
+        modelManager.updateSortedMemberList(new CreditSortComparator(SortStatus.DESC));
+        assertFalse(modelManager.equals(new ModelManager(account, ezFoodie, userPrefs)));
 
         // resets modelManager to initial state for upcoming tests
         modelManager.updateFilteredMemberList(PREDICATE_SHOW_ALL_MEMBERS);
@@ -127,6 +134,6 @@ public class ModelManagerTest {
         // different userPrefs -> returns false
         UserPrefs differentUserPrefs = new UserPrefs();
         differentUserPrefs.setEzFoodieFilePath(Paths.get("differentFilePath"));
-        assertFalse(modelManager.equals(new ModelManager(ezFoodie, differentUserPrefs)));
+        assertFalse(modelManager.equals(new ModelManager(account, ezFoodie, differentUserPrefs)));
     }
 }

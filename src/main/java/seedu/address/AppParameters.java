@@ -17,6 +17,7 @@ public class AppParameters {
     private static final Logger logger = LogsCenter.getLogger(AppParameters.class);
 
     private Path configPath;
+    private Path accountPath;
 
     public Path getConfigPath() {
         return configPath;
@@ -24,6 +25,14 @@ public class AppParameters {
 
     public void setConfigPath(Path configPath) {
         this.configPath = configPath;
+    }
+
+    public Path getAccountPath() {
+        return accountPath;
+    }
+
+    public void setAccountPath(Path accountPath) {
+        this.accountPath = accountPath;
     }
 
     /**
@@ -40,6 +49,13 @@ public class AppParameters {
         }
         appParameters.setConfigPath(configPathParameter != null ? Paths.get(configPathParameter) : null);
 
+        String accountPathParameter = namedParameters.get("account");
+        if (accountPathParameter != null && !FileUtil.isValidPath(accountPathParameter)) {
+            logger.warning("Invalid account path " + accountPathParameter + ". Using default account path.");
+            accountPathParameter = null;
+        }
+        appParameters.setAccountPath(accountPathParameter != null ? Paths.get(accountPathParameter) : null);
+
         return appParameters;
     }
 
@@ -54,11 +70,12 @@ public class AppParameters {
         }
 
         AppParameters otherAppParameters = (AppParameters) other;
-        return Objects.equals(getConfigPath(), otherAppParameters.getConfigPath());
+        return Objects.equals(getConfigPath(), otherAppParameters.getConfigPath())
+                && Objects.equals(getAccountPath(), otherAppParameters.getAccountPath());
     }
 
     @Override
     public int hashCode() {
-        return configPath.hashCode();
+        return Objects.hash(configPath, accountPath);
     }
 }
