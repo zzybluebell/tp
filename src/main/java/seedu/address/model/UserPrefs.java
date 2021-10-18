@@ -14,6 +14,7 @@ import seedu.address.commons.core.GuiSettings;
 public class UserPrefs implements ReadOnlyUserPrefs {
 
     private GuiSettings guiSettings = new GuiSettings();
+    private Path accountFilePath = Paths.get("data" , "account.json");
     private Path ezFoodieFilePath = Paths.get("data" , "ezfoodie.json");
 
     /**
@@ -47,6 +48,15 @@ public class UserPrefs implements ReadOnlyUserPrefs {
         this.guiSettings = guiSettings;
     }
 
+    public Path getAccountFilePath() {
+        return accountFilePath;
+    }
+
+    public void setAccountFilePath(Path accountFilePath) {
+        requireNonNull(accountFilePath);
+        this.accountFilePath = accountFilePath;
+    }
+
     public Path getEzFoodieFilePath() {
         return ezFoodieFilePath;
     }
@@ -68,18 +78,20 @@ public class UserPrefs implements ReadOnlyUserPrefs {
         UserPrefs o = (UserPrefs) other;
 
         return guiSettings.equals(o.guiSettings)
+                && accountFilePath.equals(o.accountFilePath)
                 && ezFoodieFilePath.equals(o.ezFoodieFilePath);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(guiSettings, ezFoodieFilePath);
+        return Objects.hash(guiSettings, accountFilePath, ezFoodieFilePath);
     }
 
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
         sb.append("Gui Settings : " + guiSettings);
+        sb.append("\nLocal account file location : " + accountFilePath);
         sb.append("\nLocal data file location : " + ezFoodieFilePath);
         return sb.toString();
     }

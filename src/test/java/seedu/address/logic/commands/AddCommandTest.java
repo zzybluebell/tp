@@ -9,6 +9,7 @@ import static seedu.address.testutil.Assert.assertThrows;
 import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Comparator;
 import java.util.function.Predicate;
 
 import org.junit.jupiter.api.Test;
@@ -18,6 +19,7 @@ import seedu.address.commons.core.GuiSettings;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.EzFoodie;
 import seedu.address.model.Model;
+import seedu.address.model.ReadOnlyAccount;
 import seedu.address.model.ReadOnlyEzFoodie;
 import seedu.address.model.ReadOnlyUserPrefs;
 import seedu.address.model.member.Member;
@@ -100,12 +102,32 @@ public class AddCommandTest {
         }
 
         @Override
+        public Path getAccountFilePath() {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public void setAccountFilePath(Path accountFilePath) {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
         public Path getEzFoodieFilePath() {
             throw new AssertionError("This method should not be called.");
         }
 
         @Override
         public void setEzFoodieFilePath(Path ezFoodieFilePath) {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public void setAccount(ReadOnlyAccount account) {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public ReadOnlyAccount getAccount() {
             throw new AssertionError("This method should not be called.");
         }
 
@@ -145,12 +167,17 @@ public class AddCommandTest {
         }
 
         @Override
-        public ObservableList<Member> getFilteredMemberList() {
+        public ObservableList<Member> getUpdatedMemberList() {
             throw new AssertionError("This method should not be called.");
         }
 
         @Override
         public void updateFilteredMemberList(Predicate<Member> predicate) {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public void updateSortedMemberList(Comparator<Member> comparator) {
             throw new AssertionError("This method should not be called.");
         }
     }

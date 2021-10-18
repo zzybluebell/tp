@@ -31,8 +31,9 @@ import static seedu.address.testutil.TypicalMembers.AMY;
 
 import org.junit.jupiter.api.Test;
 
-import seedu.address.commons.core.ExecutionStatus;
+import seedu.address.commons.status.ExecutionStatus;
 import seedu.address.logic.commands.AddMemberCommand;
+
 import seedu.address.model.Model;
 import seedu.address.model.ModelManager;
 import seedu.address.model.member.Address;
@@ -50,7 +51,8 @@ public class AddCommandParserTest {
 
     @Test
     public void parse_allFieldsPresent_success() {
-        Member expectedMember = new MemberBuilder(AMY).withTags(VALID_TAG_FRIEND).withTransactions().build();
+        Member expectedMember = new MemberBuilder(AMY).withCredit("0").withTags(VALID_TAG_FRIEND).withTransactions()
+                .build();
 
         // whitespace only preamble
         assertParseSuccess(parser, PREAMBLE_WHITESPACE + MEMBER_DESC + NAME_DESC_AMY + PHONE_DESC_AMY
@@ -73,18 +75,17 @@ public class AddCommandParserTest {
                 + ADDRESS_DESC_BOB + ADDRESS_DESC_AMY + TAG_DESC_FRIEND, new AddMemberCommand(expectedMember));
 
         // multiple tags - all accepted
-        Member expectedMemberMultipleTags = new MemberBuilder(AMY).withTags(VALID_TAG_FRIEND, VALID_TAG_HUSBAND)
-                .withTransactions().build();
-        assertParseSuccess(parser, MEMBER_DESC + NAME_DESC_AMY + PHONE_DESC_AMY + EMAIL_DESC_AMY
-                + ADDRESS_DESC_AMY + TAG_DESC_HUSBAND + TAG_DESC_FRIEND,
-                new AddMemberCommand(expectedMemberMultipleTags));
+        Member expectedMemberMultipleTags = new MemberBuilder(AMY).withCredit("0")
+                .withTags(VALID_TAG_FRIEND, VALID_TAG_HUSBAND).withTransactions().build();
+        assertParseSuccess(parser, NAME_DESC_AMY + PHONE_DESC_AMY + EMAIL_DESC_AMY
+                + ADDRESS_DESC_AMY + TAG_DESC_HUSBAND + TAG_DESC_FRIEND, new AddMemberCommand(expectedMemberMultipleTags));
     }
 
     @Test
     public void parse_optionalFieldsMissing_success() {
         // zero tags
-        Member expectedMember = new MemberBuilder(AMY).withTags().build();
-        assertParseSuccess(parser, MEMBER_DESC + NAME_DESC_AMY + PHONE_DESC_AMY + EMAIL_DESC_AMY
+        Member expectedMember = new MemberBuilder(AMY).withCredit("0").withTags().withTransactions().build();
+        assertParseSuccess(parser, NAME_DESC_AMY + PHONE_DESC_AMY + EMAIL_DESC_AMY
                 + ADDRESS_DESC_AMY, new AddMemberCommand(expectedMember));
     }
 

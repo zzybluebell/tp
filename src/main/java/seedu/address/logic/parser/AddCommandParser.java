@@ -13,11 +13,13 @@ import java.util.List;
 import java.util.Set;
 import java.util.stream.Stream;
 
-import seedu.address.commons.core.ExecutionStatus;
+
+import seedu.address.commons.status.ExecutionStatus;
 import seedu.address.logic.commands.AddMemberCommand;
 import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.model.Model;
 import seedu.address.model.member.Address;
+import seedu.address.model.member.Credit;
 import seedu.address.model.member.Email;
 import seedu.address.model.member.Id;
 import seedu.address.model.member.Member;
@@ -94,11 +96,13 @@ public class AddCommandParser implements Parser<AddMemberCommand> {
         RegistrationTimestamp registrationTimestamp = executionStatus == ExecutionStatus.NORMAL
                 ? ParserUtil.parseRegistrationTimestamp(generateRegistrationTimestamp())
                 : ParserUtil.parseRegistrationTimestamp(generateRegistrationTimestampStub());
+        Credit credit = new Credit("0");
         Set<Tag> tagList = ParserUtil.parseTags(argMultimap.getAllValues(PREFIX_TAG));
         // Transaction is not available at AddCommand
         Set<Transaction> transactionList = new HashSet<>();
 
-        Member member = new Member(id, name, phone, email, address, registrationTimestamp, tagList, transactionList);
+        Member member = new Member(id, name, phone, email, address, registrationTimestamp, credit,
+                tagList, transactionList);
 
         return new AddMemberCommand(member);
     }
