@@ -95,7 +95,7 @@ public class AddCommandParser implements Parser<AddCommand> {
                 : ParserUtil.parseRegistrationTimestamp(generateRegistrationTimestampStub());
         Credit credit = new Credit("0");
         Set<Tag> tagList = ParserUtil.parseTags(argMultimap.getAllValues(PREFIX_TAG));
-        // Transaction is not available at AddCommand
+        // TODO: Transaction is not available at AddCommand
         Set<Transaction> transactionList = new HashSet<>();
 
         Member member = new Member(id, name, phone, email, address, registrationTimestamp, credit,
