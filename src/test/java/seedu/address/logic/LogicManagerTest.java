@@ -5,6 +5,7 @@ import static seedu.address.commons.core.Messages.MESSAGE_INVALID_MEMBER_DISPLAY
 import static seedu.address.commons.core.Messages.MESSAGE_UNKNOWN_COMMAND;
 import static seedu.address.logic.commands.CommandTestUtil.ADDRESS_DESC_AMY;
 import static seedu.address.logic.commands.CommandTestUtil.EMAIL_DESC_AMY;
+import static seedu.address.logic.commands.CommandTestUtil.MEMBER_DESC;
 import static seedu.address.logic.commands.CommandTestUtil.NAME_DESC_AMY;
 import static seedu.address.logic.commands.CommandTestUtil.PHONE_DESC_AMY;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_INDEX;
@@ -93,8 +94,8 @@ public class LogicManagerTest {
         logic = new LogicManager(model, storage, ExecutionStatus.TEST);
 
         // Execute add command
-        String addMemberCommand = AddMemberCommand.COMMAND_WORD + NAME_DESC_AMY + PHONE_DESC_AMY + EMAIL_DESC_AMY
-                + ADDRESS_DESC_AMY;
+        String addMemberCommand = AddMemberCommand.COMMAND_WORD + MEMBER_DESC + NAME_DESC_AMY
+                + PHONE_DESC_AMY + EMAIL_DESC_AMY + ADDRESS_DESC_AMY;
         Member expectedMember = new MemberBuilder(AMY).withCredit("0").withTags().withTransactions().build();
         ModelManager expectedModel = new ModelManager();
         expectedModel.addMember(expectedMember);

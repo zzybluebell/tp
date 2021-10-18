@@ -22,7 +22,7 @@ public class AddMemberCommand extends AddCommand {
             + PREFIX_EMAIL + " " + "EMAIL "
             + PREFIX_ADDRESS + " " + "ADDRESS "
             + "[" + PREFIX_TAG + " " + "TAG]...\n"
-            + "Example: " + COMMAND_WORD + " " + " "
+            + "Example: " + COMMAND_WORD + " "
             + PREFIX_NAME + " " + "John Doe "
             + PREFIX_PHONE + " " + "98765432 "
             + PREFIX_EMAIL + " " + "johnd@example.com "
