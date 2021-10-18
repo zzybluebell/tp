@@ -393,6 +393,5 @@
       <property name="allowMissingPropertyJavadoc" value="true"/>
       <property name="ignoreMethodNamesRegex" value="(set.*|get.*)"/>
     </module>
-
   </module>
 </module>
