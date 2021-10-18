@@ -33,7 +33,6 @@ import org.junit.jupiter.api.Test;
 
 import seedu.address.commons.status.ExecutionStatus;
 import seedu.address.logic.commands.AddMemberCommand;
-
 import seedu.address.model.Model;
 import seedu.address.model.ModelManager;
 import seedu.address.model.member.Address;
@@ -78,7 +77,8 @@ public class AddCommandParserTest {
         Member expectedMemberMultipleTags = new MemberBuilder(AMY).withCredit("0")
                 .withTags(VALID_TAG_FRIEND, VALID_TAG_HUSBAND).withTransactions().build();
         assertParseSuccess(parser, NAME_DESC_AMY + PHONE_DESC_AMY + EMAIL_DESC_AMY
-                + ADDRESS_DESC_AMY + TAG_DESC_HUSBAND + TAG_DESC_FRIEND, new AddMemberCommand(expectedMemberMultipleTags));
+                + ADDRESS_DESC_AMY + TAG_DESC_HUSBAND + TAG_DESC_FRIEND,
+                new AddMemberCommand(expectedMemberMultipleTags));
     }
 
     @Test

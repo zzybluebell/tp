@@ -24,7 +24,6 @@ import java.util.stream.Collectors;
 
 import org.junit.jupiter.api.Test;
 
-
 import seedu.address.commons.status.ExecutionStatus;
 import seedu.address.commons.status.LoginStatus;
 import seedu.address.commons.status.SortStatus;
