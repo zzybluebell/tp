@@ -62,11 +62,9 @@ public class EzFoodieParserTest {
 
     @Test
     public void parseCommand_add() throws Exception {
-
         Member member = new MemberBuilder(AMY).withCredit("0").withTransactions().build();
         AddMemberCommand command = (AddMemberCommand) parser.parseCommand(MemberUtil.getAddCommand(member));
         assertEquals(new AddMemberCommand(member), command);
-
     }
 
     @Test

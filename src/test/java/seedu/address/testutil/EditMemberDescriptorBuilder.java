@@ -41,7 +41,7 @@ public class EditMemberDescriptorBuilder {
         descriptor.setTransactions(member.getTransactions());
     }
 
-    /**s
+    /**
      * Sets the {@code Name} of the {@code EditMemberDescriptor} that we are building.
      */
     public EditMemberDescriptorBuilder withName(String name) {
