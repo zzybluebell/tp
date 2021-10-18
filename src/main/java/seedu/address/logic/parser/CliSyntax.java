@@ -21,5 +21,4 @@ public class CliSyntax {
     /* Only used in sort command */
     public static final Prefix PREFIX_ASC = new Prefix("-a");
     public static final Prefix PREFIX_DESC = new Prefix("-d");
-
 }
