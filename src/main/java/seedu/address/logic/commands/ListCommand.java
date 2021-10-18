@@ -1,6 +1,7 @@
 package seedu.address.logic.commands;
 
 import static java.util.Objects.requireNonNull;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_MEMBER;
 import static seedu.address.model.Model.PREDICATE_SHOW_ALL_MEMBERS;
 
 import seedu.address.model.Model;
@@ -12,6 +13,11 @@ public class ListCommand extends Command {
 
     public static final String COMMAND_WORD = "list";
 
+    public static final String MESSAGE_USAGE = COMMAND_WORD
+            + ": Lists out all members.\n"
+            + "Parameters: " + PREFIX_MEMBER + "\n"
+            + "Example: " + COMMAND_WORD + " " + PREFIX_MEMBER;
+
     public static final String MESSAGE_SUCCESS = "Listed all members";
 
 
@@ -20,5 +26,10 @@ public class ListCommand extends Command {
         requireNonNull(model);
         model.updateFilteredMemberList(PREDICATE_SHOW_ALL_MEMBERS);
         return new CommandResult(MESSAGE_SUCCESS);
+    }
+
+    @Override
+    public boolean equals(Object other) {
+        return other instanceof ListCommand;
     }
 }

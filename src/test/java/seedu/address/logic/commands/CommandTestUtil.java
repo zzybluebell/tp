@@ -39,6 +39,8 @@ public class CommandTestUtil {
     public static final String VALID_ADDRESS_BOB = "Block 123, Bobby Street 3";
     public static final String VALID_REGISTRATION_TIMESTAMP_AMY = "1609459200000";
     public static final String VALID_REGISTRATION_TIMESTAMP_BOB = "1609542000000";
+    public static final String VALID_CREDIT_AMY = "200";
+    public static final String VALID_CREDIT_BOB = "500";
     public static final String VALID_TAG_HUSBAND = "husband";
     public static final String VALID_TAG_FRIEND = "friend";
     public static final String VALID_TRANSACTION_200 = "200.00";
@@ -111,30 +113,31 @@ public class CommandTestUtil {
      * Executes the given {@code command}, confirms that <br>
      * - a {@code CommandException} is thrown <br>
      * - the CommandException message matches {@code expectedMessage} <br>
-     * - the ezFoodie, filtered member list and selected member in {@code actualModel} remain unchanged
+     * - the ezFoodie, updated member list and selected member in {@code actualModel} remain unchanged
      */
     public static void assertCommandFailure(Command command, Model actualModel, String expectedMessage) {
         // we are unable to defensively copy the model for comparison later, so we can
         // only do so by copying its components.
         EzFoodie expectedEzFoodie = new EzFoodie(actualModel.getEzFoodie());
-        List<Member> expectedFilteredList = new ArrayList<>(actualModel.getFilteredMemberList());
+        List<Member> expectedUpdatedList = new ArrayList<>(actualModel.getUpdatedMemberList());
 
         assertThrows(CommandException.class, expectedMessage, () -> command.execute(actualModel));
         assertEquals(expectedEzFoodie, actualModel.getEzFoodie());
-        assertEquals(expectedFilteredList, actualModel.getFilteredMemberList());
+        assertEquals(expectedUpdatedList, actualModel.getUpdatedMemberList());
     }
+
     /**
      * Updates {@code model}'s filtered list to show only the member at the given {@code targetIndex} in the
      * {@code model}'s ezFoodie.
      */
     public static void showMemberAtIndex(Model model, Index targetIndex) {
-        assertTrue(targetIndex.getZeroBased() < model.getFilteredMemberList().size());
+        assertTrue(targetIndex.getZeroBased() < model.getUpdatedMemberList().size());
 
-        Member member = model.getFilteredMemberList().get(targetIndex.getZeroBased());
+        Member member = model.getUpdatedMemberList().get(targetIndex.getZeroBased());
         final String[] splitName = member.getName().fullName.split("\\s+");
         model.updateFilteredMemberList(new NameContainsKeywordsPredicate(Arrays.asList(splitName[0])));
 
-        assertEquals(1, model.getFilteredMemberList().size());
+        assertEquals(1, model.getUpdatedMemberList().size());
     }
 
 }
