@@ -169,7 +169,7 @@ public class LogicManagerTest {
         }
 
         @Override
-        public void saveAccount(ReadOnlyAccount acount, Path filePath) throws IOException {
+        public void saveAccount(ReadOnlyAccount account, Path filePath) throws IOException {
             throw DUMMY_IO_EXCEPTION;
         }
     }

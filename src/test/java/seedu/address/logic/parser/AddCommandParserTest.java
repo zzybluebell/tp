@@ -76,8 +76,8 @@ public class AddCommandParserTest {
         // multiple tags - all accepted
         Member expectedMemberMultipleTags = new MemberBuilder(AMY).withCredit("0")
                 .withTags(VALID_TAG_FRIEND, VALID_TAG_HUSBAND).withTransactions().build();
-        assertParseSuccess(parser, NAME_DESC_AMY + PHONE_DESC_AMY + EMAIL_DESC_AMY
-                + ADDRESS_DESC_AMY + TAG_DESC_HUSBAND + TAG_DESC_FRIEND,
+        assertParseSuccess(parser, MEMBER_DESC + NAME_DESC_AMY + PHONE_DESC_AMY + EMAIL_DESC_AMY + ADDRESS_DESC_AMY
+                + TAG_DESC_HUSBAND + TAG_DESC_FRIEND,
                 new AddMemberCommand(expectedMemberMultipleTags));
     }
 
@@ -85,7 +85,7 @@ public class AddCommandParserTest {
     public void parse_optionalFieldsMissing_success() {
         // zero tags
         Member expectedMember = new MemberBuilder(AMY).withCredit("0").withTags().withTransactions().build();
-        assertParseSuccess(parser, NAME_DESC_AMY + PHONE_DESC_AMY + EMAIL_DESC_AMY
+        assertParseSuccess(parser, MEMBER_DESC + NAME_DESC_AMY + PHONE_DESC_AMY + EMAIL_DESC_AMY
                 + ADDRESS_DESC_AMY, new AddMemberCommand(expectedMember));
     }
 
