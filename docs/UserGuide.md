@@ -108,7 +108,7 @@ Format: `exit`
 
 ### Listing out a certain number of members : `list -m`
 
-List out a certain number of members, show top 50 records by default.
+Lists out a certain number of members, show top 50 records by default.
 
 Format: `list -m [-pg <PAGE>]`
 
@@ -125,74 +125,195 @@ Format: `add -m -n <NAME> -p <PHONE> -e <EMAIL>`
 Example:
 * `add -m -n John Doe -p 98765432 -e johndoe@gmail.com`
 
-### Searching members : `find -m`
+### Finding members : `find -m`
 
 Finds members by different fields which contain any of the given keywords, show top 50 records by default.
 
-* The search is case-insensitive. e.g `hans` will match `Hans`
+* The find is case-insensitive. e.g `hans` will match `Hans`
 * Only full words will be matched e.g. `Han` will not match `Hans`
 
-#### Searching members by name
+#### Finding member by member ID
+
+Format: `find -m -id <MEMBER_ID>`
+
+Example:
+* `find -m -id 10001`
+
+#### Finding members by name
 
 Format: `find -m -n <NAME> [-pg <PAGE>]`
 
 Example: 
 * `find -m -n John Doe`
  
-#### Searching members by phone
+#### Finding members by phone
 
 Format: `find -m -p <PHONE> [-pg <PAGE>]`
 
 Example: 
 * `find -m -p 98765432`
 
-#### Searching members by email
+#### Finding members by email
 
 Format: `find -m -e <EMAIL> [-pg <PAGE>]`
 
 Example: 
 * `find -m -e johndoe@gmail.com`
 
-#### Searching members by registration date
+#### Finding members by registration date
 
 Format: `find -m -d <REGISTRATION_DATE> [-pg <PAGE>]`
 
 Example: 
 * `find -m -d 12-01-2021`
 
-#### Searching member by member ID
-
-Format: `find -m -id <MEMBER_ID>`
-
-Example:
-* `find -m -id 1`
-
-### Adding transaction for members : `add -t`
-
-Add transaction amount corresponding to member ID.
-
-Format: `add -t -id <MEMBER_ID> -b <BILLING>`
-
-Example:
-* `add -t -id 1 -b 200.00`
-
 ### Viewing member profile : `view -m`
 
-View member from member list by member ID.
+Views member from member list by member ID.
 
 Format: `show -m -id <MEMBER_ID>`
 
 Example:
-* `show -m -id 1`
+* `show -m -id 10001`
+
+### Adding transaction for members : `add -t`
+
+Adds transaction amount corresponding to member ID.
+
+Format: `add -t -id <MEMBER_ID> -b <BILLING>`
+
+Example:
+* `add -t -id 10001 -b 200.00`
+
+### Clearing the program : `clear`
+
+Clears the program.
+
+Format: `clear`
+
+### Logging in as a manager : `login`
+
+Logs in as a manager.
+
+Format: `login <PASSWORD>`
+
+Example:
+* `login 123456`
+
+### Logging out as a manager : `logout`
+
+Logs out as a manager.
+
+Format: `logout`
+
+Example:
+* `logout`
+
+### Sorting members by credit : `sort -m`
+
+#### Sorting member by credit in ascending order
+
+Format: `sort -m -c -a`
+
+Example:
+* `sort -m -c -a`
+
+#### Sorting member by credit in descending order
+
+Format: `sort -m -c -d`
+
+Example:
+* `sort -m -c -d`
+
+### Editing a member : `edit -m`
+
+Edits different fields in a member's profile, where the member is specified by member ID.
+
+#### Editing member name by member ID
+
+Format: `edit -m -id <MEMBER_ID> -n <NAME>`
+
+Example:
+* `edit -m -id 10001 -n John Doe`
+
+#### Editing member phone by member ID
+
+Format: `edit -m -id <MEMBER_ID> -p <PHONE>`
+
+Example:
+* `edit -m -id 10001 -p 98765432`
+
+#### Editing member email by member ID
+
+Format: `edit -m -id <MEMBER_ID> -e <EMAIL>`
+
+Example:
+* `edit -m -id 10001 -e johndoe@gmail.com`
+
+#### Editing member address by member ID
+
+Format: `edit -m -id <MEMBER_ID> -e <ADDRESS>`
+
+Example:
+* `edit -m -id 10001 -a 33 Benoi Crescent, 629979, Singapore`
+
+#### Editing member transaction by member ID
+
+Format: `edit -m -id <MEMBER_ID> -t <TRANSACTION>`
+
+Example:
+* `edit -m -id 10001 -t 123.45`
+
+#### Editing member name by index number
+
+Format: `edit -m -r <INDEX> -n <NAME>`
+
+Example:
+* `edit -m -r 1 -n John Doe`
+
+#### Editing member phone by index number
+
+Format: `edit -m -r <INDEX> -p <PHONE>`
+
+Example:
+* `edit -m -r 1 -p 98765432`
+
+#### Editing member email by index number
+
+Format: `edit -m -r <INDEX> -e <EMAIL>`
+
+Example:
+* `edit -m -r 1 -e johndoe@gmail.com`
+
+#### Editing member address by index number
+
+Format: `edit -m -r <INDEX> -e <ADDRESS>`
+
+Example:
+* `edit -m -r 1 -a 33 Benoi Crescent, 629979, Singapore`
+
+#### Editing member transaction by index number
+
+Format: `edit -m -r <INDEX> -t <TRANSACTION>`
+
+Example:
+* `edit -m -r 1 -t 123.45`
 
 ### Deleting a member : `delete -m`
 
-Deletes member from member list by member ID.
+#### Deleting member from member list by member ID
 
 Format: `del -m -id <MEMBER_ID>`
 
 Example:
-* `del -m -id 1`
+* `del -m -id 10001`
+
+#### Deleting member from member list by index number
+
+Format: `del -m -r <INDEX>`
+
+Example:
+* `del -m -r 1`
 
 ### Saving the data
 
@@ -206,47 +327,17 @@ ezFoodie data are saved as a JSON file `[JAR file location]/data/ezFoodie.json`.
 If your changes to the data file makes its format invalid, ezFoodie will discard all data and start with an empty data file at the next run.
 </div>
 
-
-### Editing a member : `edit -m -id <MEMBER_ID>`
-
-Edits different fields in a member's profile, where the member is specified by member ID.
-
-#### Editing member name
-
-Format: `edit -m -id <MEMBER_ID> -n <NAME>`
-
-Example:
-* `edit -m -id 1 -n John Doe`
-
-#### Editing member phone
-
-Format: `edit -m -id <MEMBER_ID> -p <PHONE>`
-
-Example:
-* `edit -m -id 1 -p 98765432`
-
-#### Editing member email
-
-Format: `edit -m -id <MEMBER_ID> -e <EMAIL>`
-
-Example:
-* `edit -m -id 1 -e johndoe@gmail.com`
-
 ### Archiving data files `[coming in v1.3]`
 
 ### Redeeming a member’s points `[coming in v1.3]`
 
 ### Marking reservation for member `[coming in v1.3]`
 
-### Clearing the program `[coming in v1.3]`
+### Marking reservation for member `[coming in v1.3]`
 
-### Logging in as a manager `[coming in v1.3]`
+### Editing reservation for member `[coming in v1.3]`
 
-### Logging out as a manager `[coming in v1.3]`
-
-### Sorting members by tier `[coming in v1.3]`
-
-### Sorting members by credit `[coming in v1.3]`
+### Finding reservations by date `[coming in v1.3]`
 
 _Details coming soon ..._
 
@@ -267,11 +358,27 @@ Action | Format, Examples
 **Exit Program** | `exit`
 **List Members** | *Format* <br> `find -m` <br> *Example* <br> `find -m`
 **Add New Member** | *Format* <br> `add -m -n <NAME> -p <PHONE> -e <EMAIL>` <br> *Example* <br> `add -m -n John Doe -p 98765432 -e johndoe@gmail.com`
-**Search Members by Name** | *Format* <br> `find n <NAME>` <br> *Example* <br> `find -m -n John Doe`
-**Search Members by Phone** | *Format* <br> `find -m -p <PHONE>` <br> *Example* <br> `find -m -p 98765432`
-**Search Members by Email** | *Format* <br> `find -m -e <EMAIL>​` <br> *Example* <br> `find -m -e johndoe@gmail.com`
-**Search Members by Registration Date** | *Format* <br> `find -m -d <REGISTRATION_DATE>` <br> *Example* <br> `find -m -d 12-01-2021`
-**Search Member by Member ID** | *Format* <br> `find -m -id <MEMBER_ID>` <br> *Example* <br> `find -m -id 1`
-**Add Transaction for Member** | *Format* <br> `add -t -id <MEMBER_ID> -b <BILLING>` <br> *Example* <br> `add -t -id 1 -b 200.00`
-**View Member Profile** | *Format* <br> `show -m -id <MEMBER_ID>` <br> *Example* <br> `show -m -id 1`
-**Delete Member by Member ID** | *Format* <br> `del -m -id <MEMBER_ID>` <br> *Example* <br> `del -m -id 1`
+**Find Members by Name** | *Format* <br> `find n <NAME>` <br> *Example* <br> `find -m -n John Doe`
+**Find Members by Phone** | *Format* <br> `find -m -p <PHONE>` <br> *Example* <br> `find -m -p 98765432`
+**Find Members by Email** | *Format* <br> `find -m -e <EMAIL>​` <br> *Example* <br> `find -m -e johndoe@gmail.com`
+**Find Members by Registration Date** | *Format* <br> `find -m -d <REGISTRATION_DATE>` <br> *Example* <br> `find -m -d 12-01-2021`
+**Find Member by Member ID** | *Format* <br> `find -m -id <MEMBER_ID>` <br> *Example* <br> `find -m -id 10001`
+**View Member Profile** | *Format* <br> `show -m -id <MEMBER_ID>` <br> *Example* <br> `show -m -id 10001`
+**Add Transaction for Member** | *Format* <br> `add -t -id <MEMBER_ID> -b <BILLING>` <br> *Example* <br> `add -t -id 10001 -b 200.00`
+**Clear Program** | `clear`
+**Login as Manager** | *Format* <br> `login <PASSWORD>` <br> *Example* <br> `login 123456`
+**Logout as Manager** | `logout`
+**Sort Members by Credit in Ascending Order** | *Format* <br> `sort -m -c -a` <br> *Example* <br> `sort -m -c -a`
+**Sort Members by Credit in Descending Order** | *Format* <br> `sort -m -c -d` <br> *Example* <br> `sort -m -c -d`
+**Edit Member Name by Member ID** | *Format* <br> `edit -m -id <MEMBER_ID> -n <NAME>` <br> *Example* <br> `edit -m -id 10001 -n John Doe`
+**Edit Member Phone by Member ID** | *Format* <br> `edit -m -id <MEMBER_ID> -p <PHONE>` <br> *Example* <br> `edit -m -id 10001 -p 98765432`
+**Edit Member Email by Member ID** | *Format* <br> `edit -m -id <MEMBER_ID> -e <EMAIL>` <br> *Example* <br> `edit -m -id 10001 -e johndoe@gmail.com`
+**Edit Member Address by Member ID** | *Format* <br> `edit -m -id <MEMBER_ID> -a <ADDRESS>` <br> *Example* <br> `edit -m -id 10001 -a 33 Benoi Crescent, 629979, Singapore`
+**Edit Member Transaction by Member ID** | *Format* <br> `edit -m -id <MEMBER_ID> -t <TRANSACTION>` <br> *Example* <br> `edit -m -id 10001 -t 123.45`
+**Edit Member Name by Index Number** | *Format* <br> `edit -m -r <INDEX> -n <NAME>` <br> *Example* <br> `edit -m -r 1 -n John Doe`
+**Edit Member Phone by Index Number** | *Format* <br> `edit -m -r <INDEX> -p <PHONE>` <br> *Example* <br> `edit -m -r 1 -p 98765432`
+**Edit Member Email by Index Number** | *Format* <br> `edit -m -r <INDEX> -e <EMAIL>` <br> *Example* <br> `edit -m -r 1 -e johndoe@gmail.com`
+**Edit Member Address by Index Number** | *Format* <br> `edit -m -r <INDEX> -a <ADDRESS>` <br> *Example* <br> `edit -m -r 1 -a 33 Benoi Crescent, 629979, Singapore`
+**Edit Member Transaction by Index Number** | *Format* <br> `edit -m -r <INDEX> -t <TRANSACTION>` <br> *Example* <br> `edit -m -r 1 -t 123.45`
+**Delete Member by Member ID** | *Format* <br> `del -m -id <MEMBER_ID>` <br> *Example* <br> `del -m -id 10001`
+**Delete Member by Index Number** | *Format* <br> `del -m -r <INDEX>` <br> *Example* <br> `del -m -r 1`
