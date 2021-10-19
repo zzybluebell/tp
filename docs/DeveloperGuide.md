@@ -166,7 +166,7 @@ Given below is an example usage scenario and how the find mechanism behaves at e
 
 2. The command is handled by `LogicManager#execute(String)`, which then calls and passes this command to the `EzFoodieParser#parseCommand(String)` method.
 
-3. The `EzFoodieParser` detects the command word `find` in the string and extracts the argument string ` -m -id 10001 10002`.
+3. The `EzFoodieParser` detects the command word `find` in the string and extracts the argument string `-m -id 10001 10002`.
 
 4. The `EzFoodieParser` creates a new `FindCommandParser` instance to parse the argument string according to the format specified for `FindCommand`.
 
@@ -226,7 +226,7 @@ Given below is an example usage scenario and how the sort mechanism behaves at e
 
 2. The command is handled by `LogicManager#execute(String)`, which then calls and passes this command to the `EzFoodieParser#parseCommand(String)` method.
 
-3. The `EzFoodieParser` detects the command word `sort` in the string and extracts the argument string ` -m -c -a`.
+3. The `EzFoodieParser` detects the command word `sort` in the string and extracts the argument string `-m -c -a`.
 
 4. The `EzFoodieParser` creates a new `SortCommandParser` instance to parse the argument string according to the format specified for `SortCommand`.
 
@@ -923,16 +923,16 @@ Manager is logged in
 2.  Should be able to hold up to 1000 members without a noticeable sluggishness in performance for typical usage.
 3.  Should be able to hold up to 5000 transactions without a noticeable sluggishness in performance for typical usage.
 4.  A user with above average typing speed for regular English text (i.e. not code, not system admin commands) should be able to accomplish most of the tasks faster using commands than using the mouse.
-5.  The source code should be open source.
-6.  The application should not exceed 50mb in size.
-7.  The documentation should be easy to understand.
+5.  The application should not exceed 50mb in size.
+6.  The documentation should be easy to understand.
 
 *{More to be added}*
 
 ### Glossary
 
 * **Mainstream OS**: Windows, Linux, Unix, OS-X
-* **CSV File**: A comma-separated values file is a delimited text file that uses a comma to separate values. Each line of the file is a data record. Each record consists of one or more fields, separated by commas. And it can be opened using Microsoft Excel. (Ref: https://en.wikipedia.org/wiki/Comma-separated_values)
+* **CSV File**: A comma-separated values file is a delimited text file that uses a comma to separate values. Each line of the file is a data record. Each record consists of one or more fields, separated by commas. And it can be opened using Microsoft Excel (Ref: https://en.wikipedia.org/wiki/Comma-separated_values)
+* **JSON file**: A file that uses human-readable text to store and transmit data objects consisting of attribute–value pairs and arrays (or other serializable values) (Ref: https://en.wikipedia.org/wiki/JSON)
 * **Staff**: All employees of the restaurant who will be using the product
 * **Manager**: A special subset of staff with higher permission who can get special access to certain higher level features
 * **Normal Mode**: The mode before the manager login, Normal Mode by default
