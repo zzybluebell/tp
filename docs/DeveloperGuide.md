@@ -154,6 +154,126 @@ Classes used by multiple components are in the `seedu.addressbook.commons` packa
 
 This section describes some noteworthy details on how certain features are implemented.
 
+### Find feature
+
+`[written by: Hu Jiajun]`
+
+#### Implementation
+
+Given below is an example usage scenario and how the find mechanism behaves at each step.
+
+1. The user executes `find -m -id 10001 10002` command to find the members with the member ids `10001` and `10002` in the application.
+
+2. The command is handled by `LogicManager#execute(String)`, which then calls and passes this command to the `EzFoodieParser#parseCommand(String)` method.
+
+3. The `EzFoodieParser` detects the command word `find` in the string and extracts the argument string `-m -id 10001 10002`.
+
+4. The `EzFoodieParser` creates a new `FindCommandParser` instance to parse the argument string according to the format specified for `FindCommand`.
+
+5. The argument string is parsed to the member ids array `[10001, 10002]` using the `FindCommandParser#parse(String)` method, which also performs validation.
+
+6. The `FindCommandParser` creates a new `IdContainsKeywordsPredicate` instance with the member ids array `[10001, 10002]` to handle the filter.
+
+7. The `FindCommandParser` creates a new `FindCommand` instance with the `IdContainsKeywordsPredicate` instance and returns it to `EzFoodieParser`, which in turn returns it to `LogicManager`.
+
+8. The `LogicManager` calls the `FindCommand#execute(Model)` method.
+
+9. The `FindCommand` calls the `Model#updateFilteredMemberList(IdContainsKeywordsPredicate)` method.
+
+10. The `Model` calls the `FilteredList#setPredicate(IdContainsKeywordsPredicate)` to filter the members by the member ids `10001` and `10002`
+
+11. The application lists the filtered members.
+
+12. Lastly, the `FindCommand` creates a `CommandResult` with a `SuccessMessage` and returns it to `LogicManager`.
+
+The above process is shown in the following sequence diagram:
+
+![FindSequenceDiagram](images/FindSequenceDiagram.png)
+
+**Sequence diagram showcasing the find command process**
+
+<div markdown="span" class="alert alert-info">:information_source: **Note:** The lifeline for `FindCommandParser`, `IdContainsKeywordsPredicate` and `FindCommand` should end at the destroy marker (X) but due to a limitation of PlantUML, the lifeline reaches the end of diagram.
+
+</div>
+
+The following activity diagram summarizes what happens when a user executes a new command to find the members by keywords:
+
+![FindActivityDiagram](images/FindActivityDiagram.png)
+
+**Activity diagram showcasing the find command execution flow**
+
+#### Design consideration
+
+**Aspect: How to execute different types of keywords with `FindCommand`**
+
+* **Alternative 1 (current choice):** Add corresponding constructors for different types of keywords.
+  * Pros: Easy to implement, only need to make a few changes to the source code.
+  * Cons: Insufficient use of object-oriented features (inheritance and polymorphic).
+
+* **Alternative 2:** Abstract `FindCommand`, create different classes according to different types of keywords to inherit `FindCommand`, such as `FindIdCommand`, `FindNameCommand`, `FindEmailCommand`, etc.
+  * Pros: Sufficient use of object-oriented features (inheritance and polymorphic).
+  * Cons: Have to make more changes to the source code, it may cause potential bugs.
+
+### Sort feature
+
+`[written by: Hu Jiajun]`
+
+#### Implementation
+
+Given below is an example usage scenario and how the sort mechanism behaves at each step.
+
+1. The user executes `sort -m -c -a` command to sort the members by their credits in ascending order in the application.
+
+2. The command is handled by `LogicManager#execute(String)`, which then calls and passes this command to the `EzFoodieParser#parseCommand(String)` method.
+
+3. The `EzFoodieParser` detects the command word `sort` in the string and extracts the argument string `-m -c -a`.
+
+4. The `EzFoodieParser` creates a new `SortCommandParser` instance to parse the argument string according to the format specified for `SortCommand`.
+
+5. The argument string is parsed to `a` (ascending order) and converted to the enum tpye `SortStatus.ASC` using the `SortCommandParser#parse(String)` method, which also performs validation.
+
+6. The `SortCommandParser` creates a new `CreditSortComparator` instance with the enum tpye `SortStatus.ASC` to handle the sort.
+
+7. The `SortCommandParser` creates a new `SortCommand` instance with the `CreditSortComparator` instance and returns it to `EzFoodieParser`, which in turn returns it to `LogicManager`.
+
+8. The `LogicManager` calls the `SortCommand#execute(Model)` method.
+
+9. The `SortCommand` calls the `Model#updateSortedMemberList(CreditSortComparator)` method.
+
+10. The `Model` calls the `SortedList#setComparator(CreditSortComparator)` method to sort the members by their credits in ascending order
+
+11. The application lists the sorted members.
+
+12. Lastly, the `SortCommand` creates a `CommandResult` with a `SuccessMessage` and returns it to `LogicManager`.
+
+The above process is shown in the following sequence diagram:
+
+![SortSequenceDiagram](images/SortSequenceDiagram.png)
+
+**Sequence diagram showcasing the sort command process**
+
+<div markdown="span" class="alert alert-info">:information_source: **Note:** The lifeline for `SortCommandParser`, `CreditSortComparator` and `SortCommand` should end at the destroy marker (X) but due to a limitation of PlantUML, the lifeline reaches the end of diagram.
+
+</div>
+
+The following activity diagram summarizes what happens when a user executes a new command to sort the members by their credits:
+
+![SortActivityDiagram](images/SortActivityDiagram.png)
+
+**Activity diagram showcasing the sort command execution flow**
+
+#### Design consideration
+
+**Aspect: How to sort by different types of fields with `SortCommand`**
+
+* **Alternative 1 (current choice):** Add corresponding constructors for different types of fields.
+  * Pros: Easy to implement, only need to make a few changes to the source code.
+  * Cons: Insufficient use of object-oriented features (inheritance and polymorphic).
+
+* **Alternative 2:** Abstract `SortCommand`, create different classes according to different types of fields to inherit `SortCommand`, such as `SortPointCommand`, `SortCreditCommand`, etc.
+  * Pros: Sufficient use of object-oriented features (inheritance and polymorphic).
+  * Cons: Have to make more changes to the source code, it may cause potential bugs.
+
 ### \[Proposed\] Undo/redo feature
 
 #### Proposed Implementation
@@ -219,7 +339,7 @@ The following activity diagram summarizes what happens when a user executes a ne
 
 <img src="images/CommitActivityDiagram.png" width="250" />
 
-#### Design considerations:
+#### Design considerations
 
 **Aspect: How undo & redo executes:**
 
@@ -227,8 +347,7 @@ The following activity diagram summarizes what happens when a user executes a ne
   * Pros: Easy to implement.
   * Cons: May have performance issues in terms of memory usage.
 
-* **Alternative 2:** Individual command knows how to undo/redo by
-  itself.
+* **Alternative 2:** Individual command knows how to undo/redo by itself.
   * Pros: Will use less memory (e.g. for `delete`, just save the person being deleted).
   * Cons: We must ensure that the implementation of each individual command are correct.
 
@@ -294,17 +413,17 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 | `* * *`  | staff   | exit the program                                          |                                                                        |
 | `* * *`  | staff   | list out a certain number of members                      | easily view and access the member basic information                    |
 | `* * *`  | staff   | add new members                                           | easily the track member statuses                                       |
-| `* * *`  | staff   | search members by name                                    | easily find the specific members to check their details                |
-| `* * *`  | staff   | search member by phone                                    | easily find the specific member to check his/her details               |
-| `* * *`  | staff   | search member by email                                    | easily find the specific member to check his/her details               |
-| `* * *`  | staff   | search members by registration date                       | easily find a member to check their details                            |
-| `* * *`  | staff   | search member by member ID                                | easily find the specific member to check his/her details               |
+| `* * *`  | staff   | find members by name                                      | easily find the specific members to check their details                |
+| `* * *`  | staff   | find member by phone                                      | easily find the specific member to check his/her details               |
+| `* * *`  | staff   | find member by email                                      | easily find the specific member to check his/her details               |
+| `* * *`  | staff   | find members by registration date                         | easily find a member to check their details                            |
+| `* * *`  | staff   | find member by member ID                                  | easily find the specific member to check his/her details               |
 | `* * *`  | staff   | view member profile                                       | easily check the specific member's details                             |
 | `* * *`  | staff   | add transaction for members                               | easily track the transaction history of members                        |
 | `* * *`  | staff   | redeem a member’s points                                  |                                                                        |
 | `* * *`  | staff   | mark reservation for member                               |                                                                        |
 | `* * *`  | manager | clear the program                                         | Initialize the entire program                                          |
-| `* * *`  | manager | login as a manager                                        | access manager-only features, e.g. modify the membership level         |
+| `* * *`  | manager | login as a manager                                        | access manager-only features, e.g. sort the members by their credits   |
 | `* * *`  | manager | logout as a manager                                       | prevent staff from accessing manager-only features                     |
 | `* * *`  | manager | sort members by tier                                      | easily analyze the members' consumption and distribution               |
 | `* * *`  | manager | sort members by credit                                    | easily offer promotions to the members with the highest consumption    |
@@ -314,7 +433,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 | `* * *`  | manager | delete member by member ID                                | remove member that I no longer need                                    |
 | `* *  `  | staff   | unmark reservation for member                             | remove reservation for member that I no longer need                    |
 | `* *  `  | staff   | edit reservation for member                               | update reservation for member to latest                                |
-| `* *  `  | staff   | search reservations by date                               | easily find the coming reservations                                    |
+| `* *  `  | staff   | find reservations by date                                 | easily find the coming reservations                                    |
 | `* *  `  | staff   | be automatically reminded when a reservation is coming    | prepare for seats for the member in time                               |
 | `*    `  | staff   | undo previous command                                     | easily cancel previous command with accidental mistakes                |
 | `*    `  | staff   | redo previous command                                     | easily speed up the typing speed of command                            |
@@ -426,13 +545,13 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
       Use case ends.
 
-<b>Use case: <label id="UC05">UC05</label> - Search a member by [field]</b>
+<b>Use case: <label id="UC05">UC05</label> - find a member by [field]</b>
 
 **Actors: Staff**
 
 **MSS**
 
-1.  Staff requests to search for a member by [field] with keywords, [field] can be member ID, name, phone, email or registration date.
+1.  Staff requests to find a member by [field] with keywords, [field] can be member ID, name, phone, email or registration date.
 2.  ezFoodie shows a list of members whose [field] matches the keywords.
 
     Use case ends.
@@ -773,13 +892,13 @@ Manager is logged in
 
       Use case resumes at step 1.
 
-**Use case: UC18 - Search reservations by date**
+**Use case: UC18 - find reservations by date**
 
 **Actors: Staff**
 
 **MSS**
 
-1.  Staff requests to search for reservations by date.
+1.  Staff requests to find reservations by date.
 2.  ezFoodie shows a list of reservations for the date.
 
     Use case ends.
@@ -804,16 +923,16 @@ Manager is logged in
 2.  Should be able to hold up to 1000 members without a noticeable sluggishness in performance for typical usage.
 3.  Should be able to hold up to 5000 transactions without a noticeable sluggishness in performance for typical usage.
 4.  A user with above average typing speed for regular English text (i.e. not code, not system admin commands) should be able to accomplish most of the tasks faster using commands than using the mouse.
-5.  The source code should be open source.
-6.  The application should not exceed 50mb in size.
-7.  The documentation should be easy to understand.
+5.  The application should not exceed 50mb in size.
+6.  The documentation should be easy to understand.
 
 *{More to be added}*
 
 ### Glossary
 
 * **Mainstream OS**: Windows, Linux, Unix, OS-X
-* **CSV File**: A comma-separated values file is a delimited text file that uses a comma to separate values. Each line of the file is a data record. Each record consists of one or more fields, separated by commas. And it can be opened using Microsoft Excel. (Ref: https://en.wikipedia.org/wiki/Comma-separated_values)
+* **CSV File**: A comma-separated values file is a delimited text file that uses a comma to separate values. Each line of the file is a data record. Each record consists of one or more fields, separated by commas. And it can be opened using Microsoft Excel (Ref: https://en.wikipedia.org/wiki/Comma-separated_values)
+* **JSON file**: A file that uses human-readable text to store and transmit data objects consisting of attribute–value pairs and arrays (or other serializable values) (Ref: https://en.wikipedia.org/wiki/JSON)
 * **Staff**: All employees of the restaurant who will be using the product
 * **Manager**: A special subset of staff with higher permission who can get special access to certain higher level features
 * **Normal Mode**: The mode before the manager login, Normal Mode by default
