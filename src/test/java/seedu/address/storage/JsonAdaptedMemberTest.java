@@ -18,7 +18,7 @@ import seedu.address.model.member.Email;
 import seedu.address.model.member.Id;
 import seedu.address.model.member.Name;
 import seedu.address.model.member.Phone;
-import seedu.address.model.member.RegistrationTimestamp;
+import seedu.address.model.member.Timestamp;
 
 public class JsonAdaptedMemberTest {
     private static final String INVALID_ID = "3A001";
@@ -147,7 +147,7 @@ public class JsonAdaptedMemberTest {
         JsonAdaptedMember member =
                 new JsonAdaptedMember(VALID_ID, VALID_NAME, VALID_PHONE, VALID_EMAIL, VALID_ADDRESS,
                         INVALID_REGISTRATION_TIMESTAMP, VALID_CREDIT, VALID_TAGS, VALID_TRANSACTIONS);
-        String expectedMessage = RegistrationTimestamp.MESSAGE_CONSTRAINTS;
+        String expectedMessage = Timestamp.MESSAGE_CONSTRAINTS;
         assertThrows(IllegalValueException.class, expectedMessage, member::toModelType);
     }
 
@@ -157,7 +157,7 @@ public class JsonAdaptedMemberTest {
                 new JsonAdaptedMember(VALID_ID, VALID_NAME, VALID_PHONE, VALID_EMAIL, VALID_ADDRESS,
                         null, VALID_CREDIT, VALID_TAGS, VALID_TRANSACTIONS);
         String expectedMessage = String.format(
-                MISSING_FIELD_MESSAGE_FORMAT, RegistrationTimestamp.class.getSimpleName());
+                MISSING_FIELD_MESSAGE_FORMAT, Timestamp.class.getSimpleName());
         assertThrows(IllegalValueException.class, expectedMessage, member::toModelType);
     }
 

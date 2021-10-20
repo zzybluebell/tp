@@ -10,7 +10,7 @@ import seedu.address.model.member.Id;
 import seedu.address.model.member.Member;
 import seedu.address.model.member.Name;
 import seedu.address.model.member.Phone;
-import seedu.address.model.member.RegistrationTimestamp;
+import seedu.address.model.member.Timestamp;
 import seedu.address.model.tag.Tag;
 import seedu.address.model.transaction.Transaction;
 import seedu.address.model.util.SampleDataUtil;
@@ -33,7 +33,7 @@ public class MemberBuilder {
     private Phone phone;
     private Email email;
     private Address address;
-    private RegistrationTimestamp registrationTimestamp;
+    private Timestamp timestamp;
     private Credit credit;
     private Set<Tag> tags;
     private Set<Transaction> transactions;
@@ -47,7 +47,7 @@ public class MemberBuilder {
         phone = new Phone(DEFAULT_PHONE);
         email = new Email(DEFAULT_EMAIL);
         address = new Address(DEFAULT_ADDRESS);
-        registrationTimestamp = new RegistrationTimestamp(DEFAULT_REGISTRATION_TIMESTAMP);
+        timestamp = new Timestamp(DEFAULT_REGISTRATION_TIMESTAMP);
         credit = new Credit(DEFAULT_CREDIT);
         tags = new HashSet<>();
         transactions = new HashSet<>();
@@ -62,7 +62,7 @@ public class MemberBuilder {
         phone = memberToCopy.getPhone();
         email = memberToCopy.getEmail();
         address = memberToCopy.getAddress();
-        registrationTimestamp = memberToCopy.getRegistrationTimestamp();
+        timestamp = memberToCopy.getRegistrationTimestamp();
         credit = memberToCopy.getCredit();
         tags = new HashSet<>(memberToCopy.getTags());
         transactions = new HashSet<>(memberToCopy.getTransactions());
@@ -112,7 +112,7 @@ public class MemberBuilder {
      * Sets the {@code RegistrationTimestamp} of the {@code Member} that we are building.
      */
     public MemberBuilder withRegistrationTimestamp(String registrationTimestamp) {
-        this.registrationTimestamp = new RegistrationTimestamp(registrationTimestamp);
+        this.timestamp = new Timestamp(registrationTimestamp);
         return this;
     }
 
@@ -142,7 +142,7 @@ public class MemberBuilder {
     }
 
     public Member build() {
-        return new Member(id, name, phone, email, address, registrationTimestamp, credit, tags, transactions);
+        return new Member(id, name, phone, email, address, timestamp, credit, tags, transactions);
     }
 
 }

@@ -22,6 +22,7 @@ import seedu.address.logic.commands.EditCommand;
 import seedu.address.logic.commands.EditCommand.EditMemberDescriptor;
 import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.model.member.Id;
+import seedu.address.model.member.Timestamp;
 import seedu.address.model.tag.Tag;
 import seedu.address.model.transaction.Transaction;
 
@@ -105,7 +106,8 @@ public class EditCommandParser implements Parser<EditCommand> {
      * If {@code transactions} contain only one element which is an empty string, it will be parsed into a
      * {@code Set<Transaction>} containing zero transactions.
      */
-    private Optional<Set<Transaction>> parseTransactionsForEdit(Collection<String> transactions) throws ParseException {
+    private Optional<Set<Transaction>> parseTransactionsForEdit(Collection<String> transactions)
+            throws ParseException {
         assert transactions != null;
 
         if (transactions.isEmpty()) {

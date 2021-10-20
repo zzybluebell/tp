@@ -24,7 +24,7 @@ import seedu.address.model.member.Id;
 import seedu.address.model.member.Member;
 import seedu.address.model.member.Name;
 import seedu.address.model.member.Phone;
-import seedu.address.model.member.RegistrationTimestamp;
+import seedu.address.model.member.Timestamp;
 import seedu.address.model.tag.Tag;
 import seedu.address.model.transaction.Transaction;
 
@@ -93,15 +93,15 @@ public class AddMemberCommandParser extends AddCommandParser implements Parser<A
         Phone phone = ParserUtil.parsePhone(argMultimap.getValue(PREFIX_PHONE).get());
         Email email = ParserUtil.parseEmail(argMultimap.getValue(PREFIX_EMAIL).get());
         Address address = ParserUtil.parseAddress(argMultimap.getValue(PREFIX_ADDRESS).get());
-        RegistrationTimestamp registrationTimestamp = executionStatus == ExecutionStatus.NORMAL
-                ? ParserUtil.parseRegistrationTimestamp(generateRegistrationTimestamp())
-                : ParserUtil.parseRegistrationTimestamp(generateRegistrationTimestampStub());
+        Timestamp timestamp = executionStatus == ExecutionStatus.NORMAL
+                ? ParserUtil.parseTimestamp(generateRegistrationTimestamp())
+                : ParserUtil.parseTimestamp(generateRegistrationTimestampStub());
         Credit credit = new Credit("0");
         Set<Tag> tagList = ParserUtil.parseTags(argMultimap.getAllValues(PREFIX_TAG));
         // TODO: Transaction is not available at AddCommand
         Set<Transaction> transactionList = new HashSet<>();
 
-        Member member = new Member(id, name, phone, email, address, registrationTimestamp, credit,
+        Member member = new Member(id, name, phone, email, address, timestamp, credit,
                 tagList, transactionList);
 
         return new AddMemberCommand(member);

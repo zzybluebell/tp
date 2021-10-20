@@ -48,6 +48,20 @@ public class MemberUtil {
     }
 
     /**
+     * Returns the part of command string for the given {@code member}'s transaction details.
+     * @param member
+     * @return
+     */
+    public static String getMemberTransactions(Member member) {
+        StringBuilder sb = new StringBuilder();
+        sb.append(PREFIX_TRANSACTION + " ");
+        member.getTransactions().stream().forEach(
+            s -> sb.append(PREFIX_TRANSACTION + s.getTransactionAmount() + " ")
+        );
+        return sb.toString();
+    }
+
+    /**
      * Returns the part of command string for the given {@code EditMemberDescriptor}'s details.
      */
     public static String getEditMemberDescriptorDetails(EditMemberDescriptor descriptor) {

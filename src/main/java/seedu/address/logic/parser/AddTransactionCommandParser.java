@@ -55,8 +55,13 @@ public class AddTransactionCommandParser extends AddCommandParser implements Par
 			throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, AddTransactionCommand.MESSAGE_USAGE));
 		}
 
-		//todo: add in Timestamp to Transaction
+//		Timestamp timestamp = executionStatus == ExecutionStatus.NORMAL
+//				? ParserUtil.parseTimestamp(generateTransactionTimestamp())
+//				: ParserUtil.parseTimestamp(generateTransactionTimestampStub());
 		Set<Transaction> transactionList = ParserUtil.parseTransactions(argMultimap.getAllValues(PREFIX_TRANSACTION));
+//		for (Transaction transaction: transactionList) {
+//			transaction.setTimestamp(timestamp);
+//		}
 		Id id = ParserUtil.parseId(argMultimap.getValue(PREFIX_ID).get());
 
 		return new AddTransactionCommand(transactionList, id);
