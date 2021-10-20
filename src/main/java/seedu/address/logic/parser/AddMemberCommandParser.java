@@ -40,7 +40,7 @@ public class AddMemberCommandParser extends AddCommandParser implements Parser<A
     private final ExecutionStatus executionStatus;
 
     /**
-     * Constructs a {@code AddCommandParser} with the given {@code Model} and {@code ExecutionStatus}.
+     * Constructs a {@code AddMemberCommandParser} with the given {@code Model} and {@code ExecutionStatus}.
      */
     public AddMemberCommandParser(Model model, ExecutionStatus executionStatus) {
         this.model = model;
