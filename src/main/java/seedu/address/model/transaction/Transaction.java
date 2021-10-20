@@ -1,7 +1,5 @@
 package seedu.address.model.transaction;
 
-import seedu.address.model.member.Timestamp;
-
 import static java.util.Objects.requireNonNull;
 import static seedu.address.commons.util.AppUtil.checkArgument;
 
@@ -17,7 +15,7 @@ public class Transaction {
     public static final int LENGTH = 7; // Max amount is 9999.99
 
     private final String transactionAmount;
-//    private Timestamp timestamp;
+    //private Timestamp timestamp;
     //todo: Add in transaction_id soon.
 
     /**
@@ -31,18 +29,17 @@ public class Transaction {
         this.transactionAmount = transactionAmount;
     }
 
-
     public String getTransactionAmount() {
         return transactionAmount;
     }
 
-//    public Timestamp getTimestamp() {
-//        return timestamp;
-//    }
-
-//    public void setTimestamp(Timestamp timestamp) {
-//        this.timestamp = timestamp;
-//    }
+    //public Timestamp getTimestamp() {
+    //    return timestamp;
+    //}
+    //
+    //public void setTimestamp(Timestamp timestamp) {
+    //    this.timestamp = timestamp;
+    //}
 
     /**
      * Returns true if a given string is a valid transaction amount.
@@ -63,7 +60,7 @@ public class Transaction {
         return other == this // short circuit if same object
                 || (other instanceof Transaction // instanceof handles nulls
                 && transactionAmount.equals(((Transaction) other).transactionAmount)); // state check
-//                && timestamp.equals(((Transaction) other).timestamp));
+                //&& timestamp.equals(((Transaction) other).timestamp));
     }
 
     //todo: can use the id to generate hashcode
