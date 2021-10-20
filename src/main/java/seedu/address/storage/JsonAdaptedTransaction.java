@@ -25,7 +25,7 @@ class JsonAdaptedTransaction {
      * Converts a given {@code Transaction} into this class for Jackson use.
      */
     public JsonAdaptedTransaction(Transaction source) {
-        transactionAmount = source.getTransactionAmount();
+        transactionAmount = source.transactionAmount;
     }
 
     @JsonValue

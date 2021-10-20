@@ -42,7 +42,7 @@ public class MemberUtil {
             s -> sb.append(PREFIX_TAG + s.tagName + " ")
         );
         member.getTransactions().stream().forEach(
-            s -> sb.append(PREFIX_TRANSACTION + s.getTransactionAmount() + " ")
+            s -> sb.append(PREFIX_TRANSACTION + s.transactionAmount + " ")
         );
         return sb.toString();
     }
@@ -69,7 +69,7 @@ public class MemberUtil {
             if (transactions.isEmpty()) {
                 sb.append(PREFIX_TRANSACTION);
             } else {
-                transactions.forEach(s -> sb.append(PREFIX_TRANSACTION).append(s.getTransactionAmount()).append(" "));
+                transactions.forEach(s -> sb.append(PREFIX_TRANSACTION).append(s.transactionAmount).append(" "));
             }
         }
         return sb.toString();
