@@ -10,6 +10,7 @@ import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Comparator;
+import java.util.Set;
 import java.util.function.Predicate;
 
 import org.junit.jupiter.api.Test;
@@ -22,7 +23,9 @@ import seedu.address.model.Model;
 import seedu.address.model.ReadOnlyAccount;
 import seedu.address.model.ReadOnlyEzFoodie;
 import seedu.address.model.ReadOnlyUserPrefs;
+import seedu.address.model.member.Id;
 import seedu.address.model.member.Member;
+import seedu.address.model.transaction.Transaction;
 import seedu.address.testutil.MemberBuilder;
 
 public class AddMemberCommandTest {
@@ -178,6 +181,11 @@ public class AddMemberCommandTest {
 
         @Override
         public void updateSortedMemberList(Comparator<Member> comparator) {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public void addTransaction(Set<Transaction> transactionToAdd, Id idToAdd) {
             throw new AssertionError("This method should not be called.");
         }
     }
