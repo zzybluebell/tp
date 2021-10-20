@@ -31,7 +31,7 @@ import seedu.address.model.transaction.Transaction;
 /**
  * Parses input arguments and creates a new AddMemberCommand object
  */
-public class AddMemberCommandParser implements Parser<AddMemberCommand> {
+public class AddMemberCommandParser extends AddCommandParser implements Parser<AddMemberCommand> {
 
     private static final String ID_STUB = "00001";
     private static final String REGISTRATION_TIMESTAMP_STUB = "1609459200000";
@@ -73,6 +73,7 @@ public class AddMemberCommandParser implements Parser<AddMemberCommand> {
      * and returns an AddMemberCommand object for execution.
      * @throws ParseException if the user input does not conform the expected format
      */
+    @Override
     public AddMemberCommand parse(String args) throws ParseException {
         ArgumentMultimap argMultimap =
                 ArgumentTokenizer.tokenize(args, PREFIX_MEMBER, PREFIX_NAME, PREFIX_PHONE, PREFIX_EMAIL,
