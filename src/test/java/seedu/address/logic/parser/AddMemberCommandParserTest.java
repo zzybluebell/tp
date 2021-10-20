@@ -43,10 +43,10 @@ import seedu.address.model.member.Phone;
 import seedu.address.model.tag.Tag;
 import seedu.address.testutil.MemberBuilder;
 
-public class AddCommandParserTest {
+public class AddMemberCommandParserTest {
 
     private Model model = new ModelManager();
-    private AddCommandParser parser = new AddCommandParser(model, ExecutionStatus.TEST);
+    private AddMemberCommandParser parser = new AddMemberCommandParser(model, ExecutionStatus.TEST);
 
     @Test
     public void parse_allFieldsPresent_success() {

@@ -31,7 +31,7 @@ import seedu.address.model.transaction.Transaction;
 /**
  * Parses input arguments and creates a new AddMemberCommand object
  */
-public class AddCommandParser implements Parser<AddMemberCommand> {
+public class AddMemberCommandParser implements Parser<AddMemberCommand> {
 
     private static final String ID_STUB = "00001";
     private static final String REGISTRATION_TIMESTAMP_STUB = "1609459200000";
@@ -42,7 +42,7 @@ public class AddCommandParser implements Parser<AddMemberCommand> {
     /**
      * Constructs a {@code AddCommandParser} with the given {@code Model} and {@code ExecutionStatus}.
      */
-    public AddCommandParser(Model model, ExecutionStatus executionStatus) {
+    public AddMemberCommandParser(Model model, ExecutionStatus executionStatus) {
         this.model = model;
         this.executionStatus = executionStatus;
     }
