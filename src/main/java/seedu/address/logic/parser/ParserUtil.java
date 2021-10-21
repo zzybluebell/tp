@@ -17,7 +17,7 @@ import seedu.address.model.member.Email;
 import seedu.address.model.member.Id;
 import seedu.address.model.member.Name;
 import seedu.address.model.member.Phone;
-import seedu.address.model.member.RegistrationTimestamp;
+import seedu.address.model.member.Timestamp;
 import seedu.address.model.tag.Tag;
 import seedu.address.model.transaction.Transaction;
 
@@ -31,6 +31,7 @@ public class ParserUtil {
     /**
      * Parses {@code oneBasedIndex} into an {@code Index} and returns it. Leading and trailing whitespaces will be
      * trimmed.
+     *
      * @throws ParseException if the specified index is invalid (not non-zero unsigned integer).
      */
     public static Index parseIndex(String oneBasedIndex) throws ParseException {
@@ -104,13 +105,13 @@ public class ParserUtil {
     /**
      * Parses a {@code String registrationTimestamp} into an {@code RegistrationTimestamp}.
      */
-    public static RegistrationTimestamp parseRegistrationTimestamp(String registrationTimestamp) throws ParseException {
+    public static Timestamp parseTimestamp(String registrationTimestamp) throws ParseException {
         requireNonNull(registrationTimestamp);
         String trimmedRegistrationTimestamp = registrationTimestamp.trim();
-        if (!RegistrationTimestamp.isValidRegistrationTimestamp(trimmedRegistrationTimestamp)) {
-            throw new ParseException(RegistrationTimestamp.MESSAGE_CONSTRAINTS);
+        if (!Timestamp.isValidRegistrationTimestamp(trimmedRegistrationTimestamp)) {
+            throw new ParseException(Timestamp.MESSAGE_CONSTRAINTS);
         }
-        return new RegistrationTimestamp(trimmedRegistrationTimestamp);
+        return new Timestamp(trimmedRegistrationTimestamp);
     }
 
     /**
@@ -173,7 +174,8 @@ public class ParserUtil {
     /**
      * Parses {@code Collection<String> transactions} into a {@code Set<Transaction>}.
      */
-    public static Set<Transaction> parseTransactions(Collection<String> transactions) throws ParseException {
+    public static Set<Transaction> parseTransactions(Collection<String> transactions)
+            throws ParseException {
         requireNonNull(transactions);
         final Set<Transaction> transactionSet = new HashSet<>();
         for (String transactionAmount : transactions) {

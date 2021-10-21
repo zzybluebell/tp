@@ -24,7 +24,7 @@ public class Member {
 
     // Data fields
     private final Address address;
-    private final RegistrationTimestamp registrationTimestamp;
+    private final Timestamp timestamp;
     private final Credit credit;
     private final Set<Tag> tags = new HashSet<>();
     private final Set<Transaction> transactions = new HashSet<>();
@@ -33,15 +33,15 @@ public class Member {
      * Every field must be present and not null.
      */
     public Member(Id id, Name name, Phone phone, Email email, Address address,
-                  RegistrationTimestamp registrationTimestamp, Credit credit, Set<Tag> tags,
+                  Timestamp timestamp, Credit credit, Set<Tag> tags,
                   Set<Transaction> transactions) {
-        requireAllNonNull(id, name, phone, email, address, registrationTimestamp, credit, tags, transactions);
+        requireAllNonNull(id, name, phone, email, address, timestamp, credit, tags, transactions);
         this.id = id;
         this.name = name;
         this.phone = phone;
         this.email = email;
         this.address = address;
-        this.registrationTimestamp = registrationTimestamp;
+        this.timestamp = timestamp;
         this.credit = credit;
         this.tags.addAll(tags);
         this.transactions.addAll(transactions);
@@ -67,8 +67,8 @@ public class Member {
         return address;
     }
 
-    public RegistrationTimestamp getRegistrationTimestamp() {
-        return registrationTimestamp;
+    public Timestamp getRegistrationTimestamp() {
+        return timestamp;
     }
 
     public Credit getCredit() {
@@ -180,7 +180,7 @@ public class Member {
     @Override
     public int hashCode() {
         // use this method for custom fields hashing instead of implementing your own
-        return Objects.hash(id, name, phone, email, address, registrationTimestamp, credit, tags, transactions);
+        return Objects.hash(id, name, phone, email, address, timestamp, credit, tags, transactions);
     }
 
     @Override

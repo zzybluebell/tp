@@ -17,7 +17,7 @@ import seedu.address.model.member.Id;
 import seedu.address.model.member.Member;
 import seedu.address.model.member.Name;
 import seedu.address.model.member.Phone;
-import seedu.address.model.member.RegistrationTimestamp;
+import seedu.address.model.member.Timestamp;
 import seedu.address.model.tag.Tag;
 import seedu.address.model.transaction.Transaction;
 
@@ -142,12 +142,12 @@ class JsonAdaptedMember {
 
         if (registrationTimestamp == null) {
             throw new IllegalValueException(
-                    String.format(MISSING_FIELD_MESSAGE_FORMAT, RegistrationTimestamp.class.getSimpleName()));
+                    String.format(MISSING_FIELD_MESSAGE_FORMAT, Timestamp.class.getSimpleName()));
         }
-        if (!RegistrationTimestamp.isValidRegistrationTimestamp(registrationTimestamp)) {
-            throw new IllegalValueException(RegistrationTimestamp.MESSAGE_CONSTRAINTS);
+        if (!Timestamp.isValidRegistrationTimestamp(registrationTimestamp)) {
+            throw new IllegalValueException(Timestamp.MESSAGE_CONSTRAINTS);
         }
-        final RegistrationTimestamp modelRegistrationTimestamp = new RegistrationTimestamp(registrationTimestamp);
+        final Timestamp modelRegistrationTimestamp = new Timestamp(registrationTimestamp);
 
         if (credit == null) {
             throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT, Credit.class.getSimpleName()));

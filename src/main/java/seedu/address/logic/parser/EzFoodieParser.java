@@ -73,7 +73,7 @@ public class EzFoodieParser {
         switch (commandWord) {
 
         case AddMemberCommand.COMMAND_WORD:
-            return new AddMemberCommandParser(model, executionStatus).parse(arguments);
+            return new AddCommandPrefixParser(model, executionStatus).parse(arguments).parse(arguments);
 
         case FindCommand.COMMAND_WORD:
             return new FindCommandParser().parse(arguments);
