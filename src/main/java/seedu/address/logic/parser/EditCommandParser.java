@@ -35,6 +35,7 @@ public class EditCommandParser implements Parser<EditCommand> {
     /**
      * Parses the given {@code String} of arguments in the context of the EditCommand
      * and returns an EditCommand object for execution.
+     *
      * @throws ParseException if the user input does not conform the expected format
      */
     public EditCommand parse(String args) throws ParseException {
@@ -105,7 +106,8 @@ public class EditCommandParser implements Parser<EditCommand> {
      * If {@code transactions} contain only one element which is an empty string, it will be parsed into a
      * {@code Set<Transaction>} containing zero transactions.
      */
-    private Optional<Set<Transaction>> parseTransactionsForEdit(Collection<String> transactions) throws ParseException {
+    private Optional<Set<Transaction>> parseTransactionsForEdit(Collection<String> transactions)
+            throws ParseException {
         assert transactions != null;
 
         if (transactions.isEmpty()) {

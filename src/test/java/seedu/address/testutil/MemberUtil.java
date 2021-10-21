@@ -42,7 +42,21 @@ public class MemberUtil {
             s -> sb.append(PREFIX_TAG + s.tagName + " ")
         );
         member.getTransactions().stream().forEach(
-            s -> sb.append(PREFIX_TRANSACTION + s.transactionAmount + " ")
+            s -> sb.append(PREFIX_TRANSACTION + s.getTransactionAmount() + " ")
+        );
+        return sb.toString();
+    }
+
+    /**
+     * Returns the part of command string for the given {@code member}'s transaction details.
+     * @param member
+     * @return
+     */
+    public static String getMemberTransactions(Member member) {
+        StringBuilder sb = new StringBuilder();
+        sb.append(PREFIX_TRANSACTION + " ");
+        member.getTransactions().stream().forEach(
+            s -> sb.append(PREFIX_TRANSACTION + s.getTransactionAmount() + " ")
         );
         return sb.toString();
     }
@@ -69,7 +83,7 @@ public class MemberUtil {
             if (transactions.isEmpty()) {
                 sb.append(PREFIX_TRANSACTION);
             } else {
-                transactions.forEach(s -> sb.append(PREFIX_TRANSACTION).append(s.transactionAmount).append(" "));
+                transactions.forEach(s -> sb.append(PREFIX_TRANSACTION).append(s.getTransactionAmount()).append(" "));
             }
         }
         return sb.toString();

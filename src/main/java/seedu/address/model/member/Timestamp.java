@@ -7,7 +7,7 @@ import static seedu.address.commons.util.AppUtil.checkArgument;
  * Represents a Member's registration timestamp in the ezFoodie.
  * Guarantees: immutable; is valid as declared in {@link #isValidRegistrationTimestamp(String)}
  */
-public class RegistrationTimestamp {
+public class Timestamp {
 
     public static final String MESSAGE_CONSTRAINTS =
             "RegistrationTimestamps should only contain digits and can be parsed to long, and it should not be blank";
@@ -18,7 +18,7 @@ public class RegistrationTimestamp {
     /**
      * Constructs a {@code RegistrationTimestamp}.
      */
-    public RegistrationTimestamp(String registrationTimestamp) {
+    public Timestamp(String registrationTimestamp) {
         requireNonNull(registrationTimestamp);
         checkArgument(isValidRegistrationTimestamp(registrationTimestamp), MESSAGE_CONSTRAINTS);
         value = registrationTimestamp;
@@ -44,8 +44,8 @@ public class RegistrationTimestamp {
     @Override
     public boolean equals(Object other) {
         return other == this // short circuit if same object
-                || (other instanceof RegistrationTimestamp // instanceof handles nulls
-                && value.equals(((RegistrationTimestamp) other).value)); // state check
+                || (other instanceof Timestamp // instanceof handles nulls
+                && value.equals(((Timestamp) other).value)); // state check
     }
 
     @Override

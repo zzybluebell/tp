@@ -30,7 +30,7 @@ import seedu.address.model.member.Id;
 import seedu.address.model.member.Member;
 import seedu.address.model.member.Name;
 import seedu.address.model.member.Phone;
-import seedu.address.model.member.RegistrationTimestamp;
+import seedu.address.model.member.Timestamp;
 import seedu.address.model.tag.Tag;
 import seedu.address.model.transaction.Transaction;
 
@@ -144,7 +144,7 @@ public class EditCommand extends Command {
         Phone updatedPhone = editMemberDescriptor.getPhone().orElse(memberToEdit.getPhone());
         Email updatedEmail = editMemberDescriptor.getEmail().orElse(memberToEdit.getEmail());
         Address updatedAddress = editMemberDescriptor.getAddress().orElse(memberToEdit.getAddress());
-        RegistrationTimestamp registrationTimestamp = memberToEdit.getRegistrationTimestamp();
+        Timestamp timestamp = memberToEdit.getRegistrationTimestamp();
         Set<Tag> updatedTags = editMemberDescriptor.getTags().orElse(memberToEdit.getTags());
         // TODO: This is not the proper way to add transactions and calculate the sum
         //  need to check if the sum will overflow
@@ -153,7 +153,7 @@ public class EditCommand extends Command {
         Credit credit = new Credit("" + Math.min(updatedTransactions.stream()
                 .mapToInt(transaction -> (int) transaction.getDoubleValue()).sum(), Credit.MAX));
 
-        return new Member(id, updatedName, updatedPhone, updatedEmail, updatedAddress, registrationTimestamp, credit,
+        return new Member(id, updatedName, updatedPhone, updatedEmail, updatedAddress, timestamp, credit,
                 updatedTags, updatedTransactions);
     }
 

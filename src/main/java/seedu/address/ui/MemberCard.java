@@ -73,8 +73,9 @@ public class MemberCard extends UiPart<Region> {
                 .sorted(Comparator.comparing(tag -> tag.tagName))
                 .forEach(tag -> tags.getChildren().add(new Label(tag.tagName)));
         member.getTransactions().stream()
-                .sorted(Comparator.comparing(transaction -> transaction.transactionAmount))
-                .forEach(transaction -> transactions.getChildren().add(new Label(transaction.transactionAmount + " ")));
+                .sorted(Comparator.comparing(transaction -> transaction.getTransactionAmount()))
+                .forEach(transaction -> transactions.getChildren().add(
+                        new Label(transaction.getTransactionAmount() + " ")));
     }
 
     @Override
