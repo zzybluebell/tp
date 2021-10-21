@@ -13,6 +13,7 @@ import org.junit.jupiter.api.Test;
 
 import seedu.address.commons.core.Messages;
 import seedu.address.commons.core.index.Index;
+import seedu.address.model.Account;
 import seedu.address.model.Model;
 import seedu.address.model.ModelManager;
 import seedu.address.model.UserPrefs;
@@ -24,16 +25,16 @@ import seedu.address.model.member.Member;
  */
 public class DeleteCommandTest {
 
-    private Model model = new ModelManager(getTypicalEzFoodie(), new UserPrefs());
+    private Model model = new ModelManager(new Account(), getTypicalEzFoodie(), new UserPrefs());
 
     @Test
     public void execute_validIndexUnfilteredList_success() {
-        Member memberToDelete = model.getFilteredMemberList().get(INDEX_FIRST_MEMBER.getZeroBased());
+        Member memberToDelete = model.getUpdatedMemberList().get(INDEX_FIRST_MEMBER.getZeroBased());
         DeleteCommand deleteCommand = new DeleteCommand(INDEX_FIRST_MEMBER);
 
         String expectedMessage = String.format(DeleteCommand.MESSAGE_DELETE_MEMBER_SUCCESS, memberToDelete);
 
-        ModelManager expectedModel = new ModelManager(model.getEzFoodie(), new UserPrefs());
+        ModelManager expectedModel = new ModelManager(new Account(), model.getEzFoodie(), new UserPrefs());
         expectedModel.deleteMember(memberToDelete);
 
         assertCommandSuccess(deleteCommand, model, expectedMessage, expectedModel);
@@ -41,7 +42,7 @@ public class DeleteCommandTest {
 
     @Test
     public void execute_invalidIndexUnfilteredList_throwsCommandException() {
-        Index outOfBoundIndex = Index.fromOneBased(model.getFilteredMemberList().size() + 1);
+        Index outOfBoundIndex = Index.fromOneBased(model.getUpdatedMemberList().size() + 1);
         DeleteCommand deleteCommand = new DeleteCommand(outOfBoundIndex);
 
         assertCommandFailure(deleteCommand, model, Messages.MESSAGE_INVALID_MEMBER_DISPLAYED_INDEX);
@@ -51,12 +52,12 @@ public class DeleteCommandTest {
     public void execute_validIndexFilteredList_success() {
         showMemberAtIndex(model, INDEX_FIRST_MEMBER);
 
-        Member memberToDelete = model.getFilteredMemberList().get(INDEX_FIRST_MEMBER.getZeroBased());
+        Member memberToDelete = model.getUpdatedMemberList().get(INDEX_FIRST_MEMBER.getZeroBased());
         DeleteCommand deleteCommand = new DeleteCommand(INDEX_FIRST_MEMBER);
 
         String expectedMessage = String.format(DeleteCommand.MESSAGE_DELETE_MEMBER_SUCCESS, memberToDelete);
 
-        Model expectedModel = new ModelManager(model.getEzFoodie(), new UserPrefs());
+        Model expectedModel = new ModelManager(new Account(), model.getEzFoodie(), new UserPrefs());
         expectedModel.deleteMember(memberToDelete);
         showNoMember(expectedModel);
 
@@ -104,6 +105,6 @@ public class DeleteCommandTest {
     private void showNoMember(Model model) {
         model.updateFilteredMemberList(p -> false);
 
-        assertTrue(model.getFilteredMemberList().isEmpty());
+        assertTrue(model.getUpdatedMemberList().isEmpty());
     }
 }

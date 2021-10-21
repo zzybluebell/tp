@@ -7,6 +7,7 @@ import static seedu.address.testutil.TypicalMembers.getTypicalEzFoodie;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import seedu.address.model.Account;
 import seedu.address.model.Model;
 import seedu.address.model.ModelManager;
 import seedu.address.model.UserPrefs;
@@ -14,7 +15,7 @@ import seedu.address.model.member.Member;
 import seedu.address.testutil.MemberBuilder;
 
 /**
- * Contains integration tests (interaction with the Model) for {@code AddCommand}.
+ * Contains integration tests (interaction with the Model) for {@code AddMemberCommand}.
  */
 public class AddCommandIntegrationTest {
 
@@ -22,24 +23,24 @@ public class AddCommandIntegrationTest {
 
     @BeforeEach
     public void setUp() {
-        model = new ModelManager(getTypicalEzFoodie(), new UserPrefs());
+        model = new ModelManager(new Account(), getTypicalEzFoodie(), new UserPrefs());
     }
 
     @Test
     public void execute_newMember_success() {
         Member validMember = new MemberBuilder().build();
 
-        Model expectedModel = new ModelManager(model.getEzFoodie(), new UserPrefs());
+        Model expectedModel = new ModelManager(new Account(), model.getEzFoodie(), new UserPrefs());
         expectedModel.addMember(validMember);
 
-        assertCommandSuccess(new AddCommand(validMember), model,
-                String.format(AddCommand.MESSAGE_SUCCESS, validMember), expectedModel);
+        assertCommandSuccess(new AddMemberCommand(validMember), model,
+                String.format(AddMemberCommand.MESSAGE_SUCCESS, validMember), expectedModel);
     }
 
     @Test
     public void execute_duplicateMember_throwsCommandException() {
         Member memberInList = model.getEzFoodie().getMemberList().get(0);
-        assertCommandFailure(new AddCommand(memberInList), model, AddCommand.MESSAGE_DUPLICATE_MEMBER);
+        assertCommandFailure(new AddMemberCommand(memberInList), model, AddMemberCommand.MESSAGE_DUPLICATE_MEMBER);
     }
 
 }

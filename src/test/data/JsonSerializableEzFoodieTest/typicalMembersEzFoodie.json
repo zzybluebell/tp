@@ -7,7 +7,9 @@
     "email" : "alice@example.com",
     "address" : "123, Jurong West Ave 6, #08-111",
     "registrationTimestamp": "1609459200000",
-    "tagged" : [ "friends" ]
+    "credit" : "610",
+    "tagged" : [ "friends" ],
+    "transactions" : [ "567.54", "43.34" ]
   }, {
     "id" : "00002",
     "name" : "Benson Meier",
@@ -15,7 +17,9 @@
     "email" : "johnd@example.com",
     "address" : "311, Clementi Ave 2, #02-25",
     "registrationTimestamp": "1609462800000",
-    "tagged" : [ "owesMoney", "friends" ]
+    "credit" : "645",
+    "tagged" : [ "owesMoney", "friends" ],
+    "transactions" : [ "645.39" ]
   }, {
     "id" : "00003",
     "name" : "Carl Kurz",
@@ -23,7 +27,9 @@
     "email" : "heinz@example.com",
     "address" : "wall street",
     "registrationTimestamp": "1609466400000",
-    "tagged" : [ ]
+    "credit" : "272",
+    "tagged" : [ ],
+    "transactions" : [ "272.57" ]
   }, {
     "id" : "00004",
     "name" : "Daniel Meier",
@@ -31,7 +37,9 @@
     "email" : "cornelia@example.com",
     "address" : "10th street",
     "registrationTimestamp": "1609470000000",
-    "tagged" : [ "friends" ]
+    "credit" : "0",
+    "tagged" : [ "friends" ],
+    "transactions" : [ ]
   }, {
     "id" : "00005",
     "name" : "Elle Meyer",
@@ -39,7 +47,9 @@
     "email" : "werner@example.com",
     "address" : "michegan ave",
     "registrationTimestamp": "1609473600000",
-    "tagged" : [ ]
+    "credit" : "0",
+    "tagged" : [ ],
+    "transactions" : [ ]
   }, {
     "id" : "00006",
     "name" : "Fiona Kunz",
@@ -47,7 +57,9 @@
     "email" : "lydia@example.com",
     "address" : "little tokyo",
     "registrationTimestamp": "1609477200000",
-    "tagged" : [ ]
+    "credit" : "0",
+    "tagged" : [ ],
+    "transactions" : [ ]
   }, {
     "id" : "00007",
     "name" : "George Best",
@@ -55,6 +67,8 @@
     "email" : "anna@example.com",
     "address" : "4th street",
     "registrationTimestamp": "1609480800000",
-    "tagged" : [ ]
+    "credit" : "0",
+    "tagged" : [ ],
+    "transactions" : [ ]
   } ]
 }

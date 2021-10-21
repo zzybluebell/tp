@@ -11,13 +11,15 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 import seedu.address.commons.exceptions.IllegalValueException;
 import seedu.address.model.member.Address;
+import seedu.address.model.member.Credit;
 import seedu.address.model.member.Email;
 import seedu.address.model.member.Id;
 import seedu.address.model.member.Member;
 import seedu.address.model.member.Name;
 import seedu.address.model.member.Phone;
-import seedu.address.model.member.RegistrationTimestamp;
+import seedu.address.model.member.Timestamp;
 import seedu.address.model.tag.Tag;
+import seedu.address.model.transaction.Transaction;
 
 /**
  * Jackson-friendly version of {@link Member}.
@@ -32,7 +34,9 @@ class JsonAdaptedMember {
     private final String email;
     private final String address;
     private final String registrationTimestamp;
+    private final String credit;
     private final List<JsonAdaptedTag> tagged = new ArrayList<>();
+    private final List<JsonAdaptedTransaction> transactions = new ArrayList<>();
 
     /**
      * Constructs a {@code JsonAdaptedMember} with the given member details.
@@ -42,15 +46,22 @@ class JsonAdaptedMember {
             @JsonProperty("phone") String phone, @JsonProperty("email") String email,
             @JsonProperty("address") String address,
             @JsonProperty("registrationTimestamp") String registrationTimestamp,
-            @JsonProperty("tagged") List<JsonAdaptedTag> tagged) {
+            @JsonProperty("credit") String credit,
+            @JsonProperty("tagged") List<JsonAdaptedTag> tagged,
+            @JsonProperty("transactions") List<JsonAdaptedTransaction> transactions) {
+
         this.id = id;
         this.name = name;
         this.phone = phone;
         this.email = email;
         this.address = address;
         this.registrationTimestamp = registrationTimestamp;
+        this.credit = credit;
         if (tagged != null) {
             this.tagged.addAll(tagged);
+        }
+        if (transactions != null) {
+            this.transactions.addAll(transactions);
         }
     }
 
@@ -64,8 +75,12 @@ class JsonAdaptedMember {
         email = source.getEmail().value;
         address = source.getAddress().value;
         registrationTimestamp = source.getRegistrationTimestamp().value;
+        credit = source.getCredit().value;
         tagged.addAll(source.getTags().stream()
                 .map(JsonAdaptedTag::new)
+                .collect(Collectors.toList()));
+        transactions.addAll(source.getTransactions().stream()
+                .map(JsonAdaptedTransaction::new)
                 .collect(Collectors.toList()));
     }
 
@@ -78,6 +93,11 @@ class JsonAdaptedMember {
         final List<Tag> memberTags = new ArrayList<>();
         for (JsonAdaptedTag tag : tagged) {
             memberTags.add(tag.toModelType());
+        }
+
+        final List<Transaction> memberTransactions = new ArrayList<>();
+        for (JsonAdaptedTransaction transaction : transactions) {
+            memberTransactions.add(transaction.toModelType());
         }
 
         if (id == null) {
@@ -122,17 +142,27 @@ class JsonAdaptedMember {
 
         if (registrationTimestamp == null) {
             throw new IllegalValueException(
-                    String.format(MISSING_FIELD_MESSAGE_FORMAT, RegistrationTimestamp.class.getSimpleName()));
+                    String.format(MISSING_FIELD_MESSAGE_FORMAT, Timestamp.class.getSimpleName()));
         }
-        if (!RegistrationTimestamp.isValidRegistrationTimestamp(registrationTimestamp)) {
-            throw new IllegalValueException(RegistrationTimestamp.MESSAGE_CONSTRAINTS);
+        if (!Timestamp.isValidRegistrationTimestamp(registrationTimestamp)) {
+            throw new IllegalValueException(Timestamp.MESSAGE_CONSTRAINTS);
         }
-        final RegistrationTimestamp modelRegistrationTimestamp = new RegistrationTimestamp(registrationTimestamp);
+        final Timestamp modelRegistrationTimestamp = new Timestamp(registrationTimestamp);
+
+        if (credit == null) {
+            throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT, Credit.class.getSimpleName()));
+        }
+        if (!Credit.isValidCredit(credit)) {
+            throw new IllegalValueException(Credit.MESSAGE_CONSTRAINTS);
+        }
+        final Credit modelCredit = new Credit(credit);
 
         final Set<Tag> modelTags = new HashSet<>(memberTags);
 
+        final Set<Transaction> modelTransactions = new HashSet<>(memberTransactions);
+
         return new Member(modelId, modelName, modelPhone, modelEmail, modelAddress, modelRegistrationTimestamp,
-                modelTags);
+                modelCredit, modelTags, modelTransactions);
     }
 
 }

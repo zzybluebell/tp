@@ -7,7 +7,9 @@ import javafx.scene.control.Label;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Region;
+import seedu.address.commons.util.DateTimeUtil;
 import seedu.address.model.member.Member;
+import seedu.address.model.member.Tier;
 
 /**
  * An UI component that displays information of a {@code Member}.
@@ -29,17 +31,27 @@ public class MemberCard extends UiPart<Region> {
     @FXML
     private HBox cardPane;
     @FXML
-    private Label name;
+    private Label index;
     @FXML
     private Label id;
     @FXML
-    private Label phone;
+    private Label name;
     @FXML
-    private Label address;
+    private Label phone;
     @FXML
     private Label email;
     @FXML
+    private Label address;
+    @FXML
+    private Label registrationTime;
+    @FXML
+    private Label credit;
+    @FXML
+    private Label tier;
+    @FXML
     private FlowPane tags;
+    @FXML
+    private FlowPane transactions;
 
     /**
      * Creates a {@code MemberCode} with the given {@code Member} and index to display.
@@ -47,14 +59,23 @@ public class MemberCard extends UiPart<Region> {
     public MemberCard(Member member, int displayedIndex) {
         super(FXML);
         this.member = member;
-        id.setText(displayedIndex + ". ");
+        index.setText(displayedIndex + ". ");
+        id.setText(member.getId().value);
         name.setText(member.getName().fullName);
         phone.setText(member.getPhone().value);
-        address.setText(member.getAddress().value);
         email.setText(member.getEmail().value);
+        address.setText(member.getAddress().value);
+        registrationTime.setText(
+                DateTimeUtil.timestampToDate(Long.parseLong(member.getRegistrationTimestamp().value)).toString());
+        credit.setText(member.getCredit().value);
+        tier.setText(Tier.getTierByCredit(Integer.parseInt(member.getCredit().value)));
         member.getTags().stream()
                 .sorted(Comparator.comparing(tag -> tag.tagName))
                 .forEach(tag -> tags.getChildren().add(new Label(tag.tagName)));
+        member.getTransactions().stream()
+                .sorted(Comparator.comparing(transaction -> transaction.getTransactionAmount()))
+                .forEach(transaction -> transactions.getChildren().add(
+                        new Label(transaction.getTransactionAmount() + " ")));
     }
 
     @Override
@@ -71,7 +92,7 @@ public class MemberCard extends UiPart<Region> {
 
         // state check
         MemberCard card = (MemberCard) other;
-        return id.getText().equals(card.id.getText())
+        return index.getText().equals(card.index.getText())
                 && member.equals(card.member);
     }
 }

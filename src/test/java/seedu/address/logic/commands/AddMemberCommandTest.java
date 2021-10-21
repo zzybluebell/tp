@@ -9,6 +9,8 @@ import static seedu.address.testutil.Assert.assertThrows;
 import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Comparator;
+import java.util.Set;
 import java.util.function.Predicate;
 
 import org.junit.jupiter.api.Test;
@@ -18,16 +20,19 @@ import seedu.address.commons.core.GuiSettings;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.EzFoodie;
 import seedu.address.model.Model;
+import seedu.address.model.ReadOnlyAccount;
 import seedu.address.model.ReadOnlyEzFoodie;
 import seedu.address.model.ReadOnlyUserPrefs;
+import seedu.address.model.member.Id;
 import seedu.address.model.member.Member;
+import seedu.address.model.transaction.Transaction;
 import seedu.address.testutil.MemberBuilder;
 
-public class AddCommandTest {
+public class AddMemberCommandTest {
 
     @Test
     public void constructor_nullMember_throwsNullPointerException() {
-        assertThrows(NullPointerException.class, () -> new AddCommand(null));
+        assertThrows(NullPointerException.class, () -> new AddMemberCommand(null));
     }
 
     @Test
@@ -35,33 +40,34 @@ public class AddCommandTest {
         ModelStubAcceptingMemberAdded modelStub = new ModelStubAcceptingMemberAdded();
         Member validMember = new MemberBuilder().build();
 
-        CommandResult commandResult = new AddCommand(validMember).execute(modelStub);
+        CommandResult commandResult = new AddMemberCommand(validMember).execute(modelStub);
 
-        assertEquals(String.format(AddCommand.MESSAGE_SUCCESS, validMember), commandResult.getFeedbackToUser());
+        assertEquals(String.format(AddMemberCommand.MESSAGE_SUCCESS, validMember), commandResult.getFeedbackToUser());
         assertEquals(Arrays.asList(validMember), modelStub.membersAdded);
     }
 
     @Test
     public void execute_duplicateMember_throwsCommandException() {
         Member validMember = new MemberBuilder().build();
-        AddCommand addCommand = new AddCommand(validMember);
+        AddMemberCommand addMemberCommand = new AddMemberCommand(validMember);
         ModelStub modelStub = new ModelStubWithMember(validMember);
 
-        assertThrows(CommandException.class, AddCommand.MESSAGE_DUPLICATE_MEMBER, () -> addCommand.execute(modelStub));
+        assertThrows(CommandException.class,
+                AddMemberCommand.MESSAGE_DUPLICATE_MEMBER, () -> addMemberCommand.execute(modelStub));
     }
 
     @Test
     public void equals() {
         Member alice = new MemberBuilder().withName("Alice").build();
         Member bob = new MemberBuilder().withName("Bob").build();
-        AddCommand addAliceCommand = new AddCommand(alice);
-        AddCommand addBobCommand = new AddCommand(bob);
+        AddMemberCommand addAliceCommand = new AddMemberCommand(alice);
+        AddMemberCommand addBobCommand = new AddMemberCommand(bob);
 
         // same object -> returns true
         assertTrue(addAliceCommand.equals(addAliceCommand));
 
         // same values -> returns true
-        AddCommand addAliceCommandCopy = new AddCommand(alice);
+        AddMemberCommand addAliceCommandCopy = new AddMemberCommand(alice);
         assertTrue(addAliceCommand.equals(addAliceCommandCopy));
 
         // different types -> returns false
@@ -99,12 +105,32 @@ public class AddCommandTest {
         }
 
         @Override
+        public Path getAccountFilePath() {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public void setAccountFilePath(Path accountFilePath) {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
         public Path getEzFoodieFilePath() {
             throw new AssertionError("This method should not be called.");
         }
 
         @Override
         public void setEzFoodieFilePath(Path ezFoodieFilePath) {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public void setAccount(ReadOnlyAccount account) {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public ReadOnlyAccount getAccount() {
             throw new AssertionError("This method should not be called.");
         }
 
@@ -144,12 +170,22 @@ public class AddCommandTest {
         }
 
         @Override
-        public ObservableList<Member> getFilteredMemberList() {
+        public ObservableList<Member> getUpdatedMemberList() {
             throw new AssertionError("This method should not be called.");
         }
 
         @Override
         public void updateFilteredMemberList(Predicate<Member> predicate) {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public void updateSortedMemberList(Comparator<Member> comparator) {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public void addTransaction(Set<Transaction> transactionToAdd, Id idToAdd) {
             throw new AssertionError("This method should not be called.");
         }
     }

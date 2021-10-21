@@ -4,13 +4,15 @@ import java.util.HashSet;
 import java.util.Set;
 
 import seedu.address.model.member.Address;
+import seedu.address.model.member.Credit;
 import seedu.address.model.member.Email;
 import seedu.address.model.member.Id;
 import seedu.address.model.member.Member;
 import seedu.address.model.member.Name;
 import seedu.address.model.member.Phone;
-import seedu.address.model.member.RegistrationTimestamp;
+import seedu.address.model.member.Timestamp;
 import seedu.address.model.tag.Tag;
+import seedu.address.model.transaction.Transaction;
 import seedu.address.model.util.SampleDataUtil;
 
 /**
@@ -24,14 +26,17 @@ public class MemberBuilder {
     public static final String DEFAULT_EMAIL = "amy@gmail.com";
     public static final String DEFAULT_ADDRESS = "123, Jurong West Ave 6, #08-111";
     public static final String DEFAULT_REGISTRATION_TIMESTAMP = "1610236800000";
+    public static final String DEFAULT_CREDIT = "200";
 
     private Id id;
     private Name name;
     private Phone phone;
     private Email email;
     private Address address;
-    private RegistrationTimestamp registrationTimestamp;
+    private Timestamp timestamp;
+    private Credit credit;
     private Set<Tag> tags;
+    private Set<Transaction> transactions;
 
     /**
      * Creates a {@code MemberBuilder} with the default details.
@@ -42,8 +47,10 @@ public class MemberBuilder {
         phone = new Phone(DEFAULT_PHONE);
         email = new Email(DEFAULT_EMAIL);
         address = new Address(DEFAULT_ADDRESS);
-        registrationTimestamp = new RegistrationTimestamp(DEFAULT_REGISTRATION_TIMESTAMP);
+        timestamp = new Timestamp(DEFAULT_REGISTRATION_TIMESTAMP);
+        credit = new Credit(DEFAULT_CREDIT);
         tags = new HashSet<>();
+        transactions = new HashSet<>();
     }
 
     /**
@@ -55,8 +62,10 @@ public class MemberBuilder {
         phone = memberToCopy.getPhone();
         email = memberToCopy.getEmail();
         address = memberToCopy.getAddress();
-        registrationTimestamp = memberToCopy.getRegistrationTimestamp();
+        timestamp = memberToCopy.getRegistrationTimestamp();
+        credit = memberToCopy.getCredit();
         tags = new HashSet<>(memberToCopy.getTags());
+        transactions = new HashSet<>(memberToCopy.getTransactions());
     }
 
     /**
@@ -72,22 +81,6 @@ public class MemberBuilder {
      */
     public MemberBuilder withName(String name) {
         this.name = new Name(name);
-        return this;
-    }
-
-    /**
-     * Parses the {@code tags} into a {@code Set<Tag>} and set it to the {@code Member} that we are building.
-     */
-    public MemberBuilder withTags(String ... tags) {
-        this.tags = SampleDataUtil.getTagSet(tags);
-        return this;
-    }
-
-    /**
-     * Sets the {@code Address} of the {@code Member} that we are building.
-     */
-    public MemberBuilder withAddress(String address) {
-        this.address = new Address(address);
         return this;
     }
 
@@ -108,15 +101,48 @@ public class MemberBuilder {
     }
 
     /**
+     * Sets the {@code Address} of the {@code Member} that we are building.
+     */
+    public MemberBuilder withAddress(String address) {
+        this.address = new Address(address);
+        return this;
+    }
+
+    /**
      * Sets the {@code RegistrationTimestamp} of the {@code Member} that we are building.
      */
     public MemberBuilder withRegistrationTimestamp(String registrationTimestamp) {
-        this.registrationTimestamp = new RegistrationTimestamp(registrationTimestamp);
+        this.timestamp = new Timestamp(registrationTimestamp);
+        return this;
+    }
+
+    /**
+     * Sets the {@code Credit} of the {@code Member} that we are building.
+     */
+    public MemberBuilder withCredit(String credit) {
+        this.credit = new Credit(credit);
+        return this;
+    }
+
+    /**
+     * Parses the {@code tags} into a {@code Set<Tag>} and set it to the {@code Member} that we are building.
+     */
+    public MemberBuilder withTags(String ... tags) {
+        this.tags = SampleDataUtil.getTagSet(tags);
+        return this;
+    }
+
+    /**
+     * Parses the {@code transactions} into a {@code Set<Transaction>} and set it to the {@code Member}
+     * that we are building.
+     */
+    public MemberBuilder withTransactions(String ... transactions) {
+        this.transactions = SampleDataUtil.getTransactionSet(transactions);
         return this;
     }
 
     public Member build() {
-        return new Member(id, name, phone, email, address, registrationTimestamp, tags);
+        return new Member(id, name, phone, email, address, timestamp, credit, tags, transactions);
     }
 
 }
