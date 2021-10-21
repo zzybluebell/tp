@@ -14,7 +14,10 @@ public class Transaction {
     public static final String VALIDATION_REGEX = "\\d*\\.\\d{2}$";
     public static final int LENGTH = 7; // Max amount is 9999.99
 
-    public final String transactionAmount;
+    private final String transactionAmount;
+
+    //todo: Add in timestamp soon.
+
 
     /**
      * Constructs a {@code Transaction}.
@@ -25,6 +28,10 @@ public class Transaction {
         requireNonNull(transactionAmount);
         checkArgument(isValidTransactionAmount(transactionAmount), MESSAGE_CONSTRAINTS);
         this.transactionAmount = transactionAmount;
+    }
+
+    public String getTransactionAmount() {
+        return transactionAmount;
     }
 
     /**
