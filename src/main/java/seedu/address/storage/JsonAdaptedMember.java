@@ -18,6 +18,7 @@ import seedu.address.model.member.Member;
 import seedu.address.model.member.Name;
 import seedu.address.model.member.Phone;
 import seedu.address.model.member.Timestamp;
+import seedu.address.model.reservation.Reservation;
 import seedu.address.model.tag.Tag;
 import seedu.address.model.transaction.Transaction;
 
@@ -37,6 +38,7 @@ class JsonAdaptedMember {
     private final String credit;
     private final List<JsonAdaptedTag> tagged = new ArrayList<>();
     private final List<JsonAdaptedTransaction> transactions = new ArrayList<>();
+    private final List<JsonAdaptedReservation> reservations = new ArrayList<>();
 
     /**
      * Constructs a {@code JsonAdaptedMember} with the given member details.
@@ -48,7 +50,8 @@ class JsonAdaptedMember {
             @JsonProperty("registrationTimestamp") String registrationTimestamp,
             @JsonProperty("credit") String credit,
             @JsonProperty("tagged") List<JsonAdaptedTag> tagged,
-            @JsonProperty("transactions") List<JsonAdaptedTransaction> transactions) {
+            @JsonProperty("transactions") List<JsonAdaptedTransaction> transactions,
+            @JsonProperty("reservations") List<JsonAdaptedReservation> reservations) {
 
         this.id = id;
         this.name = name;
@@ -62,6 +65,9 @@ class JsonAdaptedMember {
         }
         if (transactions != null) {
             this.transactions.addAll(transactions);
+        }
+        if (reservations != null) {
+            this.reservations.addAll(reservations);
         }
     }
 
@@ -82,6 +88,9 @@ class JsonAdaptedMember {
         transactions.addAll(source.getTransactions().stream()
                 .map(JsonAdaptedTransaction::new)
                 .collect(Collectors.toList()));
+        reservations.addAll(source.getReservations().stream()
+                .map(JsonAdaptedReservation::new)
+                .collect(Collectors.toList()));
     }
 
     /**
@@ -98,6 +107,11 @@ class JsonAdaptedMember {
         final List<Transaction> memberTransactions = new ArrayList<>();
         for (JsonAdaptedTransaction transaction : transactions) {
             memberTransactions.add(transaction.toModelType());
+        }
+
+        final List<Reservation> memberReservations = new ArrayList<>();
+        for (JsonAdaptedReservation reservation : reservations) {
+            memberReservations.add(reservation.toModelType());
         }
 
         if (id == null) {
@@ -161,8 +175,10 @@ class JsonAdaptedMember {
 
         final Set<Transaction> modelTransactions = new HashSet<>(memberTransactions);
 
+        final Set<Reservation> modelReservations = new HashSet<>(memberReservations);
+
         return new Member(modelId, modelName, modelPhone, modelEmail, modelAddress, modelRegistrationTimestamp,
-                modelCredit, modelTags, modelTransactions);
+                modelCredit, modelTags, modelTransactions, modelReservations);
     }
 
 }

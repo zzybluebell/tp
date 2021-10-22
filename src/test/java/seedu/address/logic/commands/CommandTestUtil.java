@@ -47,6 +47,7 @@ public class CommandTestUtil {
     public static final String VALID_TAG_FRIEND = "friend";
     public static final String VALID_TRANSACTION_200 = "200.00";
     public static final String VALID_TRANSACTION_300 = "300.00";
+    public static final String VALID_RESERVATION = "12-01-2021";
 
     public static final String MEMBER_DESC = " " + PREFIX_MEMBER;
     public static final String ID_DESC_AMY = " " + PREFIX_ID + VALID_ID_AMY;

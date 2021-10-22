@@ -16,6 +16,7 @@ import seedu.address.commons.core.GuiSettings;
 import seedu.address.commons.core.LogsCenter;
 import seedu.address.model.member.Id;
 import seedu.address.model.member.Member;
+import seedu.address.model.reservation.Reservation;
 import seedu.address.model.transaction.Transaction;
 
 /**
@@ -156,6 +157,12 @@ public class ModelManager implements Model {
     public void addTransaction(Set<Transaction> transactionToAdd, Id id) {
         requireNonNull(id);
         ezFoodie.addTransaction(transactionToAdd, id);
+    }
+
+    @Override
+    public void addReservation(Set<Reservation> reservationToAdd, Id id) {
+        requireNonNull(id);
+        ezFoodie.addReservation(reservationToAdd, id);
     }
 
     /**

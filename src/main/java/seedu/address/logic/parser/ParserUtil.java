@@ -18,6 +18,7 @@ import seedu.address.model.member.Id;
 import seedu.address.model.member.Name;
 import seedu.address.model.member.Phone;
 import seedu.address.model.member.Timestamp;
+import seedu.address.model.reservation.Reservation;
 import seedu.address.model.tag.Tag;
 import seedu.address.model.transaction.Transaction;
 
@@ -182,6 +183,25 @@ public class ParserUtil {
             transactionSet.add(parseTransaction(transactionAmount));
         }
         return transactionSet;
+    }
+
+    /**
+     * Parses {@code Collection<String> reservations} into a {@code Set<Reservation>}.
+     */
+    public static Reservation parseReservation(String reservation) {
+        requireNonNull(reservation);
+        String trimmedReservation = reservation.trim();
+        return new Reservation(trimmedReservation);
+    }
+
+    public static Set<Reservation> parseReservations(Collection<String> reservations)
+            throws ParseException {
+        requireNonNull(reservations);
+        final Set<Reservation> reservationSet = new HashSet<>();
+        for (String reservation : reservations) {
+            reservationSet.add(parseReservation(reservation));
+        }
+        return reservationSet;
     }
 
     /**

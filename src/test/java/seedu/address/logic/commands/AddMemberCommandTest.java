@@ -25,6 +25,7 @@ import seedu.address.model.ReadOnlyEzFoodie;
 import seedu.address.model.ReadOnlyUserPrefs;
 import seedu.address.model.member.Id;
 import seedu.address.model.member.Member;
+import seedu.address.model.reservation.Reservation;
 import seedu.address.model.transaction.Transaction;
 import seedu.address.testutil.MemberBuilder;
 
@@ -186,6 +187,11 @@ public class AddMemberCommandTest {
 
         @Override
         public void addTransaction(Set<Transaction> transactionToAdd, Id idToAdd) {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public void addReservation(Set<Reservation> reservationToAdd, Id idToAdd) {
             throw new AssertionError("This method should not be called.");
         }
     }
