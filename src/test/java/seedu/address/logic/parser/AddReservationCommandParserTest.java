@@ -29,7 +29,7 @@ class AddReservationCommandParserTest {
         Id expectedId = new Id(VALID_ID_AMY);
 
         // multiple reservations - all accepted
-        assertParseSuccess(parser, VALID_RESERVATION + ID_DESC_AMY,
+        assertParseSuccess(parser, RESERVATION_DESC + ID_DESC_AMY,
                 new AddReservationCommand(expectedReservations, expectedId));
     }
 
