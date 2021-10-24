@@ -33,14 +33,6 @@ public class Transaction {
         return transactionAmount;
     }
 
-    //public Timestamp getTimestamp() {
-    //    return timestamp;
-    //}
-    //
-    //public void setTimestamp(Timestamp timestamp) {
-    //    this.timestamp = timestamp;
-    //}
-
     /**
      * Returns true if a given string is a valid transaction amount.
      */
@@ -60,7 +52,6 @@ public class Transaction {
         return other == this // short circuit if same object
                 || (other instanceof Transaction // instanceof handles nulls
                 && transactionAmount.equals(((Transaction) other).transactionAmount)); // state check
-                //&& timestamp.equals(((Transaction) other).timestamp));
     }
 
     //todo: can use the id to generate hashcode
