@@ -11,7 +11,7 @@ import static seedu.address.logic.parser.CliSyntax.PREFIX_TRANSACTION;
 import java.util.Set;
 
 import seedu.address.logic.commands.AddMemberCommand;
-import seedu.address.logic.commands.EditCommand.EditMemberDescriptor;
+import seedu.address.logic.commands.EditMemberDescriptor;
 import seedu.address.model.member.Member;
 import seedu.address.model.tag.Tag;
 import seedu.address.model.transaction.Transaction;
