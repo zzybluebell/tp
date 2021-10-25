@@ -47,6 +47,8 @@ public class MemberCard extends UiPart<Region> {
     @FXML
     private Label credit;
     @FXML
+    private Label point;
+    @FXML
     private Label tier;
     @FXML
     private FlowPane tags;
@@ -60,14 +62,15 @@ public class MemberCard extends UiPart<Region> {
         super(FXML);
         this.member = member;
         index.setText(displayedIndex + ". ");
-        id.setText(member.getId().value);
-        name.setText(member.getName().fullName);
-        phone.setText(member.getPhone().value);
-        email.setText(member.getEmail().value);
-        address.setText(member.getAddress().value);
-        registrationTime.setText(
+        id.setText("ID: " + member.getId().value);
+        name.setText("Name: " + member.getName().fullName);
+        phone.setText("Phone: " + member.getPhone().value);
+        email.setText("Email: " + member.getEmail().value);
+        address.setText("Address: " + member.getAddress().value);
+        registrationTime.setText("Registration Date: " +
                 DateTimeUtil.timestampToDate(Long.parseLong(member.getRegistrationTimestamp().value)).toString());
-        credit.setText(member.getCredit().value);
+        credit.setText("Credits: " + member.getCredit().value);
+        point.setText("Points: " + member.getPoint().value);
         tier.setText(Tier.getTierByCredit(Integer.parseInt(member.getCredit().value)));
         member.getTags().stream()
                 .sorted(Comparator.comparing(tag -> tag.tagName))

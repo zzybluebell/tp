@@ -17,6 +17,7 @@ import seedu.address.model.member.Id;
 import seedu.address.model.member.Member;
 import seedu.address.model.member.Name;
 import seedu.address.model.member.Phone;
+import seedu.address.model.member.Point;
 import seedu.address.model.member.Timestamp;
 import seedu.address.model.tag.Tag;
 import seedu.address.model.transaction.Transaction;
@@ -35,6 +36,7 @@ class JsonAdaptedMember {
     private final String address;
     private final String registrationTimestamp;
     private final String credit;
+    private final String point;
     private final List<JsonAdaptedTag> tagged = new ArrayList<>();
     private final List<JsonAdaptedTransaction> transactions = new ArrayList<>();
 
@@ -47,6 +49,7 @@ class JsonAdaptedMember {
             @JsonProperty("address") String address,
             @JsonProperty("registrationTimestamp") String registrationTimestamp,
             @JsonProperty("credit") String credit,
+            @JsonProperty("credit") String point,
             @JsonProperty("tagged") List<JsonAdaptedTag> tagged,
             @JsonProperty("transactions") List<JsonAdaptedTransaction> transactions) {
 
@@ -57,6 +60,7 @@ class JsonAdaptedMember {
         this.address = address;
         this.registrationTimestamp = registrationTimestamp;
         this.credit = credit;
+        this.point = point;
         if (tagged != null) {
             this.tagged.addAll(tagged);
         }
@@ -76,6 +80,7 @@ class JsonAdaptedMember {
         address = source.getAddress().value;
         registrationTimestamp = source.getRegistrationTimestamp().value;
         credit = source.getCredit().value;
+        point = source.getPoint().value;
         tagged.addAll(source.getTags().stream()
                 .map(JsonAdaptedTag::new)
                 .collect(Collectors.toList()));
@@ -157,12 +162,20 @@ class JsonAdaptedMember {
         }
         final Credit modelCredit = new Credit(credit);
 
+        if (point == null) {
+            throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT, Point.class.getSimpleName()));
+        }
+        if (!Point.isValidPoint(point)) {
+            throw new IllegalValueException(Point.MESSAGE_CONSTRAINTS);
+        }
+        final Point modelPoint = new Point(point);
+
         final Set<Tag> modelTags = new HashSet<>(memberTags);
 
         final Set<Transaction> modelTransactions = new HashSet<>(memberTransactions);
 
         return new Member(modelId, modelName, modelPhone, modelEmail, modelAddress, modelRegistrationTimestamp,
-                modelCredit, modelTags, modelTransactions);
+                modelCredit, modelPoint, modelTags, modelTransactions);
     }
 
 }

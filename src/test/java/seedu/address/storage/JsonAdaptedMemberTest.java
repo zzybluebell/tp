@@ -18,6 +18,7 @@ import seedu.address.model.member.Email;
 import seedu.address.model.member.Id;
 import seedu.address.model.member.Name;
 import seedu.address.model.member.Phone;
+import seedu.address.model.member.Point;
 import seedu.address.model.member.Timestamp;
 
 public class JsonAdaptedMemberTest {
@@ -28,6 +29,7 @@ public class JsonAdaptedMemberTest {
     private static final String INVALID_ADDRESS = " ";
     private static final String INVALID_REGISTRATION_TIMESTAMP = "00001&234";
     private static final String INVALID_CREDIT = "*99";
+    private static final String INVALID_POINT= "*99";
     private static final String INVALID_TAG = "#friend";
     private static final String INVALID_TRANSACTION = "1x10";
 
@@ -38,6 +40,7 @@ public class JsonAdaptedMemberTest {
     private static final String VALID_ADDRESS = BENSON.getAddress().toString();
     private static final String VALID_REGISTRATION_TIMESTAMP = BENSON.getRegistrationTimestamp().toString();
     private static final String VALID_CREDIT = BENSON.getCredit().toString();
+    private static final String VALID_POINT = BENSON.getCredit().toString();
     private static final List<JsonAdaptedTag> VALID_TAGS = BENSON.getTags().stream()
             .map(JsonAdaptedTag::new)
             .collect(Collectors.toList());
@@ -55,7 +58,7 @@ public class JsonAdaptedMemberTest {
     public void toModelType_invalidId_throwsIllegalValueException() {
         JsonAdaptedMember member =
                 new JsonAdaptedMember(INVALID_ID, VALID_NAME, VALID_PHONE, VALID_EMAIL, VALID_ADDRESS,
-                        VALID_REGISTRATION_TIMESTAMP, VALID_CREDIT, VALID_TAGS, VALID_TRANSACTIONS);
+                        VALID_REGISTRATION_TIMESTAMP, VALID_CREDIT, VALID_POINT, VALID_TAGS, VALID_TRANSACTIONS);
 
         String expectedMessage = Id.MESSAGE_CONSTRAINTS;
         assertThrows(IllegalValueException.class, expectedMessage, member::toModelType);
@@ -65,7 +68,7 @@ public class JsonAdaptedMemberTest {
     public void toModelType_nullId_throwsIllegalValueException() {
         JsonAdaptedMember member =
                 new JsonAdaptedMember(null, VALID_NAME, VALID_PHONE, VALID_EMAIL, VALID_ADDRESS,
-                        VALID_REGISTRATION_TIMESTAMP, VALID_CREDIT, VALID_TAGS, VALID_TRANSACTIONS);
+                        VALID_REGISTRATION_TIMESTAMP, VALID_CREDIT, VALID_POINT, VALID_TAGS, VALID_TRANSACTIONS);
         String expectedMessage = String.format(MISSING_FIELD_MESSAGE_FORMAT, Id.class.getSimpleName());
         assertThrows(IllegalValueException.class, expectedMessage, member::toModelType);
     }
@@ -74,7 +77,7 @@ public class JsonAdaptedMemberTest {
     public void toModelType_invalidName_throwsIllegalValueException() {
         JsonAdaptedMember member =
                 new JsonAdaptedMember(VALID_ID, INVALID_NAME, VALID_PHONE, VALID_EMAIL, VALID_ADDRESS,
-                        VALID_REGISTRATION_TIMESTAMP, VALID_CREDIT, VALID_TAGS, VALID_TRANSACTIONS);
+                        VALID_REGISTRATION_TIMESTAMP, VALID_CREDIT, VALID_POINT, VALID_TAGS, VALID_TRANSACTIONS);
         String expectedMessage = Name.MESSAGE_CONSTRAINTS;
         assertThrows(IllegalValueException.class, expectedMessage, member::toModelType);
     }
@@ -83,7 +86,7 @@ public class JsonAdaptedMemberTest {
     public void toModelType_nullName_throwsIllegalValueException() {
         JsonAdaptedMember member =
                 new JsonAdaptedMember(VALID_ID, null, VALID_PHONE, VALID_EMAIL, VALID_ADDRESS,
-                        VALID_REGISTRATION_TIMESTAMP, VALID_CREDIT, VALID_TAGS, VALID_TRANSACTIONS);
+                        VALID_REGISTRATION_TIMESTAMP, VALID_CREDIT, VALID_POINT, VALID_TAGS, VALID_TRANSACTIONS);
         String expectedMessage = String.format(MISSING_FIELD_MESSAGE_FORMAT, Name.class.getSimpleName());
         assertThrows(IllegalValueException.class, expectedMessage, member::toModelType);
     }
@@ -92,7 +95,7 @@ public class JsonAdaptedMemberTest {
     public void toModelType_invalidPhone_throwsIllegalValueException() {
         JsonAdaptedMember member =
                 new JsonAdaptedMember(VALID_ID, VALID_NAME, INVALID_PHONE, VALID_EMAIL, VALID_ADDRESS,
-                        VALID_REGISTRATION_TIMESTAMP, VALID_CREDIT, VALID_TAGS, VALID_TRANSACTIONS);
+                        VALID_REGISTRATION_TIMESTAMP, VALID_CREDIT, VALID_POINT, VALID_TAGS, VALID_TRANSACTIONS);
         String expectedMessage = Phone.MESSAGE_CONSTRAINTS;
         assertThrows(IllegalValueException.class, expectedMessage, member::toModelType);
     }
@@ -101,7 +104,7 @@ public class JsonAdaptedMemberTest {
     public void toModelType_nullPhone_throwsIllegalValueException() {
         JsonAdaptedMember member =
                 new JsonAdaptedMember(VALID_ID, VALID_NAME, null, VALID_EMAIL, VALID_ADDRESS,
-                        VALID_REGISTRATION_TIMESTAMP, VALID_CREDIT, VALID_TAGS, VALID_TRANSACTIONS);
+                        VALID_REGISTRATION_TIMESTAMP, VALID_CREDIT, VALID_POINT, VALID_TAGS, VALID_TRANSACTIONS);
         String expectedMessage = String.format(MISSING_FIELD_MESSAGE_FORMAT, Phone.class.getSimpleName());
         assertThrows(IllegalValueException.class, expectedMessage, member::toModelType);
     }
@@ -110,7 +113,7 @@ public class JsonAdaptedMemberTest {
     public void toModelType_invalidEmail_throwsIllegalValueException() {
         JsonAdaptedMember member =
                 new JsonAdaptedMember(VALID_ID, VALID_NAME, VALID_PHONE, INVALID_EMAIL, VALID_ADDRESS,
-                        VALID_REGISTRATION_TIMESTAMP, VALID_CREDIT, VALID_TAGS, VALID_TRANSACTIONS);
+                        VALID_REGISTRATION_TIMESTAMP, VALID_CREDIT, VALID_POINT, VALID_TAGS, VALID_TRANSACTIONS);
         String expectedMessage = Email.MESSAGE_CONSTRAINTS;
         assertThrows(IllegalValueException.class, expectedMessage, member::toModelType);
     }
@@ -119,7 +122,7 @@ public class JsonAdaptedMemberTest {
     public void toModelType_nullEmail_throwsIllegalValueException() {
         JsonAdaptedMember member =
                 new JsonAdaptedMember(VALID_ID, VALID_NAME, VALID_PHONE, null, VALID_ADDRESS,
-                        VALID_REGISTRATION_TIMESTAMP, VALID_CREDIT, VALID_TAGS, VALID_TRANSACTIONS);
+                        VALID_REGISTRATION_TIMESTAMP, VALID_CREDIT, VALID_POINT, VALID_TAGS, VALID_TRANSACTIONS);
         String expectedMessage = String.format(MISSING_FIELD_MESSAGE_FORMAT, Email.class.getSimpleName());
         assertThrows(IllegalValueException.class, expectedMessage, member::toModelType);
     }
@@ -128,7 +131,7 @@ public class JsonAdaptedMemberTest {
     public void toModelType_invalidAddress_throwsIllegalValueException() {
         JsonAdaptedMember member =
                 new JsonAdaptedMember(VALID_ID, VALID_NAME, VALID_PHONE, VALID_EMAIL, INVALID_ADDRESS,
-                        VALID_REGISTRATION_TIMESTAMP, VALID_CREDIT, VALID_TAGS, VALID_TRANSACTIONS);
+                        VALID_REGISTRATION_TIMESTAMP, VALID_CREDIT, VALID_POINT, VALID_TAGS, VALID_TRANSACTIONS);
         String expectedMessage = Address.MESSAGE_CONSTRAINTS;
         assertThrows(IllegalValueException.class, expectedMessage, member::toModelType);
     }
@@ -137,7 +140,7 @@ public class JsonAdaptedMemberTest {
     public void toModelType_nullAddress_throwsIllegalValueException() {
         JsonAdaptedMember member =
                 new JsonAdaptedMember(VALID_ID, VALID_NAME, VALID_PHONE, VALID_EMAIL, null,
-                        VALID_REGISTRATION_TIMESTAMP, VALID_CREDIT, VALID_TAGS, VALID_TRANSACTIONS);
+                        VALID_REGISTRATION_TIMESTAMP, VALID_CREDIT, VALID_POINT, VALID_TAGS, VALID_TRANSACTIONS);
         String expectedMessage = String.format(MISSING_FIELD_MESSAGE_FORMAT, Address.class.getSimpleName());
         assertThrows(IllegalValueException.class, expectedMessage, member::toModelType);
     }
@@ -146,7 +149,7 @@ public class JsonAdaptedMemberTest {
     public void toModelType_invalidRegistrationTimestamp_throwsIllegalValueException() {
         JsonAdaptedMember member =
                 new JsonAdaptedMember(VALID_ID, VALID_NAME, VALID_PHONE, VALID_EMAIL, VALID_ADDRESS,
-                        INVALID_REGISTRATION_TIMESTAMP, VALID_CREDIT, VALID_TAGS, VALID_TRANSACTIONS);
+                        INVALID_REGISTRATION_TIMESTAMP, VALID_CREDIT, VALID_POINT, VALID_TAGS, VALID_TRANSACTIONS);
         String expectedMessage = Timestamp.MESSAGE_CONSTRAINTS;
         assertThrows(IllegalValueException.class, expectedMessage, member::toModelType);
     }
@@ -155,7 +158,7 @@ public class JsonAdaptedMemberTest {
     public void toModelType_nullRegistrationTimestamp_throwsIllegalValueException() {
         JsonAdaptedMember member =
                 new JsonAdaptedMember(VALID_ID, VALID_NAME, VALID_PHONE, VALID_EMAIL, VALID_ADDRESS,
-                        null, VALID_CREDIT, VALID_TAGS, VALID_TRANSACTIONS);
+                        null, VALID_CREDIT, VALID_POINT, VALID_TAGS, VALID_TRANSACTIONS);
         String expectedMessage = String.format(
                 MISSING_FIELD_MESSAGE_FORMAT, Timestamp.class.getSimpleName());
         assertThrows(IllegalValueException.class, expectedMessage, member::toModelType);
@@ -165,7 +168,7 @@ public class JsonAdaptedMemberTest {
     public void toModelType_invalidCredit_throwsIllegalValueException() {
         JsonAdaptedMember member =
                 new JsonAdaptedMember(VALID_ID, VALID_NAME, VALID_PHONE, VALID_EMAIL, VALID_ADDRESS,
-                        VALID_REGISTRATION_TIMESTAMP, INVALID_CREDIT, VALID_TAGS, VALID_TRANSACTIONS);
+                        VALID_REGISTRATION_TIMESTAMP, INVALID_CREDIT, VALID_POINT, VALID_TAGS, VALID_TRANSACTIONS);
         String expectedMessage = Credit.MESSAGE_CONSTRAINTS;
         assertThrows(IllegalValueException.class, expectedMessage, member::toModelType);
     }
@@ -174,9 +177,28 @@ public class JsonAdaptedMemberTest {
     public void toModelType_nullCredit_throwsIllegalValueException() {
         JsonAdaptedMember member =
                 new JsonAdaptedMember(VALID_ID, VALID_NAME, VALID_PHONE, VALID_EMAIL, VALID_ADDRESS,
-                        VALID_REGISTRATION_TIMESTAMP, null, VALID_TAGS, VALID_TRANSACTIONS);
+                        VALID_REGISTRATION_TIMESTAMP, null, VALID_POINT, VALID_TAGS, VALID_TRANSACTIONS);
         String expectedMessage = String.format(
                 MISSING_FIELD_MESSAGE_FORMAT, Credit.class.getSimpleName());
+        assertThrows(IllegalValueException.class, expectedMessage, member::toModelType);
+    }
+
+    @Test
+    public void toModelType_invalidPoint_throwsIllegalValueException() {
+        JsonAdaptedMember member =
+                new JsonAdaptedMember(VALID_ID, VALID_NAME, VALID_PHONE, VALID_EMAIL, VALID_ADDRESS,
+                        VALID_REGISTRATION_TIMESTAMP, VALID_CREDIT, INVALID_POINT, VALID_TAGS, VALID_TRANSACTIONS);
+        String expectedMessage = Point.MESSAGE_CONSTRAINTS;
+        assertThrows(IllegalValueException.class, expectedMessage, member::toModelType);
+    }
+
+    @Test
+    public void toModelType_nullPoint_throwsIllegalValueException() {
+        JsonAdaptedMember member =
+                new JsonAdaptedMember(VALID_ID, VALID_NAME, VALID_PHONE, VALID_EMAIL, VALID_ADDRESS,
+                        VALID_REGISTRATION_TIMESTAMP, VALID_CREDIT, null, VALID_TAGS, VALID_TRANSACTIONS);
+        String expectedMessage = String.format(
+                MISSING_FIELD_MESSAGE_FORMAT, Point.class.getSimpleName());
         assertThrows(IllegalValueException.class, expectedMessage, member::toModelType);
     }
 
@@ -186,7 +208,7 @@ public class JsonAdaptedMemberTest {
         invalidTags.add(new JsonAdaptedTag(INVALID_TAG));
         JsonAdaptedMember member =
                 new JsonAdaptedMember(VALID_ID, VALID_NAME, VALID_PHONE, VALID_EMAIL, VALID_ADDRESS,
-                        VALID_REGISTRATION_TIMESTAMP, VALID_CREDIT, invalidTags, VALID_TRANSACTIONS);
+                        VALID_REGISTRATION_TIMESTAMP, VALID_CREDIT, VALID_POINT, invalidTags, VALID_TRANSACTIONS);
         assertThrows(IllegalValueException.class, member::toModelType);
     }
 
@@ -196,7 +218,7 @@ public class JsonAdaptedMemberTest {
         invalidTransactions.add(new JsonAdaptedTransaction(INVALID_TRANSACTION));
         JsonAdaptedMember member =
                 new JsonAdaptedMember(VALID_ID, VALID_NAME, VALID_PHONE, VALID_EMAIL, VALID_ADDRESS,
-                        VALID_REGISTRATION_TIMESTAMP, VALID_CREDIT, VALID_TAGS, invalidTransactions);
+                        VALID_REGISTRATION_TIMESTAMP, VALID_CREDIT, VALID_POINT, VALID_TAGS, invalidTransactions);
         assertThrows(IllegalValueException.class, member::toModelType);
     }
 

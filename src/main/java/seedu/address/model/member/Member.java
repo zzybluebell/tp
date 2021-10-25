@@ -26,16 +26,18 @@ public class Member {
     private final Address address;
     private final Timestamp timestamp;
     private final Credit credit;
+    private final Point point;
     private final Set<Tag> tags = new HashSet<>();
     private final Set<Transaction> transactions = new HashSet<>();
+
 
     /**
      * Every field must be present and not null.
      */
     public Member(Id id, Name name, Phone phone, Email email, Address address,
-                  Timestamp timestamp, Credit credit, Set<Tag> tags,
+                  Timestamp timestamp, Credit credit, Point point, Set<Tag> tags,
                   Set<Transaction> transactions) {
-        requireAllNonNull(id, name, phone, email, address, timestamp, credit, tags, transactions);
+        requireAllNonNull(id, name, phone, email, address, timestamp, credit, point, tags, transactions);
         this.id = id;
         this.name = name;
         this.phone = phone;
@@ -43,6 +45,7 @@ public class Member {
         this.address = address;
         this.timestamp = timestamp;
         this.credit = credit;
+        this.point = point;
         this.tags.addAll(tags);
         this.transactions.addAll(transactions);
     }
@@ -73,6 +76,10 @@ public class Member {
 
     public Credit getCredit() {
         return this.credit;
+    }
+
+    public Point getPoint() {
+        return this.point;
     }
 
     /**

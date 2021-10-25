@@ -33,7 +33,7 @@ public class TypicalMembers {
 
     public static final Member ALICE = new MemberBuilder().withId("00001").withName("Alice Pauline")
             .withAddress("123, Jurong West Ave 6, #08-111").withEmail("alice@example.com")
-            .withPhone("94351253").withRegistrationTimestamp("1609459200000").withCredit("610")
+            .withPhone("94351253").withRegistrationTimestamp("1609459200000").withCredit("610").withPoint("610")
             .withTags("friends").withTransactions("567.54", "43.34").build();
     public static final Member BENSON = new MemberBuilder().withId("00002").withName("Benson Meier")
             .withAddress("311, Clementi Ave 2, #02-25").withEmail("johnd@example.com")

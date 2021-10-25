@@ -130,4 +130,5 @@ public interface Model {
     void updateSortedMemberList(Comparator<Member> comparator);
 
     void addTransaction(Set<Transaction> transactionToAdd, Id idToAdd);
+
 }

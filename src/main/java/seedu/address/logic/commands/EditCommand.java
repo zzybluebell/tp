@@ -26,6 +26,7 @@ import seedu.address.model.member.Id;
 import seedu.address.model.member.Member;
 import seedu.address.model.member.Name;
 import seedu.address.model.member.Phone;
+import seedu.address.model.member.Point;
 import seedu.address.model.member.Timestamp;
 import seedu.address.model.tag.Tag;
 import seedu.address.model.transaction.Transaction;
@@ -148,8 +149,8 @@ public class EditCommand extends Command {
                 .orElse((memberToEdit.getTransactions()));
         Credit credit = new Credit("" + Math.min(updatedTransactions.stream()
                 .mapToInt(t -> (int) t.getDoubleValue()).sum(), Credit.MAX));
-
-        return new Member(id, updatedName, updatedPhone, updatedEmail, updatedAddress, timestamp, credit,
+        Point point = new Point(credit.getStringValue());
+        return new Member(id, updatedName, updatedPhone, updatedEmail, updatedAddress, timestamp, credit, point,
                 updatedTags, updatedTransactions);
     }
 
