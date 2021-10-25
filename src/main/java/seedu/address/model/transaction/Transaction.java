@@ -47,21 +47,17 @@ public class Transaction {
         return Double.parseDouble(transactionAmount);
     }
 
-    @Override
-    public boolean equals(Object other) {
-        if (other instanceof Transaction) {
-            return false;
-        } else {
-            return other == this // short circuit if same object
-                    || (other instanceof Transaction // instanceof handles nulls
-                    && transactionAmount.equals(((Transaction) other).transactionAmount)); // state check
-        }
-    }
-
     //todo: can use the id to generate hashcode
     @Override
     public int hashCode() {
         return transactionAmount.hashCode();
+    }
+
+    @Override
+    public boolean equals(Object other) {
+        return other == this // short circuit if same object
+                || (other instanceof Transaction // instanceof handles nulls
+                && transactionAmount.equals(((Transaction) other).transactionAmount)); // state check
     }
 
     /**
