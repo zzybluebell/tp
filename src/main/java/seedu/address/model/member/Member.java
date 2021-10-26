@@ -75,7 +75,7 @@ public class Member {
     }
 
     public Credit getCredit() {
-        return credit;
+        return this.credit;
     }
 
     /**

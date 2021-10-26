@@ -38,7 +38,8 @@ public enum Tier {
         }
         if (credit >= SILVER.getValue()) {
             return SILVER.key;
+        } else {
+            return BRONZE.key;
         }
-        return BRONZE.key;
     }
 }

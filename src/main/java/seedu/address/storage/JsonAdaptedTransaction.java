@@ -44,5 +44,4 @@ class JsonAdaptedTransaction {
         }
         return new Transaction(transactionAmount);
     }
-
 }

@@ -13,7 +13,6 @@ import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.model.Model;
 import seedu.address.model.member.Id;
 import seedu.address.model.transaction.Transaction;
-
 /**
  * Parses input arguments and creates a new AddCommand object
  */
@@ -32,14 +31,6 @@ public class AddTransactionCommandParser extends AddCommandParser implements Par
         this.executionStatus = executionStatus;
     }
 
-    private String generateTransactionTimestamp() {
-        return String.valueOf(System.currentTimeMillis());
-    }
-
-    private String generateTransactionTimestampStub() {
-        return TRANSACTION_TIMESTAMP_STUB;
-    }
-
     /**
      * Parses the given {@code String} of arguments in the context of the AddTransactionCommand
      * and returns an AddTransactionCommand object for execution.
@@ -55,13 +46,8 @@ public class AddTransactionCommandParser extends AddCommandParser implements Par
             throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT,
                     AddTransactionCommand.MESSAGE_USAGE));
         }
-        //Timestamp timestamp = executionStatus == ExecutionStatus.NORMAL
-        //      ? ParserUtil.parseTimestamp(generateTransactionTimestamp())
-        //      : ParserUtil.parseTimestamp(generateTransactionTimestampStub());
+
         Set<Transaction> transactionList = ParserUtil.parseTransactions(argMultimap.getAllValues(PREFIX_TRANSACTION));
-        //for (Transaction transaction: transactionList) {
-        //      transaction.setTimestamp(timestamp);
-        //}
         Id id = ParserUtil.parseId(argMultimap.getValue(PREFIX_ID).get());
 
         return new AddTransactionCommand(transactionList, id);

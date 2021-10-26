@@ -100,7 +100,7 @@ public class EzFoodie implements ReadOnlyEzFoodie {
     }
 
     /**
-     * Adds a transaction to the ezFoodie.
+     * Adds a transaction to a member in the ezFoodie.
      */
     public void addTransaction(Set<Transaction> transactions, Id id) {
         Member memberToEdit = members.getMemberById(id);

@@ -19,6 +19,7 @@ public class CliSyntax {
     public static final Prefix PREFIX_TRANSACTION = new Prefix("-t");
     public static final Prefix PREFIX_RESERVATION = new Prefix("-r");
     public static final Prefix PREFIX_RESERVATION_DATE = new Prefix("-dt");
+    public static final Prefix PREFIX_REDEEM = new Prefix("-r");
 
     /* Only used in sort command */
     public static final Prefix PREFIX_ASC = new Prefix("-a");
