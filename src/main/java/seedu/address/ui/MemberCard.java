@@ -52,6 +52,8 @@ public class MemberCard extends UiPart<Region> {
     private FlowPane tags;
     @FXML
     private FlowPane transactions;
+    @FXML
+    private FlowPane reservations;
 
     /**
      * Creates a {@code MemberCode} with the given {@code Member} and index to display.
@@ -76,6 +78,10 @@ public class MemberCard extends UiPart<Region> {
                 .sorted(Comparator.comparing(transaction -> transaction.getTransactionAmount()))
                 .forEach(transaction -> transactions.getChildren().add(
                         new Label(transaction.getTransactionAmount() + " ")));
+        member.getReservations().stream()
+                .sorted(Comparator.comparing(reservation -> reservation.getReservationDate()))
+                .forEach(reservation -> reservations.getChildren().add(
+                        new Label(reservation.getReservationDate() + " ")));
     }
 
     @Override

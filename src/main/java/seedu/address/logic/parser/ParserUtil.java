@@ -173,7 +173,10 @@ public class ParserUtil {
     }
 
     /**
-     * Parses {@code Collection<String> transactions} into a {@code Set<Transaction>}.
+     * Parses a {@code String reservation} into a {@code Reservation}.
+     * Leading and trailing whitespaces will be trimmed.
+     *
+     * @throws ParseException if the given {@code reservation} is invalid.
      */
     public static Set<Transaction> parseTransactions(Collection<String> transactions)
             throws ParseException {
@@ -194,6 +197,9 @@ public class ParserUtil {
         return new Reservation(trimmedReservation);
     }
 
+    /**
+     * Parses {@code Collection<String> reservations} into a {@code Set<Reservation>}.
+     */
     public static Set<Reservation> parseReservations(Collection<String> reservations)
             throws ParseException {
         requireNonNull(reservations);

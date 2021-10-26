@@ -36,6 +36,7 @@
       <Label fx:id="credit" styleClass="cell_small_label" text="\$credit" />
       <FlowPane fx:id="tags" />
       <FlowPane fx:id="transactions" />
+      <FlowPane fx:id="reservations" />
     </VBox>
   </GridPane>
 </HBox>

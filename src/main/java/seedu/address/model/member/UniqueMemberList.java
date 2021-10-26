@@ -55,6 +55,9 @@ public class UniqueMemberList implements Iterable<Member> {
         return outputMember;
     }
 
+    /**
+     * Returns a new member with added reservations.
+     */
     public Member createAddedReservationMember(Member member, Set<Reservation> reservations) {
         Member outputMember = member;
         outputMember.addReservations(reservations);

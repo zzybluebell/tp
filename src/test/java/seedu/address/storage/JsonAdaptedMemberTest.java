@@ -149,7 +149,8 @@ public class JsonAdaptedMemberTest {
     public void toModelType_invalidRegistrationTimestamp_throwsIllegalValueException() {
         JsonAdaptedMember member =
                 new JsonAdaptedMember(VALID_ID, VALID_NAME, VALID_PHONE, VALID_EMAIL, VALID_ADDRESS,
-                        INVALID_REGISTRATION_TIMESTAMP, VALID_CREDIT, VALID_TAGS, VALID_TRANSACTIONS, VALID_RESERVATIONS);
+                        INVALID_REGISTRATION_TIMESTAMP, VALID_CREDIT, VALID_TAGS, VALID_TRANSACTIONS,
+                        VALID_RESERVATIONS);
         String expectedMessage = Timestamp.MESSAGE_CONSTRAINTS;
         assertThrows(IllegalValueException.class, expectedMessage, member::toModelType);
     }

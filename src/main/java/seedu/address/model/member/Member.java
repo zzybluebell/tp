@@ -37,7 +37,7 @@ public class Member {
     public Member(Id id, Name name, Phone phone, Email email, Address address,
                   Timestamp timestamp, Credit credit, Set<Tag> tags,
                   Set<Transaction> transactions, Set<Reservation> reservations) {
-        requireAllNonNull(id, name, phone, email, address, timestamp, credit, tags, transactions);
+        requireAllNonNull(id, name, phone, email, address, timestamp, credit, tags, transactions, reservations);
         this.id = id;
         this.name = name;
         this.phone = phone;

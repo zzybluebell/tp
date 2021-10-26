@@ -1,7 +1,8 @@
 package seedu.address.logic.parser;
 
 import static seedu.address.commons.core.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
-import static seedu.address.logic.parser.CliSyntax.*;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_ID;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_RESERVATION;
 
 import java.util.Set;
 import java.util.stream.Stream;
@@ -14,7 +15,7 @@ import seedu.address.model.member.Id;
 import seedu.address.model.reservation.Reservation;
 
 /**
- * Parses input arguments and creates a new AddCommand object
+ * Parses input arguments and creates a new AddReservationCommand object
  */
 public class AddReservationCommandParser extends AddCommandParser implements Parser<AddReservationCommand> {
     private static final String RESERVATION_TIMESTAMP_STUB = "1609459200000";

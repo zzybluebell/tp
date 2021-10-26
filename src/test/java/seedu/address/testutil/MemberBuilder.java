@@ -11,9 +11,9 @@ import seedu.address.model.member.Member;
 import seedu.address.model.member.Name;
 import seedu.address.model.member.Phone;
 import seedu.address.model.member.Timestamp;
+import seedu.address.model.reservation.Reservation;
 import seedu.address.model.tag.Tag;
 import seedu.address.model.transaction.Transaction;
-import seedu.address.model.reservation.Reservation;
 import seedu.address.model.util.SampleDataUtil;
 
 /**

@@ -1,7 +1,9 @@
 package seedu.address.logic.parser;
 
 import static seedu.address.commons.core.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
-import static seedu.address.logic.parser.CliSyntax.*;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_MEMBER;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_RESERVATION;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_TRANSACTION;
 
 import seedu.address.commons.status.ExecutionStatus;
 import seedu.address.logic.commands.AddCommand;

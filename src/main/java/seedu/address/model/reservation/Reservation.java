@@ -1,12 +1,8 @@
 package seedu.address.model.reservation;
 
-import static java.util.Objects.requireNonNull;
-import static seedu.address.commons.util.AppUtil.checkArgument;
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
-
 /**
  * Represents a Transaction in the ezFoodie.
+ * TODO: Change String to DateTime format
  */
 public class Reservation {
 
