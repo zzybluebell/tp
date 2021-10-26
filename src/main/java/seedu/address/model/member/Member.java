@@ -7,6 +7,7 @@ import java.util.HashSet;
 import java.util.Objects;
 import java.util.Set;
 
+import seedu.address.model.reservation.Reservation;
 import seedu.address.model.tag.Tag;
 import seedu.address.model.transaction.Transaction;
 
@@ -28,14 +29,15 @@ public class Member {
     private final Credit credit;
     private final Set<Tag> tags = new HashSet<>();
     private final Set<Transaction> transactions = new HashSet<>();
+    private final Set<Reservation> reservations = new HashSet<>();
 
     /**
      * Every field must be present and not null.
      */
     public Member(Id id, Name name, Phone phone, Email email, Address address,
                   Timestamp timestamp, Credit credit, Set<Tag> tags,
-                  Set<Transaction> transactions) {
-        requireAllNonNull(id, name, phone, email, address, timestamp, credit, tags, transactions);
+                  Set<Transaction> transactions, Set<Reservation> reservations) {
+        requireAllNonNull(id, name, phone, email, address, timestamp, credit, tags, transactions, reservations);
         this.id = id;
         this.name = name;
         this.phone = phone;
@@ -45,6 +47,7 @@ public class Member {
         this.credit = credit;
         this.tags.addAll(tags);
         this.transactions.addAll(transactions);
+        this.reservations.addAll(reservations);
     }
 
     public Id getId() {
@@ -91,12 +94,24 @@ public class Member {
         return Collections.unmodifiableSet(transactions);
     }
 
+    public Set<Reservation> getReservations() {
+        return Collections.unmodifiableSet(reservations);
+    }
+
     /**
      * Adds transactions.
      * @param newTrans
      */
     public void addTransactions(Set<Transaction> newTrans) {
         transactions.addAll(newTrans);
+    }
+
+    /**
+     * Adds transactions.
+     * @param newRes
+     */
+    public void addReservations(Set<Reservation> newRes) {
+        reservations.addAll(newRes);
     }
 
     /**
@@ -174,13 +189,14 @@ public class Member {
                 && otherMember.getRegistrationTimestamp().equals(getRegistrationTimestamp())
                 && otherMember.getCredit().equals(getCredit())
                 && otherMember.getTags().equals(getTags())
-                && otherMember.getTransactions().equals(getTransactions());
+                && otherMember.getTransactions().equals(getTransactions())
+                && otherMember.getReservations().equals(getReservations());
     }
 
     @Override
     public int hashCode() {
         // use this method for custom fields hashing instead of implementing your own
-        return Objects.hash(id, name, phone, email, address, timestamp, credit, tags, transactions);
+        return Objects.hash(id, name, phone, email, address, timestamp, credit, tags, transactions, reservations);
     }
 
     @Override
@@ -211,6 +227,12 @@ public class Member {
         if (!transactions.isEmpty()) {
             builder.append("; Transactions: ");
             transactions.forEach(builder::append);
+        }
+
+        Set<Reservation> reservations = getReservations();
+        if (!reservations.isEmpty()) {
+            builder.append("; Reservations: ");
+            reservations.forEach(builder::append);
         }
 
         return builder.toString();

@@ -8,6 +8,7 @@ import static seedu.address.logic.parser.CliSyntax.PREFIX_ID;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_MEMBER;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_NAME;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_PHONE;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_RESERVATION;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_TAG;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_TRANSACTION;
 import static seedu.address.testutil.Assert.assertThrows;
@@ -47,6 +48,7 @@ public class CommandTestUtil {
     public static final String VALID_TAG_FRIEND = "friend";
     public static final String VALID_TRANSACTION_200 = "200.00";
     public static final String VALID_TRANSACTION_300 = "300.00";
+    public static final String VALID_RESERVATION = "12-01-2021";
 
     public static final String MEMBER_DESC = " " + PREFIX_MEMBER;
     public static final String ID_DESC_AMY = " " + PREFIX_ID + VALID_ID_AMY;
@@ -62,6 +64,7 @@ public class CommandTestUtil {
     public static final String TAG_DESC_HUSBAND = " " + PREFIX_TAG + VALID_TAG_HUSBAND;
     public static final String TRANSACTION_DESC_200 = " " + PREFIX_TRANSACTION + VALID_TRANSACTION_200;
     public static final String TRANSACTION_DESC_300 = " " + PREFIX_TRANSACTION + VALID_TRANSACTION_300;
+    public static final String RESERVATION_DESC = " " + PREFIX_RESERVATION + VALID_RESERVATION;
 
     public static final String INVALID_NAME_DESC = " " + PREFIX_NAME + "James&"; // '&' not allowed in names
     public static final String INVALID_PHONE_DESC = " " + PREFIX_PHONE + "911a"; // 'a' not allowed in phones

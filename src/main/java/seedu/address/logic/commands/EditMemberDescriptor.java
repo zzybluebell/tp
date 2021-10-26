@@ -10,6 +10,7 @@ import seedu.address.model.member.Address;
 import seedu.address.model.member.Email;
 import seedu.address.model.member.Name;
 import seedu.address.model.member.Phone;
+import seedu.address.model.reservation.Reservation;
 import seedu.address.model.tag.Tag;
 import seedu.address.model.transaction.Transaction;
 
@@ -24,6 +25,7 @@ public class EditMemberDescriptor {
     private Address address;
     private Set<Tag> tags;
     private Set<Transaction> transactions;
+    private Set<Reservation> reservations;
 
     public EditMemberDescriptor() {}
 
@@ -38,6 +40,7 @@ public class EditMemberDescriptor {
         setAddress(toCopy.address);
         setTags(toCopy.tags);
         setTransactions(toCopy.transactions);
+        setReservations(toCopy.reservations);
     }
 
     /**
@@ -113,6 +116,23 @@ public class EditMemberDescriptor {
         return (transactions != null) ? Optional.of(Collections.unmodifiableSet(transactions)) : Optional.empty();
     }
 
+    /**
+     * Sets {@code reservations} to this object's {@code reservations}.
+     * A defensive copy of {@code reservations} is used internally.
+     */
+    public void setReservations(Set<Reservation> reservations) {
+        this.reservations = (reservations != null) ? new HashSet<>(reservations) : null;
+    }
+
+    /**
+     * Returns an unmodifiable reservation set, which throws {@code UnsupportedOperationException}
+     * if modification is attempted.
+     * Returns {@code Optional#empty()} if {@code reservation} is null.
+     */
+    public Optional<Set<Reservation>> getReservations() {
+        return (reservations != null) ? Optional.of(Collections.unmodifiableSet(reservations)) : Optional.empty();
+    }
+
     @Override
     public boolean equals(Object other) {
         // short circuit if same object
@@ -133,6 +153,7 @@ public class EditMemberDescriptor {
                 && getEmail().equals(e.getEmail())
                 && getAddress().equals(e.getAddress())
                 && getTags().equals(e.getTags())
-                && getTransactions().equals(e.getTransactions());
+                && getTransactions().equals(e.getTransactions())
+                && getReservations().equals(e.getReservations());
     }
 }

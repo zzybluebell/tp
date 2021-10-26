@@ -9,6 +9,7 @@ import javafx.collections.ObservableList;
 import seedu.address.commons.core.GuiSettings;
 import seedu.address.model.member.Id;
 import seedu.address.model.member.Member;
+import seedu.address.model.reservation.Reservation;
 import seedu.address.model.transaction.Transaction;
 
 /**
@@ -130,4 +131,6 @@ public interface Model {
     void updateSortedMemberList(Comparator<Member> comparator);
 
     void addTransaction(Set<Transaction> transactionToAdd, Id idToAdd);
+
+    void addReservation(Set<Reservation> reservationToAdd, Id idToAdd);
 }

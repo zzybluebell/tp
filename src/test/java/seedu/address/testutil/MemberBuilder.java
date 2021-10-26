@@ -11,6 +11,7 @@ import seedu.address.model.member.Member;
 import seedu.address.model.member.Name;
 import seedu.address.model.member.Phone;
 import seedu.address.model.member.Timestamp;
+import seedu.address.model.reservation.Reservation;
 import seedu.address.model.tag.Tag;
 import seedu.address.model.transaction.Transaction;
 import seedu.address.model.util.SampleDataUtil;
@@ -27,6 +28,7 @@ public class MemberBuilder {
     public static final String DEFAULT_ADDRESS = "123, Jurong West Ave 6, #08-111";
     public static final String DEFAULT_REGISTRATION_TIMESTAMP = "1610236800000";
     public static final String DEFAULT_CREDIT = "200";
+    public static final String DEFAULT_DATETIME = "12-01-2021";
 
     private Id id;
     private Name name;
@@ -37,6 +39,7 @@ public class MemberBuilder {
     private Credit credit;
     private Set<Tag> tags;
     private Set<Transaction> transactions;
+    private Set<Reservation> reservations;
 
     /**
      * Creates a {@code MemberBuilder} with the default details.
@@ -51,6 +54,7 @@ public class MemberBuilder {
         credit = new Credit(DEFAULT_CREDIT);
         tags = new HashSet<>();
         transactions = new HashSet<>();
+        reservations = new HashSet<>();
     }
 
     /**
@@ -66,6 +70,7 @@ public class MemberBuilder {
         credit = memberToCopy.getCredit();
         tags = new HashSet<>(memberToCopy.getTags());
         transactions = new HashSet<>(memberToCopy.getTransactions());
+        reservations = new HashSet<>(memberToCopy.getReservations());
     }
 
     /**
@@ -141,8 +146,17 @@ public class MemberBuilder {
         return this;
     }
 
+    /**
+     * Parses the {@code reservations} into a {@code Set<Reservation>} and set it to the {@code Member}
+     * that we are building.
+     */
+    public MemberBuilder withReservations(String ... reservations) {
+        this.reservations = SampleDataUtil.getReservationSet(reservations);
+        return this;
+    }
+
     public Member build() {
-        return new Member(id, name, phone, email, address, timestamp, credit, tags, transactions);
+        return new Member(id, name, phone, email, address, timestamp, credit, tags, transactions, reservations);
     }
 
 }

@@ -19,6 +19,7 @@ import seedu.address.model.member.Member;
 import seedu.address.model.member.Name;
 import seedu.address.model.member.Phone;
 import seedu.address.model.member.Timestamp;
+import seedu.address.model.reservation.Reservation;
 import seedu.address.model.tag.Tag;
 import seedu.address.model.transaction.Transaction;
 
@@ -68,10 +69,11 @@ public class AddTransactionCommand extends AddCommand {
         Set<Tag> updatedTags = memberToEdit.getTags();
         Set<Transaction> updatedTransactions = new HashSet<>(memberToEdit.getTransactions());
         updatedTransactions.addAll(transactionToAdd);
+        Set<Reservation> updatedReservations = memberToEdit.getReservations();
         Credit credit = new Credit("" + Math.min(updatedTransactions.stream()
                 .mapToInt(t -> (int) t.getDoubleValue()).sum(), Credit.MAX));
         return new Member(id, updatedName, updatedPhone, updatedEmail, updatedAddress, timestamp, credit,
-                updatedTags, updatedTransactions);
+                updatedTags, updatedTransactions, updatedReservations);
     }
 
     @Override

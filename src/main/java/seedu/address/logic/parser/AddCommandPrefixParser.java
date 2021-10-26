@@ -2,6 +2,7 @@ package seedu.address.logic.parser;
 
 import static seedu.address.commons.core.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_MEMBER;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_RESERVATION;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_TRANSACTION;
 
 import seedu.address.commons.status.ExecutionStatus;
@@ -55,6 +56,8 @@ public class AddCommandPrefixParser {
             return new AddMemberCommandParser(model, executionStatus);
         } else if (prefix.equals(PREFIX_TRANSACTION.getPrefix())) {
             return new AddTransactionCommandParser(model, executionStatus);
+        } else if (prefix.equals(PREFIX_RESERVATION.getPrefix())) {
+            return new AddReservationCommandParser(model, executionStatus);
         } else {
             throw new ParseException(
                     String.format(MESSAGE_INVALID_COMMAND_FORMAT, AddCommand.MESSAGE_USAGE));

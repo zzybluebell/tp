@@ -8,6 +8,7 @@ import static seedu.address.logic.parser.CliSyntax.PREFIX_INDEX;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_MEMBER;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_NAME;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_PHONE;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_RESERVATION;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_TAG;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_TRANSACTION;
 import static seedu.address.model.Model.PREDICATE_SHOW_ALL_MEMBERS;
@@ -27,6 +28,7 @@ import seedu.address.model.member.Member;
 import seedu.address.model.member.Name;
 import seedu.address.model.member.Phone;
 import seedu.address.model.member.Timestamp;
+import seedu.address.model.reservation.Reservation;
 import seedu.address.model.tag.Tag;
 import seedu.address.model.transaction.Transaction;
 
@@ -48,14 +50,16 @@ public class EditCommand extends Command {
             + "[" + PREFIX_EMAIL + " EMAIL] "
             + "[" + PREFIX_ADDRESS + " ADDRESS] "
             + "[" + PREFIX_TAG + " TAG]... "
-            + "[" + PREFIX_TRANSACTION + " TRANSACTION]...\n"
+            + "[" + PREFIX_TRANSACTION + " TRANSACTION]..."
+            + "[" + PREFIX_RESERVATION + "RESERVATION]...\n"
             + "Edit by member ID: " + PREFIX_MEMBER + " [" + PREFIX_ID + " ID] "
             + "[" + PREFIX_NAME + " NAME] "
             + "[" + PREFIX_PHONE + " PHONE] "
             + "[" + PREFIX_EMAIL + " EMAIL] "
             + "[" + PREFIX_ADDRESS + " ADDRESS] "
             + "[" + PREFIX_TAG + " TAG]... "
-            + "[" + PREFIX_TRANSACTION + " TRANSACTION]...\n"
+            + "[" + PREFIX_TRANSACTION + " TRANSACTION]..."
+            + "[" + PREFIX_RESERVATION + "RESERVATION]...\n"
             + "Example:\n"
             + "Edit by index number: " + COMMAND_WORD + " " + PREFIX_MEMBER + " " + PREFIX_INDEX + " 1 "
             + PREFIX_PHONE + " 91234567 "
@@ -148,9 +152,11 @@ public class EditCommand extends Command {
                 .orElse((memberToEdit.getTransactions()));
         Credit credit = new Credit("" + Math.min(updatedTransactions.stream()
                 .mapToInt(t -> (int) t.getDoubleValue()).sum(), Credit.MAX));
+        Set<Reservation> updatedReservations = editMemberDescriptor.getReservations()
+                .orElse(memberToEdit.getReservations());
 
         return new Member(id, updatedName, updatedPhone, updatedEmail, updatedAddress, timestamp, credit,
-                updatedTags, updatedTransactions);
+                updatedTags, updatedTransactions, updatedReservations);
     }
 
     @Override
@@ -162,3 +168,4 @@ public class EditCommand extends Command {
                 && editMemberDescriptor.equals(((EditCommand) other).editMemberDescriptor); // state check
     }
 }
+

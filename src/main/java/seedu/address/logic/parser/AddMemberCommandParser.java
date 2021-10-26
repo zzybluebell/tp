@@ -25,6 +25,7 @@ import seedu.address.model.member.Member;
 import seedu.address.model.member.Name;
 import seedu.address.model.member.Phone;
 import seedu.address.model.member.Timestamp;
+import seedu.address.model.reservation.Reservation;
 import seedu.address.model.tag.Tag;
 import seedu.address.model.transaction.Transaction;
 
@@ -100,9 +101,10 @@ public class AddMemberCommandParser extends AddCommandParser implements Parser<A
         Set<Tag> tagList = ParserUtil.parseTags(argMultimap.getAllValues(PREFIX_TAG));
         // TODO: Transaction is not available at AddCommand
         Set<Transaction> transactionList = new HashSet<>();
+        Set<Reservation> reservationList = new HashSet<>();
 
         Member member = new Member(id, name, phone, email, address, timestamp, credit,
-                tagList, transactionList);
+                tagList, transactionList, reservationList);
 
         return new AddMemberCommand(member);
     }

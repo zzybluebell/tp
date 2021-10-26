@@ -12,6 +12,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import seedu.address.model.member.exceptions.DuplicateMemberException;
 import seedu.address.model.member.exceptions.MemberNotFoundException;
+import seedu.address.model.reservation.Reservation;
 import seedu.address.model.transaction.Transaction;
 
 /**
@@ -51,6 +52,15 @@ public class UniqueMemberList implements Iterable<Member> {
     public Member createAddedTransactionMember(Member member, Set<Transaction> transactions) {
         Member outputMember = member;
         outputMember.addTransactions(transactions);
+        return outputMember;
+    }
+
+    /**
+     * Returns a new member with added reservations.
+     */
+    public Member createAddedReservationMember(Member member, Set<Reservation> reservations) {
+        Member outputMember = member;
+        outputMember.addReservations(reservations);
         return outputMember;
     }
 
