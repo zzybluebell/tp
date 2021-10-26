@@ -168,3 +168,4 @@ public class EditCommand extends Command {
                 && editMemberDescriptor.equals(((EditCommand) other).editMemberDescriptor); // state check
     }
 }
+
