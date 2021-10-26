@@ -13,11 +13,15 @@ import static seedu.address.logic.parser.CliSyntax.PREFIX_TAG;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_TRANSACTION;
 import static seedu.address.model.Model.PREDICATE_SHOW_ALL_MEMBERS;
 
+import java.util.Collections;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Optional;
 import java.util.Set;
 
 import seedu.address.commons.core.Messages;
 import seedu.address.commons.core.index.Index;
+import seedu.address.commons.util.CollectionUtil;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.Model;
 import seedu.address.model.member.Address;
@@ -151,7 +155,7 @@ public class EditCommand extends Command {
         Set<Transaction> updatedTransactions = editMemberDescriptor.getTransactions()
                 .orElse((memberToEdit.getTransactions()));
         Credit credit = new Credit("" + Math.min(updatedTransactions.stream()
-                .mapToInt(t -> (int) t.getDoubleValue()).sum(), Credit.MAX));
+                .mapToInt(transaction -> (int) transaction.getDoubleValue()).sum(), Credit.MAX));
         Set<Reservation> updatedReservations = editMemberDescriptor.getReservations()
                 .orElse(memberToEdit.getReservations());
 
@@ -167,6 +171,7 @@ public class EditCommand extends Command {
                 && (id == null || id.equals(((EditCommand) other).id)))
                 && editMemberDescriptor.equals(((EditCommand) other).editMemberDescriptor); // state check
     }
+
     /**
      * Stores the details to edit the member with. Each non-empty field value will replace the
      * corresponding field value of the member.
@@ -311,3 +316,4 @@ public class EditCommand extends Command {
         }
     }
 }
+
