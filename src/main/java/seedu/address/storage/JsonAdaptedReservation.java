@@ -1,9 +1,11 @@
 package seedu.address.storage;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.annotation.JsonValue;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 import seedu.address.commons.exceptions.IllegalValueException;
+import seedu.address.model.reservation.DateTime;
+import seedu.address.model.reservation.Remark;
 import seedu.address.model.reservation.Reservation;
 
 /**
@@ -11,38 +13,48 @@ import seedu.address.model.reservation.Reservation;
  */
 class JsonAdaptedReservation {
 
-    private final String reservationDate;
+    public static final String MISSING_FIELD_MESSAGE_FORMAT = "Reservation's %s field is missing!";
+
+    private final String dateTime;
+    private final String remark;
 
     /**
-     * Constructs a {@code JsonAdaptedTransaction} with the given {@code transactionAmount}.
+     * Constructs a {@code JsonAdaptedReservation} with the given reservation details.
      */
     @JsonCreator
-    public JsonAdaptedReservation(String reservationDate) {
-        this.reservationDate = reservationDate;
+    public JsonAdaptedReservation(@JsonProperty("dateTime") String dateTime,
+            @JsonProperty("remark") String remark) {
+        this.dateTime = dateTime;
+        this.remark = remark;
     }
 
     /**
-     * Converts a given {@code Transaction} into this class for Jackson use.
+     * Converts a given {@code Reservation} into this class for Jackson use.
      */
     public JsonAdaptedReservation(Reservation source) {
-        reservationDate = source.getReservationDate();
-    }
-
-    @JsonValue
-    public String getReservationDate() {
-        return reservationDate;
+        dateTime = source.getDateTime().value;
+        remark = source.getRemark().value;
     }
 
     /**
-     * Converts this Jackson-friendly adapted transaction object into the model's {@code Transaction} object.
+     * Converts this Jackson-friendly adapted Reservation object into the model's {@code Reservation} object.
      *
-     * @throws IllegalValueException if there were any data constraints violated in the adapted transaction.
+     * @throws IllegalValueException if there were any data constraints violated in the adapted reservation.
      */
     public Reservation toModelType() throws IllegalValueException {
-        //        if (!Reservation.isValidReservationDate(reservationDate)) {
-        //            throw new IllegalValueException(Reservation.MESSAGE_CONSTRAINTS);
-        //        }
-        return new Reservation(reservationDate);
+        if (dateTime == null) {
+            throw new IllegalValueException(
+                    String.format(MISSING_FIELD_MESSAGE_FORMAT, DateTime.class.getSimpleName()));
+        }
+        final DateTime modelDateTime = new DateTime(dateTime);
+
+        if (remark == null) {
+            throw new IllegalValueException(
+                    String.format(MISSING_FIELD_MESSAGE_FORMAT, Remark.class.getSimpleName()));
+        }
+        final Remark modelRemark = new Remark(remark);
+
+        return new Reservation(modelDateTime, modelRemark);
     }
 
 }

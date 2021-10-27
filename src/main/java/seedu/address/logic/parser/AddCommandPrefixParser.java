@@ -20,10 +20,10 @@ public class AddCommandPrefixParser {
     private final ExecutionStatus executionStatus;
 
     /**
-     * Constructor for AddCommandPrefixParser.
+     * Constructs a {@code AddCommandPrefixParser} with the given {@code Model} and {@code ExecutionStatus}.
      *
-     * @param model
-     * @param executionStatus
+     * @param model of ezFoodie.
+     * @param executionStatus normal or test.
      */
     public AddCommandPrefixParser(Model model, ExecutionStatus executionStatus) {
         this.model = model;
@@ -31,11 +31,12 @@ public class AddCommandPrefixParser {
     }
 
     /**
-     * Parses the arguments depends on the first prefix.
+     * Parses the given {@code String} of arguments in the context of the AddCommandParser
+     * and returns an AddCommandParser object for execution.
      *
-     * @param args
+     * @param args to be parsed.
      * @return AddMemberCommandParser or AddTransactionCommandParser.
-     * @throws ParseException
+     * @throws ParseException if the user input does not conform the expected format
      */
     public AddCommandParser parse(String args) throws ParseException {
         String trimmedArgs = args.trim();

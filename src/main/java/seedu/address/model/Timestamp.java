@@ -1,33 +1,33 @@
-package seedu.address.model.member;
+package seedu.address.model;
 
 import static java.util.Objects.requireNonNull;
 import static seedu.address.commons.util.AppUtil.checkArgument;
 
 /**
- * Represents a Member's registration timestamp in the ezFoodie.
- * Guarantees: immutable; is valid as declared in {@link #isValidRegistrationTimestamp(String)}
+ * Represents a timestamp in the ezFoodie.
+ * Guarantees: immutable; is valid as declared in {@link #isValidTimestamp(String)}
  */
 public class Timestamp {
 
     public static final String MESSAGE_CONSTRAINTS =
-            "RegistrationTimestamps should only contain digits and can be parsed to long, and it should not be blank";
+            "Timestamps should only contain digits and can be parsed to long, and it should not be blank";
     public static final String VALIDATION_REGEX = "[\\p{Digit}]*";
 
     public final String value;
 
     /**
-     * Constructs a {@code RegistrationTimestamp}.
+     * Constructs a {@code Timestamp}.
      */
-    public Timestamp(String registrationTimestamp) {
-        requireNonNull(registrationTimestamp);
-        checkArgument(isValidRegistrationTimestamp(registrationTimestamp), MESSAGE_CONSTRAINTS);
-        value = registrationTimestamp;
+    public Timestamp(String timestamp) {
+        requireNonNull(timestamp);
+        checkArgument(isValidTimestamp(timestamp), MESSAGE_CONSTRAINTS);
+        value = timestamp;
     }
 
     /**
      * Returns true if a given string is a valid timestamp.
      */
-    public static boolean isValidRegistrationTimestamp(String test) {
+    public static boolean isValidTimestamp(String test) {
         try {
             Long.parseLong(test);
             return test.matches(VALIDATION_REGEX);

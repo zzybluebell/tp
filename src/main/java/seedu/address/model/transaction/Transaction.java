@@ -1,70 +1,71 @@
 package seedu.address.model.transaction;
 
-import static java.util.Objects.requireNonNull;
-import static seedu.address.commons.util.AppUtil.checkArgument;
+import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
+
+import java.util.Objects;
+
+import seedu.address.model.Timestamp;
 
 /**
- * Represents a Transaction in the ezFoodie.
- * Guarantees: immutable; amount is valid as declared in {@link #isValidTransactionAmount(String)}
+ * Represents a Transaction in the member.
+ * Guarantees: details are present and not null, field values are validated, immutable.
  */
 public class Transaction {
 
-    public static final String MESSAGE_CONSTRAINTS =
-            "Transactions amounts should be numeric with 2 decimal places";
-    public static final String VALIDATION_REGEX = "\\d*\\.\\d{2}$";
-    public static final int LENGTH = 7; // Max amount is 9999.99
-
-    private final String transactionAmount;
-    //private Timestamp timestamp;
-    //todo: Add in transaction_id soon.
+    private final Timestamp timestamp;
+    private final Billing billing;
 
     /**
-     * Constructs a {@code Transaction}.
-     *
-     * @param transactionAmount A valid transaction amount.
+     * Every field must be present and not null.
      */
-    public Transaction(String transactionAmount) {
-        requireNonNull(transactionAmount);
-        checkArgument(isValidTransactionAmount(transactionAmount), MESSAGE_CONSTRAINTS);
-        this.transactionAmount = transactionAmount;
+    public Transaction(Timestamp timestamp, Billing billing) {
+        requireAllNonNull(timestamp, billing);
+        this.timestamp = timestamp;
+        this.billing = billing;
     }
 
-    public String getTransactionAmount() {
-        return transactionAmount;
+    public Timestamp getTimestamp() {
+        return timestamp;
+    }
+
+    public Billing getBilling() {
+        return billing;
     }
 
     /**
-     * Returns true if a given string is a valid transaction amount.
+     * Returns true if both transactions have the same timestamp and billing.
+     * This defines a stronger notion of equality between two transactions.
      */
-    public static boolean isValidTransactionAmount(String test) {
-        return test.matches(VALIDATION_REGEX) && test.length() <= LENGTH;
-    }
-
-    /**
-     * Returns double value of transaction amount.
-     */
-    public double getDoubleValue() {
-        return Double.parseDouble(transactionAmount);
-    }
-
-    //todo: can use the id to generate hashcode
-    @Override
-    public int hashCode() {
-        return transactionAmount.hashCode();
-    }
-
     @Override
     public boolean equals(Object other) {
-        return other == this // short circuit if same object
-                || (other instanceof Transaction // instanceof handles nulls
-                && transactionAmount.equals(((Transaction) other).transactionAmount)); // state check
+        if (other == this) {
+            return true;
+        }
+
+        if (!(other instanceof Transaction)) {
+            return false;
+        }
+
+        Transaction otherTransaction = (Transaction) other;
+        return otherTransaction.getTimestamp().equals(getTimestamp())
+                && otherTransaction.getBilling().equals(getBilling());
     }
 
-    /**
-     * Format state as text for viewing.
-     */
+    @Override
+    public int hashCode() {
+        // use this method for custom fields hashing instead of implementing your own
+        return Objects.hash(timestamp, billing);
+    }
+
+    @Override
     public String toString() {
-        return '[' + transactionAmount + ']';
+        final StringBuilder builder = new StringBuilder();
+        builder.append("Timestamp: ")
+                .append(getTimestamp())
+                .append("; Billing: ")
+                .append(getBilling());
+
+        return builder.toString();
     }
 
 }
