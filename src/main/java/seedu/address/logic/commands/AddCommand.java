@@ -14,8 +14,8 @@ public abstract class AddCommand extends Command {
     public static final String COMMAND_WORD = "add";
     public static final String MESSAGE_USAGE = COMMAND_WORD + ": adds a member or a transaction to the ezFoodie.\n"
             + "With "
-            + PREFIX_MEMBER + " or "
-            + PREFIX_TRANSACTION;
+            + PREFIX_MEMBER + " (member details) or "
+            + PREFIX_TRANSACTION + " (transaction details)";
 
     @Override
     public abstract CommandResult execute(Model model) throws CommandException;

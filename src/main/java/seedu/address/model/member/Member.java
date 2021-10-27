@@ -2,11 +2,14 @@ package seedu.address.model.member;
 
 import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Objects;
 import java.util.Set;
 
+import seedu.address.model.Timestamp;
 import seedu.address.model.reservation.Reservation;
 import seedu.address.model.tag.Tag;
 import seedu.address.model.transaction.Transaction;
@@ -28,16 +31,16 @@ public class Member {
     private final Timestamp timestamp;
     private final Credit credit;
     private final Set<Tag> tags = new HashSet<>();
-    private final Set<Transaction> transactions = new HashSet<>();
+    private final List<Transaction> transactions = new ArrayList<>();
     private final Set<Reservation> reservations = new HashSet<>();
 
     /**
      * Every field must be present and not null.
      */
     public Member(Id id, Name name, Phone phone, Email email, Address address,
-                  Timestamp timestamp, Credit credit, Set<Tag> tags,
-                  Set<Transaction> transactions, Set<Reservation> reservations) {
-        requireAllNonNull(id, name, phone, email, address, timestamp, credit, tags, transactions, reservations);
+                  Timestamp timestamp, Credit credit, List<Transaction> transactions, Set<Reservation> reservations,
+                  Set<Tag> tags) {
+        requireAllNonNull(id, name, phone, email, address, timestamp, credit, transactions, reservations, tags);
         this.id = id;
         this.name = name;
         this.phone = phone;
@@ -70,12 +73,12 @@ public class Member {
         return address;
     }
 
-    public Timestamp getRegistrationTimestamp() {
+    public Timestamp getTimestamp() {
         return timestamp;
     }
 
     public Credit getCredit() {
-        return this.credit;
+        return credit;
     }
 
     /**
@@ -90,28 +93,16 @@ public class Member {
      * Returns an immutable transaction set, which throws {@code UnsupportedOperationException}
      * if modification is attempted.
      */
-    public Set<Transaction> getTransactions() {
-        return Collections.unmodifiableSet(transactions);
+    public List<Transaction> getTransactions() {
+        return Collections.unmodifiableList(transactions);
     }
 
+    /**
+     * Returns an immutable transaction list, which throws {@code UnsupportedOperationException}
+     * if modification is attempted.
+     */
     public Set<Reservation> getReservations() {
         return Collections.unmodifiableSet(reservations);
-    }
-
-    /**
-     * Adds transactions.
-     * @param newTrans
-     */
-    public void addTransactions(Set<Transaction> newTrans) {
-        transactions.addAll(newTrans);
-    }
-
-    /**
-     * Adds transactions.
-     * @param newRes
-     */
-    public void addReservations(Set<Reservation> newRes) {
-        reservations.addAll(newRes);
     }
 
     /**
@@ -186,17 +177,17 @@ public class Member {
                 && otherMember.getPhone().equals(getPhone())
                 && otherMember.getEmail().equals(getEmail())
                 && otherMember.getAddress().equals(getAddress())
-                && otherMember.getRegistrationTimestamp().equals(getRegistrationTimestamp())
+                && otherMember.getTimestamp().equals(getTimestamp())
                 && otherMember.getCredit().equals(getCredit())
-                && otherMember.getTags().equals(getTags())
                 && otherMember.getTransactions().equals(getTransactions())
-                && otherMember.getReservations().equals(getReservations());
+                && otherMember.getReservations().equals(getReservations())
+                && otherMember.getTags().equals(getTags());
     }
 
     @Override
     public int hashCode() {
         // use this method for custom fields hashing instead of implementing your own
-        return Objects.hash(id, name, phone, email, address, timestamp, credit, tags, transactions, reservations);
+        return Objects.hash(id, name, phone, email, address, timestamp, credit, transactions, reservations, tags);
     }
 
     @Override
@@ -212,8 +203,8 @@ public class Member {
                 .append(getEmail())
                 .append("; Address: ")
                 .append(getAddress())
-                .append("; Registration Timestamp: ")
-                .append(getRegistrationTimestamp())
+                .append("; Timestamp: ")
+                .append(getTimestamp())
                 .append("; Credit: ")
                 .append(getCredit());
 
@@ -223,7 +214,7 @@ public class Member {
             tags.forEach(builder::append);
         }
 
-        Set<Transaction> transactions = getTransactions();
+        List<Transaction> transactions = getTransactions();
         if (!transactions.isEmpty()) {
             builder.append("; Transactions: ");
             transactions.forEach(builder::append);

@@ -11,16 +11,17 @@ import seedu.address.commons.core.index.Index;
 import seedu.address.commons.util.EncryptUtil;
 import seedu.address.commons.util.StringUtil;
 import seedu.address.logic.parser.exceptions.ParseException;
+import seedu.address.model.Timestamp;
 import seedu.address.model.account.Password;
 import seedu.address.model.member.Address;
 import seedu.address.model.member.Email;
 import seedu.address.model.member.Id;
 import seedu.address.model.member.Name;
 import seedu.address.model.member.Phone;
-import seedu.address.model.member.Timestamp;
-import seedu.address.model.reservation.Reservation;
+import seedu.address.model.reservation.DateTime;
+import seedu.address.model.reservation.Remark;
 import seedu.address.model.tag.Tag;
-import seedu.address.model.transaction.Transaction;
+import seedu.address.model.transaction.Billing;
 
 /**
  * Contains utility methods used for parsing strings in the various *Parser classes.
@@ -104,15 +105,15 @@ public class ParserUtil {
     }
 
     /**
-     * Parses a {@code String registrationTimestamp} into an {@code RegistrationTimestamp}.
+     * Parses a {@code String timestamp} into an {@code Timestamp}.
      */
-    public static Timestamp parseTimestamp(String registrationTimestamp) throws ParseException {
-        requireNonNull(registrationTimestamp);
-        String trimmedRegistrationTimestamp = registrationTimestamp.trim();
-        if (!Timestamp.isValidRegistrationTimestamp(trimmedRegistrationTimestamp)) {
+    public static Timestamp parseTimestamp(String timestamp) throws ParseException {
+        requireNonNull(timestamp);
+        String trimmedTimestamp = timestamp.trim();
+        if (!Timestamp.isValidTimestamp(trimmedTimestamp)) {
             throw new ParseException(Timestamp.MESSAGE_CONSTRAINTS);
         }
-        return new Timestamp(trimmedRegistrationTimestamp);
+        return new Timestamp(trimmedTimestamp);
     }
 
     /**
@@ -131,6 +132,51 @@ public class ParserUtil {
     }
 
     /**
+     * Parses a {@code String billing} into a {@code Billing}.
+     * Leading and trailing whitespaces will be trimmed.
+     *
+     * @throws ParseException if the given {@code billing} is invalid.
+     */
+    public static Billing parseBilling(String billing) throws ParseException {
+        requireNonNull(billing);
+        String trimmedBilling = billing.trim();
+        if (!Billing.isValidBilling(trimmedBilling)) {
+            throw new ParseException(Billing.MESSAGE_CONSTRAINTS);
+        }
+        return new Billing(trimmedBilling);
+    }
+
+    /**
+     * Parses a {@code String dateTime} into a {@code DateTime}.
+     * Leading and trailing whitespaces will be trimmed.
+     *
+     * @throws ParseException if the given {@code dateTime} is invalid.
+     */
+    public static DateTime parseDateTime(String dateTime) throws ParseException {
+        requireNonNull(dateTime);
+        String trimmedDateTime = dateTime.trim();
+        if (!DateTime.isValidDateTime(trimmedDateTime)) {
+            throw new ParseException(DateTime.MESSAGE_CONSTRAINTS);
+        }
+        return new DateTime(trimmedDateTime);
+    }
+
+    /**
+     * Parses a {@code String remark} into a {@code Remark}.
+     * Leading and trailing whitespaces will be trimmed.
+     *
+     * @throws ParseException if the given {@code remark} is invalid.
+     */
+    public static Remark parseRemark(String remark) throws ParseException {
+        requireNonNull(remark);
+        String trimmedRemark = remark.trim();
+        if (!Remark.isValidRemark(trimmedRemark)) {
+            throw new ParseException(Remark.MESSAGE_CONSTRAINTS);
+        }
+        return new Remark(trimmedRemark);
+    }
+
+    /**
      * Parses a {@code String tag} into a {@code Tag}.
      * Leading and trailing whitespaces will be trimmed.
      *
@@ -146,7 +192,10 @@ public class ParserUtil {
     }
 
     /**
-     * Parses {@code Collection<String> tags} into a {@code Set<Tag>}.
+     * Parses a {@code String tag} into a {@code Tag}.
+     * Leading and trailing whitespaces will be trimmed.
+     *
+     * @throws ParseException if the given {@code tag} is invalid.
      */
     public static Set<Tag> parseTags(Collection<String> tags) throws ParseException {
         requireNonNull(tags);
@@ -155,59 +204,6 @@ public class ParserUtil {
             tagSet.add(parseTag(tagName));
         }
         return tagSet;
-    }
-
-    /**
-     * Parses a {@code String transaction} into a {@code Transaction}.
-     * Leading and trailing whitespaces will be trimmed.
-     *
-     * @throws ParseException if the given {@code transaction} is invalid.
-     */
-    public static Transaction parseTransaction(String transaction) throws ParseException {
-        requireNonNull(transaction);
-        String trimmedTransaction = transaction.trim();
-        if (!Transaction.isValidTransactionAmount(trimmedTransaction)) {
-            throw new ParseException(Transaction.MESSAGE_CONSTRAINTS);
-        }
-        return new Transaction(trimmedTransaction);
-    }
-
-    /**
-     * Parses a {@code String reservation} into a {@code Reservation}.
-     * Leading and trailing whitespaces will be trimmed.
-     *
-     * @throws ParseException if the given {@code reservation} is invalid.
-     */
-    public static Set<Transaction> parseTransactions(Collection<String> transactions)
-            throws ParseException {
-        requireNonNull(transactions);
-        final Set<Transaction> transactionSet = new HashSet<>();
-        for (String transactionAmount : transactions) {
-            transactionSet.add(parseTransaction(transactionAmount));
-        }
-        return transactionSet;
-    }
-
-    /**
-     * Parses {@code Collection<String> reservations} into a {@code Set<Reservation>}.
-     */
-    public static Reservation parseReservation(String reservation) {
-        requireNonNull(reservation);
-        String trimmedReservation = reservation.trim();
-        return new Reservation(trimmedReservation);
-    }
-
-    /**
-     * Parses {@code Collection<String> reservations} into a {@code Set<Reservation>}.
-     */
-    public static Set<Reservation> parseReservations(Collection<String> reservations)
-            throws ParseException {
-        requireNonNull(reservations);
-        final Set<Reservation> reservationSet = new HashSet<>();
-        for (String reservation : reservations) {
-            reservationSet.add(parseReservation(reservation));
-        }
-        return reservationSet;
     }
 
     /**

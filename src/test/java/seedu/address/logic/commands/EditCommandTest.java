@@ -8,8 +8,6 @@ import static seedu.address.logic.commands.CommandTestUtil.VALID_CREDIT_BOB;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_NAME_BOB;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_PHONE_BOB;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_TAG_HUSBAND;
-import static seedu.address.logic.commands.CommandTestUtil.VALID_TRANSACTION_200;
-import static seedu.address.logic.commands.CommandTestUtil.VALID_TRANSACTION_300;
 import static seedu.address.logic.commands.CommandTestUtil.assertCommandFailure;
 import static seedu.address.logic.commands.CommandTestUtil.assertCommandSuccess;
 import static seedu.address.logic.commands.CommandTestUtil.showMemberAtIndex;
@@ -21,12 +19,15 @@ import org.junit.jupiter.api.Test;
 
 import seedu.address.commons.core.Messages;
 import seedu.address.commons.core.index.Index;
+import seedu.address.logic.commands.EditCommand.EditMemberDescriptor;
 import seedu.address.model.Account;
 import seedu.address.model.EzFoodie;
 import seedu.address.model.Model;
 import seedu.address.model.ModelManager;
 import seedu.address.model.UserPrefs;
 import seedu.address.model.member.Member;
+import seedu.address.model.reservation.Reservation;
+import seedu.address.model.transaction.Transaction;
 import seedu.address.testutil.EditMemberDescriptorBuilder;
 import seedu.address.testutil.MemberBuilder;
 
@@ -41,9 +42,11 @@ public class EditCommandTest {
     public void execute_allFieldsSpecifiedUnfilteredList_success() {
         Member memberToEdit = model.getUpdatedMemberList().get(0);
         Member editedMember = new MemberBuilder().withId(memberToEdit.getId().value)
-                .withRegistrationTimestamp(memberToEdit.getRegistrationTimestamp().value)
-                .withCredit("0").build();
-        EditMemberDescriptor descriptor = new EditMemberDescriptorBuilder(editedMember).build();
+                .withTimestamp(memberToEdit.getTimestamp().value)
+                .withCredit(memberToEdit.getCredit().value)
+                .withTransactions(memberToEdit.getTransactions().toArray(Transaction[]::new))
+                .withReservations(memberToEdit.getReservations().toArray(Reservation[]::new)).build();
+        EditCommand.EditMemberDescriptor descriptor = new EditMemberDescriptorBuilder(editedMember).build();
         EditCommand editCommand = new EditCommand(INDEX_FIRST_MEMBER, descriptor);
 
         String expectedMessage = String.format(EditCommand.MESSAGE_EDIT_MEMBER_SUCCESS, editedMember);
@@ -62,11 +65,11 @@ public class EditCommandTest {
         MemberBuilder memberInList = new MemberBuilder(lastMember);
         Member editedMember = memberInList.withName(VALID_NAME_BOB).withPhone(VALID_PHONE_BOB)
                 .withCredit(VALID_CREDIT_BOB).withTags(VALID_TAG_HUSBAND)
-                .withTransactions(VALID_TRANSACTION_200, VALID_TRANSACTION_300).build();
+                .withTransactions(lastMember.getTransactions().toArray(Transaction[]::new))
+                .withCredit(lastMember.getCredit().value).build();
 
         EditMemberDescriptor descriptor = new EditMemberDescriptorBuilder().withName(VALID_NAME_BOB)
-                .withPhone(VALID_PHONE_BOB).withTags(VALID_TAG_HUSBAND)
-                .withTransactions(VALID_TRANSACTION_200, VALID_TRANSACTION_300).build();
+                .withPhone(VALID_PHONE_BOB).withTags(VALID_TAG_HUSBAND).build();
         EditCommand editCommand = new EditCommand(indexLastMember, descriptor);
 
         String expectedMessage = String.format(EditCommand.MESSAGE_EDIT_MEMBER_SUCCESS, editedMember);

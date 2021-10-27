@@ -3,15 +3,11 @@ package seedu.address.model;
 import static java.util.Objects.requireNonNull;
 
 import java.util.List;
-import java.util.Set;
 import java.util.function.Predicate;
 
 import javafx.collections.ObservableList;
-import seedu.address.model.member.Id;
 import seedu.address.model.member.Member;
 import seedu.address.model.member.UniqueMemberList;
-import seedu.address.model.reservation.Reservation;
-import seedu.address.model.transaction.Transaction;
 
 /**
  * Wraps all data at the ezFoodie level
@@ -100,24 +96,6 @@ public class EzFoodie implements ReadOnlyEzFoodie {
     }
 
     /**
-     * Adds a transaction to a member in the ezFoodie.
-     */
-    public void addTransaction(Set<Transaction> transactions, Id id) {
-        Member memberToEdit = members.getMemberById(id);
-        Member editedMember = members.createAddedTransactionMember(memberToEdit, transactions);
-        setMember(memberToEdit, editedMember);
-    }
-
-    /**
-     * Adds a reservation to the ezFoodie.
-     */
-    public void addReservation(Set<Reservation> reservations, Id id) {
-        Member memberToEdit = members.getMemberById(id);
-        Member editedMember = members.createAddedReservationMember(memberToEdit, reservations);
-        setMember(memberToEdit, editedMember);
-    }
-
-    /**
      * Removes {@code key} from this {@code EzFoodie}.
      * {@code key} must exist in the ezFoodie.
      */
@@ -149,5 +127,4 @@ public class EzFoodie implements ReadOnlyEzFoodie {
     public int hashCode() {
         return members.hashCode();
     }
-
 }

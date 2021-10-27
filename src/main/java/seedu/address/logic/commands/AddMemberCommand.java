@@ -12,7 +12,11 @@ import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.Model;
 import seedu.address.model.member.Member;
 
+/**
+ * Adds a member to the ezFoodie.
+ */
 public class AddMemberCommand extends AddCommand {
+
     public static final String MESSAGE_USAGE = COMMAND_WORD + ": Adds a member to the ezFoodie. "
             + "Parameters: "
             + PREFIX_MEMBER + " "
@@ -22,6 +26,7 @@ public class AddMemberCommand extends AddCommand {
             + PREFIX_ADDRESS + " " + "ADDRESS "
             + "[" + PREFIX_TAG + " " + "TAG]...\n"
             + "Example: " + COMMAND_WORD + " "
+            + PREFIX_MEMBER + " "
             + PREFIX_NAME + " " + "John Doe "
             + PREFIX_PHONE + " " + "98765432 "
             + PREFIX_EMAIL + " " + "johnd@example.com "
