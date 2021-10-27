@@ -45,7 +45,8 @@ public class AddReservationCommandTest {
         Id validId = validMember.getId();
         Reservation validReservation = new ReservationBuilder().build();
         CommandResult commandResult = new AddReservationCommand(validReservation, validId).execute(modelStub);
-        Member expectedMember = model.getUpdatedMemberList().get(INDEX_FIRST_MEMBER.getZeroBased());;
+        Member expectedMember = model.getUpdatedMemberList().get(INDEX_FIRST_MEMBER.getZeroBased());
+        ;
 
         assertEquals(String.format(AddReservationCommand.MESSAGE_SUCCESS, expectedMember),
                 commandResult.getFeedbackToUser());
@@ -176,7 +177,18 @@ public class AddReservationCommandTest {
         }
 
         @Override
+        public ObservableList<Member> getUpdatedMemberListForView() {
+            throw new AssertionError("This method should not be called.");
+
+        }
+
+        @Override
         public void updateFilteredMemberList(Predicate<Member> predicate) {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public void updateFilteredMemberListForView(Predicate<Member> predicate) {
             throw new AssertionError("This method should not be called.");
         }
 

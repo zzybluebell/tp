@@ -172,7 +172,17 @@ public class AddMemberCommandTest {
         }
 
         @Override
+        public ObservableList<Member> getUpdatedMemberListForView() {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
         public void updateFilteredMemberList(Predicate<Member> predicate) {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public void updateFilteredMemberListForView(Predicate<Member> predicate) {
             throw new AssertionError("This method should not be called.");
         }
 

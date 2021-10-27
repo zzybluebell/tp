@@ -45,7 +45,8 @@ public class AddTransactionCommandTest {
         Id validId = validMember.getId();
         Transaction validTransaction = new TransactionBuilder().build();
         CommandResult commandResult = new AddTransactionCommand(validTransaction, validId).execute(modelStub);
-        Member expectedMember = model.getUpdatedMemberList().get(INDEX_FIRST_MEMBER.getZeroBased());;
+        Member expectedMember = model.getUpdatedMemberList().get(INDEX_FIRST_MEMBER.getZeroBased());
+        ;
 
         assertEquals(String.format(AddTransactionCommand.MESSAGE_SUCCESS, expectedMember),
                 commandResult.getFeedbackToUser());
@@ -177,7 +178,17 @@ public class AddTransactionCommandTest {
         }
 
         @Override
+        public ObservableList<Member> getUpdatedMemberListForView() {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
         public void updateFilteredMemberList(Predicate<Member> predicate) {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public void updateFilteredMemberListForView(Predicate<Member> predicate) {
             throw new AssertionError("This method should not be called.");
         }
 
