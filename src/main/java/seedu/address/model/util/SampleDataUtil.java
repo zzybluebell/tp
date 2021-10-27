@@ -43,7 +43,7 @@ public class SampleDataUtil {
                     getTagSet("friends")),
             new Member(new Id("10002"), new Name("Bernice Yu"), new Phone("99272758"),
                     new Email("berniceyu@example.com"), new Address("Blk 30 Lorong 3 Serangoon Gardens, #07-18"),
-                    new Timestamp("1609549200000"),  new Credit("525"), new Point("525"),
+                    new Timestamp("1609549200000"), new Credit("525"), new Point("525"),
                     getTransactionList(
                             new Transaction(new Timestamp("1611104400000"), new Billing("200.12")),
                             new Transaction(new Timestamp("1611190800000"), new Billing("325.30"))),

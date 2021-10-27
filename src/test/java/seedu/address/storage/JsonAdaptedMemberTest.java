@@ -29,7 +29,7 @@ public class JsonAdaptedMemberTest {
     private static final String INVALID_ADDRESS = " ";
     private static final String INVALID_REGISTRATION_TIMESTAMP = "00001&234";
     private static final String INVALID_CREDIT = "*99";
-    private static final String INVALID_POINT= "*99";
+    private static final String INVALID_POINT = "*99";
     private static final String INVALID_TAG = "#friend";
 
     private static final String VALID_ID = BENSON.getId().toString();

@@ -69,8 +69,8 @@ public class MemberCard extends UiPart<Region> {
         phone.setText("Phone: " + member.getPhone().value);
         email.setText("Email: " + member.getEmail().value);
         address.setText("Address: " + member.getAddress().value);
-        registrationTime.setText("Registration Date: " +
-                DateTimeUtil.timestampToDate(Long.parseLong(member.getTimestamp().value)).toString());
+        registrationTime.setText("Registration Date: "
+                + DateTimeUtil.timestampToDate(Long.parseLong(member.getTimestamp().value)).toString());
         credit.setText("Credits: " + member.getCredit().value);
         point.setText("Points: " + member.getPoint().value);
         tier.setText(Tier.getTierByCredit(Integer.parseInt(member.getCredit().value)));

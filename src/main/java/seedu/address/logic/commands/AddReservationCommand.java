@@ -97,7 +97,8 @@ public class AddReservationCommand extends AddCommand {
         Set<Reservation> updatedReservations = new HashSet<>(reservations);
         updatedReservations.add(reservation);
 
-        return new Member(id, name, phone, email, address, timestamp, credit, point, transactions, updatedReservations, tags);
+        return new Member(id, name, phone, email, address, timestamp, credit, point,
+                transactions, updatedReservations, tags);
     }
 
     @Override

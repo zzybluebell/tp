@@ -6,8 +6,8 @@ import java.util.List;
 import java.util.function.Predicate;
 
 import javafx.collections.ObservableList;
-import seedu.address.model.member.Id;
 import seedu.address.commons.core.GuiSettings;
+import seedu.address.model.member.Id;
 import seedu.address.model.member.Member;
 import seedu.address.model.member.Point;
 

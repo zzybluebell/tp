@@ -55,7 +55,6 @@ public class AddTransactionCommandParser extends AddCommandParser implements Par
                 : ParserUtil.parseTimestamp(DateTimeUtil.generateTimestampStub());
         Id id = ParserUtil.parseId(argMultimap.getValue(PREFIX_ID).get());
         Transaction transaction = new Transaction(timestamp, billing);
-
         return new AddTransactionCommand(transaction, id);
     }
 

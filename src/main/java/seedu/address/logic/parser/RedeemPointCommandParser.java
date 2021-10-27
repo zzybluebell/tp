@@ -1,23 +1,21 @@
 package seedu.address.logic.parser;
 
+import static java.util.Objects.requireNonNull;
+import static seedu.address.commons.core.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_ID;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_INDEX;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_REDEEM;
+
+import java.util.List;
+import java.util.stream.Stream;
+
 import seedu.address.commons.core.index.Index;
 import seedu.address.commons.status.ExecutionStatus;
-import seedu.address.logic.commands.AddTransactionCommand;
-import seedu.address.logic.commands.EditCommand;
 import seedu.address.logic.commands.RedeemPointCommand;
 import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.model.Model;
 import seedu.address.model.member.Id;
 import seedu.address.model.member.Point;
-import seedu.address.model.transaction.Transaction;
-
-import java.util.Set;
-import java.util.List;
-import java.util.stream.Stream;
-
-import static java.util.Objects.requireNonNull;
-import static seedu.address.commons.core.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
-import static seedu.address.logic.parser.CliSyntax.*;
 
 /**
  * Parses input arguments and creates a new RedeemPoint object
@@ -44,13 +42,6 @@ public class RedeemPointCommandParser implements Parser<RedeemPointCommand> {
         requireNonNull(args);
         ArgumentMultimap argMultimap =
                 ArgumentTokenizer.tokenize(args, PREFIX_REDEEM, PREFIX_ID, PREFIX_INDEX);
-
-//        if (!arePrefixesPresent(argMultimap, PREFIX_REDEEM, PREFIX_ID)
-//                || !argMultimap.getPreamble().isEmpty()) {
-//            throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT,
-//                    RedeemPointCommand.MESSAGE_USAGE));
-//        }
-//
         if ((argMultimap.getValue(PREFIX_ID).isEmpty() && argMultimap.getValue(PREFIX_INDEX).isEmpty())
                 || (argMultimap.getValue(PREFIX_ID).isPresent() && argMultimap.getValue(PREFIX_INDEX).isPresent())
                 || !argMultimap.getPreamble().isEmpty()) {

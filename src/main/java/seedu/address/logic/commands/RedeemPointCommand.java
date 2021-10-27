@@ -1,16 +1,16 @@
 package seedu.address.logic.commands;
 
 import static java.util.Objects.requireNonNull;
-import static seedu.address.logic.parser.CliSyntax.PREFIX_REDEEM;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_ID;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_REDEEM;
 import static seedu.address.model.Model.PREDICATE_SHOW_ALL_MEMBERS;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 
-import seedu.address.commons.core.index.Index;
 import seedu.address.commons.core.Messages;
+import seedu.address.commons.core.index.Index;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.Model;
 import seedu.address.model.Timestamp;
@@ -116,7 +116,8 @@ public class RedeemPointCommand extends Command {
         Credit updateCredit = memberToRedeemPoints.getCredit();
         Point toRedeemedPointSum = new Point("" + Math.min(points.stream()
                 .mapToInt(pointToUpdate -> (int) pointToUpdate.getDoubleValue()).sum(), Point.MAX));
-        Point updatePoint = new Point(String.valueOf(memberToRedeemPoints.getPoint().getIntValue() - toRedeemedPointSum.getIntValue()));
+        Point updatePoint = new Point(String.valueOf(memberToRedeemPoints.getPoint().getIntValue()
+                - toRedeemedPointSum.getIntValue()));
         return new Member(id, updatedName, updatedPhone, updatedEmail, updatedAddress, updateTimestamp, updateCredit,
                 updatePoint, updatedTransactions, updateReservations, updatedTags);
     }

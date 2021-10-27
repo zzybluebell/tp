@@ -43,8 +43,8 @@ public class Member {
      * Every field must be present and not null.
      */
     public Member(Id id, Name name, Phone phone, Email email, Address address,
-                  Timestamp timestamp, Credit credit, Point point, List<Transaction> transactions, Set<Reservation> reservations,
-                  Set<Tag> tags) {
+                  Timestamp timestamp, Credit credit, Point point, List<Transaction> transactions,
+                  Set<Reservation> reservations, Set<Tag> tags) {
         requireAllNonNull(id, name, phone, email, address, timestamp, credit, point, transactions, reservations, tags);
         this.id = id;
         this.name = name;
@@ -206,7 +206,8 @@ public class Member {
     @Override
     public int hashCode() {
         // use this method for custom fields hashing instead of implementing your own
-        return Objects.hash(id, name, phone, email, address, timestamp, credit, point, transactions, reservations, tags);
+        return Objects.hash(id, name, phone, email, address, timestamp, credit, point,
+                transactions, reservations, tags);
     }
 
     @Override
