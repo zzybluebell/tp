@@ -55,6 +55,15 @@ public class UniqueMemberList implements Iterable<Member> {
     }
 
     /**
+     * Returns a new member with added transactions.
+     */
+    public Member createRedeemedPointsMember(Member member, List<Point> toRedeemPointsList) {
+        Member outputMember = member;
+        outputMember.addRedemptions(toRedeemPointsList);
+        return outputMember;
+    }
+
+    /**
      * Returns true if the list contains an equivalent member as the given argument.
      */
     public boolean contains(Member toCheck) {

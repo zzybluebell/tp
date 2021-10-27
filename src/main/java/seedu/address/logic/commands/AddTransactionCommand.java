@@ -71,7 +71,8 @@ public class AddTransactionCommand extends AddCommand {
         updatedTransactions.addAll(transactionToAdd);
         Credit credit = new Credit("" + Math.min(updatedTransactions.stream()
                 .mapToInt(t -> (int) t.getDoubleValue()).sum(), Credit.MAX));
-        Point point = new Point(credit.getStringValue());
+        Point point = new Point(String.valueOf(credit.getIntValue() - memberToEdit.getCredit().getIntValue()
+                + memberToEdit.getPoint().getIntValue()));
         return new Member(id, updatedName, updatedPhone, updatedEmail, updatedAddress, timestamp, credit, point,
                 updatedTags, updatedTransactions);
     }

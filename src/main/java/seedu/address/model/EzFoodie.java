@@ -9,6 +9,7 @@ import java.util.function.Predicate;
 import javafx.collections.ObservableList;
 import seedu.address.model.member.Id;
 import seedu.address.model.member.Member;
+import seedu.address.model.member.Point;
 import seedu.address.model.member.UniqueMemberList;
 import seedu.address.model.transaction.Transaction;
 
@@ -104,6 +105,15 @@ public class EzFoodie implements ReadOnlyEzFoodie {
     public void addTransaction(Set<Transaction> transactions, Id id) {
         Member memberToEdit = members.getMemberById(id);
         Member editedMember = members.createAddedTransactionMember(memberToEdit, transactions);
+        setMember(memberToEdit, editedMember);
+    }
+
+    /**
+     * Redeems points from a member in the ezFoodie.
+     */
+    public void redeemPoints(List<Point> toRedeemPointsList, Id idToRedeem) {
+        Member memberToEdit = members.getMemberById(idToRedeem);
+        Member editedMember = members.createRedeemedPointsMember(memberToEdit, toRedeemPointsList);
         setMember(memberToEdit, editedMember);
     }
 

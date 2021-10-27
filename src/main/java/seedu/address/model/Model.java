@@ -3,12 +3,14 @@ package seedu.address.model;
 import java.nio.file.Path;
 import java.util.Comparator;
 import java.util.Set;
+import java.util.List;
 import java.util.function.Predicate;
 
 import javafx.collections.ObservableList;
 import seedu.address.commons.core.GuiSettings;
 import seedu.address.model.member.Id;
 import seedu.address.model.member.Member;
+import seedu.address.model.member.Point;
 import seedu.address.model.transaction.Transaction;
 
 /**
@@ -130,5 +132,7 @@ public interface Model {
     void updateSortedMemberList(Comparator<Member> comparator);
 
     void addTransaction(Set<Transaction> transactionToAdd, Id idToAdd);
+
+    void redeemPoints(List<Point> toRedeemPoints, Id idToRedeem);
 
 }

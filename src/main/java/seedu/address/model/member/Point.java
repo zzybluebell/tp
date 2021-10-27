@@ -11,6 +11,7 @@ public class Point {
     public static final String MESSAGE_CONSTRAINTS =
             "Points should only contain digits, and it should not be blank";
     public static final String VALIDATION_REGEX = "[\\p{Digit}]*";
+
     public static final int MAX = 99999999;
     public static final int LENGTH = 8; // Max point is 99999999
 
@@ -56,5 +57,12 @@ public class Point {
     @Override
     public int hashCode() {
         return value.hashCode();
+    }
+
+    /**
+     * Returns double value of transaction amount.
+     */
+    public double getDoubleValue() {
+        return Double.parseDouble(value);
     }
 }

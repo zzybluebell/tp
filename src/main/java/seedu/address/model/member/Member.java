@@ -6,6 +6,8 @@ import java.util.Collections;
 import java.util.HashSet;
 import java.util.Objects;
 import java.util.Set;
+import java.util.List;
+import java.util.ArrayList;
 
 import seedu.address.model.tag.Tag;
 import seedu.address.model.transaction.Transaction;
@@ -28,6 +30,7 @@ public class Member {
     private final Credit credit;
     private final Point point;
     private final Set<Tag> tags = new HashSet<>();
+    private final List<Point> redemptionsList = new ArrayList<>();
     private final Set<Transaction> transactions = new HashSet<>();
 
 
@@ -104,6 +107,14 @@ public class Member {
      */
     public void addTransactions(Set<Transaction> newTrans) {
         transactions.addAll(newTrans);
+    }
+
+    /**
+     * Adds transactions.
+     * @param newRedeemPoints
+     */
+    public void addRedemptions(List<Point> newRedeemPoints) {
+        redemptionsList.addAll(newRedeemPoints);
     }
 
     /**

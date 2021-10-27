@@ -40,8 +40,7 @@ public class AddTransactionCommandParser extends AddCommandParser implements Par
         ArgumentMultimap argMultimap =
                 ArgumentTokenizer.tokenize(args, PREFIX_TRANSACTION, PREFIX_ID);
 
-        if (!arePrefixesPresent(argMultimap,
-                PREFIX_TRANSACTION, PREFIX_ID)
+        if (!arePrefixesPresent(argMultimap, PREFIX_TRANSACTION, PREFIX_ID)
                 || !argMultimap.getPreamble().isEmpty()) {
             throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT,
                     AddTransactionCommand.MESSAGE_USAGE));

@@ -21,6 +21,7 @@ import seedu.address.logic.commands.HelpCommand;
 import seedu.address.logic.commands.ListCommand;
 import seedu.address.logic.commands.LoginCommand;
 import seedu.address.logic.commands.LogoutCommand;
+import seedu.address.logic.commands.RedeemPointCommand;
 import seedu.address.logic.commands.SortCommand;
 import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.model.Model;
@@ -80,6 +81,9 @@ public class EzFoodieParser {
 
         case EditCommand.COMMAND_WORD:
             return new EditCommandParser().parse(arguments);
+
+        case RedeemPointCommand.COMMAND_WORD:
+            return new RedeemPointCommandParser(model, executionStatus).parse(arguments);
 
         case DeleteCommand.COMMAND_WORD:
             if (LoginStatus.getLoginStatus() == LoginStatus.MANAGER) {
