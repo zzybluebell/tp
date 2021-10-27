@@ -14,7 +14,7 @@ public class ListCommandParserTest {
     private ListCommandParser parser = new ListCommandParser();
 
     @Test
-    public void parse_validArgs_returnsDeleteCommand() {
+    public void parse_validArgs_returnsListCommand() {
         assertParseSuccess(parser, " " + PREFIX_MEMBER, new ListCommand());
     }
 

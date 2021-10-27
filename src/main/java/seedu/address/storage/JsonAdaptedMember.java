@@ -10,6 +10,7 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import seedu.address.commons.exceptions.IllegalValueException;
+import seedu.address.model.Timestamp;
 import seedu.address.model.member.Address;
 import seedu.address.model.member.Credit;
 import seedu.address.model.member.Email;
@@ -18,7 +19,7 @@ import seedu.address.model.member.Member;
 import seedu.address.model.member.Name;
 import seedu.address.model.member.Phone;
 import seedu.address.model.member.Point;
-import seedu.address.model.member.Timestamp;
+import seedu.address.model.reservation.Reservation;
 import seedu.address.model.tag.Tag;
 import seedu.address.model.transaction.Transaction;
 
@@ -34,11 +35,13 @@ class JsonAdaptedMember {
     private final String phone;
     private final String email;
     private final String address;
-    private final String registrationTimestamp;
+    private final String timestamp;
     private final String credit;
     private final String point;
-    private final List<JsonAdaptedTag> tagged = new ArrayList<>();
+
     private final List<JsonAdaptedTransaction> transactions = new ArrayList<>();
+    private final List<JsonAdaptedReservation> reservations = new ArrayList<>();
+    private final List<JsonAdaptedTag> tagged = new ArrayList<>();
 
     /**
      * Constructs a {@code JsonAdaptedMember} with the given member details.
@@ -47,18 +50,19 @@ class JsonAdaptedMember {
     public JsonAdaptedMember(@JsonProperty("id") String id, @JsonProperty("name") String name,
             @JsonProperty("phone") String phone, @JsonProperty("email") String email,
             @JsonProperty("address") String address,
-            @JsonProperty("registrationTimestamp") String registrationTimestamp,
+            @JsonProperty("timestamp") String timestamp,
             @JsonProperty("credit") String credit,
-            @JsonProperty("credit") String point,
-            @JsonProperty("tagged") List<JsonAdaptedTag> tagged,
-            @JsonProperty("transactions") List<JsonAdaptedTransaction> transactions) {
+            @JsonProperty("point") String point,
+            @JsonProperty("transactions") List<JsonAdaptedTransaction> transactions,
+            @JsonProperty("reservations") List<JsonAdaptedReservation> reservations,
+            @JsonProperty("tagged") List<JsonAdaptedTag> tagged) {
 
         this.id = id;
         this.name = name;
         this.phone = phone;
         this.email = email;
         this.address = address;
-        this.registrationTimestamp = registrationTimestamp;
+        this.timestamp = timestamp;
         this.credit = credit;
         this.point = point;
         if (tagged != null) {
@@ -66,6 +70,9 @@ class JsonAdaptedMember {
         }
         if (transactions != null) {
             this.transactions.addAll(transactions);
+        }
+        if (reservations != null) {
+            this.reservations.addAll(reservations);
         }
     }
 
@@ -78,7 +85,7 @@ class JsonAdaptedMember {
         phone = source.getPhone().value;
         email = source.getEmail().value;
         address = source.getAddress().value;
-        registrationTimestamp = source.getRegistrationTimestamp().value;
+        timestamp = source.getTimestamp().value;
         credit = source.getCredit().value;
         point = source.getPoint().value;
         tagged.addAll(source.getTags().stream()
@@ -86,6 +93,9 @@ class JsonAdaptedMember {
                 .collect(Collectors.toList()));
         transactions.addAll(source.getTransactions().stream()
                 .map(JsonAdaptedTransaction::new)
+                .collect(Collectors.toList()));
+        reservations.addAll(source.getReservations().stream()
+                .map(JsonAdaptedReservation::new)
                 .collect(Collectors.toList()));
     }
 
@@ -103,6 +113,11 @@ class JsonAdaptedMember {
         final List<Transaction> memberTransactions = new ArrayList<>();
         for (JsonAdaptedTransaction transaction : transactions) {
             memberTransactions.add(transaction.toModelType());
+        }
+
+        final List<Reservation> memberReservations = new ArrayList<>();
+        for (JsonAdaptedReservation reservation : reservations) {
+            memberReservations.add(reservation.toModelType());
         }
 
         if (id == null) {
@@ -145,14 +160,14 @@ class JsonAdaptedMember {
         }
         final Address modelAddress = new Address(address);
 
-        if (registrationTimestamp == null) {
+        if (timestamp == null) {
             throw new IllegalValueException(
                     String.format(MISSING_FIELD_MESSAGE_FORMAT, Timestamp.class.getSimpleName()));
         }
-        if (!Timestamp.isValidRegistrationTimestamp(registrationTimestamp)) {
+        if (!Timestamp.isValidTimestamp(timestamp)) {
             throw new IllegalValueException(Timestamp.MESSAGE_CONSTRAINTS);
         }
-        final Timestamp modelRegistrationTimestamp = new Timestamp(registrationTimestamp);
+        final Timestamp modelTimestamp = new Timestamp(timestamp);
 
         if (credit == null) {
             throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT, Credit.class.getSimpleName()));
@@ -172,10 +187,11 @@ class JsonAdaptedMember {
 
         final Set<Tag> modelTags = new HashSet<>(memberTags);
 
-        final Set<Transaction> modelTransactions = new HashSet<>(memberTransactions);
+        final List<Transaction> modelTransactions = new ArrayList<>(memberTransactions);
 
-        return new Member(modelId, modelName, modelPhone, modelEmail, modelAddress, modelRegistrationTimestamp,
-                modelCredit, modelPoint, modelTags, modelTransactions);
+        final Set<Reservation> modelReservations = new HashSet<>(memberReservations);
+
+        return new Member(modelId, modelName, modelPhone, modelEmail, modelAddress, modelTimestamp, modelCredit,
+                modelPoint, modelTransactions, modelReservations, modelTags);
     }
-
 }

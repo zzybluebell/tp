@@ -1,14 +1,14 @@
 package seedu.address.logic.commands;
 
-import static java.util.Objects.requireNonNull;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
+import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
 import static seedu.address.testutil.Assert.assertThrows;
+import static seedu.address.testutil.TypicalIndexes.INDEX_FIRST_MEMBER;
+import static seedu.address.testutil.TypicalMembers.getTypicalEzFoodie;
 
 import java.nio.file.Path;
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Comparator;
 import java.util.List;
 import java.util.function.Predicate;
@@ -17,67 +17,71 @@ import org.junit.jupiter.api.Test;
 
 import javafx.collections.ObservableList;
 import seedu.address.commons.core.GuiSettings;
-import seedu.address.logic.commands.exceptions.CommandException;
-import seedu.address.model.EzFoodie;
+import seedu.address.model.Account;
 import seedu.address.model.Model;
+import seedu.address.model.ModelManager;
 import seedu.address.model.ReadOnlyAccount;
 import seedu.address.model.ReadOnlyEzFoodie;
 import seedu.address.model.ReadOnlyUserPrefs;
+import seedu.address.model.UserPrefs;
 import seedu.address.model.member.Id;
 import seedu.address.model.member.Member;
 import seedu.address.model.member.Point;
+import seedu.address.model.transaction.Transaction;
 import seedu.address.testutil.MemberBuilder;
+import seedu.address.testutil.TransactionBuilder;
 
-public class AddMemberCommandTest {
+public class AddTransactionCommandTest {
+
+    private Model model = new ModelManager(new Account(), getTypicalEzFoodie(), new UserPrefs());
 
     @Test
-    public void constructor_nullMember_throwsNullPointerException() {
-        assertThrows(NullPointerException.class, () -> new AddMemberCommand(null));
+    public void constructor_nullTransaction_throwsNullPointerException() {
+        assertThrows(NullPointerException.class, () -> new AddTransactionCommand(null, null));
     }
 
     @Test
-    public void execute_memberAcceptedByModel_addSuccessful() throws Exception {
-        ModelStubAcceptingMemberAdded modelStub = new ModelStubAcceptingMemberAdded();
-        Member validMember = new MemberBuilder().build();
+    public void execute_transactionAcceptedByModel_addSuccessful() throws Exception {
+        ModelStubAcceptingTransactionAdded modelStub = new ModelStubAcceptingTransactionAdded(model);
+        Member validMember = model.getUpdatedMemberList().get(INDEX_FIRST_MEMBER.getZeroBased());
+        Id validId = validMember.getId();
+        Transaction validTransaction = new TransactionBuilder().build();
+        CommandResult commandResult = new AddTransactionCommand(validTransaction, validId).execute(modelStub);
+        Member expectedMember = model.getUpdatedMemberList().get(INDEX_FIRST_MEMBER.getZeroBased());;
 
-        CommandResult commandResult = new AddMemberCommand(validMember).execute(modelStub);
-
-        assertEquals(String.format(AddMemberCommand.MESSAGE_SUCCESS, validMember), commandResult.getFeedbackToUser());
-        assertEquals(Arrays.asList(validMember), modelStub.membersAdded);
-    }
-
-    @Test
-    public void execute_duplicateMember_throwsCommandException() {
-        Member validMember = new MemberBuilder().build();
-        AddMemberCommand addMemberCommand = new AddMemberCommand(validMember);
-        ModelStub modelStub = new ModelStubWithMember(validMember);
-
-        assertThrows(CommandException.class,
-                AddMemberCommand.MESSAGE_DUPLICATE_MEMBER, () -> addMemberCommand.execute(modelStub));
+        assertEquals(String.format(AddTransactionCommand.MESSAGE_SUCCESS, expectedMember),
+                commandResult.getFeedbackToUser());
+        assertEquals(validTransaction,
+                expectedMember.getTransactions().get(expectedMember.getTransactions().size() - 1));
     }
 
     @Test
     public void equals() {
         Member alice = new MemberBuilder().withName("Alice").build();
         Member bob = new MemberBuilder().withName("Bob").build();
-        AddMemberCommand addAliceCommand = new AddMemberCommand(alice);
-        AddMemberCommand addBobCommand = new AddMemberCommand(bob);
+        Transaction aliceTransaction = new TransactionBuilder().withTimestamp("1612137600000").withBilling("123.45")
+                .build();
+        Transaction bobTransaction = new TransactionBuilder().withTimestamp("1612224000000").withBilling("543.21")
+                .build();
+        AddTransactionCommand addAliceTransactionCommand = new AddTransactionCommand(aliceTransaction, alice.getId());
+        AddTransactionCommand addBobTransactionCommand = new AddTransactionCommand(bobTransaction, bob.getId());
 
         // same object -> returns true
-        assertTrue(addAliceCommand.equals(addAliceCommand));
+        assertTrue(addAliceTransactionCommand.equals(addAliceTransactionCommand));
 
         // same values -> returns true
-        AddMemberCommand addAliceCommandCopy = new AddMemberCommand(alice);
-        assertTrue(addAliceCommand.equals(addAliceCommandCopy));
+        AddTransactionCommand addAliceTransactionCommandCopy =
+                new AddTransactionCommand(aliceTransaction, alice.getId());
+        assertTrue(addAliceTransactionCommand.equals(addAliceTransactionCommandCopy));
 
         // different types -> returns false
-        assertFalse(addAliceCommand.equals(1));
+        assertFalse(addAliceTransactionCommand.equals(1));
 
         // null -> returns false
-        assertFalse(addAliceCommand.equals(null));
+        assertFalse(addAliceTransactionCommand.equals(null));
 
         // different member -> returns false
-        assertFalse(addAliceCommand.equals(addBobCommand));
+        assertFalse(addAliceTransactionCommand.equals(addBobTransactionCommand));
     }
 
     /**
@@ -191,44 +195,30 @@ public class AddMemberCommandTest {
     }
 
     /**
-     * A Model stub that contains a single member.
+     * A Model stub that always accept the transaction being added.
      */
-    private class ModelStubWithMember extends ModelStub {
-        private final Member member;
+    private class ModelStubAcceptingTransactionAdded extends ModelStub {
 
-        ModelStubWithMember(Member member) {
-            requireNonNull(member);
-            this.member = member;
+        final Model model;
+
+        public ModelStubAcceptingTransactionAdded(Model model) {
+            this.model = model;
         }
 
         @Override
-        public boolean hasMember(Member member) {
-            requireNonNull(member);
-            return this.member.isSameMember(member);
-        }
-    }
-
-    /**
-     * A Model stub that always accept the member being added.
-     */
-    private class ModelStubAcceptingMemberAdded extends ModelStub {
-        final ArrayList<Member> membersAdded = new ArrayList<>();
-
-        @Override
-        public boolean hasMember(Member member) {
-            requireNonNull(member);
-            return membersAdded.stream().anyMatch(member::isSameMember);
+        public void setMember(Member target, Member editedMember) {
+            requireAllNonNull(target, editedMember);
+            model.setMember(target, editedMember);
         }
 
         @Override
-        public void addMember(Member member) {
-            requireNonNull(member);
-            membersAdded.add(member);
+        public ObservableList<Member> getUpdatedMemberList() {
+            return model.getUpdatedMemberList();
         }
 
         @Override
-        public ReadOnlyEzFoodie getEzFoodie() {
-            return new EzFoodie();
+        public void updateFilteredMemberList(Predicate<Member> predicate) {
+            model.updateFilteredMemberList(predicate);
         }
     }
 

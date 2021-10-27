@@ -5,14 +5,12 @@ import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
 
 import java.util.Iterator;
 import java.util.List;
-import java.util.Set;
 import java.util.function.Predicate;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import seedu.address.model.member.exceptions.DuplicateMemberException;
 import seedu.address.model.member.exceptions.MemberNotFoundException;
-import seedu.address.model.transaction.Transaction;
 
 /**
  * A list of members that enforces uniqueness between its elements and does not allow nulls.
@@ -32,6 +30,7 @@ public class UniqueMemberList implements Iterable<Member> {
             FXCollections.unmodifiableObservableList(internalList);
 
     /**
+<<<<<<< HEAD
      * Returns a member identified by id.
      * @param id
      * @return member
@@ -46,16 +45,7 @@ public class UniqueMemberList implements Iterable<Member> {
     }
 
     /**
-     * Returns a new member with added transactions.
-     */
-    public Member createAddedTransactionMember(Member member, Set<Transaction> transactions) {
-        Member outputMember = member;
-        outputMember.addTransactions(transactions);
-        return outputMember;
-    }
-
-    /**
-     * Returns a new member with added transactions.
+     * Returns a new member with redeemed Points.
      */
     public Member createRedeemedPointsMember(Member member, List<Point> toRedeemPointsList) {
         Member outputMember = member;

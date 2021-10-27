@@ -8,15 +8,18 @@ import static seedu.address.logic.parser.CliSyntax.PREFIX_NAME;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_PHONE;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_TAG;
 
+import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 import java.util.stream.Stream;
 
 import seedu.address.commons.status.ExecutionStatus;
+import seedu.address.commons.util.DateTimeUtil;
 import seedu.address.logic.commands.AddMemberCommand;
 import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.model.Model;
+import seedu.address.model.Timestamp;
 import seedu.address.model.member.Address;
 import seedu.address.model.member.Credit;
 import seedu.address.model.member.Email;
@@ -25,7 +28,7 @@ import seedu.address.model.member.Member;
 import seedu.address.model.member.Name;
 import seedu.address.model.member.Phone;
 import seedu.address.model.member.Point;
-import seedu.address.model.member.Timestamp;
+import seedu.address.model.reservation.Reservation;
 import seedu.address.model.tag.Tag;
 import seedu.address.model.transaction.Transaction;
 
@@ -35,7 +38,6 @@ import seedu.address.model.transaction.Transaction;
 public class AddMemberCommandParser extends AddCommandParser implements Parser<AddMemberCommand> {
 
     private static final String ID_STUB = "00001";
-    private static final String REGISTRATION_TIMESTAMP_STUB = "1609459200000";
 
     private final Model model;
     private final ExecutionStatus executionStatus;
@@ -59,14 +61,6 @@ public class AddMemberCommandParser extends AddCommandParser implements Parser<A
 
     private String generateIdStub() {
         return ID_STUB;
-    }
-
-    private String generateRegistrationTimestamp() {
-        return String.valueOf(System.currentTimeMillis());
-    }
-
-    private String generateRegistrationTimestampStub() {
-        return REGISTRATION_TIMESTAMP_STUB;
     }
 
     /**
@@ -95,17 +89,15 @@ public class AddMemberCommandParser extends AddCommandParser implements Parser<A
         Email email = ParserUtil.parseEmail(argMultimap.getValue(PREFIX_EMAIL).get());
         Address address = ParserUtil.parseAddress(argMultimap.getValue(PREFIX_ADDRESS).get());
         Timestamp timestamp = executionStatus == ExecutionStatus.NORMAL
-                ? ParserUtil.parseTimestamp(generateRegistrationTimestamp())
-                : ParserUtil.parseTimestamp(generateRegistrationTimestampStub());
+                ? ParserUtil.parseTimestamp(DateTimeUtil.generateTimestamp())
+                : ParserUtil.parseTimestamp(DateTimeUtil.generateTimestampStub());
         Credit credit = new Credit("0");
         Point point = new Point(credit.getStringValue());
         Set<Tag> tagList = ParserUtil.parseTags(argMultimap.getAllValues(PREFIX_TAG));
-        // TODO: Transaction is not available at AddCommand
-        Set<Transaction> transactionList = new HashSet<>();
-
+        List<Transaction> transactionList = new ArrayList<>();
+        Set<Reservation> reservationList = new HashSet<>();
         Member member = new Member(id, name, phone, email, address, timestamp, credit, point,
-                tagList, transactionList);
-
+                transactionList, reservationList, tagList);
         return new AddMemberCommand(member);
     }
 

@@ -2,12 +2,12 @@ package seedu.address.logic.parser;
 
 import static seedu.address.commons.core.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_ADDRESS;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_DATE;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_EMAIL;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_ID;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_MEMBER;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_NAME;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_PHONE;
-import static seedu.address.logic.parser.CliSyntax.PREFIX_REGISTRATION_DATE;
 
 import java.util.Arrays;
 
@@ -34,7 +34,7 @@ public class FindCommandParser implements Parser<FindCommand> {
     public FindCommand parse(String args) throws ParseException {
 
         ArgumentMultimap argMultimap = ArgumentTokenizer.tokenize(args, PREFIX_MEMBER, PREFIX_ID, PREFIX_NAME,
-                PREFIX_PHONE, PREFIX_EMAIL, PREFIX_ADDRESS, PREFIX_REGISTRATION_DATE);
+                PREFIX_PHONE, PREFIX_EMAIL, PREFIX_ADDRESS, PREFIX_DATE);
 
         if (argMultimap.getSize() != PREFIX_SIZE || argMultimap.getValue(PREFIX_MEMBER).isEmpty()
                 || !argMultimap.getPreamble().isEmpty()) {
@@ -82,8 +82,8 @@ public class FindCommandParser implements Parser<FindCommand> {
             return new FindCommand(new EmailContainsKeywordsPredicate(Arrays.asList(emailKeywords)));
         }
 
-        if (argMultimap.getValue(PREFIX_REGISTRATION_DATE).isPresent()) {
-            String trimmedArgs = argMultimap.getValue(PREFIX_REGISTRATION_DATE).get().trim();
+        if (argMultimap.getValue(PREFIX_DATE).isPresent()) {
+            String trimmedArgs = argMultimap.getValue(PREFIX_DATE).get().trim();
             if (trimmedArgs.isEmpty()) {
                 throw new ParseException(
                         String.format(MESSAGE_INVALID_COMMAND_FORMAT, FindCommand.MESSAGE_USAGE));

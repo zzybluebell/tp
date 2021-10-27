@@ -35,8 +35,9 @@
       <Label fx:id="registrationTime" styleClass="cell_small_label" text="\$registrationTime" />
       <Label fx:id="credit" styleClass="cell_small_label" text="\$credit" />
       <Label fx:id="point" styleClass="cell_small_label" text="\$point" />
-      <FlowPane fx:id="tags" />
       <FlowPane fx:id="transactions" />
+      <FlowPane fx:id="reservations" />
+      <FlowPane fx:id="tags" />
     </VBox>
   </GridPane>
 </HBox>

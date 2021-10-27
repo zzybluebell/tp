@@ -13,6 +13,7 @@ import seedu.address.commons.core.index.Index;
 import seedu.address.commons.core.Messages;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.Model;
+import seedu.address.model.Timestamp;
 import seedu.address.model.member.Address;
 import seedu.address.model.member.Credit;
 import seedu.address.model.member.Email;
@@ -21,7 +22,7 @@ import seedu.address.model.member.Member;
 import seedu.address.model.member.Name;
 import seedu.address.model.member.Phone;
 import seedu.address.model.member.Point;
-import seedu.address.model.member.Timestamp;
+import seedu.address.model.reservation.Reservation;
 import seedu.address.model.tag.Tag;
 import seedu.address.model.transaction.Transaction;
 
@@ -108,14 +109,15 @@ public class RedeemPointCommand extends Command {
         Phone updatedPhone = memberToRedeemPoints.getPhone();
         Email updatedEmail = memberToRedeemPoints.getEmail();
         Address updatedAddress = memberToRedeemPoints.getAddress();
-        Timestamp timestamp = memberToRedeemPoints.getRegistrationTimestamp();
+        Timestamp updateTimestamp = memberToRedeemPoints.getTimestamp();
         Set<Tag> updatedTags = memberToRedeemPoints.getTags();
-        Set<Transaction> updatedTransactions = memberToRedeemPoints.getTransactions();
-        Credit credit = memberToRedeemPoints.getCredit();
+        List<Transaction> updatedTransactions = memberToRedeemPoints.getTransactions();
+        Set<Reservation> updateReservations = memberToRedeemPoints.getReservations();
+        Credit updateCredit = memberToRedeemPoints.getCredit();
         Point toRedeemedPointSum = new Point("" + Math.min(points.stream()
                 .mapToInt(pointToUpdate -> (int) pointToUpdate.getDoubleValue()).sum(), Point.MAX));
-        Point point = new Point(String.valueOf(memberToRedeemPoints.getPoint().getIntValue() - toRedeemedPointSum.getIntValue()));
-        return new Member(id, updatedName, updatedPhone, updatedEmail, updatedAddress, timestamp, credit, point,
-                updatedTags, updatedTransactions);
+        Point updatePoint = new Point(String.valueOf(memberToRedeemPoints.getPoint().getIntValue() - toRedeemedPointSum.getIntValue()));
+        return new Member(id, updatedName, updatedPhone, updatedEmail, updatedAddress, updateTimestamp, updateCredit,
+                updatePoint, updatedTransactions, updateReservations, updatedTags);
     }
 }

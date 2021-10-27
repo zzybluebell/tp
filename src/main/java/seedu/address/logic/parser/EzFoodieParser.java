@@ -10,7 +10,7 @@ import seedu.address.commons.core.Messages;
 import seedu.address.commons.exceptions.PermissionException;
 import seedu.address.commons.status.ExecutionStatus;
 import seedu.address.commons.status.LoginStatus;
-import seedu.address.logic.commands.AddMemberCommand;
+import seedu.address.logic.commands.AddCommand;
 import seedu.address.logic.commands.ClearCommand;
 import seedu.address.logic.commands.Command;
 import seedu.address.logic.commands.DeleteCommand;
@@ -73,7 +73,7 @@ public class EzFoodieParser {
         final String arguments = matcher.group("arguments");
         switch (commandWord) {
 
-        case AddMemberCommand.COMMAND_WORD:
+        case AddCommand.COMMAND_WORD:
             return new AddCommandPrefixParser(model, executionStatus).parse(arguments).parse(arguments);
 
         case FindCommand.COMMAND_WORD:
