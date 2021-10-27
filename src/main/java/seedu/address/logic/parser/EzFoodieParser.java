@@ -81,7 +81,7 @@ public class EzFoodieParser {
 
         case ViewCommand.COMMAND_WORD:
             return new ViewCommandParser().parse(arguments);
-            
+
         case EditCommand.COMMAND_WORD:
             return new EditCommandParser().parse(arguments);
 

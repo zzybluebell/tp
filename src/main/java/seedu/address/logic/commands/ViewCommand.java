@@ -1,17 +1,15 @@
 package seedu.address.logic.commands;
 
-import seedu.address.commons.core.Messages;
-import seedu.address.model.Model;
-import seedu.address.model.member.IdContainsKeywordsPredicate;
-import seedu.address.model.member.Member;
-
-import javax.swing.text.View;
-import java.util.function.Predicate;
-
 import static java.util.Objects.requireNonNull;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_ID;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_MEMBER;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_VIEW;
+
+import java.util.function.Predicate;
+
+import seedu.address.model.Model;
+import seedu.address.model.member.IdContainsKeywordsPredicate;
+import seedu.address.model.member.Member;
 
 /**
  * View specific member details in eZFoodie, accessed by member ID.
