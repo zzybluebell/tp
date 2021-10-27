@@ -68,7 +68,7 @@ public class MainWindow extends UiPart<Stage> {
         setAccelerators();
 
         helpWindow = new HelpWindow();
-        memberViewWindow = new MemberViewWindow();
+        memberViewWindow = new MemberViewWindow(logic);
     }
 
     public Stage getPrimaryStage() {

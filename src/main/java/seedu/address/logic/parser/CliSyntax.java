@@ -18,6 +18,7 @@ public class CliSyntax {
     public static final Prefix PREFIX_TRANSACTION = new Prefix("-txn");
     public static final Prefix PREFIX_BILLING = new Prefix("-b");
     public static final Prefix PREFIX_RESERVATION = new Prefix("-rsvn");
+    public static final Prefix PREFIX_VIEW = new Prefix("-v");
     public static final Prefix PREFIX_DATE_TIME = new Prefix("-time");
     public static final Prefix PREFIX_REMARK = new Prefix("-rm");
     public static final Prefix PREFIX_TAG = new Prefix("-tag");

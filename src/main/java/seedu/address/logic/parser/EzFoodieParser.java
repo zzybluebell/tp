@@ -22,6 +22,7 @@ import seedu.address.logic.commands.ListCommand;
 import seedu.address.logic.commands.LoginCommand;
 import seedu.address.logic.commands.LogoutCommand;
 import seedu.address.logic.commands.SortCommand;
+import seedu.address.logic.commands.ViewCommand;
 import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.model.Model;
 
@@ -59,7 +60,7 @@ public class EzFoodieParser {
      *
      * @param userInput full user input string
      * @return the command based on the user input
-     * @throws ParseException if the user input does not conform the expected format
+     * @throws ParseException      if the user input does not conform the expected format
      * @throws PermissionException if the user does not have insufficient permission
      */
     public Command parseCommand(String userInput) throws ParseException, PermissionException {
@@ -78,6 +79,9 @@ public class EzFoodieParser {
         case FindCommand.COMMAND_WORD:
             return new FindCommandParser().parse(arguments);
 
+        case ViewCommand.COMMAND_WORD:
+            return new ViewCommandParser().parse(arguments);
+            
         case EditCommand.COMMAND_WORD:
             return new EditCommandParser().parse(arguments);
 

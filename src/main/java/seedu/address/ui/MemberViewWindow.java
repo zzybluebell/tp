@@ -2,52 +2,53 @@ package seedu.address.ui;
 
 import java.util.logging.Logger;
 
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
+import javafx.scene.control.ListCell;
+import javafx.scene.control.ListView;
 import javafx.stage.Stage;
 import seedu.address.commons.core.LogsCenter;
+import seedu.address.logic.Logic;
+import seedu.address.model.member.Member;
 
 /**
  * Controller for a member view page for related details
  */
 public class MemberViewWindow extends UiPart<Stage> {
-    public static final String OFFICIAL_URL =
-            "https://ay2122s1-cs2103t-f12-4.github.io/tp/";
-    public static final String HELP_MESSAGE = "Features:\n"
-            + "Add member: add -m -n <NAME> -p <PHONE> -e <EMAIL>\n"
-            + "Search by name: find -m -n <NAME>\n"
-            + "Search by phone: find -m -p <PHONE>\n"
-            + "Search by email: find -m -e <EMAIL>\n"
-            + "Search by registration date: find -m -d <REGISTRATION_DATE>\n"
-            + "Search by member ID: find -m -id <MEMBER_ID>\n"
-            + "Adding transaction: add -t -id <MEMBER_ID> -b <BILLING>\n"
-            + "View member: show -m -id <MEMBER_ID>\n"
-            + "Delete member: del -m -id <MEMBER_ID>\n"
-            + "Exit Application: exit\n"
-            + "To view full user guide: " + OFFICIAL_URL;
 
     private static final Logger logger = LogsCenter.getLogger(MemberViewWindow.class);
     private static final String FXML = "MemberViewWindow.fxml";
 
     @FXML
-    private Label memberDetails;
+    private ListView<Member> memberDetailsView;
 
     /**
      * Creates a new MemberView window.
      *
-     * @param root Stage to use as the root of the HelpWindow.
-     */
-    public MemberViewWindow(Stage root) {
-        super(FXML, root);
-        memberDetails.setText(HELP_MESSAGE);
+     * */
+    public MemberViewWindow(Logic logic) {
+        super(FXML, new Stage());
+        memberDetailsView.setItems(logic.getUpdatedMemberList());
+        memberDetailsView.setCellFactory(listView -> new MemberViewListCell());
     }
 
-    /**
-     * Creates a new MemberView window.
-     */
-    public MemberViewWindow() {
-        this(new Stage());
+    class MemberViewListCell extends ListCell<Member> {
+        @Override
+        protected void updateItem(Member member, boolean empty) {
+            super.updateItem(member, empty);
+
+            if (empty || member == null) {
+                setGraphic(null);
+                setText(null);
+            } else {
+                setGraphic(new MemberCard(member, getIndex() + 1).getRoot());
+            }
+        }
     }
+
+
+
 
     /**
      * Shows the MemberView window.
