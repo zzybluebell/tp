@@ -113,11 +113,25 @@ public interface Model {
     ObservableList<Member> getUpdatedMemberList();
 
     /**
+     * Returns an unmodifiable view of the sorted or filtered member list
+     * for viewCommand to use only
+     */
+    ObservableList<Member> getUpdatedMemberListForView();
+
+    /**
      * Updates the filter of the filtered member list to filter by the given {@code predicate}.
      *
      * @throws NullPointerException if {@code predicate} is null.
      */
     void updateFilteredMemberList(Predicate<Member> predicate);
+
+    /**
+     * Updates the filter of the filtered member list to filter by the given {@code predicate}
+     * for viewCommand to use only.
+     *
+     * @throws NullPointerException if {@code predicate} is null.
+     */
+    void updateFilteredMemberListForView(Predicate<Member> predicate);
 
     /**
      * Updates the sort of the sorted member list to sort by the given {@code comparator}.

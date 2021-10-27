@@ -30,7 +30,7 @@ public class MemberViewWindow extends UiPart<Stage> {
      * */
     public MemberViewWindow(Logic logic) {
         super(FXML, new Stage());
-        memberDetailsView.setItems(logic.getUpdatedMemberList());
+        memberDetailsView.setItems(logic.getUpdatedMemberListForView());
         memberDetailsView.setCellFactory(listView -> new MemberViewListCell());
     }
 

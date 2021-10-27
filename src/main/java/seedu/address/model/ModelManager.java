@@ -25,7 +25,9 @@ public class ModelManager implements Model {
     private final EzFoodie ezFoodie;
     private final UserPrefs userPrefs;
     private final FilteredList<Member> filteredMembers;
+    private final FilteredList<Member> filteredMembersForView;
     private final SortedList<Member> sortedMembers;
+    private final SortedList<Member> sortedMembersForView;
 
     /**
      * Initializes a ModelManager with the given account, ezFoodie and userPrefs.
@@ -41,7 +43,9 @@ public class ModelManager implements Model {
         this.ezFoodie = new EzFoodie(ezFoodie);
         this.userPrefs = new UserPrefs(userPrefs);
         filteredMembers = new FilteredList<>(this.ezFoodie.getMemberList());
+        filteredMembersForView = new FilteredList<>(this.ezFoodie.getMemberList());
         sortedMembers = new SortedList<>(filteredMembers); // Wrap the FilteredList in a SortedList
+        sortedMembersForView = new SortedList<>(filteredMembersForView);
     }
 
     public ModelManager() {
@@ -158,12 +162,28 @@ public class ModelManager implements Model {
         return sortedMembers;
     }
 
+    /**
+     * Returns an unmodifiable view of the list of {@code Member} backed by the internal list of
+     * {@code versionedEzFoodie}
+     * for viewCommand to use only
+     */
+    @Override
+    public ObservableList<Member> getUpdatedMemberListForView() {
+        return sortedMembersForView;
+    }
+
     //=========== Filtered Member List Accessors =============================================================
 
     @Override
     public void updateFilteredMemberList(Predicate<Member> predicate) {
         requireNonNull(predicate);
         filteredMembers.setPredicate(predicate);
+    }
+
+    @Override
+    public void updateFilteredMemberListForView(Predicate<Member> predicate) {
+        requireNonNull(predicate);
+        filteredMembersForView.setPredicate(predicate);
     }
 
     //=========== Sorted Member List Accessors ===============================================================

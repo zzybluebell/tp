@@ -39,7 +39,7 @@ public class ViewCommand extends Command {
     @Override
     public CommandResult execute(Model model) {
         requireNonNull(model);
-        model.updateFilteredMemberList(predicate);
+        model.updateFilteredMemberListForView(predicate);
         return new CommandResult(SHOWING_VIEW_MESSAGE, false, false, true);
     }
 
