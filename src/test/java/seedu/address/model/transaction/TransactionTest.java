@@ -8,19 +8,19 @@ public class TransactionTest {
 
     @Test
     public void constructor_null_throwsNullPointerException() {
-        assertThrows(NullPointerException.class, () -> new Transaction(null));
+        assertThrows(NullPointerException.class, () -> new Billing(null));
     }
 
     @Test
     public void constructor_invalidTransactionName_throwsIllegalArgumentException() {
         String invalidTransactionAmount = "";
-        assertThrows(IllegalArgumentException.class, () -> new Transaction(invalidTransactionAmount));
+        assertThrows(IllegalArgumentException.class, () -> new Billing(invalidTransactionAmount));
     }
 
     @Test
     public void isValidTransactionName() {
         // null transaction amount
-        assertThrows(NullPointerException.class, () -> Transaction.isValidTransactionAmount(null));
+        assertThrows(NullPointerException.class, () -> Billing.isValidBilling(null));
     }
 
 }

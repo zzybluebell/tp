@@ -52,6 +52,8 @@ public class MemberCard extends UiPart<Region> {
     private FlowPane tags;
     @FXML
     private FlowPane transactions;
+    @FXML
+    private FlowPane reservations;
 
     /**
      * Creates a {@code MemberCode} with the given {@code Member} and index to display.
@@ -66,16 +68,22 @@ public class MemberCard extends UiPart<Region> {
         email.setText(member.getEmail().value);
         address.setText(member.getAddress().value);
         registrationTime.setText(
-                DateTimeUtil.timestampToDate(Long.parseLong(member.getRegistrationTimestamp().value)).toString());
+                DateTimeUtil.timestampToDate(Long.parseLong(member.getTimestamp().value)).toString());
         credit.setText(member.getCredit().value);
         tier.setText(Tier.getTierByCredit(Integer.parseInt(member.getCredit().value)));
+        member.getTransactions().stream()
+                .sorted(Comparator.comparing(transaction -> transaction.getTimestamp().value))
+                .forEach(transaction -> transactions.getChildren().add(new Label("["
+                        + DateTimeUtil.timestampToDate(Long.parseLong(transaction.getTimestamp().value)).toString()
+                        + " " + transaction.getBilling().value + "] ")));
+        member.getReservations().stream()
+                .sorted(Comparator.comparing(reservation -> DateTimeUtil
+                        .parseDateTime(reservation.getDateTime().value)))
+                .forEach(reservation -> reservations.getChildren().add(new Label("["
+                        + reservation.getDateTime().value + " " + reservation.getRemark().value + "] ")));
         member.getTags().stream()
                 .sorted(Comparator.comparing(tag -> tag.tagName))
                 .forEach(tag -> tags.getChildren().add(new Label(tag.tagName)));
-        member.getTransactions().stream()
-                .sorted(Comparator.comparing(transaction -> transaction.getTransactionAmount()))
-                .forEach(transaction -> transactions.getChildren().add(
-                        new Label(transaction.getTransactionAmount() + " ")));
     }
 
     @Override

@@ -1,12 +1,12 @@
 package seedu.address.logic.commands;
 
 import static java.util.Objects.requireNonNull;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_DATE;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_EMAIL;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_ID;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_MEMBER;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_NAME;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_PHONE;
-import static seedu.address.logic.parser.CliSyntax.PREFIX_REGISTRATION_DATE;
 
 import java.util.function.Predicate;
 
@@ -36,14 +36,14 @@ public class FindCommand extends Command {
             + "Find by name: " + PREFIX_MEMBER + " [" + PREFIX_NAME + " NAME]\n"
             + "Find by phone: " + PREFIX_MEMBER + " [" + PREFIX_PHONE + " PHONE]\n"
             + "Find by email: " + PREFIX_MEMBER + " [" + PREFIX_EMAIL + " EMAIL]\n"
-            + "Find by registration date: " + PREFIX_MEMBER + " [" + PREFIX_REGISTRATION_DATE + " REGISTRATION_DATE]\n"
+            + "Find by registration date: " + PREFIX_MEMBER + " [" + PREFIX_DATE + " REGISTRATION_DATE]\n"
             + "Example:\n"
             + "Find by member ID: " + COMMAND_WORD + " " + PREFIX_MEMBER + " [" + PREFIX_ID + " 10001]\n"
             + "Find by name: " + COMMAND_WORD + " " + PREFIX_MEMBER + " [" + PREFIX_NAME + " Alex]\n"
             + "Find by phone: " + COMMAND_WORD + " " + PREFIX_MEMBER + " [" + PREFIX_PHONE + " 87438807]\n"
             + "Find by email: " + COMMAND_WORD + " " + PREFIX_MEMBER + " [" + PREFIX_EMAIL + " alexyeoh@example.com]\n"
             + "Find by registration date: " + COMMAND_WORD + " " + PREFIX_MEMBER
-            + " [" + PREFIX_REGISTRATION_DATE + " 2021-01-02]";
+            + " [" + PREFIX_DATE + " 2021-01-02]";
 
     private final Predicate<Member> predicate;
 

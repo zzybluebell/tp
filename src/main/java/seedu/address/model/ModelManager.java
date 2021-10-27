@@ -5,7 +5,6 @@ import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
 
 import java.nio.file.Path;
 import java.util.Comparator;
-import java.util.Set;
 import java.util.function.Predicate;
 import java.util.logging.Logger;
 
@@ -14,9 +13,7 @@ import javafx.collections.transformation.FilteredList;
 import javafx.collections.transformation.SortedList;
 import seedu.address.commons.core.GuiSettings;
 import seedu.address.commons.core.LogsCenter;
-import seedu.address.model.member.Id;
 import seedu.address.model.member.Member;
-import seedu.address.model.transaction.Transaction;
 
 /**
  * Represents the in-memory model of the ezFoodie data.
@@ -150,12 +147,6 @@ public class ModelManager implements Model {
         requireAllNonNull(target, editedMember);
 
         ezFoodie.setMember(target, editedMember);
-    }
-
-    @Override
-    public void addTransaction(Set<Transaction> transactionToAdd, Id id) {
-        requireNonNull(id);
-        ezFoodie.addTransaction(transactionToAdd, id);
     }
 
     /**

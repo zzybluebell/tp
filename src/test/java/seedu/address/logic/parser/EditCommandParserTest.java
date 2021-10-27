@@ -10,14 +10,11 @@ import static seedu.address.logic.commands.CommandTestUtil.INVALID_EMAIL_DESC;
 import static seedu.address.logic.commands.CommandTestUtil.INVALID_NAME_DESC;
 import static seedu.address.logic.commands.CommandTestUtil.INVALID_PHONE_DESC;
 import static seedu.address.logic.commands.CommandTestUtil.INVALID_TAG_DESC;
-import static seedu.address.logic.commands.CommandTestUtil.INVALID_TRANSACTION_DESC;
 import static seedu.address.logic.commands.CommandTestUtil.NAME_DESC_AMY;
 import static seedu.address.logic.commands.CommandTestUtil.PHONE_DESC_AMY;
 import static seedu.address.logic.commands.CommandTestUtil.PHONE_DESC_BOB;
 import static seedu.address.logic.commands.CommandTestUtil.TAG_DESC_FRIEND;
 import static seedu.address.logic.commands.CommandTestUtil.TAG_DESC_HUSBAND;
-import static seedu.address.logic.commands.CommandTestUtil.TRANSACTION_DESC_200;
-import static seedu.address.logic.commands.CommandTestUtil.TRANSACTION_DESC_300;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_ADDRESS_AMY;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_ADDRESS_BOB;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_EMAIL_AMY;
@@ -27,12 +24,9 @@ import static seedu.address.logic.commands.CommandTestUtil.VALID_PHONE_AMY;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_PHONE_BOB;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_TAG_FRIEND;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_TAG_HUSBAND;
-import static seedu.address.logic.commands.CommandTestUtil.VALID_TRANSACTION_200;
-import static seedu.address.logic.commands.CommandTestUtil.VALID_TRANSACTION_300;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_INDEX;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_MEMBER;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_TAG;
-import static seedu.address.logic.parser.CliSyntax.PREFIX_TRANSACTION;
 import static seedu.address.logic.parser.CommandParserTestUtil.assertParseFailure;
 import static seedu.address.logic.parser.CommandParserTestUtil.assertParseSuccess;
 import static seedu.address.testutil.TypicalIndexes.INDEX_FIRST_MEMBER;
@@ -43,19 +37,17 @@ import org.junit.jupiter.api.Test;
 
 import seedu.address.commons.core.index.Index;
 import seedu.address.logic.commands.EditCommand;
-import seedu.address.logic.commands.EditMemberDescriptor;
+import seedu.address.logic.commands.EditCommand.EditMemberDescriptor;
 import seedu.address.model.member.Address;
 import seedu.address.model.member.Email;
 import seedu.address.model.member.Name;
 import seedu.address.model.member.Phone;
 import seedu.address.model.tag.Tag;
-import seedu.address.model.transaction.Transaction;
 import seedu.address.testutil.EditMemberDescriptorBuilder;
 
 public class EditCommandParserTest {
 
     private static final String TAG_EMPTY = " " + PREFIX_TAG;
-    private static final String TRANSACTION_EMPTY = " " + PREFIX_TRANSACTION;
 
     private static final String MESSAGE_INVALID_FORMAT =
             String.format(MESSAGE_INVALID_COMMAND_FORMAT, EditCommand.MESSAGE_USAGE);
@@ -102,8 +94,6 @@ public class EditCommandParserTest {
                 Address.MESSAGE_CONSTRAINTS); // invalid address
         assertParseFailure(parser, " " + PREFIX_MEMBER + " " + PREFIX_INDEX + " 1" + INVALID_TAG_DESC,
                 Tag.MESSAGE_CONSTRAINTS); // invalid tag
-        assertParseFailure(parser, " " + PREFIX_MEMBER + " " + PREFIX_INDEX + " 1" + INVALID_TRANSACTION_DESC,
-                Transaction.MESSAGE_CONSTRAINTS); // invalid transaction
 
         // invalid phone followed by valid email
         assertParseFailure(parser, " " + PREFIX_MEMBER + " " + PREFIX_INDEX + " 1" + INVALID_PHONE_DESC
@@ -123,18 +113,6 @@ public class EditCommandParserTest {
         assertParseFailure(parser, " " + PREFIX_MEMBER + " " + PREFIX_INDEX + " 1" + TAG_EMPTY
                 + TAG_DESC_FRIEND + TAG_DESC_HUSBAND, Tag.MESSAGE_CONSTRAINTS);
 
-        // while parsing {@code PREFIX_TRANSACTION} alone will reset the transactions of the {@code Member}
-        // being edited, parsing it together with a valid tag results in error
-        assertParseFailure(parser, " " + PREFIX_MEMBER + " " + PREFIX_INDEX + " 1" + TRANSACTION_DESC_200
-                        + TRANSACTION_DESC_300 + TRANSACTION_EMPTY,
-                Transaction.MESSAGE_CONSTRAINTS);
-        assertParseFailure(parser, " " + PREFIX_MEMBER + " " + PREFIX_INDEX + " 1" + TRANSACTION_DESC_200
-                        + TRANSACTION_EMPTY + TRANSACTION_DESC_300,
-                Transaction.MESSAGE_CONSTRAINTS);
-        assertParseFailure(parser, " " + PREFIX_MEMBER + " " + PREFIX_INDEX + " 1" + TRANSACTION_EMPTY
-                        + TRANSACTION_DESC_200 + TRANSACTION_DESC_300,
-                Transaction.MESSAGE_CONSTRAINTS);
-
         // multiple invalid values, but only the first invalid value is captured
         assertParseFailure(parser, " " + PREFIX_MEMBER + " " + PREFIX_INDEX + " 1" + INVALID_NAME_DESC
                         + INVALID_EMAIL_DESC + VALID_ADDRESS_AMY + VALID_PHONE_AMY,
@@ -145,13 +123,12 @@ public class EditCommandParserTest {
     public void parse_allFieldsSpecified_success() {
         Index targetIndex = INDEX_SECOND_MEMBER;
         String userInput = " " + PREFIX_MEMBER + " " + PREFIX_INDEX + " " + targetIndex.getOneBased()
-                + PHONE_DESC_BOB + TAG_DESC_HUSBAND + TRANSACTION_DESC_300 + EMAIL_DESC_AMY + ADDRESS_DESC_AMY
-                + NAME_DESC_AMY + TAG_DESC_FRIEND + TRANSACTION_DESC_200;
+                + PHONE_DESC_BOB + TAG_DESC_HUSBAND + EMAIL_DESC_AMY + ADDRESS_DESC_AMY
+                + NAME_DESC_AMY + TAG_DESC_FRIEND;
 
         EditMemberDescriptor descriptor = new EditMemberDescriptorBuilder().withName(VALID_NAME_AMY)
                 .withPhone(VALID_PHONE_BOB).withEmail(VALID_EMAIL_AMY).withAddress(VALID_ADDRESS_AMY)
-                .withTags(VALID_TAG_HUSBAND, VALID_TAG_FRIEND)
-                .withTransactions(VALID_TRANSACTION_300, VALID_TRANSACTION_200).build();
+                .withTags(VALID_TAG_HUSBAND, VALID_TAG_FRIEND).build();
         EditCommand expectedCommand = new EditCommand(targetIndex, descriptor);
 
         assertParseSuccess(parser, userInput, expectedCommand);
@@ -202,25 +179,19 @@ public class EditCommandParserTest {
         descriptor = new EditMemberDescriptorBuilder().withTags(VALID_TAG_FRIEND).build();
         expectedCommand = new EditCommand(targetIndex, descriptor);
         assertParseSuccess(parser, userInput, expectedCommand);
-
-        // transaction
-        userInput = " " + PREFIX_MEMBER + " " + PREFIX_INDEX + " " + targetIndex.getOneBased() + TRANSACTION_DESC_200;
-        descriptor = new EditMemberDescriptorBuilder().withTransactions(VALID_TRANSACTION_200).build();
-        expectedCommand = new EditCommand(targetIndex, descriptor);
-        assertParseSuccess(parser, userInput, expectedCommand);
     }
 
     @Test
     public void parse_multipleRepeatedFields_acceptsLast() {
         Index targetIndex = INDEX_FIRST_MEMBER;
         String userInput = " " + PREFIX_MEMBER + " " + PREFIX_INDEX + " " + targetIndex.getOneBased()
-                + PHONE_DESC_AMY + ADDRESS_DESC_AMY + EMAIL_DESC_AMY + TAG_DESC_FRIEND + TRANSACTION_DESC_200
+                + PHONE_DESC_AMY + ADDRESS_DESC_AMY + EMAIL_DESC_AMY + TAG_DESC_FRIEND
                 + PHONE_DESC_AMY + ADDRESS_DESC_AMY + EMAIL_DESC_AMY + TAG_DESC_FRIEND + PHONE_DESC_BOB
-                + ADDRESS_DESC_BOB + EMAIL_DESC_BOB + TAG_DESC_HUSBAND + TRANSACTION_DESC_300;
+                + ADDRESS_DESC_BOB + EMAIL_DESC_BOB + TAG_DESC_HUSBAND;
 
         EditMemberDescriptor descriptor = new EditMemberDescriptorBuilder().withPhone(VALID_PHONE_BOB)
-                .withEmail(VALID_EMAIL_BOB).withAddress(VALID_ADDRESS_BOB).withTags(VALID_TAG_FRIEND, VALID_TAG_HUSBAND)
-                .withTransactions(VALID_TRANSACTION_200, VALID_TRANSACTION_300).build();
+                .withEmail(VALID_EMAIL_BOB).withAddress(VALID_ADDRESS_BOB)
+                .withTags(VALID_TAG_FRIEND, VALID_TAG_HUSBAND).build();
         EditCommand expectedCommand = new EditCommand(targetIndex, descriptor);
 
         assertParseSuccess(parser, userInput, expectedCommand);
@@ -251,18 +222,6 @@ public class EditCommandParserTest {
         String userInput = " " + PREFIX_MEMBER + " " + PREFIX_INDEX + " " + targetIndex.getOneBased() + TAG_EMPTY;
 
         EditMemberDescriptor descriptor = new EditMemberDescriptorBuilder().withTags().build();
-        EditCommand expectedCommand = new EditCommand(targetIndex, descriptor);
-
-        assertParseSuccess(parser, userInput, expectedCommand);
-    }
-
-    @Test
-    public void parse_resetTransaction_success() {
-        Index targetIndex = INDEX_THIRD_MEMBER;
-        String userInput = " " + PREFIX_MEMBER + " " + PREFIX_INDEX + " " + targetIndex.getOneBased()
-                + TRANSACTION_EMPTY;
-
-        EditMemberDescriptor descriptor = new EditMemberDescriptorBuilder().withTransactions().build();
         EditCommand expectedCommand = new EditCommand(targetIndex, descriptor);
 
         assertParseSuccess(parser, userInput, expectedCommand);

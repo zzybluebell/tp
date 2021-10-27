@@ -2,14 +2,11 @@ package seedu.address.model;
 
 import java.nio.file.Path;
 import java.util.Comparator;
-import java.util.Set;
 import java.util.function.Predicate;
 
 import javafx.collections.ObservableList;
 import seedu.address.commons.core.GuiSettings;
-import seedu.address.model.member.Id;
 import seedu.address.model.member.Member;
-import seedu.address.model.transaction.Transaction;
 
 /**
  * The API of the Model component.
@@ -128,6 +125,4 @@ public interface Model {
      * @throws NullPointerException if {@code comparator} is null.
      */
     void updateSortedMemberList(Comparator<Member> comparator);
-
-    void addTransaction(Set<Transaction> transactionToAdd, Id idToAdd);
 }

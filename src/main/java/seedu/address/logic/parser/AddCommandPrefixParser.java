@@ -2,6 +2,7 @@ package seedu.address.logic.parser;
 
 import static seedu.address.commons.core.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_MEMBER;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_RESERVATION;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_TRANSACTION;
 
 import seedu.address.commons.status.ExecutionStatus;
@@ -19,10 +20,10 @@ public class AddCommandPrefixParser {
     private final ExecutionStatus executionStatus;
 
     /**
-     * Constructor for AddCommandPrefixParser.
+     * Constructs a {@code AddCommandPrefixParser} with the given {@code Model} and {@code ExecutionStatus}.
      *
-     * @param model
-     * @param executionStatus
+     * @param model of ezFoodie.
+     * @param executionStatus normal or test.
      */
     public AddCommandPrefixParser(Model model, ExecutionStatus executionStatus) {
         this.model = model;
@@ -30,11 +31,12 @@ public class AddCommandPrefixParser {
     }
 
     /**
-     * Parses the arguments depends on the first prefix.
+     * Parses the given {@code String} of arguments in the context of the AddCommandParser
+     * and returns an AddCommandParser object for execution.
      *
-     * @param args
+     * @param args to be parsed.
      * @return AddMemberCommandParser or AddTransactionCommandParser.
-     * @throws ParseException
+     * @throws ParseException if the user input does not conform the expected format
      */
     public AddCommandParser parse(String args) throws ParseException {
         String trimmedArgs = args.trim();
@@ -55,6 +57,8 @@ public class AddCommandPrefixParser {
             return new AddMemberCommandParser(model, executionStatus);
         } else if (prefix.equals(PREFIX_TRANSACTION.getPrefix())) {
             return new AddTransactionCommandParser(model, executionStatus);
+        } else if (prefix.equals(PREFIX_RESERVATION.getPrefix())) {
+            return new AddReservationCommandParser(model, executionStatus);
         } else {
             throw new ParseException(
                     String.format(MESSAGE_INVALID_COMMAND_FORMAT, AddCommand.MESSAGE_USAGE));

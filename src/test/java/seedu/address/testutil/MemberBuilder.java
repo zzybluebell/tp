@@ -1,8 +1,11 @@
 package seedu.address.testutil;
 
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
+import seedu.address.model.Timestamp;
 import seedu.address.model.member.Address;
 import seedu.address.model.member.Credit;
 import seedu.address.model.member.Email;
@@ -10,7 +13,7 @@ import seedu.address.model.member.Id;
 import seedu.address.model.member.Member;
 import seedu.address.model.member.Name;
 import seedu.address.model.member.Phone;
-import seedu.address.model.member.Timestamp;
+import seedu.address.model.reservation.Reservation;
 import seedu.address.model.tag.Tag;
 import seedu.address.model.transaction.Transaction;
 import seedu.address.model.util.SampleDataUtil;
@@ -25,7 +28,7 @@ public class MemberBuilder {
     public static final String DEFAULT_PHONE = "85355255";
     public static final String DEFAULT_EMAIL = "amy@gmail.com";
     public static final String DEFAULT_ADDRESS = "123, Jurong West Ave 6, #08-111";
-    public static final String DEFAULT_REGISTRATION_TIMESTAMP = "1610236800000";
+    public static final String DEFAULT_TIMESTAMP = "1610236800000";
     public static final String DEFAULT_CREDIT = "200";
 
     private Id id;
@@ -36,7 +39,8 @@ public class MemberBuilder {
     private Timestamp timestamp;
     private Credit credit;
     private Set<Tag> tags;
-    private Set<Transaction> transactions;
+    private List<Transaction> transactions;
+    private Set<Reservation> reservations;
 
     /**
      * Creates a {@code MemberBuilder} with the default details.
@@ -47,10 +51,11 @@ public class MemberBuilder {
         phone = new Phone(DEFAULT_PHONE);
         email = new Email(DEFAULT_EMAIL);
         address = new Address(DEFAULT_ADDRESS);
-        timestamp = new Timestamp(DEFAULT_REGISTRATION_TIMESTAMP);
+        timestamp = new Timestamp(DEFAULT_TIMESTAMP);
         credit = new Credit(DEFAULT_CREDIT);
         tags = new HashSet<>();
-        transactions = new HashSet<>();
+        transactions = new ArrayList<>();
+        reservations = new HashSet<>();
     }
 
     /**
@@ -62,10 +67,11 @@ public class MemberBuilder {
         phone = memberToCopy.getPhone();
         email = memberToCopy.getEmail();
         address = memberToCopy.getAddress();
-        timestamp = memberToCopy.getRegistrationTimestamp();
+        timestamp = memberToCopy.getTimestamp();
         credit = memberToCopy.getCredit();
         tags = new HashSet<>(memberToCopy.getTags());
-        transactions = new HashSet<>(memberToCopy.getTransactions());
+        transactions = new ArrayList<>(memberToCopy.getTransactions());
+        reservations = new HashSet<>(memberToCopy.getReservations());
     }
 
     /**
@@ -109,10 +115,10 @@ public class MemberBuilder {
     }
 
     /**
-     * Sets the {@code RegistrationTimestamp} of the {@code Member} that we are building.
+     * Sets the {@code Timestamp} of the {@code Member} that we are building.
      */
-    public MemberBuilder withRegistrationTimestamp(String registrationTimestamp) {
-        this.timestamp = new Timestamp(registrationTimestamp);
+    public MemberBuilder withTimestamp(String timestamp) {
+        this.timestamp = new Timestamp(timestamp);
         return this;
     }
 
@@ -133,16 +139,25 @@ public class MemberBuilder {
     }
 
     /**
-     * Parses the {@code transactions} into a {@code Set<Transaction>} and set it to the {@code Member}
+     * Parses the {@code transactions} into a {@code List<Transaction>} and set it to the {@code Member}
      * that we are building.
      */
-    public MemberBuilder withTransactions(String ... transactions) {
-        this.transactions = SampleDataUtil.getTransactionSet(transactions);
+    public MemberBuilder withTransactions(Transaction ... transactions) {
+        this.transactions = SampleDataUtil.getTransactionList(transactions);
+        return this;
+    }
+
+    /**
+     * Parses the {@code reservations} into a {@code Set<Reservation>} and set it to the {@code Member}
+     * that we are building.
+     */
+    public MemberBuilder withReservations(Reservation ... reservations) {
+        this.reservations = SampleDataUtil.getReservationSet(reservations);
         return this;
     }
 
     public Member build() {
-        return new Member(id, name, phone, email, address, timestamp, credit, tags, transactions);
+        return new Member(id, name, phone, email, address, timestamp, credit, transactions, reservations, tags);
     }
 
 }

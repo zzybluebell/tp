@@ -9,7 +9,7 @@ import java.util.function.Predicate;
 import seedu.address.commons.util.DateTimeUtil;
 
 /**
- * Tests that a {@code Member}'s {@code RegistrationTimestamp} within the given registration dates.
+ * Tests that a {@code Member}'s {@code Timestamp} within the given registration dates.
  */
 public class RegistrationDateContainsKeywordsPredicate implements Predicate<Member> {
 
@@ -26,7 +26,7 @@ public class RegistrationDateContainsKeywordsPredicate implements Predicate<Memb
         return keywords.stream().anyMatch(keyword -> {
             try {
                 return DateTimeUtil.isDateContainsTimestamp(
-                        DATE_FORMAT.parse(keyword), Long.parseLong(member.getRegistrationTimestamp().value));
+                        DATE_FORMAT.parse(keyword), Long.parseLong(member.getTimestamp().value));
             } catch (ParseException e) {
                 e.printStackTrace();
             }

@@ -6,6 +6,7 @@ import static seedu.address.commons.core.Messages.MESSAGE_INVALID_COMMAND_FORMAT
 import static seedu.address.commons.core.Messages.MESSAGE_UNKNOWN_COMMAND;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_ASC;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_CREDIT;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_DATE;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_DESC;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_EMAIL;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_ID;
@@ -13,7 +14,6 @@ import static seedu.address.logic.parser.CliSyntax.PREFIX_INDEX;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_MEMBER;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_NAME;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_PHONE;
-import static seedu.address.logic.parser.CliSyntax.PREFIX_REGISTRATION_DATE;
 import static seedu.address.testutil.Assert.assertThrows;
 import static seedu.address.testutil.TypicalIndexes.INDEX_FIRST_MEMBER;
 import static seedu.address.testutil.TypicalMembers.AMY;
@@ -31,7 +31,7 @@ import seedu.address.logic.commands.AddMemberCommand;
 import seedu.address.logic.commands.ClearCommand;
 import seedu.address.logic.commands.DeleteCommand;
 import seedu.address.logic.commands.EditCommand;
-import seedu.address.logic.commands.EditMemberDescriptor;
+import seedu.address.logic.commands.EditCommand.EditMemberDescriptor;
 import seedu.address.logic.commands.ExitCommand;
 import seedu.address.logic.commands.FindCommand;
 import seedu.address.logic.commands.HelpCommand;
@@ -61,8 +61,8 @@ public class EzFoodieParserTest {
     private final EzFoodieParser parser = new EzFoodieParser(model, ExecutionStatus.TEST);
 
     @Test
-    public void parseCommand_add() throws Exception {
-        Member member = new MemberBuilder(AMY).withCredit("0").withTransactions().build();
+    public void parseCommand_addMember() throws Exception {
+        Member member = new MemberBuilder(AMY).withCredit("0").withTransactions().withReservations().build();
         AddMemberCommand command = (AddMemberCommand) parser.parseCommand(MemberUtil.getAddCommand(member));
         assertEquals(new AddMemberCommand(member), command);
     }
@@ -174,7 +174,7 @@ public class EzFoodieParserTest {
     public void parseCommand_findByRegistrationDate() throws Exception {
         List<String> keywords = Arrays.asList("2021-01-01", "2021-01-02", "2021-01-10");
         FindCommand command = (FindCommand) parser.parseCommand(
-                FindCommand.COMMAND_WORD + " " + PREFIX_MEMBER + " " + PREFIX_REGISTRATION_DATE + " "
+                FindCommand.COMMAND_WORD + " " + PREFIX_MEMBER + " " + PREFIX_DATE + " "
                         + keywords.stream().collect(Collectors.joining(" ")));
         assertEquals(new FindCommand(new RegistrationDateContainsKeywordsPredicate(keywords)), command);
     }
