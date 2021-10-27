@@ -40,7 +40,7 @@ public class EditCommandTest {
 
     @Test
     public void execute_allFieldsSpecifiedUnfilteredList_success() {
-        Member memberToEdit = model.getUpdatedMemberList().get(0);
+        Member memberToEdit = model.getUpdatedMemberList().get(INDEX_FIRST_MEMBER.getZeroBased());
         Member editedMember = new MemberBuilder().withId(memberToEdit.getId().value)
                 .withTimestamp(memberToEdit.getTimestamp().value)
                 .withCredit(memberToEdit.getCredit().value)
@@ -104,7 +104,7 @@ public class EditCommandTest {
         String expectedMessage = String.format(EditCommand.MESSAGE_EDIT_MEMBER_SUCCESS, editedMember);
 
         Model expectedModel = new ModelManager(new Account(), new EzFoodie(model.getEzFoodie()), new UserPrefs());
-        expectedModel.setMember(model.getUpdatedMemberList().get(0), editedMember);
+        expectedModel.setMember(model.getUpdatedMemberList().get(INDEX_FIRST_MEMBER.getZeroBased()), editedMember);
 
         assertCommandSuccess(editCommand, model, expectedMessage, expectedModel);
     }
