@@ -3,17 +3,14 @@ package seedu.address.ui;
 import java.util.logging.Logger;
 
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.input.Clipboard;
-import javafx.scene.input.ClipboardContent;
 import javafx.stage.Stage;
 import seedu.address.commons.core.LogsCenter;
 
 /**
- * Controller for a help page
+ * Controller for a member view page for related details
  */
-public class HelpWindow extends UiPart<Stage> {
+public class MemberViewWindow extends UiPart<Stage> {
     public static final String OFFICIAL_URL =
             "https://ay2122s1-cs2103t-f12-4.github.io/tp/";
     public static final String HELP_MESSAGE = "Features:\n"
@@ -23,40 +20,37 @@ public class HelpWindow extends UiPart<Stage> {
             + "Search by email: find -m -e <EMAIL>\n"
             + "Search by registration date: find -m -d <REGISTRATION_DATE>\n"
             + "Search by member ID: find -m -id <MEMBER_ID>\n"
-            + "Adding transaction: add -t -b <BILLING> -id <MEMBER_ID>\n"
+            + "Adding transaction: add -t -id <MEMBER_ID> -b <BILLING>\n"
             + "View member: show -m -id <MEMBER_ID>\n"
             + "Delete member: del -m -id <MEMBER_ID>\n"
             + "Exit Application: exit\n"
             + "To view full user guide: " + OFFICIAL_URL;
 
-    private static final Logger logger = LogsCenter.getLogger(HelpWindow.class);
-    private static final String FXML = "HelpWindow.fxml";
+    private static final Logger logger = LogsCenter.getLogger(MemberViewWindow.class);
+    private static final String FXML = "MemberViewWindow.fxml";
 
     @FXML
-    private Button copyButton;
-
-    @FXML
-    private Label helpMessage;
+    private Label memberDetails;
 
     /**
-     * Creates a new HelpWindow.
+     * Creates a new MemberView window.
      *
      * @param root Stage to use as the root of the HelpWindow.
      */
-    public HelpWindow(Stage root) {
+    public MemberViewWindow(Stage root) {
         super(FXML, root);
-        helpMessage.setText(HELP_MESSAGE);
+        memberDetails.setText(HELP_MESSAGE);
     }
 
     /**
-     * Creates a new HelpWindow.
+     * Creates a new MemberView window.
      */
-    public HelpWindow() {
+    public MemberViewWindow() {
         this(new Stage());
     }
 
     /**
-     * Shows the help window.
+     * Shows the MemberView window.
      * @throws IllegalStateException
      * <ul>
      *     <li>
@@ -74,7 +68,7 @@ public class HelpWindow extends UiPart<Stage> {
      * </ul>
      */
     public void show() {
-        logger.fine("Showing help page about the application.");
+        logger.fine("Showing member view page.");
         getRoot().show();
         getRoot().centerOnScreen();
     }
@@ -100,14 +94,4 @@ public class HelpWindow extends UiPart<Stage> {
         getRoot().requestFocus();
     }
 
-    /**
-     * Copies the URL to the user guide to the clipboard.
-     */
-    @FXML
-    private void copyUrl() {
-        final Clipboard clipboard = Clipboard.getSystemClipboard();
-        final ClipboardContent url = new ClipboardContent();
-        url.putString(OFFICIAL_URL);
-        clipboard.setContent(url);
-    }
 }
