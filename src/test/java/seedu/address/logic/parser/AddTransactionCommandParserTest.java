@@ -10,6 +10,7 @@ import static seedu.address.logic.commands.CommandTestUtil.TRANSACTION_BILLING_D
 import static seedu.address.logic.commands.CommandTestUtil.TRANSACTION_DESC;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_ID_AMY;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_TRANSACTION_BILLING_200;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_TRANSACTION_ID_200_AMY;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_TRANSACTION_TIMESTAMP_200;
 import static seedu.address.logic.parser.CommandParserTestUtil.assertParseFailure;
 import static seedu.address.logic.parser.CommandParserTestUtil.assertParseSuccess;
@@ -32,8 +33,8 @@ class AddTransactionCommandParserTest {
 
     @Test
     public void parse_allFieldsPresent_success() {
-        Transaction expectedTransaction = new TransactionBuilder().withTimestamp(VALID_TRANSACTION_TIMESTAMP_200)
-                .withBilling(VALID_TRANSACTION_BILLING_200).build();
+        Transaction expectedTransaction = new TransactionBuilder().withId(VALID_TRANSACTION_ID_200_AMY)
+                .withTimestamp(VALID_TRANSACTION_TIMESTAMP_200).withBilling(VALID_TRANSACTION_BILLING_200).build();
         Id expectedId = new Id(VALID_ID_AMY);
 
         // whitespace only preamble

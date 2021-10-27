@@ -51,7 +51,7 @@ public class AddReservationCommandParser extends AddCommandParser implements Par
 
         DateTime dateTime = ParserUtil.parseDateTime(argMultimap.getValue(PREFIX_DATE_TIME).get());
         Remark remark = ParserUtil.parseRemark(argMultimap.getValue(PREFIX_REMARK).get());
-        Id id = ParserUtil.parseId(argMultimap.getValue(PREFIX_ID).get());
+        Id id = ParserUtil.parseMemberId(argMultimap.getValue(PREFIX_ID).get());
         Reservation reservation = new Reservation(dateTime, remark);
 
         return new AddReservationCommand(reservation, id);

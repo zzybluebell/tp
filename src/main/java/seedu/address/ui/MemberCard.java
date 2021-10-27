@@ -72,8 +72,9 @@ public class MemberCard extends UiPart<Region> {
         credit.setText(member.getCredit().value);
         tier.setText(Tier.getTierByCredit(Integer.parseInt(member.getCredit().value)));
         member.getTransactions().stream()
-                .sorted(Comparator.comparing(transaction -> transaction.getTimestamp().value))
+                .sorted(Comparator.comparing(transaction -> transaction.getId().value))
                 .forEach(transaction -> transactions.getChildren().add(new Label("["
+                        + transaction.getId().value + " "
                         + DateTimeUtil.timestampToDate(Long.parseLong(transaction.getTimestamp().value)).toString()
                         + " " + transaction.getBilling().value + "] ")));
         member.getReservations().stream()

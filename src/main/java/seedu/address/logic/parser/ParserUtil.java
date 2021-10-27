@@ -15,7 +15,6 @@ import seedu.address.model.Timestamp;
 import seedu.address.model.account.Password;
 import seedu.address.model.member.Address;
 import seedu.address.model.member.Email;
-import seedu.address.model.member.Id;
 import seedu.address.model.member.Name;
 import seedu.address.model.member.Phone;
 import seedu.address.model.reservation.DateTime;
@@ -50,13 +49,13 @@ public class ParserUtil {
      *
      * @throws ParseException if the given {@code id} is invalid.
      */
-    public static Id parseId(String id) throws ParseException {
+    public static seedu.address.model.member.Id parseMemberId(String id) throws ParseException {
         requireNonNull(id);
         String trimmedId = id.trim();
-        if (!Id.isValidId(trimmedId)) {
-            throw new ParseException(Id.MESSAGE_CONSTRAINTS);
+        if (!seedu.address.model.member.Id.isValidId(trimmedId)) {
+            throw new ParseException(seedu.address.model.member.Id.MESSAGE_CONSTRAINTS);
         }
-        return new Id(trimmedId);
+        return new seedu.address.model.member.Id(trimmedId);
     }
 
     /**
@@ -129,6 +128,21 @@ public class ParserUtil {
             throw new ParseException(Email.MESSAGE_CONSTRAINTS);
         }
         return new Email(trimmedEmail);
+    }
+
+    /**
+     * Parses a {@code String id} into a {@code Id}.
+     * Leading and trailing whitespaces will be trimmed.
+     *
+     * @throws ParseException if the given {@code id} is invalid.
+     */
+    public static seedu.address.model.transaction.Id parseTransactionId(String id) throws ParseException {
+        requireNonNull(id);
+        String trimmedId = id.trim();
+        if (!seedu.address.model.transaction.Id.isValidId(trimmedId)) {
+            throw new ParseException(seedu.address.model.member.Id.MESSAGE_CONSTRAINTS);
+        }
+        return new seedu.address.model.transaction.Id(trimmedId);
     }
 
     /**

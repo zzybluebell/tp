@@ -80,8 +80,8 @@ public class AddMemberCommandParser extends AddCommandParser implements Parser<A
         }
 
         Id id = executionStatus == ExecutionStatus.NORMAL
-                ? ParserUtil.parseId(generateId())
-                : ParserUtil.parseId(generateIdStub());
+                ? ParserUtil.parseMemberId(generateId())
+                : ParserUtil.parseMemberId(generateIdStub());
 
         Name name = ParserUtil.parseName(argMultimap.getValue(PREFIX_NAME).get());
         Phone phone = ParserUtil.parsePhone(argMultimap.getValue(PREFIX_PHONE).get());

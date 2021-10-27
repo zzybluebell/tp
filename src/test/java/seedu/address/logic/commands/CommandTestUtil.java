@@ -34,7 +34,7 @@ import seedu.address.testutil.EditMemberDescriptorBuilder;
 public class CommandTestUtil {
 
     public static final String VALID_ID_AMY = "00001";
-    public static final String VALID_ID_BOB = "00099";
+    public static final String VALID_ID_BOB = "00002";
     public static final String VALID_NAME_AMY = "Amy Bee";
     public static final String VALID_NAME_BOB = "Bob Choo";
     public static final String VALID_PHONE_AMY = "11111111";
@@ -53,6 +53,9 @@ public class CommandTestUtil {
     public static final String VALID_CREDIT_BOB = "500";
     public static final String VALID_TAG_HUSBAND = "husband";
     public static final String VALID_TAG_FRIEND = "friend";
+    public static final String VALID_TRANSACTION_ID_200_AMY = "000001";
+    public static final String VALID_TRANSACTION_ID_200_BOB = "000001";
+    public static final String VALID_TRANSACTION_ID_300_BOB = "000002";
     public static final String VALID_TRANSACTION_TIMESTAMP_200 = "1609459200000";
     public static final String VALID_TRANSACTION_TIMESTAMP_300 = "1609542000000";
     public static final String VALID_TRANSACTION_BILLING_200 = "200.00";

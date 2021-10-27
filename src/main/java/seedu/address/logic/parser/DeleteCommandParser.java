@@ -35,7 +35,7 @@ public class DeleteCommandParser implements Parser<DeleteCommand> {
         }
 
         if (argMultimap.getValue(PREFIX_ID).isPresent()) {
-            Id id = ParserUtil.parseId(argMultimap.getValue(PREFIX_ID).get());
+            Id id = ParserUtil.parseMemberId(argMultimap.getValue(PREFIX_ID).get());
             return new DeleteCommand(id);
         }
 
