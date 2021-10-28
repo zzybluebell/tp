@@ -10,7 +10,7 @@ public enum Tier {
     private final String key;
     private final Integer value;
 
-    private Tier(String key, Integer value) {
+    Tier(String key, Integer value) {
         this.key = key;
         this.value = value;
     }
@@ -20,6 +20,13 @@ public enum Tier {
      */
     public String getKey() {
         return key;
+    }
+
+    /**
+     * Returns all possible key of tier.
+     */
+    public static String[] getAllKeys() {
+        return new String[]{BRONZE.key, SILVER.key, GOLD.key, PLATINUM.key};
     }
 
     /**

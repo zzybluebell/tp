@@ -36,6 +36,7 @@ public class MainWindow extends UiPart<Stage> {
     private ResultDisplay resultDisplay;
     private HelpWindow helpWindow;
     private MemberViewWindow memberViewWindow;
+    private SummaryWindow summaryWindow;
 
     @FXML
     private StackPane commandBoxPlaceholder;
@@ -69,6 +70,7 @@ public class MainWindow extends UiPart<Stage> {
 
         helpWindow = new HelpWindow();
         memberViewWindow = new MemberViewWindow(logic);
+        summaryWindow = new SummaryWindow(logic);
     }
 
     public Stage getPrimaryStage() {
@@ -163,6 +165,22 @@ public class MainWindow extends UiPart<Stage> {
         }
     }
 
+    /**
+     * Opens the summary window or focuses on it if it's already opened.
+     */
+    @FXML
+    public void handleSummary() {
+        if (!summaryWindow.isShowing()) {
+            summaryWindow = new SummaryWindow(logic);
+            summaryWindow.show();
+        } else {
+            summaryWindow.hide();
+            summaryWindow = new SummaryWindow(logic);
+            summaryWindow.show();
+            summaryWindow.focus();
+        }
+    }
+
 
     void show() {
         primaryStage.show();
@@ -178,6 +196,7 @@ public class MainWindow extends UiPart<Stage> {
         logic.setGuiSettings(guiSettings);
         helpWindow.hide();
         memberViewWindow.hide();
+        summaryWindow.hide();
         primaryStage.hide();
     }
 
@@ -203,6 +222,10 @@ public class MainWindow extends UiPart<Stage> {
 
             if (commandResult.isShowMemberView()) {
                 handleMemberView();
+            }
+
+            if (commandResult.isShowSummary()) {
+                handleSummary();
             }
 
             if (commandResult.isExit()) {

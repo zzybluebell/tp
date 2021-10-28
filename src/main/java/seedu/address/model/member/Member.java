@@ -37,8 +37,6 @@ public class Member {
     private final List<Transaction> transactions = new ArrayList<>();
     private final Set<Reservation> reservations = new HashSet<>();
 
-
-
     /**
      * Every field must be present and not null.
      */

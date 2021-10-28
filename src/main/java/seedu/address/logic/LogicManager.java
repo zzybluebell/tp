@@ -2,6 +2,7 @@ package seedu.address.logic;
 
 import java.io.IOException;
 import java.nio.file.Path;
+import java.util.HashMap;
 import java.util.logging.Logger;
 
 import javafx.collections.ObservableList;
@@ -78,6 +79,56 @@ public class LogicManager implements Logic {
     @Override
     public ObservableList<Member> getUpdatedMemberListForView () {
         return model.getUpdatedMemberListForView();
+    }
+
+    @Override
+    public int getNumberOfMembers() {
+        return model.getNumberOfMembers();
+    }
+
+    @Override
+    public HashMap<String, Integer> getNumberOfMembersByTiers() {
+        return model.getNumberOfMembersByTiers();
+    }
+
+    @Override
+    public int getNumberOfTransactions() {
+        return model.getNumberOfTransactions();
+    }
+
+    @Override
+    public int getNumberOfTransactionsPastMonth() {
+        return model.getNumberOfTransactionsPastMonth();
+    }
+
+    @Override
+    public int getNumberOfTransactionsPastThreeMonth() {
+        return model.getNumberOfTransactionsPastThreeMonth();
+    }
+
+    @Override
+    public int getNumberOfTransactionsPastSixMonths() {
+        return model.getNumberOfTransactionsPastSixMonth();
+    }
+
+    @Override
+    public double getTotalAmountOfTransactions() {
+        return model.getTotalAmountOfTransactions();
+    }
+
+    @Override
+    public double getTotalAmountOfTransactionsPastMonth() {
+        return model.getTotalAmountOfTransactionsPastMonth();
+    }
+
+    @Override
+    public double getTotalAmountOfTransactionsPastThreeMonth() {
+        return model.getTotalAmountOfTransactionsPastThreeMonth();
+    }
+
+    @Override
+    public double getTotalAmountOfTransactionsPastSixMonth() {
+        return model.getTotalAmountOfTransactionsPastSixMonth();
     }
 
     @Override

@@ -10,6 +10,7 @@ import seedu.address.commons.core.Messages;
 import seedu.address.commons.exceptions.PermissionException;
 import seedu.address.commons.status.ExecutionStatus;
 import seedu.address.commons.status.LoginStatus;
+import seedu.address.logic.commands.SummaryCommand;
 import seedu.address.logic.commands.AddCommand;
 import seedu.address.logic.commands.ClearCommand;
 import seedu.address.logic.commands.Command;
@@ -121,9 +122,11 @@ public class EzFoodieParser {
         case HelpCommand.COMMAND_WORD:
             return new HelpCommand();
 
+        case SummaryCommand.COMMAND_WORD:
+            return new SummaryCommand();
+
         default:
             throw new ParseException(MESSAGE_UNKNOWN_COMMAND);
         }
     }
-
 }
