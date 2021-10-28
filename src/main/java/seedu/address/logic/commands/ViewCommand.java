@@ -3,7 +3,6 @@ package seedu.address.logic.commands;
 import static java.util.Objects.requireNonNull;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_ID;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_MEMBER;
-import static seedu.address.logic.parser.CliSyntax.PREFIX_VIEW;
 
 import java.util.function.Predicate;
 
@@ -24,9 +23,9 @@ public class ViewCommand extends Command {
             + ": View a specific member's details, "
             + "accessed by member ID.\n"
             + "Parameters:\n"
-            + PREFIX_MEMBER + " [" + PREFIX_VIEW + PREFIX_ID + " ID]\n"
+            + PREFIX_MEMBER + " [" + PREFIX_ID + " ID]\n"
             + "Example:\n"
-            + COMMAND_WORD + " " + PREFIX_MEMBER + " [" + PREFIX_ID + " 10001]\n";
+            + COMMAND_WORD + " " + PREFIX_MEMBER + PREFIX_ID + " 10001\n";
 
     private final Predicate<Member> predicate;
 
