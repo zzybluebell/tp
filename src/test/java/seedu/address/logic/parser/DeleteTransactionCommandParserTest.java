@@ -12,17 +12,17 @@ import seedu.address.logic.commands.DeleteTransactionCommand;
 
 /**
  * As we are only doing white-box testing, our test cases do not cover path variations
- * outside of the DeleteMemberCommand code. For example, inputs "1" and "1 abc" take the
- * same path through the DeleteMemberCommand, and therefore we test only one of them.
+ * outside of the DeleteTransactionCommand code. For example, inputs "1" and "1 abc" take the
+ * same path through the DeleteTransactionCommand, and therefore we test only one of them.
  * The path variation for those two cases occur inside the ParserUtil, and
  * therefore should be covered by the ParserUtilTest.
  */
-public class DeleteMemberTransactionParserTest {
+public class DeleteTransactionCommandParserTest {
 
     private DeleteTransactionCommandParser parser = new DeleteTransactionCommandParser();
 
     @Test
-    public void parse_validArgs_returnsDeleteCommand() {
+    public void parse_validArgs_returnsDeleteTransactionCommand() {
         seedu.address.model.member.Id memberId = new seedu.address.model.member.Id("10001");
         seedu.address.model.transaction.Id transactionId = new seedu.address.model.transaction.Id("100001");
         assertParseSuccess(parser, " " + PREFIX_TRANSACTION + " " + PREFIX_ID + " "

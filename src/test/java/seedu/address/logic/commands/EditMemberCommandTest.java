@@ -19,7 +19,7 @@ import org.junit.jupiter.api.Test;
 
 import seedu.address.commons.core.Messages;
 import seedu.address.commons.core.index.Index;
-import seedu.address.logic.commands.EditCommand.EditMemberDescriptor;
+import seedu.address.logic.commands.EditMemberCommand.EditMemberDescriptor;
 import seedu.address.model.Account;
 import seedu.address.model.EzFoodie;
 import seedu.address.model.Model;
@@ -34,7 +34,7 @@ import seedu.address.testutil.MemberBuilder;
 /**
  * Contains integration tests (interaction with the Model) and unit tests for EditCommand.
  */
-public class EditCommandTest {
+public class EditMemberCommandTest {
 
     private Model model = new ModelManager(new Account(), getTypicalEzFoodie(), new UserPrefs());
 
@@ -46,10 +46,10 @@ public class EditCommandTest {
                 .withCredit(memberToEdit.getCredit().value)
                 .withTransactions(memberToEdit.getTransactions().toArray(Transaction[]::new))
                 .withReservations(memberToEdit.getReservations().toArray(Reservation[]::new)).build();
-        EditCommand.EditMemberDescriptor descriptor = new EditMemberDescriptorBuilder(editedMember).build();
-        EditCommand editCommand = new EditCommand(INDEX_FIRST_MEMBER, descriptor);
+        EditMemberCommand.EditMemberDescriptor descriptor = new EditMemberDescriptorBuilder(editedMember).build();
+        EditMemberCommand editCommand = new EditMemberCommand(INDEX_FIRST_MEMBER, descriptor);
 
-        String expectedMessage = String.format(EditCommand.MESSAGE_EDIT_MEMBER_SUCCESS, editedMember);
+        String expectedMessage = String.format(EditMemberCommand.MESSAGE_SUCCESS, editedMember);
 
         Model expectedModel = new ModelManager(new Account(), new EzFoodie(model.getEzFoodie()), new UserPrefs());
         expectedModel.setMember(memberToEdit, editedMember);
@@ -70,9 +70,9 @@ public class EditCommandTest {
 
         EditMemberDescriptor descriptor = new EditMemberDescriptorBuilder().withName(VALID_NAME_BOB)
                 .withPhone(VALID_PHONE_BOB).withTags(VALID_TAG_HUSBAND).build();
-        EditCommand editCommand = new EditCommand(indexLastMember, descriptor);
+        EditMemberCommand editCommand = new EditMemberCommand(indexLastMember, descriptor);
 
-        String expectedMessage = String.format(EditCommand.MESSAGE_EDIT_MEMBER_SUCCESS, editedMember);
+        String expectedMessage = String.format(EditMemberCommand.MESSAGE_SUCCESS, editedMember);
 
         Model expectedModel = new ModelManager(new Account(), new EzFoodie(model.getEzFoodie()), new UserPrefs());
         expectedModel.setMember(lastMember, editedMember);
@@ -82,10 +82,10 @@ public class EditCommandTest {
 
     @Test
     public void execute_noFieldSpecifiedUnfilteredList_success() {
-        EditCommand editCommand = new EditCommand(INDEX_FIRST_MEMBER, new EditMemberDescriptor());
+        EditMemberCommand editCommand = new EditMemberCommand(INDEX_FIRST_MEMBER, new EditMemberDescriptor());
         Member editedMember = model.getUpdatedMemberList().get(INDEX_FIRST_MEMBER.getZeroBased());
 
-        String expectedMessage = String.format(EditCommand.MESSAGE_EDIT_MEMBER_SUCCESS, editedMember);
+        String expectedMessage = String.format(EditMemberCommand.MESSAGE_SUCCESS, editedMember);
 
         Model expectedModel = new ModelManager(new Account(), new EzFoodie(model.getEzFoodie()), new UserPrefs());
 
@@ -98,10 +98,10 @@ public class EditCommandTest {
 
         Member memberInFilteredList = model.getUpdatedMemberList().get(INDEX_FIRST_MEMBER.getZeroBased());
         Member editedMember = new MemberBuilder(memberInFilteredList).withName(VALID_NAME_BOB).build();
-        EditCommand editCommand = new EditCommand(INDEX_FIRST_MEMBER,
+        EditMemberCommand editCommand = new EditMemberCommand(INDEX_FIRST_MEMBER,
                 new EditMemberDescriptorBuilder().withName(VALID_NAME_BOB).build());
 
-        String expectedMessage = String.format(EditCommand.MESSAGE_EDIT_MEMBER_SUCCESS, editedMember);
+        String expectedMessage = String.format(EditMemberCommand.MESSAGE_SUCCESS, editedMember);
 
         Model expectedModel = new ModelManager(new Account(), new EzFoodie(model.getEzFoodie()), new UserPrefs());
         expectedModel.setMember(model.getUpdatedMemberList().get(INDEX_FIRST_MEMBER.getZeroBased()), editedMember);
@@ -113,9 +113,9 @@ public class EditCommandTest {
     public void execute_duplicateMemberUnfilteredList_failure() {
         Member firstMember = model.getUpdatedMemberList().get(INDEX_FIRST_MEMBER.getZeroBased());
         EditMemberDescriptor descriptor = new EditMemberDescriptorBuilder(firstMember).build();
-        EditCommand editCommand = new EditCommand(INDEX_SECOND_MEMBER, descriptor);
+        EditMemberCommand editCommand = new EditMemberCommand(INDEX_SECOND_MEMBER, descriptor);
 
-        assertCommandFailure(editCommand, model, EditCommand.MESSAGE_DUPLICATE_MEMBER);
+        assertCommandFailure(editCommand, model, EditMemberCommand.MESSAGE_DUPLICATE_MEMBER);
     }
 
     @Test
@@ -124,17 +124,17 @@ public class EditCommandTest {
 
         // edit member in filtered list into a duplicate in ezFoodie
         Member memberInList = model.getEzFoodie().getMemberList().get(INDEX_SECOND_MEMBER.getZeroBased());
-        EditCommand editCommand = new EditCommand(INDEX_FIRST_MEMBER,
+        EditMemberCommand editCommand = new EditMemberCommand(INDEX_FIRST_MEMBER,
                 new EditMemberDescriptorBuilder(memberInList).build());
 
-        assertCommandFailure(editCommand, model, EditCommand.MESSAGE_DUPLICATE_MEMBER);
+        assertCommandFailure(editCommand, model, EditMemberCommand.MESSAGE_DUPLICATE_MEMBER);
     }
 
     @Test
     public void execute_invalidMemberIndexUnfilteredList_failure() {
         Index outOfBoundIndex = Index.fromOneBased(model.getUpdatedMemberList().size() + 1);
         EditMemberDescriptor descriptor = new EditMemberDescriptorBuilder().withName(VALID_NAME_BOB).build();
-        EditCommand editCommand = new EditCommand(outOfBoundIndex, descriptor);
+        EditMemberCommand editCommand = new EditMemberCommand(outOfBoundIndex, descriptor);
 
         assertCommandFailure(editCommand, model, Messages.MESSAGE_INVALID_MEMBER_DISPLAYED_INDEX);
     }
@@ -150,7 +150,7 @@ public class EditCommandTest {
         // ensures that outOfBoundIndex is still in bounds of ezFoodie list
         assertTrue(outOfBoundIndex.getZeroBased() < model.getEzFoodie().getMemberList().size());
 
-        EditCommand editCommand = new EditCommand(outOfBoundIndex,
+        EditMemberCommand editCommand = new EditMemberCommand(outOfBoundIndex,
                 new EditMemberDescriptorBuilder().withName(VALID_NAME_BOB).build());
 
         assertCommandFailure(editCommand, model, Messages.MESSAGE_INVALID_MEMBER_DISPLAYED_INDEX);
@@ -158,11 +158,11 @@ public class EditCommandTest {
 
     @Test
     public void equals() {
-        final EditCommand standardCommand = new EditCommand(INDEX_FIRST_MEMBER, DESC_AMY);
+        final EditMemberCommand standardCommand = new EditMemberCommand(INDEX_FIRST_MEMBER, DESC_AMY);
 
         // same values -> returns true
         EditMemberDescriptor copyDescriptor = new EditMemberDescriptor(DESC_AMY);
-        EditCommand commandWithSameValues = new EditCommand(INDEX_FIRST_MEMBER, copyDescriptor);
+        EditMemberCommand commandWithSameValues = new EditMemberCommand(INDEX_FIRST_MEMBER, copyDescriptor);
         assertTrue(standardCommand.equals(commandWithSameValues));
 
         // same object -> returns true
@@ -175,10 +175,10 @@ public class EditCommandTest {
         assertFalse(standardCommand.equals(new ClearCommand()));
 
         // different index -> returns false
-        assertFalse(standardCommand.equals(new EditCommand(INDEX_SECOND_MEMBER, DESC_AMY)));
+        assertFalse(standardCommand.equals(new EditMemberCommand(INDEX_SECOND_MEMBER, DESC_AMY)));
 
         // different descriptor -> returns false
-        assertFalse(standardCommand.equals(new EditCommand(INDEX_FIRST_MEMBER, DESC_BOB)));
+        assertFalse(standardCommand.equals(new EditMemberCommand(INDEX_FIRST_MEMBER, DESC_BOB)));
     }
 
 }
