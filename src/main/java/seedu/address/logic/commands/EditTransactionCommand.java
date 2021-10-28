@@ -20,7 +20,6 @@ import seedu.address.model.Timestamp;
 import seedu.address.model.member.Address;
 import seedu.address.model.member.Credit;
 import seedu.address.model.member.Email;
-import seedu.address.model.member.Id;
 import seedu.address.model.member.Member;
 import seedu.address.model.member.Name;
 import seedu.address.model.member.Phone;
@@ -30,7 +29,7 @@ import seedu.address.model.transaction.Billing;
 import seedu.address.model.transaction.Transaction;
 
 /**
- * Edits the details of an existing member in the ezFoodie.
+ * Edits the details of an existing transaction in the ezFoodie.
  */
 public class EditTransactionCommand extends EditCommand {
 
@@ -79,7 +78,7 @@ public class EditTransactionCommand extends EditCommand {
         assert transactionToEdit != null;
 
         // Member
-        Id id = memberToEdit.getId();
+        seedu.address.model.member.Id id = memberToEdit.getId();
         Name updatedName = memberToEdit.getName();
         Phone updatedPhone = memberToEdit.getPhone();
         Email updatedEmail = memberToEdit.getEmail();

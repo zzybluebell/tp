@@ -38,24 +38,30 @@ public class EditTransactionCommandParser extends EditCommandParser implements P
         requireNonNull(args);
         ArgumentMultimap argMultimap = ArgumentTokenizer.tokenize(args, PREFIX_TRANSACTION, PREFIX_ID, PREFIX_BILLING);
 
-        if (!arePrefixesPresent(argMultimap, PREFIX_TRANSACTION, PREFIX_ID, PREFIX_BILLING)
+        if (!arePrefixesPresent(argMultimap, PREFIX_TRANSACTION, PREFIX_ID)
                 || !argMultimap.getPreamble().isEmpty()) {
             throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT,
                     EditTransactionCommand.MESSAGE_USAGE));
         }
-
-        EditTransactionDescriptor editTransactionDescriptor = new EditTransactionDescriptor();
-        Timestamp timestamp = executionStatus == ExecutionStatus.NORMAL
-                ? ParserUtil.parseTimestamp(DateTimeUtil.generateTimestamp())
-                : ParserUtil.parseTimestamp(DateTimeUtil.generateTimestampStub());
-        editTransactionDescriptor.setTimestamp(timestamp);
-        editTransactionDescriptor.setBilling(ParserUtil.parseBilling(argMultimap.getValue(PREFIX_BILLING).get()));
 
         String ids = argMultimap.getValue(PREFIX_ID).get();
         seedu.address.model.member.Id memberId =
                 ParserUtil.parseMemberId(ids.substring(0, seedu.address.model.member.Id.LENGTH));
         seedu.address.model.transaction.Id transactionId =
                 ParserUtil.parseTransactionId(ids.substring(seedu.address.model.member.Id.LENGTH));
+
+        EditTransactionDescriptor editTransactionDescriptor = new EditTransactionDescriptor();
+        Timestamp timestamp = executionStatus == ExecutionStatus.NORMAL
+                ? ParserUtil.parseTimestamp(DateTimeUtil.generateTimestamp())
+                : ParserUtil.parseTimestamp(DateTimeUtil.generateTimestampStub());
+        editTransactionDescriptor.setTimestamp(timestamp);
+        if (argMultimap.getValue(PREFIX_BILLING).isPresent()) {
+            editTransactionDescriptor.setBilling(
+                    ParserUtil.parseBilling(argMultimap.getValue(PREFIX_BILLING).get()));
+        }
+        if (!editTransactionDescriptor.isAnyFieldEdited()) {
+            throw new ParseException(EditTransactionCommand.MESSAGE_NOT_EDITED);
+        }
 
         return new EditTransactionCommand(memberId, transactionId, editTransactionDescriptor);
     }
