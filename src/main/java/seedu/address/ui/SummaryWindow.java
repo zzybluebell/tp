@@ -14,7 +14,7 @@ import seedu.address.logic.Logic;
  * Controller for a summary page.
  */
 public class SummaryWindow extends UiPart<Stage> {
-    private String SUMMARY_MESSAGE = "Summary:\n\n";
+    private String SUMMARY_MESSAGE = "";
 
     private static final Logger logger = LogsCenter.getLogger(SummaryWindow.class);
     private static final String FXML = "SummaryWindow.fxml";
