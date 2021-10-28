@@ -27,7 +27,6 @@ public class ModelManager implements Model {
     private final FilteredList<Member> filteredMembers;
     private final FilteredList<Member> filteredMembersForView;
     private final SortedList<Member> sortedMembers;
-    private final SortedList<Member> sortedMembersForView;
 
     /**
      * Initializes a ModelManager with the given account, ezFoodie and userPrefs.
@@ -45,7 +44,6 @@ public class ModelManager implements Model {
         filteredMembers = new FilteredList<>(this.ezFoodie.getMemberList());
         filteredMembersForView = new FilteredList<>(this.ezFoodie.getMemberList());
         sortedMembers = new SortedList<>(filteredMembers); // Wrap the FilteredList in a SortedList
-        sortedMembersForView = new SortedList<>(filteredMembersForView);
     }
 
     public ModelManager() {
@@ -169,7 +167,7 @@ public class ModelManager implements Model {
      */
     @Override
     public ObservableList<Member> getUpdatedMemberListForView() {
-        return sortedMembersForView;
+        return filteredMembersForView;
     }
 
     //=========== Filtered Member List Accessors =============================================================

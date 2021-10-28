@@ -6,9 +6,10 @@
 <?import javafx.scene.Scene?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.layout.HBox?>
-<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.control.ListView?>
 
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
 <fx:root resizable="false"
          title="MemberView"
          type="javafx.stage.Stage"
@@ -21,16 +22,21 @@
         <Scene>
             <stylesheets>
                 <URL value="@Fonts.css"/>
+                <URL value="@DarkTheme.css"/>
+                <URL value="@MemberViewWindow.css"/>
             </stylesheets>
 
             <HBox alignment="CENTER">
-                <VBox fx:id="memberView" styleClass="pane-with-border" minWidth="340" prefWidth="340"
-                      VBox.vgrow="ALWAYS">
+                <AnchorPane fx:id="memberView" styleClass="pane-with-border">
                     <padding>
                         <Insets top="10" right="10" bottom="10" left="10"/>
                     </padding>
-                    <ListView fx:id="memberDetailsView" VBox.vgrow="ALWAYS"/>
-                </VBox>
+                    <ListView fx:id="memberDetailsView"
+                              minWidth="400" prefWidth="400"
+                              prefHeight="400"
+                              VBox.vgrow="ALWAYS">
+                    </ListView>
+                </AnchorPane>
             </HBox>
         </Scene>
     </scene>
