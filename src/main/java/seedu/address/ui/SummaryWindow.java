@@ -14,10 +14,10 @@ import seedu.address.logic.Logic;
  * Controller for a summary page.
  */
 public class SummaryWindow extends UiPart<Stage> {
-    private String SUMMARY_MESSAGE = "";
-
-    private static final Logger logger = LogsCenter.getLogger(SummaryWindow.class);
     private static final String FXML = "SummaryWindow.fxml";
+    private static final Logger logger = LogsCenter.getLogger(SummaryWindow.class);
+
+    private String summaryText = "";
 
     @FXML
     private Label summaryMessage;
@@ -30,7 +30,7 @@ public class SummaryWindow extends UiPart<Stage> {
     public SummaryWindow(Stage root, Logic logic) {
         super(FXML, root);
         initSummaryMessage(logic);
-        summaryMessage.setText(SUMMARY_MESSAGE);
+        summaryMessage.setText(summaryText);
     }
 
     /**
@@ -41,7 +41,7 @@ public class SummaryWindow extends UiPart<Stage> {
     }
 
     private void initSummaryMessage(Logic logic) {
-        SUMMARY_MESSAGE += "Total number of Members: " + logic.getNumberOfMembers()
+        summaryText += "Total number of Members: " + logic.getNumberOfMembers()
                 + "\n\n"
                 + "Total number of transactions of all time: "
                 + logic.getNumberOfTransactions()
@@ -120,7 +120,7 @@ public class SummaryWindow extends UiPart<Stage> {
     private void copySummary() {
         final Clipboard clipboard = Clipboard.getSystemClipboard();
         final ClipboardContent summary = new ClipboardContent();
-        summary.putString(SUMMARY_MESSAGE);
+        summary.putString(summaryText);
         clipboard.setContent(summary);
     }
 }
