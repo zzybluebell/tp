@@ -6,7 +6,9 @@ import java.util.List;
 import java.util.function.Predicate;
 
 import javafx.collections.ObservableList;
+import seedu.address.model.member.Id;
 import seedu.address.model.member.Member;
+import seedu.address.model.member.Point;
 import seedu.address.model.member.UniqueMemberList;
 
 /**
@@ -91,8 +93,16 @@ public class EzFoodie implements ReadOnlyEzFoodie {
      */
     public void setMember(Member target, Member editedMember) {
         requireNonNull(editedMember);
-
         members.setMember(target, editedMember);
+    }
+
+    /**
+     * Redeems points from a member by Id in the ezFoodie.
+     */
+    public void redeemPoints(List<Point> toRedeemPointsList, Id idToRedeem) {
+        Member memberToEdit = members.getMemberById(idToRedeem);
+        Member editedMember = members.createRedeemedPointsMember(memberToEdit, toRedeemPointsList);
+        setMember(memberToEdit, editedMember);
     }
 
     /**

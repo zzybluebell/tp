@@ -3,8 +3,10 @@ package seedu.address.logic.parser;
 import static java.util.Objects.requireNonNull;
 
 import java.security.NoSuchAlgorithmException;
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 import seedu.address.commons.core.index.Index;
@@ -18,6 +20,7 @@ import seedu.address.model.member.Email;
 import seedu.address.model.member.Id;
 import seedu.address.model.member.Name;
 import seedu.address.model.member.Phone;
+import seedu.address.model.member.Point;
 import seedu.address.model.reservation.DateTime;
 import seedu.address.model.reservation.Remark;
 import seedu.address.model.tag.Tag;
@@ -204,6 +207,35 @@ public class ParserUtil {
             tagSet.add(parseTag(tagName));
         }
         return tagSet;
+    }
+
+    /**
+     * Parses a {@code String points} into a {@code Points}.
+     * Leading and trailing whitespaces will be trimmed.
+     *
+     * @throws ParseException if the given {@code transaction} is invalid.
+     */
+    public static Point parsePoint(String point) throws ParseException {
+        requireNonNull(point);
+        String trimmedPoint = point.trim();
+        if (!Point.isValidPoint(trimmedPoint)) {
+            throw new ParseException(Point.MESSAGE_CONSTRAINTS);
+        }
+        return new Point(trimmedPoint);
+    }
+
+
+    /**
+     * Parses {@code Collection<String> transactions} into a {@code Set<Transaction>}.
+     */
+    public static List<Point> parsePoints(Collection<String> points)
+            throws ParseException {
+        requireNonNull(points);
+        final List<Point> pointsList = new ArrayList<>();
+        for (String pointAmount : points) {
+            pointsList.add(parsePoint(pointAmount));
+        }
+        return pointsList;
     }
 
     /**

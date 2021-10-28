@@ -18,6 +18,7 @@ import seedu.address.model.member.Id;
 import seedu.address.model.member.Member;
 import seedu.address.model.member.Name;
 import seedu.address.model.member.Phone;
+import seedu.address.model.member.Point;
 import seedu.address.model.reservation.Reservation;
 import seedu.address.model.tag.Tag;
 import seedu.address.model.transaction.Transaction;
@@ -36,6 +37,7 @@ class JsonAdaptedMember {
     private final String address;
     private final String timestamp;
     private final String credit;
+    private final String point;
     private final List<JsonAdaptedTransaction> transactions = new ArrayList<>();
     private final List<JsonAdaptedReservation> reservations = new ArrayList<>();
     private final List<JsonAdaptedTag> tagged = new ArrayList<>();
@@ -49,6 +51,7 @@ class JsonAdaptedMember {
             @JsonProperty("address") String address,
             @JsonProperty("timestamp") String timestamp,
             @JsonProperty("credit") String credit,
+            @JsonProperty("point") String point,
             @JsonProperty("transactions") List<JsonAdaptedTransaction> transactions,
             @JsonProperty("reservations") List<JsonAdaptedReservation> reservations,
             @JsonProperty("tagged") List<JsonAdaptedTag> tagged) {
@@ -60,6 +63,7 @@ class JsonAdaptedMember {
         this.address = address;
         this.timestamp = timestamp;
         this.credit = credit;
+        this.point = point;
         if (tagged != null) {
             this.tagged.addAll(tagged);
         }
@@ -82,6 +86,7 @@ class JsonAdaptedMember {
         address = source.getAddress().value;
         timestamp = source.getTimestamp().value;
         credit = source.getCredit().value;
+        point = source.getPoint().value;
         tagged.addAll(source.getTags().stream()
                 .map(JsonAdaptedTag::new)
                 .collect(Collectors.toList()));
@@ -171,6 +176,14 @@ class JsonAdaptedMember {
         }
         final Credit modelCredit = new Credit(credit);
 
+        if (point == null) {
+            throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT, Point.class.getSimpleName()));
+        }
+        if (!Point.isValidPoint(point)) {
+            throw new IllegalValueException(Point.MESSAGE_CONSTRAINTS);
+        }
+        final Point modelPoint = new Point(point);
+
         final Set<Tag> modelTags = new HashSet<>(memberTags);
 
         final List<Transaction> modelTransactions = new ArrayList<>(memberTransactions);
@@ -178,7 +191,6 @@ class JsonAdaptedMember {
         final Set<Reservation> modelReservations = new HashSet<>(memberReservations);
 
         return new Member(modelId, modelName, modelPhone, modelEmail, modelAddress, modelTimestamp, modelCredit,
-                modelTransactions, modelReservations, modelTags);
+                modelPoint, modelTransactions, modelReservations, modelTags);
     }
-
 }

@@ -274,6 +274,48 @@ The following activity diagram summarizes what happens when a user executes a ne
   * Pros: Sufficient use of object-oriented features (inheritance and polymorphic).
   * Cons: Have to make more changes to the source code, it may cause potential bugs.
 
+
+### Add member feature
+
+`[written by: Zhang Zhiao]`
+
+#### Implementation
+Given below is an example usage scenario and how the adding members behaves at each step.
+
+1. The user executes `add -m -n -p -e -a` command to add a member in the Ezfoodie and its' storage
+
+#### Design consideration
+
+### Update Credit feature
+
+`[written by: Zhang Zhiao]`
+
+#### Implementation
+Given below is an example usage scenario and how the update credit feature behaves at each step.
+
+1. when user add transaction , it will auto-trigger update new credit
+
+
+#### Design consideration
+
+### Update Point feature
+
+`[written by: Zhang Zhiao]`
+
+#### Implementation
+Given below is an example usage scenario and how the update point feature behaves at each step.
+
+1. when user add transaction, it will auto update new point
+
+2. The user executes `redeem -r -id` command to redeem point from exist credit by user id.
+
+3. The user executes `redeem -r -index` command to redeem point from exist credit by user index listed in page.
+
+#### Design consideration
+
+
+
+
 ### \[Proposed\] Undo/redo feature
 
 #### Proposed Implementation
