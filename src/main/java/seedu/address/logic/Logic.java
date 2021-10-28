@@ -17,10 +17,11 @@ import seedu.address.model.member.Member;
 public interface Logic {
     /**
      * Executes the command and returns the result.
+     *
      * @param commandText The command as entered by the user.
      * @return the result of the command execution.
-     * @throws CommandException If an error occurs during command execution.
-     * @throws ParseException If an error occurs during parsing.
+     * @throws CommandException    If an error occurs during command execution.
+     * @throws ParseException      If an error occurs during parsing.
      * @throws PermissionException If an error occurs during insufficient permission.
      */
     CommandResult execute(String commandText) throws CommandException, ParseException, PermissionException;
@@ -32,8 +33,16 @@ public interface Logic {
      */
     ReadOnlyEzFoodie getEzFoodie();
 
-    /** Returns an unmodifiable view of the sorted or filtered list of members */
+    /**
+     * Returns an unmodifiable view of the sorted or filtered list of members
+     */
     ObservableList<Member> getUpdatedMemberList();
+
+    /**
+     * Returns an unmodifiable view of the sorted or filtered list of members
+     * for viewCommand to use only
+     */
+    ObservableList<Member> getUpdatedMemberListForView();
 
     /**
      * Returns the user prefs' ezFoodie file path.
