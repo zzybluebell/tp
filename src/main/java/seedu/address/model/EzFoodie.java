@@ -97,9 +97,8 @@ public class EzFoodie implements ReadOnlyEzFoodie {
         members.setMember(target, editedMember);
     }
 
-    //TODO remember to add by index also
     /**
-     * Redeems points from a member in the ezFoodie.
+     * Redeems points from a member by Id in the ezFoodie.
      */
     public void redeemPoints(List<Point> toRedeemPointsList, Id idToRedeem) {
         Member memberToEdit = members.getMemberById(idToRedeem);

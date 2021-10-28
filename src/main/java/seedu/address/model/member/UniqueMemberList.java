@@ -30,7 +30,6 @@ public class UniqueMemberList implements Iterable<Member> {
             FXCollections.unmodifiableObservableList(internalList);
 
     /**
-<<<<<<< HEAD
      * Returns a member identified by id.
      * @param id
      * @return member

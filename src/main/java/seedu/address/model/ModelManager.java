@@ -153,7 +153,6 @@ public class ModelManager implements Model {
         ezFoodie.setMember(target, editedMember);
     }
 
-    //TODO for index also
     @Override
     public void redeemPoints(List<Point> toRedeemPointsList, Id idToRedeem) {
         requireNonNull(idToRedeem);
