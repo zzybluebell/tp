@@ -120,7 +120,7 @@ public class RedeemCommand extends Command {
         Timestamp updateTimestamp = memberToRedeemPoints.getTimestamp();
         Set<Tag> updatedTags = memberToRedeemPoints.getTags();
         List<Transaction> updatedTransactions = memberToRedeemPoints.getTransactions();
-        Set<Reservation> updateReservations = memberToRedeemPoints.getReservations();
+        List<Reservation> updateReservations = memberToRedeemPoints.getReservations();
         Credit updateCredit = memberToRedeemPoints.getCredit();
         Point toRedeemPointsSum = new Point("" + Math.min(toRedeemPointsList.stream()
                 .mapToInt(pointToUpdate -> (int) pointToUpdate.getDoubleValue()).sum(), Point.MAX));

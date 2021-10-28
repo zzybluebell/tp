@@ -7,6 +7,7 @@ import seedu.address.commons.exceptions.IllegalValueException;
 import seedu.address.model.reservation.DateTime;
 import seedu.address.model.reservation.Remark;
 import seedu.address.model.reservation.Reservation;
+import seedu.address.model.reservation.ReservationId;
 
 /**
  * Jackson-friendly version of {@link Reservation}.
@@ -15,6 +16,7 @@ class JsonAdaptedReservation {
 
     public static final String MISSING_FIELD_MESSAGE_FORMAT = "Reservation's %s field is missing!";
 
+    private final String id;
     private final String dateTime;
     private final String remark;
 
@@ -22,8 +24,9 @@ class JsonAdaptedReservation {
      * Constructs a {@code JsonAdaptedReservation} with the given reservation details.
      */
     @JsonCreator
-    public JsonAdaptedReservation(@JsonProperty("dateTime") String dateTime,
+    public JsonAdaptedReservation(@JsonProperty("id") String id, @JsonProperty("dateTime") String dateTime,
             @JsonProperty("remark") String remark) {
+        this.id = id;
         this.dateTime = dateTime;
         this.remark = remark;
     }
@@ -32,6 +35,7 @@ class JsonAdaptedReservation {
      * Converts a given {@code Reservation} into this class for Jackson use.
      */
     public JsonAdaptedReservation(Reservation source) {
+        id = source.getId().value;
         dateTime = source.getDateTime().value;
         remark = source.getRemark().value;
     }
@@ -42,6 +46,12 @@ class JsonAdaptedReservation {
      * @throws IllegalValueException if there were any data constraints violated in the adapted reservation.
      */
     public Reservation toModelType() throws IllegalValueException {
+        if (id == null) {
+            throw new IllegalValueException(
+                    String.format(MISSING_FIELD_MESSAGE_FORMAT, ReservationId.class.getSimpleName()));
+        }
+        final ReservationId modelId = new ReservationId(id);
+
         if (dateTime == null) {
             throw new IllegalValueException(
                     String.format(MISSING_FIELD_MESSAGE_FORMAT, DateTime.class.getSimpleName()));
@@ -54,7 +64,7 @@ class JsonAdaptedReservation {
         }
         final Remark modelRemark = new Remark(remark);
 
-        return new Reservation(modelDateTime, modelRemark);
+        return new Reservation(modelId, modelDateTime, modelRemark);
     }
 
 }

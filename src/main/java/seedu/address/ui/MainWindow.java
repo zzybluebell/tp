@@ -35,6 +35,7 @@ public class MainWindow extends UiPart<Stage> {
     private MemberListPanel memberListPanel;
     private ResultDisplay resultDisplay;
     private HelpWindow helpWindow;
+    private MemberViewWindow memberViewWindow;
 
     @FXML
     private StackPane commandBoxPlaceholder;
@@ -67,6 +68,7 @@ public class MainWindow extends UiPart<Stage> {
         setAccelerators();
 
         helpWindow = new HelpWindow();
+        memberViewWindow = new MemberViewWindow(logic);
     }
 
     public Stage getPrimaryStage() {
@@ -79,6 +81,7 @@ public class MainWindow extends UiPart<Stage> {
 
     /**
      * Sets the accelerator of a MenuItem.
+     *
      * @param keyCombination the KeyCombination value of the accelerator
      */
     private void setAccelerator(MenuItem menuItem, KeyCombination keyCombination) {
@@ -148,6 +151,19 @@ public class MainWindow extends UiPart<Stage> {
         }
     }
 
+    /**
+     * Opens the member view window or focuses on it if it's already opened.
+     */
+    @FXML
+    public void handleMemberView() {
+        if (!memberViewWindow.isShowing()) {
+            memberViewWindow.show();
+        } else {
+            memberViewWindow.focus();
+        }
+    }
+
+
     void show() {
         primaryStage.show();
     }
@@ -161,6 +177,7 @@ public class MainWindow extends UiPart<Stage> {
                 (int) primaryStage.getX(), (int) primaryStage.getY());
         logic.setGuiSettings(guiSettings);
         helpWindow.hide();
+        memberViewWindow.hide();
         primaryStage.hide();
     }
 
@@ -182,6 +199,10 @@ public class MainWindow extends UiPart<Stage> {
 
             if (commandResult.isShowHelp()) {
                 handleHelp();
+            }
+
+            if (commandResult.isShowMemberView()) {
+                handleMemberView();
             }
 
             if (commandResult.isExit()) {

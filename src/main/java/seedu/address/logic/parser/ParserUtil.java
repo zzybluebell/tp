@@ -23,6 +23,7 @@ import seedu.address.model.member.Phone;
 import seedu.address.model.member.Point;
 import seedu.address.model.reservation.DateTime;
 import seedu.address.model.reservation.Remark;
+import seedu.address.model.reservation.ReservationId;
 import seedu.address.model.tag.Tag;
 import seedu.address.model.transaction.Billing;
 
@@ -53,7 +54,7 @@ public class ParserUtil {
      *
      * @throws ParseException if the given {@code id} is invalid.
      */
-    public static Id parseId(String id) throws ParseException {
+    public static Id parseMemberId(String id) throws ParseException {
         requireNonNull(id);
         String trimmedId = id.trim();
         if (!Id.isValidId(trimmedId)) {
@@ -132,6 +133,21 @@ public class ParserUtil {
             throw new ParseException(Email.MESSAGE_CONSTRAINTS);
         }
         return new Email(trimmedEmail);
+    }
+
+    /**
+     * Parses a {@code String id} into a {@code ReservationId}.
+     * Leading and trailing whitespaces will be trimmed.
+     *
+     * @throws ParseException if the given {@code id} is invalid.
+     */
+    public static ReservationId parseReservationId(String id) throws ParseException {
+        requireNonNull(id);
+        String trimmedId = id.trim();
+        if (!ReservationId.isValidId(trimmedId)) {
+            throw new ParseException(Id.MESSAGE_CONSTRAINTS);
+        }
+        return new ReservationId(trimmedId);
     }
 
     /**

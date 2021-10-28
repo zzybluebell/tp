@@ -7,7 +7,7 @@ import static seedu.address.logic.parser.CliSyntax.PREFIX_REMARK;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_RESERVATION;
 import static seedu.address.model.Model.PREDICATE_SHOW_ALL_MEMBERS;
 
-import java.util.HashSet;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 
@@ -91,10 +91,10 @@ public class AddReservationCommand extends AddCommand {
         Credit credit = memberToEdit.getCredit();
         Point point = memberToEdit.getPoint();
         List<Transaction> transactions = memberToEdit.getTransactions();
-        Set<Reservation> reservations = memberToEdit.getReservations();
+        List<Reservation> reservations = memberToEdit.getReservations();
         Set<Tag> tags = memberToEdit.getTags();
 
-        Set<Reservation> updatedReservations = new HashSet<>(reservations);
+        List<Reservation> updatedReservations = new ArrayList<>(reservations);
         updatedReservations.add(reservation);
 
         return new Member(id, name, phone, email, address, timestamp, credit, point,

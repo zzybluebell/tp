@@ -17,9 +17,11 @@
       "billing": "43.34"
     } ],
     "reservations" : [ {
+      "id": "100001",
       "dateTime": "2021-01-20 00:00",
       "remark": "3 people"
     }, {
+      "id": "100010",
       "dateTime": "2021-01-21 00:00",
       "remark": "1 people"
     } ],
@@ -38,6 +40,7 @@
       "billing": "645.39"
     } ],
     "reservations" : [ {
+      "id": "100002",
       "dateTime": "2021-01-20 01:00",
       "remark": "4 people"
     } ],
@@ -56,6 +59,7 @@
       "billing": "272.57"
     } ],
     "reservations" : [ {
+      "id": "100003",
       "dateTime": "2021-01-20 02:00",
       "remark": "2 people"
     } ],

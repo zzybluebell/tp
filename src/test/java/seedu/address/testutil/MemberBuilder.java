@@ -43,7 +43,7 @@ public class MemberBuilder {
     private Point point;
     private Set<Tag> tags;
     private List<Transaction> transactions;
-    private Set<Reservation> reservations;
+    private List<Reservation> reservations;
 
     /**
      * Creates a {@code MemberBuilder} with the default details.
@@ -59,7 +59,7 @@ public class MemberBuilder {
         point = new Point(DEFAULT_POINT);
         tags = new HashSet<>();
         transactions = new ArrayList<>();
-        reservations = new HashSet<>();
+        reservations = new ArrayList<>();
     }
 
     /**
@@ -76,7 +76,7 @@ public class MemberBuilder {
         point = memberToCopy.getPoint();
         tags = new HashSet<>(memberToCopy.getTags());
         transactions = new ArrayList<>(memberToCopy.getTransactions());
-        reservations = new HashSet<>(memberToCopy.getReservations());
+        reservations = new ArrayList<>(memberToCopy.getReservations());
     }
 
     /**
@@ -165,7 +165,7 @@ public class MemberBuilder {
      * that we are building.
      */
     public MemberBuilder withReservations(Reservation ... reservations) {
-        this.reservations = SampleDataUtil.getReservationSet(reservations);
+        this.reservations = SampleDataUtil.getReservationList(reservations);
         return this;
     }
 

@@ -83,6 +83,7 @@ public class MemberCard extends UiPart<Region> {
                 .sorted(Comparator.comparing(reservation -> DateTimeUtil
                         .parseDateTime(reservation.getDateTime().value)))
                 .forEach(reservation -> reservations.getChildren().add(new Label("["
+                        + reservation.getId().value + " "
                         + reservation.getDateTime().value + " " + reservation.getRemark().value + "] ")));
         member.getTags().stream()
                 .sorted(Comparator.comparing(tag -> tag.tagName))

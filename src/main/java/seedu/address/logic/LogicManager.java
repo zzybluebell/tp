@@ -76,6 +76,11 @@ public class LogicManager implements Logic {
     }
 
     @Override
+    public ObservableList<Member> getUpdatedMemberListForView () {
+        return model.getUpdatedMemberListForView();
+    }
+
+    @Override
     public Path getEzFoodieFilePath() {
         return model.getEzFoodieFilePath();
     }
