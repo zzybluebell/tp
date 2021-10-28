@@ -18,6 +18,9 @@ import static seedu.address.logic.commands.CommandTestUtil.VALID_REGISTRATION_TI
 import static seedu.address.logic.commands.CommandTestUtil.VALID_REGISTRATION_TIMESTAMP_BOB;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_RESERVATION_DATE_TIME_200;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_RESERVATION_DATE_TIME_300;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_RESERVATION_ID_200_AMY;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_RESERVATION_ID_200_BOB;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_RESERVATION_ID_300_BOB;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_RESERVATION_REMARK_200;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_RESERVATION_REMARK_300;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_TAG_FRIEND;
@@ -37,6 +40,7 @@ import seedu.address.model.member.Member;
 import seedu.address.model.reservation.DateTime;
 import seedu.address.model.reservation.Remark;
 import seedu.address.model.reservation.Reservation;
+import seedu.address.model.reservation.ReservationId;
 import seedu.address.model.transaction.Billing;
 import seedu.address.model.transaction.Transaction;
 
@@ -52,20 +56,24 @@ public class TypicalMembers {
                     new Transaction(new Timestamp("1611100800000"), new Billing("567.54")),
                     new Transaction(new Timestamp("1611187200000"), new Billing("43.34"))
             ).withReservations(
-                    new Reservation(new DateTime("2021-01-20 00:00"), new Remark("3 people")),
-                    new Reservation(new DateTime("2021-01-21 00:00"), new Remark("1 people"))
+                    new Reservation(
+                            new ReservationId("000001"), new DateTime("2021-01-20 00:00"), new Remark("3 people")),
+                    new Reservation(
+                            new ReservationId("000002"), new DateTime("2021-01-21 00:00"), new Remark("1 people"))
             ).withTags("friends").build();
     public static final Member BENSON = new MemberBuilder().withId("00002").withName("Benson Meier")
             .withAddress("311, Clementi Ave 2, #02-25").withEmail("johnd@example.com")
             .withPhone("98765432").withTimestamp("1609462800000").withCredit("645").withPoint("645")
             .withTransactions(new Transaction(new Timestamp("1611104400000"), new Billing("645.39")))
-            .withReservations(new Reservation(new DateTime("2021-01-20 01:00"), new Remark("4 people")))
+            .withReservations(new Reservation(new ReservationId("000003"),
+                    new DateTime("2021-01-20 01:00"), new Remark("4 people")))
             .withTags("owesMoney", "friends").build();
     public static final Member CARL = new MemberBuilder().withId("00003").withName("Carl Kurz")
             .withPhone("95352563").withEmail("heinz@example.com").withAddress("wall street")
             .withTimestamp("1609466400000").withCredit("272").withPoint("272")
             .withTransactions(new Transaction(new Timestamp("1611108000000"), new Billing("272.57")))
-            .withReservations(new Reservation(new DateTime("2021-01-20 02:00"), new Remark("2 people")))
+            .withReservations(new Reservation(new ReservationId("000004"),
+                    new DateTime("2021-01-20 02:00"), new Remark("2 people")))
             .build();
     public static final Member DANIEL = new MemberBuilder().withId("00004").withName("Daniel Meier")
             .withPhone("87652533").withEmail("cornelia@example.com").withAddress("10th street")
@@ -94,7 +102,8 @@ public class TypicalMembers {
             .withTimestamp(VALID_REGISTRATION_TIMESTAMP_AMY).withCredit(VALID_CREDIT_AMY).withPoint(VALID_POINT_AMY)
             .withTransactions(new Transaction(new Timestamp(VALID_TRANSACTION_TIMESTAMP_200),
                     new Billing(VALID_TRANSACTION_BILLING_200)))
-            .withReservations(new Reservation(new DateTime(VALID_RESERVATION_DATE_TIME_200),
+            .withReservations(new Reservation(new ReservationId(VALID_RESERVATION_ID_200_AMY),
+                    new DateTime(VALID_RESERVATION_DATE_TIME_200),
                     new Remark(VALID_RESERVATION_REMARK_200)))
             .withTags(VALID_TAG_FRIEND).build();
     public static final Member BOB = new MemberBuilder().withId(VALID_ID_BOB).withName(VALID_NAME_BOB)
@@ -106,9 +115,11 @@ public class TypicalMembers {
                     new Transaction(new Timestamp(VALID_TRANSACTION_TIMESTAMP_300),
                             new Billing(VALID_TRANSACTION_BILLING_300)))
             .withReservations(
-                    new Reservation(new DateTime(VALID_RESERVATION_DATE_TIME_200),
+                    new Reservation(new ReservationId(VALID_RESERVATION_ID_200_BOB),
+                            new DateTime(VALID_RESERVATION_DATE_TIME_200),
                             new Remark(VALID_RESERVATION_REMARK_200)),
-                    new Reservation(new DateTime(VALID_RESERVATION_DATE_TIME_300),
+                    new Reservation(new ReservationId(VALID_RESERVATION_ID_300_BOB),
+                            new DateTime(VALID_RESERVATION_DATE_TIME_300),
                             new Remark(VALID_RESERVATION_REMARK_300)))
             .withTags(VALID_TAG_HUSBAND, VALID_TAG_FRIEND).build();
 

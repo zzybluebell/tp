@@ -84,7 +84,7 @@ public class AddTransactionCommand extends AddCommand {
         Address updatedAddress = memberToEdit.getAddress();
         Timestamp updateTimestamp = memberToEdit.getTimestamp();
         List<Transaction> transactions = memberToEdit.getTransactions();
-        Set<Reservation> reservations = memberToEdit.getReservations();
+        List<Reservation> reservations = memberToEdit.getReservations();
         Set<Tag> updatedTags = memberToEdit.getTags();
         List<Transaction> updatedTransactions = new ArrayList<>(transactions);
         updatedTransactions.add(transaction);

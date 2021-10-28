@@ -6,6 +6,7 @@ import static seedu.address.logic.parser.CliSyntax.PREFIX_ID;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_REMARK;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_RESERVATION;
 
+import java.util.List;
 import java.util.stream.Stream;
 
 import seedu.address.commons.status.ExecutionStatus;
@@ -13,15 +14,18 @@ import seedu.address.logic.commands.AddReservationCommand;
 import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.model.Model;
 import seedu.address.model.member.Id;
+import seedu.address.model.member.Member;
 import seedu.address.model.reservation.DateTime;
 import seedu.address.model.reservation.Remark;
 import seedu.address.model.reservation.Reservation;
+import seedu.address.model.reservation.ReservationId;
 
 /**
  * Parses input arguments and creates a new AddReservationCommand object
  */
 public class AddReservationCommandParser extends AddCommandParser implements Parser<AddReservationCommand> {
 
+    private static final String ID_STUB = "000001";
     private final Model model;
     private final ExecutionStatus executionStatus;
 
@@ -31,6 +35,22 @@ public class AddReservationCommandParser extends AddCommandParser implements Par
     public AddReservationCommandParser(Model model, ExecutionStatus executionStatus) {
         this.model = model;
         this.executionStatus = executionStatus;
+    }
+
+    private String generateId(Id id) {
+        List<Member> lastShownList = model.getUpdatedMemberList();
+        Member memberToEdit = lastShownList.stream()
+                .filter(member -> id.equals(member.getId())).findAny().orElse(null);
+        if (memberToEdit != null) {
+            List<Reservation> reservationList = memberToEdit.getReservations();
+            long latestId = 0;
+            if (reservationList.size() > 0) {
+                latestId = Long.parseLong(reservationList.get(reservationList.size() - 1).getId().value);
+            }
+            return String.format(Id.PATTERN, latestId + 1);
+        } else {
+            return ID_STUB;
+        }
     }
 
     /**
@@ -51,8 +71,9 @@ public class AddReservationCommandParser extends AddCommandParser implements Par
 
         DateTime dateTime = ParserUtil.parseDateTime(argMultimap.getValue(PREFIX_DATE_TIME).get());
         Remark remark = ParserUtil.parseRemark(argMultimap.getValue(PREFIX_REMARK).get());
-        Id id = ParserUtil.parseId(argMultimap.getValue(PREFIX_ID).get());
-        Reservation reservation = new Reservation(dateTime, remark);
+        Id id = ParserUtil.parseMemberId(argMultimap.getValue(PREFIX_ID).get());
+        ReservationId reservationId = ParserUtil.parseReservationId(generateId(id));
+        Reservation reservation = new Reservation(reservationId, dateTime, remark);
 
         return new AddReservationCommand(reservation, id);
     }

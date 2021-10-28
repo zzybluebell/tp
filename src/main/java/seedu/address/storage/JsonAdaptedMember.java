@@ -188,7 +188,7 @@ class JsonAdaptedMember {
 
         final List<Transaction> modelTransactions = new ArrayList<>(memberTransactions);
 
-        final Set<Reservation> modelReservations = new HashSet<>(memberReservations);
+        final List<Reservation> modelReservations = new ArrayList<>(memberReservations);
 
         return new Member(modelId, modelName, modelPhone, modelEmail, modelAddress, modelTimestamp, modelCredit,
                 modelPoint, modelTransactions, modelReservations, modelTags);

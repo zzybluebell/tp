@@ -9,7 +9,6 @@ import static seedu.address.logic.parser.CliSyntax.PREFIX_PHONE;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_TAG;
 
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 import java.util.stream.Stream;
@@ -81,8 +80,8 @@ public class AddMemberCommandParser extends AddCommandParser implements Parser<A
         }
 
         Id id = executionStatus == ExecutionStatus.NORMAL
-                ? ParserUtil.parseId(generateId())
-                : ParserUtil.parseId(generateIdStub());
+                ? ParserUtil.parseMemberId(generateId())
+                : ParserUtil.parseMemberId(generateIdStub());
 
         Name name = ParserUtil.parseName(argMultimap.getValue(PREFIX_NAME).get());
         Phone phone = ParserUtil.parsePhone(argMultimap.getValue(PREFIX_PHONE).get());
@@ -95,7 +94,7 @@ public class AddMemberCommandParser extends AddCommandParser implements Parser<A
         Point point = new Point(credit.getStringValue());
         Set<Tag> tagList = ParserUtil.parseTags(argMultimap.getAllValues(PREFIX_TAG));
         List<Transaction> transactionList = new ArrayList<>();
-        Set<Reservation> reservationList = new HashSet<>();
+        List<Reservation> reservationList = new ArrayList<>();
         Member member = new Member(id, name, phone, email, address, timestamp, credit, point,
                 transactionList, reservationList, tagList);
         return new AddMemberCommand(member);

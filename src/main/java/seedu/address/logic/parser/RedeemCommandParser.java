@@ -50,7 +50,7 @@ public class RedeemCommandParser implements Parser<RedeemCommand> {
 
         if (argMultimap.getValue(PREFIX_ID).isPresent()) {
             List<Point> pointToRedeemList = ParserUtil.parsePoints(argMultimap.getAllValues(PREFIX_REDEEM));
-            Id id = ParserUtil.parseId(argMultimap.getValue(PREFIX_ID).get());
+            Id id = ParserUtil.parseMemberId(argMultimap.getValue(PREFIX_ID).get());
             return new RedeemCommand(pointToRedeemList, id);
         } else if (argMultimap.getValue(PREFIX_INDEX).isPresent()) {
             List<Point> pointToRedeemList = ParserUtil.parsePoints(argMultimap.getAllValues(PREFIX_REDEEM));

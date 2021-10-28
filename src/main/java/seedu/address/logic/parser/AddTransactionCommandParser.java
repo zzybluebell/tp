@@ -53,7 +53,7 @@ public class AddTransactionCommandParser extends AddCommandParser implements Par
         Timestamp timestamp = executionStatus == ExecutionStatus.NORMAL
                 ? ParserUtil.parseTimestamp(DateTimeUtil.generateTimestamp())
                 : ParserUtil.parseTimestamp(DateTimeUtil.generateTimestampStub());
-        Id id = ParserUtil.parseId(argMultimap.getValue(PREFIX_ID).get());
+        Id id = ParserUtil.parseMemberId(argMultimap.getValue(PREFIX_ID).get());
         Transaction transaction = new Transaction(timestamp, billing);
         return new AddTransactionCommand(transaction, id);
     }
