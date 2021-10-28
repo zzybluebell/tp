@@ -150,7 +150,7 @@ public class EditCommand extends Command {
         Credit credit = memberToEdit.getCredit();
         Point point = memberToEdit.getPoint();
         List<Transaction> transactions = memberToEdit.getTransactions();
-        Set<Reservation> reservations = memberToEdit.getReservations();
+        List<Reservation> reservations = memberToEdit.getReservations();
         Set<Tag> updatedTags = editMemberDescriptor.getTags().orElse(memberToEdit.getTags());
         return new Member(id, updatedName, updatedPhone, updatedEmail, updatedAddress, timestamp, credit, point,
                 transactions, reservations, updatedTags);

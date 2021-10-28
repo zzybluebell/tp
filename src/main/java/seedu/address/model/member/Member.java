@@ -35,7 +35,7 @@ public class Member {
 
     private final List<Point> redemptionsList = new ArrayList<>();
     private final List<Transaction> transactions = new ArrayList<>();
-    private final Set<Reservation> reservations = new HashSet<>();
+    private final List<Reservation> reservations = new ArrayList<>();
 
 
 
@@ -44,7 +44,7 @@ public class Member {
      */
     public Member(Id id, Name name, Phone phone, Email email, Address address,
                   Timestamp timestamp, Credit credit, Point point, List<Transaction> transactions,
-                  Set<Reservation> reservations, Set<Tag> tags) {
+                  List<Reservation> reservations, Set<Tag> tags) {
         requireAllNonNull(id, name, phone, email, address, timestamp, credit, point, transactions, reservations, tags);
         this.id = id;
         this.name = name;
@@ -111,8 +111,8 @@ public class Member {
      * Returns an immutable transaction list, which throws {@code UnsupportedOperationException}
      * if modification is attempted.
      */
-    public Set<Reservation> getReservations() {
-        return Collections.unmodifiableSet(reservations);
+    public List<Reservation> getReservations() {
+        return Collections.unmodifiableList(reservations);
     }
 
     /**
@@ -242,7 +242,7 @@ public class Member {
             transactions.forEach(builder::append);
         }
 
-        Set<Reservation> reservations = getReservations();
+        List<Reservation> reservations = getReservations();
         if (!reservations.isEmpty()) {
             builder.append("; Reservations: ");
             reservations.forEach(builder::append);

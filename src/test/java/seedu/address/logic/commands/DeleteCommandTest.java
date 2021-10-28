@@ -30,9 +30,9 @@ public class DeleteCommandTest {
     @Test
     public void execute_validIndexUnfilteredList_success() {
         Member memberToDelete = model.getUpdatedMemberList().get(INDEX_FIRST_MEMBER.getZeroBased());
-        DeleteCommand deleteCommand = new DeleteCommand(INDEX_FIRST_MEMBER);
+        DeleteCommand deleteCommand = new DeleteMemberCommand(INDEX_FIRST_MEMBER);
 
-        String expectedMessage = String.format(DeleteCommand.MESSAGE_DELETE_MEMBER_SUCCESS, memberToDelete);
+        String expectedMessage = String.format(DeleteMemberCommand.MESSAGE_SUCCESS, memberToDelete);
 
         ModelManager expectedModel = new ModelManager(new Account(), model.getEzFoodie(), new UserPrefs());
         expectedModel.deleteMember(memberToDelete);
@@ -43,7 +43,7 @@ public class DeleteCommandTest {
     @Test
     public void execute_invalidIndexUnfilteredList_throwsCommandException() {
         Index outOfBoundIndex = Index.fromOneBased(model.getUpdatedMemberList().size() + 1);
-        DeleteCommand deleteCommand = new DeleteCommand(outOfBoundIndex);
+        DeleteCommand deleteCommand = new DeleteMemberCommand(outOfBoundIndex);
 
         assertCommandFailure(deleteCommand, model, Messages.MESSAGE_INVALID_MEMBER_DISPLAYED_INDEX);
     }
@@ -53,9 +53,9 @@ public class DeleteCommandTest {
         showMemberAtIndex(model, INDEX_FIRST_MEMBER);
 
         Member memberToDelete = model.getUpdatedMemberList().get(INDEX_FIRST_MEMBER.getZeroBased());
-        DeleteCommand deleteCommand = new DeleteCommand(INDEX_FIRST_MEMBER);
+        DeleteCommand deleteCommand = new DeleteMemberCommand(INDEX_FIRST_MEMBER);
 
-        String expectedMessage = String.format(DeleteCommand.MESSAGE_DELETE_MEMBER_SUCCESS, memberToDelete);
+        String expectedMessage = String.format(DeleteMemberCommand.MESSAGE_SUCCESS, memberToDelete);
 
         Model expectedModel = new ModelManager(new Account(), model.getEzFoodie(), new UserPrefs());
         expectedModel.deleteMember(memberToDelete);
@@ -72,21 +72,21 @@ public class DeleteCommandTest {
         // ensures that outOfBoundIndex is still in bounds of ezFoodie list
         assertTrue(outOfBoundIndex.getZeroBased() < model.getEzFoodie().getMemberList().size());
 
-        DeleteCommand deleteCommand = new DeleteCommand(outOfBoundIndex);
+        DeleteCommand deleteCommand = new DeleteMemberCommand(outOfBoundIndex);
 
         assertCommandFailure(deleteCommand, model, Messages.MESSAGE_INVALID_MEMBER_DISPLAYED_INDEX);
     }
 
     @Test
     public void equals() {
-        DeleteCommand deleteFirstCommand = new DeleteCommand(INDEX_FIRST_MEMBER);
-        DeleteCommand deleteSecondCommand = new DeleteCommand(INDEX_SECOND_MEMBER);
+        DeleteCommand deleteFirstCommand = new DeleteMemberCommand(INDEX_FIRST_MEMBER);
+        DeleteCommand deleteSecondCommand = new DeleteMemberCommand(INDEX_SECOND_MEMBER);
 
         // same object -> returns true
         assertTrue(deleteFirstCommand.equals(deleteFirstCommand));
 
         // same values -> returns true
-        DeleteCommand deleteFirstCommandCopy = new DeleteCommand(INDEX_FIRST_MEMBER);
+        DeleteCommand deleteFirstCommandCopy = new DeleteMemberCommand(INDEX_FIRST_MEMBER);
         assertTrue(deleteFirstCommand.equals(deleteFirstCommandCopy));
 
         // different types -> returns false

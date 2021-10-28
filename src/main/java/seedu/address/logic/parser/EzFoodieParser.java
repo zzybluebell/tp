@@ -87,7 +87,7 @@ public class EzFoodieParser {
 
         case DeleteCommand.COMMAND_WORD:
             if (LoginStatus.getLoginStatus() == LoginStatus.MANAGER) {
-                return new DeleteCommandParser().parse(arguments);
+                return new DeleteCommandPrefixParser().parse(arguments).parse(arguments);
             } else {
                 throw new PermissionException(Messages.MESSAGE_PERMISSION_DENIED);
             }
