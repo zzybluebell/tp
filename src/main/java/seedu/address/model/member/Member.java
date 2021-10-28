@@ -250,5 +250,4 @@ public class Member {
 
         return builder.toString();
     }
-
 }

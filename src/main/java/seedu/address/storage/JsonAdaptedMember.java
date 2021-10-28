@@ -38,7 +38,6 @@ class JsonAdaptedMember {
     private final String timestamp;
     private final String credit;
     private final String point;
-
     private final List<JsonAdaptedTransaction> transactions = new ArrayList<>();
     private final List<JsonAdaptedReservation> reservations = new ArrayList<>();
     private final List<JsonAdaptedTag> tagged = new ArrayList<>();

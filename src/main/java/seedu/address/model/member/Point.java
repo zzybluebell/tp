@@ -50,7 +50,7 @@ public class Point {
     @Override
     public boolean equals(Object other) {
         return other == this // short circuit if same object
-                || (other instanceof Credit // instanceof handles nulls
+                || (other instanceof Point // instanceof handles nulls
                 && value.equals(((Point) other).value)); // state check
     }
 
