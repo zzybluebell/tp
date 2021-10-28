@@ -9,6 +9,7 @@ import java.util.Arrays;
 import seedu.address.logic.commands.Command;
 import seedu.address.logic.commands.ViewCommand;
 import seedu.address.logic.parser.exceptions.ParseException;
+import seedu.address.model.member.Id;
 import seedu.address.model.member.IdContainsKeywordsPredicate;
 
 public class ViewCommandParser implements Parser<Command> {
@@ -33,6 +34,15 @@ public class ViewCommandParser implements Parser<Command> {
 
         if (argMultimap.getValue(PREFIX_ID).isPresent()) {
             String trimmedArgs = argMultimap.getValue(PREFIX_ID).get().trim();
+
+            // handle invalid input id format
+            try {
+                Id id = new Id(trimmedArgs);
+            } catch (IllegalArgumentException e) {
+                throw new ParseException(
+                        String.format(MESSAGE_INVALID_COMMAND_FORMAT, ViewCommand.MESSAGE_USAGE));
+            }
+
             if (trimmedArgs.isEmpty()) {
                 throw new ParseException(
                         String.format(MESSAGE_INVALID_COMMAND_FORMAT, ViewCommand.MESSAGE_USAGE));
