@@ -93,7 +93,6 @@ public class EzFoodie implements ReadOnlyEzFoodie {
      */
     public void setMember(Member target, Member editedMember) {
         requireNonNull(editedMember);
-
         members.setMember(target, editedMember);
     }
 

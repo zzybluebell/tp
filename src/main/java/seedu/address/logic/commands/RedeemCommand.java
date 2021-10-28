@@ -1,6 +1,7 @@
 package seedu.address.logic.commands;
 
 import static java.util.Objects.requireNonNull;
+import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_ID;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_INDEX;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_REDEEM;
@@ -27,7 +28,7 @@ import seedu.address.model.reservation.Reservation;
 import seedu.address.model.tag.Tag;
 import seedu.address.model.transaction.Transaction;
 
-public class RedeemPointCommand extends Command {
+public class RedeemCommand extends Command {
 
     public static final String COMMAND_WORD = "redeem";
 
@@ -56,8 +57,8 @@ public class RedeemPointCommand extends Command {
     /**
      * Creates an redeemPointsCommand to add the specified {@code Member}
      */
-    public RedeemPointCommand(List<Point> pointsToRedeemList, Id id) {
-        requireNonNull(id);
+    public RedeemCommand(List<Point> pointsToRedeemList, Id id) {
+        requireAllNonNull(pointsToRedeemList, id);
         this.pointsToRedeemList.addAll(pointsToRedeemList);
         this.idToRedeem = id;
         this.indexToRedeem = null;
@@ -66,8 +67,8 @@ public class RedeemPointCommand extends Command {
     /**
      * Creates an redeemPointsCommand to add the specified {@code Member}
      */
-    public RedeemPointCommand(List<Point> pointsToRedeemList, Index index) {
-        requireNonNull(index);
+    public RedeemCommand(List<Point> pointsToRedeemList, Index index) {
+        requireAllNonNull(pointsToRedeemList, index);
         this.pointsToRedeemList.addAll(pointsToRedeemList);
         this.indexToRedeem = index;
         this.idToRedeem = null;
@@ -107,8 +108,8 @@ public class RedeemPointCommand extends Command {
      * Creates and returns a {@code Member} with the details of {@code memberToEdit}
      * edited with {@code editMemberDescriptor}.
      */
-    private static Member createToRedeemPointsMember(Member memberToRedeemPoints, List<Point> points)
-            throws CommandException{
+    private static Member createToRedeemPointsMember(Member memberToRedeemPoints, List<Point> toRedeemPointsList)
+            throws CommandException {
         assert memberToRedeemPoints != null;
 
         Id id = memberToRedeemPoints.getId();
@@ -121,10 +122,10 @@ public class RedeemPointCommand extends Command {
         List<Transaction> updatedTransactions = memberToRedeemPoints.getTransactions();
         Set<Reservation> updateReservations = memberToRedeemPoints.getReservations();
         Credit updateCredit = memberToRedeemPoints.getCredit();
-        Point toRedeemedPointSum = new Point("" + Math.min(points.stream()
+        Point toRedeemPointsSum = new Point("" + Math.min(toRedeemPointsList.stream()
                 .mapToInt(pointToUpdate -> (int) pointToUpdate.getDoubleValue()).sum(), Point.MAX));
         Point updatePoint = new Point(String.valueOf(memberToRedeemPoints.getPoint().getIntValue()
-                - toRedeemedPointSum.getIntValue()));
+                - toRedeemPointsSum.getIntValue()));
         if (updatePoint.getIntValue() < 0) {
             throw new CommandException(MESSAGE_INVALID_POINTS_LESS_THAN_ZERO);
         }

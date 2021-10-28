@@ -63,7 +63,7 @@ public class AddTransactionCommand extends AddCommand {
         Member memberToEdit = lastShownList.stream()
                 .filter(member -> idToAdd.equals(member.getId())).findAny().orElse(null);
         if (memberToEdit != null) {
-            Member editedMember = createUpdatedCredits(memberToEdit, transactionToAdd);
+            Member editedMember = createUpdatedCreditAndPointsMember(memberToEdit, transactionToAdd);
             model.setMember(memberToEdit, editedMember);
             model.updateFilteredMemberList(PREDICATE_SHOW_ALL_MEMBERS);
             return new CommandResult(String.format(MESSAGE_SUCCESS, editedMember));
@@ -74,7 +74,7 @@ public class AddTransactionCommand extends AddCommand {
     /**
      * Creates and returns a {@code Member} with the details of {@code memberToEdit}
      */
-    private static Member createUpdatedCredits(Member memberToEdit, Transaction transaction) {
+    private static Member createUpdatedCreditAndPointsMember(Member memberToEdit, Transaction transaction) {
         assert memberToEdit != null;
 
         Id id = memberToEdit.getId();
