@@ -29,6 +29,10 @@ public class ViewCommand extends Command {
 
     private final Predicate<Member> predicate;
 
+    /**
+     * Construct the view command based on member id predicate.
+     * @param predicate
+     */
     public ViewCommand(IdContainsKeywordsPredicate predicate) {
         this.predicate = predicate;
     }
@@ -37,7 +41,7 @@ public class ViewCommand extends Command {
     public CommandResult execute(Model model) {
         requireNonNull(model);
         model.updateFilteredMemberListForView(predicate);
-        return new CommandResult(SHOWING_VIEW_MESSAGE, false, false, true);
+        return new CommandResult(SHOWING_VIEW_MESSAGE, false, false, true, false);
     }
 
     @Override

@@ -5,6 +5,7 @@ import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
 
 import java.nio.file.Path;
 import java.util.Comparator;
+import java.util.HashMap;
 import java.util.List;
 import java.util.function.Predicate;
 import java.util.logging.Logger;
@@ -17,6 +18,8 @@ import seedu.address.commons.core.LogsCenter;
 import seedu.address.model.member.Id;
 import seedu.address.model.member.Member;
 import seedu.address.model.member.Point;
+import seedu.address.model.member.Tier;
+import seedu.address.model.transaction.Transaction;
 
 
 /**
@@ -161,6 +164,9 @@ public class ModelManager implements Model {
         ezFoodie.redeemPoints(toRedeemPointsList, idToRedeem);
     }
 
+    //=========== Updated Member List for display =============================================================
+
+
     /**
      * Returns an unmodifiable view of the list of {@code Member} backed by the internal list of
      * {@code versionedEzFoodie}
@@ -178,6 +184,92 @@ public class ModelManager implements Model {
     @Override
     public ObservableList<Member> getUpdatedMemberListForView() {
         return filteredMembersForView;
+    }
+
+    //=========== Summary display =============================================================
+
+    @Override
+    public int getNumberOfMembers() {
+        return ezFoodie.getMemberList().size();
+    }
+
+    @Override
+    public HashMap<String, Integer> getNumberOfMembersByTiers() {
+        HashMap<String, Integer> tierCounts = new HashMap<>();
+        int count;
+        String curTier;
+
+        for (String key : Tier.getAllKeys()) {
+            tierCounts.put(key, 0);
+        }
+
+        for (Member member : ezFoodie.getMemberList()) {
+            curTier = Tier.getTierByCredit(Integer.parseInt(member.getCredit().value));
+            count = tierCounts.get(curTier);
+            tierCounts.put(curTier, count + 1);
+        }
+
+        return tierCounts;
+    }
+
+    @Override
+    public int getNumberOfTransactions() {
+        int count = 0;
+
+        for (Member member : filteredMembers) {
+            count += member.getTransactions().size();
+        }
+
+        return count;
+    }
+
+    @Override
+    public int getNumberOfTransactionsPastMonth() {
+        // todo
+        return (int) Math.random() + 32;
+    }
+
+    @Override
+    public int getNumberOfTransactionsPastThreeMonth() {
+        // todo
+        return (int) Math.random() + 77;
+    }
+
+    @Override
+    public int getNumberOfTransactionsPastSixMonth() {
+        // todo
+        return (int) Math.random() + 100;
+    }
+
+    @Override
+    public double getTotalAmountOfTransactions() {
+        double count = 0;
+
+        for (Member member : filteredMembers) {
+            for (Transaction transaction : member.getTransactions()) {
+                count += Double.parseDouble(transaction.getBilling().value);
+            }
+        }
+
+        return count;
+    }
+
+    @Override
+    public double getTotalAmountOfTransactionsPastMonth() {
+        // todo
+        return Math.random() + 2000;
+    }
+
+    @Override
+    public double getTotalAmountOfTransactionsPastThreeMonth() {
+        // todo
+        return Math.random() + 3000;
+    }
+
+    @Override
+    public double getTotalAmountOfTransactionsPastSixMonth() {
+        // todo
+        return Math.random() + 6000;
     }
 
     //=========== Filtered Member List Accessors =============================================================

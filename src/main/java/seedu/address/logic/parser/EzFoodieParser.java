@@ -23,6 +23,7 @@ import seedu.address.logic.commands.LoginCommand;
 import seedu.address.logic.commands.LogoutCommand;
 import seedu.address.logic.commands.RedeemCommand;
 import seedu.address.logic.commands.SortCommand;
+import seedu.address.logic.commands.SummaryCommand;
 import seedu.address.logic.commands.ViewCommand;
 import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.model.Model;
@@ -121,9 +122,11 @@ public class EzFoodieParser {
         case HelpCommand.COMMAND_WORD:
             return new HelpCommand();
 
+        case SummaryCommand.COMMAND_WORD:
+            return new SummaryCommand();
+
         default:
             throw new ParseException(MESSAGE_UNKNOWN_COMMAND);
         }
     }
-
 }
