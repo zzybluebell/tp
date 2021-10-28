@@ -10,6 +10,7 @@ import static seedu.address.testutil.TypicalMembers.getTypicalEzFoodie;
 
 import java.nio.file.Path;
 import java.util.Comparator;
+import java.util.List;
 import java.util.function.Predicate;
 
 import org.junit.jupiter.api.Test;
@@ -25,6 +26,7 @@ import seedu.address.model.ReadOnlyUserPrefs;
 import seedu.address.model.UserPrefs;
 import seedu.address.model.member.Id;
 import seedu.address.model.member.Member;
+import seedu.address.model.member.Point;
 import seedu.address.model.reservation.Reservation;
 import seedu.address.testutil.MemberBuilder;
 import seedu.address.testutil.ReservationBuilder;
@@ -182,6 +184,11 @@ public class AddReservationCommandTest {
 
         @Override
         public void updateSortedMemberList(Comparator<Member> comparator) {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public void redeemPoints(List<Point> toRedeemPoints, Id idToRedeem) {
             throw new AssertionError("This method should not be called.");
         }
     }

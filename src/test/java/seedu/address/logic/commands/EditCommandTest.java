@@ -44,6 +44,7 @@ public class EditCommandTest {
         Member editedMember = new MemberBuilder().withId(memberToEdit.getId().value)
                 .withTimestamp(memberToEdit.getTimestamp().value)
                 .withCredit(memberToEdit.getCredit().value)
+                .withPoint(memberToEdit.getPoint().value)
                 .withTransactions(memberToEdit.getTransactions().toArray(Transaction[]::new))
                 .withReservations(memberToEdit.getReservations().toArray(Reservation[]::new)).build();
         EditCommand.EditMemberDescriptor descriptor = new EditMemberDescriptorBuilder(editedMember).build();

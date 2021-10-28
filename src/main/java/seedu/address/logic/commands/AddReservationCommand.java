@@ -23,6 +23,7 @@ import seedu.address.model.member.Id;
 import seedu.address.model.member.Member;
 import seedu.address.model.member.Name;
 import seedu.address.model.member.Phone;
+import seedu.address.model.member.Point;
 import seedu.address.model.reservation.Reservation;
 import seedu.address.model.tag.Tag;
 import seedu.address.model.transaction.Transaction;
@@ -88,6 +89,7 @@ public class AddReservationCommand extends AddCommand {
         Address address = memberToEdit.getAddress();
         Timestamp timestamp = memberToEdit.getTimestamp();
         Credit credit = memberToEdit.getCredit();
+        Point point = memberToEdit.getPoint();
         List<Transaction> transactions = memberToEdit.getTransactions();
         Set<Reservation> reservations = memberToEdit.getReservations();
         Set<Tag> tags = memberToEdit.getTags();
@@ -95,7 +97,8 @@ public class AddReservationCommand extends AddCommand {
         Set<Reservation> updatedReservations = new HashSet<>(reservations);
         updatedReservations.add(reservation);
 
-        return new Member(id, name, phone, email, address, timestamp, credit, transactions, updatedReservations, tags);
+        return new Member(id, name, phone, email, address, timestamp, credit, point,
+                transactions, updatedReservations, tags);
     }
 
     @Override

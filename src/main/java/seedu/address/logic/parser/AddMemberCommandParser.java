@@ -27,6 +27,7 @@ import seedu.address.model.member.Id;
 import seedu.address.model.member.Member;
 import seedu.address.model.member.Name;
 import seedu.address.model.member.Phone;
+import seedu.address.model.member.Point;
 import seedu.address.model.reservation.Reservation;
 import seedu.address.model.tag.Tag;
 import seedu.address.model.transaction.Transaction;
@@ -91,13 +92,12 @@ public class AddMemberCommandParser extends AddCommandParser implements Parser<A
                 ? ParserUtil.parseTimestamp(DateTimeUtil.generateTimestamp())
                 : ParserUtil.parseTimestamp(DateTimeUtil.generateTimestampStub());
         Credit credit = new Credit("0");
+        Point point = new Point(credit.getStringValue());
         Set<Tag> tagList = ParserUtil.parseTags(argMultimap.getAllValues(PREFIX_TAG));
         List<Transaction> transactionList = new ArrayList<>();
         Set<Reservation> reservationList = new HashSet<>();
-
-        Member member = new Member(id, name, phone, email, address, timestamp, credit, transactionList, reservationList,
-                tagList);
-
+        Member member = new Member(id, name, phone, email, address, timestamp, credit, point,
+                transactionList, reservationList, tagList);
         return new AddMemberCommand(member);
     }
 

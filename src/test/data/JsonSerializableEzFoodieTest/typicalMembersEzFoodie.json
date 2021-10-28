@@ -8,6 +8,7 @@
     "address" : "123, Jurong West Ave 6, #08-111",
     "timestamp": "1609459200000",
     "credit" : "610",
+    "point" : "610",
     "transactions" : [ {
       "timestamp": "1611100800000",
       "billing": "567.54"
@@ -31,6 +32,7 @@
     "address" : "311, Clementi Ave 2, #02-25",
     "timestamp": "1609462800000",
     "credit" : "645",
+    "point" : "645",
     "transactions" : [ {
       "timestamp": "1611104400000",
       "billing": "645.39"
@@ -48,6 +50,7 @@
     "address" : "wall street",
     "timestamp": "1609466400000",
     "credit" : "272",
+    "point" : "272",
     "transactions" : [ {
       "timestamp": "1611108000000",
       "billing": "272.57"
@@ -65,6 +68,7 @@
     "address" : "10th street",
     "timestamp": "1609470000000",
     "credit" : "0",
+    "point" : "0",
     "transactions" : [ ],
     "reservations" : [ ],
     "tagged" : [ "friends" ]
@@ -76,6 +80,7 @@
     "address" : "michegan ave",
     "timestamp": "1609473600000",
     "credit" : "0",
+    "point" : "0",
     "transactions" : [ ],
     "reservations" : [ ],
     "tagged" : [ ]
@@ -87,6 +92,7 @@
     "address" : "little tokyo",
     "timestamp": "1609477200000",
     "credit" : "0",
+    "point" : "0",
     "transactions" : [ ],
     "reservations" : [ ],
     "tagged" : [ ]
@@ -98,6 +104,7 @@
     "address" : "4th street",
     "timestamp": "1609480800000",
     "credit" : "0",
+    "point" : "0",
     "transactions" : [ ],
     "reservations" : [ ],
     "tagged" : [ ]

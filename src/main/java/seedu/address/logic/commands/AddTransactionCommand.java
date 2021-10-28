@@ -22,6 +22,7 @@ import seedu.address.model.member.Id;
 import seedu.address.model.member.Member;
 import seedu.address.model.member.Name;
 import seedu.address.model.member.Phone;
+import seedu.address.model.member.Point;
 import seedu.address.model.reservation.Reservation;
 import seedu.address.model.tag.Tag;
 import seedu.address.model.transaction.Transaction;
@@ -55,31 +56,6 @@ public class AddTransactionCommand extends AddCommand {
         idToAdd = id;
     }
 
-    /**
-     * Creates and returns a {@code Member} with the details of {@code memberToEdit}
-     */
-    private static Member createUpdatedCredits(Member memberToEdit, Transaction transaction) {
-        assert memberToEdit != null;
-
-        Id id = memberToEdit.getId();
-        Name updatedName = memberToEdit.getName();
-        Phone updatedPhone = memberToEdit.getPhone();
-        Email updatedEmail = memberToEdit.getEmail();
-        Address updatedAddress = memberToEdit.getAddress();
-        Timestamp timestamp = memberToEdit.getTimestamp();
-        List<Transaction> transactions = memberToEdit.getTransactions();
-        Set<Reservation> reservations = memberToEdit.getReservations();
-        Set<Tag> updatedTags = memberToEdit.getTags();
-
-        List<Transaction> updatedTransactions = new ArrayList<>(transactions);
-        updatedTransactions.add(transaction);
-        Credit updatedCredit = new Credit("" + Math.min(updatedTransactions.stream()
-                .mapToInt(t -> (int) t.getBilling().getDoubleValue()).sum(), Credit.MAX));
-
-        return new Member(id, updatedName, updatedPhone, updatedEmail, updatedAddress, timestamp, updatedCredit,
-                updatedTransactions, reservations, updatedTags);
-    }
-
     @Override
     public CommandResult execute(Model model) throws CommandException {
         requireNonNull(model);
@@ -87,13 +63,38 @@ public class AddTransactionCommand extends AddCommand {
         Member memberToEdit = lastShownList.stream()
                 .filter(member -> idToAdd.equals(member.getId())).findAny().orElse(null);
         if (memberToEdit != null) {
-            Member editedMember = createUpdatedCredits(memberToEdit, transactionToAdd);
+            Member editedMember = createUpdatedCreditAndPointsMember(memberToEdit, transactionToAdd);
             model.setMember(memberToEdit, editedMember);
             model.updateFilteredMemberList(PREDICATE_SHOW_ALL_MEMBERS);
             return new CommandResult(String.format(MESSAGE_SUCCESS, editedMember));
         } else {
             throw new CommandException(Messages.MESSAGE_INVALID_MEMBER_DISPLAYED_ID);
         }
+    }
+    /**
+     * Creates and returns a {@code Member} with the details of {@code memberToEdit}
+     */
+    private static Member createUpdatedCreditAndPointsMember(Member memberToEdit, Transaction transaction) {
+        assert memberToEdit != null;
+
+        Id id = memberToEdit.getId();
+        Name updatedName = memberToEdit.getName();
+        Phone updatedPhone = memberToEdit.getPhone();
+        Email updatedEmail = memberToEdit.getEmail();
+        Address updatedAddress = memberToEdit.getAddress();
+        Timestamp updateTimestamp = memberToEdit.getTimestamp();
+        List<Transaction> transactions = memberToEdit.getTransactions();
+        Set<Reservation> reservations = memberToEdit.getReservations();
+        Set<Tag> updatedTags = memberToEdit.getTags();
+        List<Transaction> updatedTransactions = new ArrayList<>(transactions);
+        updatedTransactions.add(transaction);
+        Credit updatedCredit = new Credit("" + Math.min(updatedTransactions.stream()
+                .mapToInt(t -> (int) t.getBilling().getDoubleValue()).sum(), Credit.MAX));
+        Point updatePoint = new Point(String.valueOf(updatedCredit.getIntValue()
+                - memberToEdit.getCredit().getIntValue()
+                + memberToEdit.getPoint().getIntValue()));
+        return new Member(id, updatedName, updatedPhone, updatedEmail, updatedAddress, updateTimestamp, updatedCredit,
+                updatePoint, updatedTransactions, reservations, updatedTags);
     }
 
     @Override
