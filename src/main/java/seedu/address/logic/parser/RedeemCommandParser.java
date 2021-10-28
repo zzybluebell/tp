@@ -48,7 +48,6 @@ public class RedeemCommandParser implements Parser<RedeemCommand> {
                     String.format(MESSAGE_INVALID_COMMAND_FORMAT, RedeemCommand.MESSAGE_USAGE));
         }
 
-
         if (argMultimap.getValue(PREFIX_ID).isPresent()) {
             List<Point> pointToRedeemList = ParserUtil.parsePoints(argMultimap.getAllValues(PREFIX_REDEEM));
             Id id = ParserUtil.parseId(argMultimap.getValue(PREFIX_ID).get());
