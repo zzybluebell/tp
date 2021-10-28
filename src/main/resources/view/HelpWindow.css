@@ -1,3 +1,18 @@
 #copyButton, #helpMessage {
     -fx-font-family: "Open Sans";
 }
+
+HBox {
+    -fx-background-color: #383838;
+}
+
+#helpMessage {
+    -fx-text-fill: white;
+    -fx-opacity: 0.9;
+}
+
+#copyButton {
+    -fx-text-fill: white;
+    -fx-opacity: 1;
+    -fx-background-color: #555555;
+}
