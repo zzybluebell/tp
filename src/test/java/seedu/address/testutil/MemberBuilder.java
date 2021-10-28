@@ -13,6 +13,7 @@ import seedu.address.model.member.Id;
 import seedu.address.model.member.Member;
 import seedu.address.model.member.Name;
 import seedu.address.model.member.Phone;
+import seedu.address.model.member.Point;
 import seedu.address.model.reservation.Reservation;
 import seedu.address.model.tag.Tag;
 import seedu.address.model.transaction.Transaction;
@@ -30,6 +31,7 @@ public class MemberBuilder {
     public static final String DEFAULT_ADDRESS = "123, Jurong West Ave 6, #08-111";
     public static final String DEFAULT_TIMESTAMP = "1610236800000";
     public static final String DEFAULT_CREDIT = "200";
+    public static final String DEFAULT_POINT = "200";
 
     private Id id;
     private Name name;
@@ -38,6 +40,7 @@ public class MemberBuilder {
     private Address address;
     private Timestamp timestamp;
     private Credit credit;
+    private Point point;
     private Set<Tag> tags;
     private List<Transaction> transactions;
     private Set<Reservation> reservations;
@@ -53,6 +56,7 @@ public class MemberBuilder {
         address = new Address(DEFAULT_ADDRESS);
         timestamp = new Timestamp(DEFAULT_TIMESTAMP);
         credit = new Credit(DEFAULT_CREDIT);
+        point = new Point(DEFAULT_POINT);
         tags = new HashSet<>();
         transactions = new ArrayList<>();
         reservations = new HashSet<>();
@@ -69,6 +73,7 @@ public class MemberBuilder {
         address = memberToCopy.getAddress();
         timestamp = memberToCopy.getTimestamp();
         credit = memberToCopy.getCredit();
+        point = memberToCopy.getPoint();
         tags = new HashSet<>(memberToCopy.getTags());
         transactions = new ArrayList<>(memberToCopy.getTransactions());
         reservations = new HashSet<>(memberToCopy.getReservations());
@@ -131,6 +136,14 @@ public class MemberBuilder {
     }
 
     /**
+     * Sets the {@code Point} of the {@code Member} that we are building.
+     */
+    public MemberBuilder withPoint(String point) {
+        this.point = new Point(point);
+        return this;
+    }
+
+    /**
      * Parses the {@code tags} into a {@code Set<Tag>} and set it to the {@code Member} that we are building.
      */
     public MemberBuilder withTags(String ... tags) {
@@ -157,7 +170,6 @@ public class MemberBuilder {
     }
 
     public Member build() {
-        return new Member(id, name, phone, email, address, timestamp, credit, transactions, reservations, tags);
+        return new Member(id, name, phone, email, address, timestamp, credit, point, transactions, reservations, tags);
     }
-
 }

@@ -13,5 +13,4 @@ public class Messages {
     public static final String MESSAGE_INVALID_MEMBER_DISPLAYED_ID = "The member ID provided is invalid";
     public static final String MESSAGE_MEMBERS_LISTED_OVERVIEW = "%1$d members listed!";
     public static final String MESSAGE_PERMISSION_DENIED = "Permission denied! Please login as " + LoginStatus.MANAGER;
-
 }

@@ -51,6 +51,8 @@ public class CommandTestUtil {
     public static final String VALID_RESERVATION_REMARK_300 = "3 people";
     public static final String VALID_CREDIT_AMY = "200";
     public static final String VALID_CREDIT_BOB = "500";
+    public static final String VALID_POINT_AMY = "200";
+    public static final String VALID_POINT_BOB = "500";
     public static final String VALID_TAG_HUSBAND = "husband";
     public static final String VALID_TAG_FRIEND = "friend";
     public static final String VALID_TRANSACTION_TIMESTAMP_200 = "1609459200000";
