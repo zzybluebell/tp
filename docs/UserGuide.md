@@ -38,11 +38,11 @@ ezFoodie is simple and user-friendly. It is optimized for using via a **Command 
 5. Type the command in the command box and press Enter to execute it. e.g. typing **`help`** and pressing Enter will open the help window.<br>
    Some example commands you can try:
 
-   * **`list -m`** : Lists out a certain number of members, show top 50 records by default.
+   * **`list -mem`** : Lists out a certain number of members, show top 50 records by default.
 
-   * **`add -m`**`-n John Doe -p 98765432 -e johndoe@gmail.com` : Adds a contact named `John Doe` to the member list.
+   * **`add -mem`**`-n John Doe -p 98765432 -e johndoe@gmail.com -a 112 Amoy Street, 069907, Singapore` : Adds a contact named `John Doe` to the member list.
 
-   * **`del -m`**`-id 3` : Deletes the member with member ID 3 shown in the current list.
+   * **`del -mem`**`-id 3` : Deletes the member with member ID 3 shown in the current list.
 
    * **`clear`** : Clears the program.
 
@@ -59,10 +59,10 @@ ezFoodie is simple and user-friendly. It is optimized for using via a **Command 
 **:information_source: Notes about the command format:**<br>
 
 * Words in `UPPER_CASE` are the parameters to be supplied by the user.<br>
-  e.g. in `find -m -n <NAME>`, `NAME` is a parameter which can be used as `find -m -n John Doe`.
+  e.g. in `find -mem -n <NAME>`, `NAME` is a parameter which can be used as `find -mem -n John Doe`.
 
 * Items in square brackets are optional.<br>
-  e.g `list -m [-pg <PAGE>]` can be used as `list -m -pg 1` or as `list -m`.
+  e.g `list -mem [-pg <PAGE>]` can be used as `list -mem -pg 1` or as `list -mem`.
 
 * The `list` and `find` are only show top 50 records by default, can use pagination `[-pg <PAGE>]` as optional value to choose different pages.
 
@@ -74,7 +74,11 @@ ezFoodie is simple and user-friendly. It is optimized for using via a **Command 
 
 * Meanings of shortcuts:
 
-  * `-m`: member
+  * `-id`: member ID or transaction ID
+
+  * `-row`: index number of the membet list
+
+  * `-mem`: member
 
   * `-n`: name
 
@@ -82,7 +86,9 @@ ezFoodie is simple and user-friendly. It is optimized for using via a **Command 
 
   * `-e`: email
 
-  * `-t`: transaction
+  * `-a`: address
+
+  * `-txn`: transaction
 
   * `-d`: date
 
@@ -106,26 +112,26 @@ Exits the program.
 
 Format: `exit`
 
-### Listing out a certain number of members : `list -m`
+### Listing out a certain number of members : `list -mem`
 
 Lists out a certain number of members, show top 50 records by default.
 
-Format: `list -m [-pg <PAGE>]`
+Format: `list -mem [-pg <PAGE>]`
 
 Example:
-* `list -m`
-* `list -m -pg 1`
+* `list -mem`
+* `list -mem -pg 1`
 
 ### Adding a member : `add -m`
 
 Adds new member to the member list.
 
-Format: `add -m -n <NAME> -p <PHONE> -e <EMAIL>`
+Format: `add -mem -n <NAME> -p <PHONE> -e <EMAIL> -a <ADDRESS>`
 
 Example:
-* `add -m -n John Doe -p 98765432 -e johndoe@gmail.com`
+* `add -mem -n John Doe -p 98765432 -e johndoe@gmail.com -a 112 Amoy Street, 069907, Singapore`
 
-### Finding members : `find -m`
+### Finding members : `find -mem`
 
 Finds members by different fields which contain any of the given keywords, show top 50 records by default.
 
@@ -134,56 +140,56 @@ Finds members by different fields which contain any of the given keywords, show 
 
 #### Finding member by member ID
 
-Format: `find -m -id <MEMBER_ID>`
+Format: `find -mem -id <MEMBER_ID>`
 
 Example:
-* `find -m -id 10001`
+* `find -mem -id 10001`
 
 #### Finding members by name
 
-Format: `find -m -n <NAME> [-pg <PAGE>]`
+Format: `find -mem -n <NAME> [-pg <PAGE>]`
 
 Example: 
-* `find -m -n John Doe`
+* `find -mem -n John Doe`
  
 #### Finding members by phone
 
-Format: `find -m -p <PHONE> [-pg <PAGE>]`
+Format: `find -mem -p <PHONE> [-pg <PAGE>]`
 
 Example: 
-* `find -m -p 98765432`
+* `find -mem -p 98765432`
 
 #### Finding members by email
 
-Format: `find -m -e <EMAIL> [-pg <PAGE>]`
+Format: `find -mem -e <EMAIL> [-pg <PAGE>]`
 
 Example: 
-* `find -m -e johndoe@gmail.com`
+* `find -mem -e johndoe@gmail.com`
 
 #### Finding members by registration date
 
-Format: `find -m -d <REGISTRATION_DATE> [-pg <PAGE>]`
+Format: `find -mem -d <REGISTRATION_DATE> [-pg <PAGE>]`
 
 Example: 
-* `find -m -d 12-01-2021`
+* `find -mem -d 12-01-2021`
 
-### Viewing member profile : `view -m`
+### Viewing member profile : `show -mem`
 
 Views member from member list by member ID.
 
-Format: `show -m -id <MEMBER_ID>`
+Format: `show -mem -id <MEMBER_ID>`
 
 Example:
-* `show -m -id 10001`
+* `show -mem -id 10001`
 
 ### Adding transaction for members : `add -t`
 
 Adds transaction amount corresponding to member ID.
 
-Format: `add -t -id <MEMBER_ID> -b <BILLING>`
+Format: `add -txn -id <MEMBER_ID> -b <BILLING>`
 
 Example:
-* `add -t -id 10001 -b 200.00`
+* `add -txn -id 10001 -b 200.00`
 
 ### Clearing the program : `clear`
 
@@ -209,111 +215,111 @@ Format: `logout`
 Example:
 * `logout`
 
-### Sorting members by credit : `sort -m`
+### Sorting members by credit : `sort -mem`
 
 #### Sorting member by credit in ascending order
 
-Format: `sort -m -c -a`
+Format: `sort -mem -c -a`
 
 Example:
-* `sort -m -c -a`
+* `sort -mem -c -a`
 
 #### Sorting member by credit in descending order
 
-Format: `sort -m -c -d`
+Format: `sort -mem -c -d`
 
 Example:
-* `sort -m -c -d`
+* `sort -mem -c -d`
 
-### Editing a member : `edit -m`
+### Editing a member : `edit -mem`
 
 Edits different fields in a member's profile, where the member is specified by member ID.
 
 #### Editing member name by member ID
 
-Format: `edit -m -id <MEMBER_ID> -n <NAME>`
+Format: `edit -mem -id <MEMBER_ID> -n <NAME>`
 
 Example:
-* `edit -m -id 10001 -n John Doe`
+* `edit -mem -id 10001 -n John Doe`
 
 #### Editing member phone by member ID
 
-Format: `edit -m -id <MEMBER_ID> -p <PHONE>`
+Format: `edit -mem -id <MEMBER_ID> -p <PHONE>`
 
 Example:
-* `edit -m -id 10001 -p 98765432`
+* `edit -mem -id 10001 -p 98765432`
 
 #### Editing member email by member ID
 
-Format: `edit -m -id <MEMBER_ID> -e <EMAIL>`
+Format: `edit -mem -id <MEMBER_ID> -e <EMAIL>`
 
 Example:
-* `edit -m -id 10001 -e johndoe@gmail.com`
+* `edit -mem -id 10001 -e johndoe@gmail.com`
 
 #### Editing member address by member ID
 
-Format: `edit -m -id <MEMBER_ID> -e <ADDRESS>`
+Format: `edit -mem -id <MEMBER_ID> -e <ADDRESS>`
 
 Example:
-* `edit -m -id 10001 -a 33 Benoi Crescent, 629979, Singapore`
+* `edit -mem -id 10001 -a 33 Benoi Crescent, 629979, Singapore`
 
 #### Editing member transaction by member ID
 
-Format: `edit -m -id <MEMBER_ID> -t <TRANSACTION>`
+Format: `edit -mem -id <MEMBER_ID> -txn <TRANSACTION>`
 
 Example:
-* `edit -m -id 10001 -t 123.45`
+* `edit -mem -id 10001 -txn 123.45`
 
 #### Editing member name by index number
 
-Format: `edit -m -r <INDEX> -n <NAME>`
+Format: `edit -mem -row <INDEX> -n <NAME>`
 
 Example:
-* `edit -m -r 1 -n John Doe`
+* `edit -mem -row 1 -n John Doe`
 
 #### Editing member phone by index number
 
-Format: `edit -m -r <INDEX> -p <PHONE>`
+Format: `edit -mem -row <INDEX> -p <PHONE>`
 
 Example:
-* `edit -m -r 1 -p 98765432`
+* `edit -mem -row 1 -p 98765432`
 
 #### Editing member email by index number
 
-Format: `edit -m -r <INDEX> -e <EMAIL>`
+Format: `edit -mem -row <INDEX> -e <EMAIL>`
 
 Example:
-* `edit -m -r 1 -e johndoe@gmail.com`
+* `edit -mem -row 1 -e johndoe@gmail.com`
 
 #### Editing member address by index number
 
-Format: `edit -m -r <INDEX> -e <ADDRESS>`
+Format: `edit -mem -row <INDEX> -e <ADDRESS>`
 
 Example:
-* `edit -m -r 1 -a 33 Benoi Crescent, 629979, Singapore`
+* `edit -mem -row 1 -a 33 Benoi Crescent, 629979, Singapore`
 
 #### Editing member transaction by index number
 
-Format: `edit -m -r <INDEX> -t <TRANSACTION>`
+Format: `edit -mem -row <INDEX> -txn <TRANSACTION>`
 
 Example:
-* `edit -m -r 1 -t 123.45`
+* `edit -mem -row 1 -txn 123.45`
 
-### Deleting a member : `delete -m`
+### Deleting a member : `delete -mem`
 
 #### Deleting member from member list by member ID
 
-Format: `del -m -id <MEMBER_ID>`
+Format: `del -mem -id <MEMBER_ID>`
 
 Example:
-* `del -m -id 10001`
+* `del -mem -id 10001`
 
 #### Deleting member from member list by index number
 
-Format: `del -m -r <INDEX>`
+Format: `del -mem -row <INDEX>`
 
 Example:
-* `del -m -r 1`
+* `del -mem -row 1`
 
 ### Saving the data
 
@@ -356,29 +362,29 @@ Action | Format, Examples
 --------|------------------
 **View Help** | `help`
 **Exit Program** | `exit`
-**List Members** | *Format* <br> `find -m` <br> *Example* <br> `find -m`
-**Add New Member** | *Format* <br> `add -m -n <NAME> -p <PHONE> -e <EMAIL>` <br> *Example* <br> `add -m -n John Doe -p 98765432 -e johndoe@gmail.com`
-**Find Members by Name** | *Format* <br> `find n <NAME>` <br> *Example* <br> `find -m -n John Doe`
-**Find Members by Phone** | *Format* <br> `find -m -p <PHONE>` <br> *Example* <br> `find -m -p 98765432`
-**Find Members by Email** | *Format* <br> `find -m -e <EMAIL>​` <br> *Example* <br> `find -m -e johndoe@gmail.com`
-**Find Members by Registration Date** | *Format* <br> `find -m -d <REGISTRATION_DATE>` <br> *Example* <br> `find -m -d 12-01-2021`
-**Find Member by Member ID** | *Format* <br> `find -m -id <MEMBER_ID>` <br> *Example* <br> `find -m -id 10001`
-**View Member Profile** | *Format* <br> `show -m -id <MEMBER_ID>` <br> *Example* <br> `show -m -id 10001`
-**Add Transaction for Member** | *Format* <br> `add -t -id <MEMBER_ID> -b <BILLING>` <br> *Example* <br> `add -t -id 10001 -b 200.00`
+**List Members** | *Format* <br> `find -mem` <br> *Example* <br> `find -mem`
+**Add New Member** | *Format* <br> `add -mem -n <NAME> -p <PHONE> -e <EMAIL> -a <ADDRESS>` <br> *Example* <br> `add -mem -n John Doe -p 98765432 -e johndoe@gmail.com -a 112 Amoy Street, 069907, Singapore`
+**Find Members by Name** | *Format* <br> `find n <NAME>` <br> *Example* <br> `find -mem -n John Doe`
+**Find Members by Phone** | *Format* <br> `find -mem -p <PHONE>` <br> *Example* <br> `find -mem -p 98765432`
+**Find Members by Email** | *Format* <br> `find -mem -e <EMAIL>​` <br> *Example* <br> `find -mem -e johndoe@gmail.com`
+**Find Members by Registration Date** | *Format* <br> `find -mem -d <REGISTRATION_DATE>` <br> *Example* <br> `find -mem -d 12-01-2021`
+**Find Member by Member ID** | *Format* <br> `find -mem -id <MEMBER_ID>` <br> *Example* <br> `find -mem -id 10001`
+**View Member Profile** | *Format* <br> `show -mem -id <MEMBER_ID>` <br> *Example* <br> `show -mem -id 10001`
+**Add Transaction for Member** | *Format* <br> `add -txn -id <MEMBER_ID> -b <BILLING>` <br> *Example* <br> `add -txn -id 10001 -b 200.00`
 **Clear Program** | `clear`
 **Login as Manager** | *Format* <br> `login <PASSWORD>` <br> *Example* <br> `login 123456`
 **Logout as Manager** | `logout`
-**Sort Members by Credit in Ascending Order** | *Format* <br> `sort -m -c -a` <br> *Example* <br> `sort -m -c -a`
-**Sort Members by Credit in Descending Order** | *Format* <br> `sort -m -c -d` <br> *Example* <br> `sort -m -c -d`
-**Edit Member Name by Member ID** | *Format* <br> `edit -m -id <MEMBER_ID> -n <NAME>` <br> *Example* <br> `edit -m -id 10001 -n John Doe`
-**Edit Member Phone by Member ID** | *Format* <br> `edit -m -id <MEMBER_ID> -p <PHONE>` <br> *Example* <br> `edit -m -id 10001 -p 98765432`
-**Edit Member Email by Member ID** | *Format* <br> `edit -m -id <MEMBER_ID> -e <EMAIL>` <br> *Example* <br> `edit -m -id 10001 -e johndoe@gmail.com`
-**Edit Member Address by Member ID** | *Format* <br> `edit -m -id <MEMBER_ID> -a <ADDRESS>` <br> *Example* <br> `edit -m -id 10001 -a 33 Benoi Crescent, 629979, Singapore`
-**Edit Member Transaction by Member ID** | *Format* <br> `edit -m -id <MEMBER_ID> -t <TRANSACTION>` <br> *Example* <br> `edit -m -id 10001 -t 123.45`
-**Edit Member Name by Index Number** | *Format* <br> `edit -m -r <INDEX> -n <NAME>` <br> *Example* <br> `edit -m -r 1 -n John Doe`
-**Edit Member Phone by Index Number** | *Format* <br> `edit -m -r <INDEX> -p <PHONE>` <br> *Example* <br> `edit -m -r 1 -p 98765432`
-**Edit Member Email by Index Number** | *Format* <br> `edit -m -r <INDEX> -e <EMAIL>` <br> *Example* <br> `edit -m -r 1 -e johndoe@gmail.com`
-**Edit Member Address by Index Number** | *Format* <br> `edit -m -r <INDEX> -a <ADDRESS>` <br> *Example* <br> `edit -m -r 1 -a 33 Benoi Crescent, 629979, Singapore`
-**Edit Member Transaction by Index Number** | *Format* <br> `edit -m -r <INDEX> -t <TRANSACTION>` <br> *Example* <br> `edit -m -r 1 -t 123.45`
-**Delete Member by Member ID** | *Format* <br> `del -m -id <MEMBER_ID>` <br> *Example* <br> `del -m -id 10001`
-**Delete Member by Index Number** | *Format* <br> `del -m -r <INDEX>` <br> *Example* <br> `del -m -r 1`
+**Sort Members by Credit in Ascending Order** | *Format* <br> `sort -mem -c -a` <br> *Example* <br> `sort -mem -c -a`
+**Sort Members by Credit in Descending Order** | *Format* <br> `sort -mem -c -d` <br> *Example* <br> `sort -mem -c -d`
+**Edit Member Name by Member ID** | *Format* <br> `edit -mem -id <MEMBER_ID> -n <NAME>` <br> *Example* <br> `edit -mem -id 10001 -n John Doe`
+**Edit Member Phone by Member ID** | *Format* <br> `edit -mem -id <MEMBER_ID> -p <PHONE>` <br> *Example* <br> `edit -mem -id 10001 -p 98765432`
+**Edit Member Email by Member ID** | *Format* <br> `edit -mem -id <MEMBER_ID> -e <EMAIL>` <br> *Example* <br> `edit -mem -id 10001 -e johndoe@gmail.com`
+**Edit Member Address by Member ID** | *Format* <br> `edit -mem -id <MEMBER_ID> -a <ADDRESS>` <br> *Example* <br> `edit -mem -id 10001 -a 33 Benoi Crescent, 629979, Singapore`
+**Edit Member Transaction by Member ID** | *Format* <br> `edit -mem -id <MEMBER_ID> -txn <TRANSACTION>` <br> *Example* <br> `edit -mem -id 10001 -txn 123.45`
+**Edit Member Name by Index Number** | *Format* <br> `edit -mem -row <INDEX> -n <NAME>` <br> *Example* <br> `edit -mem -row 1 -n John Doe`
+**Edit Member Phone by Index Number** | *Format* <br> `edit -mem -row <INDEX> -p <PHONE>` <br> *Example* <br> `edit -mem -row 1 -p 98765432`
+**Edit Member Email by Index Number** | *Format* <br> `edit -mem -row <INDEX> -e <EMAIL>` <br> *Example* <br> `edit -mem -row 1 -e johndoe@gmail.com`
+**Edit Member Address by Index Number** | *Format* <br> `edit -mem -row <INDEX> -a <ADDRESS>` <br> *Example* <br> `edit -mem -row 1 -a 33 Benoi Crescent, 629979, Singapore`
+**Edit Member Transaction by Index Number** | *Format* <br> `edit -mem -row <INDEX> -txn <TRANSACTION>` <br> *Example* <br> `edit -mem -row 1 -txn 123.45`
+**Delete Member by Member ID** | *Format* <br> `del -mem -id <MEMBER_ID>` <br> *Example* <br> `del -mem -id 10001`
+**Delete Member by Index Number** | *Format* <br> `del -mem -row <INDEX>` <br> *Example* <br> `del -mem -row 1`
