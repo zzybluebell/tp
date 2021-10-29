@@ -39,6 +39,19 @@ public class Transaction {
     }
 
     /**
+     * Returns true if both transactions have the same id.
+     * This defines a weaker notion of equality between two transactions.
+     */
+    public boolean isSameId(Transaction otherTransaction) {
+        if (otherTransaction == this) {
+            return true;
+        }
+
+        return otherTransaction != null
+                && otherTransaction.getId().equals(getId());
+    }
+
+    /**
      * Returns true if both transactions have the same timestamp and billing.
      * This defines a stronger notion of equality between two transactions.
      */

@@ -35,7 +35,7 @@ public class AddCommandPrefixParser {
      * and returns an AddCommandParser object for execution.
      *
      * @param args to be parsed.
-     * @return AddMemberCommandParser or AddTransactionCommandParser.
+     * @return AddMemberCommandParser or AddTransactionCommandParser or AddReservationCommandParser.
      * @throws ParseException if the user input does not conform the expected format
      */
     public AddCommandParser parse(String args) throws ParseException {

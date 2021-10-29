@@ -29,7 +29,7 @@ public class DeleteTransactionCommandTest {
     private Model model = new ModelManager(new Account(), getTypicalEzFoodie(), new UserPrefs());
 
     @Test
-    public void execute_validIndexUnfilteredList_success() {
+    public void execute_validMemberIdTransactionIdUnfilteredList_success() {
         Member memberToEdit = model.getUpdatedMemberList().get(INDEX_FIRST_MEMBER.getZeroBased());
         Transaction transactionToDelete = memberToEdit.getTransactions().get(INDEX_FIRST_TRANSACTION.getZeroBased());
         DeleteTransactionCommand deleteCommand =
