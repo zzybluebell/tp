@@ -10,6 +10,7 @@ import seedu.address.commons.core.Messages;
 import seedu.address.commons.exceptions.PermissionException;
 import seedu.address.commons.status.ExecutionStatus;
 import seedu.address.commons.status.LoginStatus;
+import seedu.address.commons.util.CommandUtil;
 import seedu.address.logic.commands.AddCommand;
 import seedu.address.logic.commands.ClearCommand;
 import seedu.address.logic.commands.Command;
@@ -70,6 +71,8 @@ public class EzFoodieParser {
         if (!matcher.matches()) {
             throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, HelpCommand.MESSAGE_USAGE));
         }
+
+        CommandUtil.addCommand(userInput);
 
         final String commandWord = matcher.group("commandWord");
         final String arguments = matcher.group("arguments");
