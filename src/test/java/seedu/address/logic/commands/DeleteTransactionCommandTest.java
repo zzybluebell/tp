@@ -16,6 +16,7 @@ import seedu.address.model.ModelManager;
 import seedu.address.model.UserPrefs;
 import seedu.address.model.member.Credit;
 import seedu.address.model.member.Member;
+import seedu.address.model.member.Point;
 import seedu.address.model.transaction.Transaction;
 import seedu.address.testutil.MemberBuilder;
 
@@ -39,8 +40,12 @@ public class DeleteTransactionCommandTest {
                 .filter(transaction -> !transaction.equals(transactionToDelete)).collect(Collectors.toList());
         Credit expectedCredit = new Credit("" + Math.min(expectedTransactions.stream()
                 .mapToInt(t -> (int) t.getBilling().getDoubleValue()).sum(), Credit.MAX));
+        Point expectedPoint = new Point(String.valueOf(expectedCredit.getIntValue()
+                - memberToEdit.getCredit().getIntValue()
+                + memberToEdit.getPoint().getIntValue()));
         Member expectedMember = new MemberBuilder(memberToEdit).withCredit(expectedCredit.value)
-                .withTransactions(expectedTransactions.toArray(Transaction[]::new)).build();
+                .withPoint(expectedPoint.value).withTransactions(expectedTransactions.toArray(Transaction[]::new))
+                .build();
         expectedModel.setMember(memberToEdit, expectedMember);
         String expectedMessage = String.format(DeleteTransactionCommand.MESSAGE_SUCCESS, expectedMember);
 

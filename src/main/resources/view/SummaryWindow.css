@@ -1,4 +1,4 @@
-#copyButton, #helpMessage {
+#copyButton, #summaryMessage {
     -fx-font-family: "Open Sans";
 }
 
@@ -6,7 +6,7 @@ HBox {
     -fx-background-color: #383838;
 }
 
-#helpMessage {
+#summaryMessage {
     -fx-text-fill: white;
     -fx-opacity: 0.9;
 }

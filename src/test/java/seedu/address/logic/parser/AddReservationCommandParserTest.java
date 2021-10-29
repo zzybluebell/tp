@@ -13,6 +13,7 @@ import static seedu.address.logic.commands.CommandTestUtil.RESERVATION_REMARK_DE
 import static seedu.address.logic.commands.CommandTestUtil.RESERVATION_REMARK_DESC_300;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_ID_AMY;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_RESERVATION_DATE_TIME_200;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_RESERVATION_ID_200_AMY;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_RESERVATION_REMARK_200;
 import static seedu.address.logic.parser.CommandParserTestUtil.assertParseFailure;
 import static seedu.address.logic.parser.CommandParserTestUtil.assertParseSuccess;
@@ -36,7 +37,8 @@ class AddReservationCommandParserTest {
 
     @Test
     public void parse_allFieldsPresent_success() {
-        Reservation expectedReservation = new ReservationBuilder().withDateTime(VALID_RESERVATION_DATE_TIME_200)
+        Reservation expectedReservation = new ReservationBuilder().withId(VALID_RESERVATION_ID_200_AMY)
+                .withDateTime(VALID_RESERVATION_DATE_TIME_200)
                 .withRemark(VALID_RESERVATION_REMARK_200).build();
         Id expectedId = new Id(VALID_ID_AMY);
 

@@ -42,6 +42,13 @@ public class Credit {
         return Integer.parseInt(value);
     }
 
+    /**
+     * Returns String value of credit for Point use.
+     */
+    public String getStringValue() {
+        return value;
+    }
+
     @Override
     public String toString() {
         return value;
