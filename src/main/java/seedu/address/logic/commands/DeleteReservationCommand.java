@@ -3,7 +3,7 @@ package seedu.address.logic.commands;
 import static java.util.Objects.requireNonNull;
 import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_ID;
-import static seedu.address.logic.parser.CliSyntax.PREFIX_TRANSACTION;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_RESERVATION;
 import static seedu.address.model.Model.PREDICATE_SHOW_ALL_MEMBERS;
 
 import java.util.ArrayList;
@@ -17,72 +17,68 @@ import seedu.address.model.Timestamp;
 import seedu.address.model.member.Address;
 import seedu.address.model.member.Credit;
 import seedu.address.model.member.Email;
-import seedu.address.model.member.Id;
 import seedu.address.model.member.Member;
 import seedu.address.model.member.Name;
 import seedu.address.model.member.Phone;
 import seedu.address.model.member.Point;
+import seedu.address.model.reservation.Id;
 import seedu.address.model.reservation.Reservation;
 import seedu.address.model.tag.Tag;
 import seedu.address.model.transaction.Transaction;
 
 /**
- * Deletes a transaction identified by it's member ID and transaction ID from the ezFoodie.
+ * Deletes a reservation identified by it's member ID and reservation ID from the ezFoodie.
  */
-public class DeleteTransactionCommand extends DeleteCommand {
+public class DeleteReservationCommand extends DeleteCommand {
 
     public static final String COMMAND_WORD = "del";
 
     public static final String MESSAGE_USAGE = COMMAND_WORD
-            + ": Deletes the transaction identified by the member ID and transaction ID.\n"
+            + ": Deletes the reservation identified by the member ID and reservation ID.\n"
             + "Parameters:\n"
-            + "Delete by member ID and transaction ID: "
-            + PREFIX_TRANSACTION + " [" + PREFIX_ID + " member ID + transaction ID]\n"
+            + "Delete by member ID and reservation ID: "
+            + PREFIX_RESERVATION + " [" + PREFIX_ID + " member ID + reservation ID]\n"
             + "Example:\n"
-            + "Delete by member ID and transaction ID: "
-            + COMMAND_WORD + " " + PREFIX_TRANSACTION + " " + PREFIX_ID + " 10001100001";
+            + "Delete by member ID and reservation ID: "
+            + COMMAND_WORD + " " + PREFIX_RESERVATION + " " + PREFIX_ID + " 10001100001";
 
-    public static final String MESSAGE_SUCCESS = "Deleted Transaction: %1$s";
+    public static final String MESSAGE_SUCCESS = "Deleted reservation: %1$s";
 
     private final seedu.address.model.member.Id memberId;
-    private final seedu.address.model.transaction.Id transactionId;
+    private final Id reservationId;
 
     /**
      * Creates an DeleteCommand to delete the specified {@code Member} by member ID and transaction ID
      */
-    public DeleteTransactionCommand(
-            seedu.address.model.member.Id memberId, seedu.address.model.transaction.Id transactionId) {
-        requireAllNonNull(memberId, transactionId);
+    public DeleteReservationCommand(seedu.address.model.member.Id memberId, Id reservationId) {
+        requireAllNonNull(memberId, reservationId);
         this.memberId = memberId;
-        this.transactionId = transactionId;
+        this.reservationId = reservationId;
     }
 
     /**
      * Creates and returns a {@code Member} with the details of {@code memberToEdit}
      */
-    private static Member createUpdatedCredits(Member memberToEdit, Transaction transaction) {
+    private static Member createUpdatedReservation(Member memberToEdit, Reservation reservation) {
         assert memberToEdit != null;
 
-        Id id = memberToEdit.getId();
+        seedu.address.model.member.Id id = memberToEdit.getId();
         Name updatedName = memberToEdit.getName();
         Phone updatedPhone = memberToEdit.getPhone();
         Email updatedEmail = memberToEdit.getEmail();
         Address updatedAddress = memberToEdit.getAddress();
         Timestamp timestamp = memberToEdit.getTimestamp();
+        Point point = memberToEdit.getPoint();
+        Credit credit = memberToEdit.getCredit();
         List<Transaction> transactions = memberToEdit.getTransactions();
         List<Reservation> reservations = memberToEdit.getReservations();
         Set<Tag> updatedTags = memberToEdit.getTags();
 
-        List<Transaction> updatedTransactions = new ArrayList<>(transactions);
-        updatedTransactions.remove(transaction);
-        Credit updatedCredit = new Credit("" + Math.min(updatedTransactions.stream()
-                .mapToInt(t -> (int) t.getBilling().getDoubleValue()).sum(), Credit.MAX));
-        Point updatePoint = new Point(String.valueOf(updatedCredit.getIntValue()
-                - memberToEdit.getCredit().getIntValue()
-                + memberToEdit.getPoint().getIntValue()));
+        List<Reservation> updatedReservations = new ArrayList<>(reservations);
+        updatedReservations.remove(reservation);
 
-        return new Member(id, updatedName, updatedPhone, updatedEmail, updatedAddress, timestamp, updatedCredit,
-                updatePoint, updatedTransactions, reservations, updatedTags);
+        return new Member(id, updatedName, updatedPhone, updatedEmail, updatedAddress, timestamp, credit, point,
+                transactions, reservations, updatedTags);
     }
 
     @Override
@@ -92,15 +88,15 @@ public class DeleteTransactionCommand extends DeleteCommand {
         Member memberToEdit = lastShownList.stream()
                 .filter(member -> memberId.equals(member.getId())).findAny().orElse(null);
         if (memberToEdit != null) {
-            Transaction transactionToDelete = memberToEdit.getTransactions().stream()
-                    .filter(transaction -> transactionId.equals(transaction.getId())).findAny().orElse(null);
-            if (transactionToDelete != null) {
-                Member editedMember = createUpdatedCredits(memberToEdit, transactionToDelete);
+            Reservation reservationToDelete = memberToEdit.getReservations().stream()
+                    .filter(reservation -> reservationId.equals(reservation.getId())).findAny().orElse(null);
+            if (reservationToDelete != null) {
+                Member editedMember = createUpdatedReservation(memberToEdit, reservationToDelete);
                 model.setMember(memberToEdit, editedMember);
                 model.updateFilteredMemberList(PREDICATE_SHOW_ALL_MEMBERS);
                 return new CommandResult(String.format(MESSAGE_SUCCESS, editedMember));
             } else {
-                throw new CommandException(Messages.MESSAGE_INVALID_TRANSACTION_DISPLAYED_ID);
+                throw new CommandException(Messages.MESSAGE_INVALID_RESERVATION_DISPLAYED_ID);
             }
         } else {
             throw new CommandException(Messages.MESSAGE_INVALID_MEMBER_DISPLAYED_ID);
@@ -110,8 +106,8 @@ public class DeleteTransactionCommand extends DeleteCommand {
     @Override
     public boolean equals(Object other) {
         return other == this // short circuit if same object
-                || (other instanceof DeleteTransactionCommand // instanceof handles nulls
-                && memberId.equals(((DeleteTransactionCommand) other).memberId)
-                && transactionId.equals(((DeleteTransactionCommand) other).transactionId)); // state check
+                || (other instanceof DeleteReservationCommand // instanceof handles nulls
+                && memberId.equals(((DeleteReservationCommand) other).memberId)
+                && reservationId.equals(((DeleteReservationCommand) other).reservationId)); // state check
     }
 }

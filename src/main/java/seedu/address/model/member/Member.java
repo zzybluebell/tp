@@ -30,17 +30,20 @@ public class Member {
     private final Address address;
     private final Timestamp timestamp;
     private final Credit credit;
+    private final Point point;
     private final Set<Tag> tags = new HashSet<>();
+
+    private final List<Point> redemptionsList = new ArrayList<>();
     private final List<Transaction> transactions = new ArrayList<>();
-    private final Set<Reservation> reservations = new HashSet<>();
+    private final List<Reservation> reservations = new ArrayList<>();
 
     /**
      * Every field must be present and not null.
      */
     public Member(Id id, Name name, Phone phone, Email email, Address address,
-                  Timestamp timestamp, Credit credit, List<Transaction> transactions, Set<Reservation> reservations,
-                  Set<Tag> tags) {
-        requireAllNonNull(id, name, phone, email, address, timestamp, credit, transactions, reservations, tags);
+                  Timestamp timestamp, Credit credit, Point point, List<Transaction> transactions,
+                  List<Reservation> reservations, Set<Tag> tags) {
+        requireAllNonNull(id, name, phone, email, address, timestamp, credit, point, transactions, reservations, tags);
         this.id = id;
         this.name = name;
         this.phone = phone;
@@ -48,6 +51,7 @@ public class Member {
         this.address = address;
         this.timestamp = timestamp;
         this.credit = credit;
+        this.point = point;
         this.tags.addAll(tags);
         this.transactions.addAll(transactions);
         this.reservations.addAll(reservations);
@@ -81,6 +85,10 @@ public class Member {
         return credit;
     }
 
+    public Point getPoint() {
+        return this.point;
+    }
+
     /**
      * Returns an immutable tag set, which throws {@code UnsupportedOperationException}
      * if modification is attempted.
@@ -101,8 +109,16 @@ public class Member {
      * Returns an immutable transaction list, which throws {@code UnsupportedOperationException}
      * if modification is attempted.
      */
-    public Set<Reservation> getReservations() {
-        return Collections.unmodifiableSet(reservations);
+    public List<Reservation> getReservations() {
+        return Collections.unmodifiableList(reservations);
+    }
+
+    /**
+     * Adds addRedemptions.
+     * @param newRedeemPoints
+     */
+    public void addRedemptions(List<Point> newRedeemPoints) {
+        redemptionsList.addAll(newRedeemPoints);
     }
 
     /**
@@ -179,6 +195,7 @@ public class Member {
                 && otherMember.getAddress().equals(getAddress())
                 && otherMember.getTimestamp().equals(getTimestamp())
                 && otherMember.getCredit().equals(getCredit())
+                && otherMember.getPoint().equals(getPoint())
                 && otherMember.getTransactions().equals(getTransactions())
                 && otherMember.getReservations().equals(getReservations())
                 && otherMember.getTags().equals(getTags());
@@ -187,7 +204,8 @@ public class Member {
     @Override
     public int hashCode() {
         // use this method for custom fields hashing instead of implementing your own
-        return Objects.hash(id, name, phone, email, address, timestamp, credit, transactions, reservations, tags);
+        return Objects.hash(id, name, phone, email, address, timestamp, credit, point,
+                transactions, reservations, tags);
     }
 
     @Override
@@ -206,7 +224,9 @@ public class Member {
                 .append("; Timestamp: ")
                 .append(getTimestamp())
                 .append("; Credit: ")
-                .append(getCredit());
+                .append(getCredit())
+                .append("; Point: ")
+                .append(getPoint());
 
         Set<Tag> tags = getTags();
         if (!tags.isEmpty()) {
@@ -220,7 +240,7 @@ public class Member {
             transactions.forEach(builder::append);
         }
 
-        Set<Reservation> reservations = getReservations();
+        List<Reservation> reservations = getReservations();
         if (!reservations.isEmpty()) {
             builder.append("; Reservations: ");
             reservations.forEach(builder::append);
@@ -228,5 +248,4 @@ public class Member {
 
         return builder.toString();
     }
-
 }

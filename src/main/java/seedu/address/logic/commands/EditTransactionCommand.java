@@ -17,13 +17,7 @@ import seedu.address.commons.util.CollectionUtil;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.Model;
 import seedu.address.model.Timestamp;
-import seedu.address.model.member.Address;
-import seedu.address.model.member.Credit;
-import seedu.address.model.member.Email;
-import seedu.address.model.member.Id;
-import seedu.address.model.member.Member;
-import seedu.address.model.member.Name;
-import seedu.address.model.member.Phone;
+import seedu.address.model.member.*;
 import seedu.address.model.reservation.Reservation;
 import seedu.address.model.tag.Tag;
 import seedu.address.model.transaction.Billing;
@@ -86,7 +80,7 @@ public class EditTransactionCommand extends EditCommand {
         Address updatedAddress = memberToEdit.getAddress();
         Timestamp timestamp = memberToEdit.getTimestamp();
         List<Transaction> transactions = memberToEdit.getTransactions();
-        Set<Reservation> reservations = memberToEdit.getReservations();
+        List<Reservation> reservations = memberToEdit.getReservations();
         Set<Tag> updatedTags = memberToEdit.getTags();
 
         // Transaction
@@ -101,9 +95,12 @@ public class EditTransactionCommand extends EditCommand {
                         .set(updatedTransactions.indexOf(transaction), updatedTransaction));
         Credit updatedCredit = new Credit("" + Math.min(updatedTransactions.stream()
                 .mapToInt(t -> (int) t.getBilling().getDoubleValue()).sum(), Credit.MAX));
+        Point updatePoint = new Point(String.valueOf(updatedCredit.getIntValue()
+                - memberToEdit.getCredit().getIntValue()
+                + memberToEdit.getPoint().getIntValue()));
 
         return new Member(id, updatedName, updatedPhone, updatedEmail, updatedAddress, timestamp, updatedCredit,
-                updatedTransactions, reservations, updatedTags);
+                updatePoint, updatedTransactions, reservations, updatedTags);
     }
 
     @Override
