@@ -2,16 +2,13 @@ package seedu.address.logic.parser;
 
 import static seedu.address.commons.core.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_ID;
-import static seedu.address.logic.parser.CliSyntax.PREFIX_INDEX;
-import static seedu.address.logic.parser.CliSyntax.PREFIX_MEMBER;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_TRANSACTION;
 import static seedu.address.logic.parser.CommandParserTestUtil.assertParseFailure;
 import static seedu.address.logic.parser.CommandParserTestUtil.assertParseSuccess;
-import static seedu.address.testutil.TypicalIndexes.INDEX_FIRST_MEMBER;
 
 import org.junit.jupiter.api.Test;
 
-import seedu.address.logic.commands.DeleteMemberCommand;
-import seedu.address.model.member.Id;
+import seedu.address.logic.commands.DeleteTransactionCommand;
 
 /**
  * As we are only doing white-box testing, our test cases do not cover path variations
@@ -20,22 +17,21 @@ import seedu.address.model.member.Id;
  * The path variation for those two cases occur inside the ParserUtil, and
  * therefore should be covered by the ParserUtilTest.
  */
-public class DeleteMemberCommandParserTest {
+public class DeleteMemberTransactionParserTest {
 
-    private DeleteMemberCommandParser parser = new DeleteMemberCommandParser();
+    private DeleteTransactionCommandParser parser = new DeleteTransactionCommandParser();
 
     @Test
-    public void parse_validArgs_returnsDeleteMemberCommand() {
-        assertParseSuccess(parser, " " + PREFIX_MEMBER + " "
-                + PREFIX_INDEX + " 1", new DeleteMemberCommand(INDEX_FIRST_MEMBER));
-        Id id = new Id("10001");
-        assertParseSuccess(parser, " " + PREFIX_MEMBER + " "
-                + PREFIX_ID + " " + id.value, new DeleteMemberCommand(id));
+    public void parse_validArgs_returnsDeleteCommand() {
+        seedu.address.model.member.Id memberId = new seedu.address.model.member.Id("10001");
+        seedu.address.model.transaction.Id transactionId = new seedu.address.model.transaction.Id("100001");
+        assertParseSuccess(parser, " " + PREFIX_TRANSACTION + " " + PREFIX_ID + " "
+                + memberId.value + transactionId.value, new DeleteTransactionCommand(memberId, transactionId));
     }
 
     @Test
     public void parse_invalidArgs_throwsParseException() {
         assertParseFailure(parser, "a",
-                String.format(MESSAGE_INVALID_COMMAND_FORMAT, DeleteMemberCommand.MESSAGE_USAGE));
+                String.format(MESSAGE_INVALID_COMMAND_FORMAT, DeleteTransactionCommand.MESSAGE_USAGE));
     }
 }

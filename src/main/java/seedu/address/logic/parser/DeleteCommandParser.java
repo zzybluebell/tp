@@ -10,7 +10,7 @@ public abstract class DeleteCommandParser {
 
     /**
      * Parses the given {@code String} of arguments in the context of the DeleteCommand
-     * and returns a DeleteCommand object for execution.
+     * and returns an DeleteCommand object for execution.
      * @throws ParseException if the user input does not conform the expected format
      */
     public abstract DeleteCommand parse(String args) throws ParseException;

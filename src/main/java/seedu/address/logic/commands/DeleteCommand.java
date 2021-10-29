@@ -17,7 +17,6 @@ public abstract class DeleteCommand extends Command {
             + PREFIX_MEMBER + " (member details) or "
             + PREFIX_TRANSACTION + " (transaction details)";
 
-
     @Override
     public abstract CommandResult execute(Model model) throws CommandException;
 
