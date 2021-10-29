@@ -8,32 +8,43 @@ public class CommandUtil {
     private static final int MAX_LENGTH = 30;
     private static final List<String> commands = new ArrayList<>();
 
-    private static int POINTER = 0;
+    private static int pointer = 0;
 
+    /**
+     * Adds command to storage so that it can be retrieved.
+     *
+     * @param command to be added.
+     */
     public static void addCommand(String command) {
         if (!commands.isEmpty() && commands.size() >= MAX_LENGTH) {
             commands.remove(0);
         }
         commands.add(command);
-        POINTER = commands.size();
+        pointer = commands.size();
     }
 
+    /**
+     * Gets previous command from storage.
+     */
     public static String getPreCommand() {
-        if (POINTER > 0) {
-            POINTER--;
-            return commands.get(POINTER);
+        if (pointer > 0) {
+            pointer--;
+            return commands.get(pointer);
         } else {
-            POINTER = -1;
+            pointer = -1;
             return "";
         }
     }
 
+    /**
+     * Gets next command from storage.
+     */
     public static String getNextCommand() {
-        if (POINTER < commands.size() - 1) {
-            POINTER++;
-            return commands.get(POINTER);
+        if (pointer < commands.size() - 1) {
+            pointer++;
+            return commands.get(pointer);
         } else {
-            POINTER = commands.size();
+            pointer = commands.size();
             return "";
         }
     }
