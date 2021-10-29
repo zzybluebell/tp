@@ -2,6 +2,7 @@ package seedu.address.logic.parser;
 
 import static seedu.address.commons.core.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_MEMBER;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_RESERVATION;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_TRANSACTION;
 
 import seedu.address.commons.status.ExecutionStatus;
@@ -30,19 +31,26 @@ public class EditCommandPrefixParser {
      * and returns an EditCommandParser object for execution.
      *
      * @param args to be parsed.
-     * @return EditMemberCommandParser or EditTransactionCommandParser.
+     * @return EditMemberCommandParser or EditTransactionCommandParser or AddReservationCommandParser.
      * @throws ParseException if the user input does not conform the expected format
      */
     public EditCommandParser parse(String args) throws ParseException {
 
-        ArgumentMultimap argMultimap = ArgumentTokenizer.tokenize(args, PREFIX_MEMBER, PREFIX_TRANSACTION);
+        ArgumentMultimap argMultimap = ArgumentTokenizer.tokenize(
+                args, PREFIX_MEMBER, PREFIX_TRANSACTION, PREFIX_RESERVATION);
 
         if (argMultimap.getValue(PREFIX_MEMBER).isPresent()
-                && argMultimap.getValue(PREFIX_TRANSACTION).isEmpty()) {
+                && argMultimap.getValue(PREFIX_TRANSACTION).isEmpty()
+                && argMultimap.getValue(PREFIX_RESERVATION).isEmpty()) {
             return new EditMemberCommandParser();
         } else if (argMultimap.getValue(PREFIX_TRANSACTION).isPresent()
-                && argMultimap.getValue(PREFIX_MEMBER).isEmpty()) {
+                && argMultimap.getValue(PREFIX_MEMBER).isEmpty()
+                && argMultimap.getValue(PREFIX_RESERVATION).isEmpty()) {
             return new EditTransactionCommandParser(executionStatus);
+        } else if (argMultimap.getValue(PREFIX_RESERVATION).isPresent()
+                && argMultimap.getValue(PREFIX_MEMBER).isEmpty()
+                && argMultimap.getValue(PREFIX_TRANSACTION).isEmpty()) {
+            return new EditReservationCommandParser(executionStatus);
         } else {
             throw new ParseException(
                     String.format(MESSAGE_INVALID_COMMAND_FORMAT, EditCommand.MESSAGE_USAGE));
