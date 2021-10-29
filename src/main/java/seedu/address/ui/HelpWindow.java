@@ -23,7 +23,7 @@ public class HelpWindow extends UiPart<Stage> {
             + "Search by email: find -m -e <EMAIL>\n"
             + "Search by registration date: find -m -d <REGISTRATION_DATE>\n"
             + "Search by member ID: find -m -id <MEMBER_ID>\n"
-            + "Adding transaction: add -t -id <MEMBER_ID> -b <BILLING>\n"
+            + "Adding transaction: add -txn -b <BILLING> -id <MEMBER_ID>\n"
             + "View member: show -m -id <MEMBER_ID>\n"
             + "Delete member: del -m -id <MEMBER_ID>\n"
             + "Exit Application: exit\n"

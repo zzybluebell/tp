@@ -13,16 +13,22 @@ import seedu.address.commons.util.DateTimeUtil;
  */
 public class Reservation {
 
+    private final Id id;
     private final DateTime dateTime;
     private final Remark remark;
 
     /**
      * Every field must be present and not null.
      */
-    public Reservation(DateTime dateTime, Remark remark) {
-        requireAllNonNull(dateTime, remark);
+    public Reservation(Id id, DateTime dateTime, Remark remark) {
+        requireAllNonNull(id, dateTime, remark);
+        this.id = id;
         this.dateTime = dateTime;
         this.remark = remark;
+    }
+
+    public Id getId() {
+        return id;
     }
 
     public DateTime getDateTime() {
@@ -62,7 +68,9 @@ public class Reservation {
     @Override
     public String toString() {
         final StringBuilder builder = new StringBuilder();
-        builder.append("DateTime: ")
+        builder.append("Id: ")
+                .append(getId())
+                .append("DateTime: ")
                 .append(getDateTime())
                 .append("; Remark: ")
                 .append(getRemark());

@@ -10,6 +10,8 @@ import static seedu.address.testutil.TypicalMembers.getTypicalEzFoodie;
 
 import java.nio.file.Path;
 import java.util.Comparator;
+import java.util.HashMap;
+import java.util.List;
 import java.util.function.Predicate;
 
 import org.junit.jupiter.api.Test;
@@ -25,6 +27,7 @@ import seedu.address.model.ReadOnlyUserPrefs;
 import seedu.address.model.UserPrefs;
 import seedu.address.model.member.Id;
 import seedu.address.model.member.Member;
+import seedu.address.model.member.Point;
 import seedu.address.model.reservation.Reservation;
 import seedu.address.testutil.MemberBuilder;
 import seedu.address.testutil.ReservationBuilder;
@@ -45,7 +48,8 @@ public class AddReservationCommandTest {
         Id validId = validMember.getId();
         Reservation validReservation = new ReservationBuilder().build();
         CommandResult commandResult = new AddReservationCommand(validReservation, validId).execute(modelStub);
-        Member expectedMember = model.getUpdatedMemberList().get(INDEX_FIRST_MEMBER.getZeroBased());;
+        Member expectedMember = model.getUpdatedMemberList().get(INDEX_FIRST_MEMBER.getZeroBased());
+        ;
 
         assertEquals(String.format(AddReservationCommand.MESSAGE_SUCCESS, expectedMember),
                 commandResult.getFeedbackToUser());
@@ -56,9 +60,11 @@ public class AddReservationCommandTest {
     public void equals() {
         Member alice = new MemberBuilder().withName("Alice").build();
         Member bob = new MemberBuilder().withName("Bob").build();
-        Reservation aliceReservation = new ReservationBuilder().withDateTime("2021-02-01 00:00").withRemark("2 people")
+        Reservation aliceReservation = new ReservationBuilder().withId("100001").withDateTime("2021-02-01 00:00")
+                .withRemark("2 people")
                 .build();
-        Reservation bobReservation = new ReservationBuilder().withDateTime("2021-02-02 00:00").withRemark("3 people")
+        Reservation bobReservation = new ReservationBuilder().withId("100002").withDateTime("2021-02-02 00:00")
+                .withRemark("3 people")
                 .build();
         AddReservationCommand addAliceReservationCommand = new AddReservationCommand(aliceReservation, alice.getId());
         AddReservationCommand addBobReservationCommand = new AddReservationCommand(bobReservation, bob.getId());
@@ -176,12 +182,78 @@ public class AddReservationCommandTest {
         }
 
         @Override
+        public ObservableList<Member> getUpdatedMemberListForView() {
+            throw new AssertionError("This method should not be called.");
+
+        }
+
+        @Override
         public void updateFilteredMemberList(Predicate<Member> predicate) {
             throw new AssertionError("This method should not be called.");
         }
 
         @Override
+        public void updateFilteredMemberListForView(Predicate<Member> predicate) {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
         public void updateSortedMemberList(Comparator<Member> comparator) {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public void redeemPoints(List<Point> toRedeemPoints, Id idToRedeem) {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public int getNumberOfMembers() {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public HashMap<String, Integer> getNumberOfMembersByTiers() {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public int getNumberOfTransactions() {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public int getNumberOfTransactionsPastMonth() {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public int getNumberOfTransactionsPastThreeMonth() {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public int getNumberOfTransactionsPastSixMonth() {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public double getTotalAmountOfTransactions() {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public double getTotalAmountOfTransactionsPastMonth() {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public double getTotalAmountOfTransactionsPastThreeMonth() {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public double getTotalAmountOfTransactionsPastSixMonth() {
             throw new AssertionError("This method should not be called.");
         }
     }

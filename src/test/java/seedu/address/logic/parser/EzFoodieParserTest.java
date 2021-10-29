@@ -30,6 +30,7 @@ import seedu.address.commons.status.SortStatus;
 import seedu.address.logic.commands.AddMemberCommand;
 import seedu.address.logic.commands.ClearCommand;
 import seedu.address.logic.commands.DeleteCommand;
+import seedu.address.logic.commands.DeleteMemberCommand;
 import seedu.address.logic.commands.EditCommand;
 import seedu.address.logic.commands.EditCommand.EditMemberDescriptor;
 import seedu.address.logic.commands.ExitCommand;
@@ -62,7 +63,8 @@ public class EzFoodieParserTest {
 
     @Test
     public void parseCommand_addMember() throws Exception {
-        Member member = new MemberBuilder(AMY).withCredit("0").withTransactions().withReservations().build();
+        Member member = new MemberBuilder(AMY).withCredit("0").withPoint("0").withTransactions()
+                .withReservations().build();
         AddMemberCommand command = (AddMemberCommand) parser.parseCommand(MemberUtil.getAddCommand(member));
         assertEquals(new AddMemberCommand(member), command);
     }
@@ -78,7 +80,7 @@ public class EzFoodieParserTest {
         LoginStatus.setLoginStatus(LoginStatus.MANAGER);
         DeleteCommand command = (DeleteCommand) parser.parseCommand(DeleteCommand.COMMAND_WORD + " "
                 + PREFIX_MEMBER + " " + PREFIX_INDEX + " " + INDEX_FIRST_MEMBER.getOneBased());
-        assertEquals(new DeleteCommand(INDEX_FIRST_MEMBER), command);
+        assertEquals(new DeleteMemberCommand(INDEX_FIRST_MEMBER), command);
     }
 
     @Test
@@ -87,7 +89,7 @@ public class EzFoodieParserTest {
         LoginStatus.setLoginStatus(LoginStatus.MANAGER);
         DeleteCommand command = (DeleteCommand) parser.parseCommand(DeleteCommand.COMMAND_WORD + " "
                 + PREFIX_MEMBER + " " + PREFIX_ID + " " + id.value);
-        assertEquals(new DeleteCommand(id), command);
+        assertEquals(new DeleteMemberCommand(id), command);
     }
 
     @Test

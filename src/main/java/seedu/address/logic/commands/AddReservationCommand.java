@@ -7,7 +7,7 @@ import static seedu.address.logic.parser.CliSyntax.PREFIX_REMARK;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_RESERVATION;
 import static seedu.address.model.Model.PREDICATE_SHOW_ALL_MEMBERS;
 
-import java.util.HashSet;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 
@@ -23,6 +23,7 @@ import seedu.address.model.member.Id;
 import seedu.address.model.member.Member;
 import seedu.address.model.member.Name;
 import seedu.address.model.member.Phone;
+import seedu.address.model.member.Point;
 import seedu.address.model.reservation.Reservation;
 import seedu.address.model.tag.Tag;
 import seedu.address.model.transaction.Transaction;
@@ -88,14 +89,16 @@ public class AddReservationCommand extends AddCommand {
         Address address = memberToEdit.getAddress();
         Timestamp timestamp = memberToEdit.getTimestamp();
         Credit credit = memberToEdit.getCredit();
+        Point point = memberToEdit.getPoint();
         List<Transaction> transactions = memberToEdit.getTransactions();
-        Set<Reservation> reservations = memberToEdit.getReservations();
+        List<Reservation> reservations = memberToEdit.getReservations();
         Set<Tag> tags = memberToEdit.getTags();
 
-        Set<Reservation> updatedReservations = new HashSet<>(reservations);
+        List<Reservation> updatedReservations = new ArrayList<>(reservations);
         updatedReservations.add(reservation);
 
-        return new Member(id, name, phone, email, address, timestamp, credit, transactions, updatedReservations, tags);
+        return new Member(id, name, phone, email, address, timestamp, credit, point,
+                transactions, updatedReservations, tags);
     }
 
     @Override
