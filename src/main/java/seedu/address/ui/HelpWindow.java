@@ -17,15 +17,18 @@ public class HelpWindow extends UiPart<Stage> {
     public static final String OFFICIAL_URL =
             "https://ay2122s1-cs2103t-f12-4.github.io/tp/";
     public static final String HELP_MESSAGE = "Features:\n"
-            + "Add member: add -m -n <NAME> -p <PHONE> -e <EMAIL>\n"
-            + "Search by name: find -m -n <NAME>\n"
-            + "Search by phone: find -m -p <PHONE>\n"
-            + "Search by email: find -m -e <EMAIL>\n"
-            + "Search by registration date: find -m -d <REGISTRATION_DATE>\n"
-            + "Search by member ID: find -m -id <MEMBER_ID>\n"
+            + "Add member: add -mem -n <NAME> -p <PHONE> -e <EMAIL> -a <ADDRESS>\n"
+            + "Search by name: find -mem -n <NAME>\n"
+            + "Search by phone: find -mem -p <PHONE>\n"
+            + "Search by email: find -mem -e <EMAIL>\n"
+            + "Search by registration date: find -mem -d <REGISTRATION_DATE>\n"
+            + "Search by member ID: find -mem -id <MEMBER_ID>\n"
             + "Adding transaction: add -txn -b <BILLING> -id <MEMBER_ID>\n"
-            + "View member: show -m -id <MEMBER_ID>\n"
-            + "Delete member: del -m -id <MEMBER_ID>\n"
+            + "View member: show -mem -id <MEMBER_ID>\n"
+            + "Delete member: del -mem -id <MEMBER_ID>\n"
+            + "Add Reservation: add -rsvn -time <DATETIME> -rm <REMARK> -id <MEMBER_ID>\n"
+            + "Delete Reservation: del -rsvn -id 10001100001\n"
+            + "Redeem points: redeem -f <POINTS> -id <MEMBER_ID>\n"
             + "Exit Application: exit\n"
             + "To view full user guide: " + OFFICIAL_URL;
 
