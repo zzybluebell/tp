@@ -51,10 +51,6 @@ public class EditTransactionCommandParser extends EditCommandParser implements P
                 ParserUtil.parseTransactionId(ids.substring(seedu.address.model.member.Id.LENGTH));
 
         EditTransactionDescriptor editTransactionDescriptor = new EditTransactionDescriptor();
-        Timestamp timestamp = executionStatus == ExecutionStatus.NORMAL
-                ? ParserUtil.parseTimestamp(DateTimeUtil.generateTimestamp())
-                : ParserUtil.parseTimestamp(DateTimeUtil.generateTimestampStub());
-        editTransactionDescriptor.setTimestamp(timestamp);
         if (argMultimap.getValue(PREFIX_BILLING).isPresent()) {
             editTransactionDescriptor.setBilling(
                     ParserUtil.parseBilling(argMultimap.getValue(PREFIX_BILLING).get()));
@@ -62,6 +58,10 @@ public class EditTransactionCommandParser extends EditCommandParser implements P
         if (!editTransactionDescriptor.isAnyFieldEdited()) {
             throw new ParseException(EditTransactionCommand.MESSAGE_NOT_EDITED);
         }
+        Timestamp timestamp = executionStatus == ExecutionStatus.NORMAL
+                ? ParserUtil.parseTimestamp(DateTimeUtil.generateTimestamp())
+                : ParserUtil.parseTimestamp(DateTimeUtil.generateTimestampStub());
+        editTransactionDescriptor.setTimestamp(timestamp);
 
         return new EditTransactionCommand(memberId, transactionId, editTransactionDescriptor);
     }

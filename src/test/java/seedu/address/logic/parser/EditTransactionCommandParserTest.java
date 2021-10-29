@@ -27,7 +27,7 @@ public class EditTransactionCommandParserTest {
 
         // no field specified
         assertParseFailure(parser, " " + PREFIX_TRANSACTION + " " + PREFIX_ID + " 10001100001",
-                String.format(MESSAGE_INVALID_COMMAND_FORMAT, EditTransactionCommand.MESSAGE_USAGE));
+                EditTransactionCommand.MESSAGE_NOT_EDITED);
 
         // no index and no field specified
         assertParseFailure(parser, "", MESSAGE_INVALID_FORMAT);

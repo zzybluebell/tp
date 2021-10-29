@@ -3,12 +3,12 @@ package seedu.address.logic.commands;
 import static java.util.Objects.requireNonNull;
 import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_DATE_TIME;
-import static seedu.address.logic.parser.CliSyntax.PREFIX_REMARK;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_ID;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_REMARK;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_RESERVATION;
 import static seedu.address.model.Model.PREDICATE_SHOW_ALL_MEMBERS;
 
-import java.util.HashSet;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import java.util.Set;
@@ -24,6 +24,7 @@ import seedu.address.model.member.Email;
 import seedu.address.model.member.Member;
 import seedu.address.model.member.Name;
 import seedu.address.model.member.Phone;
+import seedu.address.model.member.Point;
 import seedu.address.model.reservation.DateTime;
 import seedu.address.model.reservation.Remark;
 import seedu.address.model.reservation.Reservation;
@@ -89,19 +90,20 @@ public class EditReservationCommand extends EditCommand {
         Address updatedAddress = memberToEdit.getAddress();
         Timestamp timestamp = memberToEdit.getTimestamp();
         Credit credit = memberToEdit.getCredit();
+        Point point = memberToEdit.getPoint();
         List<Transaction> transactions = memberToEdit.getTransactions();
-        Set<Reservation> reservations = memberToEdit.getReservations();
+        List<Reservation> reservations = memberToEdit.getReservations();
         Set<Tag> updatedTags = memberToEdit.getTags();
 
         // Reservation
         DateTime updatedDateTime = editReservationDescriptor.getDateTime().orElse(reservationToEdit.getDateTime());
         Remark updatedRemark = editReservationDescriptor.getRemark().orElse(reservationToEdit.getRemark());
 
-        Set<Reservation> updatedReservations = new HashSet<>(reservations);
+        List<Reservation> updatedReservations = new ArrayList<>(reservations);
         Reservation updatedReservation = new Reservation(reservationToEdit.getId(), updatedDateTime, updatedRemark);
         updatedReservations.add(updatedReservation);
 
-        return new Member(id, updatedName, updatedPhone, updatedEmail, updatedAddress, timestamp, credit,
+        return new Member(id, updatedName, updatedPhone, updatedEmail, updatedAddress, timestamp, credit, point,
                 transactions, updatedReservations, updatedTags);
     }
 
