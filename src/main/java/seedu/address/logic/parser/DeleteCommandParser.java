@@ -13,7 +13,6 @@ public abstract class DeleteCommandParser {
      * and returns a DeleteCommand object for execution.
      * @throws ParseException if the user input does not conform the expected format
      */
-
     public abstract DeleteCommand parse(String args) throws ParseException;
 
 }

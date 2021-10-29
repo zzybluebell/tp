@@ -9,8 +9,7 @@ import java.util.stream.Stream;
 
 import seedu.address.logic.commands.DeleteReservationCommand;
 import seedu.address.logic.parser.exceptions.ParseException;
-import seedu.address.model.member.Id;
-import seedu.address.model.reservation.ReservationId;
+import seedu.address.model.reservation.Id;
 
 /**
  * Parses input arguments and creates a new DeleteReservationCommand object
@@ -33,10 +32,10 @@ public class DeleteReservationCommandParser extends DeleteCommandParser implemen
         }
 
         String ids = argMultimap.getValue(PREFIX_ID).get();
-        Id memberId =
-                ParserUtil.parseMemberId(ids.substring(0, Id.LENGTH));
-        ReservationId reservationId =
-                ParserUtil.parseReservationId(ids.substring(Id.LENGTH));
+        seedu.address.model.member.Id memberId =
+                ParserUtil.parseMemberId(ids.substring(0, seedu.address.model.member.Id.LENGTH));
+        Id reservationId =
+                ParserUtil.parseReservationId(ids.substring(seedu.address.model.member.Id.LENGTH));
 
         return new DeleteReservationCommand(memberId, reservationId);
     }

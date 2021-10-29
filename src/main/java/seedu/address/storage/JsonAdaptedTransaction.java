@@ -6,6 +6,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import seedu.address.commons.exceptions.IllegalValueException;
 import seedu.address.model.Timestamp;
 import seedu.address.model.transaction.Billing;
+import seedu.address.model.transaction.Id;
 import seedu.address.model.transaction.Transaction;
 
 /**
@@ -15,6 +16,7 @@ class JsonAdaptedTransaction {
 
     public static final String MISSING_FIELD_MESSAGE_FORMAT = "Transaction's %s field is missing!";
 
+    private final String id;
     private final String timestamp;
     private final String billing;
 
@@ -22,9 +24,11 @@ class JsonAdaptedTransaction {
      * Constructs a {@code JsonAdaptedTransaction} with the given transaction details.
      */
     @JsonCreator
-    public JsonAdaptedTransaction(@JsonProperty("timestamp") String timestamp,
+    public JsonAdaptedTransaction(@JsonProperty("id") String id,
+            @JsonProperty("timestamp") String timestamp,
             @JsonProperty("billing") String billing) {
 
+        this.id = id;
         this.timestamp = timestamp;
         this.billing = billing;
     }
@@ -33,6 +37,7 @@ class JsonAdaptedTransaction {
      * Converts a given {@code Transaction} into this class for Jackson use.
      */
     public JsonAdaptedTransaction(Transaction source) {
+        id = source.getId().value;
         timestamp = source.getTimestamp().value;
         billing = source.getBilling().value;
     }
@@ -43,6 +48,12 @@ class JsonAdaptedTransaction {
      * @throws IllegalValueException if there were any data constraints violated in the adapted transaction.
      */
     public Transaction toModelType() throws IllegalValueException {
+        if (id == null) {
+            throw new IllegalValueException(
+                    String.format(MISSING_FIELD_MESSAGE_FORMAT, Id.class.getSimpleName()));
+        }
+        final Id modelId = new Id(id);
+
         if (timestamp == null) {
             throw new IllegalValueException(
                     String.format(MISSING_FIELD_MESSAGE_FORMAT, Timestamp.class.getSimpleName()));
@@ -55,7 +66,7 @@ class JsonAdaptedTransaction {
         }
         final Billing modelBilling = new Billing(billing);
 
-        return new Transaction(modelTimestamp, modelBilling);
+        return new Transaction(modelId, modelTimestamp, modelBilling);
     }
 
 }

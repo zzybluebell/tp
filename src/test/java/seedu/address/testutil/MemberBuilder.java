@@ -161,7 +161,7 @@ public class MemberBuilder {
     }
 
     /**
-     * Parses the {@code reservations} into a {@code Set<Reservation>} and set it to the {@code Member}
+     * Parses the {@code reservations} into a {@code List<Reservation>} and set it to the {@code Member}
      * that we are building.
      */
     public MemberBuilder withReservations(Reservation ... reservations) {

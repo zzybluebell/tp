@@ -1,16 +1,16 @@
-package seedu.address.model.reservation;
+package seedu.address.model.transaction;
 
 import static java.util.Objects.requireNonNull;
 import static seedu.address.commons.util.AppUtil.checkArgument;
 
 /**
- * Represents a Reservation's id in the ezFoodie.
- * Guarantees: ummutable, is valid as declared in {@link #isValidId(String)}
+ * Represents a Transaction's id in the ezFoodie.
+ * Guarantees: immutable; is valid as declared in {@link #isValidId(String)}
  */
-public class ReservationId {
+public class Id {
 
     public static final String MESSAGE_CONSTRAINTS =
-            "Reservation IDs should only contain 6 digits, and it should not be blank";
+            "Transactions should only contain 6 digits, and it should not be blank";
     public static final String VALIDATION_REGEX = "[\\p{Digit}]*";
     public static final String PATTERN = "%06d";
     public static final int LENGTH = 6;
@@ -22,7 +22,7 @@ public class ReservationId {
      *
      * @param id A valid id.
      */
-    public ReservationId(String id) {
+    public Id(String id) {
         requireNonNull(id);
         checkArgument(isValidId(id), MESSAGE_CONSTRAINTS);
         value = id;
@@ -43,12 +43,13 @@ public class ReservationId {
     @Override
     public boolean equals(Object other) {
         return other == this // short circuit if same object
-                || (other instanceof ReservationId // instanceof handles nulls
-                && value.equals(((ReservationId) other).value)); // state check
+                || (other instanceof Id // instanceof handles nulls
+                && value.equals(((Id) other).value)); // state check
     }
 
     @Override
     public int hashCode() {
         return value.hashCode();
     }
+
 }

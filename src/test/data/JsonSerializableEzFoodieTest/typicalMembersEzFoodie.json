@@ -10,18 +10,20 @@
     "credit" : "610",
     "point" : "610",
     "transactions" : [ {
+      "id": "000001",
       "timestamp": "1611100800000",
       "billing": "567.54"
     }, {
+      "id": "000002",
       "timestamp": "1611187200000",
       "billing": "43.34"
     } ],
     "reservations" : [ {
-      "id": "100001",
+      "id": "000001",
       "dateTime": "2021-01-20 00:00",
       "remark": "3 people"
     }, {
-      "id": "100010",
+      "id": "000002",
       "dateTime": "2021-01-21 00:00",
       "remark": "1 people"
     } ],
@@ -36,11 +38,12 @@
     "credit" : "645",
     "point" : "645",
     "transactions" : [ {
+      "id": "000001",
       "timestamp": "1611104400000",
       "billing": "645.39"
     } ],
     "reservations" : [ {
-      "id": "100002",
+      "id": "000001",
       "dateTime": "2021-01-20 01:00",
       "remark": "4 people"
     } ],
@@ -55,11 +58,12 @@
     "credit" : "272",
     "point" : "272",
     "transactions" : [ {
+      "id": "000001",
       "timestamp": "1611108000000",
       "billing": "272.57"
     } ],
     "reservations" : [ {
-      "id": "100003",
+      "id": "000001",
       "dateTime": "2021-01-20 02:00",
       "remark": "2 people"
     } ],

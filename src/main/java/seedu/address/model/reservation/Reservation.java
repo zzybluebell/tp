@@ -13,21 +13,21 @@ import seedu.address.commons.util.DateTimeUtil;
  */
 public class Reservation {
 
-    private final ReservationId id;
+    private final Id id;
     private final DateTime dateTime;
     private final Remark remark;
 
     /**
      * Every field must be present and not null.
      */
-    public Reservation(ReservationId id, DateTime dateTime, Remark remark) {
+    public Reservation(Id id, DateTime dateTime, Remark remark) {
         requireAllNonNull(id, dateTime, remark);
         this.id = id;
         this.dateTime = dateTime;
         this.remark = remark;
     }
 
-    public ReservationId getId() {
+    public Id getId() {
         return id;
     }
 

@@ -5,6 +5,7 @@ import static seedu.address.logic.parser.CliSyntax.PREFIX_BILLING;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_ID;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_TRANSACTION;
 
+import java.util.List;
 import java.util.stream.Stream;
 
 import seedu.address.commons.status.ExecutionStatus;
@@ -14,6 +15,7 @@ import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.model.Model;
 import seedu.address.model.Timestamp;
 import seedu.address.model.member.Id;
+import seedu.address.model.member.Member;
 import seedu.address.model.transaction.Billing;
 import seedu.address.model.transaction.Transaction;
 
@@ -21,6 +23,8 @@ import seedu.address.model.transaction.Transaction;
  * Parses input arguments and creates a new AddCommand object
  */
 public class AddTransactionCommandParser extends AddCommandParser implements Parser<AddTransactionCommand> {
+
+    private static final String ID_STUB = "000001";
 
     private final Model model;
     private final ExecutionStatus executionStatus;
@@ -31,6 +35,26 @@ public class AddTransactionCommandParser extends AddCommandParser implements Par
     public AddTransactionCommandParser(Model model, ExecutionStatus executionStatus) {
         this.model = model;
         this.executionStatus = executionStatus;
+    }
+
+    private String generateId(seedu.address.model.member.Id id) {
+        List<Member> lastShownList = model.getUpdatedMemberList();
+        Member memberToEdit = lastShownList.stream()
+                .filter(member -> id.equals(member.getId())).findAny().orElse(null);
+        if (memberToEdit != null) {
+            List<Transaction> transactionList = memberToEdit.getTransactions();
+            long latestId = 0;
+            if (transactionList.size() > 0) {
+                latestId = Long.parseLong(transactionList.get(transactionList.size() - 1).getId().value);
+            }
+            return String.format(Id.PATTERN, latestId + 1);
+        } else {
+            return ID_STUB;
+        }
+    }
+
+    private String generateIdStub() {
+        return ID_STUB;
     }
 
     /**
@@ -53,9 +77,14 @@ public class AddTransactionCommandParser extends AddCommandParser implements Par
         Timestamp timestamp = executionStatus == ExecutionStatus.NORMAL
                 ? ParserUtil.parseTimestamp(DateTimeUtil.generateTimestamp())
                 : ParserUtil.parseTimestamp(DateTimeUtil.generateTimestampStub());
-        Id id = ParserUtil.parseMemberId(argMultimap.getValue(PREFIX_ID).get());
-        Transaction transaction = new Transaction(timestamp, billing);
-        return new AddTransactionCommand(transaction, id);
+        seedu.address.model.member.Id memberId = ParserUtil.parseMemberId(argMultimap.getValue(PREFIX_ID).get());
+        seedu.address.model.transaction.Id transactionId = executionStatus == ExecutionStatus.NORMAL
+                ? ParserUtil.parseTransactionId(generateId(memberId))
+                : ParserUtil.parseTransactionId(generateIdStub());
+
+        Transaction transaction = new Transaction(transactionId, timestamp, billing);
+
+        return new AddTransactionCommand(transaction, memberId);
     }
 
     /**

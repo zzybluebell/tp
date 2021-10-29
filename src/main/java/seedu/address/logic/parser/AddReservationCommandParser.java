@@ -13,12 +13,10 @@ import seedu.address.commons.status.ExecutionStatus;
 import seedu.address.logic.commands.AddReservationCommand;
 import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.model.Model;
-import seedu.address.model.member.Id;
 import seedu.address.model.member.Member;
 import seedu.address.model.reservation.DateTime;
 import seedu.address.model.reservation.Remark;
 import seedu.address.model.reservation.Reservation;
-import seedu.address.model.reservation.ReservationId;
 
 /**
  * Parses input arguments and creates a new AddReservationCommand object
@@ -37,7 +35,7 @@ public class AddReservationCommandParser extends AddCommandParser implements Par
         this.executionStatus = executionStatus;
     }
 
-    private String generateId(Id id) {
+    private String generateId(seedu.address.model.member.Id id) {
         List<Member> lastShownList = model.getUpdatedMemberList();
         Member memberToEdit = lastShownList.stream()
                 .filter(member -> id.equals(member.getId())).findAny().orElse(null);
@@ -47,10 +45,14 @@ public class AddReservationCommandParser extends AddCommandParser implements Par
             if (reservationList.size() > 0) {
                 latestId = Long.parseLong(reservationList.get(reservationList.size() - 1).getId().value);
             }
-            return String.format(Id.PATTERN, latestId + 1);
+            return String.format(seedu.address.model.member.Id.PATTERN, latestId + 1);
         } else {
             return ID_STUB;
         }
+    }
+
+    private String generateIdStub() {
+        return ID_STUB;
     }
 
     /**
@@ -71,11 +73,14 @@ public class AddReservationCommandParser extends AddCommandParser implements Par
 
         DateTime dateTime = ParserUtil.parseDateTime(argMultimap.getValue(PREFIX_DATE_TIME).get());
         Remark remark = ParserUtil.parseRemark(argMultimap.getValue(PREFIX_REMARK).get());
-        Id id = ParserUtil.parseMemberId(argMultimap.getValue(PREFIX_ID).get());
-        ReservationId reservationId = ParserUtil.parseReservationId(generateId(id));
+        seedu.address.model.member.Id memberId = ParserUtil.parseMemberId(argMultimap.getValue(PREFIX_ID).get());
+        seedu.address.model.reservation.Id reservationId = executionStatus == ExecutionStatus.NORMAL
+                ? ParserUtil.parseReservationId(generateId(memberId))
+                : ParserUtil.parseReservationId(generateIdStub());
+
         Reservation reservation = new Reservation(reservationId, dateTime, remark);
 
-        return new AddReservationCommand(reservation, id);
+        return new AddReservationCommand(reservation, memberId);
     }
 
     /**

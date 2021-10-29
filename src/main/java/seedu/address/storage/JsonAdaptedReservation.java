@@ -5,9 +5,9 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 import seedu.address.commons.exceptions.IllegalValueException;
 import seedu.address.model.reservation.DateTime;
+import seedu.address.model.reservation.Id;
 import seedu.address.model.reservation.Remark;
 import seedu.address.model.reservation.Reservation;
-import seedu.address.model.reservation.ReservationId;
 
 /**
  * Jackson-friendly version of {@link Reservation}.
@@ -48,9 +48,9 @@ class JsonAdaptedReservation {
     public Reservation toModelType() throws IllegalValueException {
         if (id == null) {
             throw new IllegalValueException(
-                    String.format(MISSING_FIELD_MESSAGE_FORMAT, ReservationId.class.getSimpleName()));
+                    String.format(MISSING_FIELD_MESSAGE_FORMAT, Id.class.getSimpleName()));
         }
-        final ReservationId modelId = new ReservationId(id);
+        final Id modelId = new Id(id);
 
         if (dateTime == null) {
             throw new IllegalValueException(

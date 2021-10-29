@@ -17,13 +17,12 @@ import seedu.address.model.Timestamp;
 import seedu.address.model.member.Address;
 import seedu.address.model.member.Credit;
 import seedu.address.model.member.Email;
-import seedu.address.model.member.Id;
 import seedu.address.model.member.Member;
 import seedu.address.model.member.Name;
 import seedu.address.model.member.Phone;
 import seedu.address.model.member.Point;
+import seedu.address.model.reservation.Id;
 import seedu.address.model.reservation.Reservation;
-import seedu.address.model.reservation.ReservationId;
 import seedu.address.model.tag.Tag;
 import seedu.address.model.transaction.Transaction;
 
@@ -45,13 +44,13 @@ public class DeleteReservationCommand extends DeleteCommand {
 
     public static final String MESSAGE_SUCCESS = "Deleted reservation: %1$s";
 
-    private final Id memberId;
-    private final ReservationId reservationId;
+    private final seedu.address.model.member.Id memberId;
+    private final Id reservationId;
 
     /**
      * Creates an DeleteCommand to delete the specified {@code Member} by member ID and transaction ID
      */
-    public DeleteReservationCommand(Id memberId, ReservationId reservationId) {
+    public DeleteReservationCommand(seedu.address.model.member.Id memberId, Id reservationId) {
         requireAllNonNull(memberId, reservationId);
         this.memberId = memberId;
         this.reservationId = reservationId;
@@ -63,7 +62,7 @@ public class DeleteReservationCommand extends DeleteCommand {
     private static Member createUpdatedReservation(Member memberToEdit, Reservation reservation) {
         assert memberToEdit != null;
 
-        Id id = memberToEdit.getId();
+        seedu.address.model.member.Id id = memberToEdit.getId();
         Name updatedName = memberToEdit.getName();
         Phone updatedPhone = memberToEdit.getPhone();
         Email updatedEmail = memberToEdit.getEmail();
