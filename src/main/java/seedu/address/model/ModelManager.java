@@ -5,6 +5,8 @@ import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
 
 import java.nio.file.Path;
 import java.util.Comparator;
+import java.util.HashMap;
+import java.util.List;
 import java.util.function.Predicate;
 import java.util.logging.Logger;
 
@@ -13,7 +15,12 @@ import javafx.collections.transformation.FilteredList;
 import javafx.collections.transformation.SortedList;
 import seedu.address.commons.core.GuiSettings;
 import seedu.address.commons.core.LogsCenter;
+import seedu.address.model.member.Id;
 import seedu.address.model.member.Member;
+import seedu.address.model.member.Point;
+import seedu.address.model.member.Tier;
+import seedu.address.model.transaction.Transaction;
+
 
 /**
  * Represents the in-memory model of the ezFoodie data.
@@ -25,6 +32,7 @@ public class ModelManager implements Model {
     private final EzFoodie ezFoodie;
     private final UserPrefs userPrefs;
     private final FilteredList<Member> filteredMembers;
+    private final FilteredList<Member> filteredMembersForView;
     private final SortedList<Member> sortedMembers;
 
     /**
@@ -41,6 +49,7 @@ public class ModelManager implements Model {
         this.ezFoodie = new EzFoodie(ezFoodie);
         this.userPrefs = new UserPrefs(userPrefs);
         filteredMembers = new FilteredList<>(this.ezFoodie.getMemberList());
+        filteredMembersForView = new FilteredList<>(this.ezFoodie.getMemberList());
         sortedMembers = new SortedList<>(filteredMembers); // Wrap the FilteredList in a SortedList
     }
 
@@ -149,6 +158,15 @@ public class ModelManager implements Model {
         ezFoodie.setMember(target, editedMember);
     }
 
+    @Override
+    public void redeemPoints(List<Point> toRedeemPointsList, Id idToRedeem) {
+        requireNonNull(idToRedeem);
+        ezFoodie.redeemPoints(toRedeemPointsList, idToRedeem);
+    }
+
+    //=========== Updated Member List for display =============================================================
+
+
     /**
      * Returns an unmodifiable view of the list of {@code Member} backed by the internal list of
      * {@code versionedEzFoodie}
@@ -158,12 +176,114 @@ public class ModelManager implements Model {
         return sortedMembers;
     }
 
+    /**
+     * Returns an unmodifiable view of the list of {@code Member} backed by the internal list of
+     * {@code versionedEzFoodie}
+     * for viewCommand to use only
+     */
+    @Override
+    public ObservableList<Member> getUpdatedMemberListForView() {
+        return filteredMembersForView;
+    }
+
+    //=========== Summary display =============================================================
+
+    @Override
+    public int getNumberOfMembers() {
+        return ezFoodie.getMemberList().size();
+    }
+
+    @Override
+    public HashMap<String, Integer> getNumberOfMembersByTiers() {
+        HashMap<String, Integer> tierCounts = new HashMap<>();
+        int count;
+        String curTier;
+
+        for (String key : Tier.getAllKeys()) {
+            tierCounts.put(key, 0);
+        }
+
+        for (Member member : ezFoodie.getMemberList()) {
+            curTier = Tier.getTierByCredit(Integer.parseInt(member.getCredit().value));
+            count = tierCounts.get(curTier);
+            tierCounts.put(curTier, count + 1);
+        }
+
+        return tierCounts;
+    }
+
+    @Override
+    public int getNumberOfTransactions() {
+        int count = 0;
+
+        for (Member member : filteredMembers) {
+            count += member.getTransactions().size();
+        }
+
+        return count;
+    }
+
+    @Override
+    public int getNumberOfTransactionsPastMonth() {
+        // todo
+        return (int) Math.random() + 32;
+    }
+
+    @Override
+    public int getNumberOfTransactionsPastThreeMonth() {
+        // todo
+        return (int) Math.random() + 77;
+    }
+
+    @Override
+    public int getNumberOfTransactionsPastSixMonth() {
+        // todo
+        return (int) Math.random() + 100;
+    }
+
+    @Override
+    public double getTotalAmountOfTransactions() {
+        double count = 0;
+
+        for (Member member : filteredMembers) {
+            for (Transaction transaction : member.getTransactions()) {
+                count += Double.parseDouble(transaction.getBilling().value);
+            }
+        }
+
+        return count;
+    }
+
+    @Override
+    public double getTotalAmountOfTransactionsPastMonth() {
+        // todo
+        return Math.random() + 2000;
+    }
+
+    @Override
+    public double getTotalAmountOfTransactionsPastThreeMonth() {
+        // todo
+        return Math.random() + 3000;
+    }
+
+    @Override
+    public double getTotalAmountOfTransactionsPastSixMonth() {
+        // todo
+        return Math.random() + 6000;
+    }
+
     //=========== Filtered Member List Accessors =============================================================
 
     @Override
     public void updateFilteredMemberList(Predicate<Member> predicate) {
         requireNonNull(predicate);
         filteredMembers.setPredicate(predicate);
+    }
+
+    @Override
+    public void updateFilteredMemberListForView(Predicate<Member> predicate) {
+        requireNonNull(predicate);
+        filteredMembersForView.setPredicate(predicate);
     }
 
     //=========== Sorted Member List Accessors ===============================================================

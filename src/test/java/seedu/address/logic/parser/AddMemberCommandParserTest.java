@@ -50,8 +50,8 @@ public class AddMemberCommandParserTest {
 
     @Test
     public void parse_allFieldsPresent_success() {
-        Member expectedMember = new MemberBuilder(AMY).withCredit("0").withTags(VALID_TAG_FRIEND).withTransactions()
-                .withReservations().build();
+        Member expectedMember = new MemberBuilder(AMY).withCredit("0").withPoint("0")
+                .withTags(VALID_TAG_FRIEND).withTransactions().withReservations().build();
 
         // whitespace only preamble
         assertParseSuccess(parser, PREAMBLE_WHITESPACE + MEMBER_DESC + NAME_DESC_AMY + PHONE_DESC_AMY
@@ -74,7 +74,7 @@ public class AddMemberCommandParserTest {
                 + ADDRESS_DESC_BOB + ADDRESS_DESC_AMY + TAG_DESC_FRIEND, new AddMemberCommand(expectedMember));
 
         // multiple tags - all accepted
-        Member expectedMemberMultipleTags = new MemberBuilder(AMY).withCredit("0")
+        Member expectedMemberMultipleTags = new MemberBuilder(AMY).withCredit("0").withPoint("0")
                 .withTags(VALID_TAG_FRIEND, VALID_TAG_HUSBAND).withTransactions().withReservations().build();
         assertParseSuccess(parser, MEMBER_DESC + NAME_DESC_AMY + PHONE_DESC_AMY + EMAIL_DESC_AMY + ADDRESS_DESC_AMY
                 + TAG_DESC_HUSBAND + TAG_DESC_FRIEND, new AddMemberCommand(expectedMemberMultipleTags));
@@ -83,8 +83,8 @@ public class AddMemberCommandParserTest {
     @Test
     public void parse_optionalFieldsMissing_success() {
         // zero tags
-        Member expectedMember = new MemberBuilder(AMY).withCredit("0").withTags().withTransactions().withReservations()
-                .build();
+        Member expectedMember = new MemberBuilder(AMY).withCredit("0").withPoint("0").withTags()
+                .withTransactions().withReservations().build();
         assertParseSuccess(parser, MEMBER_DESC + NAME_DESC_AMY + PHONE_DESC_AMY + EMAIL_DESC_AMY
                 + ADDRESS_DESC_AMY, new AddMemberCommand(expectedMember));
     }
