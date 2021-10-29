@@ -2,6 +2,7 @@ package seedu.address.logic.parser;
 
 import static seedu.address.commons.core.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_MEMBER;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_RESERVATION;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_TRANSACTION;
 
 import seedu.address.logic.commands.DeleteCommand;
@@ -19,19 +20,26 @@ public class DeleteCommandPrefixParser {
      * and returns an DeleteCommandParser object for execution.
      *
      * @param args to be parsed.
-     * @return DeleteMemberCommandParser or DeleteTransactionCommandParser.
+     * @return DeleteMemberCommandParser or DeleteTransactionCommandParser or DeleteReservationCommandParser.
      * @throws ParseException if the user input does not conform the expected format
      */
     public DeleteCommandParser parse(String args) throws ParseException {
 
-        ArgumentMultimap argMultimap = ArgumentTokenizer.tokenize(args, PREFIX_MEMBER, PREFIX_TRANSACTION);
+        ArgumentMultimap argMultimap = ArgumentTokenizer.tokenize(
+                args, PREFIX_MEMBER, PREFIX_TRANSACTION, PREFIX_RESERVATION);
 
         if (argMultimap.getValue(PREFIX_MEMBER).isPresent()
-                && argMultimap.getValue(PREFIX_TRANSACTION).isEmpty()) {
+                && argMultimap.getValue(PREFIX_TRANSACTION).isEmpty()
+                && argMultimap.getValue(PREFIX_RESERVATION).isEmpty()) {
             return new DeleteMemberCommandParser();
         } else if (argMultimap.getValue(PREFIX_TRANSACTION).isPresent()
-                && argMultimap.getValue(PREFIX_MEMBER).isEmpty()) {
+                && argMultimap.getValue(PREFIX_MEMBER).isEmpty()
+                && argMultimap.getValue(PREFIX_RESERVATION).isEmpty()) {
             return new DeleteTransactionCommandParser();
+        } else if (argMultimap.getValue(PREFIX_RESERVATION).isPresent()
+                && argMultimap.getValue(PREFIX_MEMBER).isEmpty()
+                && argMultimap.getValue(PREFIX_TRANSACTION).isEmpty()) {
+            return new DeleteReservationCommandParser();
         } else {
             throw new ParseException(
                     String.format(MESSAGE_INVALID_COMMAND_FORMAT, DeleteCommand.MESSAGE_USAGE));

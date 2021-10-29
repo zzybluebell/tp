@@ -10,6 +10,8 @@ import static seedu.address.testutil.TypicalMembers.getTypicalEzFoodie;
 
 import java.nio.file.Path;
 import java.util.Comparator;
+import java.util.HashMap;
+import java.util.List;
 import java.util.function.Predicate;
 
 import org.junit.jupiter.api.Test;
@@ -25,6 +27,7 @@ import seedu.address.model.ReadOnlyUserPrefs;
 import seedu.address.model.UserPrefs;
 import seedu.address.model.member.Id;
 import seedu.address.model.member.Member;
+import seedu.address.model.member.Point;
 import seedu.address.model.transaction.Transaction;
 import seedu.address.testutil.MemberBuilder;
 import seedu.address.testutil.TransactionBuilder;
@@ -45,7 +48,8 @@ public class AddTransactionCommandTest {
         Id validId = validMember.getId();
         Transaction validTransaction = new TransactionBuilder().build();
         CommandResult commandResult = new AddTransactionCommand(validTransaction, validId).execute(modelStub);
-        Member expectedMember = model.getUpdatedMemberList().get(INDEX_FIRST_MEMBER.getZeroBased());;
+        Member expectedMember = model.getUpdatedMemberList().get(INDEX_FIRST_MEMBER.getZeroBased());
+        ;
 
         assertEquals(String.format(AddTransactionCommand.MESSAGE_SUCCESS, expectedMember),
                 commandResult.getFeedbackToUser());
@@ -177,12 +181,77 @@ public class AddTransactionCommandTest {
         }
 
         @Override
+        public ObservableList<Member> getUpdatedMemberListForView() {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
         public void updateFilteredMemberList(Predicate<Member> predicate) {
             throw new AssertionError("This method should not be called.");
         }
 
         @Override
+        public void updateFilteredMemberListForView(Predicate<Member> predicate) {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
         public void updateSortedMemberList(Comparator<Member> comparator) {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public void redeemPoints(List<Point> toRedeemPoints, Id idToRedeem) {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public int getNumberOfMembers() {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public HashMap<String, Integer> getNumberOfMembersByTiers() {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public int getNumberOfTransactions() {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public int getNumberOfTransactionsPastMonth() {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public int getNumberOfTransactionsPastThreeMonth() {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public int getNumberOfTransactionsPastSixMonth() {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public double getTotalAmountOfTransactions() {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public double getTotalAmountOfTransactionsPastMonth() {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public double getTotalAmountOfTransactionsPastThreeMonth() {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public double getTotalAmountOfTransactionsPastSixMonth() {
             throw new AssertionError("This method should not be called.");
         }
     }

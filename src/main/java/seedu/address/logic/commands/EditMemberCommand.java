@@ -30,6 +30,7 @@ import seedu.address.model.member.Id;
 import seedu.address.model.member.Member;
 import seedu.address.model.member.Name;
 import seedu.address.model.member.Phone;
+import seedu.address.model.member.Point;
 import seedu.address.model.reservation.Reservation;
 import seedu.address.model.tag.Tag;
 import seedu.address.model.transaction.Transaction;
@@ -144,12 +145,13 @@ public class EditMemberCommand extends EditCommand {
         Address updatedAddress = editMemberDescriptor.getAddress().orElse(memberToEdit.getAddress());
         Timestamp timestamp = memberToEdit.getTimestamp();
         Credit credit = memberToEdit.getCredit();
+        Point point = memberToEdit.getPoint();
         List<Transaction> transactions = memberToEdit.getTransactions();
-        Set<Reservation> reservations = memberToEdit.getReservations();
+        List<Reservation> reservations = memberToEdit.getReservations();
         Set<Tag> updatedTags = editMemberDescriptor.getTags().orElse(memberToEdit.getTags());
 
-        return new Member(id, updatedName, updatedPhone, updatedEmail, updatedAddress, timestamp, credit, transactions,
-                reservations, updatedTags);
+        return new Member(id, updatedName, updatedPhone, updatedEmail, updatedAddress, timestamp, credit, point,
+                transactions, reservations, updatedTags);
     }
 
     @Override
