@@ -5,9 +5,9 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 import seedu.address.commons.exceptions.IllegalValueException;
 import seedu.address.model.reservation.DateTime;
+import seedu.address.model.reservation.Id;
 import seedu.address.model.reservation.Remark;
 import seedu.address.model.reservation.Reservation;
-import seedu.address.model.reservation.Id;
 
 /**
  * Jackson-friendly version of {@link Reservation}.

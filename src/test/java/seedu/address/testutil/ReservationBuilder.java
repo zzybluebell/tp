@@ -1,9 +1,9 @@
 package seedu.address.testutil;
 
 import seedu.address.model.reservation.DateTime;
+import seedu.address.model.reservation.Id;
 import seedu.address.model.reservation.Remark;
 import seedu.address.model.reservation.Reservation;
-import seedu.address.model.reservation.Id;
 
 /**
  * A utility class to help with building Reservation objects.
