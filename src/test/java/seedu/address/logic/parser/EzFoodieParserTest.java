@@ -29,9 +29,9 @@ import seedu.address.commons.status.LoginStatus;
 import seedu.address.commons.status.SortStatus;
 import seedu.address.logic.commands.AddMemberCommand;
 import seedu.address.logic.commands.ClearCommand;
-import seedu.address.logic.commands.DeleteCommand;
-import seedu.address.logic.commands.EditCommand;
-import seedu.address.logic.commands.EditCommand.EditMemberDescriptor;
+import seedu.address.logic.commands.DeleteMemberCommand;
+import seedu.address.logic.commands.EditMemberCommand;
+import seedu.address.logic.commands.EditMemberCommand.EditMemberDescriptor;
 import seedu.address.logic.commands.ExitCommand;
 import seedu.address.logic.commands.FindCommand;
 import seedu.address.logic.commands.HelpCommand;
@@ -62,7 +62,8 @@ public class EzFoodieParserTest {
 
     @Test
     public void parseCommand_addMember() throws Exception {
-        Member member = new MemberBuilder(AMY).withCredit("0").withTransactions().withReservations().build();
+        Member member = new MemberBuilder(AMY).withCredit("0").withPoint("0").withTransactions()
+                .withReservations().build();
         AddMemberCommand command = (AddMemberCommand) parser.parseCommand(MemberUtil.getAddCommand(member));
         assertEquals(new AddMemberCommand(member), command);
     }
@@ -74,20 +75,20 @@ public class EzFoodieParserTest {
     }
 
     @Test
-    public void parseCommand_deleteByIndex() throws Exception {
+    public void parseCommand_deleteMemberByIndex() throws Exception {
         LoginStatus.setLoginStatus(LoginStatus.MANAGER);
-        DeleteCommand command = (DeleteCommand) parser.parseCommand(DeleteCommand.COMMAND_WORD + " "
-                + PREFIX_MEMBER + " " + PREFIX_INDEX + " " + INDEX_FIRST_MEMBER.getOneBased());
-        assertEquals(new DeleteCommand(INDEX_FIRST_MEMBER), command);
+        DeleteMemberCommand command = (DeleteMemberCommand) parser.parseCommand(DeleteMemberCommand.COMMAND_WORD
+                + " " + PREFIX_MEMBER + " " + PREFIX_INDEX + " " + INDEX_FIRST_MEMBER.getOneBased());
+        assertEquals(new DeleteMemberCommand(INDEX_FIRST_MEMBER), command);
     }
 
     @Test
-    public void parseCommand_deleteById() throws Exception {
+    public void parseCommand_deleteMemberById() throws Exception {
         Id id = new Id("10001");
         LoginStatus.setLoginStatus(LoginStatus.MANAGER);
-        DeleteCommand command = (DeleteCommand) parser.parseCommand(DeleteCommand.COMMAND_WORD + " "
-                + PREFIX_MEMBER + " " + PREFIX_ID + " " + id.value);
-        assertEquals(new DeleteCommand(id), command);
+        DeleteMemberCommand command = (DeleteMemberCommand) parser.parseCommand(DeleteMemberCommand.COMMAND_WORD
+                + " " + PREFIX_MEMBER + " " + PREFIX_ID + " " + id.value);
+        assertEquals(new DeleteMemberCommand(id), command);
     }
 
     @Test
@@ -107,13 +108,13 @@ public class EzFoodieParserTest {
     }
 
     @Test
-    public void parseCommand_edit() throws Exception {
+    public void parseCommand_editMember() throws Exception {
         Member member = new MemberBuilder().build();
         EditMemberDescriptor descriptor = new EditMemberDescriptorBuilder(member).build();
-        EditCommand command = (EditCommand) parser.parseCommand(EditCommand.COMMAND_WORD + " "
+        EditMemberCommand command = (EditMemberCommand) parser.parseCommand(EditMemberCommand.COMMAND_WORD + " "
                 + PREFIX_MEMBER + " " + PREFIX_INDEX + " " + INDEX_FIRST_MEMBER.getOneBased() + " "
                 + MemberUtil.getEditMemberDescriptorDetails(descriptor));
-        assertEquals(new EditCommand(INDEX_FIRST_MEMBER, descriptor), command);
+        assertEquals(new EditMemberCommand(INDEX_FIRST_MEMBER, descriptor), command);
     }
 
     @Test

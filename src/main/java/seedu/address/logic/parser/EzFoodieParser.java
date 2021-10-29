@@ -10,6 +10,7 @@ import seedu.address.commons.core.Messages;
 import seedu.address.commons.exceptions.PermissionException;
 import seedu.address.commons.status.ExecutionStatus;
 import seedu.address.commons.status.LoginStatus;
+import seedu.address.commons.util.CommandUtil;
 import seedu.address.logic.commands.AddCommand;
 import seedu.address.logic.commands.ClearCommand;
 import seedu.address.logic.commands.Command;
@@ -21,7 +22,10 @@ import seedu.address.logic.commands.HelpCommand;
 import seedu.address.logic.commands.ListCommand;
 import seedu.address.logic.commands.LoginCommand;
 import seedu.address.logic.commands.LogoutCommand;
+import seedu.address.logic.commands.RedeemCommand;
 import seedu.address.logic.commands.SortCommand;
+import seedu.address.logic.commands.SummaryCommand;
+import seedu.address.logic.commands.ViewCommand;
 import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.model.Model;
 
@@ -68,6 +72,8 @@ public class EzFoodieParser {
             throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, HelpCommand.MESSAGE_USAGE));
         }
 
+        CommandUtil.addCommand(userInput);
+
         final String commandWord = matcher.group("commandWord");
         final String arguments = matcher.group("arguments");
         switch (commandWord) {
@@ -79,11 +85,17 @@ public class EzFoodieParser {
             return new FindCommandParser().parse(arguments);
 
         case EditCommand.COMMAND_WORD:
-            return new EditCommandParser().parse(arguments);
+            return new EditCommandPrefixParser(executionStatus).parse(arguments).parse(arguments);
+
+        case ViewCommand.COMMAND_WORD:
+            return new ViewCommandParser().parse(arguments);
+
+        case RedeemCommand.COMMAND_WORD:
+            return new RedeemCommandParser(model, executionStatus).parse(arguments);
 
         case DeleteCommand.COMMAND_WORD:
             if (LoginStatus.getLoginStatus() == LoginStatus.MANAGER) {
-                return new DeleteCommandParser().parse(arguments);
+                return new DeleteCommandPrefixParser().parse(arguments).parse(arguments);
             } else {
                 throw new PermissionException(Messages.MESSAGE_PERMISSION_DENIED);
             }
@@ -112,6 +124,9 @@ public class EzFoodieParser {
 
         case HelpCommand.COMMAND_WORD:
             return new HelpCommand();
+
+        case SummaryCommand.COMMAND_WORD:
+            return new SummaryCommand();
 
         default:
             throw new ParseException(MESSAGE_UNKNOWN_COMMAND);

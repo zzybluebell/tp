@@ -34,7 +34,7 @@ import seedu.address.testutil.EditMemberDescriptorBuilder;
 public class CommandTestUtil {
 
     public static final String VALID_ID_AMY = "00001";
-    public static final String VALID_ID_BOB = "00099";
+    public static final String VALID_ID_BOB = "00002";
     public static final String VALID_NAME_AMY = "Amy Bee";
     public static final String VALID_NAME_BOB = "Bob Choo";
     public static final String VALID_PHONE_AMY = "11111111";
@@ -43,6 +43,9 @@ public class CommandTestUtil {
     public static final String VALID_EMAIL_BOB = "bob@example.com";
     public static final String VALID_ADDRESS_AMY = "Block 312, Amy Street 1";
     public static final String VALID_ADDRESS_BOB = "Block 123, Bobby Street 3";
+    public static final String VALID_RESERVATION_ID_200_AMY = "000001";
+    public static final String VALID_RESERVATION_ID_200_BOB = "000001";
+    public static final String VALID_RESERVATION_ID_300_BOB = "000002";
     public static final String VALID_REGISTRATION_TIMESTAMP_AMY = "1609459200000";
     public static final String VALID_REGISTRATION_TIMESTAMP_BOB = "1609549200000";
     public static final String VALID_RESERVATION_DATE_TIME_200 = "2021-01-01 00:00";
@@ -51,8 +54,13 @@ public class CommandTestUtil {
     public static final String VALID_RESERVATION_REMARK_300 = "3 people";
     public static final String VALID_CREDIT_AMY = "200";
     public static final String VALID_CREDIT_BOB = "500";
+    public static final String VALID_POINT_AMY = "200";
+    public static final String VALID_POINT_BOB = "500";
     public static final String VALID_TAG_HUSBAND = "husband";
     public static final String VALID_TAG_FRIEND = "friend";
+    public static final String VALID_TRANSACTION_ID_200_AMY = "000001";
+    public static final String VALID_TRANSACTION_ID_200_BOB = "000001";
+    public static final String VALID_TRANSACTION_ID_300_BOB = "000002";
     public static final String VALID_TRANSACTION_TIMESTAMP_200 = "1609459200000";
     public static final String VALID_TRANSACTION_TIMESTAMP_300 = "1609542000000";
     public static final String VALID_TRANSACTION_BILLING_200 = "200.00";
@@ -95,8 +103,8 @@ public class CommandTestUtil {
     public static final String PREAMBLE_WHITESPACE = "\t  \r  \n";
     public static final String PREAMBLE_NON_EMPTY = "NonEmptyPreamble";
 
-    public static final EditCommand.EditMemberDescriptor DESC_AMY;
-    public static final EditCommand.EditMemberDescriptor DESC_BOB;
+    public static final EditMemberCommand.EditMemberDescriptor DESC_AMY;
+    public static final EditMemberCommand.EditMemberDescriptor DESC_BOB;
 
     static {
         DESC_AMY = new EditMemberDescriptorBuilder().withName(VALID_NAME_AMY)

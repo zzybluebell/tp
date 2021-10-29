@@ -30,6 +30,29 @@ public class UniqueMemberList implements Iterable<Member> {
             FXCollections.unmodifiableObservableList(internalList);
 
     /**
+     * Returns a member identified by id.
+     * @param id
+     * @return member
+     */
+    public Member getMemberById(Id id) throws MemberNotFoundException {
+        for (Member entry : internalList) {
+            if (entry.getId().equals(id)) {
+                return entry;
+            }
+        }
+        throw new MemberNotFoundException();
+    }
+
+    /**
+     * Returns a new member with redeemed Points.
+     */
+    public Member createRedeemedPointsMember(Member member, List<Point> toRedeemPointsList) {
+        Member outputMember = member;
+        outputMember.addRedemptions(toRedeemPointsList);
+        return outputMember;
+    }
+
+    /**
      * Returns true if the list contains an equivalent member as the given argument.
      */
     public boolean contains(Member toCheck) {

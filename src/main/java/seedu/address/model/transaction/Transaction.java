@@ -12,16 +12,22 @@ import seedu.address.model.Timestamp;
  */
 public class Transaction {
 
+    private final Id id;
     private final Timestamp timestamp;
     private final Billing billing;
 
     /**
      * Every field must be present and not null.
      */
-    public Transaction(Timestamp timestamp, Billing billing) {
-        requireAllNonNull(timestamp, billing);
+    public Transaction(Id id, Timestamp timestamp, Billing billing) {
+        requireAllNonNull(id, timestamp, billing);
+        this.id = id;
         this.timestamp = timestamp;
         this.billing = billing;
+    }
+
+    public Id getId() {
+        return id;
     }
 
     public Timestamp getTimestamp() {
@@ -30,6 +36,19 @@ public class Transaction {
 
     public Billing getBilling() {
         return billing;
+    }
+
+    /**
+     * Returns true if both transactions have the same id.
+     * This defines a weaker notion of equality between two transactions.
+     */
+    public boolean isSameId(Transaction otherTransaction) {
+        if (otherTransaction == this) {
+            return true;
+        }
+
+        return otherTransaction != null
+                && otherTransaction.getId().equals(getId());
     }
 
     /**
@@ -47,7 +66,8 @@ public class Transaction {
         }
 
         Transaction otherTransaction = (Transaction) other;
-        return otherTransaction.getTimestamp().equals(getTimestamp())
+        return otherTransaction.getId().equals(getId())
+                && otherTransaction.getTimestamp().equals(getTimestamp())
                 && otherTransaction.getBilling().equals(getBilling());
     }
 
@@ -60,7 +80,9 @@ public class Transaction {
     @Override
     public String toString() {
         final StringBuilder builder = new StringBuilder();
-        builder.append("Timestamp: ")
+        builder.append("Id: ")
+                .append(getId())
+                .append("; Timestamp: ")
                 .append(getTimestamp())
                 .append("; Billing: ")
                 .append(getBilling());
