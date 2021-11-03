@@ -3,7 +3,7 @@ layout: page
 title: User Guide
 ---
 
-<div align="center"><img height="300" alt="ezFoodie Logo" src="images/Logo.png"></div>
+<div align="center"><img height="200" alt="ezFoodie Logo" src="images/Logo.png"></div>
 
 * Table of Contents
 {:toc}
