@@ -11,7 +11,6 @@ import static seedu.address.testutil.TypicalMembers.getTypicalEzFoodie;
 import java.nio.file.Path;
 import java.util.Comparator;
 import java.util.HashMap;
-import java.util.List;
 import java.util.function.Predicate;
 
 import org.junit.jupiter.api.Test;
@@ -27,7 +26,6 @@ import seedu.address.model.ReadOnlyUserPrefs;
 import seedu.address.model.UserPrefs;
 import seedu.address.model.member.Id;
 import seedu.address.model.member.Member;
-import seedu.address.model.member.Point;
 import seedu.address.model.transaction.Transaction;
 import seedu.address.testutil.MemberBuilder;
 import seedu.address.testutil.TransactionBuilder;
@@ -201,11 +199,6 @@ public class AddTransactionCommandTest {
         }
 
         @Override
-        public void redeemPoints(List<Point> toRedeemPoints, Id idToRedeem) {
-            throw new AssertionError("This method should not be called.");
-        }
-
-        @Override
         public int getNumberOfMembers() {
             throw new AssertionError("This method should not be called.");
         }
@@ -283,5 +276,4 @@ public class AddTransactionCommandTest {
             model.updateFilteredMemberList(predicate);
         }
     }
-
 }
