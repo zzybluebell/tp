@@ -44,13 +44,13 @@ public class RedeemCommand extends Command {
             + PREFIX_ID + " 10001\n"
             + "Example: " + COMMAND_WORD + " "
             + PREFIX_REDEEM + " 100 "
-            + PREFIX_INDEX + " 10001\n";
+            + PREFIX_INDEX + " 1\n";
 
     public static final String MESSAGE_SUCCESS_REDEMPTION = "Redemption is done";
     public static final String MESSAGE_DUPLICATE_MEMBER = "This member already exists in the ezFoodie.";
-    public static final String MESSAGE_INVALID_POINTS_LESS_THAN_ZERO = "Redeemed point has already exceeded\n" +
-            "Points can't redeemed less than 0\n" +
-            "Please try again";
+    public static final String MESSAGE_INVALID_POINTS_LESS_THAN_ZERO = "Redeemed point has already exceeded\n"
+            + "Points can't redeemed less than 0\n"
+            + "Please try again";
 
     private final List<Point> pointsToRedeemList = new ArrayList<>();
     private final Id idToRedeem;
@@ -127,7 +127,7 @@ public class RedeemCommand extends Command {
         Point toRedeemPointsSum = new Point("" + Math.min(toRedeemPointsList.stream()
                 .mapToInt(pointToUpdate -> (int) pointToUpdate.getDoubleValue()).sum(), Point.MAX));
         int oldPoint = memberToRedeemPoints.getPoint().getIntValue();
-        int toRedeemPoint =  toRedeemPointsSum.getIntValue();
+        int toRedeemPoint = toRedeemPointsSum.getIntValue();
         if (oldPoint < toRedeemPoint) {
             throw new CommandException(MESSAGE_INVALID_POINTS_LESS_THAN_ZERO);
         }

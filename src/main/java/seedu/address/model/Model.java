@@ -3,14 +3,11 @@ package seedu.address.model;
 import java.nio.file.Path;
 import java.util.Comparator;
 import java.util.HashMap;
-import java.util.List;
 import java.util.function.Predicate;
 
 import javafx.collections.ObservableList;
 import seedu.address.commons.core.GuiSettings;
-import seedu.address.model.member.Id;
 import seedu.address.model.member.Member;
-import seedu.address.model.member.Point;
 
 /**
  * The API of the Model component.
@@ -143,15 +140,6 @@ public interface Model {
      * @throws NullPointerException if {@code comparator} is null.
      */
     void updateSortedMemberList(Comparator<Member> comparator);
-
-    /**
-     * Redeems Points in the ezFoodie by the given{@code toRedeemPoints}
-     * {@code idToRedeem} is the target member id
-     *
-     * @param toRedeemPoints
-     * @param idToRedeem
-     */
-    void redeemPoints(List<Point> toRedeemPoints, Id idToRedeem);
 
     /**
      * Gets the number of all members in ezFoodie
