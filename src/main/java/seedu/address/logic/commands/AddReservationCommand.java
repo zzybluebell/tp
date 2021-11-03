@@ -1,6 +1,7 @@
 package seedu.address.logic.commands;
 
 import static java.util.Objects.requireNonNull;
+import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_DATE_TIME;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_ID;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_REMARK;
@@ -55,7 +56,7 @@ public class AddReservationCommand extends AddCommand {
      * Creates an AddReservationCommand to add the specified {@code Member}
      */
     public AddReservationCommand(Reservation reservation, Id id) {
-        requireNonNull(id);
+        requireAllNonNull(reservation, id);
         reservationToAdd = reservation;
         idToAdd = id;
     }

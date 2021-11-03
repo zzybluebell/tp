@@ -21,7 +21,6 @@ import seedu.address.model.member.Member;
 import seedu.address.model.member.Name;
 import seedu.address.model.member.Phone;
 import seedu.address.model.member.Point;
-import seedu.address.model.reservation.Id;
 import seedu.address.model.reservation.Reservation;
 import seedu.address.model.tag.Tag;
 import seedu.address.model.transaction.Transaction;
@@ -31,13 +30,11 @@ import seedu.address.model.transaction.Transaction;
  */
 public class DeleteReservationCommand extends DeleteCommand {
 
-    public static final String COMMAND_WORD = "del";
-
     public static final String MESSAGE_USAGE = COMMAND_WORD
             + ": Deletes the reservation identified by the member ID and reservation ID.\n"
             + "Parameters:\n"
             + "Delete by member ID and reservation ID: "
-            + PREFIX_RESERVATION + " [" + PREFIX_ID + " member ID + reservation ID]\n"
+            + PREFIX_RESERVATION + " " + PREFIX_ID + " member ID + reservation ID\n"
             + "Example:\n"
             + "Delete by member ID and reservation ID: "
             + COMMAND_WORD + " " + PREFIX_RESERVATION + " " + PREFIX_ID + " 10001100001";
@@ -45,12 +42,13 @@ public class DeleteReservationCommand extends DeleteCommand {
     public static final String MESSAGE_SUCCESS = "Deleted reservation: %1$s";
 
     private final seedu.address.model.member.Id memberId;
-    private final Id reservationId;
+    private final seedu.address.model.reservation.Id reservationId;
 
     /**
-     * Creates an DeleteCommand to delete the specified {@code Member} by member ID and transaction ID
+     * Creates an DeleteCommand to delete the specified {@code Member} by member ID and reservation ID
      */
-    public DeleteReservationCommand(seedu.address.model.member.Id memberId, Id reservationId) {
+    public DeleteReservationCommand(
+            seedu.address.model.member.Id memberId, seedu.address.model.reservation.Id reservationId) {
         requireAllNonNull(memberId, reservationId);
         this.memberId = memberId;
         this.reservationId = reservationId;
