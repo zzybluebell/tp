@@ -48,7 +48,9 @@ public class RedeemCommand extends Command {
 
     public static final String MESSAGE_SUCCESS_REDEMPTION = "Redemption is done";
     public static final String MESSAGE_DUPLICATE_MEMBER = "This member already exists in the ezFoodie.";
-    public static final String MESSAGE_INVALID_POINTS_LESS_THAN_ZERO = "Points can't redeemed less than 0";
+    public static final String MESSAGE_INVALID_POINTS_LESS_THAN_ZERO = "Redeemed point has already exceeded\n" +
+            "Points can't redeemed less than 0\n" +
+            "Please try again";
 
     private final List<Point> pointsToRedeemList = new ArrayList<>();
     private final Id idToRedeem;
@@ -124,11 +126,12 @@ public class RedeemCommand extends Command {
         Credit updateCredit = memberToRedeemPoints.getCredit();
         Point toRedeemPointsSum = new Point("" + Math.min(toRedeemPointsList.stream()
                 .mapToInt(pointToUpdate -> (int) pointToUpdate.getDoubleValue()).sum(), Point.MAX));
-        Point updatePoint = new Point(String.valueOf(memberToRedeemPoints.getPoint().getIntValue()
-                - toRedeemPointsSum.getIntValue()));
-        if (updatePoint.getIntValue() < 0) {
+        int oldPoint = memberToRedeemPoints.getPoint().getIntValue();
+        int toRedeemPoint =  toRedeemPointsSum.getIntValue();
+        if (oldPoint < toRedeemPoint) {
             throw new CommandException(MESSAGE_INVALID_POINTS_LESS_THAN_ZERO);
         }
+        Point updatePoint = new Point(String.valueOf(oldPoint - toRedeemPoint));
         return new Member(id, updatedName, updatedPhone, updatedEmail, updatedAddress, updateTimestamp, updateCredit,
                 updatePoint, updatedTransactions, updateReservations, updatedTags);
     }
