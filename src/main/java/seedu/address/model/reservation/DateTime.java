@@ -7,8 +7,6 @@ import java.time.format.DateTimeParseException;
 
 import seedu.address.commons.util.DateTimeUtil;
 
-
-
 /**
  * Represents a Reservation's dateTime in the ezFoodie.
  * Guarantees: immutable; is valid as declared in {@link #isValidDateTime(String)}

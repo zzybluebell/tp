@@ -10,7 +10,7 @@ import static seedu.address.commons.util.AppUtil.checkArgument;
 public class Billing {
 
     public static final String MESSAGE_CONSTRAINTS =
-            "Billings should be numeric with 2 decimal places";
+            "Billings should be numeric with 2 decimal places, and max amount is 9999.99";
     public static final String VALIDATION_REGEX = "\\d*\\.\\d{2}$";
     public static final int LENGTH = 7; // Max amount is 9999.99
 
