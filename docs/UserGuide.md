@@ -100,8 +100,6 @@ ezFoodie is simple and user-friendly. It is optimized for using via a **Command 
 
   * `-b`: bill amount
 
-  * `-pg`: page
-
 </div>
 
 ### Viewing help : `help`
@@ -120,40 +118,21 @@ Format: `exit`
 
 ### Listing out a certain number of members : `list -mem`
 
-Lists out a certain number of members, show top 50 records by default.
+Lists out a certain number of members.
 
-Format: `list -mem [-pg <PAGE>]`
+Format: `list -mem`
 
 Example:
 * `list -mem`
-* `list -mem -pg 1`
 
 ### Adding a member : `add -m`
 
-Adds new member to the member list.
+Adds a new member to the member list.
 
 Format: `add -mem -n <NAME> -p <PHONE> -e <EMAIL> -a <ADDRESS>`
 
 Example:
 * `add -mem -n John Doe -p 98765432 -e johndoe@gmail.com -a 112 Amoy Street, 069907, Singapore`
-
-### Redeeming point from a member by id: `redeem -f -id`
-
-Redeems point from a member by id.
-
-Format: `redeem -f <point> -id <MEMBER_ID>`
-
-Example:
-* `redeem -f 100 -id 10006`
-
-### Redeeming point from a member by index: `redeem -f -row`
-
-Redeems point from a member by index.
-
-Format: `redeem -f <point> -row <INDEX>`
-
-Example:
-* `redeem -f 100 -row 1`
 
 ### Finding members : `find -mem`
 
@@ -192,7 +171,7 @@ Example:
 
 #### Finding members by registration date
 
-Format: `find -mem -d <REGISTRATION_DATE> [-pg <PAGE>]`
+Format: `find -mem -d <REGISTRATION_DATE>`
 
 Example: 
 * `find -mem -d 12-01-2021`
@@ -206,7 +185,7 @@ Format: `show -mem -id <MEMBER_ID>`
 Example:
 * `show -mem -id 10001`
 
-### Adding transaction for members : `add -t`
+### Adding transaction for members : `add -txn`
 
 Adds transaction amount corresponding to member ID.
 
@@ -225,7 +204,9 @@ Format: `clear`
 
 Logs in as a manager.
 
-Format: `login <PASSWORD>`
+Format: `login <PASSWORD>` 
+
+*Default Manager Password is `123456`*
 
 Example:
 * `login 123456`
@@ -238,6 +219,25 @@ Format: `logout`
 
 Example:
 * `logout`
+
+### Redeeming point `redeem -f`
+
+#### Redeeming point from a member: `redeem -f -id`
+Redeems point from a member by id.
+
+Format: `redeem -f <point> -id <MEMBER_ID>`
+
+Example:
+* `redeem -f 100 -id 10006`
+
+#### Redeeming point from a member by an index: `redeem -f -row`
+
+Redeems point from a member by an index.
+
+Format: `redeem -f <point> -row <INDEX>`
+
+Example:
+* `redeem -f 100 -row 1`
 
 ### Sorting members by credit : `sort -mem`
 
@@ -347,7 +347,7 @@ Example:
 
 ### Saving the data
 
-ezFoodie data are saved in the hard disk automatically after any command that changes the data. There is no need to save manually.
+ezFoodie data are saved in the hard disk by JSON automatically after any command that changes the data. There is no need to save manually.
 
 ### Editing the data file
 
@@ -358,18 +358,6 @@ If your changes to the data file makes its format invalid, ezFoodie will discard
 </div>
 
 ### Archiving data files `[coming in v1.3]`
-
-### Redeeming a member’s points `[coming in v1.3]`
-
-### Marking reservation for member `[coming in v1.3]`
-
-### Marking reservation for member `[coming in v1.3]`
-
-### Editing reservation for member `[coming in v1.3]`
-
-### Finding reservations by date `[coming in v1.3]`
-
-_Details coming soon ..._
 
 --------------------------------------------------------------------------------------------------------------------
 
@@ -410,5 +398,7 @@ Action | Format, Examples
 **Edit Member Email by Index Number** | *Format* <br> `edit -mem -row <INDEX> -e <EMAIL>` <br> *Example* <br> `edit -mem -row 1 -e johndoe@gmail.com`
 **Edit Member Address by Index Number** | *Format* <br> `edit -mem -row <INDEX> -a <ADDRESS>` <br> *Example* <br> `edit -mem -row 1 -a 33 Benoi Crescent, 629979, Singapore`
 **Edit Member Transaction by Index Number** | *Format* <br> `edit -mem -row <INDEX> -txn <TRANSACTION>` <br> *Example* <br> `edit -mem -row 1 -txn 123.45`
+**Redeem Point from Member by Member Id** | *Format* <br> `redeem -f <POINT> -id <MEMBER_ID>` <br> *Example* <br> `redeem -f 100 -id 10001`
+**Redeem Point from Member by Member Index** | *Format* <br> `redeem -f <POINT> -row <INDEX>` <br> *Example* <br> `redeem -f 100 -row 1`
 **Delete Member by Member ID** | *Format* <br> `del -mem -id <MEMBER_ID>` <br> *Example* <br> `del -mem -id 10001`
 **Delete Member by Index Number** | *Format* <br> `del -mem -row <INDEX>` <br> *Example* <br> `del -mem -row 1`
