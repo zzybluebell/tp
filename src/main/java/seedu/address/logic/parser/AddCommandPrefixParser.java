@@ -39,25 +39,21 @@ public class AddCommandPrefixParser {
      * @throws ParseException if the user input does not conform the expected format
      */
     public AddCommandParser parse(String args) throws ParseException {
-        String trimmedArgs = args.trim();
-        String prefix;
-        if (trimmedArgs.isEmpty()) {
-            throw new ParseException(
-                    String.format(MESSAGE_INVALID_COMMAND_FORMAT, AddCommand.MESSAGE_USAGE));
-        }
 
-        int index = trimmedArgs.indexOf(' ');
-        if (index > -1) { // Check if there is more than one word.
-            prefix = trimmedArgs.substring(0, index).trim(); // Extract first word.
-        } else {
-            prefix = trimmedArgs; // Extracted word is the first word itself.
-        }
+        ArgumentMultimap argMultimap = ArgumentTokenizer.tokenize(
+                args, PREFIX_MEMBER, PREFIX_TRANSACTION, PREFIX_RESERVATION);
 
-        if (prefix.equals(PREFIX_MEMBER.getPrefix())) {
+        if (argMultimap.getValue(PREFIX_MEMBER).isPresent()
+                && argMultimap.getValue(PREFIX_TRANSACTION).isEmpty()
+                && argMultimap.getValue(PREFIX_RESERVATION).isEmpty()) {
             return new AddMemberCommandParser(model, executionStatus);
-        } else if (prefix.equals(PREFIX_TRANSACTION.getPrefix())) {
+        } else if (argMultimap.getValue(PREFIX_TRANSACTION).isPresent()
+                && argMultimap.getValue(PREFIX_MEMBER).isEmpty()
+                && argMultimap.getValue(PREFIX_RESERVATION).isEmpty()) {
             return new AddTransactionCommandParser(model, executionStatus);
-        } else if (prefix.equals(PREFIX_RESERVATION.getPrefix())) {
+        } else if (argMultimap.getValue(PREFIX_RESERVATION).isPresent()
+                && argMultimap.getValue(PREFIX_MEMBER).isEmpty()
+                && argMultimap.getValue(PREFIX_TRANSACTION).isEmpty()) {
             return new AddReservationCommandParser(model, executionStatus);
         } else {
             throw new ParseException(

@@ -31,13 +31,11 @@ import seedu.address.model.transaction.Transaction;
  */
 public class DeleteTransactionCommand extends DeleteCommand {
 
-    public static final String COMMAND_WORD = "del";
-
     public static final String MESSAGE_USAGE = COMMAND_WORD
             + ": Deletes the transaction identified by the member ID and transaction ID.\n"
             + "Parameters:\n"
             + "Delete by member ID and transaction ID: "
-            + PREFIX_TRANSACTION + " [" + PREFIX_ID + " member ID + transaction ID]\n"
+            + PREFIX_TRANSACTION + " " + PREFIX_ID + " member ID + transaction ID\n"
             + "Example:\n"
             + "Delete by member ID and transaction ID: "
             + COMMAND_WORD + " " + PREFIX_TRANSACTION + " " + PREFIX_ID + " 10001100001";

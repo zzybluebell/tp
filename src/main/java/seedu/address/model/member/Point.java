@@ -9,7 +9,7 @@ import static seedu.address.commons.util.AppUtil.checkArgument;
  */
 public class Point {
     public static final String MESSAGE_CONSTRAINTS =
-            "Points should only contain digits, and it should not be blank";
+            "Points should only contain no more than 8 digits, and it should not be blank";
     public static final String VALIDATION_REGEX = "[\\p{Digit}]*";
 
     public static final int MAX = 99999999;
