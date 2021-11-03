@@ -35,18 +35,35 @@ public class GuiSettings implements Serializable {
         windowCoordinates = new Point(xPosition, yPosition);
     }
 
+    /**
+     * Gets GUI window width
+     * @return double the width of window
+     */
     public double getWindowWidth() {
         return windowWidth;
     }
 
+    /**
+     * Gets GUI window height
+     * @return double the height of window
+     */
     public double getWindowHeight() {
         return windowHeight;
     }
 
+    /**
+     * Gets GUI window coordinates
+     * @return Point
+     */
     public Point getWindowCoordinates() {
         return windowCoordinates != null ? new Point(windowCoordinates) : null;
     }
 
+    /**
+     * Overrides the equal method for comparing
+     * @param other
+     * @return
+     */
     @Override
     public boolean equals(Object other) {
         if (other == this) {
