@@ -11,16 +11,32 @@ import seedu.address.commons.util.StringUtil;
 public class IdContainsKeywordsPredicate implements Predicate<Member> {
     private final List<String> keywords;
 
+    /**
+     * Constructs a {@code IdContainsKeywordsPredicate} with input {List<String>}.
+     *
+     * @param keywords
+     */
     public IdContainsKeywordsPredicate(List<String> keywords) {
         this.keywords = keywords;
     }
 
+    /**
+     * Overrides test method.
+     *
+     * @param member
+     * @return boolean
+     */
     @Override
     public boolean test(Member member) {
         return keywords.stream()
                 .anyMatch(keyword -> StringUtil.containsWordIgnoreCase(member.getId().value, keyword));
     }
 
+    /**
+     * Overrides equals method.
+     *
+     * @return boolean
+     */
     @Override
     public boolean equals(Object other) {
         return other == this // short circuit if same object

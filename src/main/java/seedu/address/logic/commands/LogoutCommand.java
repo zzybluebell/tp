@@ -11,10 +11,27 @@ import seedu.address.model.Model;
  */
 public class LogoutCommand extends Command {
 
+    /**
+     * Stands for logout command.
+     */
     public static final String COMMAND_WORD = "logout";
+
+    /**
+     * Stands for the message of logout successfully.
+     */
     public static final String MESSAGE_SUCCESS = "Logged out successfully!";
+
+    /**
+     * Stands for the message of logout status.
+     */
     public static final String MESSAGE_ALREADY_IN_STATUS = "You are already in STAFF login status!";
 
+    /**
+     * Overrides and executes the model.
+     *
+     * @param model {@code Model} which the command should operate on.
+     * @return CommandResult
+     */
     @Override
     public CommandResult execute(Model model) {
         requireNonNull(model);

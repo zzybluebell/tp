@@ -33,6 +33,12 @@ public class CommandResult {
 
     /**
      * Constructs a {@code CommandResult} with the specified fields.
+     *
+     * @param feedbackToUser
+     * @param showHelp
+     * @param exit
+     * @param showMemberView
+     * @param showSummary
      */
     public CommandResult(String feedbackToUser, boolean showHelp, boolean exit, boolean showMemberView,
                          boolean showSummary) {
@@ -46,17 +52,26 @@ public class CommandResult {
     /**
      * Constructs a {@code CommandResult} with the specified {@code feedbackToUser},
      * and other fields set to their default value.
+     *
+     * @param feedbackToUser
      */
     public CommandResult(String feedbackToUser) {
         this(feedbackToUser, false, false, false, false);
     }
 
+    /**
+     * Gets feedback to user
+     *
+     * @return string for feedback to user
+     */
     public String getFeedbackToUser() {
         return feedbackToUser;
     }
 
     /**
      * Determines whether the app should show help window.
+     *
+     * @return boolean
      */
     public boolean isShowHelp() {
         return showHelp;
@@ -64,6 +79,8 @@ public class CommandResult {
 
     /**
      * Determines whether the app should show member window.
+     *
+     * @return boolean
      */
     public boolean isShowMemberView() {
         return showMemberView;
@@ -71,6 +88,8 @@ public class CommandResult {
 
     /**
      * Determines whether the app should show summary window.
+     *
+     * @return boolean
      */
     public boolean isShowSummary() {
         return showSummary;
@@ -78,11 +97,19 @@ public class CommandResult {
 
     /**
      * Determines whether the app should exit.
+     *
+     * @return boolean
      */
     public boolean isExit() {
         return exit;
     }
 
+    /**
+     * Overrides the equal method.
+     *
+     * @param other
+     * @return boolean
+     */
     @Override
     public boolean equals(Object other) {
         if (other == this) {
@@ -102,6 +129,11 @@ public class CommandResult {
                 && showSummary == otherCommandResult.showSummary;
     }
 
+    /**
+     * Overrides the hashCode method.
+     *
+     * @return int for hashed value
+     */
     @Override
     public int hashCode() {
         return Objects.hash(feedbackToUser, showHelp, showMemberView, exit, showSummary);

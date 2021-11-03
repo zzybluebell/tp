@@ -21,6 +21,9 @@ public class DeleteMemberCommandParser extends DeleteCommandParser implements Pa
     /**
      * Parses the given {@code String} of arguments in the context of the DeleteMemberCommand
      * and returns a DeleteMemberCommand object for execution.
+     *
+     * @param args
+     * @return DeleteMemberCommand
      * @throws ParseException if the user input does not conform the expected format
      */
     public DeleteMemberCommand parse(String args) throws ParseException {

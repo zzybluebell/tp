@@ -11,14 +11,29 @@ import seedu.address.model.Model;
  */
 public class SummaryCommand extends Command {
 
+    /**
+     * Stands for summary command.
+     */
     public static final String COMMAND_WORD = "summary";
 
+    /**
+     * Stands for the message of summary command.
+     */
     public static final String MESSAGE_USAGE = COMMAND_WORD
             + ": Shows summary for members and transactions.\n"
             + "Example: " + COMMAND_WORD;
 
+    /**
+     * Stands for the message of open summary window successfully.
+     */
     public static final String SHOWING_SUMMARY_MESSAGE = "Opened summary window.";
 
+    /**
+     * Overrides and executes model.
+     *
+     * @param model {@code Model} which the command should operate on.
+     * @return CommandResult
+     */
     @Override
     public CommandResult execute(Model model) {
         requireNonNull(model);
@@ -26,6 +41,12 @@ public class SummaryCommand extends Command {
                 false, false, false, true);
     }
 
+    /**
+     * Overrides the equals method.
+     *
+     * @param other
+     * @return boolean
+     */
     @Override
     public boolean equals(Object other) {
         return other == this

@@ -19,8 +19,14 @@ import seedu.address.model.member.Member;
  */
 public class DeleteMemberCommand extends DeleteCommand {
 
+    /**
+     * Stands for delete command.
+     */
     public static final String COMMAND_WORD = "del";
 
+    /**
+     * Stands for the message of delete command related to a member from the ezFoodie.
+     */
     public static final String MESSAGE_USAGE = COMMAND_WORD
             + ": Deletes the member identified by the index number used in the displayed member list or member ID.\n"
             + "Parameters:\n"
@@ -31,13 +37,18 @@ public class DeleteMemberCommand extends DeleteCommand {
             + "Delete by index number: " + COMMAND_WORD + " " + PREFIX_MEMBER + " " + PREFIX_INDEX + " 1\n"
             + "Delete by member ID: " + COMMAND_WORD + " " + PREFIX_MEMBER + " " + PREFIX_ID + " 10001";
 
+    /**
+     * Stands for succeed message of delete member.
+     */
     public static final String MESSAGE_SUCCESS = "Deleted Member: %1$s";
 
     private final Index index;
     private final Id id;
 
     /**
-     * Creates an DeleteCommand to delete the specified {@code Member} by index number
+     * Creates an DeleteCommand to delete the specified {@code Member} by index number.
+     *
+     * @param index
      */
     public DeleteMemberCommand(Index index) {
         requireNonNull(index);
@@ -46,7 +57,9 @@ public class DeleteMemberCommand extends DeleteCommand {
     }
 
     /**
-     * Creates an DeleteCommand to delete the specified {@code Member} by member ID
+     * Creates an DeleteCommand to delete the specified {@code Member} by member ID.
+     *
+     * @param id
      */
     public DeleteMemberCommand(Id id) {
         requireNonNull(id);
@@ -54,6 +67,13 @@ public class DeleteMemberCommand extends DeleteCommand {
         index = null;
     }
 
+    /**
+     * Overrides and executes model.
+     *
+     * @param model {@code Model} which the command should operate on.
+     * @return CommandResult
+     * @throws CommandException
+     */
     @Override
     public CommandResult execute(Model model) throws CommandException {
         requireNonNull(model);
@@ -80,6 +100,12 @@ public class DeleteMemberCommand extends DeleteCommand {
 
     }
 
+    /**
+     * Overrides equals method.
+     *
+     * @param other
+     * @return
+     */
     @Override
     public boolean equals(Object other) {
         return other == this // short circuit if same object

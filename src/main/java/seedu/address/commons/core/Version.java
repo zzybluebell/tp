@@ -7,10 +7,13 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
 
 /**
- * Represents a version with major, minor and patch number
+ * Represents a version with major, minor and patch number.
  */
 public class Version implements Comparable<Version> {
 
+    /**
+     * Sets the VERSION_REGEX.
+     */
     public static final String VERSION_REGEX = "V(\\d+)\\.(\\d+)\\.(\\d+)(ea)?";
 
     private static final String EXCEPTION_STRING_NOT_VERSION = "String is not a valid Version. %s";
@@ -32,24 +35,45 @@ public class Version implements Comparable<Version> {
         this.isEarlyAccess = isEarlyAccess;
     }
 
+    /**
+     * Gets the major.
+     *
+     * @return int
+     */
     public int getMajor() {
         return major;
     }
 
+    /**
+     * Gets the minor.
+     *
+     * @return int
+     */
     public int getMinor() {
         return minor;
     }
 
+    /**
+     * Gets the patch.
+     *
+     * @return int
+     */
     public int getPatch() {
         return patch;
     }
 
+    /**
+     * Judges the isEarlyAccess.
+     *
+     * @return int
+     */
     public boolean isEarlyAccess() {
         return isEarlyAccess;
     }
 
     /**
      * Parses a version number string in the format V1.2.3.
+     *
      * @param versionString version number string
      * @return a Version object
      */
@@ -67,11 +91,22 @@ public class Version implements Comparable<Version> {
                 versionMatcher.group(4) == null ? false : true);
     }
 
+    /**
+     * Overrides the toString for Version class.
+     *
+     * @return String for Version
+     */
     @JsonValue
     public String toString() {
         return String.format("V%d.%d.%d%s", major, minor, patch, isEarlyAccess ? "ea" : "");
     }
 
+    /**
+     * Overrides the compareTo method for Version class.
+     *
+     * @param other
+     * @return int
+     */
     @Override
     public int compareTo(Version other) {
         if (major != other.major) {
@@ -92,6 +127,12 @@ public class Version implements Comparable<Version> {
         return 1;
     }
 
+    /**
+     * Overrides the equal method for Version class.
+     *
+     * @param obj
+     * @return boolean
+     */
     @Override
     public boolean equals(Object obj) {
         if (obj == null) {
@@ -105,6 +146,11 @@ public class Version implements Comparable<Version> {
         return compareTo(other) == 0;
     }
 
+    /**
+     * Overrides the hashCode for Version class.
+     *
+     * @return int
+     */
     @Override
     public int hashCode() {
         String hash = String.format("%03d%03d%03d", major, minor, patch);

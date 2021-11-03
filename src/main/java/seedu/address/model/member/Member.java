@@ -38,8 +38,25 @@ public class Member {
     private final List<Reservation> reservations = new ArrayList<>();
 
     /**
-     * Every field must be present and not null.
+     *
      */
+    /**
+     * Constructs {code Member} with follow param.
+     * Every field must be present and not null.
+     *
+     * @param id
+     * @param name
+     * @param phone
+     * @param email
+     * @param address
+     * @param timestamp
+     * @param credit
+     * @param point
+     * @param transactions
+     * @param reservations
+     * @param tags
+     */
+
     public Member(Id id, Name name, Phone phone, Email email, Address address,
                   Timestamp timestamp, Credit credit, Point point, List<Transaction> transactions,
                   List<Reservation> reservations, Set<Tag> tags) {
@@ -57,34 +74,74 @@ public class Member {
         this.reservations.addAll(reservations);
     }
 
+    /**
+     * Gets Id.
+     *
+     * @return Id
+     */
     public Id getId() {
         return id;
     }
 
+    /**
+     * Gets name.
+     *
+     * @return name
+     */
     public Name getName() {
         return name;
     }
 
+    /**
+     * Gets phone.
+     *
+     * @return Phone
+     */
     public Phone getPhone() {
         return phone;
     }
 
+    /**
+     * Gets email.
+     *
+     * @return Email
+     */
     public Email getEmail() {
         return email;
     }
 
+    /**
+     * Gets address.
+     *
+     * @return Address
+     */
     public Address getAddress() {
         return address;
     }
 
+    /**
+     * Gets timestamp.
+     *
+     * @return Timestamp
+     */
     public Timestamp getTimestamp() {
         return timestamp;
     }
 
+    /**
+     * Gets credit.
+     *
+     * @return Credit
+     */
     public Credit getCredit() {
         return credit;
     }
 
+    /**
+     * Gets point.
+     *
+     * @return Point
+     */
     public Point getPoint() {
         return this.point;
     }
@@ -92,6 +149,8 @@ public class Member {
     /**
      * Returns an immutable tag set, which throws {@code UnsupportedOperationException}
      * if modification is attempted.
+     *
+     * @return Set<Tag>
      */
     public Set<Tag> getTags() {
         return Collections.unmodifiableSet(tags);

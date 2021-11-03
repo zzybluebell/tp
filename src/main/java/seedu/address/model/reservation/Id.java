@@ -9,12 +9,30 @@ import static seedu.address.commons.util.AppUtil.checkArgument;
  */
 public class Id {
 
+    /**
+     * Stands for message constraints of reservation member id.
+     */
     public static final String MESSAGE_CONSTRAINTS =
             "Reservation IDs should only contain 6 digits, and it should not be blank";
+
+    /**
+     * Stands for validation regex of reservation id.
+     */
     public static final String VALIDATION_REGEX = "[\\p{Digit}]*";
+
+    /**
+     * Stands for reservation Id pattern
+     */
     public static final String PATTERN = "%06d";
+
+    /**
+     * Stands for reservation id max length
+     */
     public static final int LENGTH = 6;
 
+    /**
+     * Stands for reservation id value
+     */
     public final String value;
 
     /**
@@ -30,16 +48,29 @@ public class Id {
 
     /**
      * Returns true if a given string is a valid id.
+     *
+     * @param test
+     * @return
      */
     public static boolean isValidId(String test) {
         return test.matches(VALIDATION_REGEX) && test.length() == LENGTH;
     }
 
+    /**
+     * Overrides toString method.
+     *
+     * @return String
+     */
     @Override
     public String toString() {
         return value;
     }
 
+    /**
+     * Overrides equals method.
+     *
+     * @return boolean
+     */
     @Override
     public boolean equals(Object other) {
         return other == this // short circuit if same object
@@ -47,6 +78,11 @@ public class Id {
                 && value.equals(((Id) other).value)); // state check
     }
 
+    /**
+     * Overrides hashCode method.
+     *
+     * @return int
+     */
     @Override
     public int hashCode() {
         return value.hashCode();

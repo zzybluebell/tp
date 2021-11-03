@@ -28,10 +28,19 @@ import seedu.address.model.reservation.Reservation;
 import seedu.address.model.tag.Tag;
 import seedu.address.model.transaction.Transaction;
 
+/**
+ * Redeems point from an existing member in the ezFoodie.
+ */
 public class RedeemCommand extends Command {
 
+    /**
+     * Stands for redeem command.
+     */
     public static final String COMMAND_WORD = "redeem";
 
+    /**
+     * Stands for the message of redeem command.
+     */
     public static final String MESSAGE_USAGE = COMMAND_WORD + ": Redeems points from member id in the ezFoodie. "
             + "Parameters: "
             + PREFIX_REDEEM + " [points]"
@@ -46,8 +55,19 @@ public class RedeemCommand extends Command {
             + PREFIX_REDEEM + " 100 "
             + PREFIX_INDEX + " 1\n";
 
+    /**
+     * Stands for message for redeem points successfully.
+     */
     public static final String MESSAGE_SUCCESS_REDEMPTION = "Redemption is done";
+
+    /**
+     * Stands for message for duplicate member.
+     */
     public static final String MESSAGE_DUPLICATE_MEMBER = "This member already exists in the ezFoodie.";
+
+    /**
+     * Stands for message when redemption point exceed.
+     */
     public static final String MESSAGE_INVALID_POINTS_LESS_THAN_ZERO = "Redeemed point has already exceeded\n"
             + "Points can't redeemed less than 0\n"
             + "Please try again";
@@ -57,7 +77,10 @@ public class RedeemCommand extends Command {
     private final Index indexToRedeem;
 
     /**
-     * Creates an redeemPointsCommand to add the specified {@code Member}
+     * Constructs an RedeemCommand to add the specified {@code Member} by id.
+     *
+     * @param pointsToRedeemList
+     * @param id
      */
     public RedeemCommand(List<Point> pointsToRedeemList, Id id) {
         requireAllNonNull(pointsToRedeemList, id);
@@ -67,7 +90,10 @@ public class RedeemCommand extends Command {
     }
 
     /**
-     * Creates an redeemPointsCommand to add the specified {@code Member}
+     * Constructs an RedeemCommand to add the specified {@code Member} by index.
+     *
+     * @param pointsToRedeemList
+     * @param index
      */
     public RedeemCommand(List<Point> pointsToRedeemList, Index index) {
         requireAllNonNull(pointsToRedeemList, index);
@@ -76,6 +102,13 @@ public class RedeemCommand extends Command {
         this.idToRedeem = null;
     }
 
+    /**
+     * Overrides and executes the model.
+     *
+     * @param model {@code Model} which the command should operate on.
+     * @return CommandResult
+     * @throws CommandException
+     */
     @Override
     public CommandResult execute(Model model) throws CommandException {
         requireNonNull(model);
@@ -109,6 +142,11 @@ public class RedeemCommand extends Command {
     /**
      * Creates and returns a {@code Member} with the details of {@code memberToEdit}
      * edited with {@code editMemberDescriptor}.
+     *
+     * @param memberToRedeemPoints
+     * @param toRedeemPointsList
+     * @return Member with redeemed Points
+     * @throws CommandException
      */
     private static Member createToRedeemPointsMember(Member memberToRedeemPoints, List<Point> toRedeemPointsList)
             throws CommandException {

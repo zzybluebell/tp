@@ -60,6 +60,9 @@ public class AddTransactionCommandParser extends AddCommandParser implements Par
     /**
      * Parses the given {@code String} of arguments in the context of the AddTransactionCommand
      * and returns an AddTransactionCommand object for execution.
+     *
+     * @param args
+     * @return AddTransactionCommand
      * @throws ParseException if the user input does not conform the expected format
      */
     @Override

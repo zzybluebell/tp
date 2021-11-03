@@ -10,6 +10,10 @@ import static seedu.address.commons.util.AppUtil.checkArgument;
 public class Email {
 
     private static final String SPECIAL_CHARACTERS = "+_.-";
+
+    /**
+     * Stands for message constraints for email.
+     */
     public static final String MESSAGE_CONSTRAINTS = "Emails should be of the format local-part@domain "
             + "and adhere to the following constraints:\n"
             + "1. The local-part should only contain alphanumeric characters and these special characters, excluding "
@@ -29,14 +33,21 @@ public class Email {
             + "(-" + ALPHANUMERIC_NO_UNDERSCORE + ")*";
     private static final String DOMAIN_LAST_PART_REGEX = "(" + DOMAIN_PART_REGEX + "){2,}$"; // At least two chars
     private static final String DOMAIN_REGEX = "(" + DOMAIN_PART_REGEX + "\\.)*" + DOMAIN_LAST_PART_REGEX;
+
+    /**
+     * Stands for validation regex should includes @ in between.
+     */
     public static final String VALIDATION_REGEX = LOCAL_PART_REGEX + "@" + DOMAIN_REGEX;
 
+    /**
+     * Stands for email string.
+     */
     public final String value;
 
     /**
      * Constructs an {@code Email}.
      *
-     * @param email A valid email address.
+     * @param email a valid email address.
      */
     public Email(String email) {
         requireNonNull(email);
@@ -51,11 +62,21 @@ public class Email {
         return test.matches(VALIDATION_REGEX);
     }
 
+    /**
+     * Overrides toString method.
+     *
+     * @return String
+     */
     @Override
     public String toString() {
         return value;
     }
 
+    /**
+     * Overrides equals method.
+     *
+     * @return boolean
+     */
     @Override
     public boolean equals(Object other) {
         return other == this // short circuit if same object
@@ -63,6 +84,11 @@ public class Email {
                 && value.equals(((Email) other).value)); // state check
     }
 
+    /**
+     * Overrides hashCode method.
+     *
+     * @return int
+     */
     @Override
     public int hashCode() {
         return value.hashCode();

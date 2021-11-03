@@ -9,18 +9,36 @@ import static seedu.address.commons.util.AppUtil.checkArgument;
  */
 public class Credit {
 
+    /**
+     * Stands for credits message constraints.
+     */
     public static final String MESSAGE_CONSTRAINTS =
             "Credits should only contain digits, and it should not be blank";
+
+    /**
+     * Stands for validation regex.
+     */
     public static final String VALIDATION_REGEX = "[\\p{Digit}]*";
+
+    /**
+     * Stands for the max credit number.
+     */
     public static final int MAX = 99999999;
+
+    /**
+     * Stands for the length of credit.
+     */
     public static final int LENGTH = 8; // Max credit is 99999999
 
+    /**
+     * Stands for the credit value.
+     */
     public final String value;
 
     /**
      * Constructs a {@code Credit}.
      *
-     * @param credit A valid credit.
+     * @param credit a valid credit.
      */
     public Credit(String credit) {
         requireNonNull(credit);
@@ -31,29 +49,45 @@ public class Credit {
     /**
      * Returns true if a given string is a valid credit.
      */
+    /**
+     * Returns true if a given string is a valid credit.
+     *
+     * @param test
+     * @return boolean
+     */
     public static boolean isValidCredit(String test) {
         return test.matches(VALIDATION_REGEX) && test.length() <= LENGTH;
     }
 
     /**
-     * Returns int value of credit.
+     * Gets int value of credit.
      */
     public int getIntValue() {
         return Integer.parseInt(value);
     }
 
     /**
-     * Returns String value of credit for Point use.
+     * Gets String value of credit for Point use.
      */
     public String getStringValue() {
         return value;
     }
 
+    /**
+     * Overrides toString method.
+     *
+     * @return String
+     */
     @Override
     public String toString() {
         return value;
     }
 
+    /**
+     * Overrides equals method.
+     *
+     * @return boolean
+     */
     @Override
     public boolean equals(Object other) {
         return other == this // short circuit if same object
@@ -61,6 +95,11 @@ public class Credit {
                 && value.equals(((Credit) other).value)); // state check
     }
 
+    /**
+     * Overrides hashCode method.
+     *
+     * @return int
+     */
     @Override
     public int hashCode() {
         return value.hashCode();

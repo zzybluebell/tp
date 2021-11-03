@@ -10,7 +10,7 @@ import java.util.logging.Level;
  */
 public class Config {
     /**
-     * Gets the default congig json file
+     * Gets the default config json file.
      */
     public static final Path DEFAULT_CONFIG_FILE = Paths.get("config.json");
 
@@ -19,7 +19,8 @@ public class Config {
     private Path userPrefsFilePath = Paths.get("preferences.json");
 
     /**
-     * Gets Log Level
+     * Gets Log Level.
+     * 
      * @return Level
      */
     public Level getLogLevel() {
@@ -27,7 +28,8 @@ public class Config {
     }
 
     /**
-     * Sets Log Level
+     * Sets Log Level.
+     *
      * @param logLevel
      */
     public void setLogLevel(Level logLevel) {
@@ -35,7 +37,8 @@ public class Config {
     }
 
     /**
-     * Gets User Prefs File Path
+     * Gets User Prefs File Path.
+     *
      * @return Path
      */
     public Path getUserPrefsFilePath() {
@@ -43,7 +46,8 @@ public class Config {
     }
 
     /**
-     * Sets User Prefs File Path
+     * Sets User Prefs File Path.
+     *
      * @param userPrefsFilePath
      */
     public void setUserPrefsFilePath(Path userPrefsFilePath) {
@@ -51,7 +55,8 @@ public class Config {
     }
 
     /**
-     * Overrides the equal method
+     * Overrides the equal method for Config class.
+     *
      * @param other
      * @return boolean
      */
@@ -71,8 +76,9 @@ public class Config {
     }
 
     /**
-     * Overrides hashcode method
-     * @return int
+     * Overrides hashcode method for Config class.
+     *
+     * @return int objects after hashed with logLevel and userPrefsFilePath
      */
     @Override
     public int hashCode() {
@@ -80,7 +86,8 @@ public class Config {
     }
 
     /**
-     * Overrides toString method
+     * Overrides toString method for Config class.
+     *
      * @return String the log level and Config file location
      */
     @Override

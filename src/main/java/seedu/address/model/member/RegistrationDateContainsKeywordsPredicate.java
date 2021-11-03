@@ -17,10 +17,21 @@ public class RegistrationDateContainsKeywordsPredicate implements Predicate<Memb
 
     private final List<String> keywords;
 
+    /**
+     *  Constructs a {@code RegistrationDateContainsKeywordsPredicate} with input {@code List<String>}.
+     *
+     * @param keywords
+     */
     public RegistrationDateContainsKeywordsPredicate(List<String> keywords) {
         this.keywords = keywords;
     }
 
+    /**
+     * Overrides test method.
+     *
+     * @param member
+     * @return boolean
+     */
     @Override
     public boolean test(Member member) {
         return keywords.stream().anyMatch(keyword -> {
@@ -34,6 +45,11 @@ public class RegistrationDateContainsKeywordsPredicate implements Predicate<Memb
         });
     }
 
+    /**
+     * Overrides equals method.
+     * 
+     * @return boolean
+     */
     @Override
     public boolean equals(Object other) {
         return other == this // short circuit if same object

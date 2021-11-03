@@ -15,8 +15,14 @@ import seedu.address.model.member.CreditSortComparator;
  */
 public class SortCommand extends Command {
 
+    /**
+     * Stands for sort command.
+     */
     public static final String COMMAND_WORD = "sort";
 
+    /**
+     * Stands for the message of Sort command.
+     */
     public static final String MESSAGE_USAGE = COMMAND_WORD
             + ": Sorts all members by credit in ascending or descending "
             + "and displays them as a list with index numbers.\n"
@@ -29,15 +35,33 @@ public class SortCommand extends Command {
             + "Sort credit in descending: "
             + COMMAND_WORD + " " + PREFIX_MEMBER + " " + PREFIX_CREDIT + " " + PREFIX_DESC;
 
+    /**
+     * Stands for the message of sorted in ascending.
+     */
     public static final String MESSAGE_SORT_ASC = "Members sorted by credit in ascending!";
+
+    /**
+     * Stands for the message of sorted in descending.
+     */
     public static final String MESSAGE_SORT_DESC = "Members sorted by credit in descending!";
 
     private final CreditSortComparator comparator;
 
+    /**
+     * Constructs SortCommand。
+     *
+     * @param comparator
+     */
     public SortCommand(CreditSortComparator comparator) {
         this.comparator = comparator;
     }
 
+    /**
+     * Overrides and executes the model.
+     *
+     * @param model {@code Model} which the command should operate on.
+     * @return CommandResult
+     */
     @Override
     public CommandResult execute(Model model) {
         requireNonNull(model);
@@ -49,6 +73,12 @@ public class SortCommand extends Command {
         }
     }
 
+    /**
+     * Overrides the equals method.
+     *
+     * @param other
+     * @return
+     */
     @Override
     public boolean equals(Object other) {
         return other == this // short circuit if same object

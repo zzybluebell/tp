@@ -49,6 +49,15 @@ public class LogicManager implements Logic {
         ezFoodieParser = new EzFoodieParser(model, executionStatus);
     }
 
+    /**
+     * Executes with given string of command text.
+     *
+     * @param commandText The command as entered by the user.
+     * @return {@code CommandResult}
+     * @throws CommandException
+     * @throws ParseException
+     * @throws PermissionException
+     */
     @Override
     public CommandResult execute(String commandText) throws CommandException, ParseException, PermissionException {
         logger.info("----------------[USER COMMAND][" + commandText + "]");
@@ -66,81 +75,161 @@ public class LogicManager implements Logic {
         return commandResult;
     }
 
+    /**
+     * Gets EzFoodie.
+     *
+     * @return ReadOnlyEzFoodie
+     */
     @Override
     public ReadOnlyEzFoodie getEzFoodie() {
         return model.getEzFoodie();
     }
 
+    /**
+     * Gets updated member list.
+     *
+     * @return ObservableList
+     */
     @Override
     public ObservableList<Member> getUpdatedMemberList() {
         return model.getUpdatedMemberList();
     }
 
+    /**
+     * Gets updated member list for view.
+     *
+     * @return ObservableList
+     */
     @Override
     public ObservableList<Member> getUpdatedMemberListForView () {
         return model.getUpdatedMemberListForView();
     }
 
+    /**
+     * Gets number of members.
+     *
+     * @return int
+     */
     @Override
     public int getNumberOfMembers() {
         return model.getNumberOfMembers();
     }
 
+    /**
+     * Gets number of members by tier.
+     *
+     * @return HashMap
+     */
     @Override
     public HashMap<String, Integer> getNumberOfMembersByTiers() {
         return model.getNumberOfMembersByTiers();
     }
 
+    /**
+     * Gets number of transactions.
+     *
+     * @return int
+     */
     @Override
     public int getNumberOfTransactions() {
         return model.getNumberOfTransactions();
     }
 
+    /**
+     * Gets number of transactions in the past month.
+     *
+     * @return int
+     */
     @Override
     public int getNumberOfTransactionsPastMonth() {
         return model.getNumberOfTransactionsPastMonth();
     }
 
+    /**
+     * Gets number of transaction in past three months.
+     *
+     * @return int
+     */
     @Override
     public int getNumberOfTransactionsPastThreeMonth() {
         return model.getNumberOfTransactionsPastThreeMonth();
     }
 
+    /**
+     * Gets number of transactions in past six months.
+     *
+     * @return int
+     */
     @Override
     public int getNumberOfTransactionsPastSixMonths() {
         return model.getNumberOfTransactionsPastSixMonth();
     }
 
+    /**
+     * Gets total amount of transactions.
+     *
+     * @return double
+     */
     @Override
     public double getTotalAmountOfTransactions() {
         return model.getTotalAmountOfTransactions();
     }
 
+    /**
+     * Gets total amount of transactions in the past month.
+     *
+     * @return double
+     */
     @Override
     public double getTotalAmountOfTransactionsPastMonth() {
         return model.getTotalAmountOfTransactionsPastMonth();
     }
 
+    /**
+     * Gets total amount of transactions in the past three months.
+     *
+     * @return double
+     */
     @Override
     public double getTotalAmountOfTransactionsPastThreeMonth() {
         return model.getTotalAmountOfTransactionsPastThreeMonth();
     }
 
+    /**
+     * Gets total amount of transactions in the past six months.
+     *
+     * @return double
+     */
     @Override
     public double getTotalAmountOfTransactionsPastSixMonth() {
         return model.getTotalAmountOfTransactionsPastSixMonth();
     }
 
+    /**
+     * Gets EzFoodie Path.
+     *
+     * @return Path
+     */
     @Override
     public Path getEzFoodieFilePath() {
         return model.getEzFoodieFilePath();
     }
 
+    /**
+     * Gets Gui Settings.
+     *
+     * @return
+     */
     @Override
     public GuiSettings getGuiSettings() {
         return model.getGuiSettings();
     }
 
+    /**
+     * Sets Gui settings.
+     *
+     * @param guiSettings
+     */
     @Override
     public void setGuiSettings(GuiSettings guiSettings) {
         model.setGuiSettings(guiSettings);

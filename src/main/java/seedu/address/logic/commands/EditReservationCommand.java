@@ -36,8 +36,14 @@ import seedu.address.model.transaction.Transaction;
  */
 public class EditReservationCommand extends EditCommand {
 
+    /**
+     * Stands for edit command.
+     */
     public static final String COMMAND_WORD = "edit";
 
+    /**
+     * Stands for the message of edit reservation command.
+     */
     public static final String MESSAGE_USAGE = COMMAND_WORD + ": Edits the details of the reservation identified "
             + "by the member ID and reservation ID. "
             + "Existing values will be overwritten by the input values.\n"
@@ -52,14 +58,22 @@ public class EditReservationCommand extends EditCommand {
             + PREFIX_DATE_TIME + " 2021-12-01 13:00"
             + PREFIX_REMARK + " 3 people";
 
+    /**
+     * Stands for succeed message of edit member
+     */
     public static final String MESSAGE_SUCCESS = "Edited Member: %1$s";
-    public static final String MESSAGE_NOT_EDITED = "At least one field to edit must be provided.";
 
+    /**
+     * Stands for message of not edited which need fields provided.
+     */
+    public static final String MESSAGE_NOT_EDITED = "At least one field to edit must be provided.";
     private final seedu.address.model.member.Id memberId;
     private final seedu.address.model.reservation.Id reservationId;
     private final EditReservationDescriptor editReservationDescriptor;
 
     /**
+     * Constructs the EditReservationCommand
+     *
      * @param memberId of the member in the updated member list to edit
      * @param reservationId of the reservation in the reservation list to edit
      * @param editReservationDescriptor details to edit the reservation with
@@ -76,6 +90,11 @@ public class EditReservationCommand extends EditCommand {
 
     /**
      * Creates and returns a {@code Member} with the details of {@code memberToEdit}
+     *
+     * @param memberToEdit
+     * @param reservationToEdit
+     * @param editReservationDescriptor
+     * @return member with updated credits
      */
     private static Member createUpdatedCredits(
             Member memberToEdit, Reservation reservationToEdit, EditReservationDescriptor editReservationDescriptor) {
@@ -107,6 +126,13 @@ public class EditReservationCommand extends EditCommand {
                 transactions, updatedReservations, updatedTags);
     }
 
+    /**
+     * Overrides and executes the model.
+     *
+     * @param model {@code Model} which the command should operate on.
+     * @return CommandResult
+     * @throws CommandException
+     */
     @Override
     public CommandResult execute(Model model) throws CommandException {
         requireNonNull(model);
@@ -129,6 +155,12 @@ public class EditReservationCommand extends EditCommand {
         }
     }
 
+    /**
+     * Overrides the equal method.
+     *
+     * @param other
+     * @return boolean
+     */
     @Override
     public boolean equals(Object other) {
         return other == this // short circuit if same object
@@ -147,6 +179,9 @@ public class EditReservationCommand extends EditCommand {
         private DateTime dateTime;
         private Remark remark;
 
+        /**
+         * Constructs the EditReservationDescriptor without input
+         */
         public EditReservationDescriptor() {}
 
         /**
@@ -160,27 +195,55 @@ public class EditReservationCommand extends EditCommand {
 
         /**
          * Returns true if at least one field is edited.
+         *
+         * @return boolean
          */
         public boolean isAnyFieldEdited() {
             return CollectionUtil.isAnyNonNull(dateTime, remark);
         }
 
+        /**
+         * Sets DateTime.
+         *
+         * @param dateTime
+         */
         public void setDateTime(DateTime dateTime) {
             this.dateTime = dateTime;
         }
 
+        /**
+         * Gets dateTime.
+         *
+         * @return dateTime
+         */
         public Optional<DateTime> getDateTime() {
             return Optional.ofNullable(dateTime);
         }
 
+        /**
+         * Sets remark.
+         *
+         * @param remark
+         */
         public void setRemark(Remark remark) {
             this.remark = remark;
         }
 
+        /**
+         * Gets remark.
+         *
+         * @return Optional<Remark>
+         */
         public Optional<Remark> getRemark() {
             return Optional.ofNullable(remark);
         }
 
+        /**
+         * Override the equal method.
+         *
+         * @param other
+         * @return boolean
+         */
         @Override
         public boolean equals(Object other) {
             // short circuit if same object

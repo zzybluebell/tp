@@ -7,17 +7,20 @@ import java.time.format.DateTimeParseException;
 
 import seedu.address.commons.util.DateTimeUtil;
 
-
-
 /**
  * Represents a Reservation's dateTime in the ezFoodie.
  * Guarantees: immutable; is valid as declared in {@link #isValidDateTime(String)}
  */
 public class DateTime {
 
+    /**
+     * Stands for message constraints of reservation date time.
+     */
     public static final String MESSAGE_CONSTRAINTS =
             "Reservations should be valid date time " + DateTimeUtil.DATE_TIME_PATTERN;
-
+    /**
+     * Stands for reservation value.
+     */
     public final String value;
 
     /**
@@ -34,6 +37,12 @@ public class DateTime {
     /**
      * Returns true if a given string is a valid date time.
      */
+    /**
+     * Returns true if a given string is a valid date time.
+     *
+     * @param test
+     * @return boolean
+     */
     public static boolean isValidDateTime(String test) {
         try {
             DateTimeUtil.parseDateTime(test);
@@ -43,11 +52,21 @@ public class DateTime {
         }
     }
 
+    /**
+     * Overrides toString method.
+     *
+     * @return String
+     */
     @Override
     public String toString() {
         return value;
     }
 
+    /**
+     * Overrides equals method.
+     *
+     * @return boolean
+     */
     @Override
     public boolean equals(Object other) {
         return other == this // short circuit if same object
@@ -55,6 +74,11 @@ public class DateTime {
                 && value.equals(((DateTime) other).value)); // state check
     }
 
+    /**
+     * Overrides hashCode method.
+     *
+     * @return int
+     */
     @Override
     public int hashCode() {
         return value.hashCode();

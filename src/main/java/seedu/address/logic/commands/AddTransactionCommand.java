@@ -32,6 +32,9 @@ import seedu.address.model.transaction.Transaction;
  */
 public class AddTransactionCommand extends AddCommand {
 
+    /**
+     * Stands for the message add transaction command.
+     */
     public static final String MESSAGE_USAGE = COMMAND_WORD + ": Adds a transaction to each member in the ezFoodie. "
             + "Parameters: "
             + PREFIX_TRANSACTION + " "
@@ -48,7 +51,7 @@ public class AddTransactionCommand extends AddCommand {
     private final Id idToAdd;
 
     /**
-     * Creates an AddTransactionCommand to add the specified {@code Member}
+     * Constructs an AddTransactionCommand to add the specified {@code Member}
      */
     public AddTransactionCommand(Transaction transaction, Id id) {
         requireAllNonNull(transaction, id);
@@ -56,6 +59,13 @@ public class AddTransactionCommand extends AddCommand {
         idToAdd = id;
     }
 
+    /**
+     * Overrides and executes the model.
+     *
+     * @param model {@code Model} which the command should operate on.
+     * @return CommandResult with edited member
+     * @throws CommandException
+     */
     @Override
     public CommandResult execute(Model model) throws CommandException {
         requireNonNull(model);
@@ -71,8 +81,13 @@ public class AddTransactionCommand extends AddCommand {
             throw new CommandException(Messages.MESSAGE_INVALID_MEMBER_DISPLAYED_ID);
         }
     }
+
     /**
-     * Creates and returns a {@code Member} with the details of {@code memberToEdit}
+     * Creates and returns a {@code Member} with the details of {@code memberToEdit}.
+     *
+     * @param memberToEdit
+     * @param transaction
+     * @return member with updated transactions and points
      */
     private static Member createUpdatedCreditAndPointsMember(Member memberToEdit, Transaction transaction) {
         assert memberToEdit != null;
@@ -97,6 +112,12 @@ public class AddTransactionCommand extends AddCommand {
                 updatePoint, updatedTransactions, reservations, updatedTags);
     }
 
+    /**
+     * Overrides the equal method.
+     *
+     * @param other
+     * @return boolean
+     */
     @Override
     public boolean equals(Object other) {
         return other == this // short circuit if same object

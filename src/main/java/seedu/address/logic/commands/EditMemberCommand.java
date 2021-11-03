@@ -40,8 +40,14 @@ import seedu.address.model.transaction.Transaction;
  */
 public class EditMemberCommand extends EditCommand {
 
+    /**
+     * Stands for edit command.
+     */
     public static final String COMMAND_WORD = "edit";
 
+    /**
+     * Stands for the message of edit command.
+     */
     public static final String MESSAGE_USAGE = COMMAND_WORD + ": Edits the details of the member identified "
             + "by the index number used in the displayed member list or the member ID. "
             + "Existing values will be overwritten by the input values.\n"
@@ -67,8 +73,19 @@ public class EditMemberCommand extends EditCommand {
             + PREFIX_PHONE + " 91234567 "
             + PREFIX_EMAIL + " johndoe@example.com";
 
+    /**
+     * Stands for succeed message of edit member.
+     */
     public static final String MESSAGE_SUCCESS = "Edited Member: %1$s";
+
+    /**
+     * Stands for message of not edited which need fields provided.
+     */
     public static final String MESSAGE_NOT_EDITED = "At least one field to edit must be provided.";
+
+    /**
+     * Stands for message of duplicate message.
+     */
     public static final String MESSAGE_DUPLICATE_MEMBER = "This member already exists in the ezFoodie.";
 
     private final Index index;
@@ -76,6 +93,8 @@ public class EditMemberCommand extends EditCommand {
     private final EditMemberDescriptor editMemberDescriptor;
 
     /**
+     * Constructs EditMemberCommand to edit member by index.
+     *
      * @param index of the member in the updated member list to edit
      * @param editMemberDescriptor details to edit the member with
      */
@@ -89,6 +108,8 @@ public class EditMemberCommand extends EditCommand {
     }
 
     /**
+     * Constructs EditMemberCommand to edit member by member id.
+     *
      * @param id of the member in the updated member list to edit
      * @param editMemberDescriptor details to edit the member with
      */
@@ -101,6 +122,13 @@ public class EditMemberCommand extends EditCommand {
         this.editMemberDescriptor = new EditMemberDescriptor(editMemberDescriptor);
     }
 
+    /**
+     * Overrides and executes model.
+     *
+     * @param model {@code Model} which the command should operate on.
+     * @return CommandResult
+     * @throws CommandException
+     */
     @Override
     public CommandResult execute(Model model) throws CommandException {
         requireNonNull(model);
@@ -134,6 +162,10 @@ public class EditMemberCommand extends EditCommand {
     /**
      * Creates and returns a {@code Member} with the details of {@code memberToEdit}
      * edited with {@code editMemberDescriptor}.
+     *
+     * @param memberToEdit
+     * @param editMemberDescriptor
+     * @return Member with edited member
      */
     private static Member createEditedMember(Member memberToEdit, EditMemberDescriptor editMemberDescriptor) {
         assert memberToEdit != null;
@@ -154,6 +186,12 @@ public class EditMemberCommand extends EditCommand {
                 transactions, reservations, updatedTags);
     }
 
+    /**
+     * Overrides the equals method.
+     *
+     * @param other
+     * @return boolean
+     */
     @Override
     public boolean equals(Object other) {
         return other == this // short circuit if same object
@@ -195,34 +233,74 @@ public class EditMemberCommand extends EditCommand {
             return CollectionUtil.isAnyNonNull(name, phone, email, address, tags);
         }
 
+        /**
+         * Sets name.
+         *
+         * @param name
+         */
         public void setName(Name name) {
             this.name = name;
         }
 
+        /**
+         * Gets name.
+         *
+         * @return Optional<Name>
+         */
         public Optional<Name> getName() {
             return Optional.ofNullable(name);
         }
 
+        /**
+         * Sets phone.
+         *
+         * @param phone
+         */
         public void setPhone(Phone phone) {
             this.phone = phone;
         }
 
+        /**
+         * Gets phone.
+         *
+         * @return Optional<Phone>
+         */
         public Optional<Phone> getPhone() {
             return Optional.ofNullable(phone);
         }
 
+        /**
+         * Sets email.
+         *
+         * @param email
+         */
         public void setEmail(Email email) {
             this.email = email;
         }
 
+        /**
+         * Gets email.
+         *
+         * @return Optional<Email>
+         */
         public Optional<Email> getEmail() {
             return Optional.ofNullable(email);
         }
 
+        /**
+         * Sets address.
+         *
+         * @param address
+         */
         public void setAddress(Address address) {
             this.address = address;
         }
 
+        /**
+         * Gets address.
+         *
+         * @return Optional<Address>
+         */
         public Optional<Address> getAddress() {
             return Optional.ofNullable(address);
         }
@@ -230,6 +308,8 @@ public class EditMemberCommand extends EditCommand {
         /**
          * Sets {@code tags} to this object's {@code tags}.
          * A defensive copy of {@code tags} is used internally.
+         *
+         * @param tags
          */
         public void setTags(Set<Tag> tags) {
             this.tags = (tags != null) ? new HashSet<>(tags) : null;
@@ -244,6 +324,12 @@ public class EditMemberCommand extends EditCommand {
             return (tags != null) ? Optional.of(Collections.unmodifiableSet(tags)) : Optional.empty();
         }
 
+        /**
+         * Overrides the equal method.
+         *
+         * @param other
+         * @return boolean
+         */
         @Override
         public boolean equals(Object other) {
             // short circuit if same object

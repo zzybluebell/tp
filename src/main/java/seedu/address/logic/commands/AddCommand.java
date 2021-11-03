@@ -11,12 +11,26 @@ import seedu.address.model.Model;
  */
 public abstract class AddCommand extends Command {
 
+    /**
+     * Stands for COMMAND WORD for add command.
+     */
     public static final String COMMAND_WORD = "add";
+
+    /**
+     * Stands for output message.
+     */
     public static final String MESSAGE_USAGE = COMMAND_WORD + ": Adds a member or a transaction to the ezFoodie.\n"
             + "With "
             + PREFIX_MEMBER + " (member details) or "
             + PREFIX_TRANSACTION + " (transaction details)";
 
+    /**
+     * Overrides the execute method for addCommand class to execute model.
+     *
+     * @param model {@code Model} which the command should operate on.
+     * @return CommandResult for execute addCommand
+     * @throws CommandException
+     */
     @Override
     public abstract CommandResult execute(Model model) throws CommandException;
 

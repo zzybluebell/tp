@@ -11,12 +11,26 @@ import seedu.address.model.Model;
  */
 public abstract class EditCommand extends Command {
 
+    /**
+     * Stands for edit command.
+     */
     public static final String COMMAND_WORD = "edit";
+
+    /**
+     * Stands for the message of edit command.
+     */
     public static final String MESSAGE_USAGE = COMMAND_WORD + ": Edits a member or a transaction in the ezFoodie.\n"
             + "With "
             + PREFIX_MEMBER + " (member details) or "
             + PREFIX_TRANSACTION + " (transaction details)";
 
+    /**
+     * Overrides the executes command.
+     *
+     * @param model {@code Model} which the command should operate on.
+     * @return
+     * @throws CommandException
+     */
     @Override
     public abstract CommandResult execute(Model model) throws CommandException;
 

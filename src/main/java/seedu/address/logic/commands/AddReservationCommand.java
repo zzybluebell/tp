@@ -33,6 +33,9 @@ import seedu.address.model.transaction.Transaction;
  */
 public class AddReservationCommand extends AddCommand {
 
+    /**
+     * Stands for the message add reservation command.
+     */
     public static final String MESSAGE_USAGE = COMMAND_WORD + ": Adds reservation to member "
             + "by member ID in the ezFoodie. "
             + "Parameters: "
@@ -46,13 +49,16 @@ public class AddReservationCommand extends AddCommand {
             + PREFIX_REMARK + " " + "2 people "
             + PREFIX_ID + " " + "10001";
 
+    /**
+     * Stands for message success for new reservation added.
+     */
     public static final String MESSAGE_SUCCESS = "New reservation added: %1$s";
 
     private final Reservation reservationToAdd;
     private final Id idToAdd;
 
     /**
-     * Creates an AddReservationCommand to add the specified {@code Member}
+     * Constructs an AddReservationCommand to add the specified {@code Member}.
      */
     public AddReservationCommand(Reservation reservation, Id id) {
         requireNonNull(id);
@@ -60,6 +66,13 @@ public class AddReservationCommand extends AddCommand {
         idToAdd = id;
     }
 
+    /**
+     * Overrides and executes the model.
+     *
+     * @param model {@code Model} which the command should operate on.
+     * @return CommandResult with edited member
+     * @throws CommandException
+     */
     @Override
     public CommandResult execute(Model model) throws CommandException {
         requireNonNull(model);
@@ -77,7 +90,11 @@ public class AddReservationCommand extends AddCommand {
     }
 
     /**
-     * Creates and returns a {@code Member} with the details of {@code memberToEdit}
+     * Creates and returns a {@code Member} with the details of {@code memberToEdit}.
+     *
+     * @param memberToEdit
+     * @param reservation
+     * @return member with updated reservations
      */
     private static Member createUpdatedReservations(Member memberToEdit, Reservation reservation) {
         assert memberToEdit != null;
@@ -101,6 +118,12 @@ public class AddReservationCommand extends AddCommand {
                 transactions, updatedReservations, tags);
     }
 
+    /**
+     * Overrides the equal method.
+     *
+     * @param other
+     * @return boolean
+     */
     @Override
     public boolean equals(Object other) {
         return other == this // short circuit if same object

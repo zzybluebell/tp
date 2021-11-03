@@ -65,6 +65,9 @@ public class AddMemberCommandParser extends AddCommandParser implements Parser<A
     /**
      * Parses the given {@code String} of arguments in the context of the AddMemberCommand
      * and returns an AddMemberCommand object for execution.
+     *
+     * @param args
+     * @return AddMember
      * @throws ParseException if the user input does not conform the expected format
      */
     @Override
