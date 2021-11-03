@@ -114,14 +114,6 @@ public class Member {
     }
 
     /**
-     * Adds addRedemptions.
-     * @param newRedeemPoints
-     */
-    public void addRedemptions(List<Point> newRedeemPoints) {
-        redemptionsList.addAll(newRedeemPoints);
-    }
-
-    /**
      * Returns true if both members have the same id, phone or email.
      * This defines a weaker notion of equality between two members.
      */
