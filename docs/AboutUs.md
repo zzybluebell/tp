@@ -16,6 +16,7 @@ You can reach us via email, as indicated below.
 <img src="images/holmesjj.png" width="200px">
 
 [[github@holmesjj](http://github.com/holmesjj)]
+[[portfolio@holmesjj](team/holmesjj.md)]
 
 * Role: Tech lead, Git expert
 * Responsibilities: Scheduling and tracking
