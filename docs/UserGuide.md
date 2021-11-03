@@ -3,7 +3,7 @@ layout: page
 title: User Guide
 ---
 
-<div align="center"><img height="300" alt="ezFoodie Logo" src="images/ezFoodieLogo.png"></div>
+<div align="center"><img height="300" alt="ezFoodie Logo" src="images/Logo.png"></div>
 
 * Table of Contents
 {:toc}
@@ -26,13 +26,13 @@ ezFoodie is simple and user-friendly. It is optimized for using via a **Command 
 
 ## Quick start
 
-1. Ensure you have Java `11` or above installed in your Computer.
+1. Ensure you have Java `11` or above installed in your Computer from [here](https://www.oracle.com/java/technologies/downloads/).
 
 2. Download the latest `ezFoodie.jar` from [here](https://github.com/AY2122S1-CS2103T-F12-4/tp/releases).
 
 3. Copy the file to the folder you want to use as the _home folder_ for your ezFoodie.
 
-4. Double-click the file to start the app. The GUI similar to the below should appear in a few seconds. Note how the app contains some sample data.<br>
+4. Double-click the file to start the application. The GUI similar to the below should appear in a few seconds. Note how the application contains some sample data.<br>
    ![Ui](images/Ui.png)
 
 5. Type the command in the command box and press Enter to execute it. e.g. typing **`help`** and pressing Enter will open the help window.<br>
@@ -43,6 +43,10 @@ ezFoodie is simple and user-friendly. It is optimized for using via a **Command 
    * **`add -mem`**`-n John Doe -p 98765432 -e johndoe@gmail.com -a 112 Amoy Street, 069907, Singapore` : Adds a contact named `John Doe` to the member list.
 
    * **`del -mem`**`-id 3` : Deletes the member with member ID 3 shown in the current list.
+
+   * **`add -txn`**`-b 110.00  -id 3` : add transaction with a bill $100.00 to member ID 3 shown in the current list.
+   
+   * **`redeem -f`**`100 -id 3` : redeem 100 point from id 3 shown in the current list.
 
    * **`clear`** : Clears the program.
 
@@ -79,6 +83,8 @@ ezFoodie is simple and user-friendly. It is optimized for using via a **Command 
   * `-row`: index number of the membet list
 
   * `-mem`: member
+  
+  * `-f`: redeem
 
   * `-n`: name
 
@@ -130,6 +136,24 @@ Format: `add -mem -n <NAME> -p <PHONE> -e <EMAIL> -a <ADDRESS>`
 
 Example:
 * `add -mem -n John Doe -p 98765432 -e johndoe@gmail.com -a 112 Amoy Street, 069907, Singapore`
+
+### Redeeming point from a member by id: `redeem -f -id`
+
+Redeems point from a member by id.
+
+Format: `redeem -f <point> -id <MEMBER_ID>`
+
+Example:
+* `redeem -f 100 -id 10006`
+
+### Redeeming point from a member by index: `redeem -f -row`
+
+Redeems point from a member by index.
+
+Format: `redeem -f <point> -row <INDEX>`
+
+Example:
+* `redeem -f 100 -row 1`
 
 ### Finding members : `find -mem`
 
@@ -352,7 +376,7 @@ _Details coming soon ..._
 ## FAQ
 
 **Q**: How do I transfer my data to another Computer?<br>
-**A**: Install the app in the other computer and overwrite the empty data file it creates with the file that contains the data of your previous AddressBook home folder.
+**A**: Install the application in the other computer and overwrite the empty data file it creates with the file that contains the data of your previous AddressBook home folder.
 
 --------------------------------------------------------------------------------------------------------------------
 
