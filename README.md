@@ -3,7 +3,8 @@
 [![CI Status](https://github.com/AY2122S1-CS2103T-F12-4/tp/workflows/Java%20CI/badge.svg)](https://github.com/AY2122S1-CS2103T-F12-4/tp/actions)
 [![codecov](https://codecov.io/gh/AY2122S1-CS2103T-F12-4/tp/branch/master/graph/badge.svg)](https://codecov.io/gh/AY2122S1-CS2103T-F12-4/tp)
 
-<div align="center"><img height="124" width="384" alt="ezFoodie Logo" src="images/Logo.png"></div>
+
+![Ui](docs/images/Logo.png)
 
 ![Ui](docs/images/Ui.png)
 
