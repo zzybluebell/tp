@@ -10,7 +10,7 @@ import static seedu.address.commons.util.AppUtil.checkArgument;
 public class Credit {
 
     public static final String MESSAGE_CONSTRAINTS =
-            "Credits should only contain digits, and it should not be blank";
+            "Credits should only contain no more than 8 digits, and it should not be blank";
     public static final String VALIDATION_REGEX = "[\\p{Digit}]*";
     public static final int MAX = 99999999;
     public static final int LENGTH = 8; // Max credit is 99999999

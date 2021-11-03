@@ -36,14 +36,12 @@ import seedu.address.model.transaction.Transaction;
  */
 public class EditReservationCommand extends EditCommand {
 
-    public static final String COMMAND_WORD = "edit";
-
     public static final String MESSAGE_USAGE = COMMAND_WORD + ": Edits the details of the reservation identified "
             + "by the member ID and reservation ID. "
             + "Existing values will be overwritten by the input values.\n"
             + "Parameters:\n"
             + "Edit by member ID and reservation ID: "
-            + PREFIX_RESERVATION + " [" + PREFIX_ID + " member ID + reservation ID] "
+            + PREFIX_RESERVATION + " " + PREFIX_ID + " member ID + reservation ID "
             + "[" + PREFIX_DATE_TIME + " DATE_TIME]"
             + "[" + PREFIX_REMARK + " REMARK]\n"
             + "Example:\n"
@@ -133,7 +131,7 @@ public class EditReservationCommand extends EditCommand {
     public boolean equals(Object other) {
         return other == this // short circuit if same object
                 || (other instanceof EditReservationCommand // instanceof handles nulls
-                // && memberId.equals(((EditReservationCommand) other).memberId)
+                && memberId.equals(((EditReservationCommand) other).memberId)
                 && reservationId.equals(((EditReservationCommand) other).reservationId)
                 && editReservationDescriptor
                 .equals(((EditReservationCommand) other).editReservationDescriptor)); // state check
@@ -151,7 +149,7 @@ public class EditReservationCommand extends EditCommand {
 
         /**
          * Copy constructor.
-         * A defensive copy of {@code tags} is used internally.
+         * A defensive copy of {@code toCopy} is used internally.
          */
         public EditReservationDescriptor(EditReservationDescriptor toCopy) {
             setDateTime(toCopy.dateTime);

@@ -46,7 +46,7 @@ public class RedeemCommand extends Command {
             + PREFIX_REDEEM + " 100 "
             + PREFIX_INDEX + " 1\n";
 
-    public static final String MESSAGE_SUCCESS_REDEMPTION = "Redemption is done";
+    public static final String MESSAGE_SUCCESS_REDEMPTION = "Redeemed Member: %1$s";
     public static final String MESSAGE_DUPLICATE_MEMBER = "This member already exists in the ezFoodie.";
     public static final String MESSAGE_INVALID_POINTS_LESS_THAN_ZERO = "Redeemed point has already exceeded\n"
             + "Points can't redeemed less than 0\n"
