@@ -142,61 +142,71 @@ public interface Model {
     void updateSortedMemberList(Comparator<Member> comparator);
 
     /**
-     * Gets the number of all members in ezFoodie
+     * Gets the number of all members in ezFoodie.
+     *
      * @return total count
      */
     int getNumberOfMembers();
 
     /**
-     * Gets the number of members in each tier in ezFoodie
+     * Gets the number of members in each tier in ezFoodie.
+     *
      * @return hashmap of (tier name, count) pairs.
      */
     HashMap<String, Integer> getNumberOfMembersByTiers();
 
     /**
-     * Gets the number of transactions made in all time in ezFoodie
+     * Gets the number of transactions made in all time in ezFoodie.
+     *
      * @return total count all time
      */
     int getNumberOfTransactions();
 
     /**
-     * Gets the number of transactions made in the past month in ezFoodie
+     * Gets the number of transactions made in the past month in ezFoodie.
+     *
      * @return total count in last 1 month
      */
     int getNumberOfTransactionsPastMonth();
 
     /**
-     * Gets the number of transactions made in the past 3 months in ezFoodie
+     * Gets the number of transactions made in the past 3 months in ezFoodie.
+     *
      * @return total count in last 3 months
      */
     int getNumberOfTransactionsPastThreeMonth();
 
     /**
-     * Gets the number of transactions made in the past 6 months in ezFoodie
+     * Gets the number of transactions made in the past 6 months in ezFoodie.
+     *
      * @return total count in last 6 months
      */
     int getNumberOfTransactionsPastSixMonth();
 
     /**
-     * Gets the total amount of transactions made all time in ezFoodie
+     * Gets the total amount of transactions made all time in ezFoodie.
+     *
      * @return total amount all time
      */
     double getTotalAmountOfTransactions();
 
     /**
-     * Gets the total amount of transactions made in the past month in ezFoodie
+     * Gets the total amount of transactions made in the past month in ezFoodie.
+     *
      * @return total amount in past 1 month
      */
     double getTotalAmountOfTransactionsPastMonth();
 
     /**
-     * Gets the total amount of transactions made in the past 3 months in ezFoodie
+     * Gets the total amount of transactions made in the past 3 months in ezFoodie.
+     *
      * @return total amount in past 3 months
      */
     double getTotalAmountOfTransactionsPastThreeMonth();
 
     /**
-     * Gets the total amount of transactions made in the past 6 months in ezFoodie
+     * Gets the total amount of transactions made in the past 6 months in ezFoodie.
+     *
      * @return total amount in past 6 months
      */
     double getTotalAmountOfTransactionsPastSixMonth();

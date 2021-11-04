@@ -47,13 +47,10 @@ public class Credit {
     }
 
     /**
-     * Returns true if a given string is a valid credit.
-     */
-    /**
-     * Returns true if a given string is a valid credit.
+     * Returns whether is a valid credit.
      *
-     * @param test
-     * @return boolean
+     * @param test input String test
+     * @return boolean true if a given string is a valid credit.
      */
     public static boolean isValidCredit(String test) {
         return test.matches(VALIDATION_REGEX) && test.length() <= LENGTH;
@@ -68,6 +65,8 @@ public class Credit {
 
     /**
      * Gets String value of credit for Point use.
+     *
+     * @return String of credit value.
      */
     public String getStringValue() {
         return value;
@@ -75,8 +74,6 @@ public class Credit {
 
     /**
      * Overrides toString method.
-     *
-     * @return String
      */
     @Override
     public String toString() {
@@ -85,8 +82,6 @@ public class Credit {
 
     /**
      * Overrides equals method.
-     *
-     * @return boolean
      */
     @Override
     public boolean equals(Object other) {
@@ -97,8 +92,6 @@ public class Credit {
 
     /**
      * Overrides hashCode method.
-     *
-     * @return int
      */
     @Override
     public int hashCode() {

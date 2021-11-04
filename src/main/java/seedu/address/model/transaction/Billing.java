@@ -9,17 +9,31 @@ import static seedu.address.commons.util.AppUtil.checkArgument;
  */
 public class Billing {
 
+    /**
+     * Stands for message constraints of transaction billing.
+     */
     public static final String MESSAGE_CONSTRAINTS =
             "Billings should be numeric with 2 decimal places";
+
+    /**
+     * Stands for validation regex of transaction billing.
+     */
     public static final String VALIDATION_REGEX = "\\d*\\.\\d{2}$";
+
+    /**
+     * Stands for transaction billing max amount length
+     */
     public static final int LENGTH = 7; // Max amount is 9999.99
 
+    /**
+     * Stands for transaction billing value.
+     */
     public final String value;
 
     /**
      * Constructs a {@code Billing}.
      *
-     * @param billing A valid billing amount.
+     * @param billing a valid billing amount.
      */
     public Billing(String billing) {
         requireNonNull(billing);
@@ -28,7 +42,10 @@ public class Billing {
     }
 
     /**
-     * Returns true if a given string is a valid billing amount.
+     * Returns whether is valid billing.
+     *
+     * @param test input string test.
+     * @return boolean true if a given string is a valid billing amount.
      */
     public static boolean isValidBilling(String test) {
         return test.matches(VALIDATION_REGEX) && test.length() <= LENGTH;
@@ -41,11 +58,19 @@ public class Billing {
         return Double.parseDouble(value);
     }
 
+    /**
+     * Overrides toString method.
+     *
+     * @return transaction billing value.
+     */
     @Override
     public String toString() {
         return value;
     }
 
+    /**
+     * Overrides the equals method.
+     */
     @Override
     public boolean equals(Object other) {
         return other == this // short circuit if same object
@@ -53,6 +78,9 @@ public class Billing {
                 && value.equals(((Billing) other).value)); // state check
     }
 
+    /**
+     * Overrides the hashcode method.
+     */
     @Override
     public int hashCode() {
         return value.hashCode();

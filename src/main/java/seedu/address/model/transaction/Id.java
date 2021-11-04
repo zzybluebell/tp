@@ -9,18 +9,31 @@ import static seedu.address.commons.util.AppUtil.checkArgument;
  */
 public class Id {
 
+    /**
+     * Stands for message constraints of transaction Id.
+     */
     public static final String MESSAGE_CONSTRAINTS =
             "Transactions should only contain 6 digits, and it should not be blank";
+
+    /**
+     * Stands for validation regex of transaction Id.
+     */
     public static final String VALIDATION_REGEX = "[\\p{Digit}]*";
-    public static final String PATTERN = "%06d";
+
+    /**
+     * Stands for transaction Id max length
+     */
     public static final int LENGTH = 6;
 
+    /**
+     * Stands for transaction Id value.
+     */
     public final String value;
 
     /**
      * Constructs a {@code Id}.
      *
-     * @param id A valid id.
+     * @param id a valid id.
      */
     public Id(String id) {
         requireNonNull(id);
@@ -29,17 +42,29 @@ public class Id {
     }
 
     /**
-     * Returns true if a given string is a valid id.
+     * Returns whether is valid id.
+     *
+     * @param test input string test
+     * @return boolean true if a given string is a valid id.
      */
+
     public static boolean isValidId(String test) {
         return test.matches(VALIDATION_REGEX) && test.length() == LENGTH;
     }
 
+    /**
+     * Overrides the toString method.
+     *
+     * @return transaction billing value.
+     */
     @Override
     public String toString() {
         return value;
     }
 
+    /**
+     * Overrides equals method.
+     */
     @Override
     public boolean equals(Object other) {
         return other == this // short circuit if same object
@@ -47,6 +72,9 @@ public class Id {
                 && value.equals(((Id) other).value)); // state check
     }
 
+    /**
+     * Overrides hashCode method.
+     */
     @Override
     public int hashCode() {
         return value.hashCode();

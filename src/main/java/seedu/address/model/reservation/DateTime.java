@@ -26,7 +26,7 @@ public class DateTime {
     /**
      * Constructs a {@code Reservation}.
      *
-     * @param dateTime A valid date time.
+     * @param dateTime a valid date time.
      */
     public DateTime(String dateTime) {
         requireNonNull(dateTime);
@@ -35,13 +35,10 @@ public class DateTime {
     }
 
     /**
-     * Returns true if a given string is a valid date time.
-     */
-    /**
-     * Returns true if a given string is a valid date time.
+     * Returns whether is valid date time
      *
-     * @param test
-     * @return boolean
+     * @param test input string test
+     * @return boolean true if a given string is a valid date time.
      */
     public static boolean isValidDateTime(String test) {
         try {
@@ -54,8 +51,6 @@ public class DateTime {
 
     /**
      * Overrides toString method.
-     *
-     * @return String
      */
     @Override
     public String toString() {
@@ -64,8 +59,6 @@ public class DateTime {
 
     /**
      * Overrides equals method.
-     *
-     * @return boolean
      */
     @Override
     public boolean equals(Object other) {
@@ -76,8 +69,6 @@ public class DateTime {
 
     /**
      * Overrides hashCode method.
-     *
-     * @return int
      */
     @Override
     public int hashCode() {

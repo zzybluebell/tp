@@ -16,7 +16,9 @@ import seedu.address.logic.Logic;
  * The manager of the UI component.
  */
 public class UiManager implements Ui {
-
+    /**
+     * Stands for alert dialog pane filed id.
+     */
     public static final String ALERT_DIALOG_PANE_FIELD_ID = "alertDialogPane";
 
     private static final Logger logger = LogsCenter.getLogger(UiManager.class);
@@ -33,6 +35,9 @@ public class UiManager implements Ui {
         this.logic = logic;
     }
 
+    /**
+     * Starts the UI (and the App).
+     */
     @Override
     public void start(Stage primaryStage) {
         logger.info("Starting UI...");

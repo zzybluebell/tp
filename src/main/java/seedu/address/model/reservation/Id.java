@@ -5,7 +5,7 @@ import static seedu.address.commons.util.AppUtil.checkArgument;
 
 /**
  * Represents a Reservation's id in the ezFoodie.
- * Guarantees: ummutable, is valid as declared in {@link #isValidId(String)}
+ * Guarantees: immutable, is valid as declared in {@link #isValidId(String)}
  */
 public class Id {
 
@@ -21,7 +21,7 @@ public class Id {
     public static final String VALIDATION_REGEX = "[\\p{Digit}]*";
 
     /**
-     * Stands for reservation Id pattern
+     * Stands for reservation Id pattern.
      */
     public static final String PATTERN = "%06d";
 
@@ -31,14 +31,14 @@ public class Id {
     public static final int LENGTH = 6;
 
     /**
-     * Stands for reservation id value
+     * Stands for reservation id value.
      */
     public final String value;
 
     /**
      * Constructs a {@code Id}.
      *
-     * @param id A valid id.
+     * @param id a valid id.
      */
     public Id(String id) {
         requireNonNull(id);
@@ -47,10 +47,10 @@ public class Id {
     }
 
     /**
-     * Returns true if a given string is a valid id.
+     * Returns whether is valid id.
      *
-     * @param test
-     * @return
+     * @param test input string test.
+     * @return boolean true if a given string is a valid id.
      */
     public static boolean isValidId(String test) {
         return test.matches(VALIDATION_REGEX) && test.length() == LENGTH;
@@ -59,7 +59,7 @@ public class Id {
     /**
      * Overrides toString method.
      *
-     * @return String
+     * @return String print reservation id value.
      */
     @Override
     public String toString() {
@@ -68,8 +68,6 @@ public class Id {
 
     /**
      * Overrides equals method.
-     *
-     * @return boolean
      */
     @Override
     public boolean equals(Object other) {
@@ -80,8 +78,6 @@ public class Id {
 
     /**
      * Overrides hashCode method.
-     *
-     * @return int
      */
     @Override
     public int hashCode() {

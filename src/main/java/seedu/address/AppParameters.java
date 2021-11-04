@@ -59,6 +59,9 @@ public class AppParameters {
         return appParameters;
     }
 
+    /**
+     * Overrides equals method.
+     */
     @Override
     public boolean equals(Object other) {
         if (other == this) {
@@ -74,6 +77,9 @@ public class AppParameters {
                 && Objects.equals(getAccountPath(), otherAppParameters.getAccountPath());
     }
 
+    /**
+     * Overrides hashCode.
+     */
     @Override
     public int hashCode() {
         return Objects.hash(configPath, accountPath);
