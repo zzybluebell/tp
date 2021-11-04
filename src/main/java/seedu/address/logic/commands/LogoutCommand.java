@@ -1,6 +1,7 @@
 package seedu.address.logic.commands;
 
 import static java.util.Objects.requireNonNull;
+import static seedu.address.model.Model.COMPARATOR_SORT_MEMBERS_BY_ID_ASC;
 import static seedu.address.model.Model.PREDICATE_SHOW_ALL_MEMBERS;
 
 import seedu.address.commons.status.LoginStatus;
@@ -39,6 +40,7 @@ public class LogoutCommand extends Command {
             return new CommandResult(MESSAGE_ALREADY_IN_STATUS);
         }
         LoginStatus.setLoginStatus(LoginStatus.STAFF);
+        model.updateSortedMemberList(COMPARATOR_SORT_MEMBERS_BY_ID_ASC);
         model.updateFilteredMemberList(PREDICATE_SHOW_ALL_MEMBERS);
         return new CommandResult(MESSAGE_SUCCESS);
     }

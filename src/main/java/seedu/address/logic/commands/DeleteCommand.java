@@ -1,6 +1,7 @@
 package seedu.address.logic.commands;
 
 import static seedu.address.logic.parser.CliSyntax.PREFIX_MEMBER;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_RESERVATION;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_TRANSACTION;
 
 import seedu.address.logic.commands.exceptions.CommandException;
@@ -19,10 +20,12 @@ public abstract class DeleteCommand extends Command {
     /**
      * Stands for the message of delete command from the ezFoodie.
      */
-    public static final String MESSAGE_USAGE = COMMAND_WORD + ": Deletes a member or a transaction from the ezFoodie.\n"
+    public static final String MESSAGE_USAGE = COMMAND_WORD
+            + ": Deletes a member or a transaction or a reservation from the ezFoodie.\n"
             + "With "
             + PREFIX_MEMBER + " (member details) or "
-            + PREFIX_TRANSACTION + " (transaction details)";
+            + PREFIX_TRANSACTION + " (transaction details) or "
+            + PREFIX_RESERVATION + " (reservation details)";
 
     /**
      * Overrides and executes model.

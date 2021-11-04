@@ -43,10 +43,10 @@ public class DeleteTransactionCommand extends DeleteCommand {
             + ": Deletes the transaction identified by the member ID and transaction ID.\n"
             + "Parameters:\n"
             + "Delete by member ID and transaction ID: "
-            + PREFIX_TRANSACTION + " [" + PREFIX_ID + " member ID + transaction ID]\n"
+            + PREFIX_TRANSACTION + " " + PREFIX_ID + "member ID + transaction ID\n"
             + "Example:\n"
             + "Delete by member ID and transaction ID: "
-            + COMMAND_WORD + " " + PREFIX_TRANSACTION + " " + PREFIX_ID + " 10001100001";
+            + COMMAND_WORD + " " + PREFIX_TRANSACTION + " " + PREFIX_ID + "10001100001";
 
     /**
      * Stands for succeed message of delete transaction.

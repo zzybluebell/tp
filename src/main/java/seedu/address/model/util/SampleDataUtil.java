@@ -41,7 +41,7 @@ public class SampleDataUtil {
                     getReservationList(new Reservation(
                             new seedu.address.model.reservation.Id("100001"), new DateTime("2021-01-20 00:00"),
                             new Remark("2 people"))),
-                    getTagSet("friends")),
+                    getTagSet()),
             new Member(new seedu.address.model.member.Id("10002"),
                     new Name("Bernice Yu"), new Phone("99272758"),
                     new Email("berniceyu@example.com"), new Address("Blk 30 Lorong 3 Serangoon Gardens, #07-18"),
@@ -56,7 +56,7 @@ public class SampleDataUtil {
                                     new DateTime("2021-01-20 01:00"), new Remark("2 people")),
                             new Reservation(new seedu.address.model.reservation.Id("100002"),
                                     new DateTime("2021-01-21 01:00"), new Remark("3 people"))),
-                    getTagSet("colleagues", "friends")),
+                    getTagSet()),
             new Member(new seedu.address.model.member.Id("10003"),
                     new Name("Charlotte Oliveiro"), new Phone("93210283"),
                     new Email("charlotte@example.com"), new Address("Blk 11 Ang Mo Kio Street 74, #11-04"),
@@ -65,7 +65,7 @@ public class SampleDataUtil {
                             new Timestamp("1611108000000"), new Billing("150.00"))),
                     getReservationList(new Reservation(new seedu.address.model.reservation.Id("000001"),
                             new DateTime("2021-01-20 02:00"), new Remark("2 people"))),
-                    getTagSet("neighbours")),
+                    getTagSet()),
             new Member(new seedu.address.model.member.Id("10004"),
                     new Name("David Li"), new Phone("91031282"),
                     new Email("lidavid@example.com"), new Address("Blk 436 Serangoon Gardens Street 26, #16-43"),
@@ -84,7 +84,7 @@ public class SampleDataUtil {
                                     new DateTime("2021-01-21 03:00"), new Remark("3 people")),
                             new Reservation(new seedu.address.model.reservation.Id("100003"),
                                     new DateTime("2021-01-22 03:00"), new Remark("4 people"))),
-                    getTagSet("family")),
+                    getTagSet()),
             new Member(new seedu.address.model.member.Id("10005"),
                     new Name("Irfan Ibrahim"), new Phone("92492021"),
                     new Email("irfan@example.com"), new Address("Blk 47 Tampines Street 20, #17-35"),
@@ -99,7 +99,7 @@ public class SampleDataUtil {
                                     new DateTime("2021-01-20 04:00"), new Remark("2 people")),
                             new Reservation(new seedu.address.model.reservation.Id("100002"),
                                     new DateTime("2021-01-21 04:00"), new Remark("3 people"))),
-                    getTagSet("classmates")),
+                    getTagSet()),
             new Member(new seedu.address.model.member.Id("10006"),
                     new Name("Roy Balakrishnan"), new Phone("92624417"),
                     new Email("royb@example.com"), new Address("Blk 45 Aljunied Street 85, #11-31"),
@@ -114,7 +114,7 @@ public class SampleDataUtil {
                                     new DateTime("2021-01-20 05:00"), new Remark("2 people")),
                             new Reservation(new seedu.address.model.reservation.Id("100002"),
                                     new DateTime("2021-01-21 05:00"), new Remark("3 people"))),
-                    getTagSet("colleagues"))
+                    getTagSet())
         };
     }
 

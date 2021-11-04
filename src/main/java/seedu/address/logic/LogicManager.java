@@ -68,6 +68,7 @@ public class LogicManager implements Logic {
 
         try {
             storage.saveEzFoodie(model.getEzFoodie());
+            storage.saveAccount(model.getAccount());
         } catch (IOException ioe) {
             throw new CommandException(FILE_OPS_ERROR_MESSAGE + ioe, ioe);
         }

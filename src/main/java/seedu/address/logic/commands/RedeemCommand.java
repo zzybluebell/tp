@@ -58,7 +58,7 @@ public class RedeemCommand extends Command {
     /**
      * Stands for message for redeem points successfully.
      */
-    public static final String MESSAGE_SUCCESS_REDEMPTION = "Redemption is done";
+    public static final String MESSAGE_SUCCESS_REDEMPTION = "Redeemed Member: %1$s";
 
     /**
      * Stands for message for duplicate member.

@@ -1,6 +1,7 @@
 package seedu.address.logic.commands;
 
 import static seedu.address.logic.parser.CliSyntax.PREFIX_MEMBER;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_RESERVATION;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_TRANSACTION;
 
 import seedu.address.logic.commands.exceptions.CommandException;
@@ -19,10 +20,12 @@ public abstract class EditCommand extends Command {
     /**
      * Stands for the message of edit command.
      */
-    public static final String MESSAGE_USAGE = COMMAND_WORD + ": Edits a member or a transaction in the ezFoodie.\n"
+    public static final String MESSAGE_USAGE = COMMAND_WORD
+            + ": Edits a member or a transaction or a reservation in the ezFoodie.\n"
             + "With "
             + PREFIX_MEMBER + " (member details) or "
-            + PREFIX_TRANSACTION + " (transaction details)";
+            + PREFIX_TRANSACTION + " (transaction details) or "
+            + PREFIX_RESERVATION + " (reservation details)";
 
     /**
      * Overrides the executes command.

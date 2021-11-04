@@ -5,7 +5,7 @@ import java.util.Comparator;
 import seedu.address.commons.status.SortStatus;
 
 /**
- * Tests that a {@code Member}'s {@code Email} matches any of the keywords given.
+ * Compares that the credits between 2 members.
  */
 public class CreditSortComparator implements Comparator<Member> {
 

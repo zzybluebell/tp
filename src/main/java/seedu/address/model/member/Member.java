@@ -33,7 +33,6 @@ public class Member {
     private final Point point;
     private final Set<Tag> tags = new HashSet<>();
 
-    private final List<Point> redemptionsList = new ArrayList<>();
     private final List<Transaction> transactions = new ArrayList<>();
     private final List<Reservation> reservations = new ArrayList<>();
 

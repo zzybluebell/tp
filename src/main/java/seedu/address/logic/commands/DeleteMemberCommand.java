@@ -30,12 +30,12 @@ public class DeleteMemberCommand extends DeleteCommand {
     public static final String MESSAGE_USAGE = COMMAND_WORD
             + ": Deletes the member identified by the index number used in the displayed member list or member ID.\n"
             + "Parameters:\n"
-            + "Delete by index number: " + PREFIX_MEMBER + " [" + PREFIX_INDEX + " INDEX]"
+            + "Delete by index number: " + PREFIX_MEMBER + " " + PREFIX_INDEX + "INDEX"
             + " (INDEX must be a positive integer)\n"
-            + "Delete by member ID: " + PREFIX_MEMBER + " [" + PREFIX_ID + " ID]\n"
+            + "Delete by member ID: " + PREFIX_MEMBER + " " + PREFIX_ID + "ID\n"
             + "Example:\n"
-            + "Delete by index number: " + COMMAND_WORD + " " + PREFIX_MEMBER + " " + PREFIX_INDEX + " 1\n"
-            + "Delete by member ID: " + COMMAND_WORD + " " + PREFIX_MEMBER + " " + PREFIX_ID + " 10001";
+            + "Delete by index number: " + COMMAND_WORD + " " + PREFIX_MEMBER + " " + PREFIX_INDEX + "1\n"
+            + "Delete by member ID: " + COMMAND_WORD + " " + PREFIX_MEMBER + " " + PREFIX_ID + "10001";
 
     /**
      * Stands for succeed message of delete member.

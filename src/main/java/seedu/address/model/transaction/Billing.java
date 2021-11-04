@@ -10,10 +10,20 @@ import static seedu.address.commons.util.AppUtil.checkArgument;
 public class Billing {
 
     /**
+     * Stands for the max transaction billing number.
+     */
+    public static final double MAX = 9999.99;
+
+    /**
      * Stands for message constraints of transaction billing.
      */
     public static final String MESSAGE_CONSTRAINTS =
-            "Billings should be numeric with 2 decimal places";
+            "Billings should be positive numeric with 2 decimal places, and max amount is " + MAX;
+
+    /**
+     * Stands for trim leading zero regex
+     */
+    public static final String TRIM_LEADING_ZERO_REGEX = "^0+(?!$)";
 
     /**
      * Stands for validation regex of transaction billing.
@@ -48,7 +58,12 @@ public class Billing {
      * @return boolean true if a given string is a valid billing amount.
      */
     public static boolean isValidBilling(String test) {
-        return test.matches(VALIDATION_REGEX) && test.length() <= LENGTH;
+        test = test.replaceFirst(TRIM_LEADING_ZERO_REGEX, "");
+        try {
+            return test.length() <= LENGTH && Double.parseDouble(test) <= MAX && test.matches(VALIDATION_REGEX);
+        } catch (NumberFormatException e) {
+            return false;
+        }
     }
 
     /**

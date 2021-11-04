@@ -47,12 +47,12 @@ public class EditTransactionCommand extends EditCommand {
             + "Existing values will be overwritten by the input values.\n"
             + "Parameters:\n"
             + "Edit by member ID and transaction ID: "
-            + PREFIX_TRANSACTION + " [" + PREFIX_ID + " member ID + transaction ID] "
-            + "[" + PREFIX_BILLING + " BILLING]\n"
+            + PREFIX_TRANSACTION + " " + PREFIX_ID + "member ID + transaction ID "
+            + "[" + PREFIX_BILLING + "BILLING]\n"
             + "Example:\n"
             + "Edit by member ID and transaction ID: "
-            + COMMAND_WORD + " " + PREFIX_TRANSACTION + " " + PREFIX_ID + " 10001100001 "
-            + PREFIX_BILLING + " 123.45";
+            + COMMAND_WORD + " " + PREFIX_TRANSACTION + " " + PREFIX_ID + "10001100001 "
+            + PREFIX_BILLING + "123.45";
 
     /**
      * Stands for succeed message of edit member.
@@ -163,7 +163,7 @@ public class EditTransactionCommand extends EditCommand {
     public boolean equals(Object other) {
         return other == this // short circuit if same object
                 || (other instanceof EditTransactionCommand // instanceof handles nulls
-                // && memberId.equals(((EditTransactionCommand) other).memberId)
+                && memberId.equals(((EditTransactionCommand) other).memberId)
                 && transactionId.equals(((EditTransactionCommand) other).transactionId)
                 && editTransactionDescriptor
                 .equals(((EditTransactionCommand) other).editTransactionDescriptor)); // state check
@@ -181,7 +181,7 @@ public class EditTransactionCommand extends EditCommand {
 
         /**
          * Copy constructor.
-         * A defensive copy of {@code tags} is used internally.
+         * A defensive copy of {@code toCopy} is used internally.
          */
         public EditTransactionDescriptor(EditTransactionDescriptor toCopy) {
             setTimestamp(toCopy.timestamp);

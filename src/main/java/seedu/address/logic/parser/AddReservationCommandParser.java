@@ -1,6 +1,7 @@
 package seedu.address.logic.parser;
 
 import static seedu.address.commons.core.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
+import static seedu.address.commons.core.Messages.MESSAGE_INVALID_MEMBER_DISPLAYED_ID;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_DATE_TIME;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_ID;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_REMARK;
@@ -35,7 +36,7 @@ public class AddReservationCommandParser extends AddCommandParser implements Par
         this.executionStatus = executionStatus;
     }
 
-    private String generateId(seedu.address.model.member.Id id) {
+    private String generateId(seedu.address.model.member.Id id) throws ParseException {
         List<Member> lastShownList = model.getUpdatedMemberList();
         Member memberToEdit = lastShownList.stream()
                 .filter(member -> id.equals(member.getId())).findAny().orElse(null);
@@ -43,11 +44,14 @@ public class AddReservationCommandParser extends AddCommandParser implements Par
             List<Reservation> reservationList = memberToEdit.getReservations();
             long latestId = 0;
             if (reservationList.size() > 0) {
-                latestId = Long.parseLong(reservationList.get(reservationList.size() - 1).getId().value);
+                latestId = reservationList.get(reservationList.size() - 1).getId().getLongValue();
             }
-            return String.format(seedu.address.model.member.Id.PATTERN, latestId + 1);
+            if (latestId == seedu.address.model.reservation.Id.MAX) {
+                throw new ParseException(AddReservationCommand.MESSAGE_FULL);
+            }
+            return Long.toString(latestId + 1);
         } else {
-            return ID_STUB;
+            throw new ParseException(MESSAGE_INVALID_MEMBER_DISPLAYED_ID);
         }
     }
 

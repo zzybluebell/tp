@@ -4,14 +4,11 @@ import static java.util.Objects.requireNonNull;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_ID;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_MEMBER;
 
-import java.util.function.Predicate;
-
 import seedu.address.model.Model;
 import seedu.address.model.member.IdContainsKeywordsPredicate;
-import seedu.address.model.member.Member;
 
 /**
- * View specific member details in eZFoodie, accessed by member ID.
+ * Views specific member details in eZFoodie, accessed by member ID.
  */
 public class ViewCommand extends Command {
 
@@ -32,16 +29,16 @@ public class ViewCommand extends Command {
             + ": View a specific member's details, "
             + "accessed by member ID.\n"
             + "Parameters:\n"
-            + PREFIX_MEMBER + " [" + PREFIX_ID + " ID]\n"
+            + PREFIX_MEMBER + " " + PREFIX_ID + "ID\n"
             + "Example:\n"
-            + COMMAND_WORD + " " + PREFIX_MEMBER + PREFIX_ID + " 10001\n";
+            + COMMAND_WORD + " " + PREFIX_MEMBER + " " + PREFIX_ID + "10001";
 
-    private final Predicate<Member> predicate;
+    private final IdContainsKeywordsPredicate predicate;
 
     /**
-     * Construct the view command based on member id predicate.
+     * Constructs the view command based on member ID predicate.
      *
-     * @param predicate the details keyword by id.
+     * @param predicate of member ID
      */
     public ViewCommand(IdContainsKeywordsPredicate predicate) {
         this.predicate = predicate;

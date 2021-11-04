@@ -10,10 +10,20 @@ import static seedu.address.commons.util.AppUtil.checkArgument;
 public class Id {
 
     /**
+     * Stands for the max Id number.
+     */
+    public static final int MAX = 99999;
+
+    /**
      * Stands for Id message constraints.
      */
     public static final String MESSAGE_CONSTRAINTS =
-            "Ids should only contain 5 digits, and it should not be blank";
+            "Member IDs should only contain 5 digits and it should not be blank, and max ID is " + MAX;
+
+    /**
+     * Stands for trim leading zero regex
+     */
+    public static final String TRIM_LEADING_ZERO_REGEX = "^0+(?!$)";
 
     /**
      * Stands for validation regex of Id.
@@ -28,7 +38,7 @@ public class Id {
     /**
      * Stands for length of Id is five.
      */
-    public static final int LENGTH = 5;
+    public static final int LENGTH = 5; // Max ID is 99999
 
     /**
      * Stands Id value.
@@ -43,7 +53,7 @@ public class Id {
     public Id(String id) {
         requireNonNull(id);
         checkArgument(isValidId(id), MESSAGE_CONSTRAINTS);
-        value = id;
+        value = String.format(PATTERN, Long.parseLong(id));
     }
 
     /**
@@ -53,7 +63,19 @@ public class Id {
      * @return boolean
      */
     public static boolean isValidId(String test) {
-        return test.matches(VALIDATION_REGEX) && test.length() == LENGTH;
+        test = test.replaceFirst(TRIM_LEADING_ZERO_REGEX, "");
+        try {
+            return test.length() <= LENGTH && Long.parseLong(test) <= MAX && test.matches(VALIDATION_REGEX);
+        } catch (NumberFormatException e) {
+            return false;
+        }
+    }
+
+    /**
+     * Returns long value of id.
+     */
+    public Long getLongValue() {
+        return Long.parseLong(value);
     }
 
     /**

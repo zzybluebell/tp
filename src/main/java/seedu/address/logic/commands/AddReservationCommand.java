@@ -1,6 +1,7 @@
 package seedu.address.logic.commands;
 
 import static java.util.Objects.requireNonNull;
+import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_DATE_TIME;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_ID;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_REMARK;
@@ -19,7 +20,6 @@ import seedu.address.model.Timestamp;
 import seedu.address.model.member.Address;
 import seedu.address.model.member.Credit;
 import seedu.address.model.member.Email;
-import seedu.address.model.member.Id;
 import seedu.address.model.member.Member;
 import seedu.address.model.member.Name;
 import seedu.address.model.member.Phone;
@@ -37,31 +37,33 @@ public class AddReservationCommand extends AddCommand {
      * Stands for the message add reservation command.
      */
     public static final String MESSAGE_USAGE = COMMAND_WORD + ": Adds reservation to member "
-            + "by member ID in the ezFoodie. "
-            + "Parameters: "
+            + "by member ID in the ezFoodie.\n"
+            + "Parameters:\n"
             + PREFIX_RESERVATION + " "
-            + PREFIX_DATE_TIME + " " + "DATE_TIME (" + DateTimeUtil.DATE_TIME_PATTERN + ") "
-            + PREFIX_REMARK + " " + "REMARK "
-            + PREFIX_ID + " " + "ID\n"
-            + "Example: " + COMMAND_WORD + " "
+            + PREFIX_DATE_TIME + "DATE_TIME (" + DateTimeUtil.DATE_TIME_PATTERN + ") "
+            + PREFIX_REMARK + "REMARK "
+            + PREFIX_ID + "ID\n"
+            + "Example:\n"
+            + COMMAND_WORD + " "
             + PREFIX_RESERVATION + " "
-            + PREFIX_DATE_TIME + " " + "2021-12-01 13:00 "
-            + PREFIX_REMARK + " " + "2 people "
-            + PREFIX_ID + " " + "10001";
+            + PREFIX_DATE_TIME + "2021-12-01 13:00 "
+            + PREFIX_REMARK + "2 people "
+            + PREFIX_ID + "10001";
 
     /**
      * Stands for message success for new reservation added.
      */
     public static final String MESSAGE_SUCCESS = "New reservation added: %1$s";
+    public static final String MESSAGE_FULL = "Reservation ID has reached " + seedu.address.model.reservation.Id.MAX;
 
     private final Reservation reservationToAdd;
-    private final Id idToAdd;
+    private final seedu.address.model.member.Id idToAdd;
 
     /**
      * Constructs an {@code AddReservationCommand} to add the specified {@code Member}.
      */
-    public AddReservationCommand(Reservation reservation, Id id) {
-        requireNonNull(id);
+    public AddReservationCommand(Reservation reservation, seedu.address.model.member.Id id) {
+        requireAllNonNull(reservation, id);
         reservationToAdd = reservation;
         idToAdd = id;
     }
@@ -99,7 +101,7 @@ public class AddReservationCommand extends AddCommand {
     private static Member createUpdatedReservations(Member memberToEdit, Reservation reservation) {
         assert memberToEdit != null;
 
-        Id id = memberToEdit.getId();
+        seedu.address.model.member.Id id = memberToEdit.getId();
         Name name = memberToEdit.getName();
         Phone phone = memberToEdit.getPhone();
         Email email = memberToEdit.getEmail();

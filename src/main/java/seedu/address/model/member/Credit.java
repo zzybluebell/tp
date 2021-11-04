@@ -10,20 +10,25 @@ import static seedu.address.commons.util.AppUtil.checkArgument;
 public class Credit {
 
     /**
+     * Stands for the max credit number.
+     */
+    public static final int MAX = 99999999;
+
+    /**
      * Stands for credits message constraints.
      */
     public static final String MESSAGE_CONSTRAINTS =
-            "Credits should only contain digits, and it should not be blank";
+            "Credits should only contain no more than 8 digits and it should not be blank, and max credit is " + MAX;
+
+    /**
+     * Stands for trim leading zero regex
+     */
+    public static final String TRIM_LEADING_ZERO_REGEX = "^0+(?!$)";
 
     /**
      * Stands for validation regex.
      */
     public static final String VALIDATION_REGEX = "[\\p{Digit}]*";
-
-    /**
-     * Stands for the max credit number.
-     */
-    public static final int MAX = 99999999;
 
     /**
      * Stands for the length of credit.
@@ -53,7 +58,12 @@ public class Credit {
      * @return boolean true if a given string is a valid credit.
      */
     public static boolean isValidCredit(String test) {
-        return test.matches(VALIDATION_REGEX) && test.length() <= LENGTH;
+        test = test.replaceFirst(TRIM_LEADING_ZERO_REGEX, "");
+        try {
+            return test.length() <= LENGTH && Integer.parseInt(test) <= MAX && test.matches(VALIDATION_REGEX);
+        } catch (NumberFormatException e) {
+            return false;
+        }
     }
 
     /**

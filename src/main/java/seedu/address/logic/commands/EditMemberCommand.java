@@ -1,6 +1,7 @@
 package seedu.address.logic.commands;
 
 import static java.util.Objects.requireNonNull;
+import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_ADDRESS;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_EMAIL;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_ID;
@@ -8,7 +9,6 @@ import static seedu.address.logic.parser.CliSyntax.PREFIX_INDEX;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_MEMBER;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_NAME;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_PHONE;
-import static seedu.address.logic.parser.CliSyntax.PREFIX_TAG;
 import static seedu.address.model.Model.PREDICATE_SHOW_ALL_MEMBERS;
 
 import java.util.Collections;
@@ -52,26 +52,24 @@ public class EditMemberCommand extends EditCommand {
             + "by the index number used in the displayed member list or the member ID. "
             + "Existing values will be overwritten by the input values.\n"
             + "Parameters:\n"
-            + "Edit by index number: " + PREFIX_MEMBER + " [" + PREFIX_INDEX + " INDEX] "
+            + "Edit by index number: " + PREFIX_MEMBER + " " + PREFIX_INDEX + "INDEX "
             + "(INDEX must be a positive integer) "
-            + "[" + PREFIX_NAME + " NAME] "
-            + "[" + PREFIX_PHONE + " PHONE] "
-            + "[" + PREFIX_EMAIL + " EMAIL] "
-            + "[" + PREFIX_ADDRESS + " ADDRESS] "
-            + "[" + PREFIX_TAG + " TAG]...\n"
-            + "Edit by member ID: " + PREFIX_MEMBER + " [" + PREFIX_ID + " ID] "
-            + "[" + PREFIX_NAME + " NAME] "
-            + "[" + PREFIX_PHONE + " PHONE] "
-            + "[" + PREFIX_EMAIL + " EMAIL] "
-            + "[" + PREFIX_ADDRESS + " ADDRESS] "
-            + "[" + PREFIX_TAG + " TAG]...\n"
+            + "[" + PREFIX_NAME + "NAME] "
+            + "[" + PREFIX_PHONE + "PHONE] "
+            + "[" + PREFIX_EMAIL + "EMAIL] "
+            + "[" + PREFIX_ADDRESS + "ADDRESS]\n"
+            + "Edit by member ID: " + PREFIX_MEMBER + " " + PREFIX_ID + "ID "
+            + "[" + PREFIX_NAME + "NAME] "
+            + "[" + PREFIX_PHONE + "PHONE] "
+            + "[" + PREFIX_EMAIL + "EMAIL] "
+            + "[" + PREFIX_ADDRESS + "ADDRESS]\n"
             + "Example:\n"
-            + "Edit by index number: " + COMMAND_WORD + " " + PREFIX_MEMBER + " " + PREFIX_INDEX + " 1 "
-            + PREFIX_PHONE + " 91234567 "
-            + PREFIX_EMAIL + " johndoe@example.com\n"
-            + "Edit by member ID: " + COMMAND_WORD + " " + PREFIX_MEMBER + " " + PREFIX_ID + " 10001 "
-            + PREFIX_PHONE + " 91234567 "
-            + PREFIX_EMAIL + " johndoe@example.com";
+            + "Edit by index number: " + COMMAND_WORD + " " + PREFIX_MEMBER + " " + PREFIX_INDEX + "1 "
+            + PREFIX_PHONE + "91234567 "
+            + PREFIX_EMAIL + "johndoe@example.com\n"
+            + "Edit by member ID: " + COMMAND_WORD + " " + PREFIX_MEMBER + " " + PREFIX_ID + "10001 "
+            + PREFIX_PHONE + "91234567 "
+            + PREFIX_EMAIL + "johndoe@example.com";
 
     /**
      * Stands for succeed message of edit member.
@@ -99,8 +97,7 @@ public class EditMemberCommand extends EditCommand {
      * @param editMemberDescriptor details to edit the member with.
      */
     public EditMemberCommand(Index index, EditMemberDescriptor editMemberDescriptor) {
-        requireNonNull(index);
-        requireNonNull(editMemberDescriptor);
+        requireAllNonNull(index, editMemberDescriptor);
 
         this.index = index;
         id = null;
@@ -114,8 +111,7 @@ public class EditMemberCommand extends EditCommand {
      * @param editMemberDescriptor details to edit the member with
      */
     public EditMemberCommand(Id id, EditMemberDescriptor editMemberDescriptor) {
-        requireNonNull(id);
-        requireNonNull(editMemberDescriptor);
+        requireAllNonNull(id, editMemberDescriptor);
 
         this.id = id;
         index = null;
@@ -210,7 +206,7 @@ public class EditMemberCommand extends EditCommand {
 
         /**
          * Copy constructor.
-         * A defensive copy of {@code tags} is used internally.
+         * A defensive copy of {@code toCopy} is used internally.
          */
         public EditMemberDescriptor(EditMemberDescriptor toCopy) {
             setName(toCopy.name);

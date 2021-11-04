@@ -23,6 +23,7 @@ import seedu.address.logic.commands.ListCommand;
 import seedu.address.logic.commands.LoginCommand;
 import seedu.address.logic.commands.LogoutCommand;
 import seedu.address.logic.commands.RedeemCommand;
+import seedu.address.logic.commands.SetAccountCommand;
 import seedu.address.logic.commands.SortCommand;
 import seedu.address.logic.commands.SummaryCommand;
 import seedu.address.logic.commands.ViewCommand;
@@ -88,7 +89,10 @@ public class EzFoodieParser {
             return new EditCommandPrefixParser(executionStatus).parse(arguments).parse(arguments);
 
         case ViewCommand.COMMAND_WORD:
-            return new ViewCommandParser().parse(arguments);
+            if (LoginStatus.getLoginStatus() == LoginStatus.MANAGER) {
+                return new ViewCommandParser().parse(arguments);
+            }
+            throw new PermissionException(Messages.MESSAGE_PERMISSION_DENIED);
 
         case RedeemCommand.COMMAND_WORD:
             return new RedeemCommandParser(model, executionStatus).parse(arguments);
@@ -96,12 +100,14 @@ public class EzFoodieParser {
         case DeleteCommand.COMMAND_WORD:
             if (LoginStatus.getLoginStatus() == LoginStatus.MANAGER) {
                 return new DeleteCommandPrefixParser().parse(arguments).parse(arguments);
-            } else {
-                throw new PermissionException(Messages.MESSAGE_PERMISSION_DENIED);
             }
+            throw new PermissionException(Messages.MESSAGE_PERMISSION_DENIED);
 
         case ClearCommand.COMMAND_WORD:
-            return new ClearCommand();
+            if (LoginStatus.getLoginStatus() == LoginStatus.MANAGER) {
+                return new ClearCommand();
+            }
+            throw new PermissionException(Messages.MESSAGE_PERMISSION_DENIED);
 
         case ListCommand.COMMAND_WORD:
             return new ListCommandParser().parse(arguments);
@@ -109,9 +115,8 @@ public class EzFoodieParser {
         case SortCommand.COMMAND_WORD:
             if (LoginStatus.getLoginStatus() == LoginStatus.MANAGER) {
                 return new SortCommandParser().parse(arguments);
-            } else {
-                throw new PermissionException(Messages.MESSAGE_PERMISSION_DENIED);
             }
+            throw new PermissionException(Messages.MESSAGE_PERMISSION_DENIED);
 
         case ExitCommand.COMMAND_WORD:
             return new ExitCommand();
@@ -122,11 +127,20 @@ public class EzFoodieParser {
         case LogoutCommand.COMMAND_WORD:
             return new LogoutCommand();
 
+        case SetAccountCommand.COMMAND_WORD:
+            if (LoginStatus.getLoginStatus() == LoginStatus.MANAGER) {
+                return new SetAccountCommandParser().parse(arguments);
+            }
+            throw new PermissionException(Messages.MESSAGE_PERMISSION_DENIED);
+
         case HelpCommand.COMMAND_WORD:
             return new HelpCommand();
 
         case SummaryCommand.COMMAND_WORD:
-            return new SummaryCommand();
+            if (LoginStatus.getLoginStatus() == LoginStatus.MANAGER) {
+                return new SummaryCommand();
+            }
+            throw new PermissionException(Messages.MESSAGE_PERMISSION_DENIED);
 
         default:
             throw new ParseException(MESSAGE_UNKNOWN_COMMAND);
