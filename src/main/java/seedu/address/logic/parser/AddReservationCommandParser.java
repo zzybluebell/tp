@@ -62,6 +62,9 @@ public class AddReservationCommandParser extends AddCommandParser implements Par
     /**
      * Parses the given {@code String} of arguments in the context of the AddReservationCommand
      * and returns an AddReservationCommand object for execution.
+     *
+     * @param args
+     * @return AddReservationCommand
      * @throws ParseException if the user input does not conform the expected format
      */
     @Override

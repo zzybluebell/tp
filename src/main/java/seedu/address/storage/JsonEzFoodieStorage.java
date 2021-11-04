@@ -23,14 +23,29 @@ public class JsonEzFoodieStorage implements EzFoodieStorage {
 
     private Path filePath;
 
+    /**
+     * Constructs a {@code JsonEzFoodieStorage} with the given ezFoodie file path details.
+     */
     public JsonEzFoodieStorage(Path filePath) {
         this.filePath = filePath;
     }
 
+    /**
+     * Gets EzFoodie file path.
+     *
+     * @return Path of EzFoodie file
+     */
     public Path getEzFoodieFilePath() {
         return filePath;
     }
 
+    /**
+     * Returns ezFoodie data as a {@link ReadOnlyEzFoodie}.
+     * Returns {@code Optional.empty()} if storage file is not found.
+     *
+     * @throws DataConversionException if the data in storage is not in the expected format.
+     * @throws IOException if there was any problem when reading from the storage.
+     */
     @Override
     public Optional<ReadOnlyEzFoodie> readEzFoodie() throws DataConversionException {
         return readEzFoodie(filePath);
@@ -59,6 +74,12 @@ public class JsonEzFoodieStorage implements EzFoodieStorage {
         }
     }
 
+    /**
+     * Saves the given {@link ReadOnlyEzFoodie} to the storage.
+     *
+     * @param ezFoodie cannot be null.
+     * @throws IOException if there was any problem writing to the file.
+     */
     @Override
     public void saveEzFoodie(ReadOnlyEzFoodie ezFoodie) throws IOException {
         saveEzFoodie(ezFoodie, filePath);

@@ -31,6 +31,9 @@ public class MemberViewWindow extends UiPart<Stage> {
         memberDetailsView.setCellFactory(listView -> new MemberViewListCell());
     }
 
+    /**
+     * Represents a inner class for MemberViewListCell
+     */
     class MemberViewListCell extends ListCell<Member> {
         @Override
         protected void updateItem(Member member, boolean empty) {

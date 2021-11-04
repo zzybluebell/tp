@@ -11,11 +11,18 @@ import javafx.stage.Stage;
 import seedu.address.commons.core.LogsCenter;
 
 /**
- * Controller for a help page
+ * Represents for Controlling a help page
  */
 public class HelpWindow extends UiPart<Stage> {
+    /**
+     * Stands for help window URL to tP web page.
+     */
     public static final String OFFICIAL_URL =
             "https://ay2122s1-cs2103t-f12-4.github.io/tp/";
+
+    /**
+     * Stands for help command message.
+     */
     public static final String HELP_MESSAGE = "Features:\n"
             + "Add member: add -mem -n <NAME> -p <PHONE> -e <EMAIL> -a <ADDRESS>\n"
             + "Search by name: find -mem -n <NAME>\n"
@@ -42,7 +49,7 @@ public class HelpWindow extends UiPart<Stage> {
     private Label helpMessage;
 
     /**
-     * Creates a new HelpWindow.
+     * Constructs a new {@code HelpWindow}.
      *
      * @param root Stage to use as the root of the HelpWindow.
      */
@@ -52,7 +59,7 @@ public class HelpWindow extends UiPart<Stage> {
     }
 
     /**
-     * Creates a new HelpWindow.
+     * Constructs a new {@code HelpWindow}.
      */
     public HelpWindow() {
         this(new Stage());

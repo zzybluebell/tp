@@ -18,7 +18,12 @@ public class Reservation {
     private final Remark remark;
 
     /**
-     * Every field must be present and not null.
+     * Constructs a {@code Reservation},
+     * and every field must be present and not null.
+     *
+     * @param id member Id
+     * @param dateTime Reservation date time
+     * @param remark reservation remark
      */
     public Reservation(Id id, DateTime dateTime, Remark remark) {
         requireAllNonNull(id, dateTime, remark);
@@ -27,14 +32,29 @@ public class Reservation {
         this.remark = remark;
     }
 
+    /**
+     * Gets reservation id.
+     *
+     * @return id the reservation member id
+     */
     public Id getId() {
         return id;
     }
 
+    /**
+     * Gets reservation's date time.
+     *
+     * @return DateTime of reservation.
+     */
     public DateTime getDateTime() {
         return dateTime;
     }
 
+    /**
+     * Gets reservation's remark.
+     *
+     * @return Remark of reservation.
+     */
     public Remark getRemark() {
         return remark;
     }
@@ -59,12 +79,19 @@ public class Reservation {
         return otherDate.isEqual(date);
     }
 
+    /**
+     * Overrides hashCode for custom fields hashing instead of implementing your own.
+     */
     @Override
     public int hashCode() {
-        // use this method for custom fields hashing instead of implementing your own
         return Objects.hash(dateTime, remark);
     }
 
+    /**
+     * Overrides toString method.
+     *
+     * @return String of reservation's information including Id, DateTime and remark.
+     */
     @Override
     public String toString() {
         final StringBuilder builder = new StringBuilder();

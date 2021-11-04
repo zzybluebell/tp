@@ -31,6 +31,9 @@ public class EditReservationCommandParser extends EditCommandParser implements P
     /**
      * Parses the given {@code String} of arguments in the context of the EditCommand
      * and returns an EditCommand object for execution.
+     *
+     * @param args
+     * @return EditReservationCommand
      * @throws ParseException if the user input does not conform the expected format
      */
     public EditReservationCommand parse(String args) throws ParseException {

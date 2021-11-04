@@ -11,18 +11,21 @@ public class Remark {
 
     public static final String MESSAGE_CONSTRAINTS = "Remarks can take any values, and it should not be blank";
 
-    /*
-     * The first character of the address must not be a whitespace,
+    /**
+     * Stands for the first character of the address must not be a whitespace,
      * otherwise " " (a blank string) becomes a valid input.
      */
     public static final String VALIDATION_REGEX = "[^\\s].*";
 
+    /**
+     * Stands for reservation remark value.
+     */
     public final String value;
 
     /**
      * Constructs a {@code Remark}.
      *
-     * @param remark A valid remark.
+     * @param remark a valid remark.
      */
     public Remark(String remark) {
         requireNonNull(remark);
@@ -31,24 +34,37 @@ public class Remark {
     }
 
     /**
-     * Returns true if a given string is a valid remark.
+     * Returns whether is valid remark.
+     *
+     * @param test the string input test.
+     * @return boolean true if a given string is a valid remark.
      */
     public static boolean isValidRemark(String test) {
         return test.matches(VALIDATION_REGEX);
     }
 
     /**
-     * Returns double value of remark.
+     * Gets double class from a string.
+     *
+     * @return double value of remark.
      */
     public double getDoubleValue() {
         return Double.parseDouble(value);
     }
 
+    /**
+     * Overrides the toString method.
+     *
+     * @return String reservation remark value。
+     */
     @Override
     public String toString() {
         return value;
     }
 
+    /**
+     * Overrides the equal method.
+     */
     @Override
     public boolean equals(Object other) {
         return other == this // short circuit if same object
@@ -56,6 +72,9 @@ public class Remark {
                 && value.equals(((Remark) other).value)); // state check
     }
 
+    /**
+     * Overrides the hashCode method.
+     */
     @Override
     public int hashCode() {
         return value.hashCode();

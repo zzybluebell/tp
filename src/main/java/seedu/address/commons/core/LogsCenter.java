@@ -71,7 +71,7 @@ public class LogsCenter {
     }
 
     /**
-     * Remove all the handlers from {@code logger}.
+     * Removes all the handlers from {@code logger}.
      */
     private static void removeHandlers(Logger logger) {
         Arrays.stream(logger.getHandlers())
@@ -95,6 +95,7 @@ public class LogsCenter {
 
     /**
      * Creates a {@code FileHandler} for the log file.
+     *
      * @throws IOException if there are problems opening the file.
      */
     private static FileHandler createFileHandler() throws IOException {

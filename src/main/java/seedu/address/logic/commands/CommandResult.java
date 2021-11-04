@@ -32,7 +32,9 @@ public class CommandResult {
     private final boolean exit;
 
     /**
-     * Constructs a {@code CommandResult} with the specified fields.
+     * Constructs a {@code CommandResult} with the specified fields from {@code feedbackToUser},
+     * {@code showHelp}. {@code exit} {@code showMemberView} and
+     * {@codeshowSummary}
      */
     public CommandResult(String feedbackToUser, boolean showHelp, boolean exit, boolean showMemberView,
                          boolean showSummary) {
@@ -51,12 +53,19 @@ public class CommandResult {
         this(feedbackToUser, false, false, false, false);
     }
 
+    /**
+     * Gets feedback to user.
+     *
+     * @return string for feedback to user.
+     */
     public String getFeedbackToUser() {
         return feedbackToUser;
     }
 
     /**
      * Determines whether the app should show help window.
+     *
+     * @return boolean if true is showHelp command.
      */
     public boolean isShowHelp() {
         return showHelp;
@@ -64,6 +73,8 @@ public class CommandResult {
 
     /**
      * Determines whether the app should show member window.
+     *
+     * @return boolean if true is shown member view command.
      */
     public boolean isShowMemberView() {
         return showMemberView;
@@ -71,6 +82,8 @@ public class CommandResult {
 
     /**
      * Determines whether the app should show summary window.
+     *
+     * @return boolean if true is shown summary command.
      */
     public boolean isShowSummary() {
         return showSummary;
@@ -78,11 +91,16 @@ public class CommandResult {
 
     /**
      * Determines whether the app should exit.
+     *
+     * @return boolean if ture is exit command
      */
     public boolean isExit() {
         return exit;
     }
 
+    /**
+     * Overrides the equal method.
+     */
     @Override
     public boolean equals(Object other) {
         if (other == this) {
@@ -102,6 +120,9 @@ public class CommandResult {
                 && showSummary == otherCommandResult.showSummary;
     }
 
+    /**
+     * Overrides the hashCode method.
+     */
     @Override
     public int hashCode() {
         return Objects.hash(feedbackToUser, showHelp, showMemberView, exit, showSummary);

@@ -14,6 +14,9 @@ public class LoginCommandParser implements Parser<LoginCommand> {
     /**
      * Parses the given {@code String} of arguments in the context of the LoginCommand
      * and returns a LoginCommand object for execution.
+     *
+     * @param args
+     * @return LoginCommand
      * @throws ParseException if the user input does not conform the expected format
      */
     public LoginCommand parse(String args) throws ParseException {

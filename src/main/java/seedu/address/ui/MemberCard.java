@@ -25,7 +25,6 @@ public class MemberCard extends UiPart<Region> {
      *
      * @see <a href="https://github.com/se-edu/addressbook-level4/issues/336">The issue on AddressBook level 4</a>
      */
-
     public final Member member;
 
     @FXML
@@ -58,7 +57,7 @@ public class MemberCard extends UiPart<Region> {
     private FlowPane reservations;
 
     /**
-     * Creates a {@code MemberCode} with the given {@code Member} and index to display.
+     * Constructs a {@code MemberCode} with the given {@code Member} and index to display.
      */
     public MemberCard(Member member, int displayedIndex) {
         super(FXML);
@@ -91,6 +90,9 @@ public class MemberCard extends UiPart<Region> {
                 .forEach(tag -> tags.getChildren().add(new Label(tag.tagName)));
     }
 
+    /**
+     * Overrides the equals method.
+     */
     @Override
     public boolean equals(Object other) {
         // short circuit if same object
