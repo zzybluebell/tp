@@ -49,13 +49,16 @@ public class AddMemberCommandParser extends AddCommandParser implements Parser<A
         this.executionStatus = executionStatus;
     }
 
-    private String generateId() {
+    private String generateId() throws ParseException {
         List<Member> memberList = model.getEzFoodie().getMemberList();
         long latestId = 0;
         if (memberList.size() > 0) {
-            latestId = Long.parseLong(memberList.get(memberList.size() - 1).getId().value);
+            latestId = memberList.get(memberList.size() - 1).getId().getLongValue();
         }
-        return String.format(Id.PATTERN, latestId + 1);
+        if (latestId == Id.MAX) {
+            throw new ParseException(AddMemberCommand.MESSAGE_FULL);
+        }
+        return Long.toString(latestId + 1);
     }
 
     private String generateIdStub() {

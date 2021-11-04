@@ -9,6 +9,7 @@ import static seedu.address.logic.parser.CliSyntax.PREFIX_PHONE;
 
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.Model;
+import seedu.address.model.member.Id;
 import seedu.address.model.member.Member;
 
 /**
@@ -32,6 +33,7 @@ public class AddMemberCommand extends AddCommand {
             + PREFIX_ADDRESS + "311, Clementi Ave 2, #02-25";
 
     public static final String MESSAGE_SUCCESS = "New member added: %1$s";
+    public static final String MESSAGE_FULL = "Member ID has reached " + Id.MAX;
     public static final String MESSAGE_DUPLICATE_MEMBER = "This member already exists in the ezFoodie";
 
     private final Member toAdd;

@@ -19,6 +19,11 @@ public interface Model {
     Predicate<Member> PREDICATE_SHOW_ALL_MEMBERS = unused -> true;
 
     /**
+     * {@code Comparator} sort members by id asc
+     */
+    Comparator<Member> COMPARATOR_SORT_MEMBERS_BY_ID_ASC = Comparator.comparingLong(m -> m.getId().getLongValue());
+
+    /**
      * Replaces user prefs data with the data in {@code userPrefs}.
      */
     void setUserPrefs(ReadOnlyUserPrefs userPrefs);

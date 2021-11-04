@@ -20,7 +20,6 @@ import seedu.address.model.Timestamp;
 import seedu.address.model.member.Address;
 import seedu.address.model.member.Credit;
 import seedu.address.model.member.Email;
-import seedu.address.model.member.Id;
 import seedu.address.model.member.Member;
 import seedu.address.model.member.Name;
 import seedu.address.model.member.Phone;
@@ -49,14 +48,15 @@ public class AddReservationCommand extends AddCommand {
             + PREFIX_ID + "10001";
 
     public static final String MESSAGE_SUCCESS = "New reservation added: %1$s";
+    public static final String MESSAGE_FULL = "Reservation ID has reached " + seedu.address.model.reservation.Id.MAX;
 
     private final Reservation reservationToAdd;
-    private final Id idToAdd;
+    private final seedu.address.model.member.Id idToAdd;
 
     /**
      * Creates an AddReservationCommand to add the specified {@code Member}
      */
-    public AddReservationCommand(Reservation reservation, Id id) {
+    public AddReservationCommand(Reservation reservation, seedu.address.model.member.Id id) {
         requireAllNonNull(reservation, id);
         reservationToAdd = reservation;
         idToAdd = id;
@@ -84,7 +84,7 @@ public class AddReservationCommand extends AddCommand {
     private static Member createUpdatedReservations(Member memberToEdit, Reservation reservation) {
         assert memberToEdit != null;
 
-        Id id = memberToEdit.getId();
+        seedu.address.model.member.Id id = memberToEdit.getId();
         Name name = memberToEdit.getName();
         Phone phone = memberToEdit.getPhone();
         Email email = memberToEdit.getEmail();
