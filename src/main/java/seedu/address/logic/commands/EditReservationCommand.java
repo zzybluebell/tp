@@ -41,14 +41,14 @@ public class EditReservationCommand extends EditCommand {
             + "Existing values will be overwritten by the input values.\n"
             + "Parameters:\n"
             + "Edit by member ID and reservation ID: "
-            + PREFIX_RESERVATION + " " + PREFIX_ID + " member ID + reservation ID "
-            + "[" + PREFIX_DATE_TIME + " DATE_TIME]"
-            + "[" + PREFIX_REMARK + " REMARK]\n"
+            + PREFIX_RESERVATION + " " + PREFIX_ID + "member ID + reservation ID "
+            + "[" + PREFIX_DATE_TIME + "DATE_TIME] "
+            + "[" + PREFIX_REMARK + "REMARK]\n"
             + "Example:\n"
             + "Edit by member ID and reservation ID: "
-            + COMMAND_WORD + " " + PREFIX_RESERVATION + " " + PREFIX_ID + " 10001100001 "
-            + PREFIX_DATE_TIME + " 2021-12-01 13:00"
-            + PREFIX_REMARK + " 3 people";
+            + COMMAND_WORD + " " + PREFIX_RESERVATION + " " + PREFIX_ID + "10001100001 "
+            + PREFIX_DATE_TIME + "2021-12-01 13:00 "
+            + PREFIX_REMARK + "3 people";
 
     public static final String MESSAGE_SUCCESS = "Edited Member: %1$s";
     public static final String MESSAGE_NOT_EDITED = "At least one field to edit must be provided.";

@@ -1,6 +1,7 @@
 package seedu.address.logic.parser;
 
 import static seedu.address.commons.core.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
+import static seedu.address.commons.core.Messages.MESSAGE_INVALID_MEMBER_DISPLAYED_ID;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_BILLING;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_ID;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_TRANSACTION;
@@ -14,7 +15,6 @@ import seedu.address.logic.commands.AddTransactionCommand;
 import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.model.Model;
 import seedu.address.model.Timestamp;
-import seedu.address.model.member.Id;
 import seedu.address.model.member.Member;
 import seedu.address.model.transaction.Billing;
 import seedu.address.model.transaction.Transaction;
@@ -37,7 +37,7 @@ public class AddTransactionCommandParser extends AddCommandParser implements Par
         this.executionStatus = executionStatus;
     }
 
-    private String generateId(seedu.address.model.member.Id id) {
+    private String generateId(seedu.address.model.member.Id id) throws ParseException {
         List<Member> lastShownList = model.getUpdatedMemberList();
         Member memberToEdit = lastShownList.stream()
                 .filter(member -> id.equals(member.getId())).findAny().orElse(null);
@@ -45,11 +45,14 @@ public class AddTransactionCommandParser extends AddCommandParser implements Par
             List<Transaction> transactionList = memberToEdit.getTransactions();
             long latestId = 0;
             if (transactionList.size() > 0) {
-                latestId = Long.parseLong(transactionList.get(transactionList.size() - 1).getId().value);
+                latestId = transactionList.get(transactionList.size() - 1).getId().getLongValue();
             }
-            return String.format(Id.PATTERN, latestId + 1);
+            if (latestId == seedu.address.model.transaction.Id.MAX) {
+                throw new ParseException(AddTransactionCommand.MESSAGE_FULL);
+            }
+            return Long.toString(latestId + 1);
         } else {
-            return ID_STUB;
+            throw new ParseException(MESSAGE_INVALID_MEMBER_DISPLAYED_ID);
         }
     }
 

@@ -5,15 +5,17 @@ import static seedu.address.commons.util.AppUtil.checkArgument;
 
 /**
  * Represents a Reservation's id in the ezFoodie.
- * Guarantees: ummutable, is valid as declared in {@link #isValidId(String)}
+ * Guarantees: immutable, is valid as declared in {@link #isValidId(String)}
  */
 public class Id {
 
+    public static final int MAX = 999999;
     public static final String MESSAGE_CONSTRAINTS =
-            "Reservation IDs should only contain 6 digits, and it should not be blank";
+            "Reservation IDs should only contain 6 digits and it should not be blank, and max ID is " + MAX;
+    public static final String TRIM_LEADING_ZERO_REGEX = "^0+(?!$)";
     public static final String VALIDATION_REGEX = "[\\p{Digit}]*";
     public static final String PATTERN = "%06d";
-    public static final int LENGTH = 6;
+    public static final int LENGTH = 6; // Max ID is 999999
 
     public final String value;
 
@@ -25,14 +27,26 @@ public class Id {
     public Id(String id) {
         requireNonNull(id);
         checkArgument(isValidId(id), MESSAGE_CONSTRAINTS);
-        value = id;
+        value = String.format(PATTERN, Long.parseLong(id));
     }
 
     /**
      * Returns true if a given string is a valid id.
      */
     public static boolean isValidId(String test) {
-        return test.matches(VALIDATION_REGEX) && test.length() == LENGTH;
+        test = test.replaceFirst(TRIM_LEADING_ZERO_REGEX, "");
+        try {
+            return test.length() <= LENGTH && Long.parseLong(test) <= MAX && test.matches(VALIDATION_REGEX);
+        } catch (NumberFormatException e) {
+            return false;
+        }
+    }
+
+    /**
+     * Returns long value of id.
+     */
+    public Long getLongValue() {
+        return Long.parseLong(value);
     }
 
     @Override
@@ -51,4 +65,5 @@ public class Id {
     public int hashCode() {
         return value.hashCode();
     }
+
 }
