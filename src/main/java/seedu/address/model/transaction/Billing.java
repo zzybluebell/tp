@@ -9,8 +9,10 @@ import static seedu.address.commons.util.AppUtil.checkArgument;
  */
 public class Billing {
 
+    public static final double MAX = 9999.99;
     public static final String MESSAGE_CONSTRAINTS =
-            "Billings should be numeric with 2 decimal places, and max amount is 9999.99";
+            "Billings should be positive numeric with 2 decimal places, and max amount is " + MAX;
+    public static final String TRIM_LEADING_ZERO_REGEX = "^0+(?!$)";
     public static final String VALIDATION_REGEX = "\\d*\\.\\d{2}$";
     public static final int LENGTH = 7; // Max amount is 9999.99
 
@@ -31,7 +33,12 @@ public class Billing {
      * Returns true if a given string is a valid billing amount.
      */
     public static boolean isValidBilling(String test) {
-        return test.matches(VALIDATION_REGEX) && test.length() <= LENGTH;
+        test = test.replaceFirst(TRIM_LEADING_ZERO_REGEX, "");
+        try {
+            return test.length() <= LENGTH && Double.parseDouble(test) <= MAX && test.matches(VALIDATION_REGEX);
+        } catch (NumberFormatException e) {
+            return false;
+        }
     }
 
     /**

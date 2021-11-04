@@ -34,10 +34,10 @@ public class DeleteReservationCommand extends DeleteCommand {
             + ": Deletes the reservation identified by the member ID and reservation ID.\n"
             + "Parameters:\n"
             + "Delete by member ID and reservation ID: "
-            + PREFIX_RESERVATION + " " + PREFIX_ID + " member ID + reservation ID\n"
+            + PREFIX_RESERVATION + " " + PREFIX_ID + "member ID + reservation ID\n"
             + "Example:\n"
             + "Delete by member ID and reservation ID: "
-            + COMMAND_WORD + " " + PREFIX_RESERVATION + " " + PREFIX_ID + " 10001100001";
+            + COMMAND_WORD + " " + PREFIX_RESERVATION + " " + PREFIX_ID + "10001100001";
 
     public static final String MESSAGE_SUCCESS = "Deleted reservation: %1$s";
 
@@ -76,7 +76,7 @@ public class DeleteReservationCommand extends DeleteCommand {
         updatedReservations.remove(reservation);
 
         return new Member(id, updatedName, updatedPhone, updatedEmail, updatedAddress, timestamp, credit, point,
-                transactions, reservations, updatedTags);
+                transactions, updatedReservations, updatedTags);
     }
 
     @Override

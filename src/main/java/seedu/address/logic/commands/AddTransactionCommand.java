@@ -18,7 +18,6 @@ import seedu.address.model.Timestamp;
 import seedu.address.model.member.Address;
 import seedu.address.model.member.Credit;
 import seedu.address.model.member.Email;
-import seedu.address.model.member.Id;
 import seedu.address.model.member.Member;
 import seedu.address.model.member.Name;
 import seedu.address.model.member.Phone;
@@ -32,25 +31,27 @@ import seedu.address.model.transaction.Transaction;
  */
 public class AddTransactionCommand extends AddCommand {
 
-    public static final String MESSAGE_USAGE = COMMAND_WORD + ": Adds a transaction to each member in the ezFoodie. "
-            + "Parameters: "
+    public static final String MESSAGE_USAGE = COMMAND_WORD + ": Adds a transaction to each member in the ezFoodie.\n"
+            + "Parameters:\n"
             + PREFIX_TRANSACTION + " "
-            + PREFIX_BILLING + " " + "BILLING (STRICTLY 2 DECIMAL PLACES) "
-            + PREFIX_ID + " " + "ID\n"
-            + "Example: " + COMMAND_WORD + " "
+            + PREFIX_BILLING + "BILLING (STRICTLY 2 DECIMAL PLACES) "
+            + PREFIX_ID + "ID\n"
+            + "Example:\n"
+            + COMMAND_WORD + " "
             + PREFIX_TRANSACTION + " "
-            + PREFIX_BILLING + " " + "23.00 "
-            + PREFIX_ID + " " + "10001";
+            + PREFIX_BILLING + "23.00 "
+            + PREFIX_ID + "10001";
 
     public static final String MESSAGE_SUCCESS = "New transaction added: %1$s";
+    public static final String MESSAGE_FULL = "Transaction ID has reached " + seedu.address.model.transaction.Id.MAX;
 
     private final Transaction transactionToAdd;
-    private final Id idToAdd;
+    private final seedu.address.model.member.Id idToAdd;
 
     /**
      * Creates an AddTransactionCommand to add the specified {@code Member}
      */
-    public AddTransactionCommand(Transaction transaction, Id id) {
+    public AddTransactionCommand(Transaction transaction, seedu.address.model.member.Id id) {
         requireAllNonNull(transaction, id);
         transactionToAdd = transaction;
         idToAdd = id;
@@ -77,7 +78,7 @@ public class AddTransactionCommand extends AddCommand {
     private static Member createUpdatedCreditAndPointsMember(Member memberToEdit, Transaction transaction) {
         assert memberToEdit != null;
 
-        Id id = memberToEdit.getId();
+        seedu.address.model.member.Id id = memberToEdit.getId();
         Name updatedName = memberToEdit.getName();
         Phone updatedPhone = memberToEdit.getPhone();
         Email updatedEmail = memberToEdit.getEmail();

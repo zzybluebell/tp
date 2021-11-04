@@ -48,6 +48,7 @@ public class ModelManager implements Model {
         filteredMembers = new FilteredList<>(this.ezFoodie.getMemberList());
         filteredMembersForView = new FilteredList<>(this.ezFoodie.getMemberList());
         sortedMembers = new SortedList<>(filteredMembers); // Wrap the FilteredList in a SortedList
+        sortedMembers.setComparator(COMPARATOR_SORT_MEMBERS_BY_ID_ASC);
     }
 
     public ModelManager() {
