@@ -79,8 +79,8 @@ public class RedeemCommand extends Command {
     /**
      * Constructs an RedeemCommand to add the specified {@code Member} by id.
      *
-     * @param pointsToRedeemList
-     * @param id
+     * @param pointsToRedeemList the points of to redeemed list.
+     * @param id the member id that needs to redeem point.
      */
     public RedeemCommand(List<Point> pointsToRedeemList, Id id) {
         requireAllNonNull(pointsToRedeemList, id);
@@ -92,8 +92,8 @@ public class RedeemCommand extends Command {
     /**
      * Constructs an RedeemCommand to add the specified {@code Member} by index.
      *
-     * @param pointsToRedeemList
-     * @param index
+     * @param pointsToRedeemList the points of to redeemed list.
+     * @param index the member index that needs to redeem point.
      */
     public RedeemCommand(List<Point> pointsToRedeemList, Index index) {
         requireAllNonNull(pointsToRedeemList, index);
@@ -106,7 +106,7 @@ public class RedeemCommand extends Command {
      * Overrides and executes the model.
      *
      * @param model {@code Model} which the command should operate on.
-     * @return CommandResult
+     * @return CommandResult related to redeem command.
      * @throws CommandException
      */
     @Override
@@ -143,8 +143,8 @@ public class RedeemCommand extends Command {
      * Creates and returns a {@code Member} with the details of {@code memberToEdit}
      * edited with {@code editMemberDescriptor}.
      *
-     * @param memberToRedeemPoints
-     * @param toRedeemPointsList
+     * @param memberToRedeemPoints creates the member who need to be redeemed points.
+     * @param toRedeemPointsList the list of points need to redeem all.
      * @return Member with redeemed Points
      * @throws CommandException
      */

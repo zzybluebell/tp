@@ -22,10 +22,9 @@ public class ClearCommand extends Command {
 
 
     /**
-     * Overrides and Executes the model.
+     * Executes the model in the clear command.
      *
-     * @param model {@code Model} which the command should operate on
-     * @return CommandResult
+     * @param model {@code Model} which the command should operate on.
      */
     @Override
     public CommandResult execute(Model model) {

@@ -43,7 +43,7 @@ public class AddMemberCommand extends AddCommand {
     private final Member toAdd;
 
     /**
-     * Creates an AddMemberCommand to add the specified {@code Member}.
+     * Constructs an {@codeAddMemberCommand} to add the specified {@code Member}.
      */
     public AddMemberCommand(Member member) {
         requireNonNull(member);
@@ -51,7 +51,7 @@ public class AddMemberCommand extends AddCommand {
     }
 
     /**
-     * Overrides and executes model.
+     * Executes model.
      *
      * @param model {@code Model} which the command should operate on.
      * @return CommandResult with toAdd member
@@ -71,9 +71,6 @@ public class AddMemberCommand extends AddCommand {
 
     /**
      * Overrides the equals method.
-     *
-     * @param other
-     * @return boolean
      */
     @Override
     public boolean equals(Object other) {

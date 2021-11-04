@@ -32,7 +32,7 @@ public class SummaryCommand extends Command {
      * Overrides and executes model.
      *
      * @param model {@code Model} which the command should operate on.
-     * @return CommandResult
+     * @return CommandResult related to summary command.
      */
     @Override
     public CommandResult execute(Model model) {
@@ -43,9 +43,6 @@ public class SummaryCommand extends Command {
 
     /**
      * Overrides the equals method.
-     *
-     * @param other
-     * @return boolean
      */
     @Override
     public boolean equals(Object other) {

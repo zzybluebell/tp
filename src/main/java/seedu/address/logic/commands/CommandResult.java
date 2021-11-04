@@ -32,13 +32,9 @@ public class CommandResult {
     private final boolean exit;
 
     /**
-     * Constructs a {@code CommandResult} with the specified fields.
-     *
-     * @param feedbackToUser
-     * @param showHelp
-     * @param exit
-     * @param showMemberView
-     * @param showSummary
+     * Constructs a {@code CommandResult} with the specified fields from {@code feedbackToUser},
+     * {@code showHelp}. {@code exit} {@code showMemberView} and
+     * {@codeshowSummary}
      */
     public CommandResult(String feedbackToUser, boolean showHelp, boolean exit, boolean showMemberView,
                          boolean showSummary) {
@@ -52,17 +48,15 @@ public class CommandResult {
     /**
      * Constructs a {@code CommandResult} with the specified {@code feedbackToUser},
      * and other fields set to their default value.
-     *
-     * @param feedbackToUser
      */
     public CommandResult(String feedbackToUser) {
         this(feedbackToUser, false, false, false, false);
     }
 
     /**
-     * Gets feedback to user
+     * Gets feedback to user.
      *
-     * @return string for feedback to user
+     * @return string for feedback to user.
      */
     public String getFeedbackToUser() {
         return feedbackToUser;
@@ -71,7 +65,7 @@ public class CommandResult {
     /**
      * Determines whether the app should show help window.
      *
-     * @return boolean
+     * @return boolean if true is showHelp command.
      */
     public boolean isShowHelp() {
         return showHelp;
@@ -80,7 +74,7 @@ public class CommandResult {
     /**
      * Determines whether the app should show member window.
      *
-     * @return boolean
+     * @return boolean if true is shown member view command.
      */
     public boolean isShowMemberView() {
         return showMemberView;
@@ -89,7 +83,7 @@ public class CommandResult {
     /**
      * Determines whether the app should show summary window.
      *
-     * @return boolean
+     * @return boolean if true is shown summary command.
      */
     public boolean isShowSummary() {
         return showSummary;
@@ -98,7 +92,7 @@ public class CommandResult {
     /**
      * Determines whether the app should exit.
      *
-     * @return boolean
+     * @return boolean if ture is exit command
      */
     public boolean isExit() {
         return exit;
@@ -106,9 +100,6 @@ public class CommandResult {
 
     /**
      * Overrides the equal method.
-     *
-     * @param other
-     * @return boolean
      */
     @Override
     public boolean equals(Object other) {
@@ -131,8 +122,6 @@ public class CommandResult {
 
     /**
      * Overrides the hashCode method.
-     *
-     * @return int for hashed value
      */
     @Override
     public int hashCode() {

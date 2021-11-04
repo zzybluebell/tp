@@ -54,18 +54,16 @@ public class FindCommand extends Command {
     private final Predicate<Member> predicate;
 
     /**
-     * Constructs FindCommand through Id.
-     *
-     * @param predicate
+     * Constructs FindCommand through Id from input {@code predicate}.
      */
     public FindCommand(IdContainsKeywordsPredicate predicate) {
         this.predicate = predicate;
     }
 
     /**
-     * Constructs FindCommand through Name.
+     * Constructs FindCommand through Name {@code predicate}.
      *
-     * @param predicate
+     * @param predicate the details of contain key words for name.
      */
     public FindCommand(NameContainsKeywordsPredicate predicate) {
         this.predicate = predicate;
@@ -74,35 +72,35 @@ public class FindCommand extends Command {
     /**
      * Constructs FindCommand through Phone.
      *
-     * @param predicate
+     * @param predicate the details of contain key words for phone.
      */
     public FindCommand(PhoneContainsKeywordsPredicate predicate) {
         this.predicate = predicate;
     }
 
     /**
-     * Constructs FindCommand through Email.
+     * Constructs FindCommand through Email {@code predicate}.
      *
-     * @param predicate
+     * @param predicate the details of contain key words for email.
      */
     public FindCommand(EmailContainsKeywordsPredicate predicate) {
         this.predicate = predicate;
     }
 
     /**
-     * Constructs FindCommand through RegistrationDate.
+     * Constructs FindCommand through RegistrationDate {@code predicate}.
      *
-     * @param predicate
+     * @param predicate the details of contain key words for registration date.
      */
     public FindCommand(RegistrationDateContainsKeywordsPredicate predicate) {
         this.predicate = predicate;
     }
 
     /**
-     * Overrides and executes model.
+     * Executes the model.
      *
      * @param model {@code Model} which the command should operate on.
-     * @return CommandResult
+     * @return CommandResult related to find command.
      */
     @Override
     public CommandResult execute(Model model) {
@@ -114,9 +112,6 @@ public class FindCommand extends Command {
 
     /**
      * Overrides the equals method.
-     *
-     * @param other
-     * @return boolean
      */
     @Override
     public boolean equals(Object other) {

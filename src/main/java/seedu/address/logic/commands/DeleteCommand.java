@@ -28,7 +28,7 @@ public abstract class DeleteCommand extends Command {
      * Overrides and executes model.
      *
      * @param model {@code Model} which the command should operate on.
-     * @return CommandResult
+     * @return CommandResult of related commands.
      * @throws CommandException
      */
     @Override

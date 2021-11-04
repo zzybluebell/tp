@@ -64,9 +64,6 @@ public class GuiSettings implements Serializable {
 
     /**
      * Overrides the equal method for GuiSettings.
-     *
-     * @param other
-     * @return boolean
      */
     @Override
     public boolean equals(Object other) {

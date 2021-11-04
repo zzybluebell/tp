@@ -12,7 +12,7 @@ import com.fasterxml.jackson.annotation.JsonValue;
 public class Version implements Comparable<Version> {
 
     /**
-     * Sets the VERSION_REGEX.
+     * Sets the version regex.
      */
     public static final String VERSION_REGEX = "V(\\d+)\\.(\\d+)\\.(\\d+)(ea)?";
 
@@ -36,36 +36,36 @@ public class Version implements Comparable<Version> {
     }
 
     /**
-     * Gets the major.
+     * Gets the major from {@code major}.
      *
-     * @return int
+     * @return int of the major
      */
     public int getMajor() {
         return major;
     }
 
     /**
-     * Gets the minor.
+     * Gets the minor from {@code minor}.
      *
-     * @return int
+     * @return int of the minor.
      */
     public int getMinor() {
         return minor;
     }
 
     /**
-     * Gets the patch.
+     * Gets the patch from {@code patch}.
      *
-     * @return int
+     * @return int of the patch
      */
     public int getPatch() {
         return patch;
     }
 
     /**
-     * Judges the isEarlyAccess.
+     * Returns whether is early access.
      *
-     * @return int
+     * @return boolean ture is early access.
      */
     public boolean isEarlyAccess() {
         return isEarlyAccess;
@@ -103,9 +103,6 @@ public class Version implements Comparable<Version> {
 
     /**
      * Overrides the compareTo method for Version class.
-     *
-     * @param other
-     * @return int
      */
     @Override
     public int compareTo(Version other) {
@@ -129,9 +126,6 @@ public class Version implements Comparable<Version> {
 
     /**
      * Overrides the equal method for Version class.
-     *
-     * @param obj
-     * @return boolean
      */
     @Override
     public boolean equals(Object obj) {
@@ -148,8 +142,6 @@ public class Version implements Comparable<Version> {
 
     /**
      * Overrides the hashCode for Version class.
-     *
-     * @return int
      */
     @Override
     public int hashCode() {

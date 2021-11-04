@@ -41,7 +41,7 @@ public class ViewCommand extends Command {
     /**
      * Construct the view command based on member id predicate.
      *
-     * @param predicate
+     * @param predicate the details keyword by id.
      */
     public ViewCommand(IdContainsKeywordsPredicate predicate) {
         this.predicate = predicate;
@@ -51,7 +51,7 @@ public class ViewCommand extends Command {
      * Overrides and executes the model.
      *
      * @param model {@code Model} which the command should operate on.
-     * @return CommandResult
+     * @return CommandResult related to View command.
      */
     @Override
     public CommandResult execute(Model model) {
@@ -62,9 +62,6 @@ public class ViewCommand extends Command {
 
     /**
      * Override the equals method
-     *
-     * @param other
-     * @return boolean
      */
     @Override
     public boolean equals(Object other) {

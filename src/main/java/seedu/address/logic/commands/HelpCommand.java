@@ -27,7 +27,7 @@ public class HelpCommand extends Command {
      * Overrides and executes the model.
      *
      * @param model {@code Model} which the command should operate on.
-     * @return CommandResult
+     * @return CommandResult related to help command.
      */
     @Override
     public CommandResult execute(Model model) {

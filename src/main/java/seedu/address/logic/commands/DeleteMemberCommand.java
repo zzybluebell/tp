@@ -46,9 +46,9 @@ public class DeleteMemberCommand extends DeleteCommand {
     private final Id id;
 
     /**
-     * Creates an DeleteCommand to delete the specified {@code Member} by index number.
+     * Creates an DeleteCommand to delete the specified {@code Member} by {@code index} number
      *
-     * @param index
+     * @param index the index shown in the page.
      */
     public DeleteMemberCommand(Index index) {
         requireNonNull(index);
@@ -59,7 +59,7 @@ public class DeleteMemberCommand extends DeleteCommand {
     /**
      * Creates an DeleteCommand to delete the specified {@code Member} by member ID.
      *
-     * @param id
+     * @param id the member ID.
      */
     public DeleteMemberCommand(Id id) {
         requireNonNull(id);
@@ -68,10 +68,10 @@ public class DeleteMemberCommand extends DeleteCommand {
     }
 
     /**
-     * Overrides and executes model.
+     * Executes the model.
      *
      * @param model {@code Model} which the command should operate on.
-     * @return CommandResult
+     * @return CommandResult related delete member command.
      * @throws CommandException
      */
     @Override
@@ -102,9 +102,6 @@ public class DeleteMemberCommand extends DeleteCommand {
 
     /**
      * Overrides equals method.
-     *
-     * @param other
-     * @return
      */
     @Override
     public boolean equals(Object other) {

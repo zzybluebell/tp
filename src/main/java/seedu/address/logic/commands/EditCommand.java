@@ -28,7 +28,6 @@ public abstract class EditCommand extends Command {
      * Overrides the executes command.
      *
      * @param model {@code Model} which the command should operate on.
-     * @return
      * @throws CommandException
      */
     @Override

@@ -30,7 +30,7 @@ public class LogoutCommand extends Command {
      * Overrides and executes the model.
      *
      * @param model {@code Model} which the command should operate on.
-     * @return CommandResult
+     * @return CommandResult related to logout command.
      */
     @Override
     public CommandResult execute(Model model) {

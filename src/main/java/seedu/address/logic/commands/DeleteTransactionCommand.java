@@ -57,10 +57,7 @@ public class DeleteTransactionCommand extends DeleteCommand {
     private final seedu.address.model.transaction.Id transactionId;
 
     /**
-     * Constructs an DeleteCommand to delete the specified {@code Member} by member ID and transaction ID.
-     *
-     * @param memberId
-     * @param transactionId
+     * Constructs an DeleteCommand to delete the specified {@code Member} by {@code memberId} and {@code transactionId}.
      */
     public DeleteTransactionCommand(
             seedu.address.model.member.Id memberId, seedu.address.model.transaction.Id transactionId) {
@@ -72,8 +69,8 @@ public class DeleteTransactionCommand extends DeleteCommand {
     /**
      * Creates and returns a {@code Member} with the details of {@code memberToEdit}.
      *
-     * @param memberToEdit
-     * @param transaction
+     * @param memberToEdit create a new member to edit and update.
+     * @param transaction the transaction will be deleted.
      * @return Member with added transactions and updated credits
      */
     private static Member createUpdatedCredits(Member memberToEdit, Transaction transaction) {
@@ -102,10 +99,10 @@ public class DeleteTransactionCommand extends DeleteCommand {
     }
 
     /**
-     * Overrides and executes the model.
+     * Executes the model.
      *
      * @param model {@code Model} which the command should operate on.
-     * @return CommandResult
+     * @return CommandResult delete transaction command.
      * @throws CommandException
      */
     @Override
@@ -131,10 +128,7 @@ public class DeleteTransactionCommand extends DeleteCommand {
     }
 
     /**
-     * Overrides the equals method
-     *
-     * @param other
-     * @return boolean
+     * Overrides the equals method.
      */
     @Override
     public boolean equals(Object other) {

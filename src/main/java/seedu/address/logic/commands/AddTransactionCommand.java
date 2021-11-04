@@ -45,6 +45,9 @@ public class AddTransactionCommand extends AddCommand {
             + PREFIX_BILLING + " " + "23.00 "
             + PREFIX_ID + " " + "10001";
 
+    /**
+     * Stands for the success message of new transaction added.
+     */
     public static final String MESSAGE_SUCCESS = "New transaction added: %1$s";
 
     private final Transaction transactionToAdd;
@@ -60,10 +63,10 @@ public class AddTransactionCommand extends AddCommand {
     }
 
     /**
-     * Overrides and executes the model.
+     * Executes the model in add transaction command.
      *
      * @param model {@code Model} which the command should operate on.
-     * @return CommandResult with edited member
+     * @return CommandResult with edited member.
      * @throws CommandException
      */
     @Override
@@ -85,9 +88,9 @@ public class AddTransactionCommand extends AddCommand {
     /**
      * Creates and returns a {@code Member} with the details of {@code memberToEdit}.
      *
-     * @param memberToEdit
-     * @param transaction
-     * @return member with updated transactions and points
+     * @param memberToEdit {@code memberToEdit} which the command should operate on.
+     * @param transaction {@code transaction} which the command should operate on.
+     * @return member with updated transactions and points.
      */
     private static Member createUpdatedCreditAndPointsMember(Member memberToEdit, Transaction transaction) {
         assert memberToEdit != null;
@@ -114,9 +117,6 @@ public class AddTransactionCommand extends AddCommand {
 
     /**
      * Overrides the equal method.
-     *
-     * @param other
-     * @return boolean
      */
     @Override
     public boolean equals(Object other) {

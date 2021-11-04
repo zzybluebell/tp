@@ -95,8 +95,8 @@ public class EditMemberCommand extends EditCommand {
     /**
      * Constructs EditMemberCommand to edit member by index.
      *
-     * @param index of the member in the updated member list to edit
-     * @param editMemberDescriptor details to edit the member with
+     * @param index of the member in the updated member list to edit.
+     * @param editMemberDescriptor details to edit the member with.
      */
     public EditMemberCommand(Index index, EditMemberDescriptor editMemberDescriptor) {
         requireNonNull(index);
@@ -126,7 +126,7 @@ public class EditMemberCommand extends EditCommand {
      * Overrides and executes model.
      *
      * @param model {@code Model} which the command should operate on.
-     * @return CommandResult
+     * @return CommandResult related edit member command.
      * @throws CommandException
      */
     @Override
@@ -162,9 +162,6 @@ public class EditMemberCommand extends EditCommand {
     /**
      * Creates and returns a {@code Member} with the details of {@code memberToEdit}
      * edited with {@code editMemberDescriptor}.
-     *
-     * @param memberToEdit
-     * @param editMemberDescriptor
      * @return Member with edited member
      */
     private static Member createEditedMember(Member memberToEdit, EditMemberDescriptor editMemberDescriptor) {
@@ -188,9 +185,6 @@ public class EditMemberCommand extends EditCommand {
 
     /**
      * Overrides the equals method.
-     *
-     * @param other
-     * @return boolean
      */
     @Override
     public boolean equals(Object other) {
@@ -235,8 +229,6 @@ public class EditMemberCommand extends EditCommand {
 
         /**
          * Sets name.
-         *
-         * @param name
          */
         public void setName(Name name) {
             this.name = name;
@@ -244,8 +236,6 @@ public class EditMemberCommand extends EditCommand {
 
         /**
          * Gets name.
-         *
-         * @return Optional<Name>
          */
         public Optional<Name> getName() {
             return Optional.ofNullable(name);
@@ -253,8 +243,6 @@ public class EditMemberCommand extends EditCommand {
 
         /**
          * Sets phone.
-         *
-         * @param phone
          */
         public void setPhone(Phone phone) {
             this.phone = phone;
@@ -262,8 +250,6 @@ public class EditMemberCommand extends EditCommand {
 
         /**
          * Gets phone.
-         *
-         * @return Optional<Phone>
          */
         public Optional<Phone> getPhone() {
             return Optional.ofNullable(phone);
@@ -271,8 +257,6 @@ public class EditMemberCommand extends EditCommand {
 
         /**
          * Sets email.
-         *
-         * @param email
          */
         public void setEmail(Email email) {
             this.email = email;
@@ -280,8 +264,6 @@ public class EditMemberCommand extends EditCommand {
 
         /**
          * Gets email.
-         *
-         * @return Optional<Email>
          */
         public Optional<Email> getEmail() {
             return Optional.ofNullable(email);
@@ -289,8 +271,6 @@ public class EditMemberCommand extends EditCommand {
 
         /**
          * Sets address.
-         *
-         * @param address
          */
         public void setAddress(Address address) {
             this.address = address;
@@ -298,8 +278,6 @@ public class EditMemberCommand extends EditCommand {
 
         /**
          * Gets address.
-         *
-         * @return Optional<Address>
          */
         public Optional<Address> getAddress() {
             return Optional.ofNullable(address);
@@ -326,9 +304,6 @@ public class EditMemberCommand extends EditCommand {
 
         /**
          * Overrides the equal method.
-         *
-         * @param other
-         * @return boolean
          */
         @Override
         public boolean equals(Object other) {

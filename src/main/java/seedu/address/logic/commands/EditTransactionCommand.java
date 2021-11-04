@@ -86,11 +86,9 @@ public class EditTransactionCommand extends EditCommand {
     }
 
     /**
-     * Creates and returns a {@code Member} with the details of {@code memberToEdit}.
+     * Creates and returns a {@code Member} with the details of {@code memberToEdit},
+     * {@code transactionToEdit} and {@code editTransactionDescriptor}.
      *
-     * @param memberToEdit
-     * @param transactionToEdit
-     * @param editTransactionDescriptor
      * @return member with updated credits
      */
     private static Member createUpdatedCredits(
@@ -133,7 +131,7 @@ public class EditTransactionCommand extends EditCommand {
      * Overrides and executes model
      *
      * @param model {@code Model} which the command should operate on.
-     * @return CommandResult
+     * @return CommandResult related to edir transaction command.
      * @throws CommandException
      */
     @Override
@@ -160,9 +158,6 @@ public class EditTransactionCommand extends EditCommand {
 
     /**
      * Overrides the equals method.
-     *
-     * @param other
-     * @return boolean
      */
     @Override
     public boolean equals(Object other) {
@@ -201,36 +196,32 @@ public class EditTransactionCommand extends EditCommand {
         }
 
         /**
-         * Sets time stamp.
+         * Sets time stamp from input {@code timestamp}.
          *
-         * @param timestamp
+         * @param timestamp transaction's timestamp.
          */
         public void setTimestamp(Timestamp timestamp) {
             this.timestamp = timestamp;
         }
 
         /**
-         * Gets time stamp
-         *
-         * @return Optional<Timestamp>
+         * Gets time stamp.
          */
         public Optional<Timestamp> getTimestamp() {
             return Optional.ofNullable(timestamp);
         }
 
         /**
-         * Sets Billing
+         * Sets Billing from {@code billing}.
          *
-         * @param billing
+         * @param billing transaction's billing.
          */
         public void setBilling(Billing billing) {
             this.billing = billing;
         }
 
         /**
-         * Gets billing
-         *
-         * @return Optional<Billing>
+         * Gets billing.
          */
         public Optional<Billing> getBilling() {
             return Optional.ofNullable(billing);
@@ -238,9 +229,6 @@ public class EditTransactionCommand extends EditCommand {
 
         /**
          * Overrides the equals method.
-         *
-         * @param other
-         * @return boolean
          */
         @Override
         public boolean equals(Object other) {

@@ -57,10 +57,11 @@ public class DeleteReservationCommand extends DeleteCommand {
     private final Id reservationId;
 
     /**
-     * Constructs DeleteReservationCommand to delete the specified {@code Member} by member ID and transaction ID.
+     * Constructs DeleteReservationCommand to delete the specified {@code Member}
+     * by {@code memberID} and {@code reservationId}.
      *
-     * @param memberId
-     * @param reservationId
+     * @param memberId the member Id
+     * @param reservationId the reservation id
      */
     public DeleteReservationCommand(seedu.address.model.member.Id memberId, Id reservationId) {
         requireAllNonNull(memberId, reservationId);
@@ -69,10 +70,10 @@ public class DeleteReservationCommand extends DeleteCommand {
     }
 
     /**
-     * Creates and returns a {@code Member} with the details of {@code memberToEdit}.
+     * Creates and returns a {@code Member} with the details of {@code memberToEdit} and {@code reservation}.
      *
-     * @param memberToEdit
-     * @param reservation
+     * @param memberToEdit the member to edit.
+     * @param reservation the reservation will to remove
      * @return Member with updated reservation
      */
     private static Member createUpdatedReservation(Member memberToEdit, Reservation reservation) {
@@ -98,10 +99,10 @@ public class DeleteReservationCommand extends DeleteCommand {
     }
 
     /**
-     * Overrides and executes the model.
+     * Executes the model.
      *
      * @param model {@code Model} which the command should operate on.
-     * @return CommandResult
+     * @return CommandResult related delete reservation command.
      * @throws CommandException
      */
     @Override
@@ -128,9 +129,6 @@ public class DeleteReservationCommand extends DeleteCommand {
 
     /**
      * Overrides the equals method.
-     *
-     * @param other
-     * @return boolean
      */
     @Override
     public boolean equals(Object other) {

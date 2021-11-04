@@ -43,7 +43,7 @@ public class LoginCommand extends Command {
     /**
      * Constructs LoginCommand
      *
-     * @param password
+     * @param password the login password.
      */
     public LoginCommand(Password password) {
         this.password = password;
@@ -53,7 +53,7 @@ public class LoginCommand extends Command {
      * Overrides and executes the model
      *
      * @param model {@code Model} which the command should operate on.
-     * @return CommandResult
+     * @return CommandResult related to login command.
      */
     @Override
     public CommandResult execute(Model model) {

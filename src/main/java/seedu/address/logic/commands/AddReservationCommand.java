@@ -58,7 +58,7 @@ public class AddReservationCommand extends AddCommand {
     private final Id idToAdd;
 
     /**
-     * Constructs an AddReservationCommand to add the specified {@code Member}.
+     * Constructs an {@code AddReservationCommand} to add the specified {@code Member}.
      */
     public AddReservationCommand(Reservation reservation, Id id) {
         requireNonNull(id);
@@ -67,7 +67,7 @@ public class AddReservationCommand extends AddCommand {
     }
 
     /**
-     * Overrides and executes the model.
+     * Executes the model in AddReservationCommand.
      *
      * @param model {@code Model} which the command should operate on.
      * @return CommandResult with edited member
@@ -92,8 +92,8 @@ public class AddReservationCommand extends AddCommand {
     /**
      * Creates and returns a {@code Member} with the details of {@code memberToEdit}.
      *
-     * @param memberToEdit
-     * @param reservation
+     * @param memberToEdit {@code memberToEdit} which the command should operate on.
+     * @param reservation {@code reservation} which the command should operate on.
      * @return member with updated reservations
      */
     private static Member createUpdatedReservations(Member memberToEdit, Reservation reservation) {
@@ -120,9 +120,6 @@ public class AddReservationCommand extends AddCommand {
 
     /**
      * Overrides the equal method.
-     *
-     * @param other
-     * @return boolean
      */
     @Override
     public boolean equals(Object other) {

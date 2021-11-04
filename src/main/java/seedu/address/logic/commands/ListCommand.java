@@ -33,7 +33,7 @@ public class ListCommand extends Command {
      * Overrides and Executes the model.
      *
      * @param model {@code Model} which the command should operate on.
-     * @return CommandResult
+     * @return CommandResult related to list command.
      */
     @Override
     public CommandResult execute(Model model) {
@@ -44,9 +44,6 @@ public class ListCommand extends Command {
 
     /**
      * Overrides the equals method.
-     *
-     * @param other
-     * @return boolean
      */
     @Override
     public boolean equals(Object other) {

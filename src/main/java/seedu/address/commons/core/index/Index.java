@@ -64,9 +64,6 @@ public class Index {
 
     /**
      * Overrides the equal method
-     *
-     * @param other
-     * @return Boolean
      */
     @Override
     public boolean equals(Object other) {

@@ -25,7 +25,7 @@ public abstract class AddCommand extends Command {
             + PREFIX_TRANSACTION + " (transaction details)";
 
     /**
-     * Overrides the execute method for addCommand class to execute model.
+     * Executes method for addCommand class to execute model.
      *
      * @param model {@code Model} which the command should operate on.
      * @return CommandResult for execute addCommand

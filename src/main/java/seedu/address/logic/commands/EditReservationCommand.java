@@ -59,7 +59,7 @@ public class EditReservationCommand extends EditCommand {
             + PREFIX_REMARK + " 3 people";
 
     /**
-     * Stands for succeed message of edit member
+     * Stands for succeed message of edit member.
      */
     public static final String MESSAGE_SUCCESS = "Edited Member: %1$s";
 
@@ -89,11 +89,9 @@ public class EditReservationCommand extends EditCommand {
     }
 
     /**
-     * Creates and returns a {@code Member} with the details of {@code memberToEdit}
+     * Creates and returns a {@code Member} with the details of {@code memberToEdit},
+     * {@code reservationToEdit}, {@code editReservationDescriptor}
      *
-     * @param memberToEdit
-     * @param reservationToEdit
-     * @param editReservationDescriptor
      * @return member with updated credits
      */
     private static Member createUpdatedCredits(
@@ -130,7 +128,7 @@ public class EditReservationCommand extends EditCommand {
      * Overrides and executes the model.
      *
      * @param model {@code Model} which the command should operate on.
-     * @return CommandResult
+     * @return CommandResult related to edit reservation command.
      * @throws CommandException
      */
     @Override
@@ -157,9 +155,6 @@ public class EditReservationCommand extends EditCommand {
 
     /**
      * Overrides the equal method.
-     *
-     * @param other
-     * @return boolean
      */
     @Override
     public boolean equals(Object other) {
@@ -196,7 +191,7 @@ public class EditReservationCommand extends EditCommand {
         /**
          * Returns true if at least one field is edited.
          *
-         * @return boolean
+         * @return boolean if true some filed is edited.
          */
         public boolean isAnyFieldEdited() {
             return CollectionUtil.isAnyNonNull(dateTime, remark);
@@ -205,7 +200,7 @@ public class EditReservationCommand extends EditCommand {
         /**
          * Sets DateTime.
          *
-         * @param dateTime
+         * @param dateTime the date time for editing.
          */
         public void setDateTime(DateTime dateTime) {
             this.dateTime = dateTime;
@@ -213,17 +208,13 @@ public class EditReservationCommand extends EditCommand {
 
         /**
          * Gets dateTime.
-         *
-         * @return dateTime
          */
         public Optional<DateTime> getDateTime() {
             return Optional.ofNullable(dateTime);
         }
 
         /**
-         * Sets remark.
-         *
-         * @param remark
+         * Sets remark from {@code remark}.
          */
         public void setRemark(Remark remark) {
             this.remark = remark;
@@ -231,8 +222,6 @@ public class EditReservationCommand extends EditCommand {
 
         /**
          * Gets remark.
-         *
-         * @return Optional<Remark>
          */
         public Optional<Remark> getRemark() {
             return Optional.ofNullable(remark);
@@ -240,9 +229,6 @@ public class EditReservationCommand extends EditCommand {
 
         /**
          * Override the equal method.
-         *
-         * @param other
-         * @return boolean
          */
         @Override
         public boolean equals(Object other) {
