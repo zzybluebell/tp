@@ -16,12 +16,12 @@ import seedu.address.model.account.Password;
 public class SetAccountCommand extends Command {
 
     public static final String COMMAND_WORD = "set";
-    public static final String MESSAGE_USAGE = COMMAND_WORD + ": Edits login password. "
+    public static final String MESSAGE_USAGE = COMMAND_WORD + ": Sets login password. "
             + "Existing password will be overwritten by the new password.\n"
             + "Parameters: "
-            + PREFIX_PASS + " PASSWORD\n"
+            + PREFIX_PASS + "PASSWORD\n"
             + "Example: "
-            + COMMAND_WORD + " " + PREFIX_PASS + " 123456";
+            + COMMAND_WORD + " " + PREFIX_PASS + "123456";
 
     public static final String MESSAGE_SUCCESS = "Password updated";
 

@@ -32,15 +32,16 @@ import seedu.address.model.transaction.Transaction;
  */
 public class AddTransactionCommand extends AddCommand {
 
-    public static final String MESSAGE_USAGE = COMMAND_WORD + ": Adds a transaction to each member in the ezFoodie. "
-            + "Parameters: "
+    public static final String MESSAGE_USAGE = COMMAND_WORD + ": Adds a transaction to each member in the ezFoodie.\n"
+            + "Parameters:\n"
             + PREFIX_TRANSACTION + " "
-            + PREFIX_BILLING + " " + "BILLING (STRICTLY 2 DECIMAL PLACES) "
-            + PREFIX_ID + " " + "ID\n"
-            + "Example: " + COMMAND_WORD + " "
+            + PREFIX_BILLING + "BILLING (STRICTLY 2 DECIMAL PLACES) "
+            + PREFIX_ID + "ID\n"
+            + "Example:\n"
+            + COMMAND_WORD + " "
             + PREFIX_TRANSACTION + " "
-            + PREFIX_BILLING + " " + "23.00 "
-            + PREFIX_ID + " " + "10001";
+            + PREFIX_BILLING + "23.00 "
+            + PREFIX_ID + "10001";
 
     public static final String MESSAGE_SUCCESS = "New transaction added: %1$s";
 

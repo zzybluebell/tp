@@ -35,17 +35,18 @@ import seedu.address.model.transaction.Transaction;
 public class AddReservationCommand extends AddCommand {
 
     public static final String MESSAGE_USAGE = COMMAND_WORD + ": Adds reservation to member "
-            + "by member ID in the ezFoodie. "
-            + "Parameters: "
+            + "by member ID in the ezFoodie.\n"
+            + "Parameters:\n"
             + PREFIX_RESERVATION + " "
-            + PREFIX_DATE_TIME + " " + "DATE_TIME (" + DateTimeUtil.DATE_TIME_PATTERN + ") "
-            + PREFIX_REMARK + " " + "REMARK "
-            + PREFIX_ID + " " + "ID\n"
-            + "Example: " + COMMAND_WORD + " "
+            + PREFIX_DATE_TIME + "DATE_TIME (" + DateTimeUtil.DATE_TIME_PATTERN + ") "
+            + PREFIX_REMARK + "REMARK "
+            + PREFIX_ID + "ID\n"
+            + "Example:\n"
+            + COMMAND_WORD + " "
             + PREFIX_RESERVATION + " "
-            + PREFIX_DATE_TIME + " " + "2021-12-01 13:00 "
-            + PREFIX_REMARK + " " + "2 people "
-            + PREFIX_ID + " " + "10001";
+            + PREFIX_DATE_TIME + "2021-12-01 13:00 "
+            + PREFIX_REMARK + "2 people "
+            + PREFIX_ID + "10001";
 
     public static final String MESSAGE_SUCCESS = "New reservation added: %1$s";
 

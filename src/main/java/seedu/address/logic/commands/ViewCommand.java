@@ -20,9 +20,9 @@ public class ViewCommand extends Command {
             + ": View a specific member's details, "
             + "accessed by member ID.\n"
             + "Parameters:\n"
-            + PREFIX_MEMBER + " " + PREFIX_ID + " ID\n"
+            + PREFIX_MEMBER + " " + PREFIX_ID + "ID\n"
             + "Example:\n"
-            + COMMAND_WORD + " " + PREFIX_MEMBER + " " + PREFIX_ID + " 10001";
+            + COMMAND_WORD + " " + PREFIX_MEMBER + " " + PREFIX_ID + "10001";
 
     private final IdContainsKeywordsPredicate predicate;
 
