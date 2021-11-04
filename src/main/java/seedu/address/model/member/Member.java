@@ -36,9 +36,24 @@ public class Member {
     private final List<Transaction> transactions = new ArrayList<>();
     private final List<Reservation> reservations = new ArrayList<>();
 
+
     /**
+     * Constructs {code Member} with follow param.
      * Every field must be present and not null.
+     *
+     * @param id the member id
+     * @param name the member name
+     * @param phone the member phone
+     * @param email the member email
+     * @param address the member address
+     * @param timestamp the member timestamp
+     * @param credit the member credits
+     * @param point the member point
+     * @param transactions the member transactions
+     * @param reservations the member reservations
+     * @param tags the member tag
      */
+
     public Member(Id id, Name name, Phone phone, Email email, Address address,
                   Timestamp timestamp, Credit credit, Point point, List<Transaction> transactions,
                   List<Reservation> reservations, Set<Tag> tags) {
@@ -56,34 +71,74 @@ public class Member {
         this.reservations.addAll(reservations);
     }
 
+    /**
+     * Gets Id.
+     *
+     * @return Id
+     */
     public Id getId() {
         return id;
     }
 
+    /**
+     * Gets name.
+     *
+     * @return name
+     */
     public Name getName() {
         return name;
     }
 
+    /**
+     * Gets phone.
+     *
+     * @return Phone
+     */
     public Phone getPhone() {
         return phone;
     }
 
+    /**
+     * Gets email.
+     *
+     * @return Email
+     */
     public Email getEmail() {
         return email;
     }
 
+    /**
+     * Gets address.
+     *
+     * @return Address
+     */
     public Address getAddress() {
         return address;
     }
 
+    /**
+     * Gets timestamp.
+     *
+     * @return Timestamp
+     */
     public Timestamp getTimestamp() {
         return timestamp;
     }
 
+    /**
+     * Gets credit.
+     *
+     * @return Credit
+     */
     public Credit getCredit() {
         return credit;
     }
 
+    /**
+     * Gets point.
+     *
+     * @return Point
+     */
     public Point getPoint() {
         return this.point;
     }
@@ -91,6 +146,8 @@ public class Member {
     /**
      * Returns an immutable tag set, which throws {@code UnsupportedOperationException}
      * if modification is attempted.
+     *
+     * @return Set a series of tags
      */
     public Set<Tag> getTags() {
         return Collections.unmodifiableSet(tags);

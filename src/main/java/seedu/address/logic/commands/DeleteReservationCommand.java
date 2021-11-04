@@ -30,6 +30,14 @@ import seedu.address.model.transaction.Transaction;
  */
 public class DeleteReservationCommand extends DeleteCommand {
 
+    /**
+     * Stands for delete command.
+     */
+    public static final String COMMAND_WORD = "del";
+
+    /**
+     * Stands for the message of delete command related to reservations.
+     */
     public static final String MESSAGE_USAGE = COMMAND_WORD
             + ": Deletes the reservation identified by the member ID and reservation ID.\n"
             + "Parameters:\n"
@@ -39,13 +47,24 @@ public class DeleteReservationCommand extends DeleteCommand {
             + "Delete by member ID and reservation ID: "
             + COMMAND_WORD + " " + PREFIX_RESERVATION + " " + PREFIX_ID + "10001100001";
 
+    /**
+     * Stands for succeed message of delete reservation.
+     */
     public static final String MESSAGE_SUCCESS = "Deleted reservation: %1$s";
 
     private final seedu.address.model.member.Id memberId;
     private final seedu.address.model.reservation.Id reservationId;
 
     /**
+<<<<<<< HEAD
+     * Constructs DeleteReservationCommand to delete the specified {@code Member}
+     * by {@code memberID} and {@code reservationId}.
+     *
+     * @param memberId the member Id
+     * @param reservationId the reservation id
+=======
      * Creates an DeleteCommand to delete the specified {@code Member} by member ID and reservation ID
+>>>>>>> master
      */
     public DeleteReservationCommand(
             seedu.address.model.member.Id memberId, seedu.address.model.reservation.Id reservationId) {
@@ -55,7 +74,11 @@ public class DeleteReservationCommand extends DeleteCommand {
     }
 
     /**
-     * Creates and returns a {@code Member} with the details of {@code memberToEdit}
+     * Creates and returns a {@code Member} with the details of {@code memberToEdit} and {@code reservation}.
+     *
+     * @param memberToEdit the member to edit.
+     * @param reservation the reservation will to remove
+     * @return Member with updated reservation
      */
     private static Member createUpdatedReservation(Member memberToEdit, Reservation reservation) {
         assert memberToEdit != null;
@@ -79,6 +102,13 @@ public class DeleteReservationCommand extends DeleteCommand {
                 transactions, updatedReservations, updatedTags);
     }
 
+    /**
+     * Executes the model.
+     *
+     * @param model {@code Model} which the command should operate on.
+     * @return CommandResult related delete reservation command.
+     * @throws CommandException
+     */
     @Override
     public CommandResult execute(Model model) throws CommandException {
         requireNonNull(model);
@@ -101,6 +131,9 @@ public class DeleteReservationCommand extends DeleteCommand {
         }
     }
 
+    /**
+     * Overrides the equals method.
+     */
     @Override
     public boolean equals(Object other) {
         return other == this // short circuit if same object

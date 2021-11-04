@@ -9,10 +9,13 @@ import static seedu.address.commons.util.AppUtil.checkArgument;
  */
 public class Address {
 
+    /**
+     * Stands for address message constraints.
+     */
     public static final String MESSAGE_CONSTRAINTS = "Addresses can take any values, and it should not be blank";
 
-    /*
-     * The first character of the address must not be a whitespace,
+    /**
+     * Stands for the first character of the address must not be a whitespace,
      * otherwise " " (a blank string) becomes a valid input.
      */
     public static final String VALIDATION_REGEX = "[^\\s].*";
@@ -22,7 +25,7 @@ public class Address {
     /**
      * Constructs an {@code Address}.
      *
-     * @param address A valid address.
+     * @param address a valid address.
      */
     public Address(String address) {
         requireNonNull(address);
@@ -37,11 +40,21 @@ public class Address {
         return test.matches(VALIDATION_REGEX);
     }
 
+    /**
+     * Overrides toString method.
+     *
+     * @return String
+     */
     @Override
     public String toString() {
         return value;
     }
 
+    /**
+     * Overrides equals method.
+     *
+     * @return boolean
+     */
     @Override
     public boolean equals(Object other) {
         return other == this // short circuit if same object
@@ -49,6 +62,11 @@ public class Address {
                 && value.equals(((Address) other).value)); // state check
     }
 
+    /**
+     * Overrides hashCode method.
+     *
+     * @return int
+     */
     @Override
     public int hashCode() {
         return value.hashCode();

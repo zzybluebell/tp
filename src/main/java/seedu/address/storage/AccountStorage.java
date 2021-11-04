@@ -19,7 +19,8 @@ public interface AccountStorage {
 
     /**
      * Returns Account as a {@link ReadOnlyAccount}.
-     *   Returns {@code Optional.empty()} if storage file is not found.
+     * Returns {@code Optional.empty()} if storage file is not found.
+     *
      * @throws DataConversionException if the data in storage is not in the expected format.
      * @throws IOException if there was any problem when reading from the storage.
      */
@@ -32,6 +33,7 @@ public interface AccountStorage {
 
     /**
      * Saves the given {@link ReadOnlyAccount} to the storage.
+     *
      * @param account cannot be null.
      * @throws IOException if there was any problem writing to the file.
      */

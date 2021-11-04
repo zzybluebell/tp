@@ -54,7 +54,7 @@ public class MainWindow extends UiPart<Stage> {
     private StackPane statusbarPlaceholder;
 
     /**
-     * Creates a {@code MainWindow} with the given {@code Stage} and {@code Logic}.
+     * Constructs a {@code MainWindow} with the given {@code Stage} and {@code Logic}.
      */
     public MainWindow(Stage primaryStage, Logic logic) {
         super(FXML, primaryStage);
@@ -73,6 +73,11 @@ public class MainWindow extends UiPart<Stage> {
         summaryWindow = new SummaryWindow(logic);
     }
 
+    /**
+     * Gets primary stage.
+     *
+     * @return Stage for the primary stage
+     */
     public Stage getPrimaryStage() {
         return primaryStage;
     }

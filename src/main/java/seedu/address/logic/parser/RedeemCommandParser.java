@@ -25,7 +25,7 @@ public class RedeemCommandParser implements Parser<RedeemCommand> {
     private final ExecutionStatus executionStatus;
 
     /**
-     * Constructs a {@code AddTransactionCommandParser} with the given {@code ExecutionStatus}.
+     * Constructs a {@code RedeemCommandParser} with the given {@code Model} and {@code ExecutionStatus}.
      */
     public RedeemCommandParser(Model model, ExecutionStatus executionStatus) {
         this.model = model;
@@ -33,8 +33,12 @@ public class RedeemCommandParser implements Parser<RedeemCommand> {
     }
 
     /**
-     * Parses the given {@code String} of arguments in the context of the RedeemPointCommand
-     * and returns an RedeemPointCommand object for execution.
+     * Parses the given {@code String} of arguments in the context of the RedeemCommand
+     * and returns an RedeemCommand object for execution.
+     *
+     * @param args
+     * @return RedeemCommand
+     * @throws ParseException if the user input does not conform the expected format
      */
     @Override
     public RedeemCommand parse(String args) throws ParseException {

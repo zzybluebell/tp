@@ -11,7 +11,7 @@ import seedu.address.commons.core.LogsCenter;
 import seedu.address.model.member.Member;
 
 /**
- * Panel containing the list of members.
+ * Represents for Panel containing the list of members.
  */
 public class MemberListPanel extends UiPart<Region> {
     private static final String FXML = "MemberListPanel.fxml";

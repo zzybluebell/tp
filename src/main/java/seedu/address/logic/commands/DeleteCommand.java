@@ -12,7 +12,14 @@ import seedu.address.model.Model;
  */
 public abstract class DeleteCommand extends Command {
 
+    /**
+     * Stands for delete command.
+     */
     public static final String COMMAND_WORD = "del";
+
+    /**
+     * Stands for the message of delete command from the ezFoodie.
+     */
     public static final String MESSAGE_USAGE = COMMAND_WORD
             + ": Deletes a member or a transaction or a reservation from the ezFoodie.\n"
             + "With "
@@ -20,6 +27,13 @@ public abstract class DeleteCommand extends Command {
             + PREFIX_TRANSACTION + " (transaction details) or "
             + PREFIX_RESERVATION + " (reservation details)";
 
+    /**
+     * Overrides and executes model.
+     *
+     * @param model {@code Model} which the command should operate on.
+     * @return CommandResult of related commands.
+     * @throws CommandException
+     */
     @Override
     public abstract CommandResult execute(Model model) throws CommandException;
 

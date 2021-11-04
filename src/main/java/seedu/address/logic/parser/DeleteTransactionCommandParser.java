@@ -18,6 +18,9 @@ public class DeleteTransactionCommandParser extends DeleteCommandParser implemen
     /**
      * Parses the given {@code String} of arguments in the context of the DeleteTransactionCommand
      * and returns a DeleteTransactionCommand object for execution.
+     *
+     * @param args
+     * @return DeleteTransactionCommand
      * @throws ParseException if the user input does not conform the expected format
      */
     public DeleteTransactionCommand parse(String args) throws ParseException {

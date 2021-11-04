@@ -17,7 +17,12 @@ public class Transaction {
     private final Billing billing;
 
     /**
-     * Every field must be present and not null.
+     * Constructs a {@code Transaction},
+     * every field must be present and not null.
+     *
+     * @param id member Id
+     * @param timestamp transaction timestamp
+     * @param billing billing details
      */
     public Transaction(Id id, Timestamp timestamp, Billing billing) {
         requireAllNonNull(id, timestamp, billing);
@@ -26,21 +31,39 @@ public class Transaction {
         this.billing = billing;
     }
 
+    /**
+     * Gets transaction id.
+     *
+     * @return id the transaction member id.
+     */
     public Id getId() {
         return id;
     }
 
+    /**
+     * Gets transaction timestamp.
+     *
+     * @return id the transaction timestamp.
+     */
     public Timestamp getTimestamp() {
         return timestamp;
     }
 
+    /**
+     * Gets transaction billing.
+     *
+     * @return id the transaction billing.
+     */
     public Billing getBilling() {
         return billing;
     }
 
     /**
-     * Returns true if both transactions have the same id.
+     * Returns whether is same id between other transactions.
      * This defines a weaker notion of equality between two transactions.
+     *
+     * @param otherTransaction
+     * @return boolean true if both transactions have the same id.
      */
     public boolean isSameId(Transaction otherTransaction) {
         if (otherTransaction == this) {
@@ -71,12 +94,20 @@ public class Transaction {
                 && otherTransaction.getBilling().equals(getBilling());
     }
 
+    /**
+     * Overrides hashCode method.
+     */
     @Override
     public int hashCode() {
         // use this method for custom fields hashing instead of implementing your own
         return Objects.hash(timestamp, billing);
     }
 
+    /**
+     * Overrides toString method.
+     *
+     * @return String of transaction's information including Id, timestamp and billing.
+     */
     @Override
     public String toString() {
         final StringBuilder builder = new StringBuilder();

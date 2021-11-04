@@ -9,19 +9,41 @@ import static seedu.address.commons.util.AppUtil.checkArgument;
  */
 public class Credit {
 
+    /**
+     * Stands for the max credit number.
+     */
     public static final int MAX = 99999999;
+
+    /**
+     * Stands for credits message constraints.
+     */
     public static final String MESSAGE_CONSTRAINTS =
             "Credits should only contain no more than 8 digits and it should not be blank, and max credit is " + MAX;
+
+    /**
+     * Stands for trim leading zero regex
+     */
     public static final String TRIM_LEADING_ZERO_REGEX = "^0+(?!$)";
+
+    /**
+     * Stands for validation regex.
+     */
     public static final String VALIDATION_REGEX = "[\\p{Digit}]*";
+
+    /**
+     * Stands for the length of credit.
+     */
     public static final int LENGTH = 8; // Max credit is 99999999
 
+    /**
+     * Stands for the credit value.
+     */
     public final String value;
 
     /**
      * Constructs a {@code Credit}.
      *
-     * @param credit A valid credit.
+     * @param credit a valid credit.
      */
     public Credit(String credit) {
         requireNonNull(credit);
@@ -30,7 +52,10 @@ public class Credit {
     }
 
     /**
-     * Returns true if a given string is a valid credit.
+     * Returns whether is a valid credit.
+     *
+     * @param test input String test
+     * @return boolean true if a given string is a valid credit.
      */
     public static boolean isValidCredit(String test) {
         test = test.replaceFirst(TRIM_LEADING_ZERO_REGEX, "");
@@ -42,24 +67,32 @@ public class Credit {
     }
 
     /**
-     * Returns int value of credit.
+     * Gets int value of credit.
      */
     public int getIntValue() {
         return Integer.parseInt(value);
     }
 
     /**
-     * Returns String value of credit for Point use.
+     * Gets String value of credit for Point use.
+     *
+     * @return String of credit value.
      */
     public String getStringValue() {
         return value;
     }
 
+    /**
+     * Overrides toString method.
+     */
     @Override
     public String toString() {
         return value;
     }
 
+    /**
+     * Overrides equals method.
+     */
     @Override
     public boolean equals(Object other) {
         return other == this // short circuit if same object
@@ -67,6 +100,9 @@ public class Credit {
                 && value.equals(((Credit) other).value)); // state check
     }
 
+    /**
+     * Overrides hashCode method.
+     */
     @Override
     public int hashCode() {
         return value.hashCode();

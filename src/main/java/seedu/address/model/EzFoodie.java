@@ -28,10 +28,15 @@ public class EzFoodie implements ReadOnlyEzFoodie {
         members = new UniqueMemberList();
     }
 
+    /**
+     * Constructs {@code EzFoodie} without input value.
+     */
     public EzFoodie() {}
 
     /**
-     * Creates an ezFoodie using the Members in the {@code toBeCopied}
+     * Constructs an {@code ezFoodie} using the Members in the {@code toBeCopied}
+     *
+     * @param toBeCopied the data is going to creates ezFoodie.
      */
     public EzFoodie(ReadOnlyEzFoodie toBeCopied) {
         this();
@@ -104,17 +109,28 @@ public class EzFoodie implements ReadOnlyEzFoodie {
 
     //// util methods
 
+    /**
+     * Overrides toString method
+     */
     @Override
     public String toString() {
         return members.asUnmodifiableObservableList().size() + " members";
         // TODO: refine later
     }
 
+    /**
+     * Overrides and gets member list.
+     *
+     * @return ObservableList a series list data of members.
+     */
     @Override
     public ObservableList<Member> getMemberList() {
         return members.asUnmodifiableObservableList();
     }
 
+    /**
+     * Overrides equals method.
+     */
     @Override
     public boolean equals(Object other) {
         return other == this // short circuit if same object
@@ -122,6 +138,9 @@ public class EzFoodie implements ReadOnlyEzFoodie {
                 && members.equals(((EzFoodie) other).members));
     }
 
+    /**
+     * Overrides hashCode method.
+     */
     @Override
     public int hashCode() {
         return members.hashCode();
