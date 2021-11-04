@@ -72,7 +72,9 @@ public class AddReservationCommand extends AddCommand {
             Member editedMember = createUpdatedReservations(memberToEdit, reservationToAdd);
             model.setMember(memberToEdit, editedMember);
             model.updateFilteredMemberList(PREDICATE_SHOW_ALL_MEMBERS);
-            return new CommandResult(String.format(MESSAGE_SUCCESS, editedMember));
+            return new CommandResult(String.format(MESSAGE_SUCCESS, "Id: " + editedMember.getId()
+                    + "; Name: " + editedMember.getName()
+                    + "; Reservation: " + " [" + reservationToAdd + "]"));
         } else {
             throw new CommandException(Messages.MESSAGE_INVALID_MEMBER_DISPLAYED_ID);
         }

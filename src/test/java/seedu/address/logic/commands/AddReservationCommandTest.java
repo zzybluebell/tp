@@ -47,9 +47,10 @@ public class AddReservationCommandTest {
         Reservation validReservation = new ReservationBuilder().build();
         CommandResult commandResult = new AddReservationCommand(validReservation, validId).execute(modelStub);
         Member expectedMember = model.getUpdatedMemberList().get(INDEX_FIRST_MEMBER.getZeroBased());
-        ;
 
-        assertEquals(String.format(AddReservationCommand.MESSAGE_SUCCESS, expectedMember),
+        assertEquals(String.format(AddReservationCommand.MESSAGE_SUCCESS, "Id: " + expectedMember.getId()
+                + "; Name: " + expectedMember.getName()
+                + "; Reservation: " + " [" + validReservation + "]"),
                 commandResult.getFeedbackToUser());
         assertTrue(expectedMember.getReservations().contains(validReservation));
     }

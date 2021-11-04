@@ -47,9 +47,10 @@ public class AddTransactionCommandTest {
         Transaction validTransaction = new TransactionBuilder().build();
         CommandResult commandResult = new AddTransactionCommand(validTransaction, validId).execute(modelStub);
         Member expectedMember = model.getUpdatedMemberList().get(INDEX_FIRST_MEMBER.getZeroBased());
-        ;
 
-        assertEquals(String.format(AddTransactionCommand.MESSAGE_SUCCESS, expectedMember),
+        assertEquals(String.format(AddTransactionCommand.MESSAGE_SUCCESS, "Id: " + expectedMember.getId()
+                + "; Name: " + expectedMember.getName()
+                + "; Transaction: " + " [" + validTransaction + "]"),
                 commandResult.getFeedbackToUser());
         assertEquals(validTransaction,
                 expectedMember.getTransactions().get(expectedMember.getTransactions().size() - 1));

@@ -120,7 +120,11 @@ public class EditTransactionCommand extends EditCommand {
                 Member editedMember = createUpdatedCredits(memberToEdit, transactionToEdit, editTransactionDescriptor);
                 model.setMember(memberToEdit, editedMember);
                 model.updateFilteredMemberList(PREDICATE_SHOW_ALL_MEMBERS);
-                return new CommandResult(String.format(MESSAGE_SUCCESS, editedMember));
+                Transaction updatedTransaction = editedMember.getTransactions().stream()
+                        .filter(transaction -> transactionId.equals(transaction.getId())).findAny().orElse(null);
+                return new CommandResult(String.format(MESSAGE_SUCCESS, "Id: " + editedMember.getId()
+                        + "; Name: " + editedMember.getName()
+                        + "; Transaction: " + " [" + updatedTransaction + "]"));
             } else {
                 throw new CommandException(Messages.MESSAGE_INVALID_TRANSACTION_DISPLAYED_ID);
             }

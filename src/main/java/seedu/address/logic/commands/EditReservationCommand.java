@@ -99,7 +99,10 @@ public class EditReservationCommand extends EditCommand {
 
         List<Reservation> updatedReservations = new ArrayList<>(reservations);
         Reservation updatedReservation = new Reservation(reservationToEdit.getId(), updatedDateTime, updatedRemark);
-        updatedReservations.add(updatedReservation);
+        updatedReservations.stream()
+                .filter(reservation -> reservation.isSameId(reservationToEdit)).findAny()
+                .ifPresent(transaction -> updatedReservations
+                        .set(updatedReservations.indexOf(transaction), updatedReservation));
 
         return new Member(id, updatedName, updatedPhone, updatedEmail, updatedAddress, timestamp, credit, point,
                 transactions, updatedReservations, updatedTags);
@@ -118,7 +121,11 @@ public class EditReservationCommand extends EditCommand {
                 Member editedMember = createUpdatedCredits(memberToEdit, reservationToEdit, editReservationDescriptor);
                 model.setMember(memberToEdit, editedMember);
                 model.updateFilteredMemberList(PREDICATE_SHOW_ALL_MEMBERS);
-                return new CommandResult(String.format(MESSAGE_SUCCESS, editedMember));
+                Reservation updatedReservation = editedMember.getReservations().stream()
+                        .filter(reservation -> reservationId.equals(reservation.getId())).findAny().orElse(null);
+                return new CommandResult(String.format(MESSAGE_SUCCESS, "Id: " + editedMember.getId()
+                        + "; Name: " + editedMember.getName()
+                        + "; Reservation: " + " [" + updatedReservation + "]"));
             } else {
                 throw new CommandException(Messages.MESSAGE_INVALID_RESERVATION_DISPLAYED_ID);
             }

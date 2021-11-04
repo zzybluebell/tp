@@ -51,7 +51,11 @@ public class EditTransactionCommandTest {
         Member expectedMember = new MemberBuilder(memberToEdit).withCredit(expectedCredit.value)
                 .withTransactions(expectedTransactions.toArray(Transaction[]::new)).build();
         expectedModel.setMember(memberToEdit, expectedMember);
-        String expectedMessage = String.format(EditTransactionCommand.MESSAGE_SUCCESS, expectedMember);
+        Transaction updatedTransaction = expectedMember.getTransactions().stream()
+                .filter(transaction -> transaction.isSameId(transactionToEdit)).findAny().orElse(null);
+        String expectedMessage = String.format(EditTransactionCommand.MESSAGE_SUCCESS, "Id: " + expectedMember.getId()
+                + "; Name: " + expectedMember.getName()
+                + "; Transaction: " + " [" + updatedTransaction + "]");
 
         assertCommandSuccess(editCommand, model, expectedMessage, expectedModel);
     }

@@ -67,7 +67,9 @@ public class AddTransactionCommand extends AddCommand {
             Member editedMember = createUpdatedCreditAndPointsMember(memberToEdit, transactionToAdd);
             model.setMember(memberToEdit, editedMember);
             model.updateFilteredMemberList(PREDICATE_SHOW_ALL_MEMBERS);
-            return new CommandResult(String.format(MESSAGE_SUCCESS, editedMember));
+            return new CommandResult(String.format(MESSAGE_SUCCESS, "Id: " + editedMember.getId()
+                    + "; Name: " + editedMember.getName()
+                    + "; Transaction: " + " [" + transactionToAdd + "]"));
         } else {
             throw new CommandException(Messages.MESSAGE_INVALID_MEMBER_DISPLAYED_ID);
         }

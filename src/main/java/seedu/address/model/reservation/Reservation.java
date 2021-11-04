@@ -40,8 +40,21 @@ public class Reservation {
     }
 
     /**
+     * Returns true if both reservations have the same id.
+     * This defines a weaker notion of equality between two reservations.
+     */
+    public boolean isSameId(Reservation otherReservation) {
+        if (otherReservation == this) {
+            return true;
+        }
+
+        return otherReservation != null
+                && otherReservation.getId().equals(getId());
+    }
+
+    /**
      * Returns true if both reservations have the same date.
-     * This defines a stronger notion of equality between two transactions.
+     * This defines a stronger notion of equality between two reservations.
      */
     @Override
     public boolean equals(Object other) {
@@ -70,7 +83,7 @@ public class Reservation {
         final StringBuilder builder = new StringBuilder();
         builder.append("Id: ")
                 .append(getId())
-                .append("DateTime: ")
+                .append("; DateTime: ")
                 .append(getDateTime())
                 .append("; Remark: ")
                 .append(getRemark());

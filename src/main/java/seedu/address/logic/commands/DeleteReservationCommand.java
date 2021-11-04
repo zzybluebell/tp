@@ -92,7 +92,9 @@ public class DeleteReservationCommand extends DeleteCommand {
                 Member editedMember = createUpdatedReservation(memberToEdit, reservationToDelete);
                 model.setMember(memberToEdit, editedMember);
                 model.updateFilteredMemberList(PREDICATE_SHOW_ALL_MEMBERS);
-                return new CommandResult(String.format(MESSAGE_SUCCESS, editedMember));
+                return new CommandResult(String.format(MESSAGE_SUCCESS, "Id: " + editedMember.getId()
+                        + "; Name: " + editedMember.getName()
+                        + "; Reservation: " + " [" + reservationToDelete + "]"));
             } else {
                 throw new CommandException(Messages.MESSAGE_INVALID_RESERVATION_DISPLAYED_ID);
             }
