@@ -39,12 +39,12 @@ public class EditTransactionCommand extends EditCommand {
             + "Existing values will be overwritten by the input values.\n"
             + "Parameters:\n"
             + "Edit by member ID and transaction ID: "
-            + PREFIX_TRANSACTION + " " + PREFIX_ID + " member ID + transaction ID "
-            + "[" + PREFIX_BILLING + " BILLING]\n"
+            + PREFIX_TRANSACTION + " " + PREFIX_ID + "member ID + transaction ID "
+            + "[" + PREFIX_BILLING + "BILLING]\n"
             + "Example:\n"
             + "Edit by member ID and transaction ID: "
-            + COMMAND_WORD + " " + PREFIX_TRANSACTION + " " + PREFIX_ID + " 10001100001 "
-            + PREFIX_BILLING + " 123.45";
+            + COMMAND_WORD + " " + PREFIX_TRANSACTION + " " + PREFIX_ID + "10001100001 "
+            + PREFIX_BILLING + "123.45";
 
     public static final String MESSAGE_SUCCESS = "Edited Member: %1$s";
     public static final String MESSAGE_NOT_EDITED = "At least one field to edit must be provided.";

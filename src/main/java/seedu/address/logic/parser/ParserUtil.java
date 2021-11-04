@@ -2,6 +2,8 @@ package seedu.address.logic.parser;
 
 import static java.util.Objects.requireNonNull;
 
+import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.security.NoSuchAlgorithmException;
 import java.util.ArrayList;
 import java.util.Collection;
@@ -175,6 +177,8 @@ public class ParserUtil {
         if (!Billing.isValidBilling(trimmedBilling)) {
             throw new ParseException(Billing.MESSAGE_CONSTRAINTS);
         }
+        trimmedBilling = BigDecimal.valueOf(Double.parseDouble(trimmedBilling)).stripTrailingZeros()
+                .setScale(2, RoundingMode.HALF_EVEN).toPlainString();
         return new Billing(trimmedBilling);
     }
 
