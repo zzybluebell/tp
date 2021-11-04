@@ -43,9 +43,6 @@ public class Password {
 
     /**
      * Returns true if a given string is a valid password.
-     */
-    /**
-     * Returns true if a given string is a valid password.
      *
      * @param test
      * @return boolean

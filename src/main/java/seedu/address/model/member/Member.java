@@ -36,24 +36,22 @@ public class Member {
     private final List<Transaction> transactions = new ArrayList<>();
     private final List<Reservation> reservations = new ArrayList<>();
 
-    /**
-     *
-     */
+
     /**
      * Constructs {code Member} with follow param.
      * Every field must be present and not null.
      *
-     * @param id
-     * @param name
-     * @param phone
-     * @param email
-     * @param address
-     * @param timestamp
-     * @param credit
-     * @param point
-     * @param transactions
-     * @param reservations
-     * @param tags
+     * @param id the member id
+     * @param name the member name
+     * @param phone the member phone
+     * @param email the member email
+     * @param address the member address
+     * @param timestamp the member timestamp
+     * @param credit the member credits
+     * @param point the member point
+     * @param transactions the member transactions
+     * @param reservations the member reservations
+     * @param tags the member tag
      */
 
     public Member(Id id, Name name, Phone phone, Email email, Address address,
@@ -149,7 +147,7 @@ public class Member {
      * Returns an immutable tag set, which throws {@code UnsupportedOperationException}
      * if modification is attempted.
      *
-     * @return Set<Tag>
+     * @return Set a series of tags
      */
     public Set<Tag> getTags() {
         return Collections.unmodifiableSet(tags);

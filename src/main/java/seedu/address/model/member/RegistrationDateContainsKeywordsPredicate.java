@@ -20,7 +20,7 @@ public class RegistrationDateContainsKeywordsPredicate implements Predicate<Memb
     /**
      *  Constructs a {@code RegistrationDateContainsKeywordsPredicate} with input {@code List<String>}.
      *
-     * @param keywords
+     * @param keywords a list of string keywords
      */
     public RegistrationDateContainsKeywordsPredicate(List<String> keywords) {
         this.keywords = keywords;
@@ -28,9 +28,6 @@ public class RegistrationDateContainsKeywordsPredicate implements Predicate<Memb
 
     /**
      * Overrides test method.
-     *
-     * @param member
-     * @return boolean
      */
     @Override
     public boolean test(Member member) {
@@ -46,9 +43,7 @@ public class RegistrationDateContainsKeywordsPredicate implements Predicate<Memb
     }
 
     /**
-     * Overrides equals method.
-     * 
-     * @return boolean
+     * Overrides the equals method.
      */
     @Override
     public boolean equals(Object other) {
@@ -56,5 +51,4 @@ public class RegistrationDateContainsKeywordsPredicate implements Predicate<Memb
                 || (other instanceof RegistrationDateContainsKeywordsPredicate // instanceof handles nulls
                 && keywords.equals(((RegistrationDateContainsKeywordsPredicate) other).keywords)); // state check
     }
-
 }

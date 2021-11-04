@@ -129,9 +129,9 @@ public class UniqueMemberList implements Iterable<Member> {
     }
 
     /**
-     * Returns the backing list as an unmodifiable {@code ObservableList}.
+     * Returns the backing list as an unmodifiable {@code ObservableList<Member>}.
      *
-     * @return ObservableList<Member>
+     * @return ObservableList a series of oberservation list
      */
     public ObservableList<Member> asUnmodifiableObservableList() {
         return internalUnmodifiableList;

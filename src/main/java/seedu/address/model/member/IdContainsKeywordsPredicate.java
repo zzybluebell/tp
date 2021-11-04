@@ -12,9 +12,7 @@ public class IdContainsKeywordsPredicate implements Predicate<Member> {
     private final List<String> keywords;
 
     /**
-     * Constructs a {@code IdContainsKeywordsPredicate} with input {List<String>}.
-     *
-     * @param keywords
+     * Constructs a {@code IdContainsKeywordsPredicate} with input {@code List<String>}.
      */
     public IdContainsKeywordsPredicate(List<String> keywords) {
         this.keywords = keywords;

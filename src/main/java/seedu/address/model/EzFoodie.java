@@ -121,7 +121,7 @@ public class EzFoodie implements ReadOnlyEzFoodie {
     /**
      * Overrides and gets member list.
      *
-     * @return ObservableList<Member> a series list data of members.
+     * @return ObservableList a series list data of members.
      */
     @Override
     public ObservableList<Member> getMemberList() {
