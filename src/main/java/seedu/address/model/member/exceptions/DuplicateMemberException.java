@@ -5,6 +5,9 @@ package seedu.address.model.member.exceptions;
  * identity).
  */
 public class DuplicateMemberException extends RuntimeException {
+    /**
+     * Constructs a {@code DuplicateMemberException} without input.
+     */
     public DuplicateMemberException() {
         super("Operation would result in duplicate members");
     }

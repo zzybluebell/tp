@@ -31,6 +31,9 @@ import seedu.address.model.transaction.Transaction;
  */
 public class AddTransactionCommand extends AddCommand {
 
+    /**
+     * Stands for the message add transaction command.
+     */
     public static final String MESSAGE_USAGE = COMMAND_WORD + ": Adds a transaction to each member in the ezFoodie.\n"
             + "Parameters:\n"
             + PREFIX_TRANSACTION + " "
@@ -42,6 +45,9 @@ public class AddTransactionCommand extends AddCommand {
             + PREFIX_BILLING + "23.00 "
             + PREFIX_ID + "10001";
 
+    /**
+     * Stands for the success message of new transaction added.
+     */
     public static final String MESSAGE_SUCCESS = "New transaction added: %1$s";
     public static final String MESSAGE_FULL = "Transaction ID has reached " + seedu.address.model.transaction.Id.MAX;
 
@@ -49,7 +55,7 @@ public class AddTransactionCommand extends AddCommand {
     private final seedu.address.model.member.Id idToAdd;
 
     /**
-     * Creates an AddTransactionCommand to add the specified {@code Member}
+     * Constructs an AddTransactionCommand to add the specified {@code Member}
      */
     public AddTransactionCommand(Transaction transaction, seedu.address.model.member.Id id) {
         requireAllNonNull(transaction, id);
@@ -57,6 +63,13 @@ public class AddTransactionCommand extends AddCommand {
         idToAdd = id;
     }
 
+    /**
+     * Executes the model in add transaction command.
+     *
+     * @param model {@code Model} which the command should operate on.
+     * @return CommandResult with edited member.
+     * @throws CommandException
+     */
     @Override
     public CommandResult execute(Model model) throws CommandException {
         requireNonNull(model);
@@ -72,8 +85,13 @@ public class AddTransactionCommand extends AddCommand {
             throw new CommandException(Messages.MESSAGE_INVALID_MEMBER_DISPLAYED_ID);
         }
     }
+
     /**
-     * Creates and returns a {@code Member} with the details of {@code memberToEdit}
+     * Creates and returns a {@code Member} with the details of {@code memberToEdit}.
+     *
+     * @param memberToEdit {@code memberToEdit} which the command should operate on.
+     * @param transaction {@code transaction} which the command should operate on.
+     * @return member with updated transactions and points.
      */
     private static Member createUpdatedCreditAndPointsMember(Member memberToEdit, Transaction transaction) {
         assert memberToEdit != null;
@@ -98,6 +116,9 @@ public class AddTransactionCommand extends AddCommand {
                 updatePoint, updatedTransactions, reservations, updatedTags);
     }
 
+    /**
+     * Overrides the equal method.
+     */
     @Override
     public boolean equals(Object other) {
         return other == this // short circuit if same object

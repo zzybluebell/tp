@@ -18,7 +18,9 @@ import seedu.address.model.member.Member;
  */
 @JsonRootName(value = "ezfoodie")
 class JsonSerializableEzFoodie {
-
+    /**
+     * Stands for message od duplicated members.
+     */
     public static final String MESSAGE_DUPLICATE_MEMBER = "Members list contains duplicate member(s).";
 
     private final List<JsonAdaptedMember> members = new ArrayList<>();

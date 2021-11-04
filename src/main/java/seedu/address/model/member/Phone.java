@@ -18,7 +18,7 @@ public class Phone {
     /**
      * Constructs a {@code Phone}.
      *
-     * @param phone A valid phone number.
+     * @param phone a valid phone number.
      */
     public Phone(String phone) {
         requireNonNull(phone);
@@ -28,16 +28,29 @@ public class Phone {
 
     /**
      * Returns true if a given string is a valid phone number.
+     *
+     * @param test
+     * @return boolean
      */
     public static boolean isValidPhone(String test) {
         return test.matches(VALIDATION_REGEX);
     }
 
+    /**
+     * Overrides toString method.
+     *
+     * @return String
+     */
     @Override
     public String toString() {
         return value;
     }
 
+    /**
+     * Overrides equals method.
+     *
+     * @return boolean
+     */
     @Override
     public boolean equals(Object other) {
         return other == this // short circuit if same object
@@ -45,6 +58,11 @@ public class Phone {
                 && value.equals(((Phone) other).value)); // state check
     }
 
+    /**
+     * Overrides hashCode method.
+     *
+     * @return int
+     */
     @Override
     public int hashCode() {
         return value.hashCode();

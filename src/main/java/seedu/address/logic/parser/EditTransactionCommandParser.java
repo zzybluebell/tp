@@ -30,8 +30,11 @@ public class EditTransactionCommandParser extends EditCommandParser implements P
     }
 
     /**
-     * Parses the given {@code String} of arguments in the context of the EditCommand
-     * and returns an EditCommand object for execution.
+     * Parses the given {@code String} of arguments in the context of the EditTransactionCommand
+     * and returns an EditTransactionCommand object for execution.
+     *
+     * @param args
+     * @return EditTransactionCommand
      * @throws ParseException if the user input does not conform the expected format
      */
     public EditTransactionCommand parse(String args) throws ParseException {

@@ -23,9 +23,10 @@ public class SummaryWindow extends UiPart<Stage> {
     private Label summaryMessage;
 
     /**
-     * Creates a new SummaryWindow.
+     * Constructs a new {@code SummaryWindow} .
      *
      * @param root Stage to use as the root of the SummaryWindow.
+     * @param logic summary of logic.
      */
     public SummaryWindow(Stage root, Logic logic) {
         super(FXML, root);
@@ -34,7 +35,7 @@ public class SummaryWindow extends UiPart<Stage> {
     }
 
     /**
-     * Creates a new SummaryWindow.
+     * Constructs a new {@code SummaryWindow} with input {@code logic}.
      */
     public SummaryWindow(Logic logic) {
         this(new Stage(), logic);

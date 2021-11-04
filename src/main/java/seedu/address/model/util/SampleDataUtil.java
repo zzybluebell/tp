@@ -118,6 +118,9 @@ public class SampleDataUtil {
         };
     }
 
+    /**
+     * Gets default password.
+     */
     public static ReadOnlyAccount getDefaultPassword() {
         Password password;
         try {
@@ -128,6 +131,9 @@ public class SampleDataUtil {
         return new Account(password);
     }
 
+    /**
+     * Gets Sample Ezfoodie
+     */
     public static ReadOnlyEzFoodie getSampleEzFoodie() {
         EzFoodie sampleEf = new EzFoodie();
         for (Member sampleMember : getSampleMembers()) {

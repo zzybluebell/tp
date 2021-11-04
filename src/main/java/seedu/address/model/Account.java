@@ -88,12 +88,19 @@ public class Account implements ReadOnlyAccount {
         return otherAccount.getPassword().equals(getPassword());
     }
 
+    /**
+     * Overrides the hashcode method.
+     * Use this method for custom fields hashing instead of implementing your own
+     */
     @Override
     public int hashCode() {
-        // use this method for custom fields hashing instead of implementing your own
         return Objects.hash(password);
     }
 
+    /**
+     * Overrides toString method.
+     * @return String with password value.
+     */
     @Override
     public String toString() {
         final StringBuilder builder = new StringBuilder();

@@ -13,15 +13,20 @@ import seedu.address.commons.util.DateTimeUtil;
  */
 public class DateTime {
 
+    /**
+     * Stands for message constraints of reservation date time.
+     */
     public static final String MESSAGE_CONSTRAINTS =
             "Reservations should be valid date time " + DateTimeUtil.DATE_TIME_PATTERN;
-
+    /**
+     * Stands for reservation value.
+     */
     public final String value;
 
     /**
      * Constructs a {@code Reservation}.
      *
-     * @param dateTime A valid date time.
+     * @param dateTime a valid date time.
      */
     public DateTime(String dateTime) {
         requireNonNull(dateTime);
@@ -30,7 +35,10 @@ public class DateTime {
     }
 
     /**
-     * Returns true if a given string is a valid date time.
+     * Returns whether is valid date time
+     *
+     * @param test input string test
+     * @return boolean true if a given string is a valid date time.
      */
     public static boolean isValidDateTime(String test) {
         try {
@@ -41,11 +49,17 @@ public class DateTime {
         }
     }
 
+    /**
+     * Overrides toString method.
+     */
     @Override
     public String toString() {
         return value;
     }
 
+    /**
+     * Overrides equals method.
+     */
     @Override
     public boolean equals(Object other) {
         return other == this // short circuit if same object
@@ -53,6 +67,9 @@ public class DateTime {
                 && value.equals(((DateTime) other).value)); // state check
     }
 
+    /**
+     * Overrides hashCode method.
+     */
     @Override
     public int hashCode() {
         return value.hashCode();
