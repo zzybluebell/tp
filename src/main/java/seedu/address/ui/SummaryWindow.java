@@ -3,9 +3,7 @@ package seedu.address.ui;
 import java.util.logging.Logger;
 
 import javafx.fxml.FXML;
-import javafx.scene.control.Label;
-import javafx.scene.input.Clipboard;
-import javafx.scene.input.ClipboardContent;
+import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 import seedu.address.commons.core.LogsCenter;
 import seedu.address.logic.Logic;
@@ -14,13 +12,12 @@ import seedu.address.logic.Logic;
  * Controller for a summary page.
  */
 public class SummaryWindow extends UiPart<Stage> {
+
     private static final String FXML = "SummaryWindow.fxml";
     private static final Logger logger = LogsCenter.getLogger(SummaryWindow.class);
 
-    private String summaryText = "";
-
     @FXML
-    private Label summaryMessage;
+    private StackPane summaryCardPlaceholder;
 
     /**
      * Creates a new SummaryWindow.
@@ -29,8 +26,8 @@ public class SummaryWindow extends UiPart<Stage> {
      */
     public SummaryWindow(Stage root, Logic logic) {
         super(FXML, root);
-        initSummaryMessage(logic);
-        summaryMessage.setText(summaryText);
+        SummaryCard summaryCard = new SummaryCard(logic.getUpdatedMemberList());
+        summaryCardPlaceholder.getChildren().add(summaryCard.getRoot());
     }
 
     /**
@@ -38,34 +35,6 @@ public class SummaryWindow extends UiPart<Stage> {
      */
     public SummaryWindow(Logic logic) {
         this(new Stage(), logic);
-    }
-
-    private void initSummaryMessage(Logic logic) {
-        summaryText += "Total number of Members: " + logic.getNumberOfMembers()
-                + "\n\n"
-                + "Total number of transactions of all time: "
-                + logic.getNumberOfTransactions()
-                + "\n\n"
-                + "Total amount of transactions of all time: "
-                + logic.getTotalAmountOfTransactions()
-                + "\n\n"
-                + "Total number of transactions of past month: "
-                + logic.getNumberOfTransactionsPastMonth()
-                + "\n\n"
-                + "Total amount of transactions of past month: "
-                + logic.getTotalAmountOfTransactionsPastMonth()
-                + "\n\n"
-                + "Total number of transactions of past 3 months: "
-                + logic.getNumberOfTransactionsPastThreeMonth()
-                + "\n\n"
-                + "Total amount of transactions of past 3 months: "
-                + logic.getTotalAmountOfTransactionsPastThreeMonth()
-                + "\n\n"
-                + "Total number of transactions of past 6 months: "
-                + logic.getNumberOfTransactionsPastSixMonths()
-                + "\n\n"
-                + "Total amount of transactions of past 6 months: "
-                + logic.getTotalAmountOfTransactionsPastSixMonth();
     }
 
     /**
@@ -111,16 +80,5 @@ public class SummaryWindow extends UiPart<Stage> {
      */
     public void focus() {
         getRoot().requestFocus();
-    }
-
-    /**
-     * Copies the summary message to the clipboard.
-     */
-    @FXML
-    private void copySummary() {
-        final Clipboard clipboard = Clipboard.getSystemClipboard();
-        final ClipboardContent summary = new ClipboardContent();
-        summary.putString(summaryText);
-        clipboard.setContent(summary);
     }
 }

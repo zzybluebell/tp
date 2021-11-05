@@ -36,6 +36,13 @@ public class Timestamp {
         }
     }
 
+    /**
+     * Returns long value of timestamp.
+     */
+    public Long getLongValue() {
+        return Long.parseLong(value);
+    }
+
     @Override
     public String toString() {
         return value;
