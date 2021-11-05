@@ -2,7 +2,6 @@ package seedu.address.logic;
 
 import java.io.IOException;
 import java.nio.file.Path;
-import java.util.HashMap;
 import java.util.logging.Logger;
 
 import javafx.collections.ObservableList;
@@ -98,86 +97,6 @@ public class LogicManager implements Logic {
     @Override
     public ObservableList<Member> getUpdatedMemberListForView () {
         return model.getUpdatedMemberListForView();
-    }
-
-    /**
-     * Gets number of members.
-     */
-    @Override
-    public int getNumberOfMembers() {
-        return model.getNumberOfMembers();
-    }
-
-    /**
-     * Gets number of members by tier.
-     */
-    @Override
-    public HashMap<String, Integer> getNumberOfMembersByTiers() {
-        return model.getNumberOfMembersByTiers();
-    }
-
-    /**
-     * Gets number of transactions.
-     */
-    @Override
-    public int getNumberOfTransactions() {
-        return model.getNumberOfTransactions();
-    }
-
-    /**
-     * Gets number of transactions in the past month.
-     */
-    @Override
-    public int getNumberOfTransactionsPastMonth() {
-        return model.getNumberOfTransactionsPastMonth();
-    }
-
-    /**
-     * Gets number of transaction in past three months.
-     */
-    @Override
-    public int getNumberOfTransactionsPastThreeMonth() {
-        return model.getNumberOfTransactionsPastThreeMonth();
-    }
-
-    /**
-     * Gets number of transactions in past six months.
-     */
-    @Override
-    public int getNumberOfTransactionsPastSixMonths() {
-        return model.getNumberOfTransactionsPastSixMonth();
-    }
-
-    /**
-     * Gets total amount of transactions.
-     */
-    @Override
-    public double getTotalAmountOfTransactions() {
-        return model.getTotalAmountOfTransactions();
-    }
-
-    /**
-     * Gets total amount of transactions in the past month.
-     */
-    @Override
-    public double getTotalAmountOfTransactionsPastMonth() {
-        return model.getTotalAmountOfTransactionsPastMonth();
-    }
-
-    /**
-     * Gets total amount of transactions in the past three months.
-     */
-    @Override
-    public double getTotalAmountOfTransactionsPastThreeMonth() {
-        return model.getTotalAmountOfTransactionsPastThreeMonth();
-    }
-
-    /**
-     * Gets total amount of transactions in the past six months.
-     */
-    @Override
-    public double getTotalAmountOfTransactionsPastSixMonth() {
-        return model.getTotalAmountOfTransactionsPastSixMonth();
     }
 
     /**
