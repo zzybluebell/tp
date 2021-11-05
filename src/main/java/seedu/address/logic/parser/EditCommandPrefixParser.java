@@ -30,9 +30,9 @@ public class EditCommandPrefixParser {
      * Parses the given {@code String} of arguments in the context of the EditCommandParser
      * and returns an EditCommandParser object for execution.
      *
-     * @param args to be parsed.
+     * @param args the input arguments related edit command to be parsed.
      * @return EditMemberCommandParser or EditTransactionCommandParser or AddReservationCommandParser.
-     * @throws ParseException if the user input does not conform the expected format
+     * @throws ParseException if the user input does not conform the expected format.
      */
     public EditCommandParser parse(String args) throws ParseException {
 

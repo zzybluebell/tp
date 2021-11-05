@@ -18,12 +18,12 @@ public class UserPrefs implements ReadOnlyUserPrefs {
     private Path ezFoodieFilePath = Paths.get("data" , "ezfoodie.json");
 
     /**
-     * Creates a {@code UserPrefs} with default values.
+     * Constructs a {@code UserPrefs} with default values.
      */
     public UserPrefs() {}
 
     /**
-     * Creates a {@code UserPrefs} with the prefs in {@code userPrefs}.
+     * Constructs a {@code UserPrefs} with the prefs in {@code userPrefs}.
      */
     public UserPrefs(ReadOnlyUserPrefs userPrefs) {
         this();
@@ -39,33 +39,58 @@ public class UserPrefs implements ReadOnlyUserPrefs {
         setEzFoodieFilePath(newUserPrefs.getEzFoodieFilePath());
     }
 
+    /**
+     * Gets Gui Settings.
+     */
     public GuiSettings getGuiSettings() {
         return guiSettings;
     }
 
+    /**
+     * Sets the Gui Settings by this input {@code guiSettings}.
+     */
     public void setGuiSettings(GuiSettings guiSettings) {
         requireNonNull(guiSettings);
         this.guiSettings = guiSettings;
     }
 
+    /**
+     * Gets account file path.
+     *
+     * @return Path of account file.
+     */
     public Path getAccountFilePath() {
         return accountFilePath;
     }
 
+    /**
+     * Sets the account file path by this input {@code accountFilePath}.
+     */
     public void setAccountFilePath(Path accountFilePath) {
         requireNonNull(accountFilePath);
         this.accountFilePath = accountFilePath;
     }
 
+    /**
+     * Gets EzFoodie file path.
+     *
+     * @return Path of EzFoodie file.
+     */
     public Path getEzFoodieFilePath() {
         return ezFoodieFilePath;
     }
 
+    /**
+     * Sets the EzFoodie file path by this input {@code ezFoodieFilePath}.
+     */
     public void setEzFoodieFilePath(Path ezFoodieFilePath) {
         requireNonNull(ezFoodieFilePath);
         this.ezFoodieFilePath = ezFoodieFilePath;
     }
 
+    /**
+     * Overrides the equals method.
+     */
     @Override
     public boolean equals(Object other) {
         if (other == this) {
@@ -82,11 +107,19 @@ public class UserPrefs implements ReadOnlyUserPrefs {
                 && ezFoodieFilePath.equals(o.ezFoodieFilePath);
     }
 
+    /**
+     * Overrides the hashCode method.
+     */
     @Override
     public int hashCode() {
         return Objects.hash(guiSettings, accountFilePath, ezFoodieFilePath);
     }
 
+    /**
+     * Overrides toString method.
+     *
+     * @return String with gui Setting and file path and location.
+     */
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();

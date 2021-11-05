@@ -4,7 +4,7 @@ import javafx.collections.ObservableList;
 import seedu.address.model.member.Member;
 
 /**
- * Unmodifiable view of an ezFoodie
+ * Unmodifiable view of an ezFoodie.
  */
 public interface ReadOnlyEzFoodie {
 

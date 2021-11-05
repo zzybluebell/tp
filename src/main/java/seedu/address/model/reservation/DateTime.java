@@ -10,19 +10,24 @@ import seedu.address.commons.util.DateTimeUtil;
 
 /**
  * Represents a Reservation's dateTime in the ezFoodie.
- * Guarantees: immutable; is valid as declared in {@link #isValidDateTime(String)}
+ * Guarantees: immutable; is valid as declared in {@link #isValidDateTime(String)}.
  */
 public class DateTime {
 
+    /**
+     * Stands for message constraints of reservation date time.
+     */
     public static final String MESSAGE_CONSTRAINTS =
             "Reservations should be valid date time " + DateTimeUtil.DATE_TIME_PATTERN;
-
+    /**
+     * Stands for reservation value.
+     */
     public final String value;
 
     /**
      * Constructs a {@code Reservation}.
      *
-     * @param dateTime A valid date time.
+     * @param dateTime a valid date time.
      */
     public DateTime(String dateTime) {
         requireNonNull(dateTime);
@@ -49,11 +54,17 @@ public class DateTime {
         return DateTimeUtil.parseDateTime(value);
     }
 
+    /**
+     * Overrides the toString method.
+     */
     @Override
     public String toString() {
         return value;
     }
 
+    /**
+     * Overrides the equals method.
+     */
     @Override
     public boolean equals(Object other) {
         return other == this // short circuit if same object
@@ -61,6 +72,9 @@ public class DateTime {
                 && value.equals(((DateTime) other).value)); // state check
     }
 
+    /**
+     * Overrides the hashCode method.
+     */
     @Override
     public int hashCode() {
         return value.hashCode();
