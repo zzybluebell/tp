@@ -71,9 +71,9 @@ public class EditTransactionCommand extends EditCommand {
     /**
      * Constructs EditTransactionCommand.
      *
-     * @param memberId of the member in the updated member list to edit
-     * @param transactionId of the transaction in the transaction list to edit
-     * @param editTransactionDescriptor details to edit the transaction with
+     * @param memberId of the member in the updated member list to edit.
+     * @param transactionId of the transaction in the transaction list to edit.
+     * @param editTransactionDescriptor details to edit the transaction with.
      */
     public EditTransactionCommand(
             seedu.address.model.member.Id memberId, seedu.address.model.transaction.Id transactionId,
@@ -89,9 +89,9 @@ public class EditTransactionCommand extends EditCommand {
      * Creates and returns a {@code Member} with the details of {@code memberToEdit},
      * {@code transactionToEdit} and {@code editTransactionDescriptor}.
      *
-     * @return member with updated credits
+     * @return Member with updated credits.
      */
-    private static Member createUpdatedCredits(
+    private static Member createEditedMember(
             Member memberToEdit, Transaction transactionToEdit, EditTransactionDescriptor editTransactionDescriptor) {
         assert memberToEdit != null;
         assert transactionToEdit != null;
@@ -128,11 +128,11 @@ public class EditTransactionCommand extends EditCommand {
     }
 
     /**
-     * Overrides and executes model
+     * Overrides and executes model.
      *
      * @param model {@code Model} which the command should operate on.
      * @return CommandResult related to edir transaction command.
-     * @throws CommandException
+     * @throws CommandException if the user input does not conform the expected format.
      */
     @Override
     public CommandResult execute(Model model) throws CommandException {
@@ -140,20 +140,22 @@ public class EditTransactionCommand extends EditCommand {
         List<Member> lastShownList = model.getUpdatedMemberList();
         Member memberToEdit = lastShownList.stream()
                 .filter(member -> memberId.equals(member.getId())).findAny().orElse(null);
-        if (memberToEdit != null) {
-            Transaction transactionToEdit = memberToEdit.getTransactions().stream()
-                    .filter(transaction -> transactionId.equals(transaction.getId())).findAny().orElse(null);
-            if (transactionToEdit != null) {
-                Member editedMember = createUpdatedCredits(memberToEdit, transactionToEdit, editTransactionDescriptor);
-                model.setMember(memberToEdit, editedMember);
-                model.updateFilteredMemberList(PREDICATE_SHOW_ALL_MEMBERS);
-                return new CommandResult(String.format(MESSAGE_SUCCESS, editedMember));
-            } else {
-                throw new CommandException(Messages.MESSAGE_INVALID_TRANSACTION_DISPLAYED_ID);
-            }
-        } else {
+        if (memberToEdit == null) {
             throw new CommandException(Messages.MESSAGE_INVALID_MEMBER_DISPLAYED_ID);
         }
+        Transaction transactionToEdit = memberToEdit.getTransactions().stream()
+                .filter(transaction -> transactionId.equals(transaction.getId())).findAny().orElse(null);
+        if (transactionToEdit == null) {
+            throw new CommandException(Messages.MESSAGE_INVALID_TRANSACTION_DISPLAYED_ID);
+        }
+        Member editedMember = createEditedMember(memberToEdit, transactionToEdit, editTransactionDescriptor);
+        model.setMember(memberToEdit, editedMember);
+        model.updateFilteredMemberList(PREDICATE_SHOW_ALL_MEMBERS);
+        Transaction updatedTransaction = editedMember.getTransactions().stream()
+                .filter(transaction -> transactionId.equals(transaction.getId())).findAny().orElse(null);
+        return new CommandResult(String.format(MESSAGE_SUCCESS, "Id: " + editedMember.getId()
+                + "; Name: " + editedMember.getName()
+                + "; Transaction: " + "[" + updatedTransaction + "]"));
     }
 
     /**
@@ -180,7 +182,7 @@ public class EditTransactionCommand extends EditCommand {
         public EditTransactionDescriptor() {}
 
         /**
-         * Copy constructor.
+         * Copies constructor.
          * A defensive copy of {@code toCopy} is used internally.
          */
         public EditTransactionDescriptor(EditTransactionDescriptor toCopy) {

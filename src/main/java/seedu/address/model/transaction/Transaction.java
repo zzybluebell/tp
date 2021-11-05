@@ -20,9 +20,9 @@ public class Transaction {
      * Constructs a {@code Transaction},
      * every field must be present and not null.
      *
-     * @param id member Id
-     * @param timestamp transaction timestamp
-     * @param billing billing details
+     * @param id member Id.
+     * @param timestamp transaction timestamp.
+     * @param billing billing details.
      */
     public Transaction(Id id, Timestamp timestamp, Billing billing) {
         requireAllNonNull(id, timestamp, billing);
@@ -61,9 +61,6 @@ public class Transaction {
     /**
      * Returns whether is same id between other transactions.
      * This defines a weaker notion of equality between two transactions.
-     *
-     * @param otherTransaction
-     * @return boolean true if both transactions have the same id.
      */
     public boolean isSameId(Transaction otherTransaction) {
         if (otherTransaction == this) {
@@ -75,6 +72,7 @@ public class Transaction {
     }
 
     /**
+     * Overrides the equals method.
      * Returns true if both transactions have the same timestamp and billing.
      * This defines a stronger notion of equality between two transactions.
      */
@@ -95,7 +93,7 @@ public class Transaction {
     }
 
     /**
-     * Overrides hashCode method.
+     * Overrides the hashCode method.
      */
     @Override
     public int hashCode() {
@@ -104,7 +102,7 @@ public class Transaction {
     }
 
     /**
-     * Overrides toString method.
+     * Overrides the toString method.
      *
      * @return String of transaction's information including Id, timestamp and billing.
      */

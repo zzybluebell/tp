@@ -20,7 +20,7 @@ import seedu.address.model.member.PhoneContainsKeywordsPredicate;
 import seedu.address.model.member.RegistrationDateContainsKeywordsPredicate;
 
 /**
- * Parses input arguments and creates a new FindCommand object
+ * Parses input arguments and creates a new FindCommand object.
  */
 public class FindCommandParser implements Parser<FindCommand> {
 
@@ -30,9 +30,9 @@ public class FindCommandParser implements Parser<FindCommand> {
      * Parses the given {@code String} of arguments in the context of the FindCommand
      * and returns a FindCommand object for execution.
      *
-     * @param args
-     * @return FindCommand
-     * @throws ParseException if the user input does not conform the expected format
+     * @param args the input arguments related find command to be parsed.
+     * @return FindCommand the class for process input find command string.
+     * @throws ParseException if the user input does not conform the expected format.
      */
     public FindCommand parse(String args) throws ParseException {
 

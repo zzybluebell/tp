@@ -33,7 +33,7 @@ public class JsonEzFoodieStorage implements EzFoodieStorage {
     /**
      * Gets EzFoodie file path.
      *
-     * @return Path of EzFoodie file
+     * @return Path of EzFoodie file.
      */
     public Path getEzFoodieFilePath() {
         return filePath;

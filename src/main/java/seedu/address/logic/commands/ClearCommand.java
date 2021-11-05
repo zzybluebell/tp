@@ -11,7 +11,7 @@ import seedu.address.model.Model;
 public class ClearCommand extends Command {
 
     /**
-     * Stands for Clean command word.
+     * Stands for clean command word.
      */
     public static final String COMMAND_WORD = "clear";
 

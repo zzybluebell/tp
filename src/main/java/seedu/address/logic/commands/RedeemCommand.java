@@ -41,19 +41,18 @@ public class RedeemCommand extends Command {
     /**
      * Stands for the message of redeem command.
      */
-    public static final String MESSAGE_USAGE = COMMAND_WORD + ": Redeems points from member id in the ezFoodie. "
-            + "Parameters: "
-            + PREFIX_REDEEM + " [points]"
-            + " " + PREFIX_ID + " [ID] or "
-            + "Parameters: "
-            + PREFIX_REDEEM + " [points]"
-            + " " + PREFIX_INDEX + " [INDEX]\n"
-            + "Example: " + COMMAND_WORD + " "
-            + PREFIX_REDEEM + " 100 "
-            + PREFIX_ID + " 10001\n"
-            + "Example: " + COMMAND_WORD + " "
-            + PREFIX_REDEEM + " 100 "
-            + PREFIX_INDEX + " 1\n";
+    public static final String MESSAGE_USAGE = COMMAND_WORD + ": Redeems points from member id in the ezFoodie.\n"
+            + "Parameters:\n"
+            + "Redeem by index number: " + PREFIX_INDEX + " INDEX "
+            + "(INDEX must be a positive integer) "
+            + PREFIX_REDEEM + " POINTS\n"
+            + "Redeem by member ID: " + PREFIX_ID + " ID "
+            + PREFIX_REDEEM + " POINTS\n"
+            + "Example:\n"
+            + "Redeem by index number: " + PREFIX_INDEX + " 1 "
+            + PREFIX_REDEEM + " 100\n"
+            + "Redeem by member ID: " + PREFIX_ID + " 10001 "
+            + PREFIX_REDEEM + " 100";
 
     /**
      * Stands for message for redeem points successfully.
@@ -107,7 +106,7 @@ public class RedeemCommand extends Command {
      *
      * @param model {@code Model} which the command should operate on.
      * @return CommandResult related to redeem command.
-     * @throws CommandException
+     * @throws CommandException if the user input does not conform the expected format.
      */
     @Override
     public CommandResult execute(Model model) throws CommandException {
@@ -146,7 +145,7 @@ public class RedeemCommand extends Command {
      * @param memberToRedeemPoints creates the member who need to be redeemed points.
      * @param toRedeemPointsList the list of points need to redeem all.
      * @return Member with redeemed Points
-     * @throws CommandException
+     * @throws CommandException if the user input does not conform the expected format.
      */
     private static Member createToRedeemPointsMember(Member memberToRedeemPoints, List<Point> toRedeemPointsList)
             throws CommandException {

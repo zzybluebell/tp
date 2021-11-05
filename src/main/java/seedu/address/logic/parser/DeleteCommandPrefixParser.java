@@ -19,9 +19,9 @@ public class DeleteCommandPrefixParser {
      * Parses the given {@code String} of arguments in the context of the DeleteCommandParser
      * and returns an DeleteCommandParser object for execution.
      *
-     * @param args to be parsed.
+     * @param args the input arguments related delete command to be parsed.
      * @return DeleteMemberCommandParser or DeleteTransactionCommandParser or DeleteReservationCommandParser.
-     * @throws ParseException if the user input does not conform the expected format
+     * @throws ParseException if the user input does not conform the expected format.
      */
     public DeleteCommandParser parse(String args) throws ParseException {
 

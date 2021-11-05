@@ -5,7 +5,7 @@ import static seedu.address.commons.util.AppUtil.checkArgument;
 
 /**
  * Represents a Member's name in the ezFoodie.
- * Guarantees: immutable; is valid as declared in {@link #isValidName(String)}
+ * Guarantees: immutable; is valid as declared in {@link #isValidName(String)}.
  */
 public class Name {
 
@@ -22,14 +22,14 @@ public class Name {
     public static final String VALIDATION_REGEX = "[\\p{Alnum}][\\p{Alnum} ]*";
 
     /**
-     * Stands for full name value
+     * Stands for full name value.
      */
     public final String fullName;
 
     /**
      * Constructs a {@code Name}.
      *
-     * @param name A valid name.
+     * @param name a valid name.
      */
     public Name(String name) {
         requireNonNull(name);
@@ -45,9 +45,9 @@ public class Name {
     }
 
     /**
-     * Overrides toString method.
+     * Overrides the toString method.
      *
-     * @return String
+     * @return String of a valid name.
      */
     @Override
     public String toString() {
@@ -56,8 +56,6 @@ public class Name {
 
     /**
      * Overrides equals method.
-     *
-     * @return boolean
      */
     @Override
     public boolean equals(Object other) {
@@ -68,8 +66,6 @@ public class Name {
 
     /**
      * Overrides hashCode method.
-     *
-     * @return int
      */
     @Override
     public int hashCode() {

@@ -62,10 +62,10 @@ public class EzFoodieParser {
     /**
      * Parses user input into command for execution.
      *
-     * @param userInput full user input string
-     * @return the command based on the user input
-     * @throws ParseException if the user input does not conform the expected format
-     * @throws PermissionException if the user does not have insufficient permission
+     * @param userInput full user input string.
+     * @return the command based on the user input.
+     * @throws ParseException if the user input does not conform the expected format.
+     * @throws PermissionException if the user does not have insufficient permission.
      */
     public Command parseCommand(String userInput) throws ParseException, PermissionException {
         final Matcher matcher = BASIC_COMMAND_FORMAT.matcher(userInput.trim());
@@ -89,10 +89,7 @@ public class EzFoodieParser {
             return new EditCommandPrefixParser(executionStatus).parse(arguments).parse(arguments);
 
         case ViewCommand.COMMAND_WORD:
-            if (LoginStatus.getLoginStatus() == LoginStatus.MANAGER) {
-                return new ViewCommandParser().parse(arguments);
-            }
-            throw new PermissionException(Messages.MESSAGE_PERMISSION_DENIED);
+            return new ViewCommandParser().parse(arguments);
 
         case RedeemCommand.COMMAND_WORD:
             return new RedeemCommandParser(model, executionStatus).parse(arguments);

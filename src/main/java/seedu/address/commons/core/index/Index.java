@@ -13,7 +13,6 @@ public class Index {
 
     /**
      * Index can only be created by calling {@link Index#fromZeroBased(int)} or
-     *
      * {@link Index#fromOneBased(int)}.
      */
     private Index(int zeroBasedIndex) {
@@ -25,45 +24,43 @@ public class Index {
     }
 
     /**
-     * Gets zero based integer
+     * Gets zero based int.
      *
-     * @return Zero Based index
+     * @return int of zero based index.
      */
     public int getZeroBased() {
         return zeroBasedIndex;
     }
 
     /**
-     * Gets one based integer
+     * Gets one based int.
      *
-     * @return Get one based integer
+     * @return int of one based index.
      */
     public int getOneBased() {
         return zeroBasedIndex + 1;
     }
 
     /**
-     * Creates a new {@code Index} using a zero-based index.
+     * Creates a new {@code Index} using a {@code zeroBasedIndex}.
      *
-     * @param zeroBasedIndex
-     * @return Index of zeroBasedIndex
+     * @return Index of zero based index.
      */
     public static Index fromZeroBased(int zeroBasedIndex) {
         return new Index(zeroBasedIndex);
     }
 
     /**
-     * Creates a new {@code Index} using a one-based index.
+     * Creates a new {@code Index} using an {@code oneBasedIndex}.
      *
-     * @param oneBasedIndex
-     * @return Index of oneBasedIndex
+     * @return Index of one based index.
      */
     public static Index fromOneBased(int oneBasedIndex) {
         return new Index(oneBasedIndex - 1);
     }
 
     /**
-     * Overrides the equal method
+     * Overrides the equals method.
      */
     @Override
     public boolean equals(Object other) {

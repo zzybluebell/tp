@@ -16,7 +16,7 @@ import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.model.Timestamp;
 
 /**
- * Parses input arguments and creates a new EditTransactionCommand object
+ * Parses input arguments and creates a new EditTransactionCommand object.
  */
 public class EditTransactionCommandParser extends EditCommandParser implements Parser<EditTransactionCommand> {
 
@@ -33,9 +33,9 @@ public class EditTransactionCommandParser extends EditCommandParser implements P
      * Parses the given {@code String} of arguments in the context of the EditTransactionCommand
      * and returns an EditTransactionCommand object for execution.
      *
-     * @param args
-     * @return EditTransactionCommand
-     * @throws ParseException if the user input does not conform the expected format
+     * @param args the input arguments related edit transaction command to be parsed.
+     * @return EditTransactionCommand the class for process input edit transaction command string.
+     * @throws ParseException if the user input does not conform the expected format.
      */
     public EditTransactionCommand parse(String args) throws ParseException {
         requireNonNull(args);

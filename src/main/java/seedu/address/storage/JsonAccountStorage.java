@@ -31,7 +31,7 @@ public class JsonAccountStorage implements AccountStorage {
     }
 
     /**
-     * gets account file path.
+     * Gets account file path.
      *
      * @return Path of account file.
      */

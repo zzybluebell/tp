@@ -3,13 +3,14 @@ package seedu.address.model.reservation;
 import static java.util.Objects.requireNonNull;
 import static seedu.address.commons.util.AppUtil.checkArgument;
 
+import java.time.LocalDateTime;
 import java.time.format.DateTimeParseException;
 
 import seedu.address.commons.util.DateTimeUtil;
 
 /**
  * Represents a Reservation's dateTime in the ezFoodie.
- * Guarantees: immutable; is valid as declared in {@link #isValidDateTime(String)}
+ * Guarantees: immutable; is valid as declared in {@link #isValidDateTime(String)}.
  */
 public class DateTime {
 
@@ -35,10 +36,7 @@ public class DateTime {
     }
 
     /**
-     * Returns whether is valid date time
-     *
-     * @param test input string test
-     * @return boolean true if a given string is a valid date time.
+     * Returns true if a given string is a valid date time.
      */
     public static boolean isValidDateTime(String test) {
         try {
@@ -50,7 +48,14 @@ public class DateTime {
     }
 
     /**
-     * Overrides toString method.
+     * Returns LocalDateTime value of date time.
+     */
+    public LocalDateTime getLocalDateTimeValue() {
+        return DateTimeUtil.parseDateTime(value);
+    }
+
+    /**
+     * Overrides the toString method.
      */
     @Override
     public String toString() {
@@ -58,7 +63,7 @@ public class DateTime {
     }
 
     /**
-     * Overrides equals method.
+     * Overrides the equals method.
      */
     @Override
     public boolean equals(Object other) {
@@ -68,7 +73,7 @@ public class DateTime {
     }
 
     /**
-     * Overrides hashCode method.
+     * Overrides the hashCode method.
      */
     @Override
     public int hashCode() {

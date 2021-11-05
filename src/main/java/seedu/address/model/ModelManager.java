@@ -18,7 +18,6 @@ import seedu.address.model.member.Member;
 import seedu.address.model.member.Tier;
 import seedu.address.model.transaction.Transaction;
 
-
 /**
  * Represents the in-memory model of the ezFoodie data.
  */
@@ -54,7 +53,7 @@ public class ModelManager implements Model {
     }
 
     /**
-     *  Constructs a {@code ModelManager} without any input.
+     * Constructs a {@code ModelManager} without any input.
      */
     public ModelManager() {
         this(new Account(), new EzFoodie(), new UserPrefs());
@@ -243,7 +242,7 @@ public class ModelManager implements Model {
     /**
      * Gets the number of all members in ezFoodie.
      *
-     * @return total count.
+     * @return int total count.
      */
     @Override
     public int getNumberOfMembers() {
@@ -277,7 +276,7 @@ public class ModelManager implements Model {
     /**
      * Gets the number of transactions made in all time in ezFoodie.
      *
-     * @return total count all time.
+     * @return int total count transactions all time.
      */
     @Override
     public int getNumberOfTransactions() {
@@ -293,7 +292,7 @@ public class ModelManager implements Model {
     /**
      * Gets the number of transactions made in the past month in ezFoodie.
      *
-     * @return total count in last 1 month.
+     * @return total count transactions in last 1 month.
      */
     @Override
     public int getNumberOfTransactionsPastMonth() {
@@ -304,7 +303,7 @@ public class ModelManager implements Model {
     /**
      * Gets the number of transactions made in the past 3 months in ezFoodie.
      *
-     * @return total count in last 3 months.
+     * @return total count transactions in last 3 months.
      */
     @Override
     public int getNumberOfTransactionsPastThreeMonth() {
@@ -315,7 +314,7 @@ public class ModelManager implements Model {
     /**
      * Gets the number of transactions made in the past 6 months in ezFoodie.
      *
-     * @return total count in last 6 months.
+     * @return total count transactions in last 6 months.
      */
     @Override
     public int getNumberOfTransactionsPastSixMonth() {
@@ -326,7 +325,7 @@ public class ModelManager implements Model {
     /**
      * Gets the total amount of transactions made all time in ezFoodie.
      *
-     * @return total amount all time.
+     * @return total amount of transactions all time.
      */
     @Override
     public double getTotalAmountOfTransactions() {
@@ -344,7 +343,7 @@ public class ModelManager implements Model {
     /**
      * Gets the total amount of transactions made in the past month in ezFoodie.
      *
-     * @return total amount in past 1 month.
+     * @return total amount of transactions in past 1 month.
      */
     @Override
     public double getTotalAmountOfTransactionsPastMonth() {
@@ -355,7 +354,7 @@ public class ModelManager implements Model {
     /**
      * Gets the total amount of transactions made in the past 3 months in ezFoodie.
      *
-     * @return total amount in past 3 months.
+     * @return total amount of transactions in past 3 months.
      */
     @Override
     public double getTotalAmountOfTransactionsPastThreeMonth() {
@@ -366,7 +365,7 @@ public class ModelManager implements Model {
     /**
      * Gets the total amount of transactions made in the past 6 months in ezFoodie.
      *
-     * @return total amount in past 6 months.
+     * @return total amount of transactions in past 6 months.
      */
     @Override
     public double getTotalAmountOfTransactionsPastSixMonth() {
@@ -412,7 +411,7 @@ public class ModelManager implements Model {
     }
 
     /**
-     * Override equals method.
+     * Override the equals method.
      */
     @Override
     public boolean equals(Object obj) {

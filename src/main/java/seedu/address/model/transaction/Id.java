@@ -5,7 +5,7 @@ import static seedu.address.commons.util.AppUtil.checkArgument;
 
 /**
  * Represents a Transaction's id in the ezFoodie.
- * Guarantees: immutable; is valid as declared in {@link #isValidId(String)}
+ * Guarantees: immutable; is valid as declared in {@link #isValidId(String)}.
  */
 public class Id {
 
@@ -21,7 +21,7 @@ public class Id {
             "Transaction IDs should only contain 6 digits and it should not be blank, and max ID is " + MAX;
 
     /**
-     * Stands for trim leading zero regex
+     * Stands for trim leading zero regex.
      */
     public static final String TRIM_LEADING_ZERO_REGEX = "^0+(?!$)";
 
@@ -36,7 +36,7 @@ public class Id {
     public static final String PATTERN = "%06d";
 
     /**
-     * Stands for transaction Id max length
+     * Stands for transaction Id max length.
      */
     public static final int LENGTH = 6; // Max ID is 999999
 
@@ -57,12 +57,8 @@ public class Id {
     }
 
     /**
-     * Returns whether is valid id.
-     *
-     * @param test input string test
-     * @return boolean true if a given string is a valid id.
+     * Returns true if a given string is a valid id.
      */
-
     public static boolean isValidId(String test) {
         test = test.replaceFirst(TRIM_LEADING_ZERO_REGEX, "");
         try {
@@ -90,7 +86,7 @@ public class Id {
     }
 
     /**
-     * Overrides equals method.
+     * Overrides the equals method.
      */
     @Override
     public boolean equals(Object other) {
@@ -100,7 +96,7 @@ public class Id {
     }
 
     /**
-     * Overrides hashCode method.
+     * Overrides the hashCode method.
      */
     @Override
     public int hashCode() {

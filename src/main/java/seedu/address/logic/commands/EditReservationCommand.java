@@ -64,6 +64,12 @@ public class EditReservationCommand extends EditCommand {
     public static final String MESSAGE_SUCCESS = "Edited Member: %1$s";
 
     /**
+     * Stands for message of the edited message has the same date.
+     */
+    public static final String MESSAGE_SAME_DATE = "Only one reservation can be added within the same day. "
+            + "Previous reservation: %1$s";
+
+    /**
      * Stands for message of not edited which need fields provided.
      */
     public static final String MESSAGE_NOT_EDITED = "At least one field to edit must be provided.";
@@ -72,11 +78,11 @@ public class EditReservationCommand extends EditCommand {
     private final EditReservationDescriptor editReservationDescriptor;
 
     /**
-     * Constructs the EditReservationCommand
+     * Constructs the EditReservationCommand.
      *
-     * @param memberId of the member in the updated member list to edit
-     * @param reservationId of the reservation in the reservation list to edit
-     * @param editReservationDescriptor details to edit the reservation with
+     * @param memberId of the member in the updated member list to edit.
+     * @param reservationId of the reservation in the reservation list to edit.
+     * @param editReservationDescriptor details to edit the reservation with.
      */
     public EditReservationCommand(
             seedu.address.model.member.Id memberId, seedu.address.model.reservation.Id reservationId,
@@ -90,11 +96,11 @@ public class EditReservationCommand extends EditCommand {
 
     /**
      * Creates and returns a {@code Member} with the details of {@code memberToEdit},
-     * {@code reservationToEdit}, {@code editReservationDescriptor}
+     * {@code reservationToEdit} and {@code editReservationDescriptor}.
      *
-     * @return member with updated credits
+     * @return Member with updated credits.
      */
-    private static Member createUpdatedCredits(
+    private static Member createEditedMember(
             Member memberToEdit, Reservation reservationToEdit, EditReservationDescriptor editReservationDescriptor) {
         assert memberToEdit != null;
         assert reservationToEdit != null;
@@ -118,7 +124,10 @@ public class EditReservationCommand extends EditCommand {
 
         List<Reservation> updatedReservations = new ArrayList<>(reservations);
         Reservation updatedReservation = new Reservation(reservationToEdit.getId(), updatedDateTime, updatedRemark);
-        updatedReservations.add(updatedReservation);
+        updatedReservations.stream()
+                .filter(reservation -> reservation.isSameId(reservationToEdit)).findAny()
+                .ifPresent(reservation -> updatedReservations
+                        .set(updatedReservations.indexOf(reservation), updatedReservation));
 
         return new Member(id, updatedName, updatedPhone, updatedEmail, updatedAddress, timestamp, credit, point,
                 transactions, updatedReservations, updatedTags);
@@ -129,7 +138,7 @@ public class EditReservationCommand extends EditCommand {
      *
      * @param model {@code Model} which the command should operate on.
      * @return CommandResult related to edit reservation command.
-     * @throws CommandException
+     * @throws CommandException if the user input does not conform the expected format.
      */
     @Override
     public CommandResult execute(Model model) throws CommandException {
@@ -137,24 +146,40 @@ public class EditReservationCommand extends EditCommand {
         List<Member> lastShownList = model.getUpdatedMemberList();
         Member memberToEdit = lastShownList.stream()
                 .filter(member -> memberId.equals(member.getId())).findAny().orElse(null);
-        if (memberToEdit != null) {
-            Reservation reservationToEdit = memberToEdit.getReservations().stream()
-                    .filter(reservation -> reservationId.equals(reservation.getId())).findAny().orElse(null);
-            if (reservationToEdit != null) {
-                Member editedMember = createUpdatedCredits(memberToEdit, reservationToEdit, editReservationDescriptor);
-                model.setMember(memberToEdit, editedMember);
-                model.updateFilteredMemberList(PREDICATE_SHOW_ALL_MEMBERS);
-                return new CommandResult(String.format(MESSAGE_SUCCESS, editedMember));
-            } else {
-                throw new CommandException(Messages.MESSAGE_INVALID_RESERVATION_DISPLAYED_ID);
-            }
-        } else {
+        if (memberToEdit == null) {
             throw new CommandException(Messages.MESSAGE_INVALID_MEMBER_DISPLAYED_ID);
         }
+        Reservation reservationToEdit = memberToEdit.getReservations().stream()
+                .filter(reservation -> reservationId.equals(reservation.getId())).findAny().orElse(null);
+        if (reservationToEdit == null) {
+            throw new CommandException(Messages.MESSAGE_INVALID_RESERVATION_DISPLAYED_ID);
+        }
+        DateTime dateTimeToEdit = editReservationDescriptor.getDateTime().orElse(null);
+        Reservation reservationSameDate = null;
+        if (dateTimeToEdit != null) {
+            if (!Reservation.isValidDateTime(dateTimeToEdit)) {
+                throw new CommandException(Reservation.MESSAGE_CONSTRAINTS);
+            }
+            reservationSameDate = memberToEdit.getReservations().stream()
+                    .filter(reservation -> !reservation.equals(reservationToEdit)
+                            && reservation.isSameDate(dateTimeToEdit.getLocalDateTimeValue()))
+                    .findAny().orElse(null);
+        }
+        if (reservationSameDate == null) {
+            Member editedMember = createEditedMember(memberToEdit, reservationToEdit, editReservationDescriptor);
+            model.setMember(memberToEdit, editedMember);
+            model.updateFilteredMemberList(PREDICATE_SHOW_ALL_MEMBERS);
+            Reservation updatedReservation = editedMember.getReservations().stream()
+                    .filter(reservation -> reservationId.equals(reservation.getId())).findAny().orElse(null);
+            return new CommandResult(String.format(MESSAGE_SUCCESS, "Id: " + editedMember.getId()
+                    + "; Name: " + editedMember.getName()
+                    + "; Reservation: " + "[" + updatedReservation + "]"));
+        }
+        throw new CommandException(String.format(MESSAGE_SAME_DATE, reservationSameDate));
     }
 
     /**
-     * Overrides the equal method.
+     * Overrides the equals method.
      */
     @Override
     public boolean equals(Object other) {
@@ -175,12 +200,12 @@ public class EditReservationCommand extends EditCommand {
         private Remark remark;
 
         /**
-         * Constructs the EditReservationDescriptor without input
+         * Constructs the EditReservationDescriptor without input.
          */
         public EditReservationDescriptor() {}
 
         /**
-         * Copy constructor.
+         * Copies constructor.
          * A defensive copy of {@code toCopy} is used internally.
          */
         public EditReservationDescriptor(EditReservationDescriptor toCopy) {
@@ -207,7 +232,7 @@ public class EditReservationCommand extends EditCommand {
         }
 
         /**
-         * Gets dateTime.
+         * Gets DateTime.
          */
         public Optional<DateTime> getDateTime() {
             return Optional.ofNullable(dateTime);
@@ -228,7 +253,7 @@ public class EditReservationCommand extends EditCommand {
         }
 
         /**
-         * Override the equal method.
+         * Overrides the equals method.
          */
         @Override
         public boolean equals(Object other) {

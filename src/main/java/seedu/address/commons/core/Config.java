@@ -19,14 +19,14 @@ public class Config {
     private Path userPrefsFilePath = Paths.get("preferences.json");
 
     /**
-     * Gets Log Level from {@code logLevel}.
+     * Gets log Level from {@code logLevel}.
      */
     public Level getLogLevel() {
         return logLevel;
     }
 
     /**
-     * Sets Log Level from {@code logLevel}.
+     * Sets log Level from {@code logLevel}.
      */
     public void setLogLevel(Level logLevel) {
         this.logLevel = logLevel;
@@ -35,7 +35,7 @@ public class Config {
     /**
      * Gets User Prefs File Path from {@code userPrefsFilePath}.
      *
-     * @return Path of tge user prefs file path
+     * @return Path of the user prefs file.
      */
     public Path getUserPrefsFilePath() {
         return userPrefsFilePath;
@@ -49,7 +49,7 @@ public class Config {
     }
 
     /**
-     * Overrides the equal method for Config class.
+     * Overrides the equals method for Config class.
      */
     @Override
     public boolean equals(Object other) {
@@ -69,7 +69,7 @@ public class Config {
     /**
      * Overrides hashcode method for Config class.
      *
-     * @return int objects after hashed with logLevel and userPrefsFilePath
+     * @return int objects after hashed with logLevel and userPrefsFilePath.
      */
     @Override
     public int hashCode() {
@@ -79,7 +79,7 @@ public class Config {
     /**
      * Overrides toString method for Config class.
      *
-     * @return String the log level and Config file location
+     * @return String the log level and Config file location.
      */
     @Override
     public String toString() {

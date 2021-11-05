@@ -12,16 +12,16 @@ import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.model.reservation.Id;
 
 /**
- * Parses input arguments and creates a new DeleteReservationCommand object
+ * Parses input arguments and creates a new DeleteReservationCommand object.
  */
 public class DeleteReservationCommandParser extends DeleteCommandParser implements Parser<DeleteReservationCommand> {
     /**
      * Parses the given {@code String} of arguments in the context of the DeleteReservationCommand
      * and returns a DeleteReservationCommand object for execution.
      *
-     * @param args
-     * @return DeleteReservationCommand
-     * @throws ParseException if the user input does not conform the expected format
+     * @param args the input arguments related delete reservation command to be parsed.
+     * @return DeleteReservationCommand the class for process input delete reservation command string.
+     * @throws ParseException if the user input does not conform the expected format.
      */
     public DeleteReservationCommand parse(String args) throws ParseException {
         requireNonNull(args);

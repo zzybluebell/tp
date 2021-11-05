@@ -20,7 +20,7 @@ import seedu.address.model.transaction.Billing;
 import seedu.address.model.transaction.Transaction;
 
 /**
- * Parses input arguments and creates a new AddTransactionCommand object
+ * Parses input arguments and creates a new AddTransactionCommand object.
  */
 public class AddTransactionCommandParser extends AddCommandParser implements Parser<AddTransactionCommand> {
 
@@ -64,9 +64,9 @@ public class AddTransactionCommandParser extends AddCommandParser implements Par
      * Parses the given {@code String} of arguments in the context of the AddTransactionCommand
      * and returns an AddTransactionCommand object for execution.
      *
-     * @param args
-     * @return AddTransactionCommand
-     * @throws ParseException if the user input does not conform the expected format
+     * @param args the input arguments related add transaction command to be parsed.
+     * @return AddTransactionCommand the class for process input add transaction command string.
+     * @throws ParseException if the user input does not conform the expected format.
      */
     @Override
     public AddTransactionCommand parse(String args) throws ParseException {

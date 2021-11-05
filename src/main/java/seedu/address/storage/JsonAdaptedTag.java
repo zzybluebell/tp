@@ -28,6 +28,11 @@ class JsonAdaptedTag {
         tagName = source.tagName;
     }
 
+    /**
+     * Gets tag name.
+     *
+     * @return String of tag name.
+     */
     @JsonValue
     public String getTagName() {
         return tagName;

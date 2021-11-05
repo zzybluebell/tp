@@ -40,6 +40,9 @@ import seedu.address.ui.UiManager;
  */
 public class MainApp extends Application {
 
+    /**
+     * Creates a version.
+     */
     public static final Version VERSION = new Version(0, 2, 0, true);
 
     private static final Logger logger = LogsCenter.getLogger(MainApp.class);
@@ -50,6 +53,11 @@ public class MainApp extends Application {
     protected Model model;
     protected Config config;
 
+    /**
+     * Overrides and initializes rhe ezFoodie application.
+     *
+     * @throws Exception if the user input does not conform the expected format.
+     */
     @Override
     public void init() throws Exception {
         logger.info("==============================[ Initializing ezFoodie ]=============================");
@@ -211,12 +219,18 @@ public class MainApp extends Application {
         return initializedPrefs;
     }
 
+    /**
+     * Starts main application with input {@code primaryStage}.
+     */
     @Override
     public void start(Stage primaryStage) {
         logger.info("Starting ezFoodie " + MainApp.VERSION);
         ui.start(primaryStage);
     }
 
+    /**
+     * Stops main application.
+     */
     @Override
     public void stop() {
         logger.info("=============================== [ Stopping ezFoodie ] ==============================");

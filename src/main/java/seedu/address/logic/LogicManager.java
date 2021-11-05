@@ -21,7 +21,7 @@ import seedu.address.model.member.Member;
 import seedu.address.storage.Storage;
 
 /**
- * The main LogicManager of the app.
+ * The main LogicManager of the application.
  */
 public class LogicManager implements Logic {
     public static final String FILE_OPS_ERROR_MESSAGE = "Could not save data to file: ";
@@ -53,10 +53,10 @@ public class LogicManager implements Logic {
      * Executes with given string of command text.
      *
      * @param commandText The command as entered by the user.
-     * @return {@code CommandResult}
-     * @throws CommandException
-     * @throws ParseException
-     * @throws PermissionException
+     * @return {@code CommandResult} related to logic Manager.
+     * @throws CommandException if the user input does not conform the expected format.
+     * @throws ParseException if the user input does not conform the expected format.
+     * @throws PermissionException if the user input does not conform the expected format.
      */
     @Override
     public CommandResult execute(String commandText) throws CommandException, ParseException, PermissionException {
@@ -78,8 +78,6 @@ public class LogicManager implements Logic {
 
     /**
      * Gets EzFoodie.
-     *
-     * @return ReadOnlyEzFoodie
      */
     @Override
     public ReadOnlyEzFoodie getEzFoodie() {
@@ -88,8 +86,6 @@ public class LogicManager implements Logic {
 
     /**
      * Gets updated member list.
-     *
-     * @return ObservableList
      */
     @Override
     public ObservableList<Member> getUpdatedMemberList() {
@@ -98,8 +94,6 @@ public class LogicManager implements Logic {
 
     /**
      * Gets updated member list for view.
-     *
-     * @return ObservableList
      */
     @Override
     public ObservableList<Member> getUpdatedMemberListForView () {
@@ -108,8 +102,6 @@ public class LogicManager implements Logic {
 
     /**
      * Gets number of members.
-     *
-     * @return int
      */
     @Override
     public int getNumberOfMembers() {
@@ -118,8 +110,6 @@ public class LogicManager implements Logic {
 
     /**
      * Gets number of members by tier.
-     *
-     * @return HashMap
      */
     @Override
     public HashMap<String, Integer> getNumberOfMembersByTiers() {
@@ -128,8 +118,6 @@ public class LogicManager implements Logic {
 
     /**
      * Gets number of transactions.
-     *
-     * @return int
      */
     @Override
     public int getNumberOfTransactions() {
@@ -138,8 +126,6 @@ public class LogicManager implements Logic {
 
     /**
      * Gets number of transactions in the past month.
-     *
-     * @return int
      */
     @Override
     public int getNumberOfTransactionsPastMonth() {
@@ -148,8 +134,6 @@ public class LogicManager implements Logic {
 
     /**
      * Gets number of transaction in past three months.
-     *
-     * @return int
      */
     @Override
     public int getNumberOfTransactionsPastThreeMonth() {
@@ -158,8 +142,6 @@ public class LogicManager implements Logic {
 
     /**
      * Gets number of transactions in past six months.
-     *
-     * @return int
      */
     @Override
     public int getNumberOfTransactionsPastSixMonths() {
@@ -168,8 +150,6 @@ public class LogicManager implements Logic {
 
     /**
      * Gets total amount of transactions.
-     *
-     * @return double
      */
     @Override
     public double getTotalAmountOfTransactions() {
@@ -178,8 +158,6 @@ public class LogicManager implements Logic {
 
     /**
      * Gets total amount of transactions in the past month.
-     *
-     * @return double
      */
     @Override
     public double getTotalAmountOfTransactionsPastMonth() {
@@ -188,8 +166,6 @@ public class LogicManager implements Logic {
 
     /**
      * Gets total amount of transactions in the past three months.
-     *
-     * @return double
      */
     @Override
     public double getTotalAmountOfTransactionsPastThreeMonth() {
@@ -198,8 +174,6 @@ public class LogicManager implements Logic {
 
     /**
      * Gets total amount of transactions in the past six months.
-     *
-     * @return double
      */
     @Override
     public double getTotalAmountOfTransactionsPastSixMonth() {
@@ -208,8 +182,6 @@ public class LogicManager implements Logic {
 
     /**
      * Gets EzFoodie Path.
-     *
-     * @return Path
      */
     @Override
     public Path getEzFoodieFilePath() {
@@ -218,8 +190,6 @@ public class LogicManager implements Logic {
 
     /**
      * Gets Gui Settings.
-     *
-     * @return
      */
     @Override
     public GuiSettings getGuiSettings() {
@@ -228,8 +198,6 @@ public class LogicManager implements Logic {
 
     /**
      * Sets Gui settings.
-     *
-     * @param guiSettings
      */
     @Override
     public void setGuiSettings(GuiSettings guiSettings) {

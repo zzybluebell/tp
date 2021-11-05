@@ -41,7 +41,7 @@ public class LoginCommand extends Command {
     private final Password password;
 
     /**
-     * Constructs LoginCommand
+     * Constructs LoginCommand.
      *
      * @param password the login password.
      */
@@ -50,7 +50,7 @@ public class LoginCommand extends Command {
     }
 
     /**
-     * Overrides and executes the model
+     * Overrides and executes the model.
      *
      * @param model {@code Model} which the command should operate on.
      * @return CommandResult related to login command.

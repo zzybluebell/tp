@@ -11,14 +11,14 @@ public class Phone {
 
 
     public static final String MESSAGE_CONSTRAINTS =
-            "Phone numbers should only contain numbers, and it should be 8 digits long";
-    public static final String VALIDATION_REGEX = "\\d{8}";
+            "Phone numbers should only contain 8 digits, and it should start with 3, 6, 8 or 9";
+    public static final String VALIDATION_REGEX = "^[3689]\\d{7}";
     public final String value;
 
     /**
      * Constructs a {@code Phone}.
      *
-     * @param phone a valid phone number.
+     * @param phone a valid phone number
      */
     public Phone(String phone) {
         requireNonNull(phone);
@@ -28,9 +28,6 @@ public class Phone {
 
     /**
      * Returns true if a given string is a valid phone number.
-     *
-     * @param test
-     * @return boolean
      */
     public static boolean isValidPhone(String test) {
         return test.matches(VALIDATION_REGEX);
@@ -39,7 +36,7 @@ public class Phone {
     /**
      * Overrides toString method.
      *
-     * @return String
+     * @return String of the valid phone value
      */
     @Override
     public String toString() {
@@ -48,8 +45,6 @@ public class Phone {
 
     /**
      * Overrides equals method.
-     *
-     * @return boolean
      */
     @Override
     public boolean equals(Object other) {
@@ -60,8 +55,6 @@ public class Phone {
 
     /**
      * Overrides hashCode method.
-     *
-     * @return int
      */
     @Override
     public int hashCode() {

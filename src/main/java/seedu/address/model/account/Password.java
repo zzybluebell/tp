@@ -5,7 +5,7 @@ import static seedu.address.commons.util.AppUtil.checkArgument;
 
 /**
  * Represents a password for manager to login.
- * Guarantees: immutable; is valid as declared in {@link #isValidPassword(String)}
+ * Guarantees: immutable; is valid as declared in {@link #isValidPassword(String)}.
  */
 public class Password {
 
@@ -33,7 +33,7 @@ public class Password {
     /**
      * Constructs a {@code Password}.
      *
-     * @param password A valid password.
+     * @param password a valid password.
      */
     public Password(String password) {
         requireNonNull(password);
@@ -43,9 +43,6 @@ public class Password {
 
     /**
      * Returns true if a given string is a valid password.
-     *
-     * @param test
-     * @return boolean
      */
     public static boolean isValidPassword(String test) {
         return test.isEmpty() || (test.matches(VALIDATION_REGEX) && test.length() == LENGTH);
@@ -53,7 +50,6 @@ public class Password {
 
     /**
      * Overrides toString method.
-     * @return String
      */
     @Override
     public String toString() {
@@ -62,7 +58,6 @@ public class Password {
 
     /**
      * Overrides equals method.
-     * @return boolean
      */
     @Override
     public boolean equals(Object other) {
@@ -73,7 +68,6 @@ public class Password {
 
     /**
      * Overrides hashCode method.
-     * @return int
      */
     @Override
     public int hashCode() {

@@ -12,7 +12,7 @@ import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.model.member.Id;
 
 /**
- * Parses input arguments and creates a new DeleteMemberCommand object
+ * Parses input arguments and creates a new DeleteMemberCommand object.
  */
 public class DeleteMemberCommandParser extends DeleteCommandParser implements Parser<DeleteMemberCommand> {
 
@@ -22,9 +22,9 @@ public class DeleteMemberCommandParser extends DeleteCommandParser implements Pa
      * Parses the given {@code String} of arguments in the context of the DeleteMemberCommand
      * and returns a DeleteMemberCommand object for execution.
      *
-     * @param args
-     * @return DeleteMemberCommand
-     * @throws ParseException if the user input does not conform the expected format
+     * @param args the input arguments related delete member command to be parsed.
+     * @return DeleteMemberCommand the class for process input delete member command string.
+     * @throws ParseException if the user input does not conform the expected format.
      */
     public DeleteMemberCommand parse(String args) throws ParseException {
         requireNonNull(args);

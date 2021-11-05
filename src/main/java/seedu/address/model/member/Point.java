@@ -5,7 +5,7 @@ import static seedu.address.commons.util.AppUtil.checkArgument;
 
 /**
  * Represents a Point in the ezFoodie which should be equivalent to credit,
- * and it can be redeem from a redemption process
+ * and it can be redeem from a redemption process.
  */
 public class Point {
 
@@ -53,9 +53,6 @@ public class Point {
 
     /**
      * Returns true if a given string is a valid point.
-     *
-     * @param test
-     * @return boolean
      */
     public static boolean isValidPoint(String test) {
         test = test.replaceFirst(TRIM_LEADING_ZERO_REGEX, "");
@@ -67,18 +64,18 @@ public class Point {
     }
 
     /**
-     * Returns int value of point.
+     * Gets int value of point.
      *
-     * @return int
+     * @return int the value converts from string to int type.
      */
     public int getIntValue() {
         return Integer.parseInt(value);
     }
 
     /**
-     * Overrides toString method.
+     * Overrides the toString method.
      *
-     * @return String
+     * @return String of point value.
      */
     @Override
     public String toString() {
@@ -86,9 +83,16 @@ public class Point {
     }
 
     /**
-     * Overrides equals method.
+     * Returns double value of transaction amount.
      *
-     * @return boolean
+     * @return double the value converts from string to double type.
+     */
+    public double getDoubleValue() {
+        return Double.parseDouble(value);
+    }
+
+    /**
+     * Overrides the equals method.
      */
     @Override
     public boolean equals(Object other) {
@@ -99,20 +103,9 @@ public class Point {
 
     /**
      * Overrides hashCode method.
-     *
-     * @return int
      */
     @Override
     public int hashCode() {
         return value.hashCode();
-    }
-
-    /**
-     * Returns double value of transaction amount.
-     *
-     * @return double
-     */
-    public double getDoubleValue() {
-        return Double.parseDouble(value);
     }
 }
