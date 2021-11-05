@@ -64,11 +64,6 @@ public class EditReservationCommand extends EditCommand {
     public static final String MESSAGE_SUCCESS = "Edited Member: %1$s";
 
     /**
-     * Stands for message of reservation has not been edited.
-     */
-    public static final String MESSAGE_NOT_EDITED = "At least one field to edit must be provided.";
-
-    /**
      * Stands for message of the edited message has the same date.
      */
     public static final String MESSAGE_SAME_DATE = "Only one reservation can be added within the same day. "
@@ -78,6 +73,7 @@ public class EditReservationCommand extends EditCommand {
      * Stands for message of not edited which need fields provided.
      */
     public static final String MESSAGE_NOT_EDITED = "At least one field to edit must be provided.";
+
     private final seedu.address.model.member.Id memberId;
     private final seedu.address.model.reservation.Id reservationId;
     private final EditReservationDescriptor editReservationDescriptor;
