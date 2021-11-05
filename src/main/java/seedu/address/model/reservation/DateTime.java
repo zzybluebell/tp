@@ -49,7 +49,7 @@ public class DateTime {
             return false;
         }
     }
-    
+
     /**
      * Returns LocalDateTime value of date time.
      */
