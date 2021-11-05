@@ -18,3 +18,14 @@ It is written in Java, and has about 35 kLoC, of which I contributed about 10 kL
 Given below are my contributions to the project.
 
 * **Code contributed**: [RepoSense link](https://nus-cs2103-ay2122s1.github.io/tp-dashboard/?breakdown=true&search=zzybluebell)
+
+* **Enhancements to existing models**:
+
+* **Project management**:
+
+* **Documentation**:
+    * Developer Guide:
+        *Updated `add member`, `redeem`
+        
+        
+* **Community**:
