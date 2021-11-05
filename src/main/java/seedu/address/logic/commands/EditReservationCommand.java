@@ -205,7 +205,7 @@ public class EditReservationCommand extends EditCommand {
         public EditReservationDescriptor() {}
 
         /**
-         * Copy constructor.
+         * Copies constructor.
          * A defensive copy of {@code toCopy} is used internally.
          */
         public EditReservationDescriptor(EditReservationDescriptor toCopy) {
