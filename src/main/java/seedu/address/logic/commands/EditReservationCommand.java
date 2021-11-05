@@ -207,7 +207,7 @@ public class EditReservationCommand extends EditCommand {
         }
 
         /**
-         * Gets dateTime.
+         * Gets DateTime.
          */
         public Optional<DateTime> getDateTime() {
             return Optional.ofNullable(dateTime);
@@ -228,7 +228,7 @@ public class EditReservationCommand extends EditCommand {
         }
 
         /**
-         * Override the equal method.
+         * Overrides the equals method.
          */
         @Override
         public boolean equals(Object other) {
