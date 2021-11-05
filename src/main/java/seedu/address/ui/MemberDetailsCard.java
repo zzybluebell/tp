@@ -31,8 +31,6 @@ public class MemberDetailsCard extends UiPart<Region> {
     @FXML
     private HBox cardPane;
     @FXML
-    private Label index;
-    @FXML
     private Label id;
     @FXML
     private Label name;
@@ -60,10 +58,9 @@ public class MemberDetailsCard extends UiPart<Region> {
     /**
      * Creates a {@code MemberCode} with the given {@code Member} and index to display.
      */
-    public MemberDetailsCard(Member member, int displayedIndex) {
+    public MemberDetailsCard(Member member) {
         super(FXML);
         this.member = member;
-        index.setText(displayedIndex + ". ");
         id.setText(member.getId().value);
         name.setText(member.getName().fullName);
         phone.setText(member.getPhone().value);
@@ -73,11 +70,12 @@ public class MemberDetailsCard extends UiPart<Region> {
         credit.setText(member.getCredit().value);
         point.setText(member.getPoint().value);
         tier.setText(Tier.getTierByCredit(Integer.parseInt(member.getCredit().value)));
+        tier.getStyleClass().add(Tier.getTierByCredit(Integer.parseInt(member.getCredit().value)).toLowerCase());
         member.getTransactions().stream()
                 .sorted(Comparator.comparing(transaction -> transaction.getId().value))
                 .forEach(transaction -> transactions.getChildren().add(new Label("["
                         + transaction.getId().value + " "
-                        + DateTimeUtil.timestampToDate(Long.parseLong(transaction.getTimestamp().value)).toString()
+                        + DateTimeUtil.timestampToDate(Long.parseLong(transaction.getTimestamp().value))
                         + " " + transaction.getBilling().value + "] ")));
         member.getReservations().stream()
                 .sorted(Comparator.comparing(reservation -> DateTimeUtil
@@ -101,7 +99,6 @@ public class MemberDetailsCard extends UiPart<Region> {
 
         // state check
         MemberDetailsCard card = (MemberDetailsCard) other;
-        return index.getText().equals(card.index.getText())
-                && member.equals(card.member);
+        return member.equals(card.member);
     }
 }

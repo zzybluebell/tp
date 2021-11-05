@@ -19,7 +19,7 @@
         <URL value="@DarkTheme.css" />
       </stylesheets>
 
-      <VBox>
+      <VBox prefWidth = "650">
         <StackPane VBox.vgrow="NEVER" fx:id="summaryCardPlaceholder" styleClass="pane-with-border">
           <padding>
             <Insets top="5" right="10" bottom="5" left="10" />

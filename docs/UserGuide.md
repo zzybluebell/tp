@@ -36,15 +36,23 @@ Continue reading to explore the wonders of ezFoodie and enhance the way you mana
    ![Ui](images/Ui.png)
 
     Main window GUI includes the following member fields:
-   * Index in the list
+   * Index number in the list
    * Name
    * Tier - *Bronze, Silver, Gold, etc.*
-   * ID
+     * *This is automatically calculated from a member's credit.*
+     * *Upgrade (e.g. Bronze -> Silver) is also automatically handled by ezFoodie.*
+   * Member ID
    * Phone number
    * Email address
-   * Credit - *overall accumulated transaction amount*
-   * Point - *for promotion and voucher redemption*
-   * Seat Booking Status
+   * Credit
+     * *Credit refers to the overall accumulated transaction amount of a member, 
+     starting from his registration date.*
+     * *Credit is forever increasing.*
+   * Point
+     * *The way point is accumulated is similar to credit.*
+     * *However, point can be redeemed as voucher/cash deduction to a member, and point will be deducted
+     accordingly with redemption.*
+   * Seat Booking Information
 
 5. Type the command in the command box and press Enter to execute it. e.g. typing **`help`** and pressing Enter will open the help window.<br>
    Some example commands you can try:
@@ -103,7 +111,7 @@ Continue reading to explore the wonders of ezFoodie and enhance the way you mana
 
     * `-id/`: member ID or transaction ID
 
-    * `-i/`: index number of the member list
+    * `-i/`: index number of a member in member list
 
     * `-mem/`: member
 
@@ -145,7 +153,7 @@ Continue reading to explore the wonders of ezFoodie and enhance the way you mana
 
 ### 1. Viewing help : `help`
 
-Opens a new window to show how to use the commands, and a link to the User Guide.
+Open a new window to show how to use the commands, and a link to the User Guide.
 
 ![help message](images/helpMessage.png)
 
@@ -153,13 +161,13 @@ Format: `help`
 
 ### 2. Exiting the program : `exit`
 
-Exits the program.
+Exit the program.
 
 Format: `exit`
 
 ### 3. Logging in as a manager : `login`
 
-Logs in as a manager.
+Log in as a manager.
 
 Format: `login <PASSWORD>`
 
@@ -169,7 +177,7 @@ Example: `login 123456`
 
 ### 4. Logging out as a manager : `logout`
 
-Logs out as a manager.
+Log out as a manager.
 
 Format: `logout`
 
@@ -177,7 +185,7 @@ Example: `logout`
 
 ### 5. Listing out a certain number of members : `list -mem/`
 
-Lists out a certain number of members.
+List out a certain number of members.
 
 Format: `list -mem/`
 
@@ -185,7 +193,7 @@ Example: `list -mem/`
 
 ### 6. Adding a member : `add -mem/`
 
-Adds a new member to the member list.
+Add a new member to the member list.
 
 Format: `add -mem/ -n/ <NAME> -p/ <PHONE> -e/ <EMAIL> -a/ <ADDRESS>`
 
@@ -193,13 +201,13 @@ Example: `add -mem/ -n/ John Doe -p/ 98765432 -e/ johndoe@gmail.com -a/ 112 Amoy
 
 ### 7. Deleting a member : `del -mem/`
 
-Deletes a member from the member list
+Delete a member from the member list
 
 **NOTE**: Only managers are allowed to delete transactions. Login as manager before entering command.
 
 #### 7.1. Delete by ID
 
-Deletes a member using member id
+Delete a member using member id
 
 Format: `del -mem/ -id/ <MEMBER_ID>`
 
@@ -207,7 +215,7 @@ Example: `del -mem/ -id/ 10001`
 
 #### 7.2. Delete by index number
 
-Deletes a member using member index number from the list
+Delete a member using member index number from the list
 
 Format: `del -mem/ -i/ <MEMBER_INDEX>`
 
@@ -215,7 +223,7 @@ Example: `del -mem/ -i/ 1`
 
 ### 8. Finding members : `find -mem/`
 
-Finds members by different fields which contain any of the given keywords, show top 50 records by default.
+Find members by different fields which contain any of the given keywords, show top 50 records by default.
 
 * The find is case-insensitive. e.g `hans` will match `Hans`.
 * Only full words will be matched e.g. `Han` will not match `Hans`.
@@ -261,7 +269,11 @@ Example: `show -mem/ -id/ 10001`
 
 ### 10. Editing a member : `edit -mem/`
 
-Edits different fields in a member's profile, where the member is specified by member ID.
+Edit different fields in a member's profile, where the member is specified by member ID.
+
+**Note :** #10 only deals with editing member details.
+If a member's transactions need to be edited, refer to #13 below. 
+Do not mix `-mem/`and `-txn/` in one `edit` command.
 
 #### 10.1. Editing member name by member ID
 
@@ -313,15 +325,17 @@ Example: `edit -mem/ -i/ 1 -a/ 33 Benoi Crescent, 629979, Singapore`
 
 ### 11. Adding transaction for members : `add -txn/`
 
-Adds transaction amount corresponding to member ID.
+Add transaction amount corresponding to member ID.
 
 Format: `add -txn/ -id/ <MEMBER_ID> -b/ <BILLING>`
 
 Example: `add -txn/ -id/ 10001 -b/ 200.00`
 
+**Note :** Transaction date and time is automatically assigned by local date and time when a tranasction is added.
+
 ### 12. Deleting transaction for members: `del -txn/`
 
-Delete a transaction
+Delete a transaction.
 
 **NOTE**: Only managers are allowed to delete transactions. Login as manager before entering command.
 
@@ -331,15 +345,17 @@ Example: `del -txn/ -id/ 10001100001`
 
 ### 13. Editing transaction of a member: `edit -txn/`
 
-Edit a members transaction
+Edit a member's transaction.
 
 Format: `edit -txn/ -id/ <MEMBER_ID + TRANSACTION_ID> -b/ <BILL_AMMOUNT>`
 
 Example: `edit -txn/ -id/ 10001100002 -b/ 10.00`
 
+**Note :** Transaction date and time cannot be modified once a transaction is added.
+
 ### 14. Adding a reservation: `add -rs/`
 
-Add a reservation to a member
+Add a reservation to a member.
 
 Format: `add -rs/ -dt/ <DATE_TIME yyyy-MM-dd HH:mm> -rm/ <REMARK> -id/ <MEMBER_ID>`
 
@@ -347,7 +363,7 @@ Example: `add -rs/ -dt/ 2021-01-02 00:00 -rm/ 2 people -id/ 10001`
 
 ### 15. Deleting a reservation: `del -rs/`
 
-Deletes a reservation from a members reservation list
+Delete a reservation from a member's reservation list.
 
 **NOTE**: Only managers are allowed to delete reservations. Login as manager before entering command.
 
@@ -357,7 +373,7 @@ Example: `del -rs/ -id/ 10001100001`
 
 ### 16. Editing a reservation: `edit -rs/`
 
-Edit a members reservation details
+Edit a member's reservation details.
 
 Format: `edit -rs/ -id/ <MEMBER_ID + RESERVATION_ID> [-dt/ <DATE_TIME>][-rm/ <REMARK>]`
 
@@ -379,16 +395,16 @@ Example: `sort -mem/ -c/ -d/`
 
 ### 18. Redeeming point `redeem -f/`
 
-#### 18.1. Redeeming point from a member: `redeem -f/ -id/`
-Redeems point from a member by id.
+#### 18.1. Redeeming point for a member by member id: `redeem -f/ -id/`
+Redeem point for a member, who is identified by his member id.
 
 Format: `redeem -rd/ <POINTS> -id/ <MEMBER_ID>`
 
 Example: `redeem -rd/ 100 -id/ 10006`
 
-#### 18.2. Redeeming point from a member by an index: `redeem -f/ -i/`
+#### 18.2. Redeeming point for a member by index: `redeem -f/ -i/`
 
-Redeems point from a member by an index.
+Redeem point for a member, who is identified by his index in the member list.
 
 Format: `redeem -rd/ <point> -i/ <INDEX>`
 
@@ -396,28 +412,30 @@ Example: `redeem -rd/ 100 -i/ 1`
 
 ### 19. Summary: `summary`
 
-View a summary of all the data in the application
+View the summary of stored data in ezFoodie.
 
 **NOTE**: Only managers are allowed to view summary. Login as manager before entering command.
 
 Format: `summary`
 
-### 20. Clearing the program : `clear`
+### 20. Clearing ezFoodie data : `clear`
 
-Clears the program.
+Clear all data stored in ezFoodie. Use with Caution!
 
 Format: `clear`
 
+**NOTE**:Only managers are allowed to clear.
+
 ### 21. Saving the data
 
-ezFoodie data are saved in the hard disk by JSON automatically after any command that changes the data. There is no need to save manually.
+ezFoodie data is saved in a JSON file in hard disk automatically after any command that changes the data. There is no need to save manually.
 
 ### 22. Editing the data file
 
-ezFoodie data are saved as a JSON file `[JAR file location]/data/ezFoodie.json`. Advanced users are welcome to update data directly by editing that data file.
+ezFoodie data is located at `[JAR file location]/data/ezFoodie.json`. Advanced users are welcome to update data directly by editing the data file.
 
 <div markdown="span" class="alert alert-warning">:exclamation: **Caution:**
-If your changes to the data file makes its format invalid, ezFoodie will discard all data and start with an empty data file at the next run.
+If any changes to the JSON file make it invalid, ezFoodie will discard all data and restart with an empty data file at the next run.
 </div>
 
 --------------------------------------------------------------------------------------------------------------------
@@ -428,7 +446,7 @@ If your changes to the data file makes its format invalid, ezFoodie will discard
 **A**: Install the application in the other computer and overwrite the empty data file it creates with the file that contains the data of your previous ezFoodie home folder.
 
 **Q**: Why my ezFoodie does not have any populated sample member data?<br>
-**A**: Delete `ezFoodie.json` and restart the application. Refer to #22 in **Features** above to find this JSON file.
+**A**: Delete `ezFoodie.json` and restart the application. Refer to #22 in *Features* above to find this JSON file.
 
 --------------------------------------------------------------------------------------------------------------------
 
@@ -469,4 +487,4 @@ Action | Format, Examples
 **Redeem Point from Member by Member Id** | *Format* <br> `redeem -rd/ <POINTS> -id/ <MEMBER_ID>` <br> *Example* <br> `redeem -rd/ 100 -id/ 10006`
 **Redeem Point from Member by Member Index** | *Format* <br> `redeem -rd/ <point> -i/ <INDEX>` <br> *Example* <br> `redeem -rd/ 100 -i/ 1`
 **Summary** | *Format* <br> `summary` <br> **NOTE**: Only managers are allowed to view summary. Login as manager before entering command.
-**Clear Program** | `clear`
+**Clear ezFoodie Data** | `clear`

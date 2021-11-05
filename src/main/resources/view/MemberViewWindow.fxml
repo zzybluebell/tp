@@ -21,17 +21,17 @@
         <Scene>
             <stylesheets>
                 <URL value="@Fonts.css"/>
-<!--                <URL value="@DarkTheme.css"/>-->
+                <URL value="@DarkTheme.css"/>
                 <URL value="@MemberViewWindow.css"/>
             </stylesheets>
 
             <HBox alignment="CENTER">
-                <VBox fx:id="memberView" styleClass="pane-with-border"  minHeight="300" maxHeight="900">
+                <VBox fx:id="memberView" styleClass="pane-with-border"  minHeight="300" maxHeight="900" prefWidth="600">
                     <padding>
                         <Insets top="10" right="10" bottom="10" left="10"/>
                     </padding>
                     <ListView fx:id="memberDetailsView"
-                              minWidth="400" prefWidth="400">
+                              minWidth="500" prefWidth="500">
                     </ListView>
                 </VBox>
             </HBox>

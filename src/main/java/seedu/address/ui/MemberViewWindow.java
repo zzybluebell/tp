@@ -43,7 +43,7 @@ public class MemberViewWindow extends UiPart<Stage> {
                 setGraphic(null);
                 setText(null);
             } else {
-                setGraphic(new MemberDetailsCard(member, getIndex() + 1).getRoot());
+                setGraphic(new MemberDetailsCard(member).getRoot());
             }
         }
     }
