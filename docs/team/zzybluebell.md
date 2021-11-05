@@ -24,8 +24,15 @@ Given below are my contributions to the project.
 * **Project management**:
 
 * **Documentation**:
+    * README:
+    
+    * Index:
+    
+    * User Guide:
+    
     * Developer Guide:
         *Updated `add member`, `redeem`
         
+    * About Us: 
         
 * **Community**:
