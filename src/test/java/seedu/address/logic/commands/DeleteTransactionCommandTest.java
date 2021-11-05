@@ -47,7 +47,9 @@ public class DeleteTransactionCommandTest {
                 .withPoint(expectedPoint.value).withTransactions(expectedTransactions.toArray(Transaction[]::new))
                 .build();
         expectedModel.setMember(memberToEdit, expectedMember);
-        String expectedMessage = String.format(DeleteTransactionCommand.MESSAGE_SUCCESS, expectedMember);
+        String expectedMessage = String.format(DeleteTransactionCommand.MESSAGE_SUCCESS, "Id: " + expectedMember.getId()
+                + "; Name: " + expectedMember.getName()
+                + "; Transaction: " + "[" + transactionToDelete + "]");
 
         assertCommandSuccess(deleteCommand, model, expectedMessage, expectedModel);
     }

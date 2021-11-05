@@ -89,10 +89,7 @@ public class EzFoodieParser {
             return new EditCommandPrefixParser(executionStatus).parse(arguments).parse(arguments);
 
         case ViewCommand.COMMAND_WORD:
-            if (LoginStatus.getLoginStatus() == LoginStatus.MANAGER) {
-                return new ViewCommandParser().parse(arguments);
-            }
-            throw new PermissionException(Messages.MESSAGE_PERMISSION_DENIED);
+            return new ViewCommandParser().parse(arguments);
 
         case RedeemCommand.COMMAND_WORD:
             return new RedeemCommandParser(model, executionStatus).parse(arguments);
