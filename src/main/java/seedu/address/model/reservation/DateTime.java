@@ -34,12 +34,9 @@ public class DateTime {
         checkArgument(isValidDateTime(dateTime), MESSAGE_CONSTRAINTS);
         value = dateTime;
     }
-    
+
     /**
-     * Returns whether is valid date time.
-     *
-     * @param test input string test.
-     * @return boolean true if a given string is a valid date time.
+     * Returns true if a given string is a valid date time.
      */
     public static boolean isValidDateTime(String test) {
         try {
