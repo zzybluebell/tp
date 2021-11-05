@@ -226,8 +226,9 @@ Example: `del -mem/ -i/ 1`
 Find members by different fields which contain any of the given keywords, show top 50 records by default.
 
 * The find is case-insensitive. e.g `hans` will match `Hans`.
-* Only full words will be matched e.g. `Han` will not match `Hans`.
-* No member will be listed when an invalid member field is entered.
+* Only full words will be matched e.g. `Han` will not match `Hans`. 
+
+**Note :** No member will be listed when an invalid member field is entered.
 
 #### 8.1. Finding member by member ID
 
@@ -262,6 +263,8 @@ Example: `find -mem/ -d/ 2021-01-02`
 ### 9. Viewing member profile : `show -mem/`
 
 Views member from member list by member ID.
+
+**Note :** No member details will be shown when an invalid member ID is entered.
 
 Format: `show -mem/ -id/ <MEMBER_ID>`
 
