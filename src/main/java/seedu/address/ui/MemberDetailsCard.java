@@ -1,18 +1,22 @@
 package seedu.address.ui;
 
+import java.util.Comparator;
+
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
+import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Region;
+import seedu.address.commons.util.DateTimeUtil;
 import seedu.address.model.member.Member;
 import seedu.address.model.member.Tier;
 
 /**
  * An UI component that displays information of a {@code Member}.
  */
-public class MemberCard extends UiPart<Region> {
+public class MemberDetailsCard extends UiPart<Region> {
 
-    private static final String FXML = "MemberListCard.fxml";
+    private static final String FXML = "MemberDetailsCard.fxml";
 
     /**
      * Note: Certain keywords such as "location" and "resources" are reserved keywords in JavaFX.
@@ -37,16 +41,26 @@ public class MemberCard extends UiPart<Region> {
     @FXML
     private Label email;
     @FXML
+    private Label address;
+    @FXML
+    private Label registrationTime;
+    @FXML
     private Label credit;
     @FXML
     private Label point;
     @FXML
     private Label tier;
+    @FXML
+    private FlowPane tags;
+    @FXML
+    private FlowPane transactions;
+    @FXML
+    private FlowPane reservations;
 
     /**
      * Creates a {@code MemberCode} with the given {@code Member} and index to display.
      */
-    public MemberCard(Member member, int displayedIndex) {
+    public MemberDetailsCard(Member member, int displayedIndex) {
         super(FXML);
         this.member = member;
         index.setText(displayedIndex + ". ");
@@ -54,9 +68,23 @@ public class MemberCard extends UiPart<Region> {
         name.setText(member.getName().fullName);
         phone.setText(member.getPhone().value);
         email.setText(member.getEmail().value);
+        address.setText(member.getAddress().value);
+        registrationTime.setText(DateTimeUtil.timestampToDate(Long.parseLong(member.getTimestamp().value)).toString());
         credit.setText(member.getCredit().value);
         point.setText(member.getPoint().value);
         tier.setText(Tier.getTierByCredit(Integer.parseInt(member.getCredit().value)));
+        member.getTransactions().stream()
+                .sorted(Comparator.comparing(transaction -> transaction.getId().value))
+                .forEach(transaction -> transactions.getChildren().add(new Label("["
+                        + transaction.getId().value + " "
+                        + DateTimeUtil.timestampToDate(Long.parseLong(transaction.getTimestamp().value)).toString()
+                        + " " + transaction.getBilling().value + "] ")));
+        member.getReservations().stream()
+                .sorted(Comparator.comparing(reservation -> DateTimeUtil
+                        .parseDateTime(reservation.getDateTime().value)))
+                .forEach(reservation -> reservations.getChildren().add(new Label("["
+                        + reservation.getId().value + " "
+                        + reservation.getDateTime().value + " " + reservation.getRemark().value + "] ")));
     }
 
     @Override
@@ -67,12 +95,12 @@ public class MemberCard extends UiPart<Region> {
         }
 
         // instanceof handles nulls
-        if (!(other instanceof MemberCard)) {
+        if (!(other instanceof MemberDetailsCard)) {
             return false;
         }
 
         // state check
-        MemberCard card = (MemberCard) other;
+        MemberDetailsCard card = (MemberDetailsCard) other;
         return index.getText().equals(card.index.getText())
                 && member.equals(card.member);
     }

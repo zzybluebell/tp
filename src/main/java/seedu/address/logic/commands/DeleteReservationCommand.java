@@ -55,10 +55,11 @@ public class DeleteReservationCommand extends DeleteCommand {
     }
 
     /**
-     * Creates and returns a {@code Member} with the details of {@code memberToEdit}
+     * Creates and returns a {@code Member} with the details of {@code memberToEdit} and {@code reservationToDelete}
      */
-    private static Member createUpdatedReservation(Member memberToEdit, Reservation reservation) {
+    private static Member createEditedMember(Member memberToEdit, Reservation reservationToDelete) {
         assert memberToEdit != null;
+        assert reservationToDelete != null;
 
         seedu.address.model.member.Id id = memberToEdit.getId();
         Name updatedName = memberToEdit.getName();
@@ -73,7 +74,7 @@ public class DeleteReservationCommand extends DeleteCommand {
         Set<Tag> updatedTags = memberToEdit.getTags();
 
         List<Reservation> updatedReservations = new ArrayList<>(reservations);
-        updatedReservations.remove(reservation);
+        updatedReservations.remove(reservationToDelete);
 
         return new Member(id, updatedName, updatedPhone, updatedEmail, updatedAddress, timestamp, credit, point,
                 transactions, updatedReservations, updatedTags);
@@ -85,20 +86,20 @@ public class DeleteReservationCommand extends DeleteCommand {
         List<Member> lastShownList = model.getUpdatedMemberList();
         Member memberToEdit = lastShownList.stream()
                 .filter(member -> memberId.equals(member.getId())).findAny().orElse(null);
-        if (memberToEdit != null) {
-            Reservation reservationToDelete = memberToEdit.getReservations().stream()
-                    .filter(reservation -> reservationId.equals(reservation.getId())).findAny().orElse(null);
-            if (reservationToDelete != null) {
-                Member editedMember = createUpdatedReservation(memberToEdit, reservationToDelete);
-                model.setMember(memberToEdit, editedMember);
-                model.updateFilteredMemberList(PREDICATE_SHOW_ALL_MEMBERS);
-                return new CommandResult(String.format(MESSAGE_SUCCESS, editedMember));
-            } else {
-                throw new CommandException(Messages.MESSAGE_INVALID_RESERVATION_DISPLAYED_ID);
-            }
-        } else {
+        if (memberToEdit == null) {
             throw new CommandException(Messages.MESSAGE_INVALID_MEMBER_DISPLAYED_ID);
         }
+        Reservation reservationToDelete = memberToEdit.getReservations().stream()
+                .filter(reservation -> reservationId.equals(reservation.getId())).findAny().orElse(null);
+        if (reservationToDelete == null) {
+            throw new CommandException(Messages.MESSAGE_INVALID_RESERVATION_DISPLAYED_ID);
+        }
+        Member editedMember = createEditedMember(memberToEdit, reservationToDelete);
+        model.setMember(memberToEdit, editedMember);
+        model.updateFilteredMemberList(PREDICATE_SHOW_ALL_MEMBERS);
+        return new CommandResult(String.format(MESSAGE_SUCCESS, "Id: " + editedMember.getId()
+                + "; Name: " + editedMember.getName()
+                + "; Reservation: " + "[" + reservationToDelete + "]"));
     }
 
     @Override

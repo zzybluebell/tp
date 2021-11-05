@@ -9,7 +9,6 @@ import static seedu.address.logic.parser.CliSyntax.PREFIX_RESERVATION;
 
 import java.util.stream.Stream;
 
-import seedu.address.commons.status.ExecutionStatus;
 import seedu.address.logic.commands.EditReservationCommand;
 import seedu.address.logic.commands.EditReservationCommand.EditReservationDescriptor;
 import seedu.address.logic.parser.exceptions.ParseException;
@@ -19,15 +18,6 @@ import seedu.address.logic.parser.exceptions.ParseException;
  */
 public class EditReservationCommandParser extends EditCommandParser implements Parser<EditReservationCommand> {
 
-    private final ExecutionStatus executionStatus;
-
-    /**
-     * Constructs a {@code EditReservationCommandParser} with the given {@code ExecutionStatus}.
-     */
-    public EditReservationCommandParser(ExecutionStatus executionStatus) {
-        this.executionStatus = executionStatus;
-    }
-
     /**
      * Parses the given {@code String} of arguments in the context of the EditCommand
      * and returns an EditCommand object for execution.
@@ -35,7 +25,8 @@ public class EditReservationCommandParser extends EditCommandParser implements P
      */
     public EditReservationCommand parse(String args) throws ParseException {
         requireNonNull(args);
-        ArgumentMultimap argMultimap = ArgumentTokenizer.tokenize(args, PREFIX_RESERVATION, PREFIX_ID);
+        ArgumentMultimap argMultimap = ArgumentTokenizer.tokenize(args, PREFIX_RESERVATION, PREFIX_ID,
+                PREFIX_DATE_TIME, PREFIX_REMARK);
 
         if (!arePrefixesPresent(argMultimap, PREFIX_RESERVATION, PREFIX_ID)
                 || !argMultimap.getPreamble().isEmpty()) {

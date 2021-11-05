@@ -69,9 +69,9 @@ public class EditTransactionCommand extends EditCommand {
     }
 
     /**
-     * Creates and returns a {@code Member} with the details of {@code memberToEdit}
+     * Creates and returns a {@code Member} with the details of {@code memberToEdit} and {@code transactionToEdit}
      */
-    private static Member createUpdatedCredits(
+    private static Member createEditedMember(
             Member memberToEdit, Transaction transactionToEdit, EditTransactionDescriptor editTransactionDescriptor) {
         assert memberToEdit != null;
         assert transactionToEdit != null;
@@ -113,20 +113,22 @@ public class EditTransactionCommand extends EditCommand {
         List<Member> lastShownList = model.getUpdatedMemberList();
         Member memberToEdit = lastShownList.stream()
                 .filter(member -> memberId.equals(member.getId())).findAny().orElse(null);
-        if (memberToEdit != null) {
-            Transaction transactionToEdit = memberToEdit.getTransactions().stream()
-                    .filter(transaction -> transactionId.equals(transaction.getId())).findAny().orElse(null);
-            if (transactionToEdit != null) {
-                Member editedMember = createUpdatedCredits(memberToEdit, transactionToEdit, editTransactionDescriptor);
-                model.setMember(memberToEdit, editedMember);
-                model.updateFilteredMemberList(PREDICATE_SHOW_ALL_MEMBERS);
-                return new CommandResult(String.format(MESSAGE_SUCCESS, editedMember));
-            } else {
-                throw new CommandException(Messages.MESSAGE_INVALID_TRANSACTION_DISPLAYED_ID);
-            }
-        } else {
+        if (memberToEdit == null) {
             throw new CommandException(Messages.MESSAGE_INVALID_MEMBER_DISPLAYED_ID);
         }
+        Transaction transactionToEdit = memberToEdit.getTransactions().stream()
+                .filter(transaction -> transactionId.equals(transaction.getId())).findAny().orElse(null);
+        if (transactionToEdit == null) {
+            throw new CommandException(Messages.MESSAGE_INVALID_TRANSACTION_DISPLAYED_ID);
+        }
+        Member editedMember = createEditedMember(memberToEdit, transactionToEdit, editTransactionDescriptor);
+        model.setMember(memberToEdit, editedMember);
+        model.updateFilteredMemberList(PREDICATE_SHOW_ALL_MEMBERS);
+        Transaction updatedTransaction = editedMember.getTransactions().stream()
+                .filter(transaction -> transactionId.equals(transaction.getId())).findAny().orElse(null);
+        return new CommandResult(String.format(MESSAGE_SUCCESS, "Id: " + editedMember.getId()
+                + "; Name: " + editedMember.getName()
+                + "; Transaction: " + "[" + updatedTransaction + "]"));
     }
 
     @Override

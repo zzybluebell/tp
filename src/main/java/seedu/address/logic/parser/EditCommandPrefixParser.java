@@ -50,7 +50,7 @@ public class EditCommandPrefixParser {
         } else if (argMultimap.getValue(PREFIX_RESERVATION).isPresent()
                 && argMultimap.getValue(PREFIX_MEMBER).isEmpty()
                 && argMultimap.getValue(PREFIX_TRANSACTION).isEmpty()) {
-            return new EditReservationCommandParser(executionStatus);
+            return new EditReservationCommandParser();
         } else {
             throw new ParseException(
                     String.format(MESSAGE_INVALID_COMMAND_FORMAT, EditCommand.MESSAGE_USAGE));
