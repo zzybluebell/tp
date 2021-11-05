@@ -73,7 +73,6 @@ public class EditReservationCommand extends EditCommand {
      * Stands for message of not edited which need fields provided.
      */
     public static final String MESSAGE_NOT_EDITED = "At least one field to edit must be provided.";
-
     private final seedu.address.model.member.Id memberId;
     private final seedu.address.model.reservation.Id reservationId;
     private final EditReservationDescriptor editReservationDescriptor;

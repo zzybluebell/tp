@@ -91,7 +91,7 @@ public class AddTransactionCommand extends AddCommand {
      * Creates and returns a {@code Member} with the details of {@code memberToEdit} and {@code transactionToAdd}.
      *
      * @param memberToEdit {@code memberToEdit} which the command should operate on.
-     * @param transaction {@code transaction} which the command should operate on.
+     * @param transactionToAdd {@code transaction} which the command should operate on.
      * @return member with updated transactions and points.
      */
     private static Member createEditedMember(Member memberToEdit, Transaction transactionToAdd) {
