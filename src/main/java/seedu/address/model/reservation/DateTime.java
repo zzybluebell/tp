@@ -9,7 +9,7 @@ import seedu.address.commons.util.DateTimeUtil;
 
 /**
  * Represents a Reservation's dateTime in the ezFoodie.
- * Guarantees: immutable; is valid as declared in {@link #isValidDateTime(String)}
+ * Guarantees: immutable; is valid as declared in {@link #isValidDateTime(String)}.
  */
 public class DateTime {
 
@@ -35,9 +35,9 @@ public class DateTime {
     }
 
     /**
-     * Returns whether is valid date time
+     * Returns whether is valid date time.
      *
-     * @param test input string test
+     * @param test input string test.
      * @return boolean true if a given string is a valid date time.
      */
     public static boolean isValidDateTime(String test) {
@@ -50,7 +50,7 @@ public class DateTime {
     }
 
     /**
-     * Overrides toString method.
+     * Overrides the toString method.
      */
     @Override
     public String toString() {
@@ -58,7 +58,7 @@ public class DateTime {
     }
 
     /**
-     * Overrides equals method.
+     * Overrides the equals method.
      */
     @Override
     public boolean equals(Object other) {
@@ -68,7 +68,7 @@ public class DateTime {
     }
 
     /**
-     * Overrides hashCode method.
+     * Overrides the hashCode method.
      */
     @Override
     public int hashCode() {

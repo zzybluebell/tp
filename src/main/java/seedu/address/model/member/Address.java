@@ -5,7 +5,7 @@ import static seedu.address.commons.util.AppUtil.checkArgument;
 
 /**
  * Represents a Member's address in the ezFoodie.
- * Guarantees: immutable; is valid as declared in {@link #isValidAddress(String)}
+ * Guarantees: immutable; is valid as declared in {@link #isValidAddress(String)}.
  */
 public class Address {
 
@@ -43,7 +43,7 @@ public class Address {
     /**
      * Overrides toString method.
      *
-     * @return String
+     * @return String the value of valid address.
      */
     @Override
     public String toString() {
@@ -51,9 +51,7 @@ public class Address {
     }
 
     /**
-     * Overrides equals method.
-     *
-     * @return boolean
+     * Overrides the equals method.
      */
     @Override
     public boolean equals(Object other) {
@@ -63,9 +61,7 @@ public class Address {
     }
 
     /**
-     * Overrides hashCode method.
-     *
-     * @return int
+     * Overrides the hashCode method.
      */
     @Override
     public int hashCode() {

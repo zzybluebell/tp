@@ -12,19 +12,15 @@ public class EmailContainsKeywordsPredicate implements Predicate<Member> {
     private final List<String> keywords;
 
     /**
-     * Constructs {@code EmailContainsKeywordsPredicate} with input {@code List<String>}.
-     *
-     * @param keywords
+     * Constructs {@code EmailContainsKeywordsPredicate} with input {@code keywords}.
      */
     public EmailContainsKeywordsPredicate(List<String> keywords) {
         this.keywords = keywords;
     }
 
     /**
-     * Overrides test method.
-     *
-     * @param member
-     * @return boolean
+     * Overrides the test method.
+     * Evaluates this predicate on the given argument.
      */
     @Override
     public boolean test(Member member) {
@@ -33,9 +29,7 @@ public class EmailContainsKeywordsPredicate implements Predicate<Member> {
     }
 
     /**
-     * Overrides equals method.
-     *
-     * @return boolean
+     * Overrides the equals method.
      */
     @Override
     public boolean equals(Object other) {

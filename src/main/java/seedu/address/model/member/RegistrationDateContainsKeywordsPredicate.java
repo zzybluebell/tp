@@ -18,16 +18,17 @@ public class RegistrationDateContainsKeywordsPredicate implements Predicate<Memb
     private final List<String> keywords;
 
     /**
-     *  Constructs a {@code RegistrationDateContainsKeywordsPredicate} with input {@code List<String>}.
+     * Constructs a {@code RegistrationDateContainsKeywordsPredicate} with input {@code List<String>}.
      *
-     * @param keywords a list of string keywords
+     * @param keywords a list of string keywords.
      */
     public RegistrationDateContainsKeywordsPredicate(List<String> keywords) {
         this.keywords = keywords;
     }
 
     /**
-     * Overrides test method.
+     * Overrides the test method.
+     * Evaluates this predicate on the given argument.
      */
     @Override
     public boolean test(Member member) {

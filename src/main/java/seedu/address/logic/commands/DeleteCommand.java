@@ -32,7 +32,7 @@ public abstract class DeleteCommand extends Command {
      *
      * @param model {@code Model} which the command should operate on.
      * @return CommandResult of related commands.
-     * @throws CommandException
+     * @throws CommandException if the user input does not conform the expected format.
      */
     @Override
     public abstract CommandResult execute(Model model) throws CommandException;

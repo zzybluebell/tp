@@ -38,7 +38,7 @@ public class GuiSettings implements Serializable {
     /**
      * Gets GUI window width.
      *
-     * @return double the width of window
+     * @return double the width of window.
      */
     public double getWindowWidth() {
         return windowWidth;
@@ -47,7 +47,7 @@ public class GuiSettings implements Serializable {
     /**
      * Gets GUI window height.
      *
-     * @return double the height of window
+     * @return double the height of window.
      */
     public double getWindowHeight() {
         return windowHeight;
@@ -56,14 +56,14 @@ public class GuiSettings implements Serializable {
     /**
      * Gets GUI window coordinates.
      *
-     * @return Point
+     * @return Point object of window coordinate.
      */
     public Point getWindowCoordinates() {
         return windowCoordinates != null ? new Point(windowCoordinates) : null;
     }
 
     /**
-     * Overrides the equal method for GuiSettings.
+     * Overrides the equals method for GuiSettings.
      */
     @Override
     public boolean equals(Object other) {
@@ -82,7 +82,7 @@ public class GuiSettings implements Serializable {
     }
 
     /**
-     * Overrides the hashCode method
+     * Overrides the hashCode method.
      *
      * @return int objects after hashed with windowWidth, windowHeight and windowCoordinates.
      */
@@ -94,7 +94,7 @@ public class GuiSettings implements Serializable {
     /**
      * Overrides the toString Method for GuiSettings.
      *
-     * @return String including all width, height and Position
+     * @return String including all width, height and Position.
      */
     @Override
     public String toString() {

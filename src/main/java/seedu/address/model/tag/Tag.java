@@ -5,7 +5,7 @@ import static seedu.address.commons.util.AppUtil.checkArgument;
 
 /**
  * Represents a Tag in the ezFoodie.
- * Guarantees: immutable; name is valid as declared in {@link #isValidTagName(String)}
+ * Guarantees: immutable; name is valid as declared in {@link #isValidTagName(String)}.
  */
 public class Tag {
 
@@ -24,7 +24,7 @@ public class Tag {
     /**
      * Constructs a {@code Tag}.
      *
-     * @param tagName A valid tag name.
+     * @param tagName a valid tag name.
      */
     public Tag(String tagName) {
         requireNonNull(tagName);
@@ -39,6 +39,9 @@ public class Tag {
         return test.matches(VALIDATION_REGEX);
     }
 
+    /**
+     * Overrides the equals method.
+     */
     @Override
     public boolean equals(Object other) {
         return other == this // short circuit if same object
@@ -46,13 +49,16 @@ public class Tag {
                 && tagName.equals(((Tag) other).tagName)); // state check
     }
 
+    /**
+     * Overrides the hashCode method.
+     */
     @Override
     public int hashCode() {
         return tagName.hashCode();
     }
 
     /**
-     * Format state as text for viewing.
+     * Overrides the toString method and format state as text for viewing.
      */
     public String toString() {
         return '[' + tagName + ']';

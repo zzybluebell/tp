@@ -56,15 +56,11 @@ public class DeleteReservationCommand extends DeleteCommand {
     private final seedu.address.model.reservation.Id reservationId;
 
     /**
-<<<<<<< HEAD
      * Constructs DeleteReservationCommand to delete the specified {@code Member}
      * by {@code memberID} and {@code reservationId}.
      *
      * @param memberId the member Id
      * @param reservationId the reservation id
-=======
-     * Creates an DeleteCommand to delete the specified {@code Member} by member ID and reservation ID
->>>>>>> master
      */
     public DeleteReservationCommand(
             seedu.address.model.member.Id memberId, seedu.address.model.reservation.Id reservationId) {
@@ -77,8 +73,8 @@ public class DeleteReservationCommand extends DeleteCommand {
      * Creates and returns a {@code Member} with the details of {@code memberToEdit} and {@code reservation}.
      *
      * @param memberToEdit the member to edit.
-     * @param reservation the reservation will to remove
-     * @return Member with updated reservation
+     * @param reservation the reservation will to remove.
+     * @return Member with updated reservation.
      */
     private static Member createUpdatedReservation(Member memberToEdit, Reservation reservation) {
         assert memberToEdit != null;
@@ -107,7 +103,7 @@ public class DeleteReservationCommand extends DeleteCommand {
      *
      * @param model {@code Model} which the command should operate on.
      * @return CommandResult related delete reservation command.
-     * @throws CommandException
+     * @throws CommandException if the user input does not conform the expected format.
      */
     @Override
     public CommandResult execute(Model model) throws CommandException {

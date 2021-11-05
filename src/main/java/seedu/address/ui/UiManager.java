@@ -36,7 +36,7 @@ public class UiManager implements Ui {
     }
 
     /**
-     * Starts the UI (and the App).
+     * Starts the UI (and the Application).
      */
     @Override
     public void start(Stage primaryStage) {

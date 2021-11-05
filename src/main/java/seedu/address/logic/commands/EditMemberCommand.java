@@ -107,8 +107,8 @@ public class EditMemberCommand extends EditCommand {
     /**
      * Constructs EditMemberCommand to edit member by member id.
      *
-     * @param id of the member in the updated member list to edit
-     * @param editMemberDescriptor details to edit the member with
+     * @param id of the member in the updated member list to edit.
+     * @param editMemberDescriptor details to edit the member with.
      */
     public EditMemberCommand(Id id, EditMemberDescriptor editMemberDescriptor) {
         requireAllNonNull(id, editMemberDescriptor);
@@ -123,7 +123,7 @@ public class EditMemberCommand extends EditCommand {
      *
      * @param model {@code Model} which the command should operate on.
      * @return CommandResult related edit member command.
-     * @throws CommandException
+     * @throws CommandException if the user input does not conform the expected format.
      */
     @Override
     public CommandResult execute(Model model) throws CommandException {
@@ -158,7 +158,7 @@ public class EditMemberCommand extends EditCommand {
     /**
      * Creates and returns a {@code Member} with the details of {@code memberToEdit}
      * edited with {@code editMemberDescriptor}.
-     * @return Member with edited member
+     * @return Member with edited member.
      */
     private static Member createEditedMember(Member memberToEdit, EditMemberDescriptor editMemberDescriptor) {
         assert memberToEdit != null;
@@ -283,7 +283,7 @@ public class EditMemberCommand extends EditCommand {
          * Sets {@code tags} to this object's {@code tags}.
          * A defensive copy of {@code tags} is used internally.
          *
-         * @param tags
+         * @param tags a list of tags.
          */
         public void setTags(Set<Tag> tags) {
             this.tags = (tags != null) ? new HashSet<>(tags) : null;
@@ -299,7 +299,7 @@ public class EditMemberCommand extends EditCommand {
         }
 
         /**
-         * Overrides the equal method.
+         * Overrides the equals method.
          */
         @Override
         public boolean equals(Object other) {

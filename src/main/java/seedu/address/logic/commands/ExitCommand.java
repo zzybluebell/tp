@@ -18,7 +18,7 @@ public class ExitCommand extends Command {
     public static final String MESSAGE_EXIT_ACKNOWLEDGEMENT = "Exiting ezFoodie as requested ...";
 
     /**
-     * Overrides and executes the model
+     * Overrides and executes the model.
      *
      * @param model {@code Model} which the command should operate on.
      * @return CommandResult related to edit command.

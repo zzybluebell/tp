@@ -10,8 +10,8 @@ import seedu.address.model.member.Member;
 import seedu.address.model.member.UniqueMemberList;
 
 /**
- * Wraps all data at the ezFoodie level
- * Duplicates are not allowed (by .isSameMember comparison)
+ * Wraps all data at the ezFoodie level.
+ * Duplicates are not allowed (by .isSameMember comparison).
  */
 public class EzFoodie implements ReadOnlyEzFoodie {
 
@@ -34,7 +34,7 @@ public class EzFoodie implements ReadOnlyEzFoodie {
     public EzFoodie() {}
 
     /**
-     * Constructs an {@code ezFoodie} using the Members in the {@code toBeCopied}
+     * Constructs an {@code ezFoodie} using the Members in the {@code toBeCopied}.
      *
      * @param toBeCopied the data is going to creates ezFoodie.
      */
@@ -110,7 +110,7 @@ public class EzFoodie implements ReadOnlyEzFoodie {
     //// util methods
 
     /**
-     * Overrides toString method
+     * Overrides toString method.
      */
     @Override
     public String toString() {
@@ -129,7 +129,7 @@ public class EzFoodie implements ReadOnlyEzFoodie {
     }
 
     /**
-     * Overrides equals method.
+     * Overrides the equals method.
      */
     @Override
     public boolean equals(Object other) {
@@ -139,7 +139,7 @@ public class EzFoodie implements ReadOnlyEzFoodie {
     }
 
     /**
-     * Overrides hashCode method.
+     * Overrides the hashCode method.
      */
     @Override
     public int hashCode() {

@@ -72,11 +72,11 @@ public class EditReservationCommand extends EditCommand {
     private final EditReservationDescriptor editReservationDescriptor;
 
     /**
-     * Constructs the EditReservationCommand
+     * Constructs the EditReservationCommand.
      *
-     * @param memberId of the member in the updated member list to edit
-     * @param reservationId of the reservation in the reservation list to edit
-     * @param editReservationDescriptor details to edit the reservation with
+     * @param memberId of the member in the updated member list to edit.
+     * @param reservationId of the reservation in the reservation list to edit.
+     * @param editReservationDescriptor details to edit the reservation with.
      */
     public EditReservationCommand(
             seedu.address.model.member.Id memberId, seedu.address.model.reservation.Id reservationId,
@@ -90,9 +90,9 @@ public class EditReservationCommand extends EditCommand {
 
     /**
      * Creates and returns a {@code Member} with the details of {@code memberToEdit},
-     * {@code reservationToEdit}, {@code editReservationDescriptor}
+     * {@code reservationToEdit}, {@code editReservationDescriptor}.
      *
-     * @return member with updated credits
+     * @return Member with updated credits.
      */
     private static Member createUpdatedCredits(
             Member memberToEdit, Reservation reservationToEdit, EditReservationDescriptor editReservationDescriptor) {
@@ -129,7 +129,7 @@ public class EditReservationCommand extends EditCommand {
      *
      * @param model {@code Model} which the command should operate on.
      * @return CommandResult related to edit reservation command.
-     * @throws CommandException
+     * @throws CommandException if the user input does not conform the expected format.
      */
     @Override
     public CommandResult execute(Model model) throws CommandException {
@@ -154,7 +154,7 @@ public class EditReservationCommand extends EditCommand {
     }
 
     /**
-     * Overrides the equal method.
+     * Overrides the equals method.
      */
     @Override
     public boolean equals(Object other) {
@@ -175,7 +175,7 @@ public class EditReservationCommand extends EditCommand {
         private Remark remark;
 
         /**
-         * Constructs the EditReservationDescriptor without input
+         * Constructs the EditReservationDescriptor without input.
          */
         public EditReservationDescriptor() {}
 

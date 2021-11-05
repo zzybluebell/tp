@@ -17,7 +17,7 @@ import seedu.address.model.member.Id;
 import seedu.address.model.member.Point;
 
 /**
- * Parses input arguments and creates a new RedeemPoint object
+ * Parses input arguments and creates a new RedeemPoint object.
  */
 public class RedeemCommandParser implements Parser<RedeemCommand> {
 
@@ -36,9 +36,9 @@ public class RedeemCommandParser implements Parser<RedeemCommand> {
      * Parses the given {@code String} of arguments in the context of the RedeemCommand
      * and returns an RedeemCommand object for execution.
      *
-     * @param args
-     * @return RedeemCommand
-     * @throws ParseException if the user input does not conform the expected format
+     * @param args the input arguments related redeem point command to be parsed.
+     * @return RedeemCommand the class for process input redeem point command string.
+     * @throws ParseException if the user input does not conform the expected format.
      */
     @Override
     public RedeemCommand parse(String args) throws ParseException {

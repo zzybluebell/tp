@@ -53,8 +53,8 @@ public class AddMemberCommand extends AddCommand {
      * Executes model.
      *
      * @param model {@code Model} which the command should operate on.
-     * @return CommandResult with toAdd member
-     * @throws CommandException
+     * @return CommandResult with toAdd member.
+     * @throws CommandException if the user input does not conform the expected format.
      */
     @Override
     public CommandResult execute(Model model) throws CommandException {

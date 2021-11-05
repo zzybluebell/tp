@@ -106,7 +106,7 @@ public class RedeemCommand extends Command {
      *
      * @param model {@code Model} which the command should operate on.
      * @return CommandResult related to redeem command.
-     * @throws CommandException
+     * @throws CommandException if the user input does not conform the expected format.
      */
     @Override
     public CommandResult execute(Model model) throws CommandException {
@@ -145,7 +145,7 @@ public class RedeemCommand extends Command {
      * @param memberToRedeemPoints creates the member who need to be redeemed points.
      * @param toRedeemPointsList the list of points need to redeem all.
      * @return Member with redeemed Points
-     * @throws CommandException
+     * @throws CommandException if the user input does not conform the expected format.
      */
     private static Member createToRedeemPointsMember(Member memberToRedeemPoints, List<Point> toRedeemPointsList)
             throws CommandException {

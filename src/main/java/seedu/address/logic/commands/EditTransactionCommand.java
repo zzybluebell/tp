@@ -71,9 +71,9 @@ public class EditTransactionCommand extends EditCommand {
     /**
      * Constructs EditTransactionCommand.
      *
-     * @param memberId of the member in the updated member list to edit
-     * @param transactionId of the transaction in the transaction list to edit
-     * @param editTransactionDescriptor details to edit the transaction with
+     * @param memberId of the member in the updated member list to edit.
+     * @param transactionId of the transaction in the transaction list to edit.
+     * @param editTransactionDescriptor details to edit the transaction with.
      */
     public EditTransactionCommand(
             seedu.address.model.member.Id memberId, seedu.address.model.transaction.Id transactionId,
@@ -89,7 +89,7 @@ public class EditTransactionCommand extends EditCommand {
      * Creates and returns a {@code Member} with the details of {@code memberToEdit},
      * {@code transactionToEdit} and {@code editTransactionDescriptor}.
      *
-     * @return member with updated credits
+     * @return Member with updated credits.
      */
     private static Member createUpdatedCredits(
             Member memberToEdit, Transaction transactionToEdit, EditTransactionDescriptor editTransactionDescriptor) {
@@ -128,11 +128,11 @@ public class EditTransactionCommand extends EditCommand {
     }
 
     /**
-     * Overrides and executes model
+     * Overrides and executes model.
      *
      * @param model {@code Model} which the command should operate on.
      * @return CommandResult related to edir transaction command.
-     * @throws CommandException
+     * @throws CommandException if the user input does not conform the expected format.
      */
     @Override
     public CommandResult execute(Model model) throws CommandException {
@@ -180,7 +180,7 @@ public class EditTransactionCommand extends EditCommand {
         public EditTransactionDescriptor() {}
 
         /**
-         * Copy constructor.
+         * Copies constructor.
          * A defensive copy of {@code toCopy} is used internally.
          */
         public EditTransactionDescriptor(EditTransactionDescriptor toCopy) {

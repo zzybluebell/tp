@@ -5,7 +5,7 @@ import static seedu.address.commons.util.AppUtil.checkArgument;
 
 /**
  * Represents a Member's id in the ezFoodie.
- * Guarantees: immutable; is valid as declared in {@link #isValidCredit(String)}
+ * Guarantees: immutable; is valid as declared in {@link #isValidCredit(String)}.
  */
 public class Credit {
 
@@ -52,10 +52,7 @@ public class Credit {
     }
 
     /**
-     * Returns whether is a valid credit.
-     *
-     * @param test input String test
-     * @return boolean true if a given string is a valid credit.
+     * Returns true if a given string is a valid credit.
      */
     public static boolean isValidCredit(String test) {
         test = test.replaceFirst(TRIM_LEADING_ZERO_REGEX, "");
@@ -91,7 +88,7 @@ public class Credit {
     }
 
     /**
-     * Overrides equals method.
+     * Overrides the equals method.
      */
     @Override
     public boolean equals(Object other) {
@@ -101,7 +98,7 @@ public class Credit {
     }
 
     /**
-     * Overrides hashCode method.
+     * Overrides the hashCode method.
      */
     @Override
     public int hashCode() {

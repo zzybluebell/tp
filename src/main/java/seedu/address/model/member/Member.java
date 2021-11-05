@@ -38,7 +38,7 @@ public class Member {
 
 
     /**
-     * Constructs {code Member} with follow param.
+     * Constructs {@code Member} with follow parameters.
      * Every field must be present and not null.
      *
      * @param id the member id
@@ -74,7 +74,7 @@ public class Member {
     /**
      * Gets Id.
      *
-     * @return Id
+     * @return Id the valid member id.
      */
     public Id getId() {
         return id;
@@ -83,7 +83,7 @@ public class Member {
     /**
      * Gets name.
      *
-     * @return name
+     * @return Name the valid member name.
      */
     public Name getName() {
         return name;
@@ -92,7 +92,7 @@ public class Member {
     /**
      * Gets phone.
      *
-     * @return Phone
+     * @return Phone the valid member phone.
      */
     public Phone getPhone() {
         return phone;
@@ -101,7 +101,7 @@ public class Member {
     /**
      * Gets email.
      *
-     * @return Email
+     * @return Email the valid member email.
      */
     public Email getEmail() {
         return email;
@@ -110,7 +110,7 @@ public class Member {
     /**
      * Gets address.
      *
-     * @return Address
+     * @return Address the valid member address.
      */
     public Address getAddress() {
         return address;
@@ -119,7 +119,7 @@ public class Member {
     /**
      * Gets timestamp.
      *
-     * @return Timestamp
+     * @return Timestamp the valid member timestamp.
      */
     public Timestamp getTimestamp() {
         return timestamp;
@@ -128,7 +128,7 @@ public class Member {
     /**
      * Gets credit.
      *
-     * @return Credit
+     * @return Credit the valid member credit.
      */
     public Credit getCredit() {
         return credit;
@@ -137,7 +137,7 @@ public class Member {
     /**
      * Gets point.
      *
-     * @return Point
+     * @return Point the valid member point.
      */
     public Point getPoint() {
         return this.point;
@@ -147,7 +147,7 @@ public class Member {
      * Returns an immutable tag set, which throws {@code UnsupportedOperationException}
      * if modification is attempted.
      *
-     * @return Set a series of tags
+     * @return Set a series of tags.
      */
     public Set<Tag> getTags() {
         return Collections.unmodifiableSet(tags);
@@ -249,6 +249,9 @@ public class Member {
                 && otherMember.getTags().equals(getTags());
     }
 
+    /**
+     * Overrides the hashCode method.
+     */
     @Override
     public int hashCode() {
         // use this method for custom fields hashing instead of implementing your own
@@ -256,6 +259,12 @@ public class Member {
                 transactions, reservations, tags);
     }
 
+    /**
+     * Overrides the toString method.
+     *
+     * @return String of including all id, name, phone, email, address
+     * timestamp, credit, point, tag, transaction and reservation.
+     */
     @Override
     public String toString() {
         final StringBuilder builder = new StringBuilder();

@@ -46,7 +46,7 @@ public class DeleteMemberCommand extends DeleteCommand {
     private final Id id;
 
     /**
-     * Creates an DeleteCommand to delete the specified {@code Member} by {@code index} number
+     * Creates an DeleteCommand to delete the specified {@code Member} by {@code index} number.
      *
      * @param index the index shown in the page.
      */

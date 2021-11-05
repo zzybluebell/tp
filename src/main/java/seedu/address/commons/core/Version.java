@@ -38,7 +38,7 @@ public class Version implements Comparable<Version> {
     /**
      * Gets the major from {@code major}.
      *
-     * @return int of the major
+     * @return int of the major.
      */
     public int getMajor() {
         return major;
@@ -56,7 +56,7 @@ public class Version implements Comparable<Version> {
     /**
      * Gets the patch from {@code patch}.
      *
-     * @return int of the patch
+     * @return int of the patch.
      */
     public int getPatch() {
         return patch;
@@ -74,8 +74,8 @@ public class Version implements Comparable<Version> {
     /**
      * Parses a version number string in the format V1.2.3.
      *
-     * @param versionString version number string
-     * @return a Version object
+     * @param versionString version number string.
+     * @return a version object.
      */
     @JsonCreator
     public static Version fromString(String versionString) throws IllegalArgumentException {
@@ -94,7 +94,7 @@ public class Version implements Comparable<Version> {
     /**
      * Overrides the toString for Version class.
      *
-     * @return String for Version
+     * @return String for version.
      */
     @JsonValue
     public String toString() {
@@ -125,7 +125,7 @@ public class Version implements Comparable<Version> {
     }
 
     /**
-     * Overrides the equal method for Version class.
+     * Overrides the equals method for version class.
      */
     @Override
     public boolean equals(Object obj) {
@@ -141,7 +141,7 @@ public class Version implements Comparable<Version> {
     }
 
     /**
-     * Overrides the hashCode for Version class.
+     * Overrides the hashCode for version class.
      */
     @Override
     public int hashCode() {

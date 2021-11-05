@@ -11,7 +11,7 @@ import seedu.address.logic.commands.DeleteTransactionCommand;
 import seedu.address.logic.parser.exceptions.ParseException;
 
 /**
- * Parses input arguments and creates a new DeleteTransactionCommand object
+ * Parses input arguments and creates a new DeleteTransactionCommand object.
  */
 public class DeleteTransactionCommandParser extends DeleteCommandParser implements Parser<DeleteTransactionCommand> {
 
@@ -19,9 +19,9 @@ public class DeleteTransactionCommandParser extends DeleteCommandParser implemen
      * Parses the given {@code String} of arguments in the context of the DeleteTransactionCommand
      * and returns a DeleteTransactionCommand object for execution.
      *
-     * @param args
-     * @return DeleteTransactionCommand
-     * @throws ParseException if the user input does not conform the expected format
+     * @param args the input arguments related delete transaction command to be parsed.
+     * @return DeleteTransactionCommand the class for process input delete transaction command string.
+     * @throws ParseException if the user input does not conform the expected format.
      */
     public DeleteTransactionCommand parse(String args) throws ParseException {
         requireNonNull(args);

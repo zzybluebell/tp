@@ -5,7 +5,7 @@ import static seedu.address.commons.util.AppUtil.checkArgument;
 
 /**
  * Represents a Member's id in the ezFoodie.
- * Guarantees: immutable; is valid as declared in {@link #isValidId(String)}
+ * Guarantees: immutable; is valid as declared in {@link #isValidId(String)}.
  */
 public class Id {
 
@@ -48,7 +48,7 @@ public class Id {
     /**
      * Constructs a {@code Id}.
      *
-     * @param id A valid id.
+     * @param id a valid id.
      */
     public Id(String id) {
         requireNonNull(id);
@@ -58,9 +58,6 @@ public class Id {
 
     /**
      * Returns true if a given string is a valid id.
-     *
-     * @param test
-     * @return boolean
      */
     public static boolean isValidId(String test) {
         test = test.replaceFirst(TRIM_LEADING_ZERO_REGEX, "");
@@ -79,9 +76,9 @@ public class Id {
     }
 
     /**
-     * Overrides toString method.
+     * Overrides the toString method.
      *
-     * @return String
+     * @return String of valid Id value.
      */
     @Override
     public String toString() {
@@ -89,9 +86,7 @@ public class Id {
     }
 
     /**
-     * Overrides equals method.
-     *
-     * @return boolean
+     * Overrides the equals method.
      */
     @Override
     public boolean equals(Object other) {
@@ -101,9 +96,7 @@ public class Id {
     }
 
     /**
-     * Overrides hashCode method.
-     *
-     * @return int
+     * Overrides the hashCode method.
      */
     @Override
     public int hashCode() {

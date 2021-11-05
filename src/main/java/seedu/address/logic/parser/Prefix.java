@@ -9,31 +9,24 @@ public class Prefix {
 
     /**
      * Constructs a {@code Prefix} with the given {@code String}.
-     *
-     * @param prefix
      */
     public Prefix(String prefix) {
         this.prefix = prefix;
     }
 
     /**
-     * Gets prefix.
-     *
-     * @return
+     * Gets prefix of command.
      */
     public String getPrefix() {
         return prefix;
     }
-
 
     public String toString() {
         return getPrefix();
     }
 
     /**
-     * Overrides the method hashCode.
-     *
-     * @return
+     * Overrides the hashCode method.
      */
     @Override
     public int hashCode() {
@@ -42,9 +35,6 @@ public class Prefix {
 
     /**
      * Overrides equals method.
-     *
-     * @param obj
-     * @return boolean
      */
     @Override
     public boolean equals(Object obj) {

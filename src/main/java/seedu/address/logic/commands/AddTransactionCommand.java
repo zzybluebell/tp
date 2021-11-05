@@ -55,7 +55,7 @@ public class AddTransactionCommand extends AddCommand {
     private final seedu.address.model.member.Id idToAdd;
 
     /**
-     * Constructs an AddTransactionCommand to add the specified {@code Member}
+     * Constructs an AddTransactionCommand to add the specified {@code Member}.
      */
     public AddTransactionCommand(Transaction transaction, seedu.address.model.member.Id id) {
         requireAllNonNull(transaction, id);
@@ -68,7 +68,7 @@ public class AddTransactionCommand extends AddCommand {
      *
      * @param model {@code Model} which the command should operate on.
      * @return CommandResult with edited member.
-     * @throws CommandException
+     * @throws CommandException if the user input does not conform the expected format.
      */
     @Override
     public CommandResult execute(Model model) throws CommandException {
@@ -117,7 +117,7 @@ public class AddTransactionCommand extends AddCommand {
     }
 
     /**
-     * Overrides the equal method.
+     * Overrides the equals method.
      */
     @Override
     public boolean equals(Object other) {

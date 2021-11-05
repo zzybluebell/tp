@@ -6,7 +6,7 @@ package seedu.address.commons.exceptions;
 public class PermissionException extends Exception {
 
     /**
-     * @param message should contain relevant information on the failed constraint(s)
+     * @param message should contain relevant information on the failed constraint(s).
      */
     public PermissionException(String message) {
         super(message);

@@ -5,7 +5,7 @@ import static seedu.address.commons.util.AppUtil.checkArgument;
 
 /**
  * Represents a Reservation's remark in the Reservation.
- * Guarantees: immutable; is valid as declared in {@link #isValidRemark(String)}
+ * Guarantees: immutable; is valid as declared in {@link #isValidRemark(String)}.
  */
 public class Remark {
 
@@ -63,7 +63,7 @@ public class Remark {
     }
 
     /**
-     * Overrides the equal method.
+     * Overrides the equals method.
      */
     @Override
     public boolean equals(Object other) {

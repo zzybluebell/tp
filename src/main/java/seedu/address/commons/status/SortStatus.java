@@ -1,7 +1,7 @@
 package seedu.address.commons.status;
 
 /**
- * Represents the Sort Status.
+ * Represents the sort status.
  */
 public enum SortStatus {
     ASC, DESC

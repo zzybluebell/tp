@@ -71,7 +71,7 @@ public class DeleteTransactionCommand extends DeleteCommand {
      *
      * @param memberToEdit create a new member to edit and update.
      * @param transaction the transaction will be deleted.
-     * @return Member with added transactions and updated credits
+     * @return Member with added transactions and updated credits.
      */
     private static Member createUpdatedCredits(Member memberToEdit, Transaction transaction) {
         assert memberToEdit != null;
@@ -103,7 +103,7 @@ public class DeleteTransactionCommand extends DeleteCommand {
      *
      * @param model {@code Model} which the command should operate on.
      * @return CommandResult delete transaction command.
-     * @throws CommandException
+     * @throws CommandException if the user input does not conform the expected format.
      */
     @Override
     public CommandResult execute(Model model) throws CommandException {

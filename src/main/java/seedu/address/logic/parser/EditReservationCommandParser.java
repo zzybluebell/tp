@@ -15,7 +15,7 @@ import seedu.address.logic.commands.EditReservationCommand.EditReservationDescri
 import seedu.address.logic.parser.exceptions.ParseException;
 
 /**
- * Parses input arguments and creates a new EditReservationCommand object
+ * Parses input arguments and creates a new EditReservationCommand object.
  */
 public class EditReservationCommandParser extends EditCommandParser implements Parser<EditReservationCommand> {
 
@@ -32,9 +32,9 @@ public class EditReservationCommandParser extends EditCommandParser implements P
      * Parses the given {@code String} of arguments in the context of the EditCommand
      * and returns an EditCommand object for execution.
      *
-     * @param args
-     * @return EditReservationCommand
-     * @throws ParseException if the user input does not conform the expected format
+     * @param args the input arguments related edit reservation command to be parsed.
+     * @return EditReservationCommand the class for process input edit reservation command string.
+     * @throws ParseException if the user input does not conform the expected format.
      */
     public EditReservationCommand parse(String args) throws ParseException {
         requireNonNull(args);

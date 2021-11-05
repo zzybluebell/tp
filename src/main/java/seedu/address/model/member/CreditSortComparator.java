@@ -13,8 +13,6 @@ public class CreditSortComparator implements Comparator<Member> {
 
     /**
      * Constructs a {@code CreditSortComparator} with input {@code SortStatus}.
-     *
-     * @param sortStatus
      */
     public CreditSortComparator(SortStatus sortStatus) {
         this.sortStatus = sortStatus;
@@ -23,18 +21,14 @@ public class CreditSortComparator implements Comparator<Member> {
     /**
      * Gets sort status.
      *
-     * @return SortStatus
+     * @return SortStatus the status of sorting whether ASC or DESC.
      */
     public SortStatus getSortStatus() {
         return sortStatus;
     }
 
     /**
-     * Overrides comapre method.
-     *
-     * @param m1
-     * @param m2
-     * @return int
+     * Overrides the compare method.
      */
     @Override
     public int compare(Member m1, Member m2) {
@@ -46,9 +40,7 @@ public class CreditSortComparator implements Comparator<Member> {
     }
 
     /**
-     * Overrides equals method.
-     *
-     * @return boolean
+     * Overrides the equals method.
      */
     @Override
     public boolean equals(Object other) {

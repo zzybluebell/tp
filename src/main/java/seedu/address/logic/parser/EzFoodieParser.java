@@ -62,10 +62,10 @@ public class EzFoodieParser {
     /**
      * Parses user input into command for execution.
      *
-     * @param userInput full user input string
-     * @return the command based on the user input
-     * @throws ParseException if the user input does not conform the expected format
-     * @throws PermissionException if the user does not have insufficient permission
+     * @param userInput full user input string.
+     * @return the command based on the user input.
+     * @throws ParseException if the user input does not conform the expected format.
+     * @throws PermissionException if the user does not have insufficient permission.
      */
     public Command parseCommand(String userInput) throws ParseException, PermissionException {
         final Matcher matcher = BASIC_COMMAND_FORMAT.matcher(userInput.trim());

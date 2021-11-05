@@ -1,7 +1,7 @@
 package seedu.address.logic.parser;
 
 /**
- * Contains Command Line Interface (CLI) syntax definitions common to multiple commands
+ * Contains Command Line Interface (CLI) syntax definitions common to multiple commands.
  */
 public class CliSyntax {
 
@@ -94,12 +94,12 @@ public class CliSyntax {
 
     /* Only used in sort command */
     /**
-     * Stands for PREFIX_ASC.
+     * Stands for PREFIX_ASCENDING_ORDER.
      */
     public static final Prefix PREFIX_ASC = new Prefix("-a/");
 
     /**
-     * Stands for PREFIX_DESC.
+     * Stands for PREFIX_DESCENDING_ORDER.
      */
     public static final Prefix PREFIX_DESC = new Prefix("-d");
 

@@ -25,7 +25,7 @@ public class ListCommand extends Command {
             + "Example: " + COMMAND_WORD + " " + PREFIX_MEMBER;
 
     /**
-     * Stands for the message success listed
+     * Stands for the message success listed.
      */
     public static final String MESSAGE_SUCCESS = "Listed all members";
 

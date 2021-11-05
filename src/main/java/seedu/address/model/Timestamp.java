@@ -5,7 +5,7 @@ import static seedu.address.commons.util.AppUtil.checkArgument;
 
 /**
  * Represents a timestamp in the ezFoodie.
- * Guarantees: immutable; is valid as declared in {@link #isValidTimestamp(String)}
+ * Guarantees: immutable; is valid as declared in {@link #isValidTimestamp(String)}.
  */
 public class Timestamp {
 
@@ -50,9 +50,9 @@ public class Timestamp {
     }
 
     /**
-     * Overrides toString method.
+     * Overrides the toString method.
      *
-     * @return String of the timestamp value
+     * @return String of the timestamp value.
      */
     @Override
     public String toString() {
@@ -60,7 +60,7 @@ public class Timestamp {
     }
 
     /**
-     * Overrides equals method.
+     * Overrides the equals method.
      */
     @Override
     public boolean equals(Object other) {
@@ -70,7 +70,7 @@ public class Timestamp {
     }
 
     /**
-     * Overrides hashCode method.
+     * Overrides the hashCode method.
      */
     @Override
     public int hashCode() {

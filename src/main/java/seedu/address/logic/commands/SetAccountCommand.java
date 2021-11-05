@@ -28,13 +28,21 @@ public class SetAccountCommand extends Command {
     private final EditAccountDescriptor editAccountDescriptor;
 
     /**
-     * @param editAccountDescriptor details to edit the account with
+     * Constructs a {@code SetAccountCommand} with {@code editAccountDescriptor}.
+     *
+     * @param editAccountDescriptor details to edit the account with.
      */
     public SetAccountCommand(EditAccountDescriptor editAccountDescriptor) {
         requireNonNull(editAccountDescriptor);
         this.editAccountDescriptor = editAccountDescriptor;
     }
 
+    /**
+     * Executes the model.
+     *
+     * @param model {@code Model} which the command should operate on.
+     * @return CommandResult related to set account command.
+     */
     @Override
     public CommandResult execute(Model model) {
         requireNonNull(model);
@@ -56,6 +64,9 @@ public class SetAccountCommand extends Command {
         return new Account(updatedPassword);
     }
 
+    /**
+     * Overrides the equals method.
+     */
     @Override
     public boolean equals(Object other) {
         return other == this // short circuit if same object
@@ -70,10 +81,13 @@ public class SetAccountCommand extends Command {
     public static class EditAccountDescriptor {
         private Password password;
 
+        /**
+         * Constructs a {@code EditAccountDescriptor}.
+         */
         public EditAccountDescriptor() {}
 
         /**
-         * Copy constructor.
+         * Copies constructor.
          * A defensive copy of {@code toCopy} is used internally.
          */
         public EditAccountDescriptor(SetAccountCommand.EditAccountDescriptor toCopy) {

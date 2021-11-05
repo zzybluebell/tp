@@ -3,7 +3,7 @@ package seedu.address.commons.status;
 import javafx.beans.property.SimpleStringProperty;
 
 /**
- * Represents the Execution Status.
+ * Represents the login status.
  */
 public enum LoginStatus {
 
@@ -27,7 +27,7 @@ public enum LoginStatus {
     /**
      * Gets login status.
      *
-     * Returns {@code LoginStatus}
+     * Returns {@code LoginStatus} the status of login.
      */
     public static LoginStatus getLoginStatus() {
         if (CURRENT_STATUS.getValue().equals(STAFF.value)) {

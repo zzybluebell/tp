@@ -11,7 +11,7 @@ import javafx.stage.Stage;
 import seedu.address.commons.core.LogsCenter;
 
 /**
- * Represents for Controlling a help page
+ * Represents for Controlling a help page.
  */
 public class HelpWindow extends UiPart<Stage> {
     /**
@@ -67,7 +67,8 @@ public class HelpWindow extends UiPart<Stage> {
 
     /**
      * Shows the help window.
-     * @throws IllegalStateException
+     *
+     * @throws IllegalStateException if the user input does not conform the expected format.
      * <ul>
      *     <li>
      *         if this method is called on a thread other than the JavaFX Application Thread.

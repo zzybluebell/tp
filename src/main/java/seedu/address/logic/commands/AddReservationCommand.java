@@ -72,8 +72,8 @@ public class AddReservationCommand extends AddCommand {
      * Executes the model in AddReservationCommand.
      *
      * @param model {@code Model} which the command should operate on.
-     * @return CommandResult with edited member
-     * @throws CommandException
+     * @return CommandResult with edited member.
+     * @throws CommandException if the user input does not conform the expected format.
      */
     @Override
     public CommandResult execute(Model model) throws CommandException {
@@ -96,7 +96,7 @@ public class AddReservationCommand extends AddCommand {
      *
      * @param memberToEdit {@code memberToEdit} which the command should operate on.
      * @param reservation {@code reservation} which the command should operate on.
-     * @return member with updated reservations
+     * @return Member with updated reservations.
      */
     private static Member createUpdatedReservations(Member memberToEdit, Reservation reservation) {
         assert memberToEdit != null;
@@ -121,7 +121,7 @@ public class AddReservationCommand extends AddCommand {
     }
 
     /**
-     * Overrides the equal method.
+     * Overrides the equals method.
      */
     @Override
     public boolean equals(Object other) {

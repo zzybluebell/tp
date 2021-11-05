@@ -5,7 +5,7 @@ import static seedu.address.commons.util.AppUtil.checkArgument;
 
 /**
  * Represents a Transaction's billing in the Transaction.
- * Guarantees: immutable; is valid as declared in {@link #isValidBilling(String)}
+ * Guarantees: immutable; is valid as declared in {@link #isValidBilling(String)}.
  */
 public class Billing {
 
@@ -21,7 +21,7 @@ public class Billing {
             "Billings should be positive numeric with 2 decimal places, and max amount is " + MAX;
 
     /**
-     * Stands for trim leading zero regex
+     * Stands for trim leading zero regex.
      */
     public static final String TRIM_LEADING_ZERO_REGEX = "^0+(?!$)";
 
@@ -31,7 +31,7 @@ public class Billing {
     public static final String VALIDATION_REGEX = "\\d*\\.\\d{2}$";
 
     /**
-     * Stands for transaction billing max amount length
+     * Stands for transaction billing max amount length.
      */
     public static final int LENGTH = 7; // Max amount is 9999.99
 
@@ -94,7 +94,7 @@ public class Billing {
     }
 
     /**
-     * Overrides the hashcode method.
+     * Overrides the hashCode method.
      */
     @Override
     public int hashCode() {

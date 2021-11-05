@@ -33,8 +33,8 @@ public class CommandResult {
 
     /**
      * Constructs a {@code CommandResult} with the specified fields from {@code feedbackToUser},
-     * {@code showHelp}. {@code exit} {@code showMemberView} and
-     * {@codeshowSummary}
+     * {@code showHelp}, {@code exit}, {@code showMemberView} and
+     * {@codeshowSummary}.
      */
     public CommandResult(String feedbackToUser, boolean showHelp, boolean exit, boolean showMemberView,
                          boolean showSummary) {
@@ -92,14 +92,14 @@ public class CommandResult {
     /**
      * Determines whether the app should exit.
      *
-     * @return boolean if ture is exit command
+     * @return boolean if ture is exit command.
      */
     public boolean isExit() {
         return exit;
     }
 
     /**
-     * Overrides the equal method.
+     * Overrides the equals method.
      */
     @Override
     public boolean equals(Object other) {

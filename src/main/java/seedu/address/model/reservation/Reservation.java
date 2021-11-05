@@ -21,9 +21,9 @@ public class Reservation {
      * Constructs a {@code Reservation},
      * and every field must be present and not null.
      *
-     * @param id member Id
-     * @param dateTime Reservation date time
-     * @param remark reservation remark
+     * @param id member Id.
+     * @param dateTime Reservation date time.
+     * @param remark reservation remark.
      */
     public Reservation(Id id, DateTime dateTime, Remark remark) {
         requireAllNonNull(id, dateTime, remark);
@@ -35,7 +35,7 @@ public class Reservation {
     /**
      * Gets reservation id.
      *
-     * @return id the reservation member id
+     * @return id the reservation member id.
      */
     public Id getId() {
         return id;
@@ -80,7 +80,7 @@ public class Reservation {
     }
 
     /**
-     * Overrides hashCode for custom fields hashing instead of implementing your own.
+     * Overrides the hashCode method for custom fields hashing instead of implementing your own.
      */
     @Override
     public int hashCode() {
@@ -88,7 +88,7 @@ public class Reservation {
     }
 
     /**
-     * Overrides toString method.
+     * Overrides the toString method.
      *
      * @return String of reservation's information including Id, DateTime and remark.
      */

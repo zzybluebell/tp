@@ -60,7 +60,7 @@ public class AppParameters {
     }
 
     /**
-     * Overrides equals method.
+     * Overrides the equals method.
      */
     @Override
     public boolean equals(Object other) {
@@ -78,7 +78,7 @@ public class AppParameters {
     }
 
     /**
-     * Overrides hashCode.
+     * Overrides the hashCode method.
      */
     @Override
     public int hashCode() {

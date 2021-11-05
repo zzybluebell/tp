@@ -38,7 +38,7 @@ public class ViewCommand extends Command {
     /**
      * Constructs the view command based on member ID predicate.
      *
-     * @param predicate of member ID
+     * @param predicate of member ID.
      */
     public ViewCommand(IdContainsKeywordsPredicate predicate) {
         this.predicate = predicate;
@@ -58,7 +58,7 @@ public class ViewCommand extends Command {
     }
 
     /**
-     * Override the equals method
+     * Override the equals method.
      */
     @Override
     public boolean equals(Object other) {

@@ -132,7 +132,7 @@ public class SampleDataUtil {
     }
 
     /**
-     * Gets Sample Ezfoodie
+     * Gets Sample EzFoodie.
      */
     public static ReadOnlyEzFoodie getSampleEzFoodie() {
         EzFoodie sampleEf = new EzFoodie();

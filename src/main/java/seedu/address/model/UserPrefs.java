@@ -89,7 +89,7 @@ public class UserPrefs implements ReadOnlyUserPrefs {
     }
 
     /**
-     * Overrides equals method.
+     * Overrides the equals method.
      */
     @Override
     public boolean equals(Object other) {
@@ -108,7 +108,7 @@ public class UserPrefs implements ReadOnlyUserPrefs {
     }
 
     /**
-     * Overrides hashCode method.
+     * Overrides the hashCode method.
      */
     @Override
     public int hashCode() {

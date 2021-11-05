@@ -31,9 +31,6 @@ public class UniqueMemberList implements Iterable<Member> {
 
     /**
      * Returns true if the list contains an equivalent member as the given argument.
-     *
-     * @param toCheck
-     * @return boolean
      */
     public boolean contains(Member toCheck) {
         requireNonNull(toCheck);
@@ -43,10 +40,6 @@ public class UniqueMemberList implements Iterable<Member> {
     /**
      * Returns true if the filtered list contains an equivalent member as the given argument.
      * {@code predicate} is the filter condition for the filtered list.
-     *
-     * @param toCheck
-     * @param predicate
-     * @return boolean
      */
     public boolean contains(Member toCheck, Predicate<Member> predicate) {
         requireNonNull(toCheck);
@@ -56,8 +49,6 @@ public class UniqueMemberList implements Iterable<Member> {
     /**
      * Adds a member to the list.
      * The member must not already exist in the list.
-     *
-     * @param toAdd
      */
     public void add(Member toAdd) {
         requireNonNull(toAdd);
@@ -71,9 +62,6 @@ public class UniqueMemberList implements Iterable<Member> {
      * Replaces the member {@code target} in the list with {@code editedMember}.
      * {@code target} must exist in the list.
      * The member identity of {@code editedMember} must not be the same as another existing member in the list.
-     *
-     * @param target
-     * @param editedMember
      */
     public void setMember(Member target, Member editedMember) {
         requireAllNonNull(target, editedMember);
@@ -93,8 +81,6 @@ public class UniqueMemberList implements Iterable<Member> {
     /**
      * Removes the equivalent member from the list.
      * The member must exist in the list.
-     *
-     * @param toRemove
      */
     public void remove(Member toRemove) {
         requireNonNull(toRemove);
@@ -104,9 +90,7 @@ public class UniqueMemberList implements Iterable<Member> {
     }
 
     /**
-     * Sets Members by input {@code UniqueMemberList }
-     *
-     * @param replacement
+     * Sets Members by input {@code replacement}.
      */
     public void setMembers(UniqueMemberList replacement) {
         requireNonNull(replacement);
@@ -117,7 +101,7 @@ public class UniqueMemberList implements Iterable<Member> {
      * Replaces the contents of this list with {@code members}.
      * {@code members} must not contain duplicate members.
      *
-     * @param members
+     * @param members a list of members will be set.
      */
     public void setMembers(List<Member> members) {
         requireAllNonNull(members);
@@ -131,16 +115,14 @@ public class UniqueMemberList implements Iterable<Member> {
     /**
      * Returns the backing list as an unmodifiable {@code ObservableList<Member>}.
      *
-     * @return ObservableList a series of oberservation list
+     * @return ObservableList a list of observations.
      */
     public ObservableList<Member> asUnmodifiableObservableList() {
         return internalUnmodifiableList;
     }
 
     /**
-     * Overrides Iterator method.
-     *
-     * @return Iterator
+     * Overrides the Iterator method.
      */
     @Override
     public Iterator<Member> iterator() {
@@ -148,32 +130,7 @@ public class UniqueMemberList implements Iterable<Member> {
     }
 
     /**
-     * Overrides equals method.
-     *
-     * @return boolean
-     */
-    @Override
-    public boolean equals(Object other) {
-        return other == this // short circuit if same object
-                || (other instanceof UniqueMemberList // instanceof handles nulls
-                        && internalList.equals(((UniqueMemberList) other).internalList));
-    }
-
-    /**
-     * Overrides hashCode method.
-     *
-     * @return int
-     */
-    @Override
-    public int hashCode() {
-        return internalList.hashCode();
-    }
-
-    /**
      * Returns true if {@code members} contains only unique members.
-     *
-     * @param members
-     * @return boolean
      */
     private boolean membersAreUnique(List<Member> members) {
         for (int i = 0; i < members.size() - 1; i++) {
@@ -185,4 +142,22 @@ public class UniqueMemberList implements Iterable<Member> {
         }
         return true;
     }
+    /**
+     * Overrides the equals method.
+     */
+    @Override
+    public boolean equals(Object other) {
+        return other == this // short circuit if same object
+                || (other instanceof UniqueMemberList // instanceof handles nulls
+                        && internalList.equals(((UniqueMemberList) other).internalList));
+    }
+
+    /**
+     * Overrides the hashCode method.
+     */
+    @Override
+    public int hashCode() {
+        return internalList.hashCode();
+    }
+
 }
