@@ -45,11 +45,11 @@
       <Label fx:id="point" styleClass="cell_small_label" text="\$point" />
     </HBox>
     <HBox alignment="CENTER_LEFT">
-      <Label styleClass="cell_small_label, cell_small_label_width" text="Transactions: " />
+      <Label styleClass="cell_small_label, cell_small_label_width" text="Transactions: " minWidth = "105" />
       <FlowPane fx:id="transactions" />
     </HBox>
     <HBox alignment="CENTER_LEFT">
-      <Label styleClass="cell_small_label, cell_small_label_width" text="Reservations: " />
+      <Label styleClass="cell_small_label, cell_small_label_width" text="Reservations: " minWidth = "105" />
       <FlowPane fx:id="reservations" />
     </HBox>
   </VBox>
