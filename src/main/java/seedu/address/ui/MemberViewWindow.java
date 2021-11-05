@@ -11,7 +11,7 @@ import seedu.address.logic.Logic;
 import seedu.address.model.member.Member;
 
 /**
- * Controller for a member view page for related details
+ * Controller for a member view page for related details.
  */
 public class MemberViewWindow extends UiPart<Stage> {
 
@@ -31,6 +31,9 @@ public class MemberViewWindow extends UiPart<Stage> {
         memberDetailsView.setCellFactory(listView -> new MemberViewListCell());
     }
 
+    /**
+     * Represents a inner class for MemberViewListCell.
+     */
     class MemberViewListCell extends ListCell<Member> {
         @Override
         protected void updateItem(Member member, boolean empty) {
@@ -47,7 +50,8 @@ public class MemberViewWindow extends UiPart<Stage> {
 
     /**
      * Shows the MemberView window.
-     * @throws IllegalStateException
+     *
+     * @throws IllegalStateException if the user input does not conform the expected format.
      * <ul>
      *     <li>
      *         if this method is called on a thread other than the JavaFX Application Thread.

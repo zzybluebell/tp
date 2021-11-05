@@ -9,14 +9,15 @@ import seedu.address.logic.commands.SetAccountCommand.EditAccountDescriptor;
 import seedu.address.logic.parser.exceptions.ParseException;
 
 /**
- * Parses input arguments and creates a new EditAccountCommand object
+ * Parses input arguments and creates a new EditAccountCommand object.
  */
 public class SetAccountCommandParser implements Parser<SetAccountCommand> {
 
     /**
      * Parses the given {@code String} of arguments in the context of the EditAccountCommand
      * and returns an EditAccountCommand object for execution.
-     * @throws ParseException if the user input does not conform the expected format
+     *
+     * @throws ParseException if the user input does not conform the expected format.
      */
     public SetAccountCommand parse(String args) throws ParseException {
         requireNonNull(args);

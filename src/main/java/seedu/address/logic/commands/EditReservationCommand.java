@@ -36,6 +36,14 @@ import seedu.address.model.transaction.Transaction;
  */
 public class EditReservationCommand extends EditCommand {
 
+    /**
+     * Stands for edit command.
+     */
+    public static final String COMMAND_WORD = "edit";
+
+    /**
+     * Stands for the message of edit reservation command.
+     */
     public static final String MESSAGE_USAGE = COMMAND_WORD + ": Edits the details of the reservation identified "
             + "by the member ID and reservation ID. "
             + "Existing values will be overwritten by the input values.\n"
@@ -50,19 +58,31 @@ public class EditReservationCommand extends EditCommand {
             + PREFIX_DATE_TIME + "2021-12-01 13:00 "
             + PREFIX_REMARK + "3 people";
 
+    /**
+     * Stands for succeed message of edit member.
+     */
     public static final String MESSAGE_SUCCESS = "Edited Member: %1$s";
-    public static final String MESSAGE_NOT_EDITED = "At least one field to edit must be provided.";
+
+    /**
+     * Stands for message of the edited message has the same date.
+     */
     public static final String MESSAGE_SAME_DATE = "Only one reservation can be added within the same day. "
             + "Previous reservation: %1$s";
 
+    /**
+     * Stands for message of not edited which need fields provided.
+     */
+    public static final String MESSAGE_NOT_EDITED = "At least one field to edit must be provided.";
     private final seedu.address.model.member.Id memberId;
     private final seedu.address.model.reservation.Id reservationId;
     private final EditReservationDescriptor editReservationDescriptor;
 
     /**
-     * @param memberId of the member in the updated member list to edit
-     * @param reservationId of the reservation in the reservation list to edit
-     * @param editReservationDescriptor details to edit the reservation with
+     * Constructs the EditReservationCommand.
+     *
+     * @param memberId of the member in the updated member list to edit.
+     * @param reservationId of the reservation in the reservation list to edit.
+     * @param editReservationDescriptor details to edit the reservation with.
      */
     public EditReservationCommand(
             seedu.address.model.member.Id memberId, seedu.address.model.reservation.Id reservationId,
@@ -75,7 +95,10 @@ public class EditReservationCommand extends EditCommand {
     }
 
     /**
-     * Creates and returns a {@code Member} with the details of {@code memberToEdit} and {@code reservationToEdit}
+     * Creates and returns a {@code Member} with the details of {@code memberToEdit},
+     * {@code reservationToEdit} and {@code editReservationDescriptor}.
+     *
+     * @return Member with updated credits.
      */
     private static Member createEditedMember(
             Member memberToEdit, Reservation reservationToEdit, EditReservationDescriptor editReservationDescriptor) {
@@ -110,6 +133,13 @@ public class EditReservationCommand extends EditCommand {
                 transactions, updatedReservations, updatedTags);
     }
 
+    /**
+     * Overrides and executes the model.
+     *
+     * @param model {@code Model} which the command should operate on.
+     * @return CommandResult related to edit reservation command.
+     * @throws CommandException if the user input does not conform the expected format.
+     */
     @Override
     public CommandResult execute(Model model) throws CommandException {
         requireNonNull(model);
@@ -148,6 +178,9 @@ public class EditReservationCommand extends EditCommand {
         throw new CommandException(String.format(MESSAGE_SAME_DATE, reservationSameDate));
     }
 
+    /**
+     * Overrides the equals method.
+     */
     @Override
     public boolean equals(Object other) {
         return other == this // short circuit if same object
@@ -166,10 +199,13 @@ public class EditReservationCommand extends EditCommand {
         private DateTime dateTime;
         private Remark remark;
 
+        /**
+         * Constructs the EditReservationDescriptor without input.
+         */
         public EditReservationDescriptor() {}
 
         /**
-         * Copy constructor.
+         * Copies constructor.
          * A defensive copy of {@code toCopy} is used internally.
          */
         public EditReservationDescriptor(EditReservationDescriptor toCopy) {
@@ -179,27 +215,46 @@ public class EditReservationCommand extends EditCommand {
 
         /**
          * Returns true if at least one field is edited.
+         *
+         * @return boolean if true some filed is edited.
          */
         public boolean isAnyFieldEdited() {
             return CollectionUtil.isAnyNonNull(dateTime, remark);
         }
 
+        /**
+         * Sets DateTime.
+         *
+         * @param dateTime the date time for editing.
+         */
         public void setDateTime(DateTime dateTime) {
             this.dateTime = dateTime;
         }
 
+        /**
+         * Gets DateTime.
+         */
         public Optional<DateTime> getDateTime() {
             return Optional.ofNullable(dateTime);
         }
 
+        /**
+         * Sets remark from {@code remark}.
+         */
         public void setRemark(Remark remark) {
             this.remark = remark;
         }
 
+        /**
+         * Gets remark.
+         */
         public Optional<Remark> getRemark() {
             return Optional.ofNullable(remark);
         }
 
+        /**
+         * Overrides the equals method.
+         */
         @Override
         public boolean equals(Object other) {
             // short circuit if same object

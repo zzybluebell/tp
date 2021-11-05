@@ -7,10 +7,16 @@ package seedu.address.logic.parser;
 public class Prefix {
     private final String prefix;
 
+    /**
+     * Constructs a {@code Prefix} with the given {@code String}.
+     */
     public Prefix(String prefix) {
         this.prefix = prefix;
     }
 
+    /**
+     * Gets prefix of command.
+     */
     public String getPrefix() {
         return prefix;
     }
@@ -19,11 +25,17 @@ public class Prefix {
         return getPrefix();
     }
 
+    /**
+     * Overrides the hashCode method.
+     */
     @Override
     public int hashCode() {
         return prefix == null ? 0 : prefix.hashCode();
     }
 
+    /**
+     * Overrides equals method.
+     */
     @Override
     public boolean equals(Object obj) {
         if (!(obj instanceof Prefix)) {

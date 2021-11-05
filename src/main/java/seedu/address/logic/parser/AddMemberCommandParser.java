@@ -32,7 +32,7 @@ import seedu.address.model.tag.Tag;
 import seedu.address.model.transaction.Transaction;
 
 /**
- * Parses input arguments and creates a new AddMemberCommand object
+ * Parses input arguments and creates a new AddMemberCommand object.
  */
 public class AddMemberCommandParser extends AddCommandParser implements Parser<AddMemberCommand> {
 
@@ -68,7 +68,10 @@ public class AddMemberCommandParser extends AddCommandParser implements Parser<A
     /**
      * Parses the given {@code String} of arguments in the context of the AddMemberCommand
      * and returns an AddMemberCommand object for execution.
-     * @throws ParseException if the user input does not conform the expected format
+     *
+     * @param args the input arguments related add member command to be parsed.
+     * @return AddMemberCommand the class for process input add member command string.
+     * @throws ParseException if the user input does not conform the expected format.
      */
     @Override
     public AddMemberCommand parse(String args) throws ParseException {

@@ -20,9 +20,10 @@ public class SummaryWindow extends UiPart<Stage> {
     private StackPane summaryCardPlaceholder;
 
     /**
-     * Creates a new SummaryWindow.
+     * Constructs a new {@code SummaryWindow} .
      *
      * @param root Stage to use as the root of the SummaryWindow.
+     * @param logic summary of logic.
      */
     public SummaryWindow(Stage root, Logic logic) {
         super(FXML, root);
@@ -31,7 +32,7 @@ public class SummaryWindow extends UiPart<Stage> {
     }
 
     /**
-     * Creates a new SummaryWindow.
+     * Constructs a new {@code SummaryWindow} with input {@code logic}.
      */
     public SummaryWindow(Logic logic) {
         this(new Stage(), logic);
@@ -39,7 +40,8 @@ public class SummaryWindow extends UiPart<Stage> {
 
     /**
      * Shows the summary window.
-     * @throws IllegalStateException
+     *
+     * @throws IllegalStateException if the user input does not conform the expected format.
      * <ul>
      *     <li>
      *         if this method is called on a thread other than the JavaFX Application Thread.

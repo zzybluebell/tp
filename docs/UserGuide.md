@@ -413,7 +413,7 @@ If your changes to the data file makes its format invalid, ezFoodie will discard
 ## FAQ
 
 **Q**: How do I transfer my data to another Computer?<br>
-**A**: Install the application in the other computer and overwrite the empty data file it creates with the file that contains the data of your previous AddressBook home folder.
+**A**: Install the application in the other computer and overwrite the empty data file it creates with the file that contains the data of your previous ezFoodie home folder.
 
 --------------------------------------------------------------------------------------------------------------------
 

@@ -19,7 +19,9 @@ public class ViewCommandParser implements Parser<Command> {
      * Parses the given {@code String} of arguments in the context of the ViewCommand
      * and returns a ViewCommand object for execution.
      *
-     * @throws ParseException if the user input does not conform the expected format
+     * @param args the input arguments related view command to be parsed.
+     * @return ViewCommand the class for process view command string.
+     * @throws ParseException if the user input does not conform the expected format.
      */
     public ViewCommand parse(String args) throws ParseException {
 

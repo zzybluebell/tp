@@ -33,6 +33,9 @@ import seedu.address.model.transaction.Transaction;
  */
 public class AddReservationCommand extends AddCommand {
 
+    /**
+     * Stands for the message add reservation command.
+     */
     public static final String MESSAGE_USAGE = COMMAND_WORD + ": Adds reservation to member "
             + "by member ID in the ezFoodie.\n"
             + "Parameters:\n"
@@ -47,6 +50,9 @@ public class AddReservationCommand extends AddCommand {
             + PREFIX_REMARK + "2 people "
             + PREFIX_ID + "10001";
 
+    /**
+     * Stands for message success for new reservation added.
+     */
     public static final String MESSAGE_SUCCESS = "New reservation added: %1$s";
     public static final String MESSAGE_FULL = "Reservation ID has reached " + seedu.address.model.reservation.Id.MAX;
     public static final String MESSAGE_SAME_DATE = "Only one reservation can be added within the same day."
@@ -56,7 +62,7 @@ public class AddReservationCommand extends AddCommand {
     private final seedu.address.model.member.Id idToAdd;
 
     /**
-     * Creates an AddReservationCommand to add the specified {@code Member}
+     * Constructs an {@code AddReservationCommand} to add the specified {@code Member}.
      */
     public AddReservationCommand(Reservation reservation, seedu.address.model.member.Id id) {
         requireAllNonNull(reservation, id);
@@ -64,6 +70,13 @@ public class AddReservationCommand extends AddCommand {
         idToAdd = id;
     }
 
+    /**
+     * Executes the model in AddReservationCommand.
+     *
+     * @param model {@code Model} which the command should operate on.
+     * @return CommandResult with edited member.
+     * @throws CommandException if the user input does not conform the expected format.
+     */
     @Override
     public CommandResult execute(Model model) throws CommandException {
         requireNonNull(model);
@@ -90,7 +103,11 @@ public class AddReservationCommand extends AddCommand {
     }
 
     /**
-     * Creates and returns a {@code Member} with the details of {@code memberToEdit} and {@code reservationToAdd}
+     * Creates and returns a {@code Member} with the details of {@code memberToEdit} and {@code reservationToAdd}.
+     *
+     * @param memberToEdit {@code memberToEdit} which the command should operate on.
+     * @param reservation {@code reservation} which the command should operate on.
+     * @return Member with updated reservations.
      */
     private static Member createEditedMember(Member memberToEdit, Reservation reservationToAdd) {
         assert memberToEdit != null;
@@ -115,6 +132,9 @@ public class AddReservationCommand extends AddCommand {
                 transactions, updatedReservations, tags);
     }
 
+    /**
+     * Overrides the equals method.
+     */
     @Override
     public boolean equals(Object other) {
         return other == this // short circuit if same object

@@ -17,6 +17,9 @@ import seedu.address.model.member.Member;
  */
 public class AddMemberCommand extends AddCommand {
 
+    /**
+     * Stands for command word for add member.
+     */
     public static final String MESSAGE_USAGE = COMMAND_WORD + ": Adds a member to the ezFoodie.\n"
             + "Parameters:\n"
             + PREFIX_MEMBER + " "
@@ -39,13 +42,20 @@ public class AddMemberCommand extends AddCommand {
     private final Member toAdd;
 
     /**
-     * Creates an AddMemberCommand to add the specified {@code Member}
+     * Constructs an {@codeAddMemberCommand} to add the specified {@code Member}.
      */
     public AddMemberCommand(Member member) {
         requireNonNull(member);
         toAdd = member;
     }
 
+    /**
+     * Executes model.
+     *
+     * @param model {@code Model} which the command should operate on.
+     * @return CommandResult with toAdd member.
+     * @throws CommandException if the user input does not conform the expected format.
+     */
     @Override
     public CommandResult execute(Model model) throws CommandException {
         requireNonNull(model);
@@ -58,10 +68,14 @@ public class AddMemberCommand extends AddCommand {
         return new CommandResult(String.format(MESSAGE_SUCCESS, toAdd));
     }
 
+    /**
+     * Overrides the equals method.
+     */
     @Override
     public boolean equals(Object other) {
         return other == this // short circuit if same object
                 || (other instanceof AddMemberCommand // instanceof handles nulls
                 && toAdd.equals(((AddMemberCommand) other).toAdd));
     }
+
 }

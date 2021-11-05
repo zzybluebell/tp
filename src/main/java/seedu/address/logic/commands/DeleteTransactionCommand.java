@@ -31,6 +31,14 @@ import seedu.address.model.transaction.Transaction;
  */
 public class DeleteTransactionCommand extends DeleteCommand {
 
+    /**
+     * Stands for delete command.
+     */
+    public static final String COMMAND_WORD = "del";
+
+    /**
+     * Stands for the message of delete command related to transaction.
+     */
     public static final String MESSAGE_USAGE = COMMAND_WORD
             + ": Deletes the transaction identified by the member ID and transaction ID.\n"
             + "Parameters:\n"
@@ -40,13 +48,16 @@ public class DeleteTransactionCommand extends DeleteCommand {
             + "Delete by member ID and transaction ID: "
             + COMMAND_WORD + " " + PREFIX_TRANSACTION + " " + PREFIX_ID + "10001100001";
 
+    /**
+     * Stands for succeed message of delete transaction.
+     */
     public static final String MESSAGE_SUCCESS = "Deleted Transaction: %1$s";
 
     private final seedu.address.model.member.Id memberId;
     private final seedu.address.model.transaction.Id transactionId;
 
     /**
-     * Creates an DeleteCommand to delete the specified {@code Member} by member ID and transaction ID
+     * Constructs an DeleteCommand to delete the specified {@code Member} by {@code memberId} and {@code transactionId}.
      */
     public DeleteTransactionCommand(
             seedu.address.model.member.Id memberId, seedu.address.model.transaction.Id transactionId) {
@@ -56,7 +67,11 @@ public class DeleteTransactionCommand extends DeleteCommand {
     }
 
     /**
-     * Creates and returns a {@code Member} with the details of {@code memberToEdit} and {@code reservationToDelete}
+     * Creates and returns a {@code Member} with the details of {@code memberToEdit} and {@code transactionToDelete}
+     *
+     * @param memberToEdit create a new member to edit and update.
+     * @param transactionToDelete the transaction will be deleted.
+     * @return Member with added transactions and updated credits.
      */
     private static Member createEditedMember(Member memberToEdit, Transaction transactionToDelete) {
         assert memberToEdit != null;
@@ -84,6 +99,13 @@ public class DeleteTransactionCommand extends DeleteCommand {
                 updatePoint, updatedTransactions, reservations, updatedTags);
     }
 
+    /**
+     * Executes the model.
+     *
+     * @param model {@code Model} which the command should operate on.
+     * @return CommandResult delete transaction command.
+     * @throws CommandException if the user input does not conform the expected format.
+     */
     @Override
     public CommandResult execute(Model model) throws CommandException {
         requireNonNull(model);
@@ -106,6 +128,9 @@ public class DeleteTransactionCommand extends DeleteCommand {
                 + "; Transaction: " + "[" + transactionToDelete + "]"));
     }
 
+    /**
+     * Overrides the equals method.
+     */
     @Override
     public boolean equals(Object other) {
         return other == this // short circuit if same object

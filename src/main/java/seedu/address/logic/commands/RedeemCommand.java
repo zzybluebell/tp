@@ -28,26 +28,45 @@ import seedu.address.model.reservation.Reservation;
 import seedu.address.model.tag.Tag;
 import seedu.address.model.transaction.Transaction;
 
+/**
+ * Redeems point from an existing member in the ezFoodie.
+ */
 public class RedeemCommand extends Command {
 
+    /**
+     * Stands for redeem command.
+     */
     public static final String COMMAND_WORD = "redeem";
 
-    public static final String MESSAGE_USAGE = COMMAND_WORD + ": Redeems points from member id in the ezFoodie. "
-            + "Parameters: "
-            + PREFIX_REDEEM + " [points]"
-            + " " + PREFIX_ID + " [ID] or "
-            + "Parameters: "
-            + PREFIX_REDEEM + " [points]"
-            + " " + PREFIX_INDEX + " [INDEX]\n"
-            + "Example: " + COMMAND_WORD + " "
-            + PREFIX_REDEEM + " 100 "
-            + PREFIX_ID + " 10001\n"
-            + "Example: " + COMMAND_WORD + " "
-            + PREFIX_REDEEM + " 100 "
-            + PREFIX_INDEX + " 1\n";
+    /**
+     * Stands for the message of redeem command.
+     */
+    public static final String MESSAGE_USAGE = COMMAND_WORD + ": Redeems points from member id in the ezFoodie.\n"
+            + "Parameters:\n"
+            + "Redeem by index number: " + PREFIX_INDEX + " INDEX "
+            + "(INDEX must be a positive integer) "
+            + PREFIX_REDEEM + " POINTS\n"
+            + "Redeem by member ID: " + PREFIX_ID + " ID "
+            + PREFIX_REDEEM + " POINTS\n"
+            + "Example:\n"
+            + "Redeem by index number: " + PREFIX_INDEX + " 1 "
+            + PREFIX_REDEEM + " 100\n"
+            + "Redeem by member ID: " + PREFIX_ID + " 10001 "
+            + PREFIX_REDEEM + " 100";
 
+    /**
+     * Stands for message for redeem points successfully.
+     */
     public static final String MESSAGE_SUCCESS_REDEMPTION = "Redeemed Member: %1$s";
+
+    /**
+     * Stands for message for duplicate member.
+     */
     public static final String MESSAGE_DUPLICATE_MEMBER = "This member already exists in the ezFoodie.";
+
+    /**
+     * Stands for message when redemption point exceed.
+     */
     public static final String MESSAGE_INVALID_POINTS_LESS_THAN_ZERO = "Redeemed point has already exceeded\n"
             + "Points can't redeemed less than 0\n"
             + "Please try again";
@@ -57,7 +76,10 @@ public class RedeemCommand extends Command {
     private final Index indexToRedeem;
 
     /**
-     * Creates an redeemPointsCommand to add the specified {@code Member}
+     * Constructs an RedeemCommand to add the specified {@code Member} by id.
+     *
+     * @param pointsToRedeemList the points of to redeemed list.
+     * @param id the member id that needs to redeem point.
      */
     public RedeemCommand(List<Point> pointsToRedeemList, Id id) {
         requireAllNonNull(pointsToRedeemList, id);
@@ -67,7 +89,10 @@ public class RedeemCommand extends Command {
     }
 
     /**
-     * Creates an redeemPointsCommand to add the specified {@code Member}
+     * Constructs an RedeemCommand to add the specified {@code Member} by index.
+     *
+     * @param pointsToRedeemList the points of to redeemed list.
+     * @param index the member index that needs to redeem point.
      */
     public RedeemCommand(List<Point> pointsToRedeemList, Index index) {
         requireAllNonNull(pointsToRedeemList, index);
@@ -76,6 +101,13 @@ public class RedeemCommand extends Command {
         this.idToRedeem = null;
     }
 
+    /**
+     * Overrides and executes the model.
+     *
+     * @param model {@code Model} which the command should operate on.
+     * @return CommandResult related to redeem command.
+     * @throws CommandException if the user input does not conform the expected format.
+     */
     @Override
     public CommandResult execute(Model model) throws CommandException {
         requireNonNull(model);
@@ -109,6 +141,11 @@ public class RedeemCommand extends Command {
     /**
      * Creates and returns a {@code Member} with the details of {@code memberToEdit}
      * edited with {@code editMemberDescriptor}.
+     *
+     * @param memberToRedeemPoints creates the member who need to be redeemed points.
+     * @param toRedeemPointsList the list of points need to redeem all.
+     * @return Member with redeemed Points
+     * @throws CommandException if the user input does not conform the expected format.
      */
     private static Member createToRedeemPointsMember(Member memberToRedeemPoints, List<Point> toRedeemPointsList)
             throws CommandException {
