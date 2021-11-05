@@ -145,7 +145,7 @@ public class ParserUtil {
         requireNonNull(id);
         String trimmedId = id.trim();
         if (!seedu.address.model.transaction.Id.isValidId(trimmedId)) {
-            throw new ParseException(seedu.address.model.member.Id.MESSAGE_CONSTRAINTS);
+            throw new ParseException(seedu.address.model.transaction.Id.MESSAGE_CONSTRAINTS);
         }
         return new seedu.address.model.transaction.Id(trimmedId);
     }
