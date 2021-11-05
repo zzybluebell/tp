@@ -1,11 +1,15 @@
 package seedu.address.ui;
 
+import java.util.Comparator;
+
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Region;
+import seedu.address.commons.util.DateTimeUtil;
 import seedu.address.model.member.Member;
 import seedu.address.model.member.Tier;
+import seedu.address.model.reservation.Reservation;
 
 /**
  * An UI component that displays information of a {@code Member}.
@@ -41,6 +45,8 @@ public class MemberCard extends UiPart<Region> {
     private Label point;
     @FXML
     private Label tier;
+    @FXML
+    private Label reservation;
 
     /**
      * Constructs a {@code MemberCode} with the given {@code Member} and index to display.
@@ -56,6 +62,14 @@ public class MemberCard extends UiPart<Region> {
         credit.setText(member.getCredit().value);
         point.setText(member.getPoint().value);
         tier.setText(Tier.getTierByCredit(Integer.parseInt(member.getCredit().value)));
+        tier.getStyleClass().add(Tier.getTierByCredit(Integer.parseInt(member.getCredit().value)).toLowerCase());
+        member.getReservations().stream()
+                .sorted(Comparator.comparing(reservation -> DateTimeUtil
+                        .parseDateTime(reservation.getDateTime().value)))
+                .filter(reservation -> Reservation.isValidDateTime(reservation.getDateTime()))
+                .findAny().ifPresentOrElse(comingReservation -> reservation.setText(
+                        comingReservation.getDateTime().value + " "
+                        + comingReservation.getRemark().value), () -> reservation.setText(""));
     }
 
     /**

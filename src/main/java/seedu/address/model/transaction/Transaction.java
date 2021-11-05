@@ -2,6 +2,7 @@ package seedu.address.model.transaction;
 
 import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
 
+import java.util.Calendar;
 import java.util.Objects;
 
 import seedu.address.model.Timestamp;
@@ -72,7 +73,28 @@ public class Transaction {
     }
 
     /**
+     * Returns true if a given timestamp is within {@code numOfPastMonths}.
+     */
+    public static boolean isWithinPastMonths(long timestamp, int numOfPastMonths) {
+        Calendar currentCalendar = Calendar.getInstance();
+        currentCalendar.setTimeInMillis(System.currentTimeMillis());
+        int currentYear = currentCalendar.get(Calendar.YEAR);
+        int currentMonth = currentCalendar.get(Calendar.MONTH);
+
+        Calendar calendarToCheck = Calendar.getInstance();
+        calendarToCheck.setTimeInMillis(timestamp);
+        int yearToCheck = calendarToCheck.get(Calendar.YEAR);
+        int monthToCheck = calendarToCheck.get(Calendar.MONTH);
+
+        int diffYears = currentYear - yearToCheck;
+        int diffMonths = diffYears * 12 + currentMonth - monthToCheck;
+
+        return diffMonths <= numOfPastMonths;
+    }
+
+    /**
      * Overrides the equals method.
+     *
      * Returns true if both transactions have the same timestamp and billing.
      * This defines a stronger notion of equality between two transactions.
      */

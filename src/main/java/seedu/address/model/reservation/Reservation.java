@@ -14,7 +14,8 @@ import seedu.address.commons.util.DateTimeUtil;
  */
 public class Reservation {
 
-    public static final String MESSAGE_CONSTRAINTS = "The given reservation data time should be one day after today.";
+    public static final String MESSAGE_CONSTRAINTS =
+            "The given reservation data time should be after current date time.";
 
     private final Id id;
     private final DateTime dateTime;
@@ -100,12 +101,12 @@ public class Reservation {
     }
 
     /**
-     * Returns true if a given data time is one day after today.
+     * Returns true if a given data time is after current date time.
      */
     public static boolean isValidDateTime(DateTime dateTime) {
-        LocalDate otherDate = DateTimeUtil.parseDateTime(dateTime.value).toLocalDate();
-        LocalDate nowDate = LocalDate.now();
-        return otherDate.isAfter(nowDate);
+        LocalDateTime otherDateTime = DateTimeUtil.parseDateTime(dateTime.value);
+        LocalDateTime nowDateTime = LocalDateTime.now();
+        return otherDateTime.isAfter(nowDateTime);
     }
 
     /**
