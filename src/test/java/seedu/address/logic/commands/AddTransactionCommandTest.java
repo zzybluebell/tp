@@ -50,7 +50,7 @@ public class AddTransactionCommandTest {
 
         assertEquals(String.format(AddTransactionCommand.MESSAGE_SUCCESS, "Id: " + expectedMember.getId()
                 + "; Name: " + expectedMember.getName()
-                + "; Transaction: " + " [" + validTransaction + "]"),
+                + "; Transaction: " + "[" + validTransaction + "]"),
                 commandResult.getFeedbackToUser());
         assertEquals(validTransaction,
                 expectedMember.getTransactions().get(expectedMember.getTransactions().size() - 1));

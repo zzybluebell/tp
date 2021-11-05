@@ -52,6 +52,8 @@ public class EditReservationCommand extends EditCommand {
 
     public static final String MESSAGE_SUCCESS = "Edited Member: %1$s";
     public static final String MESSAGE_NOT_EDITED = "At least one field to edit must be provided.";
+    public static final String MESSAGE_SAME_DATE = "Only one reservation can be added within the same day. "
+            + "Previous reservation: %1$s";
 
     private final seedu.address.model.member.Id memberId;
     private final seedu.address.model.reservation.Id reservationId;
@@ -73,9 +75,9 @@ public class EditReservationCommand extends EditCommand {
     }
 
     /**
-     * Creates and returns a {@code Member} with the details of {@code memberToEdit}
+     * Creates and returns a {@code Member} with the details of {@code memberToEdit} and {@code reservationToEdit}
      */
-    private static Member createUpdatedCredits(
+    private static Member createEditedMember(
             Member memberToEdit, Reservation reservationToEdit, EditReservationDescriptor editReservationDescriptor) {
         assert memberToEdit != null;
         assert reservationToEdit != null;
@@ -101,8 +103,8 @@ public class EditReservationCommand extends EditCommand {
         Reservation updatedReservation = new Reservation(reservationToEdit.getId(), updatedDateTime, updatedRemark);
         updatedReservations.stream()
                 .filter(reservation -> reservation.isSameId(reservationToEdit)).findAny()
-                .ifPresent(transaction -> updatedReservations
-                        .set(updatedReservations.indexOf(transaction), updatedReservation));
+                .ifPresent(reservation -> updatedReservations
+                        .set(updatedReservations.indexOf(reservation), updatedReservation));
 
         return new Member(id, updatedName, updatedPhone, updatedEmail, updatedAddress, timestamp, credit, point,
                 transactions, updatedReservations, updatedTags);
@@ -114,24 +116,36 @@ public class EditReservationCommand extends EditCommand {
         List<Member> lastShownList = model.getUpdatedMemberList();
         Member memberToEdit = lastShownList.stream()
                 .filter(member -> memberId.equals(member.getId())).findAny().orElse(null);
-        if (memberToEdit != null) {
-            Reservation reservationToEdit = memberToEdit.getReservations().stream()
-                    .filter(reservation -> reservationId.equals(reservation.getId())).findAny().orElse(null);
-            if (reservationToEdit != null) {
-                Member editedMember = createUpdatedCredits(memberToEdit, reservationToEdit, editReservationDescriptor);
-                model.setMember(memberToEdit, editedMember);
-                model.updateFilteredMemberList(PREDICATE_SHOW_ALL_MEMBERS);
-                Reservation updatedReservation = editedMember.getReservations().stream()
-                        .filter(reservation -> reservationId.equals(reservation.getId())).findAny().orElse(null);
-                return new CommandResult(String.format(MESSAGE_SUCCESS, "Id: " + editedMember.getId()
-                        + "; Name: " + editedMember.getName()
-                        + "; Reservation: " + " [" + updatedReservation + "]"));
-            } else {
-                throw new CommandException(Messages.MESSAGE_INVALID_RESERVATION_DISPLAYED_ID);
-            }
-        } else {
+        if (memberToEdit == null) {
             throw new CommandException(Messages.MESSAGE_INVALID_MEMBER_DISPLAYED_ID);
         }
+        Reservation reservationToEdit = memberToEdit.getReservations().stream()
+                .filter(reservation -> reservationId.equals(reservation.getId())).findAny().orElse(null);
+        if (reservationToEdit == null) {
+            throw new CommandException(Messages.MESSAGE_INVALID_RESERVATION_DISPLAYED_ID);
+        }
+        DateTime dateTimeToEdit = editReservationDescriptor.getDateTime().orElse(null);
+        Reservation reservationSameDate = null;
+        if (dateTimeToEdit != null) {
+            if (!Reservation.isValidDateTime(dateTimeToEdit)) {
+                throw new CommandException(Reservation.MESSAGE_CONSTRAINTS);
+            }
+            reservationSameDate = memberToEdit.getReservations().stream()
+                    .filter(reservation -> !reservation.equals(reservationToEdit)
+                            && reservation.isSameDate(dateTimeToEdit.getLocalDateTimeValue()))
+                    .findAny().orElse(null);
+        }
+        if (reservationSameDate == null) {
+            Member editedMember = createEditedMember(memberToEdit, reservationToEdit, editReservationDescriptor);
+            model.setMember(memberToEdit, editedMember);
+            model.updateFilteredMemberList(PREDICATE_SHOW_ALL_MEMBERS);
+            Reservation updatedReservation = editedMember.getReservations().stream()
+                    .filter(reservation -> reservationId.equals(reservation.getId())).findAny().orElse(null);
+            return new CommandResult(String.format(MESSAGE_SUCCESS, "Id: " + editedMember.getId()
+                    + "; Name: " + editedMember.getName()
+                    + "; Reservation: " + "[" + updatedReservation + "]"));
+        }
+        throw new CommandException(String.format(MESSAGE_SAME_DATE, reservationSameDate));
     }
 
     @Override

@@ -63,22 +63,22 @@ public class AddTransactionCommand extends AddCommand {
         List<Member> lastShownList = model.getUpdatedMemberList();
         Member memberToEdit = lastShownList.stream()
                 .filter(member -> idToAdd.equals(member.getId())).findAny().orElse(null);
-        if (memberToEdit != null) {
-            Member editedMember = createUpdatedCreditAndPointsMember(memberToEdit, transactionToAdd);
-            model.setMember(memberToEdit, editedMember);
-            model.updateFilteredMemberList(PREDICATE_SHOW_ALL_MEMBERS);
-            return new CommandResult(String.format(MESSAGE_SUCCESS, "Id: " + editedMember.getId()
-                    + "; Name: " + editedMember.getName()
-                    + "; Transaction: " + " [" + transactionToAdd + "]"));
-        } else {
+        if (memberToEdit == null) {
             throw new CommandException(Messages.MESSAGE_INVALID_MEMBER_DISPLAYED_ID);
         }
+        Member editedMember = createEditedMember(memberToEdit, transactionToAdd);
+        model.setMember(memberToEdit, editedMember);
+        model.updateFilteredMemberList(PREDICATE_SHOW_ALL_MEMBERS);
+        return new CommandResult(String.format(MESSAGE_SUCCESS, "Id: " + editedMember.getId()
+                + "; Name: " + editedMember.getName()
+                + "; Transaction: " + "[" + transactionToAdd + "]"));
     }
     /**
-     * Creates and returns a {@code Member} with the details of {@code memberToEdit}
+     * Creates and returns a {@code Member} with the details of {@code memberToEdit} and {@code transactionToAdd}
      */
-    private static Member createUpdatedCreditAndPointsMember(Member memberToEdit, Transaction transaction) {
+    private static Member createEditedMember(Member memberToEdit, Transaction transactionToAdd) {
         assert memberToEdit != null;
+        assert transactionToAdd != null;
 
         seedu.address.model.member.Id id = memberToEdit.getId();
         Name updatedName = memberToEdit.getName();
@@ -90,7 +90,7 @@ public class AddTransactionCommand extends AddCommand {
         List<Reservation> reservations = memberToEdit.getReservations();
         Set<Tag> updatedTags = memberToEdit.getTags();
         List<Transaction> updatedTransactions = new ArrayList<>(transactions);
-        updatedTransactions.add(transaction);
+        updatedTransactions.add(transactionToAdd);
         Credit updatedCredit = new Credit("" + Math.min(updatedTransactions.stream()
                 .mapToInt(t -> (int) t.getBilling().getDoubleValue()).sum(), Credit.MAX));
         Point updatePoint = new Point(String.valueOf(updatedCredit.getIntValue()

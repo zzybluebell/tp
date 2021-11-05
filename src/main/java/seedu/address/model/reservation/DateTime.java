@@ -3,6 +3,7 @@ package seedu.address.model.reservation;
 import static java.util.Objects.requireNonNull;
 import static seedu.address.commons.util.AppUtil.checkArgument;
 
+import java.time.LocalDateTime;
 import java.time.format.DateTimeParseException;
 
 import seedu.address.commons.util.DateTimeUtil;
@@ -39,6 +40,13 @@ public class DateTime {
         } catch (DateTimeParseException e) {
             return false;
         }
+    }
+
+    /**
+     * Returns LocalDateTime value of date time.
+     */
+    public LocalDateTime getLocalDateTimeValue() {
+        return DateTimeUtil.parseDateTime(value);
     }
 
     @Override

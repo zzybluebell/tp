@@ -49,6 +49,8 @@ public class AddReservationCommand extends AddCommand {
 
     public static final String MESSAGE_SUCCESS = "New reservation added: %1$s";
     public static final String MESSAGE_FULL = "Reservation ID has reached " + seedu.address.model.reservation.Id.MAX;
+    public static final String MESSAGE_SAME_DATE = "Only one reservation can be added within the same day."
+            + "Previous reservation: %1$s";
 
     private final Reservation reservationToAdd;
     private final seedu.address.model.member.Id idToAdd;
@@ -68,23 +70,31 @@ public class AddReservationCommand extends AddCommand {
         List<Member> lastShownList = model.getUpdatedMemberList();
         Member memberToEdit = lastShownList.stream()
                 .filter(member -> idToAdd.equals(member.getId())).findAny().orElse(null);
-        if (memberToEdit != null) {
-            Member editedMember = createUpdatedReservations(memberToEdit, reservationToAdd);
+        if (memberToEdit == null) {
+            throw new CommandException(Messages.MESSAGE_INVALID_MEMBER_DISPLAYED_ID);
+        }
+        if (!Reservation.isValidDateTime(reservationToAdd.getDateTime())) {
+            throw new CommandException(Reservation.MESSAGE_CONSTRAINTS);
+        }
+        Reservation reservationSameDate = memberToEdit.getReservations().stream()
+                .filter(reservation -> reservation.isSameDate(reservationToAdd)).findAny().orElse(null);
+        if (reservationSameDate == null) {
+            Member editedMember = createEditedMember(memberToEdit, reservationToAdd);
             model.setMember(memberToEdit, editedMember);
             model.updateFilteredMemberList(PREDICATE_SHOW_ALL_MEMBERS);
             return new CommandResult(String.format(MESSAGE_SUCCESS, "Id: " + editedMember.getId()
                     + "; Name: " + editedMember.getName()
-                    + "; Reservation: " + " [" + reservationToAdd + "]"));
-        } else {
-            throw new CommandException(Messages.MESSAGE_INVALID_MEMBER_DISPLAYED_ID);
+                    + "; Reservation: " + "[" + reservationToAdd + "]"));
         }
+        throw new CommandException(String.format(MESSAGE_SAME_DATE, reservationSameDate));
     }
 
     /**
-     * Creates and returns a {@code Member} with the details of {@code memberToEdit}
+     * Creates and returns a {@code Member} with the details of {@code memberToEdit} and {@code reservationToAdd}
      */
-    private static Member createUpdatedReservations(Member memberToEdit, Reservation reservation) {
+    private static Member createEditedMember(Member memberToEdit, Reservation reservationToAdd) {
         assert memberToEdit != null;
+        assert reservationToAdd != null;
 
         seedu.address.model.member.Id id = memberToEdit.getId();
         Name name = memberToEdit.getName();
@@ -99,7 +109,7 @@ public class AddReservationCommand extends AddCommand {
         Set<Tag> tags = memberToEdit.getTags();
 
         List<Reservation> updatedReservations = new ArrayList<>(reservations);
-        updatedReservations.add(reservation);
+        updatedReservations.add(reservationToAdd);
 
         return new Member(id, name, phone, email, address, timestamp, credit, point,
                 transactions, updatedReservations, tags);

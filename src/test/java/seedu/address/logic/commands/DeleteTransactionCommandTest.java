@@ -49,7 +49,7 @@ public class DeleteTransactionCommandTest {
         expectedModel.setMember(memberToEdit, expectedMember);
         String expectedMessage = String.format(DeleteTransactionCommand.MESSAGE_SUCCESS, "Id: " + expectedMember.getId()
                 + "; Name: " + expectedMember.getName()
-                + "; Transaction: " + " [" + transactionToDelete + "]");
+                + "; Transaction: " + "[" + transactionToDelete + "]");
 
         assertCommandSuccess(deleteCommand, model, expectedMessage, expectedModel);
     }
