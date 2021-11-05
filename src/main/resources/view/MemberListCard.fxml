@@ -47,6 +47,10 @@
         <Label styleClass="cell_small_label, cell_small_label_width" text="Point: " />
         <Label fx:id="point" styleClass="cell_small_label" text="\$point" />
       </HBox>
+      <HBox alignment="CENTER_LEFT">
+        <Label styleClass="cell_small_label, cell_small_label_width" text="Coming: " />
+        <Label fx:id="reservation" styleClass="cell_small_label" text="\$reservation" />
+      </HBox>
     </VBox>
   </GridPane>
 </HBox>

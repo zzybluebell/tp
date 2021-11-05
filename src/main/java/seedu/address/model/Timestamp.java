@@ -50,6 +50,13 @@ public class Timestamp {
     }
 
     /**
+     * Returns long value of timestamp.
+     */
+    public Long getLongValue() {
+        return Long.parseLong(value);
+    }
+
+    /**
      * Overrides the toString method.
      *
      * @return String of the timestamp value.
