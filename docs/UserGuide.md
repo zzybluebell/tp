@@ -6,7 +6,7 @@ title: User Guide
 <div align="center"><img height="200" alt="ezFoodie Logo" src="images/Logo.png"></div>
 
 * Table of Contents
-  {:toc}
+{:toc}
 
 --------------------------------------------------------------------------------------------------------------------
 
@@ -54,7 +54,7 @@ Continue reading to explore the wonders of ezFoodie and enhance the way you mana
 
    * `add -rs/ -dt/ 2021-01-02 00:00 -rm/ 2 people -id/ 10001` : add a reservation for 2 people for 2021-01-01 00:00 to member ID 10001 shown in the current list 
 
-   * `redeem -f/ 100 -id/ 10006` : redeem 100 points from member id 10006 shown in the current list.
+   * `redeem -rd/ 100 -id/ 10006` : redeem 100 points from member id 10006 shown in the current list.
 
    * `summary` : View a summary of all the data in the application in one page (**e.g.** No. of members, Past transactions).
      
@@ -370,17 +370,17 @@ Example: `sort -mem/ -c/ -d/`
 #### 18.1. Redeeming point from a member: `redeem -f/ -id/`
 Redeems point from a member by id.
 
-Format: `redeem -f/ <POINTS> -id/ <MEMBER_ID>`
+Format: `redeem -rd/ <POINTS> -id/ <MEMBER_ID>`
 
-Example: `redeem -f/ 100 -id/ 10006`
+Example: `redeem -rd/ 100 -id/ 10006`
 
 #### 18.2. Redeeming point from a member by an index: `redeem -f/ -i/`
 
 Redeems point from a member by an index.
 
-Format: `redeem -f/ <point> -i/ <INDEX>`
+Format: `redeem -rd/ <point> -i/ <INDEX>`
 
-Example: `redeem -f/ 100 -i/ 1`
+Example: `redeem -rd/ 100 -i/ 1`
 
 ### 19. Summary: `summary`
 
@@ -451,7 +451,7 @@ Action | Format, Examples
 **Edit Reservation** | *Format* <br> `edit -rs/ -id/ <MEMBER_ID + RESERVATION_ID> [-dt/ <DATE_TIME>][-rm/ <REMARK>]` <br> *Example* <br> `edit -rs/ -id/ 10001100001 -dt/ 2021-12-01 13:00 -rm/ 3 people`
 **Sort Members by Credit in Ascending Order** | *Format* <br> `sort -mem/ -c/ -a/` <br> *Example* <br> `sort -mem/ -c/ -a/`
 **Sort Members by Credit in Descending Order** | *Format* <br> `sort -mem/ -c/ -d/` <br> *Example* <br> `sort -mem/ -c/ -d/`
-**Redeem Point from Member by Member Id** | *Format* <br> `redeem -f/ <POINTS> -id/ <MEMBER_ID>` <br> *Example* <br> `redeem -f/ 100 -id/ 10006`
-**Redeem Point from Member by Member Index** | *Format* <br> `redeem -f/ <point> -i/ <INDEX>` <br> *Example* <br> `redeem -f/ 100 -i/ 1`
+**Redeem Point from Member by Member Id** | *Format* <br> `redeem -rd/ <POINTS> -id/ <MEMBER_ID>` <br> *Example* <br> `redeem -rd/ 100 -id/ 10006`
+**Redeem Point from Member by Member Index** | *Format* <br> `redeem -rd/ <point> -i/ <INDEX>` <br> *Example* <br> `redeem -rd/ 100 -i/ 1`
 **Summary** | *Format* <br> `summary` <br> **NOTE**: Only managers are allowed to view summary. Login as manager before entering command.
 **Clear Program** | `clear`
