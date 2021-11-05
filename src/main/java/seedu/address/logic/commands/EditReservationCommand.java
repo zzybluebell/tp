@@ -67,7 +67,7 @@ public class EditReservationCommand extends EditCommand {
      * Stands for message of reservation has not been edited.
      */
     public static final String MESSAGE_NOT_EDITED = "At least one field to edit must be provided.";
-  
+    
     /**
      * Stands for message of the edited message has the same date.
      */
