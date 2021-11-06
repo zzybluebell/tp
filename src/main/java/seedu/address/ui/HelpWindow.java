@@ -7,15 +7,24 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.input.Clipboard;
 import javafx.scene.input.ClipboardContent;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import javafx.stage.Stage;
 import seedu.address.commons.core.LogsCenter;
 
 /**
- * Controller for a help page
+ * Represents for Controlling a help page.
  */
 public class HelpWindow extends UiPart<Stage> {
+    /**
+     * Stands for help window URL to tP web page.
+     */
     public static final String OFFICIAL_URL =
             "https://ay2122s1-cs2103t-f12-4.github.io/tp/";
+
+    /**
+     * Stands for help command message.
+     */
     public static final String HELP_MESSAGE = "Features:\n"
             + "Login: login ******"
             + "logout"
@@ -48,17 +57,24 @@ public class HelpWindow extends UiPart<Stage> {
     private Label helpMessage;
 
     /**
-     * Creates a new HelpWindow.
+     * Constructs a new {@code HelpWindow}.
      *
      * @param root Stage to use as the root of the HelpWindow.
      */
     public HelpWindow(Stage root) {
         super(FXML, root);
         helpMessage.setText(HELP_MESSAGE);
+        getRoot().addEventFilter(KeyEvent.KEY_PRESSED, event -> {
+            System.out.println(event.getCode());
+            if (event.getCode() == KeyCode.ESCAPE) {
+                Stage stage = (Stage) getRoot().getScene().getWindow();
+                stage.close();
+            }
+        });
     }
 
     /**
-     * Creates a new HelpWindow.
+     * Constructs a new {@code HelpWindow}.
      */
     public HelpWindow() {
         this(new Stage());
@@ -66,7 +82,8 @@ public class HelpWindow extends UiPart<Stage> {
 
     /**
      * Shows the help window.
-     * @throws IllegalStateException
+     *
+     * @throws IllegalStateException if the user input does not conform the expected format.
      * <ul>
      *     <li>
      *         if this method is called on a thread other than the JavaFX Application Thread.

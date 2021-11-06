@@ -23,9 +23,7 @@ import seedu.address.logic.parser.exceptions.ParseException;
  * a menu bar and space where other JavaFX elements can be placed.
  */
 public class MainWindow extends UiPart<Stage> {
-
     private static final String FXML = "MainWindow.fxml";
-
     private final Logger logger = LogsCenter.getLogger(getClass());
 
     private Stage primaryStage;
@@ -45,16 +43,19 @@ public class MainWindow extends UiPart<Stage> {
     private MenuItem helpMenuItem;
 
     @FXML
+    private MenuItem summaryMenuItem;
+
+    @FXML
     private StackPane memberListPanelPlaceholder;
 
     @FXML
     private StackPane resultDisplayPlaceholder;
 
     @FXML
-    private StackPane statusbarPlaceholder;
+    private StackPane statusBarPlaceholder;
 
     /**
-     * Creates a {@code MainWindow} with the given {@code Stage} and {@code Logic}.
+     * Constructs a {@code MainWindow} with the given {@code Stage} and {@code Logic}.
      */
     public MainWindow(Stage primaryStage, Logic logic) {
         super(FXML, primaryStage);
@@ -73,18 +74,24 @@ public class MainWindow extends UiPart<Stage> {
         summaryWindow = new SummaryWindow(logic);
     }
 
+    /**
+     * Gets primary stage.
+     *
+     * @return Stage for the primary stage.
+     */
     public Stage getPrimaryStage() {
         return primaryStage;
     }
 
     private void setAccelerators() {
         setAccelerator(helpMenuItem, KeyCombination.valueOf("F1"));
+        setAccelerator(summaryMenuItem, KeyCombination.valueOf("F2"));
     }
 
     /**
      * Sets the accelerator of a MenuItem.
      *
-     * @param keyCombination the KeyCombination value of the accelerator
+     * @param keyCombination the KeyCombination value of the accelerator.
      */
     private void setAccelerator(MenuItem menuItem, KeyCombination keyCombination) {
         menuItem.setAccelerator(keyCombination);
@@ -123,7 +130,7 @@ public class MainWindow extends UiPart<Stage> {
         resultDisplayPlaceholder.getChildren().add(resultDisplay.getRoot());
 
         StatusBarFooter statusBarFooter = new StatusBarFooter(logic.getEzFoodieFilePath());
-        statusbarPlaceholder.getChildren().add(statusBarFooter.getRoot());
+        statusBarPlaceholder.getChildren().add(statusBarFooter.getRoot());
 
         CommandBox commandBox = new CommandBox(this::executeCommand);
         commandBoxPlaceholder.getChildren().add(commandBox.getRoot());
@@ -171,12 +178,8 @@ public class MainWindow extends UiPart<Stage> {
     @FXML
     public void handleSummary() {
         if (!summaryWindow.isShowing()) {
-            summaryWindow = new SummaryWindow(logic);
             summaryWindow.show();
         } else {
-            summaryWindow.hide();
-            summaryWindow = new SummaryWindow(logic);
-            summaryWindow.show();
             summaryWindow.focus();
         }
     }

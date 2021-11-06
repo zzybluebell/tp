@@ -24,7 +24,21 @@ Continue reading to explore the wonders of ezFoodie and enhance the way you mana
 
 --------------------------------------------------------------------------------------------------------------------
 
-## Quick start
+# Purpose
+
+This User Guide aims to:
+
+1. Help new users get familiar with ezFoodie.
+
+2. Provide a summary of all available commands in ezFoodie and their usages.
+
+3. Show detailed explanations of all commands and possible issues users may face.
+
+4. Frequently asked questions and answers.
+
+--------------------------------------------------------------------------------------------------------------------
+
+# Quick start
 
 1. Ensure you have Java `11` or above installed in your Computer from [here](https://www.oracle.com/java/technologies/downloads/).
 
@@ -34,6 +48,25 @@ Continue reading to explore the wonders of ezFoodie and enhance the way you mana
 
 4. Double-click the file to start the application. The GUI similar to the one shown below should appear in a few seconds. The application comes preloaded with sample data to test its features.<br>
    ![Ui](images/Ui.png)
+
+    Main window GUI includes the following member fields:
+   * Index number in the list
+   * Name
+   * Tier - *Bronze, Silver, Gold, etc.*
+     * *This is automatically calculated from a member's credit.*
+     * *Upgrade (e.g. Bronze -> Silver) is also automatically handled by ezFoodie.*
+   * Member ID
+   * Phone number
+   * Email address
+   * Credit
+     * *Credit refers to the overall accumulated transaction amount of a member, 
+     starting from his registration date.*
+     * *Credit is forever increasing.*
+   * Point
+     * *The way point is accumulated is similar to credit.*
+     * *However, point can be redeemed as voucher/cash deduction to a member, and point will be deducted
+     accordingly with redemption.*
+   * Seat Booking Information
 
 5. Type the command in the command box and press Enter to execute it. e.g. typing **`help`** and pressing Enter will open the help window.<br>
    Some example commands you can try:
@@ -92,7 +125,7 @@ Continue reading to explore the wonders of ezFoodie and enhance the way you mana
 
     * `-id/`: member ID or transaction ID
 
-    * `-i/`: index number of the member list
+    * `-i/`: index number of a member in member list
 
     * `-mem/`: member
 
@@ -206,8 +239,10 @@ Example: `del -mem/ -i/1`
 
 Finds members by different fields which contain any of the given keywords, show top 50 records by default.
 
-* The find is case-insensitive. e.g `hans` will match `Hans`
-* Only full words will be matched e.g. `Han` will not match `Hans`
+* The find is case-insensitive. e.g `hans` will match `Hans`.
+* Only full words will be matched e.g. `Han` will not match `Hans`. 
+
+**Note :** No member will be listed when an invalid member field is entered.
 
 #### 8.1. Finding member by member ID
 
@@ -243,13 +278,19 @@ Example: `find -mem/ -d/2021-01-02`
 
 Views member from member list by member ID.
 
-Format: `show -mem/ -id/<MEMBER_ID>`
+**Note :** No member details will be shown when an invalid member ID is entered.
+
+Format: `show -mem/ -id/ <MEMBER_ID>`
 
 Example: `show -mem/ -id/10001`
 
 ### 10. Editing a member : `edit -mem/`
 
 Edits different fields in a member's profile, where the member is specified by member ID.
+
+**Note :** #10 only deals with editing member details.
+If a member's transactions need to be edited, refer to #13 below. 
+Do not mix `-mem/`and `-txn/` in one `edit` command.
 
 #### 10.1. Editing member name by member ID
 
@@ -307,9 +348,11 @@ Format: `add -txn/ -id/<MEMBER_ID> -b/<BILLING>`
 
 Example: `add -txn/ -id/10001 -b/200.00`
 
+**Note :** Transaction date and time is automatically assigned by local date and time when a tranasction is added.
+
 ### 12. Deleting transaction for members: `del -txn/`
 
-Delete a transaction
+Deletes a transaction.
 
 **NOTE**: Only managers are allowed to delete transactions. Login as manager before entering command.
 
@@ -319,15 +362,17 @@ Example: `del -txn/ -id/10001100001`
 
 ### 13. Editing transaction of a member: `edit -txn/`
 
-Edit a members transaction
+Edits a member's transaction.
 
 Format: `edit -txn/ -id/<MEMBER_ID + TRANSACTION_ID> -b/ <BILL_AMMOUNT>`
 
 Example: `edit -txn/ -id/10001100002 -b/ 10.00`
 
+**Note :** Transaction date and time cannot be modified once a transaction is added.
+
 ### 14. Adding a reservation: `add -rs/`
 
-Add a reservation to a member
+Adds a reservation to a member.
 
 Format: `add -rs/ -dt/<yyyy-MM-dd HH:mm> -rm/ <REMARK> -id/ <MEMBER_ID>`
 
@@ -335,7 +380,7 @@ Example: `add -rs/ -dt/2021-01-02 00:00 -rm/2 people -id/10001`
 
 ### 15. Deleting a reservation: `del -rs/`
 
-Deletes a reservation from a members reservation list
+Deletes a reservation from a member's reservation list.
 
 **NOTE**: Only managers are allowed to delete reservations. Login as manager before entering command.
 
@@ -345,7 +390,7 @@ Example: `del -rs/ -id/10001100001`
 
 ### 16. Editing a reservation: `edit -rs/`
 
-Edit a members reservation details
+Edits a member's reservation details.
 
 Format: `edit -rs/ -id/<MEMBER_ID + RESERVATION_ID> [-dt/ <DATE_TIME>][-rm/ <REMARK>]`
 
@@ -367,16 +412,16 @@ Example: `sort -mem/ -c/ -d/`
 
 ### 18. Redeeming point `redeem -rd/`
 
-#### 18.1. Redeeming point from a member: `redeem -f/ -id/`
-Redeems point from a member by id.
+#### 18.1. Redeeming point for a member by member id: `redeem -f/ -id/`
+Redeems point for a member, who is identified by his member id.
 
 Format: `redeem -rd/<POINTS> -id/<MEMBER_ID>`
 
 Example: `redeem -rd/100 -id/10006`
 
-#### 18.2. Redeeming point from a member by an index: `redeem -f/ -i/`
+#### 18.2. Redeeming point for a member by index: `redeem -f/ -i/`
 
-Redeems point from a member by an index.
+Redeems point for a member, who is identified by his index in the member list.
 
 Format: `redeem -rd/<point> -i/<INDEX>`
 
@@ -384,28 +429,30 @@ Example: `redeem -rd/100 -i/1`
 
 ### 19. Summary: `summary`
 
-View a summary of all the data in the application
+Views the summary of stored data in ezFoodie.
 
 **NOTE**: Only managers are allowed to view summary. Login as manager before entering command.
 
 Format: `summary`
 
-### 20. Clearing the program : `clear`
+### 20. Clearing ezFoodie data : `clear`
 
-Clears the program.
+Clears all data stored in ezFoodie. Use with Caution!
 
 Format: `clear`
 
+**NOTE**:Only managers are allowed to clear.
+
 ### 21. Saving the data
 
-ezFoodie data are saved in the hard disk by JSON automatically after any command that changes the data. There is no need to save manually.
+ezFoodie data are saved in a JSON file in hard disk automatically after any command that changes the data. There is no need to save manually.
 
 ### 22. Editing the data file
 
-ezFoodie data are saved as a JSON file `[JAR file location]/data/ezFoodie.json`. Advanced users are welcome to update data directly by editing that data file.
+ezFoodie data are located at `[JAR file location]/data/ezFoodie.json`. Advanced users are welcome to update data directly by editing the data file.
 
 <div markdown="span" class="alert alert-warning">:exclamation: **Caution:**
-If your changes to the data file makes its format invalid, ezFoodie will discard all data and start with an empty data file at the next run.
+If any changes to the JSON file make it invalid, ezFoodie will discard all data and restart with an empty data file at the next run.
 </div>
 
 --------------------------------------------------------------------------------------------------------------------
@@ -413,7 +460,10 @@ If your changes to the data file makes its format invalid, ezFoodie will discard
 ## FAQ
 
 **Q**: How do I transfer my data to another Computer?<br>
-**A**: Install the application in the other computer and overwrite the empty data file it creates with the file that contains the data of your previous AddressBook home folder.
+**A**: Install the application in the other computer and overwrite the empty data file it creates with the file that contains the data of your previous ezFoodie home folder.
+
+**Q**: Why my ezFoodie does not have any populated sample member data?<br>
+**A**: Delete `ezFoodie.json` and restart the application. Refer to #22 in *Features* above to find this JSON file.
 
 --------------------------------------------------------------------------------------------------------------------
 
@@ -454,4 +504,4 @@ Action | Format, Examples
 **Redeem Point from Member by Member Id** | *Format* <br> `redeem -rd/<POINTS> -id/<MEMBER_ID>` <br> *Example* <br> `redeem -rd/100 -id/10006`
 **Redeem Point from Member by Member Index** | *Format* <br> `redeem -rd/<point> -i/<INDEX>` <br> *Example* <br> `redeem -rd/100 -i/1`
 **Summary** | *Format* <br> `summary` <br> **NOTE**: Only managers are allowed to view summary. Login as manager before entering command.
-**Clear Program** | `clear`
+**Clear ezFoodie Data** | `clear`

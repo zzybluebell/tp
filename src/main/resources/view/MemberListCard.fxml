@@ -3,7 +3,6 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.ColumnConstraints?>
-<?import javafx.scene.layout.FlowPane?>
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Region?>
@@ -25,19 +24,33 @@
             <Region fx:constant="USE_PREF_SIZE" />
           </minWidth>
         </Label>
-        <Label fx:id="id" text="\$id" styleClass="cell_big_label" />
         <Label fx:id="name" text="\$name" styleClass="cell_big_label" />
         <Label fx:id="tier" text="\$tier" styleClass="cell_big_label" />
       </HBox>
-      <Label fx:id="phone" styleClass="cell_small_label" text="\$phone" />
-      <Label fx:id="email" styleClass="cell_small_label" text="\$email" />
-      <Label fx:id="address" styleClass="cell_small_label" text="\$address" />
-      <Label fx:id="registrationTime" styleClass="cell_small_label" text="\$registrationTime" />
-      <Label fx:id="credit" styleClass="cell_small_label" text="\$credit" />
-      <Label fx:id="point" styleClass="cell_small_label" text="\$point" />
-      <FlowPane fx:id="transactions" />
-      <FlowPane fx:id="reservations" />
-      <FlowPane fx:id="tags" />
+      <HBox alignment="CENTER_LEFT">
+        <Label styleClass="cell_small_label, cell_label_width_80" text="ID: " />
+        <Label fx:id="id" styleClass="cell_small_label" text="\$id" />
+      </HBox>
+      <HBox alignment="CENTER_LEFT">
+        <Label styleClass="cell_small_label, cell_label_width_80" text="Phone: " />
+        <Label fx:id="phone" styleClass="cell_small_label" text="\$phone" />
+      </HBox>
+      <HBox alignment="CENTER_LEFT">
+        <Label styleClass="cell_small_label, cell_label_width_80" text="Email: " />
+        <Label fx:id="email" styleClass="cell_small_label" text="\$email" />
+      </HBox>
+      <HBox alignment="CENTER_LEFT">
+        <Label styleClass="cell_small_label, cell_label_width_80" text="Credit: " />
+        <Label fx:id="credit" styleClass="cell_small_label" text="\$credit" />
+      </HBox>
+      <HBox alignment="CENTER_LEFT">
+        <Label styleClass="cell_small_label, cell_label_width_80" text="Point: " />
+        <Label fx:id="point" styleClass="cell_small_label" text="\$point" />
+      </HBox>
+      <HBox alignment="CENTER_LEFT">
+        <Label styleClass="cell_small_label, cell_label_width_80" text="Coming: " />
+        <Label fx:id="reservation" styleClass="cell_small_label" text="\$reservation" />
+      </HBox>
     </VBox>
   </GridPane>
 </HBox>

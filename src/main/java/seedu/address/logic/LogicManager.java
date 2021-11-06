@@ -2,7 +2,6 @@ package seedu.address.logic;
 
 import java.io.IOException;
 import java.nio.file.Path;
-import java.util.HashMap;
 import java.util.logging.Logger;
 
 import javafx.collections.ObservableList;
@@ -21,7 +20,7 @@ import seedu.address.model.member.Member;
 import seedu.address.storage.Storage;
 
 /**
- * The main LogicManager of the app.
+ * The main LogicManager of the application.
  */
 public class LogicManager implements Logic {
     public static final String FILE_OPS_ERROR_MESSAGE = "Could not save data to file: ";
@@ -49,6 +48,15 @@ public class LogicManager implements Logic {
         ezFoodieParser = new EzFoodieParser(model, executionStatus);
     }
 
+    /**
+     * Executes with given string of command text.
+     *
+     * @param commandText The command as entered by the user.
+     * @return {@code CommandResult} related to logic Manager.
+     * @throws CommandException if the user input does not conform the expected format.
+     * @throws ParseException if the user input does not conform the expected format.
+     * @throws PermissionException if the user input does not conform the expected format.
+     */
     @Override
     public CommandResult execute(String commandText) throws CommandException, ParseException, PermissionException {
         logger.info("----------------[USER COMMAND][" + commandText + "]");
@@ -67,81 +75,49 @@ public class LogicManager implements Logic {
         return commandResult;
     }
 
+    /**
+     * Gets EzFoodie.
+     */
     @Override
     public ReadOnlyEzFoodie getEzFoodie() {
         return model.getEzFoodie();
     }
 
+    /**
+     * Gets updated member list.
+     */
     @Override
     public ObservableList<Member> getUpdatedMemberList() {
         return model.getUpdatedMemberList();
     }
 
+    /**
+     * Gets updated member list for view.
+     */
     @Override
     public ObservableList<Member> getUpdatedMemberListForView () {
         return model.getUpdatedMemberListForView();
     }
 
-    @Override
-    public int getNumberOfMembers() {
-        return model.getNumberOfMembers();
-    }
-
-    @Override
-    public HashMap<String, Integer> getNumberOfMembersByTiers() {
-        return model.getNumberOfMembersByTiers();
-    }
-
-    @Override
-    public int getNumberOfTransactions() {
-        return model.getNumberOfTransactions();
-    }
-
-    @Override
-    public int getNumberOfTransactionsPastMonth() {
-        return model.getNumberOfTransactionsPastMonth();
-    }
-
-    @Override
-    public int getNumberOfTransactionsPastThreeMonth() {
-        return model.getNumberOfTransactionsPastThreeMonth();
-    }
-
-    @Override
-    public int getNumberOfTransactionsPastSixMonths() {
-        return model.getNumberOfTransactionsPastSixMonth();
-    }
-
-    @Override
-    public double getTotalAmountOfTransactions() {
-        return model.getTotalAmountOfTransactions();
-    }
-
-    @Override
-    public double getTotalAmountOfTransactionsPastMonth() {
-        return model.getTotalAmountOfTransactionsPastMonth();
-    }
-
-    @Override
-    public double getTotalAmountOfTransactionsPastThreeMonth() {
-        return model.getTotalAmountOfTransactionsPastThreeMonth();
-    }
-
-    @Override
-    public double getTotalAmountOfTransactionsPastSixMonth() {
-        return model.getTotalAmountOfTransactionsPastSixMonth();
-    }
-
+    /**
+     * Gets EzFoodie Path.
+     */
     @Override
     public Path getEzFoodieFilePath() {
         return model.getEzFoodieFilePath();
     }
 
+    /**
+     * Gets Gui Settings.
+     */
     @Override
     public GuiSettings getGuiSettings() {
         return model.getGuiSettings();
     }
 
+    /**
+     * Sets Gui settings.
+     */
     @Override
     public void setGuiSettings(GuiSettings guiSettings) {
         model.setGuiSettings(guiSettings);

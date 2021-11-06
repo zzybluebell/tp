@@ -39,6 +39,7 @@ You can reach us via email, as indicated below.
 <img src="images/zzybluebell.png" width="200px">
 
 [[github@zzybluebell](http://github.com/zzybluebell)]
+[[portfolio@zzybluebell](team/zzybluebell.md)]
 
 * Role: Developer
 * Responsibilities: Testing
