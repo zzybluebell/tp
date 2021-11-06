@@ -44,12 +44,12 @@ class AddReservationCommandParserTest {
 
         // whitespace only preamble
         assertParseSuccess(parser, PREAMBLE_WHITESPACE + RESERVATION_DESC + RESERVATION_DATE_TIME_DESC_200
-                + RESERVATION_REMARK_DESC_200 + ID_DESC_AMY,
+                        + RESERVATION_REMARK_DESC_200 + ID_DESC_AMY,
                 new AddReservationCommand(expectedReservation, expectedId));
 
         // multiple dateTimes - last dateTime accepted
         assertParseSuccess(parser, RESERVATION_DESC + RESERVATION_DATE_TIME_DESC_300
-                + RESERVATION_DATE_TIME_DESC_200 + RESERVATION_REMARK_DESC_200 + ID_DESC_AMY,
+                        + RESERVATION_DATE_TIME_DESC_200 + RESERVATION_REMARK_DESC_200 + ID_DESC_AMY,
                 new AddReservationCommand(expectedReservation, expectedId));
 
         // multiple remarks - last remark accepted
@@ -71,7 +71,7 @@ class AddReservationCommandParserTest {
     public void parse_invalidValue_failure() {
         // invalid dateTime
         assertParseFailure(parser, RESERVATION_DESC + INVALID_RESERVATION_DATE_TIME_DESC
-                + RESERVATION_REMARK_DESC_200 + ID_DESC_AMY,
+                        + RESERVATION_REMARK_DESC_200 + ID_DESC_AMY,
                 DateTime.MESSAGE_CONSTRAINTS);
 
         // invalid remark

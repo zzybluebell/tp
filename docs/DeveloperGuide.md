@@ -314,6 +314,55 @@ Given below is an example usage scenario and how the update point feature behave
 
 #### Design consideration
 
+### Add Reservation Feature
+
+`[written by: Raja Sudalaimuthu Mukund]`
+
+#### Implementation
+
+Given below is an example usage scenario and how the add reservation mechanism behaves at each step.
+
+1. The user executes `add -rs/ -dt/2021-01-01 00:00 -rm/2 people -id/10001` command to add a reservation for 2 people at
+    2021-01-01 00:00 hrs to member id 10001's reservation list.
+
+2. The command is handled by `LogicManager#execute(String)`, which then calls and passes this command to the 
+    `EzFoodieParser#parseCommand(String)` method.
+
+3. The EzFoodieParser detects the command word `add` in the string and extracts the argument string 
+    `-rs/ -dt/2021-01-01 00:00 -rm/2 people -id/10001`.
+
+4. The EzFoodieParser creates a new `AddCommandPrefixParser` instance to parse the argument string according to the 
+    format specified for `AddCommand` and calls `AddCommandPrefixParser#parse(arguments)`.
+
+5. `AddCommandPrefixParser#parse(arguments)` detects the prefix `-rs/` and creates a new instance of 
+    `AddReservationCommandParser` and calls `AddReservationCommandParser#parse(arguments)`.
+
+6. `AddReservationCommandParser#parse(arguments)` detects the prefixes `-dt/`, `-rm/` and `-id/` and parses them through 
+    `ParseUtil` to obtain the `dateTime`, `remark` and the `memberID`.
+
+7. Using the obtained `dateTime` and `remark`, a new instance of `Reservation` is created.
+
+8. Using the new instance of `Reservation` and the obtained `memberID`, a new instance of `AddReservationCommand` is created and returned to 
+    ezFoodieParser which in turn returns it to `LogicManager`.
+
+9. `LogicManager` calls the `AddReservationCommand#execute(Model)` method.
+
+10. The `AddReservationCommand` calls `Model#getUpdatedMemberList()` and searches the list to find the member with the respective
+    `memberID` to obtain `memberToEdit`.
+
+11. The `AddReservationCommand` calls `Model#createUpdatedReservations(memberToEdit, reservationToAdd)` to create a new 
+    instance of the same member but with the new reservation added to the member's reservation list.
+
+12. The `AddReservationCommand` calls `Model#setMember(memberToEdit, editedMember)` to replace the old instance of the member
+    with its new instance.
+
+13. The `AddReservationCommand` calls `Model#updateFilteredMemberList(PREDICATE_SHOW_ALL_MEMBERS)` to update the current
+    member list with the updated member list.
+
+14. The application lists the updated member list.
+
+15. Lastly, `AddReservationCommand` creates a new instance of `CommandResult` with a success message, and returns it to Logic Manager.
+
 ### \[Proposed\] Undo/redo feature
 
 #### Proposed Implementation
