@@ -152,15 +152,15 @@ public class RedeemCommand extends Command {
         assert memberToRedeemPoints != null;
 
         Id id = memberToRedeemPoints.getId();
-        Name updatedName = memberToRedeemPoints.getName();
-        Phone updatedPhone = memberToRedeemPoints.getPhone();
-        Email updatedEmail = memberToRedeemPoints.getEmail();
-        Address updatedAddress = memberToRedeemPoints.getAddress();
-        Timestamp updateTimestamp = memberToRedeemPoints.getTimestamp();
-        Set<Tag> updatedTags = memberToRedeemPoints.getTags();
-        List<Transaction> updatedTransactions = memberToRedeemPoints.getTransactions();
-        List<Reservation> updateReservations = memberToRedeemPoints.getReservations();
-        Credit updateCredit = memberToRedeemPoints.getCredit();
+        Name name = memberToRedeemPoints.getName();
+        Phone phone = memberToRedeemPoints.getPhone();
+        Email email = memberToRedeemPoints.getEmail();
+        Address address = memberToRedeemPoints.getAddress();
+        Timestamp timestamp = memberToRedeemPoints.getTimestamp();
+        Set<Tag> tags = memberToRedeemPoints.getTags();
+        List<Transaction> transactions = memberToRedeemPoints.getTransactions();
+        List<Reservation> reservations = memberToRedeemPoints.getReservations();
+        Credit credit = memberToRedeemPoints.getCredit();
         Point toRedeemPointsSum = new Point("" + Math.min(toRedeemPointsList.stream()
                 .mapToInt(pointToUpdate -> (int) pointToUpdate.getDoubleValue()).sum(), Point.MAX));
         int oldPoint = memberToRedeemPoints.getPoint().getIntValue();
@@ -169,7 +169,7 @@ public class RedeemCommand extends Command {
             throw new CommandException(MESSAGE_INVALID_POINTS_LESS_THAN_ZERO);
         }
         Point updatePoint = new Point(String.valueOf(oldPoint - toRedeemPoint));
-        return new Member(id, updatedName, updatedPhone, updatedEmail, updatedAddress, updateTimestamp, updateCredit,
-                updatePoint, updatedTransactions, updateReservations, updatedTags);
+        return new Member(id, name, phone, email, address, timestamp, credit,
+                updatePoint, transactions, reservations, tags);
     }
 }

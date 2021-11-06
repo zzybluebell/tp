@@ -72,7 +72,7 @@ public class DeleteMemberCommand extends DeleteCommand {
      *
      * @param model {@code Model} which the command should operate on.
      * @return CommandResult related delete member command.
-     * @throws CommandException
+     * @throws CommandException if the user input does not conform the expected format.
      */
     @Override
     public CommandResult execute(Model model) throws CommandException {
@@ -101,7 +101,7 @@ public class DeleteMemberCommand extends DeleteCommand {
     }
 
     /**
-     * Overrides equals method.
+     * Overrides the equals method.
      */
     @Override
     public boolean equals(Object other) {

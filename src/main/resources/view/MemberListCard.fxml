@@ -28,27 +28,27 @@
         <Label fx:id="tier" text="\$tier" styleClass="cell_big_label" />
       </HBox>
       <HBox alignment="CENTER_LEFT">
-        <Label styleClass="cell_small_label, cell_small_label_width" text="ID: " />
+        <Label styleClass="cell_small_label, cell_label_width_80" text="ID: " />
         <Label fx:id="id" styleClass="cell_small_label" text="\$id" />
       </HBox>
       <HBox alignment="CENTER_LEFT">
-        <Label styleClass="cell_small_label, cell_small_label_width" text="Phone: " />
+        <Label styleClass="cell_small_label, cell_label_width_80" text="Phone: " />
         <Label fx:id="phone" styleClass="cell_small_label" text="\$phone" />
       </HBox>
       <HBox alignment="CENTER_LEFT">
-        <Label styleClass="cell_small_label, cell_small_label_width" text="Email: " />
+        <Label styleClass="cell_small_label, cell_label_width_80" text="Email: " />
         <Label fx:id="email" styleClass="cell_small_label" text="\$email" />
       </HBox>
       <HBox alignment="CENTER_LEFT">
-        <Label styleClass="cell_small_label, cell_small_label_width" text="Credit: " />
+        <Label styleClass="cell_small_label, cell_label_width_80" text="Credit: " />
         <Label fx:id="credit" styleClass="cell_small_label" text="\$credit" />
       </HBox>
       <HBox alignment="CENTER_LEFT">
-        <Label styleClass="cell_small_label, cell_small_label_width" text="Point: " />
+        <Label styleClass="cell_small_label, cell_label_width_80" text="Point: " />
         <Label fx:id="point" styleClass="cell_small_label" text="\$point" />
       </HBox>
       <HBox alignment="CENTER_LEFT">
-        <Label styleClass="cell_small_label, cell_small_label_width" text="Coming: " />
+        <Label styleClass="cell_small_label, cell_label_width_80" text="Coming: " />
         <Label fx:id="reservation" styleClass="cell_small_label" text="\$reservation" />
       </HBox>
     </VBox>
