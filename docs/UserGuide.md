@@ -75,12 +75,7 @@ Continue reading to explore the wonders of ezFoodie and enhance the way you mana
 **:information_source: Notes about the command format:**<br>
 
 * Words in `UPPER_CASE` are the parameters to be supplied by the user.<br>
-  e.g. in `find -mem/-n/<NAME>`, `NAME` is a parameter which can be used as `find -mem -n/John Doe`.
-
-* Items in square brackets are optional.<br>
-  e.g `list -mem/[-pg <PAGE>]` can be used as `list -mem/-pg/1` or as `list -mem/`.
-
-* The `list` and `find` only show top 50 records by default. Pagination can be used `[-pg/<PAGE>]` as optional value to choose different pages.
+  e.g. in `find -mem/ -n/<NAME>`, `NAME` is a parameter which can be used as `find -mem/ -n/John Doe`.
 
 * If a parameter is expected only once in the command but you specified it multiple times, only the last occurrence of the parameter will be taken.<br>
   **e.g.** if you specify `-p/12341234 -p/56785678`, only `-p/56785678` will be taken.
