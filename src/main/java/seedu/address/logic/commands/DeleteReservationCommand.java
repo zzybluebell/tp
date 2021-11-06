@@ -73,7 +73,7 @@ public class DeleteReservationCommand extends DeleteCommand {
      * Creates and returns a {@code Member} with the details of {@code memberToEdit} and {@code reservationToDelete}
      *
      * @param memberToEdit the member to edit.
-     * @param reservation the reservation will to remove.
+     * @param reservationToDelete the reservation will to remove.
      * @return Member with updated reservation.
      */
     private static Member createEditedMember(Member memberToEdit, Reservation reservationToDelete) {
