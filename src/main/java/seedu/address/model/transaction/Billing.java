@@ -18,7 +18,7 @@ public class Billing {
      * Stands for message constraints of transaction billing.
      */
     public static final String MESSAGE_CONSTRAINTS =
-            "Billings should be positive numeric with 2 decimal places, and max amount is " + MAX;
+            "Billings should be non-negative numeric with 2 decimal places, and max amount is " + MAX;
 
     /**
      * Stands for trim leading zero regex.

@@ -70,7 +70,7 @@
       <Label styleClass="cell_small_label, cell_label_width_500"
              text="Total amount of transactions in past 6 months (including current month): " />
       <Label fx:id="totalAmountOfTransactionsInPast6Months" styleClass="cell_small_label"
-             text="\$totalAmountOfTransactionsInPast6Months"/>
+             text="\$totalAmountOfTransactionsInPast6Months" />
       <padding>
         <Insets bottom="10" />
       </padding>

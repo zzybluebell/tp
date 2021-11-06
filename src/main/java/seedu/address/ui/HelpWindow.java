@@ -7,6 +7,8 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.input.Clipboard;
 import javafx.scene.input.ClipboardContent;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import javafx.stage.Stage;
 import seedu.address.commons.core.LogsCenter;
 
@@ -25,11 +27,11 @@ public class HelpWindow extends UiPart<Stage> {
      */
     public static final String HELP_MESSAGE = "Features:\n"
             + "Add member: add -mem -n <NAME> -p <PHONE> -e <EMAIL> -a <ADDRESS>\n"
-            + "Search by name: find -mem -n <NAME>\n"
-            + "Search by phone: find -mem -p <PHONE>\n"
-            + "Search by email: find -mem -e <EMAIL>\n"
-            + "Search by registration date: find -mem -d <REGISTRATION_DATE>\n"
-            + "Search by member ID: find -mem -id <MEMBER_ID>\n"
+            + "Find by name: find -mem -n <NAME>\n"
+            + "Find by phone: find -mem -p <PHONE>\n"
+            + "Find by email: find -mem -e <EMAIL>\n"
+            + "Find by registration date: find -mem -d <REGISTRATION_DATE>\n"
+            + "Find by member ID: find -mem -id <MEMBER_ID>\n"
             + "Adding transaction: add -txn -b <BILLING> -id <MEMBER_ID>\n"
             + "View member: show -mem -id <MEMBER_ID>\n"
             + "Delete member: del -mem -id <MEMBER_ID>\n"
@@ -56,6 +58,13 @@ public class HelpWindow extends UiPart<Stage> {
     public HelpWindow(Stage root) {
         super(FXML, root);
         helpMessage.setText(HELP_MESSAGE);
+        getRoot().addEventFilter(KeyEvent.KEY_PRESSED, event -> {
+            System.out.println(event.getCode());
+            if (event.getCode() == KeyCode.ESCAPE) {
+                Stage stage = (Stage) getRoot().getScene().getWindow();
+                stage.close();
+            }
+        });
     }
 
     /**

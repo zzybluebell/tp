@@ -84,7 +84,8 @@ public class EditMemberCommand extends EditCommand {
     /**
      * Stands for message of duplicate message.
      */
-    public static final String MESSAGE_DUPLICATE_MEMBER = "This member already exists in the ezFoodie.";
+    public static final String MESSAGE_DUPLICATE_MEMBER =
+            "This member (phone or email) already exists in the ezFoodie.";
 
     private final Index index;
     private final Id id;
