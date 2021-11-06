@@ -81,7 +81,7 @@ This User Guide aims to:
 
    * `del -mem/ -i/3` : Deletes the member with index number 3 shown in the current list.
      
-      **NOTE**: Only managers can delete members. Login as a manager before entering the delete command.
+      **Note:**: Only managers can delete members. Login as a manager before entering the delete command.
 
    * `add -txn/ -id/10001 -b/200.00` : add transaction with a bill $100.00 to member ID 10001 shown in the current list.
 
@@ -91,7 +91,7 @@ This User Guide aims to:
 
    * `summary` : View a summary of all the data in the application in one page (**e.g.** No. of members, Past transactions).
      
-      **NOTE**: Only managers are allowed to view the summary of data. Login as a manager before entering the summary command.
+      **Note:**: Only managers are allowed to view the summary of data. Login as a manager before entering the summary command.
       
    * `clear` : Clears the program.
 
@@ -108,12 +108,7 @@ This User Guide aims to:
 **:information_source: Notes about the command format:**<br>
 
 * Words in `UPPER_CASE` are the parameters to be supplied by the user.<br>
-  e.g. in `find -mem/-n/<NAME>`, `NAME` is a parameter which can be used as `find -mem -n/John Doe`.
-
-* Items in square brackets are optional.<br>
-  e.g `list -mem/[-pg <PAGE>]` can be used as `list -mem/-pg/1` or as `list -mem/`.
-
-* The `list` and `find` only show top 50 records by default. Pagination can be used `[-pg/<PAGE>]` as optional value to choose different pages.
+  e.g. in `find -mem/ -n/<NAME>`, `NAME` is a parameter which can be used as `find -mem/ -n/John Doe`.
 
 * If a parameter is expected only once in the command but you specified it multiple times, only the last occurrence of the parameter will be taken.<br>
   **e.g.** if you specify `-p/12341234 -p/56785678`, only `-p/56785678` will be taken.
@@ -213,11 +208,19 @@ Format: `add -mem/ -n/<NAME> -p/<PHONE> -e/<EMAIL> -a/<ADDRESS>`
 
 Example: `add -mem/ -n/John Doe -p/98765432 -e/johndoe@gmail.com -a/112 Amoy Street, 069907, Singapore`
 
+<div markdown="block" class="alert alert-info">
+
+**:information_source: Duplicate members: **<br>
+
+* ezFoodie will not allow adding members with the same **phone number** or **email address** as an existing member.
+
+</div>
+
 ### 7. Deleting a member : `del -mem/`
 
 Deletes a member from the member list
 
-**NOTE**: Only managers are allowed to delete transactions. Login as manager before entering command.
+**Note:**: Only managers are allowed to delete members. Login as manager before entering command.
 
 #### 7.1. Delete by ID
 
@@ -239,10 +242,10 @@ Example: `del -mem/ -i/1`
 
 Finds members by different fields which contain any of the given keywords, show top 50 records by default.
 
-* The find is case-insensitive. e.g `hans` will match `Hans`.
+* The find is case-insensitive. e.g. `hans` will match `Hans`.
 * Only full words will be matched e.g. `Han` will not match `Hans`. 
 
-**Note :** No member will be listed when an invalid member field is entered.
+**Note:** No member will be listed when an invalid member field is entered.
 
 #### 8.1. Finding member by member ID
 
@@ -278,7 +281,7 @@ Example: `find -mem/ -d/2021-01-02`
 
 Views member from member list by member ID.
 
-**Note :** No member details will be shown when an invalid member ID is entered.
+**Note:** No member details will be shown when an invalid member ID is entered.
 
 Format: `show -mem/ -id/ <MEMBER_ID>`
 
@@ -288,7 +291,7 @@ Example: `show -mem/ -id/10001`
 
 Edits different fields in a member's profile, where the member is specified by member ID.
 
-**Note :** #10 only deals with editing member details.
+**Note:** #10 only deals with editing member details.
 If a member's transactions need to be edited, refer to #13 below. 
 Do not mix `-mem/`and `-txn/` in one `edit` command.
 
@@ -344,17 +347,18 @@ Example: `edit -mem/ -i/1 -a/33 Benoi Crescent, 629979, Singapore`
 
 Adds transaction amount corresponding to member ID.
 
-Format: `add -txn/ -id/<MEMBER_ID> -b/<BILLING>`
+Format: `add -txn/ -id/<MEMBER_ID> -b/<BILL_AMOUNT>`
 
 Example: `add -txn/ -id/10001 -b/200.00`
 
-**Note :** Transaction date and time is automatically assigned by local date and time when a tranasction is added.
+**Note:** Transaction date and time is automatically assigned by local date and time when a transaction is added, 
+there is no need to manually enter the transaction date or time.
 
 ### 12. Deleting transaction for members: `del -txn/`
 
 Deletes a transaction.
 
-**NOTE**: Only managers are allowed to delete transactions. Login as manager before entering command.
+**Note:**: Only managers are allowed to delete transactions. Login as manager before entering command.
 
 Format: `del -txn/ -id/<MEMBER_ID + TRANSACTION_ID>`
 
@@ -368,7 +372,7 @@ Format: `edit -txn/ -id/<MEMBER_ID + TRANSACTION_ID> -b/ <BILL_AMMOUNT>`
 
 Example: `edit -txn/ -id/10001100002 -b/ 10.00`
 
-**Note :** Transaction date and time cannot be modified once a transaction is added.
+**Note:** Transaction date and time cannot be modified once a transaction is added.
 
 ### 14. Adding a reservation: `add -rs/`
 
@@ -382,7 +386,7 @@ Example: `add -rs/ -dt/2021-01-02 00:00 -rm/2 people -id/10001`
 
 Deletes a reservation from a member's reservation list.
 
-**NOTE**: Only managers are allowed to delete reservations. Login as manager before entering command.
+**Note:**: Only managers are allowed to delete reservations. Login as manager before entering command.
 
 Format: `del -rs/ -id/<MEMBER_ID + RESERVATION_ID>`
 
@@ -431,7 +435,7 @@ Example: `redeem -rd/100 -i/1`
 
 Views the summary of stored data in ezFoodie.
 
-**NOTE**: Only managers are allowed to view summary. Login as manager before entering command.
+**Note:**: Only managers are allowed to view summary. Login as manager before entering command.
 
 Format: `summary`
 
@@ -441,7 +445,7 @@ Clears all data stored in ezFoodie. Use with Caution!
 
 Format: `clear`
 
-**NOTE**:Only managers are allowed to clear.
+**Note:**:Only managers are allowed to clear.
 
 ### 21. Saving the data
 
@@ -469,39 +473,39 @@ If any changes to the JSON file make it invalid, ezFoodie will discard all data 
 
 ## Command summary
 
-Action | Format, Examples
---------|------------------
-**View Help** | `help`
-**Exit Program** | `exit`
-**Login as Manager** | *Format* <br> `login <PASSWORD>` <br> *Example* <br> `login 123456`
-**Logout as Manager** | `logout`
-**List Members** | *Format* <br> `list -mem/` <br> *Example* <br> `list -mem/`
-**Add New Member** | *Format* <br> `add -mem/ -n/<NAME> -p/<PHONE> -e/<EMAIL> -a/<ADDRESS>` <br> *Example* <br> `add -mem/ -n/John Doe -p/98765432 -e/johndoe@gmail.com -a/112 Amoy Street, 069907, Singapore`
-**Delete Member by Member ID** | *Format* <br> `del -mem/ -id/<MEMBER_ID>` <br> *Example* <br> `del -mem/ -id/ 10001` <br> **NOTE**: Only managers are allowed to delete members. Login as manager before entering command.
-**Delete Member by Index Number** | *Format* <br> `del -mem/ -i/<MEMBER_INDEX>` <br> *Example* <br> `del -mem/ -i/1` <br> **NOTE**: Only managers are allowed to delete members. Login as manager before entering command.
-**Find Member by Member ID** | *Format* <br> `find -mem/ -id/<MEMBER_ID>` <br> *Example* <br> `find -mem/ -id/10001`
-**Find Members by Name** | *Format* <br> `find -mem/ -n/<NAME>` <br> *Example* <br> `find -mem/ -n/John Doe`
-**Find Members by Phone** | *Format* <br> `find -mem/ -p/<PHONE>` <br> *Example* <br> `find -mem/ -p/98765432`
-**Find Members by Email** | *Format* <br> `find -mem/ -e/<EMAIL>` <br> *Example* <br> `find -mem/ -e/johndoe@gmail.com`
-**Find Members by Registration Date** | *Format* <br> `find -mem/ -d/<REGISTRATION_DATE yyyy-MM-dd>` <br> *Example* <br> `find -mem/ -d/2021-01-02`
-**View Member Profile** | *Format* <br> `show -mem/ -id/<MEMBER_ID>` <br> *Example* <br> `show -mem/ -id/10001`
-**Edit Member Name by Member ID** | *Format* <br> `edit -mem/ -id/<MEMBER_ID> -n/<NAME>` <br> *Example* <br> `edit -mem/ -id/10001 -n/John Doe`
-**Edit Member Phone by Member ID** | *Format* <br> `edit -mem/ -id/<MEMBER_ID> -p/<PHONE>` <br> *Example* <br> `edit -mem/ -id/10001 -p/98765432`
-**Edit Member Email by Member ID** | *Format* <br> `edit -mem/ -id/<MEMBER_ID> -e/<EMAIL>` <br> *Example* <br> `edit -mem/ -id/10001 -e/johndoe@gmail.com`
-**Edit Member Address by Member ID** | *Format* <br> `edit -mem/ -id/ <MEMBER_ID> -a/<ADDRESS>` <br> *Example* <br> `edit -mem/ -id/10001 -a/33 Benoi Crescent, 629979, Singapore`
-**Edit Member Name by Index Number** | *Format* <br> `edit -mem/ -i/<INDEX> -n/<NAME>` <br> *Example* <br> `edit -mem/ -i/1 -n/John Doe`
-**Edit Member Phone by Index Number** | *Format* <br> `edit -mem/ -i/<INDEX> -p/<PHONE>` <br> *Example* <br> `edit -mem/ -i/1 -p/98765432`
-**Edit Member Email by Index Number** | *Format* <br> `edit -mem/ -i/<INDEX> -e/<EMAIL>` <br> *Example* <br> `edit -mem/ -i/1 -e/johndoe@gmail.com`
-**Edit Member Address by Index Number** | *Format* <br> `edit -mem/ -i/<INDEX> -a/<ADDRESS>` <br> *Example* <br> `edit -mem/ -i/1 -a/33 Benoi Crescent, 629979, Singapore`
-**Add Transaction for Member** | *Format* <br> `add -txn/ -id/<MEMBER_ID> -b/<BILLING>` <br> *Example* <br> `add -txn/ -id/10001 -b/200.00`
-**Delete Transaction for Member** | *Format* <br> `del -txn/ -id/<MEMBER_ID + TRANSACTION_ID>` <br> *Example* <br> `del -txn/ -id/10001100001` <br> **NOTE**: Only managers are allowed to delete transactions. Login as manager before entering command.
-**Edit Transaction** | *Format* <br> `edit -txn/ -id/<MEMBER_ID + TRANSACTION_ID> -b/<BILL_AMMOUNT>` <br> *Example* <br> `edit -txn/ -id/10001100002 -b/10.00`
-**Add Reservation** | *Format* <br> `add -rs/ -dt/<DATE_TIME yyyy-MM-dd HH:mm> -rm/ <REMARK> -id/<MEMBER_ID>` <br> *Example* <br> `add -rs/ -dt/2021-01-02 00:00 -rm/2 people -id/10001`
-**Delete Reservation** | *Format* <br> `del -rs/ -id/<MEMBER_ID + RESERVATION_ID>` <br> *Example* <br> `del -rs/ -id/10001100001` <br> **NOTE**: Only managers are allowed to delete reservations. Login as manager before entering command.
-**Edit Reservation** | *Format* <br> `edit -rs/ -id/<MEMBER_ID + RESERVATION_ID> [-dt/<DATE_TIME>][-rm/<REMARK>]` <br> *Example* <br> `edit -rs/ -id/10001100001 -dt/2021-12-01 13:00 -rm/3 people`
-**Sort Members by Credit in Ascending Order** | *Format* <br> `sort -mem/ -c/ -a/` <br> *Example* <br> `sort -mem/ -c/ -a/`
-**Sort Members by Credit in Descending Order** | *Format* <br> `sort -mem/ -c/ -d/` <br> *Example* <br> `sort -mem/ -c/ -d/`
-**Redeem Point from Member by Member Id** | *Format* <br> `redeem -rd/<POINTS> -id/<MEMBER_ID>` <br> *Example* <br> `redeem -rd/100 -id/10006`
-**Redeem Point from Member by Member Index** | *Format* <br> `redeem -rd/<point> -i/<INDEX>` <br> *Example* <br> `redeem -rd/100 -i/1`
-**Summary** | *Format* <br> `summary` <br> **NOTE**: Only managers are allowed to view summary. Login as manager before entering command.
-**Clear ezFoodie Data** | `clear`
+Action | Manager Only? (Y/N) | Format, Examples
+--------|---|------------------
+**View Help** | N | `help`
+**Exit Program** | N | `exit`
+**Login as Manager** | Y | *Format* <br> `login <PASSWORD>` <br> *Example* <br> `login 123456`
+**Logout as Manager** | Y | `logout`
+**List Members** | N | *Format* <br> `list -mem/` <br> *Example* <br> `list -mem/`
+**Add New Member** | N | *Format* <br> `add -mem/ -n/<NAME> -p/<PHONE> -e/<EMAIL> -a/<ADDRESS>` <br> *Example* <br> `add -mem/ -n/John Doe -p/98765432 -e/johndoe@gmail.com -a/112 Amoy Street, 069907, Singapore`
+**Delete Member by Member ID** | Y | *Format* <br> `del -mem/ -id/<MEMBER_ID>` <br> *Example* <br> `del -mem/ -id/ 10001` <br>
+**Delete Member by Index Number** | Y | *Format* <br> `del -mem/ -i/<MEMBER_INDEX>` <br> *Example* <br> `del -mem/ -i/1`
+**Find Member by Member ID** | N | *Format* <br> `find -mem/ -id/<MEMBER_ID>` <br> *Example* <br> `find -mem/ -id/10001`
+**Find Members by Name** | N | *Format* <br> `find -mem/ -n/<NAME>` <br> *Example* <br> `find -mem/ -n/John Doe`
+**Find Members by Phone** | N | *Format* <br> `find -mem/ -p/<PHONE>` <br> *Example* <br> `find -mem/ -p/98765432`
+**Find Members by Email** | N | *Format* <br> `find -mem/ -e/<EMAIL>` <br> *Example* <br> `find -mem/ -e/johndoe@gmail.com`
+**Find Members by Registration Date** | N | *Format* <br> `find -mem/ -d/<REGISTRATION_DATE yyyy-MM-dd>` <br> *Example* <br> `find -mem/ -d/2021-01-02`
+**View Member Profile** | N | *Format* <br> `show -mem/ -id/<MEMBER_ID>` <br> *Example* <br> `show -mem/ -id/10001`
+**Edit Member Name by Member ID** | N | *Format* <br> `edit -mem/ -id/<MEMBER_ID> -n/<NAME>` <br> *Example* <br> `edit -mem/ -id/10001 -n/John Doe`
+**Edit Member Phone by Member ID** | N | *Format* <br> `edit -mem/ -id/<MEMBER_ID> -p/<PHONE>` <br> *Example* <br> `edit -mem/ -id/10001 -p/98765432`
+**Edit Member Email by Member ID** | N | *Format* <br> `edit -mem/ -id/<MEMBER_ID> -e/<EMAIL>` <br> *Example* <br> `edit -mem/ -id/10001 -e/johndoe@gmail.com`
+**Edit Member Address by Member ID** | N | *Format* <br> `edit -mem/ -id/<MEMBER_ID> -a/<ADDRESS>` <br> *Example* <br> `edit -mem/ -id/10001 -a/33 Benoi Crescent, 629979, Singapore`
+**Edit Member Name by Index Number** | N | *Format* <br> `edit -mem/ -i/<INDEX> -n/ <NAME>` <br> *Example* <br> `edit -mem/ -i/1 -n/John Doe`
+**Edit Member Phone by Index Number** | N | *Format* <br> `edit -mem/ -i/<INDEX> -p/<PHONE>` <br> *Example* <br> `edit -mem/ -i/1 -p/98765432`
+**Edit Member Email by Index Number** | N | *Format* <br> `edit -mem/ -i/<INDEX> -e/<EMAIL>` <br> *Example* <br> `edit -mem/ -i/1 -e/johndoe@gmail.com`
+**Edit Member Address by Index Number** | N | *Format* <br> `edit -mem/ -i/<INDEX> -a/<ADDRESS>` <br> *Example* <br> `edit -mem/ -i/1 -a/33 Benoi Crescent, 629979, Singapore`
+**Add Transaction for Member** | N | *Format* <br> `add -txn/ -id/<MEMBER_ID> -b/<BILLING>` <br> *Example* <br> `add -txn/ -id/10001 -b/200.00`
+**Delete Transaction for Member** | Y | *Format* <br> `del -txn/ -id/<MEMBER_ID + TRANSACTION_ID>` <br> *Example* <br> `del -txn/ -id/10001100001`
+**Edit Transaction** | N | *Format* <br> `edit -txn/ -id/ <MEMBER_ID + TRANSACTION_ID> -b/ <BILL_AMMOUNT>` <br> *Example* <br> `edit -txn/ -id/ 10001100002 -b/ 10.00`
+**Add Reservation** | N | *Format* <br> `add -rs/ -dt/ <DATE_TIME yyyy-MM-dd HH:mm> -rm/ <REMARK> -id/ <MEMBER_ID>` <br> *Example* <br> `add -rs/ -dt/ 2021-01-02 00:00 -rm/ 2 people -id/ 10001`
+**Delete Reservation** | Y | *Format* <br> `del -rs/ -id/ <MEMBER_ID + RESERVATION_ID>` <br> *Example* <br> `del -rs/ -id/ 10001100001`
+**Edit Reservation** | N | *Format* <br> `edit -rs/ -id/<MEMBER_ID + RESERVATION_ID> [-dt/<DATE_TIME>][-rm/<REMARK>]` <br> *Example* <br> `edit -rs/ -id/10001100001 -dt/2021-12-01 13:00 -rm/3 people`
+**Sort Members by Credit in Ascending Order** | N | *Format* <br> `sort -mem/ -c/ -a/` <br> *Example* <br> `sort -mem/ -c/ -a/`
+**Sort Members by Credit in Descending Order** | N | *Format* <br> `sort -mem/ -c/ -d/` <br> *Example* <br> `sort -mem/ -c/ -d/`
+**Redeem Point from Member by Member Id** | N | *Format* <br> `redeem -rd/<POINTS> -id/<MEMBER_ID>` <br> *Example* <br> `redeem -rd/100 -id/10006`
+**Redeem Point from Member by Member Index** | N | *Format* <br> `redeem -rd/<point> -i/<INDEX>` <br> *Example* <br> `redeem -rd/100 -i/1`
+**Summary** | Y | *Format* <br> `summary`
+**Clear ezFoodie Data** | Y | `clear`
