@@ -153,7 +153,7 @@ Continue reading to explore the wonders of ezFoodie and enhance the way you mana
 
 ### 1. Viewing help : `help`
 
-Open a new window to show how to use the commands, and a link to the User Guide.
+Opens a new window to show how to use the commands, and a link to the User Guide.
 
 ![help message](images/helpMessage.png)
 
@@ -161,13 +161,13 @@ Format: `help`
 
 ### 2. Exiting the program : `exit`
 
-Exit the program.
+Exits the program.
 
 Format: `exit`
 
 ### 3. Logging in as a manager : `login`
 
-Log in as a manager.
+Logs in as a manager.
 
 Format: `login <PASSWORD>`
 
@@ -177,7 +177,7 @@ Example: `login 123456`
 
 ### 4. Logging out as a manager : `logout`
 
-Log out as a manager.
+Logs out as a manager.
 
 Format: `logout`
 
@@ -185,7 +185,7 @@ Example: `logout`
 
 ### 5. Listing out a certain number of members : `list -mem/`
 
-List out a certain number of members.
+Lists out a certain number of members.
 
 Format: `list -mem/`
 
@@ -193,7 +193,7 @@ Example: `list -mem/`
 
 ### 6. Adding a member : `add -mem/`
 
-Add a new member to the member list.
+Adds a new member to the member list.
 
 Format: `add -mem/ -n/ <NAME> -p/ <PHONE> -e/ <EMAIL> -a/ <ADDRESS>`
 
@@ -201,13 +201,13 @@ Example: `add -mem/ -n/ John Doe -p/ 98765432 -e/ johndoe@gmail.com -a/ 112 Amoy
 
 ### 7. Deleting a member : `del -mem/`
 
-Delete a member from the member list
+Deletes a member from the member list
 
 **NOTE**: Only managers are allowed to delete transactions. Login as manager before entering command.
 
 #### 7.1. Delete by ID
 
-Delete a member using member id
+Deletes a member using member id
 
 Format: `del -mem/ -id/ <MEMBER_ID>`
 
@@ -215,7 +215,7 @@ Example: `del -mem/ -id/ 10001`
 
 #### 7.2. Delete by index number
 
-Delete a member using member index number from the list
+Deletes a member using member index number from the list
 
 Format: `del -mem/ -i/ <MEMBER_INDEX>`
 
@@ -223,7 +223,7 @@ Example: `del -mem/ -i/ 1`
 
 ### 8. Finding members : `find -mem/`
 
-Find members by different fields which contain any of the given keywords, show top 50 records by default.
+Finds members by different fields which contain any of the given keywords, show top 50 records by default.
 
 * The find is case-insensitive. e.g `hans` will match `Hans`.
 * Only full words will be matched e.g. `Han` will not match `Hans`. 
@@ -272,7 +272,7 @@ Example: `show -mem/ -id/ 10001`
 
 ### 10. Editing a member : `edit -mem/`
 
-Edit different fields in a member's profile, where the member is specified by member ID.
+Edits different fields in a member's profile, where the member is specified by member ID.
 
 **Note :** #10 only deals with editing member details.
 If a member's transactions need to be edited, refer to #13 below. 
@@ -328,7 +328,7 @@ Example: `edit -mem/ -i/ 1 -a/ 33 Benoi Crescent, 629979, Singapore`
 
 ### 11. Adding transaction for members : `add -txn/`
 
-Add transaction amount corresponding to member ID.
+Adds transaction amount corresponding to member ID.
 
 Format: `add -txn/ -id/ <MEMBER_ID> -b/ <BILLING>`
 
@@ -338,7 +338,7 @@ Example: `add -txn/ -id/ 10001 -b/ 200.00`
 
 ### 12. Deleting transaction for members: `del -txn/`
 
-Delete a transaction.
+Deletes a transaction.
 
 **NOTE**: Only managers are allowed to delete transactions. Login as manager before entering command.
 
@@ -348,7 +348,7 @@ Example: `del -txn/ -id/ 10001100001`
 
 ### 13. Editing transaction of a member: `edit -txn/`
 
-Edit a member's transaction.
+Edits a member's transaction.
 
 Format: `edit -txn/ -id/ <MEMBER_ID + TRANSACTION_ID> -b/ <BILL_AMMOUNT>`
 
@@ -358,7 +358,7 @@ Example: `edit -txn/ -id/ 10001100002 -b/ 10.00`
 
 ### 14. Adding a reservation: `add -rs/`
 
-Add a reservation to a member.
+Adds a reservation to a member.
 
 Format: `add -rs/ -dt/ <DATE_TIME yyyy-MM-dd HH:mm> -rm/ <REMARK> -id/ <MEMBER_ID>`
 
@@ -366,7 +366,7 @@ Example: `add -rs/ -dt/ 2021-01-02 00:00 -rm/ 2 people -id/ 10001`
 
 ### 15. Deleting a reservation: `del -rs/`
 
-Delete a reservation from a member's reservation list.
+Deletes a reservation from a member's reservation list.
 
 **NOTE**: Only managers are allowed to delete reservations. Login as manager before entering command.
 
@@ -376,7 +376,7 @@ Example: `del -rs/ -id/ 10001100001`
 
 ### 16. Editing a reservation: `edit -rs/`
 
-Edit a member's reservation details.
+Edits a member's reservation details.
 
 Format: `edit -rs/ -id/ <MEMBER_ID + RESERVATION_ID> [-dt/ <DATE_TIME>][-rm/ <REMARK>]`
 
@@ -399,7 +399,7 @@ Example: `sort -mem/ -c/ -d/`
 ### 18. Redeeming point `redeem -f/`
 
 #### 18.1. Redeeming point for a member by member id: `redeem -f/ -id/`
-Redeem point for a member, who is identified by his member id.
+Redeems point for a member, who is identified by his member id.
 
 Format: `redeem -rd/ <POINTS> -id/ <MEMBER_ID>`
 
@@ -407,7 +407,7 @@ Example: `redeem -rd/ 100 -id/ 10006`
 
 #### 18.2. Redeeming point for a member by index: `redeem -f/ -i/`
 
-Redeem point for a member, who is identified by his index in the member list.
+Redeems point for a member, who is identified by his index in the member list.
 
 Format: `redeem -rd/ <point> -i/ <INDEX>`
 
@@ -415,7 +415,7 @@ Example: `redeem -rd/ 100 -i/ 1`
 
 ### 19. Summary: `summary`
 
-View the summary of stored data in ezFoodie.
+Views the summary of stored data in ezFoodie.
 
 **NOTE**: Only managers are allowed to view summary. Login as manager before entering command.
 
@@ -423,7 +423,7 @@ Format: `summary`
 
 ### 20. Clearing ezFoodie data : `clear`
 
-Clear all data stored in ezFoodie. Use with Caution!
+Clears all data stored in ezFoodie. Use with Caution!
 
 Format: `clear`
 
@@ -431,11 +431,11 @@ Format: `clear`
 
 ### 21. Saving the data
 
-ezFoodie data is saved in a JSON file in hard disk automatically after any command that changes the data. There is no need to save manually.
+ezFoodie data are saved in a JSON file in hard disk automatically after any command that changes the data. There is no need to save manually.
 
 ### 22. Editing the data file
 
-ezFoodie data is located at `[JAR file location]/data/ezFoodie.json`. Advanced users are welcome to update data directly by editing the data file.
+ezFoodie data are located at `[JAR file location]/data/ezFoodie.json`. Advanced users are welcome to update data directly by editing the data file.
 
 <div markdown="span" class="alert alert-warning">:exclamation: **Caution:**
 If any changes to the JSON file make it invalid, ezFoodie will discard all data and restart with an empty data file at the next run.
