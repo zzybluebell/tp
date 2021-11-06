@@ -10,7 +10,6 @@ import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Comparator;
-import java.util.HashMap;
 import java.util.function.Predicate;
 
 import org.junit.jupiter.api.Test;
@@ -189,56 +188,6 @@ public class AddMemberCommandTest {
 
         @Override
         public void updateSortedMemberList(Comparator<Member> comparator) {
-            throw new AssertionError("This method should not be called.");
-        }
-
-        @Override
-        public int getNumberOfMembers() {
-            throw new AssertionError("This method should not be called.");
-        }
-
-        @Override
-        public HashMap<String, Integer> getNumberOfMembersByTiers() {
-            throw new AssertionError("This method should not be called.");
-        }
-
-        @Override
-        public int getNumberOfTransactions() {
-            throw new AssertionError("This method should not be called.");
-        }
-
-        @Override
-        public int getNumberOfTransactionsPastMonth() {
-            throw new AssertionError("This method should not be called.");
-        }
-
-        @Override
-        public int getNumberOfTransactionsPastThreeMonth() {
-            throw new AssertionError("This method should not be called.");
-        }
-
-        @Override
-        public int getNumberOfTransactionsPastSixMonth() {
-            throw new AssertionError("This method should not be called.");
-        }
-
-        @Override
-        public double getTotalAmountOfTransactions() {
-            throw new AssertionError("This method should not be called.");
-        }
-
-        @Override
-        public double getTotalAmountOfTransactionsPastMonth() {
-            throw new AssertionError("This method should not be called.");
-        }
-
-        @Override
-        public double getTotalAmountOfTransactionsPastThreeMonth() {
-            throw new AssertionError("This method should not be called.");
-        }
-
-        @Override
-        public double getTotalAmountOfTransactionsPastSixMonth() {
             throw new AssertionError("This method should not be called.");
         }
     }

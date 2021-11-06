@@ -132,12 +132,41 @@
     -fx-text-fill: #010504;
 }
 
-.cell_small_label_width {
+.cell_label_width_80 {
     -fx-pref-width: 80px;
 }
 
-.cell_big_label_width {
+.cell_label_width_90 {
+    -fx-pref-width: 90px;
+}
+
+.cell_label_width_100 {
+    -fx-pref-width: 100px;
+}
+
+.cell_label_width_290 {
+    -fx-pref-width: 290px;
+}
+
+.cell_label_width_298 {
+    -fx-pref-width: 298px;
+}
+
+.cell_label_width_300 {
+    -fx-pref-width: 300px;
+}
+
+.cell_label_width_500 {
     -fx-pref-width: 500px;
+}
+
+.cell_label_width_700 {
+    -fx-pref-width: 700px;
+}
+
+.cell_label_left_right_border_1 {
+    -fx-border-color: white;
+    -fx-border-width: 0 1 0 1;
 }
 
 .stack-pane {
@@ -384,9 +413,17 @@
 }
 
 .split_line {
-    strokeWidth: 3.0;
+    strokeWidth=3.0
 }
 
 #summaryBox .label {
+    -fx-text-fill: white;
+}
+
+#reservationList .label {
+    -fx-text-fill: white;
+}
+
+#transactionList .label {
     -fx-text-fill: white;
 }

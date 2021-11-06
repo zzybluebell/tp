@@ -10,25 +10,25 @@ import seedu.address.model.member.Member;
 /**
  * Represents for Panel containing the list of members.
  */
-public class MemberListPanel extends UiPart<Region> {
-    private static final String FXML = "MemberListPanel.fxml";
+public class MemberDetailsListPanel extends UiPart<Region> {
+    private static final String FXML = "MemberDetailsListPanel.fxml";
 
     @FXML
-    private ListView<Member> memberListView;
+    private ListView<Member> memberDetailsListView;
 
     /**
      * Creates a {@code MemberListPanel} with the given {@code ObservableList}.
      */
-    public MemberListPanel(ObservableList<Member> memberList) {
+    public MemberDetailsListPanel(ObservableList<Member> memberList) {
         super(FXML);
-        memberListView.setItems(memberList);
-        memberListView.setCellFactory(listView -> new MemberListViewCell());
+        memberDetailsListView.setItems(memberList);
+        memberDetailsListView.setCellFactory(listView -> new MemberDetailsListViewCell());
     }
 
     /**
-     * Customs {@code ListCell} that displays the graphics of a {@code Member} using a {@code MemberCard}.
+     * Customs {@code ListCell} that displays the graphics of a {@code Member} using a {@code MemberDetailsCard}.
      */
-    class MemberListViewCell extends ListCell<Member> {
+    class MemberDetailsListViewCell extends ListCell<Member> {
         @Override
         protected void updateItem(Member member, boolean empty) {
             super.updateItem(member, empty);
@@ -37,7 +37,7 @@ public class MemberListPanel extends UiPart<Region> {
                 setGraphic(null);
                 setText(null);
             } else {
-                setGraphic(new MemberCard(member, getIndex() + 1).getRoot());
+                setGraphic(new MemberDetailsCard(member).getRoot());
             }
         }
     }

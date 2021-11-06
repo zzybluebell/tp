@@ -1,15 +1,17 @@
 package seedu.address.ui;
 
-import java.util.Comparator;
-
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
-import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Region;
+import javafx.scene.layout.StackPane;
 import seedu.address.commons.util.DateTimeUtil;
 import seedu.address.model.member.Member;
 import seedu.address.model.member.Tier;
+import seedu.address.model.reservation.Reservation;
+import seedu.address.model.transaction.Transaction;
 
 /**
  * An UI component that displays information of a {@code Member}.
@@ -49,14 +51,12 @@ public class MemberDetailsCard extends UiPart<Region> {
     @FXML
     private Label tier;
     @FXML
-    private FlowPane tags;
+    private StackPane reservationListPanelPlaceholder;
     @FXML
-    private FlowPane transactions;
-    @FXML
-    private FlowPane reservations;
+    private StackPane transactionListPanelPlaceholder;
 
     /**
-     * Creates a {@code MemberCode} with the given {@code Member} and index to display.
+     * Creates a {@code MemberCode} with the given {@code members} to display.
      */
     public MemberDetailsCard(Member member) {
         super(FXML);
@@ -71,18 +71,16 @@ public class MemberDetailsCard extends UiPart<Region> {
         point.setText(member.getPoint().value);
         tier.setText(Tier.getTierByCredit(Integer.parseInt(member.getCredit().value)));
         tier.getStyleClass().add(Tier.getTierByCredit(Integer.parseInt(member.getCredit().value)).toLowerCase());
-        member.getTransactions().stream()
-                .sorted(Comparator.comparing(transaction -> transaction.getId().value))
-                .forEach(transaction -> transactions.getChildren().add(new Label("["
-                        + transaction.getId().value + " "
-                        + DateTimeUtil.timestampToDate(Long.parseLong(transaction.getTimestamp().value))
-                        + " " + transaction.getBilling().value + "] ")));
-        member.getReservations().stream()
-                .sorted(Comparator.comparing(reservation -> DateTimeUtil
-                        .parseDateTime(reservation.getDateTime().value)))
-                .forEach(reservation -> reservations.getChildren().add(new Label("["
-                        + reservation.getId().value + " "
-                        + reservation.getDateTime().value + " " + reservation.getRemark().value + "] ")));
+
+        ObservableList<Reservation> internalReservationList = FXCollections.observableArrayList();
+        internalReservationList.addAll(member.getReservations());
+        ReservationListPanel reservationListPanel = new ReservationListPanel(internalReservationList);
+        reservationListPanelPlaceholder.getChildren().add(reservationListPanel.getRoot());
+
+        ObservableList<Transaction> internalTransactionList = FXCollections.observableArrayList();
+        internalTransactionList.addAll(member.getTransactions());
+        TransactionListPanel transactionListPanel = new TransactionListPanel(internalTransactionList);
+        transactionListPanelPlaceholder.getChildren().add(transactionListPanel.getRoot());
     }
 
     @Override

@@ -23,9 +23,7 @@ import seedu.address.logic.parser.exceptions.ParseException;
  * a menu bar and space where other JavaFX elements can be placed.
  */
 public class MainWindow extends UiPart<Stage> {
-
     private static final String FXML = "MainWindow.fxml";
-
     private final Logger logger = LogsCenter.getLogger(getClass());
 
     private Stage primaryStage;
@@ -54,7 +52,7 @@ public class MainWindow extends UiPart<Stage> {
     private StackPane resultDisplayPlaceholder;
 
     @FXML
-    private StackPane statusbarPlaceholder;
+    private StackPane statusBarPlaceholder;
 
     /**
      * Constructs a {@code MainWindow} with the given {@code Stage} and {@code Logic}.
@@ -132,7 +130,7 @@ public class MainWindow extends UiPart<Stage> {
         resultDisplayPlaceholder.getChildren().add(resultDisplay.getRoot());
 
         StatusBarFooter statusBarFooter = new StatusBarFooter(logic.getEzFoodieFilePath());
-        statusbarPlaceholder.getChildren().add(statusBarFooter.getRoot());
+        statusBarPlaceholder.getChildren().add(statusBarFooter.getRoot());
 
         CommandBox commandBox = new CommandBox(this::executeCommand);
         commandBoxPlaceholder.getChildren().add(commandBox.getRoot());
@@ -180,12 +178,8 @@ public class MainWindow extends UiPart<Stage> {
     @FXML
     public void handleSummary() {
         if (!summaryWindow.isShowing()) {
-            summaryWindow = new SummaryWindow(logic);
             summaryWindow.show();
         } else {
-            summaryWindow.hide();
-            summaryWindow = new SummaryWindow(logic);
-            summaryWindow.show();
             summaryWindow.focus();
         }
     }

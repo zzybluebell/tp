@@ -3,12 +3,12 @@ package seedu.address.ui;
 import java.util.logging.Logger;
 
 import javafx.fxml.FXML;
-import javafx.scene.control.ListCell;
-import javafx.scene.control.ListView;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
+import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 import seedu.address.commons.core.LogsCenter;
 import seedu.address.logic.Logic;
-import seedu.address.model.member.Member;
 
 /**
  * Controller for a member view page for related details.
@@ -19,33 +19,32 @@ public class MemberViewWindow extends UiPart<Stage> {
     private static final String FXML = "MemberViewWindow.fxml";
 
     @FXML
-    private ListView<Member> memberDetailsView;
+    private StackPane memberDetailsListPlaceholder;
 
     /**
-     * Creates a new MemberView window.
+     * Constructs a new {@code MemberViewWindow} .
      *
-     * */
-    public MemberViewWindow(Logic logic) {
-        super(FXML, new Stage());
-        memberDetailsView.setItems(logic.getUpdatedMemberListForView());
-        memberDetailsView.setCellFactory(listView -> new MemberViewListCell());
+     * @param root Stage to use as the root of the MemberViewWindow.
+     * @param logic summary of logic.
+     */
+    public MemberViewWindow(Stage root, Logic logic) {
+        super(FXML, root);
+        MemberDetailsListPanel memberDetailsListPanel = new MemberDetailsListPanel(logic.getUpdatedMemberListForView());
+        memberDetailsListPlaceholder.getChildren().add(memberDetailsListPanel.getRoot());
+        getRoot().addEventFilter(KeyEvent.KEY_PRESSED, event -> {
+            System.out.println(event.getCode());
+            if (event.getCode() == KeyCode.ESCAPE) {
+                Stage stage = (Stage) getRoot().getScene().getWindow();
+                stage.close();
+            }
+        });
     }
 
     /**
-     * Represents a inner class for MemberViewListCell.
+     * Constructs a new {@code MemberViewWindow} with input {@code logic}.
      */
-    class MemberViewListCell extends ListCell<Member> {
-        @Override
-        protected void updateItem(Member member, boolean empty) {
-            super.updateItem(member, empty);
-
-            if (empty || member == null) {
-                setGraphic(null);
-                setText(null);
-            } else {
-                setGraphic(new MemberDetailsCard(member).getRoot());
-            }
-        }
+    public MemberViewWindow(Logic logic) {
+        this(new Stage(), logic);
     }
 
     /**
