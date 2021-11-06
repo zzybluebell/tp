@@ -121,7 +121,7 @@ public class EditTransactionCommand extends EditCommand {
                 .mapToInt(t -> (int) t.getBilling().getDoubleValue()).sum(), Credit.MAX));
 
         Point updatedPoint;
-        if (updatedBilling.getDoubleValue() < transactionToEdit.getBilling().getDoubleValue()) {
+        if (updatedBilling.getDoubleValue() > transactionToEdit.getBilling().getDoubleValue()) {
             updatedPoint = new Point("" + Math.min(Integer.parseInt(String.valueOf(updatedCredit.getIntValue()
                     - memberToEdit.getCredit().getIntValue()
                     + memberToEdit.getPoint().getIntValue())), Point.MAX));
