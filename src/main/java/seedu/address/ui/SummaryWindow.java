@@ -3,6 +3,8 @@ package seedu.address.ui;
 import java.util.logging.Logger;
 
 import javafx.fxml.FXML;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 import seedu.address.commons.core.LogsCenter;
@@ -29,6 +31,13 @@ public class SummaryWindow extends UiPart<Stage> {
         super(FXML, root);
         SummaryCard summaryCard = new SummaryCard(logic.getUpdatedMemberList());
         summaryCardPlaceholder.getChildren().add(summaryCard.getRoot());
+        getRoot().addEventFilter(KeyEvent.KEY_PRESSED, event -> {
+            System.out.println(event.getCode());
+            if (event.getCode() == KeyCode.ESCAPE) {
+                Stage stage = (Stage) getRoot().getScene().getWindow();
+                stage.close();
+            }
+        });
     }
 
     /**

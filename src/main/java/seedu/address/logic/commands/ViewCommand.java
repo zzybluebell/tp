@@ -4,6 +4,8 @@ import static java.util.Objects.requireNonNull;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_ID;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_MEMBER;
 
+import seedu.address.commons.core.Messages;
+import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.Model;
 import seedu.address.model.member.IdContainsKeywordsPredicate;
 
@@ -49,12 +51,17 @@ public class ViewCommand extends Command {
      *
      * @param model {@code Model} which the command should operate on.
      * @return CommandResult related to View command.
+     * @throws CommandException if the user input does not conform the expected format.
      */
     @Override
-    public CommandResult execute(Model model) {
+    public CommandResult execute(Model model) throws CommandException {
         requireNonNull(model);
         model.updateFilteredMemberListForView(predicate);
-        return new CommandResult(SHOWING_VIEW_MESSAGE, false, false, true, false);
+        if (model.getUpdatedMemberListForView().size() > 0) {
+            return new CommandResult(SHOWING_VIEW_MESSAGE, false, false, true, false);
+        } else {
+            throw new CommandException(Messages.MESSAGE_INVALID_MEMBER_DISPLAYED_ID);
+        }
     }
 
     /**
