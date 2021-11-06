@@ -10,7 +10,6 @@ import static seedu.address.testutil.TypicalMembers.getTypicalEzFoodie;
 
 import java.nio.file.Path;
 import java.util.Comparator;
-import java.util.HashMap;
 import java.util.function.Predicate;
 
 import org.junit.jupiter.api.Test;
@@ -47,9 +46,10 @@ public class AddTransactionCommandTest {
         Transaction validTransaction = new TransactionBuilder().build();
         CommandResult commandResult = new AddTransactionCommand(validTransaction, validId).execute(modelStub);
         Member expectedMember = model.getUpdatedMemberList().get(INDEX_FIRST_MEMBER.getZeroBased());
-        ;
 
-        assertEquals(String.format(AddTransactionCommand.MESSAGE_SUCCESS, expectedMember),
+        assertEquals(String.format(AddTransactionCommand.MESSAGE_SUCCESS, "Id: " + expectedMember.getId()
+                + "; Name: " + expectedMember.getName()
+                + "; Transaction: " + "[" + validTransaction + "]"),
                 commandResult.getFeedbackToUser());
         assertEquals(validTransaction,
                 expectedMember.getTransactions().get(expectedMember.getTransactions().size() - 1));
@@ -195,56 +195,6 @@ public class AddTransactionCommandTest {
 
         @Override
         public void updateSortedMemberList(Comparator<Member> comparator) {
-            throw new AssertionError("This method should not be called.");
-        }
-
-        @Override
-        public int getNumberOfMembers() {
-            throw new AssertionError("This method should not be called.");
-        }
-
-        @Override
-        public HashMap<String, Integer> getNumberOfMembersByTiers() {
-            throw new AssertionError("This method should not be called.");
-        }
-
-        @Override
-        public int getNumberOfTransactions() {
-            throw new AssertionError("This method should not be called.");
-        }
-
-        @Override
-        public int getNumberOfTransactionsPastMonth() {
-            throw new AssertionError("This method should not be called.");
-        }
-
-        @Override
-        public int getNumberOfTransactionsPastThreeMonth() {
-            throw new AssertionError("This method should not be called.");
-        }
-
-        @Override
-        public int getNumberOfTransactionsPastSixMonth() {
-            throw new AssertionError("This method should not be called.");
-        }
-
-        @Override
-        public double getTotalAmountOfTransactions() {
-            throw new AssertionError("This method should not be called.");
-        }
-
-        @Override
-        public double getTotalAmountOfTransactionsPastMonth() {
-            throw new AssertionError("This method should not be called.");
-        }
-
-        @Override
-        public double getTotalAmountOfTransactionsPastThreeMonth() {
-            throw new AssertionError("This method should not be called.");
-        }
-
-        @Override
-        public double getTotalAmountOfTransactionsPastSixMonth() {
             throw new AssertionError("This method should not be called.");
         }
     }

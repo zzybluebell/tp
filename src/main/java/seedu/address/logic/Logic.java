@@ -1,7 +1,6 @@
 package seedu.address.logic;
 
 import java.nio.file.Path;
-import java.util.HashMap;
 
 import javafx.collections.ObservableList;
 import seedu.address.commons.core.GuiSettings;
@@ -44,56 +43,6 @@ public interface Logic {
      * for viewCommand to use only
      */
     ObservableList<Member> getUpdatedMemberListForView();
-
-    /**
-     * Returns the total number of members in ezFoodie.
-     */
-    int getNumberOfMembers();
-
-    /**
-     * Returns the numbers of members by different tiers in ezFoodie.
-     */
-    HashMap<String, Integer> getNumberOfMembersByTiers();
-
-    /**
-     * Returns the total number of transactions in ezFoodie.
-     */
-    int getNumberOfTransactions();
-
-    /**
-     * Returns the total number of transactions in the past month in ezFoodie.
-     */
-    int getNumberOfTransactionsPastMonth();
-
-    /**
-     * Returns the total number of transactions in the past 3 months in ezFoodie.
-     */
-    int getNumberOfTransactionsPastThreeMonth();
-
-    /**
-     * Returns the total number of transactions in the past 6 months in ezFoodie.
-     */
-    int getNumberOfTransactionsPastSixMonths();
-
-    /**
-     * Returns the total amount of transactions in ezFoodie.
-     */
-    double getTotalAmountOfTransactions();
-
-    /**
-     * Returns the total amount of transactions in the past month in ezFoodie.
-     */
-    double getTotalAmountOfTransactionsPastMonth();
-
-    /**
-     * Returns the total amount of transactions in the past 3 months in ezFoodie.
-     */
-    double getTotalAmountOfTransactionsPastThreeMonth();
-
-    /**
-     * Returns the total amount of transactions in the past 6 months in ezFoodie.
-     */
-    double getTotalAmountOfTransactionsPastSixMonth();
 
     /**
      * Returns the user prefs' ezFoodie file path.

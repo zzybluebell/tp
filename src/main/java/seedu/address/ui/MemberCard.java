@@ -4,12 +4,12 @@ import java.util.Comparator;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
-import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Region;
 import seedu.address.commons.util.DateTimeUtil;
 import seedu.address.model.member.Member;
 import seedu.address.model.member.Tier;
+import seedu.address.model.reservation.Reservation;
 
 /**
  * An UI component that displays information of a {@code Member}.
@@ -25,7 +25,6 @@ public class MemberCard extends UiPart<Region> {
      *
      * @see <a href="https://github.com/se-edu/addressbook-level4/issues/336">The issue on AddressBook level 4</a>
      */
-
     public final Member member;
 
     @FXML
@@ -41,56 +40,41 @@ public class MemberCard extends UiPart<Region> {
     @FXML
     private Label email;
     @FXML
-    private Label address;
-    @FXML
-    private Label registrationTime;
-    @FXML
     private Label credit;
     @FXML
     private Label point;
     @FXML
     private Label tier;
     @FXML
-    private FlowPane tags;
-    @FXML
-    private FlowPane transactions;
-    @FXML
-    private FlowPane reservations;
+    private Label reservation;
 
     /**
-     * Creates a {@code MemberCode} with the given {@code Member} and index to display.
+     * Constructs a {@code MemberCode} with the given {@code Member} and index to display.
      */
     public MemberCard(Member member, int displayedIndex) {
         super(FXML);
         this.member = member;
         index.setText(displayedIndex + ". ");
-        id.setText("ID: " + member.getId().value);
-        name.setText("Name: " + member.getName().fullName);
-        phone.setText("Phone: " + member.getPhone().value);
-        email.setText("Email: " + member.getEmail().value);
-        address.setText("Address: " + member.getAddress().value);
-        registrationTime.setText("Registration Date: "
-                + DateTimeUtil.timestampToDate(Long.parseLong(member.getTimestamp().value)).toString());
-        credit.setText("Credits: " + member.getCredit().value);
-        point.setText("Points: " + member.getPoint().value);
+        id.setText(member.getId().value);
+        name.setText(member.getName().fullName);
+        phone.setText(member.getPhone().value);
+        email.setText(member.getEmail().value);
+        credit.setText(member.getCredit().value);
+        point.setText(member.getPoint().value);
         tier.setText(Tier.getTierByCredit(Integer.parseInt(member.getCredit().value)));
-        member.getTransactions().stream()
-                .sorted(Comparator.comparing(transaction -> transaction.getId().value))
-                .forEach(transaction -> transactions.getChildren().add(new Label("["
-                        + transaction.getId().value + " "
-                        + DateTimeUtil.timestampToDate(Long.parseLong(transaction.getTimestamp().value)).toString()
-                        + " " + transaction.getBilling().value + "] ")));
+        tier.getStyleClass().add(Tier.getTierByCredit(Integer.parseInt(member.getCredit().value)).toLowerCase());
         member.getReservations().stream()
                 .sorted(Comparator.comparing(reservation -> DateTimeUtil
                         .parseDateTime(reservation.getDateTime().value)))
-                .forEach(reservation -> reservations.getChildren().add(new Label("["
-                        + reservation.getId().value + " "
-                        + reservation.getDateTime().value + " " + reservation.getRemark().value + "] ")));
-        member.getTags().stream()
-                .sorted(Comparator.comparing(tag -> tag.tagName))
-                .forEach(tag -> tags.getChildren().add(new Label(tag.tagName)));
+                .filter(reservation -> Reservation.isValidDateTime(reservation.getDateTime()))
+                .findAny().ifPresentOrElse(comingReservation -> reservation.setText(
+                        comingReservation.getDateTime().value + " "
+                        + comingReservation.getRemark().value), () -> reservation.setText(""));
     }
 
+    /**
+     * Overrides the equals method.
+     */
     @Override
     public boolean equals(Object other) {
         // short circuit if same object

@@ -34,7 +34,7 @@ class JsonAdaptedTransaction {
     }
 
     /**
-     * Converts a given {@code Transaction} into this class for Jackson use.
+     * Constructs a given {@code Transaction} into this class for Jackson use.
      */
     public JsonAdaptedTransaction(Transaction source) {
         id = source.getId().value;

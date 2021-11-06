@@ -24,7 +24,7 @@ import seedu.address.model.member.Id;
 import seedu.address.model.tag.Tag;
 
 /**
- * Parses input arguments and creates a new EditMemberCommand object
+ * Parses input arguments and creates a new EditMemberCommand object.
  */
 public class EditMemberCommandParser extends EditCommandParser implements Parser<EditMemberCommand> {
 
@@ -33,7 +33,10 @@ public class EditMemberCommandParser extends EditCommandParser implements Parser
     /**
      * Parses the given {@code String} of arguments in the context of the EditMemberCommand
      * and returns an EditMemberCommand object for execution.
-     * @throws ParseException if the user input does not conform the expected format
+     *
+     * @param args the input arguments related edit member command to be parsed.
+     * @return EditMemberCommand the class for process input edit member command string.
+     * @throws ParseException if the user input does not conform the expected format.
      */
     public EditMemberCommand parse(String args) throws ParseException {
         requireNonNull(args);

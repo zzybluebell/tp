@@ -3,9 +3,9 @@ package seedu.address.ui;
 import java.util.logging.Logger;
 
 import javafx.fxml.FXML;
-import javafx.scene.control.Label;
-import javafx.scene.input.Clipboard;
-import javafx.scene.input.ClipboardContent;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
+import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 import seedu.address.commons.core.LogsCenter;
 import seedu.address.logic.Logic;
@@ -14,63 +14,43 @@ import seedu.address.logic.Logic;
  * Controller for a summary page.
  */
 public class SummaryWindow extends UiPart<Stage> {
+
     private static final String FXML = "SummaryWindow.fxml";
     private static final Logger logger = LogsCenter.getLogger(SummaryWindow.class);
 
-    private String summaryText = "";
-
     @FXML
-    private Label summaryMessage;
+    private StackPane summaryCardPlaceholder;
 
     /**
-     * Creates a new SummaryWindow.
+     * Constructs a new {@code SummaryWindow} .
      *
      * @param root Stage to use as the root of the SummaryWindow.
+     * @param logic summary of logic.
      */
     public SummaryWindow(Stage root, Logic logic) {
         super(FXML, root);
-        initSummaryMessage(logic);
-        summaryMessage.setText(summaryText);
+        SummaryCard summaryCard = new SummaryCard(logic.getUpdatedMemberList());
+        summaryCardPlaceholder.getChildren().add(summaryCard.getRoot());
+        getRoot().addEventFilter(KeyEvent.KEY_PRESSED, event -> {
+            System.out.println(event.getCode());
+            if (event.getCode() == KeyCode.ESCAPE) {
+                Stage stage = (Stage) getRoot().getScene().getWindow();
+                stage.close();
+            }
+        });
     }
 
     /**
-     * Creates a new SummaryWindow.
+     * Constructs a new {@code SummaryWindow} with input {@code logic}.
      */
     public SummaryWindow(Logic logic) {
         this(new Stage(), logic);
     }
 
-    private void initSummaryMessage(Logic logic) {
-        summaryText += "Total number of Members: " + logic.getNumberOfMembers()
-                + "\n\n"
-                + "Total number of transactions of all time: "
-                + logic.getNumberOfTransactions()
-                + "\n\n"
-                + "Total amount of transactions of all time: "
-                + logic.getTotalAmountOfTransactions()
-                + "\n\n"
-                + "Total number of transactions of past month: "
-                + logic.getNumberOfTransactionsPastMonth()
-                + "\n\n"
-                + "Total amount of transactions of past month: "
-                + logic.getTotalAmountOfTransactionsPastMonth()
-                + "\n\n"
-                + "Total number of transactions of past 3 months: "
-                + logic.getNumberOfTransactionsPastThreeMonth()
-                + "\n\n"
-                + "Total amount of transactions of past 3 months: "
-                + logic.getTotalAmountOfTransactionsPastThreeMonth()
-                + "\n\n"
-                + "Total number of transactions of past 6 months: "
-                + logic.getNumberOfTransactionsPastSixMonths()
-                + "\n\n"
-                + "Total amount of transactions of past 6 months: "
-                + logic.getTotalAmountOfTransactionsPastSixMonth();
-    }
-
     /**
      * Shows the summary window.
-     * @throws IllegalStateException
+     *
+     * @throws IllegalStateException if the user input does not conform the expected format.
      * <ul>
      *     <li>
      *         if this method is called on a thread other than the JavaFX Application Thread.
@@ -111,16 +91,5 @@ public class SummaryWindow extends UiPart<Stage> {
      */
     public void focus() {
         getRoot().requestFocus();
-    }
-
-    /**
-     * Copies the summary message to the clipboard.
-     */
-    @FXML
-    private void copySummary() {
-        final Clipboard clipboard = Clipboard.getSystemClipboard();
-        final ClipboardContent summary = new ClipboardContent();
-        summary.putString(summaryText);
-        clipboard.setContent(summary);
     }
 }

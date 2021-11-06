@@ -20,7 +20,7 @@ import seedu.address.model.reservation.Remark;
 import seedu.address.model.reservation.Reservation;
 
 /**
- * Parses input arguments and creates a new AddReservationCommand object
+ * Parses input arguments and creates a new AddReservationCommand object.
  */
 public class AddReservationCommandParser extends AddCommandParser implements Parser<AddReservationCommand> {
 
@@ -62,7 +62,10 @@ public class AddReservationCommandParser extends AddCommandParser implements Par
     /**
      * Parses the given {@code String} of arguments in the context of the AddReservationCommand
      * and returns an AddReservationCommand object for execution.
-     * @throws ParseException if the user input does not conform the expected format
+     *
+     * @param args the input arguments related add reservation command to be parsed.
+     * @return AddReservationCommand the class for process input add reservation command string.
+     * @throws ParseException if the user input does not conform the expected format.
      */
     @Override
     public AddReservationCommand parse(String args) throws ParseException {

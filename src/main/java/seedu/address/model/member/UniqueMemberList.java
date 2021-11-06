@@ -89,6 +89,9 @@ public class UniqueMemberList implements Iterable<Member> {
         }
     }
 
+    /**
+     * Sets Members by input {@code replacement}.
+     */
     public void setMembers(UniqueMemberList replacement) {
         requireNonNull(replacement);
         internalList.setAll(replacement.internalList);
@@ -97,6 +100,8 @@ public class UniqueMemberList implements Iterable<Member> {
     /**
      * Replaces the contents of this list with {@code members}.
      * {@code members} must not contain duplicate members.
+     *
+     * @param members a list of members will be set.
      */
     public void setMembers(List<Member> members) {
         requireAllNonNull(members);
@@ -108,27 +113,20 @@ public class UniqueMemberList implements Iterable<Member> {
     }
 
     /**
-     * Returns the backing list as an unmodifiable {@code ObservableList}.
+     * Returns the backing list as an unmodifiable {@code ObservableList<Member>}.
+     *
+     * @return ObservableList a list of observations.
      */
     public ObservableList<Member> asUnmodifiableObservableList() {
         return internalUnmodifiableList;
     }
 
+    /**
+     * Overrides the Iterator method.
+     */
     @Override
     public Iterator<Member> iterator() {
         return internalList.iterator();
-    }
-
-    @Override
-    public boolean equals(Object other) {
-        return other == this // short circuit if same object
-                || (other instanceof UniqueMemberList // instanceof handles nulls
-                        && internalList.equals(((UniqueMemberList) other).internalList));
-    }
-
-    @Override
-    public int hashCode() {
-        return internalList.hashCode();
     }
 
     /**
@@ -144,4 +142,22 @@ public class UniqueMemberList implements Iterable<Member> {
         }
         return true;
     }
+    /**
+     * Overrides the equals method.
+     */
+    @Override
+    public boolean equals(Object other) {
+        return other == this // short circuit if same object
+                || (other instanceof UniqueMemberList // instanceof handles nulls
+                        && internalList.equals(((UniqueMemberList) other).internalList));
+    }
+
+    /**
+     * Overrides the hashCode method.
+     */
+    @Override
+    public int hashCode() {
+        return internalList.hashCode();
+    }
+
 }

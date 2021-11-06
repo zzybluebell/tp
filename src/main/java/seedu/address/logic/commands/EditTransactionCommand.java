@@ -34,6 +34,14 @@ import seedu.address.model.transaction.Transaction;
  */
 public class EditTransactionCommand extends EditCommand {
 
+    /**
+     * Stands for edit command.
+     */
+    public static final String COMMAND_WORD = "edit";
+
+    /**
+     * Stands for the message of edit command for edit transaction.
+     */
     public static final String MESSAGE_USAGE = COMMAND_WORD + ": Edits the details of the transaction identified "
             + "by the member ID and transaction ID. "
             + "Existing values will be overwritten by the input values.\n"
@@ -46,7 +54,14 @@ public class EditTransactionCommand extends EditCommand {
             + COMMAND_WORD + " " + PREFIX_TRANSACTION + " " + PREFIX_ID + "10001100001 "
             + PREFIX_BILLING + "123.45";
 
+    /**
+     * Stands for succeed message of edit member.
+     */
     public static final String MESSAGE_SUCCESS = "Edited Member: %1$s";
+
+    /**
+     * Stands for message of not edited which need fields provided.
+     */
     public static final String MESSAGE_NOT_EDITED = "At least one field to edit must be provided.";
 
     private final seedu.address.model.member.Id memberId;
@@ -54,9 +69,11 @@ public class EditTransactionCommand extends EditCommand {
     private final EditTransactionDescriptor editTransactionDescriptor;
 
     /**
-     * @param memberId of the member in the updated member list to edit
-     * @param transactionId of the transaction in the transaction list to edit
-     * @param editTransactionDescriptor details to edit the transaction with
+     * Constructs EditTransactionCommand.
+     *
+     * @param memberId of the member in the updated member list to edit.
+     * @param transactionId of the transaction in the transaction list to edit.
+     * @param editTransactionDescriptor details to edit the transaction with.
      */
     public EditTransactionCommand(
             seedu.address.model.member.Id memberId, seedu.address.model.transaction.Id transactionId,
@@ -69,19 +86,22 @@ public class EditTransactionCommand extends EditCommand {
     }
 
     /**
-     * Creates and returns a {@code Member} with the details of {@code memberToEdit}
+     * Creates and returns a {@code Member} with the details of {@code memberToEdit},
+     * {@code transactionToEdit} and {@code editTransactionDescriptor}.
+     *
+     * @return Member with updated credits.
      */
-    private static Member createUpdatedCredits(
+    private static Member createEditedMember(
             Member memberToEdit, Transaction transactionToEdit, EditTransactionDescriptor editTransactionDescriptor) {
         assert memberToEdit != null;
         assert transactionToEdit != null;
 
         // Member
         seedu.address.model.member.Id id = memberToEdit.getId();
-        Name updatedName = memberToEdit.getName();
-        Phone updatedPhone = memberToEdit.getPhone();
-        Email updatedEmail = memberToEdit.getEmail();
-        Address updatedAddress = memberToEdit.getAddress();
+        Name name = memberToEdit.getName();
+        Phone phone = memberToEdit.getPhone();
+        Email email = memberToEdit.getEmail();
+        Address address = memberToEdit.getAddress();
         Timestamp timestamp = memberToEdit.getTimestamp();
         List<Transaction> transactions = memberToEdit.getTransactions();
         List<Reservation> reservations = memberToEdit.getReservations();
@@ -99,36 +119,53 @@ public class EditTransactionCommand extends EditCommand {
                         .set(updatedTransactions.indexOf(transaction), updatedTransaction));
         Credit updatedCredit = new Credit("" + Math.min(updatedTransactions.stream()
                 .mapToInt(t -> (int) t.getBilling().getDoubleValue()).sum(), Credit.MAX));
-        Point updatePoint = new Point(String.valueOf(updatedCredit.getIntValue()
-                - memberToEdit.getCredit().getIntValue()
-                + memberToEdit.getPoint().getIntValue()));
 
-        return new Member(id, updatedName, updatedPhone, updatedEmail, updatedAddress, timestamp, updatedCredit,
-                updatePoint, updatedTransactions, reservations, updatedTags);
+        Point updatedPoint;
+        if (updatedBilling.getDoubleValue() > transactionToEdit.getBilling().getDoubleValue()) {
+            updatedPoint = new Point("" + Math.min(Integer.parseInt(String.valueOf(updatedCredit.getIntValue()
+                    - memberToEdit.getCredit().getIntValue()
+                    + memberToEdit.getPoint().getIntValue())), Point.MAX));
+        } else {
+            updatedPoint = memberToEdit.getPoint();
+        }
+        return new Member(id, name, phone, email, address, timestamp, updatedCredit,
+                updatedPoint, updatedTransactions, reservations, updatedTags);
     }
 
+    /**
+     * Overrides and executes model.
+     *
+     * @param model {@code Model} which the command should operate on.
+     * @return CommandResult related to edir transaction command.
+     * @throws CommandException if the user input does not conform the expected format.
+     */
     @Override
     public CommandResult execute(Model model) throws CommandException {
         requireNonNull(model);
         List<Member> lastShownList = model.getUpdatedMemberList();
         Member memberToEdit = lastShownList.stream()
                 .filter(member -> memberId.equals(member.getId())).findAny().orElse(null);
-        if (memberToEdit != null) {
-            Transaction transactionToEdit = memberToEdit.getTransactions().stream()
-                    .filter(transaction -> transactionId.equals(transaction.getId())).findAny().orElse(null);
-            if (transactionToEdit != null) {
-                Member editedMember = createUpdatedCredits(memberToEdit, transactionToEdit, editTransactionDescriptor);
-                model.setMember(memberToEdit, editedMember);
-                model.updateFilteredMemberList(PREDICATE_SHOW_ALL_MEMBERS);
-                return new CommandResult(String.format(MESSAGE_SUCCESS, editedMember));
-            } else {
-                throw new CommandException(Messages.MESSAGE_INVALID_TRANSACTION_DISPLAYED_ID);
-            }
-        } else {
+        if (memberToEdit == null) {
             throw new CommandException(Messages.MESSAGE_INVALID_MEMBER_DISPLAYED_ID);
         }
+        Transaction transactionToEdit = memberToEdit.getTransactions().stream()
+                .filter(transaction -> transactionId.equals(transaction.getId())).findAny().orElse(null);
+        if (transactionToEdit == null) {
+            throw new CommandException(Messages.MESSAGE_INVALID_TRANSACTION_DISPLAYED_ID);
+        }
+        Member editedMember = createEditedMember(memberToEdit, transactionToEdit, editTransactionDescriptor);
+        model.setMember(memberToEdit, editedMember);
+        model.updateFilteredMemberList(PREDICATE_SHOW_ALL_MEMBERS);
+        Transaction updatedTransaction = editedMember.getTransactions().stream()
+                .filter(transaction -> transactionId.equals(transaction.getId())).findAny().orElse(null);
+        return new CommandResult(String.format(MESSAGE_SUCCESS, "Id: " + editedMember.getId()
+                + "; Name: " + editedMember.getName()
+                + "; Transaction: " + "[" + updatedTransaction + "]"));
     }
 
+    /**
+     * Overrides the equals method.
+     */
     @Override
     public boolean equals(Object other) {
         return other == this // short circuit if same object
@@ -150,7 +187,7 @@ public class EditTransactionCommand extends EditCommand {
         public EditTransactionDescriptor() {}
 
         /**
-         * Copy constructor.
+         * Copies constructor.
          * A defensive copy of {@code toCopy} is used internally.
          */
         public EditTransactionDescriptor(EditTransactionDescriptor toCopy) {
@@ -165,22 +202,41 @@ public class EditTransactionCommand extends EditCommand {
             return CollectionUtil.isAnyNonNull(timestamp, billing);
         }
 
+        /**
+         * Sets time stamp from input {@code timestamp}.
+         *
+         * @param timestamp transaction's timestamp.
+         */
         public void setTimestamp(Timestamp timestamp) {
             this.timestamp = timestamp;
         }
 
+        /**
+         * Gets time stamp.
+         */
         public Optional<Timestamp> getTimestamp() {
             return Optional.ofNullable(timestamp);
         }
 
+        /**
+         * Sets Billing from {@code billing}.
+         *
+         * @param billing transaction's billing.
+         */
         public void setBilling(Billing billing) {
             this.billing = billing;
         }
 
+        /**
+         * Gets billing.
+         */
         public Optional<Billing> getBilling() {
             return Optional.ofNullable(billing);
         }
 
+        /**
+         * Overrides the equals method.
+         */
         @Override
         public boolean equals(Object other) {
             // short circuit if same object

@@ -11,16 +11,26 @@ import seedu.address.commons.util.StringUtil;
 public class NameContainsKeywordsPredicate implements Predicate<Member> {
     private final List<String> keywords;
 
+    /**
+     * Constructs {@code NameContainsKeywordsPredicate} with input {@code List<String>}.
+     */
     public NameContainsKeywordsPredicate(List<String> keywords) {
         this.keywords = keywords;
     }
 
+    /**
+     * Overrides the test method.
+     * Evaluates this predicate on the given argument.
+     */
     @Override
     public boolean test(Member member) {
         return keywords.stream()
                 .anyMatch(keyword -> StringUtil.containsWordIgnoreCase(member.getName().fullName, keyword));
     }
 
+    /**
+     * Overrides the equals method.
+     */
     @Override
     public boolean equals(Object other) {
         return other == this // short circuit if same object
