@@ -27,9 +27,13 @@ Continue reading to explore the wonders of ezFoodie and enhance the way you mana
 # Purpose
 
 This User Guide aims to:
+
 1. Help new users get familiar with ezFoodie.
+
 2. Provide a summary of all available commands in ezFoodie and their usages.
+
 3. Show detailed explanations of all commands and possible issues users may face.
+
 4. Frequently asked questions and answers.
 
 --------------------------------------------------------------------------------------------------------------------
