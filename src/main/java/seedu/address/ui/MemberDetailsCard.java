@@ -1,15 +1,17 @@
 package seedu.address.ui;
 
-import java.util.Comparator;
-
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
-import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Region;
+import javafx.scene.layout.StackPane;
 import seedu.address.commons.util.DateTimeUtil;
 import seedu.address.model.member.Member;
 import seedu.address.model.member.Tier;
+import seedu.address.model.reservation.Reservation;
+import seedu.address.model.transaction.Transaction;
 
 /**
  * An UI component that displays information of a {@code Member}.
@@ -31,8 +33,6 @@ public class MemberDetailsCard extends UiPart<Region> {
     @FXML
     private HBox cardPane;
     @FXML
-    private Label index;
-    @FXML
     private Label id;
     @FXML
     private Label name;
@@ -51,19 +51,16 @@ public class MemberDetailsCard extends UiPart<Region> {
     @FXML
     private Label tier;
     @FXML
-    private FlowPane tags;
+    private StackPane reservationListPanelPlaceholder;
     @FXML
-    private FlowPane transactions;
-    @FXML
-    private FlowPane reservations;
+    private StackPane transactionListPanelPlaceholder;
 
     /**
-     * Creates a {@code MemberCode} with the given {@code Member} and index to display.
+     * Creates a {@code MemberCode} with the given {@code members} to display.
      */
-    public MemberDetailsCard(Member member, int displayedIndex) {
+    public MemberDetailsCard(Member member) {
         super(FXML);
         this.member = member;
-        index.setText(displayedIndex + ". ");
         id.setText(member.getId().value);
         name.setText(member.getName().fullName);
         phone.setText(member.getPhone().value);
@@ -73,18 +70,17 @@ public class MemberDetailsCard extends UiPart<Region> {
         credit.setText(member.getCredit().value);
         point.setText(member.getPoint().value);
         tier.setText(Tier.getTierByCredit(Integer.parseInt(member.getCredit().value)));
-        member.getTransactions().stream()
-                .sorted(Comparator.comparing(transaction -> transaction.getId().value))
-                .forEach(transaction -> transactions.getChildren().add(new Label("["
-                        + transaction.getId().value + " "
-                        + DateTimeUtil.timestampToDate(Long.parseLong(transaction.getTimestamp().value)).toString()
-                        + " " + transaction.getBilling().value + "] ")));
-        member.getReservations().stream()
-                .sorted(Comparator.comparing(reservation -> DateTimeUtil
-                        .parseDateTime(reservation.getDateTime().value)))
-                .forEach(reservation -> reservations.getChildren().add(new Label("["
-                        + reservation.getId().value + " "
-                        + reservation.getDateTime().value + " " + reservation.getRemark().value + "] ")));
+        tier.getStyleClass().add(Tier.getTierByCredit(Integer.parseInt(member.getCredit().value)).toLowerCase());
+
+        ObservableList<Reservation> internalReservationList = FXCollections.observableArrayList();
+        internalReservationList.addAll(member.getReservations());
+        ReservationListPanel reservationListPanel = new ReservationListPanel(internalReservationList);
+        reservationListPanelPlaceholder.getChildren().add(reservationListPanel.getRoot());
+
+        ObservableList<Transaction> internalTransactionList = FXCollections.observableArrayList();
+        internalTransactionList.addAll(member.getTransactions());
+        TransactionListPanel transactionListPanel = new TransactionListPanel(internalTransactionList);
+        transactionListPanelPlaceholder.getChildren().add(transactionListPanel.getRoot());
     }
 
     @Override
@@ -101,7 +97,6 @@ public class MemberDetailsCard extends UiPart<Region> {
 
         // state check
         MemberDetailsCard card = (MemberDetailsCard) other;
-        return index.getText().equals(card.index.getText())
-                && member.equals(card.member);
+        return member.equals(card.member);
     }
 }

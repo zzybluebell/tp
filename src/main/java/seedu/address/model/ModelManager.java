@@ -5,7 +5,6 @@ import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
 
 import java.nio.file.Path;
 import java.util.Comparator;
-import java.util.HashMap;
 import java.util.function.Predicate;
 import java.util.logging.Logger;
 
@@ -15,8 +14,6 @@ import javafx.collections.transformation.SortedList;
 import seedu.address.commons.core.GuiSettings;
 import seedu.address.commons.core.LogsCenter;
 import seedu.address.model.member.Member;
-import seedu.address.model.member.Tier;
-import seedu.address.model.transaction.Transaction;
 
 /**
  * Represents the in-memory model of the ezFoodie data.
@@ -216,8 +213,7 @@ public class ModelManager implements Model {
         ezFoodie.setMember(target, editedMember);
     }
 
-    //=========== Updated Member List for display =============================================================
-
+    //=========== Updated Member List for display ============================================================
 
     /**
      * Returns an unmodifiable view of the list of {@code Member} backed by the internal list of
@@ -235,142 +231,6 @@ public class ModelManager implements Model {
     @Override
     public ObservableList<Member> getUpdatedMemberListForView() {
         return filteredMembersForView;
-    }
-
-    //=========== Summary display =============================================================
-
-    /**
-     * Gets the number of all members in ezFoodie.
-     *
-     * @return int total count.
-     */
-    @Override
-    public int getNumberOfMembers() {
-        return ezFoodie.getMemberList().size();
-    }
-
-    /**
-     * Gets the number of members in each tier in ezFoodie.
-     *
-     * @return hashmap of (tier name, count) pairs.
-     */
-    @Override
-    public HashMap<String, Integer> getNumberOfMembersByTiers() {
-        HashMap<String, Integer> tierCounts = new HashMap<>();
-        int count;
-        String curTier;
-
-        for (String key : Tier.getAllKeys()) {
-            tierCounts.put(key, 0);
-        }
-
-        for (Member member : ezFoodie.getMemberList()) {
-            curTier = Tier.getTierByCredit(Integer.parseInt(member.getCredit().value));
-            count = tierCounts.get(curTier);
-            tierCounts.put(curTier, count + 1);
-        }
-
-        return tierCounts;
-    }
-
-    /**
-     * Gets the number of transactions made in all time in ezFoodie.
-     *
-     * @return int total count transactions all time.
-     */
-    @Override
-    public int getNumberOfTransactions() {
-        int count = 0;
-
-        for (Member member : filteredMembers) {
-            count += member.getTransactions().size();
-        }
-
-        return count;
-    }
-
-    /**
-     * Gets the number of transactions made in the past month in ezFoodie.
-     *
-     * @return total count transactions in last 1 month.
-     */
-    @Override
-    public int getNumberOfTransactionsPastMonth() {
-        // todo
-        return (int) Math.random() + 32;
-    }
-
-    /**
-     * Gets the number of transactions made in the past 3 months in ezFoodie.
-     *
-     * @return total count transactions in last 3 months.
-     */
-    @Override
-    public int getNumberOfTransactionsPastThreeMonth() {
-        // todo
-        return (int) Math.random() + 77;
-    }
-
-    /**
-     * Gets the number of transactions made in the past 6 months in ezFoodie.
-     *
-     * @return total count transactions in last 6 months.
-     */
-    @Override
-    public int getNumberOfTransactionsPastSixMonth() {
-        // todo
-        return (int) Math.random() + 100;
-    }
-
-    /**
-     * Gets the total amount of transactions made all time in ezFoodie.
-     *
-     * @return total amount of transactions all time.
-     */
-    @Override
-    public double getTotalAmountOfTransactions() {
-        double count = 0;
-
-        for (Member member : filteredMembers) {
-            for (Transaction transaction : member.getTransactions()) {
-                count += Double.parseDouble(transaction.getBilling().value);
-            }
-        }
-
-        return count;
-    }
-
-    /**
-     * Gets the total amount of transactions made in the past month in ezFoodie.
-     *
-     * @return total amount of transactions in past 1 month.
-     */
-    @Override
-    public double getTotalAmountOfTransactionsPastMonth() {
-        // todo
-        return Math.random() + 2000;
-    }
-
-    /**
-     * Gets the total amount of transactions made in the past 3 months in ezFoodie.
-     *
-     * @return total amount of transactions in past 3 months.
-     */
-    @Override
-    public double getTotalAmountOfTransactionsPastThreeMonth() {
-        // todo
-        return Math.random() + 3000;
-    }
-
-    /**
-     * Gets the total amount of transactions made in the past 6 months in ezFoodie.
-     *
-     * @return total amount of transactions in past 6 months.
-     */
-    @Override
-    public double getTotalAmountOfTransactionsPastSixMonth() {
-        // todo
-        return Math.random() + 6000;
     }
 
     //=========== Filtered Member List Accessors =============================================================
