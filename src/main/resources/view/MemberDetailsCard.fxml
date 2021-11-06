@@ -50,7 +50,6 @@
       <Insets bottom="10" />
     </padding>
   </HBox>
-
   <HBox alignment="CENTER">
     <VBox fx:id="reservationList" styleClass="pane-with-border" minWidth="700" prefWidth="700"
           VBox.vgrow="ALWAYS">
