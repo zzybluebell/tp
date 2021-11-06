@@ -13,10 +13,13 @@ import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.logic.parser.exceptions.ParseException;
 
 /**
- * The UI component that is responsible for receiving user command inputs.
+ * Represents for the UI component that is responsible for receiving user command inputs.
  */
 public class CommandBox extends UiPart<Region> {
 
+    /**
+     * Stands for command box error style.
+     */
     public static final String ERROR_STYLE_CLASS = "error";
     private static final String FXML = "CommandBox.fxml";
 
@@ -26,18 +29,18 @@ public class CommandBox extends UiPart<Region> {
     private TextField commandTextField;
 
     /**
-     * Creates a {@code CommandBox} with the given {@code CommandExecutor}.
+     * Constructs a {@code CommandBox} with the given {@code CommandExecutor}.
      */
     public CommandBox(CommandExecutor commandExecutor) {
         super(FXML);
         this.commandExecutor = commandExecutor;
         // calls #setStyleToDefault() whenever there is a change to the text of the command box.
         commandTextField.textProperty().addListener((unused1, unused2, unused3) -> setStyleToDefault());
-        commandTextField.addEventHandler(KeyEvent.KEY_PRESSED, ev -> {
-            if (ev.getCode() == KeyCode.UP) {
+        commandTextField.addEventHandler(KeyEvent.KEY_PRESSED, event -> {
+            if (event.getCode() == KeyCode.UP) {
                 commandTextField.setText(CommandUtil.getPreCommand());
             }
-            if (ev.getCode() == KeyCode.DOWN) {
+            if (event.getCode() == KeyCode.DOWN) {
                 commandTextField.setText(CommandUtil.getNextCommand());
             }
         });

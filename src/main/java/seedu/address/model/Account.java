@@ -47,11 +47,19 @@ public class Account implements ReadOnlyAccount {
         setPassword(newAccount.getPassword());
     }
 
+    /**
+     * Sets the Password by giving {@code password}.
+     */
     public void setPassword(Password password) {
         requireNonNull(password);
         this.password = password;
     }
 
+    /**
+     * Gets the password.
+     *
+     * @return Password of the account.
+     */
     @Override
     public Password getPassword() {
         return password;
@@ -71,6 +79,7 @@ public class Account implements ReadOnlyAccount {
     }
 
     /**
+     * Overrides the equals method.
      * Returns true if both accounts have the same data fields.
      * This defines a stronger notion of equality between two accounts.
      */
@@ -88,12 +97,19 @@ public class Account implements ReadOnlyAccount {
         return otherAccount.getPassword().equals(getPassword());
     }
 
+    /**
+     * Overrides the hashcode method.
+     * Use this method for custom fields hashing instead of implementing your own.
+     */
     @Override
     public int hashCode() {
-        // use this method for custom fields hashing instead of implementing your own
         return Objects.hash(password);
     }
 
+    /**
+     * Overrides the toString method.
+     * @return String with password value.
+     */
     @Override
     public String toString() {
         final StringBuilder builder = new StringBuilder();

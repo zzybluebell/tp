@@ -32,7 +32,7 @@ class JsonAdaptedReservation {
     }
 
     /**
-     * Converts a given {@code Reservation} into this class for Jackson use.
+     * Constructs a given {@code Reservation} into this class for Jackson use.
      */
     public JsonAdaptedReservation(Reservation source) {
         id = source.getId().value;

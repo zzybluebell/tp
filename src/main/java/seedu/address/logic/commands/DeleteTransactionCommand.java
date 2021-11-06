@@ -31,6 +31,14 @@ import seedu.address.model.transaction.Transaction;
  */
 public class DeleteTransactionCommand extends DeleteCommand {
 
+    /**
+     * Stands for delete command.
+     */
+    public static final String COMMAND_WORD = "del";
+
+    /**
+     * Stands for the message of delete command related to transaction.
+     */
     public static final String MESSAGE_USAGE = COMMAND_WORD
             + ": Deletes the transaction identified by the member ID and transaction ID.\n"
             + "Parameters:\n"
@@ -40,13 +48,16 @@ public class DeleteTransactionCommand extends DeleteCommand {
             + "Delete by member ID and transaction ID: "
             + COMMAND_WORD + " " + PREFIX_TRANSACTION + " " + PREFIX_ID + "10001100001";
 
+    /**
+     * Stands for succeed message of delete transaction.
+     */
     public static final String MESSAGE_SUCCESS = "Deleted Transaction: %1$s";
 
     private final seedu.address.model.member.Id memberId;
     private final seedu.address.model.transaction.Id transactionId;
 
     /**
-     * Creates an DeleteCommand to delete the specified {@code Member} by member ID and transaction ID
+     * Constructs an DeleteCommand to delete the specified {@code Member} by {@code memberId} and {@code transactionId}.
      */
     public DeleteTransactionCommand(
             seedu.address.model.member.Id memberId, seedu.address.model.transaction.Id transactionId) {
@@ -56,55 +67,67 @@ public class DeleteTransactionCommand extends DeleteCommand {
     }
 
     /**
-     * Creates and returns a {@code Member} with the details of {@code memberToEdit}
+     * Creates and returns a {@code Member} with the details of {@code memberToEdit} and {@code transactionToDelete}
+     *
+     * @param memberToEdit create a new member to edit and update.
+     * @param transactionToDelete the transaction will be deleted.
+     * @return Member with added transactions and updated credits.
      */
-    private static Member createUpdatedCredits(Member memberToEdit, Transaction transaction) {
+    private static Member createEditedMember(Member memberToEdit, Transaction transactionToDelete) {
         assert memberToEdit != null;
+        assert transactionToDelete != null;
 
         Id id = memberToEdit.getId();
-        Name updatedName = memberToEdit.getName();
-        Phone updatedPhone = memberToEdit.getPhone();
-        Email updatedEmail = memberToEdit.getEmail();
-        Address updatedAddress = memberToEdit.getAddress();
+        Name name = memberToEdit.getName();
+        Phone phone = memberToEdit.getPhone();
+        Email email = memberToEdit.getEmail();
+        Address address = memberToEdit.getAddress();
         Timestamp timestamp = memberToEdit.getTimestamp();
         List<Transaction> transactions = memberToEdit.getTransactions();
         List<Reservation> reservations = memberToEdit.getReservations();
         Set<Tag> updatedTags = memberToEdit.getTags();
 
         List<Transaction> updatedTransactions = new ArrayList<>(transactions);
-        updatedTransactions.remove(transaction);
+        updatedTransactions.remove(transactionToDelete);
         Credit updatedCredit = new Credit("" + Math.min(updatedTransactions.stream()
                 .mapToInt(t -> (int) t.getBilling().getDoubleValue()).sum(), Credit.MAX));
-        Point updatePoint = new Point(String.valueOf(updatedCredit.getIntValue()
-                - memberToEdit.getCredit().getIntValue()
-                + memberToEdit.getPoint().getIntValue()));
-
-        return new Member(id, updatedName, updatedPhone, updatedEmail, updatedAddress, timestamp, updatedCredit,
-                updatePoint, updatedTransactions, reservations, updatedTags);
+        Point point = memberToEdit.getPoint();
+        return new Member(id, name, phone, email, address, timestamp, updatedCredit,
+                point, updatedTransactions, reservations, updatedTags);
     }
 
+    /**
+     * Executes the model.
+     *
+     * @param model {@code Model} which the command should operate on.
+     * @return CommandResult delete transaction command.
+     * @throws CommandException if the user input does not conform the expected format.
+     */
     @Override
     public CommandResult execute(Model model) throws CommandException {
         requireNonNull(model);
         List<Member> lastShownList = model.getUpdatedMemberList();
         Member memberToEdit = lastShownList.stream()
                 .filter(member -> memberId.equals(member.getId())).findAny().orElse(null);
-        if (memberToEdit != null) {
-            Transaction transactionToDelete = memberToEdit.getTransactions().stream()
-                    .filter(transaction -> transactionId.equals(transaction.getId())).findAny().orElse(null);
-            if (transactionToDelete != null) {
-                Member editedMember = createUpdatedCredits(memberToEdit, transactionToDelete);
-                model.setMember(memberToEdit, editedMember);
-                model.updateFilteredMemberList(PREDICATE_SHOW_ALL_MEMBERS);
-                return new CommandResult(String.format(MESSAGE_SUCCESS, editedMember));
-            } else {
-                throw new CommandException(Messages.MESSAGE_INVALID_TRANSACTION_DISPLAYED_ID);
-            }
-        } else {
+        if (memberToEdit == null) {
             throw new CommandException(Messages.MESSAGE_INVALID_MEMBER_DISPLAYED_ID);
         }
+        Transaction transactionToDelete = memberToEdit.getTransactions().stream()
+                .filter(transaction -> transactionId.equals(transaction.getId())).findAny().orElse(null);
+        if (transactionToDelete == null) {
+            throw new CommandException(Messages.MESSAGE_INVALID_TRANSACTION_DISPLAYED_ID);
+        }
+        Member editedMember = createEditedMember(memberToEdit, transactionToDelete);
+        model.setMember(memberToEdit, editedMember);
+        model.updateFilteredMemberList(PREDICATE_SHOW_ALL_MEMBERS);
+        return new CommandResult(String.format(MESSAGE_SUCCESS, "Id: " + editedMember.getId()
+                + "; Name: " + editedMember.getName()
+                + "; Transaction: " + "[" + transactionToDelete + "]"));
     }
 
+    /**
+     * Overrides the equals method.
+     */
     @Override
     public boolean equals(Object other) {
         return other == this // short circuit if same object

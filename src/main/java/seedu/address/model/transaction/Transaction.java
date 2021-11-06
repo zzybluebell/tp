@@ -2,6 +2,7 @@ package seedu.address.model.transaction;
 
 import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
 
+import java.util.Calendar;
 import java.util.Objects;
 
 import seedu.address.model.Timestamp;
@@ -17,7 +18,12 @@ public class Transaction {
     private final Billing billing;
 
     /**
-     * Every field must be present and not null.
+     * Constructs a {@code Transaction},
+     * every field must be present and not null.
+     *
+     * @param id member Id.
+     * @param timestamp transaction timestamp.
+     * @param billing billing details.
      */
     public Transaction(Id id, Timestamp timestamp, Billing billing) {
         requireAllNonNull(id, timestamp, billing);
@@ -26,20 +32,35 @@ public class Transaction {
         this.billing = billing;
     }
 
+    /**
+     * Gets transaction id.
+     *
+     * @return id the transaction member id.
+     */
     public Id getId() {
         return id;
     }
 
+    /**
+     * Gets transaction timestamp.
+     *
+     * @return id the transaction timestamp.
+     */
     public Timestamp getTimestamp() {
         return timestamp;
     }
 
+    /**
+     * Gets transaction billing.
+     *
+     * @return id the transaction billing.
+     */
     public Billing getBilling() {
         return billing;
     }
 
     /**
-     * Returns true if both transactions have the same id.
+     * Returns whether is same id between other transactions.
      * This defines a weaker notion of equality between two transactions.
      */
     public boolean isSameId(Transaction otherTransaction) {
@@ -52,6 +73,28 @@ public class Transaction {
     }
 
     /**
+     * Returns true if a given timestamp is within {@code numOfPastMonths}.
+     */
+    public static boolean isWithinPastMonths(long timestamp, int numOfPastMonths) {
+        Calendar currentCalendar = Calendar.getInstance();
+        currentCalendar.setTimeInMillis(System.currentTimeMillis());
+        int currentYear = currentCalendar.get(Calendar.YEAR);
+        int currentMonth = currentCalendar.get(Calendar.MONTH);
+
+        Calendar calendarToCheck = Calendar.getInstance();
+        calendarToCheck.setTimeInMillis(timestamp);
+        int yearToCheck = calendarToCheck.get(Calendar.YEAR);
+        int monthToCheck = calendarToCheck.get(Calendar.MONTH);
+
+        int diffYears = currentYear - yearToCheck;
+        int diffMonths = diffYears * 12 + currentMonth - monthToCheck;
+
+        return diffMonths <= numOfPastMonths;
+    }
+
+    /**
+     * Overrides the equals method.
+     *
      * Returns true if both transactions have the same timestamp and billing.
      * This defines a stronger notion of equality between two transactions.
      */
@@ -71,12 +114,20 @@ public class Transaction {
                 && otherTransaction.getBilling().equals(getBilling());
     }
 
+    /**
+     * Overrides the hashCode method.
+     */
     @Override
     public int hashCode() {
         // use this method for custom fields hashing instead of implementing your own
         return Objects.hash(timestamp, billing);
     }
 
+    /**
+     * Overrides the toString method.
+     *
+     * @return String of transaction's information including Id, timestamp and billing.
+     */
     @Override
     public String toString() {
         final StringBuilder builder = new StringBuilder();

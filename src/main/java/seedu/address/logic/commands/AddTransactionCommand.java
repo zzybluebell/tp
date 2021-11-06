@@ -31,6 +31,9 @@ import seedu.address.model.transaction.Transaction;
  */
 public class AddTransactionCommand extends AddCommand {
 
+    /**
+     * Stands for the message add transaction command.
+     */
     public static final String MESSAGE_USAGE = COMMAND_WORD + ": Adds a transaction to each member in the ezFoodie.\n"
             + "Parameters:\n"
             + PREFIX_TRANSACTION + " "
@@ -42,6 +45,9 @@ public class AddTransactionCommand extends AddCommand {
             + PREFIX_BILLING + "23.00 "
             + PREFIX_ID + "10001";
 
+    /**
+     * Stands for the success message of new transaction added.
+     */
     public static final String MESSAGE_SUCCESS = "New transaction added: %1$s";
     public static final String MESSAGE_FULL = "Transaction ID has reached " + seedu.address.model.transaction.Id.MAX;
 
@@ -49,7 +55,7 @@ public class AddTransactionCommand extends AddCommand {
     private final seedu.address.model.member.Id idToAdd;
 
     /**
-     * Creates an AddTransactionCommand to add the specified {@code Member}
+     * Constructs an AddTransactionCommand to add the specified {@code Member}.
      */
     public AddTransactionCommand(Transaction transaction, seedu.address.model.member.Id id) {
         requireAllNonNull(transaction, id);
@@ -57,47 +63,64 @@ public class AddTransactionCommand extends AddCommand {
         idToAdd = id;
     }
 
+    /**
+     * Executes the model in add transaction command.
+     *
+     * @param model {@code Model} which the command should operate on.
+     * @return CommandResult with edited member.
+     * @throws CommandException if the user input does not conform the expected format.
+     */
     @Override
     public CommandResult execute(Model model) throws CommandException {
         requireNonNull(model);
         List<Member> lastShownList = model.getUpdatedMemberList();
         Member memberToEdit = lastShownList.stream()
                 .filter(member -> idToAdd.equals(member.getId())).findAny().orElse(null);
-        if (memberToEdit != null) {
-            Member editedMember = createUpdatedCreditAndPointsMember(memberToEdit, transactionToAdd);
-            model.setMember(memberToEdit, editedMember);
-            model.updateFilteredMemberList(PREDICATE_SHOW_ALL_MEMBERS);
-            return new CommandResult(String.format(MESSAGE_SUCCESS, editedMember));
-        } else {
+        if (memberToEdit == null) {
             throw new CommandException(Messages.MESSAGE_INVALID_MEMBER_DISPLAYED_ID);
         }
+        Member editedMember = createEditedMember(memberToEdit, transactionToAdd);
+        model.setMember(memberToEdit, editedMember);
+        model.updateFilteredMemberList(PREDICATE_SHOW_ALL_MEMBERS);
+        return new CommandResult(String.format(MESSAGE_SUCCESS, "Id: " + editedMember.getId()
+                + "; Name: " + editedMember.getName()
+                + "; Transaction: " + "[" + transactionToAdd + "]"));
     }
+
     /**
-     * Creates and returns a {@code Member} with the details of {@code memberToEdit}
+     * Creates and returns a {@code Member} with the details of {@code memberToEdit} and {@code transactionToAdd}.
+     *
+     * @param memberToEdit {@code memberToEdit} which the command should operate on.
+     * @param transactionToAdd {@code transaction} which the command should operate on.
+     * @return member with updated transactions and points.
      */
-    private static Member createUpdatedCreditAndPointsMember(Member memberToEdit, Transaction transaction) {
+    private static Member createEditedMember(Member memberToEdit, Transaction transactionToAdd) {
         assert memberToEdit != null;
+        assert transactionToAdd != null;
 
         seedu.address.model.member.Id id = memberToEdit.getId();
-        Name updatedName = memberToEdit.getName();
-        Phone updatedPhone = memberToEdit.getPhone();
-        Email updatedEmail = memberToEdit.getEmail();
-        Address updatedAddress = memberToEdit.getAddress();
-        Timestamp updateTimestamp = memberToEdit.getTimestamp();
+        Name name = memberToEdit.getName();
+        Phone phone = memberToEdit.getPhone();
+        Email email = memberToEdit.getEmail();
+        Address address = memberToEdit.getAddress();
+        Timestamp timestamp = memberToEdit.getTimestamp();
         List<Transaction> transactions = memberToEdit.getTransactions();
         List<Reservation> reservations = memberToEdit.getReservations();
-        Set<Tag> updatedTags = memberToEdit.getTags();
+        Set<Tag> tags = memberToEdit.getTags();
         List<Transaction> updatedTransactions = new ArrayList<>(transactions);
-        updatedTransactions.add(transaction);
+        updatedTransactions.add(transactionToAdd);
         Credit updatedCredit = new Credit("" + Math.min(updatedTransactions.stream()
                 .mapToInt(t -> (int) t.getBilling().getDoubleValue()).sum(), Credit.MAX));
-        Point updatePoint = new Point(String.valueOf(updatedCredit.getIntValue()
+        Point updatePoint = new Point("" + Math.min(Integer.parseInt(String.valueOf(updatedCredit.getIntValue()
                 - memberToEdit.getCredit().getIntValue()
-                + memberToEdit.getPoint().getIntValue()));
-        return new Member(id, updatedName, updatedPhone, updatedEmail, updatedAddress, updateTimestamp, updatedCredit,
-                updatePoint, updatedTransactions, reservations, updatedTags);
+                + memberToEdit.getPoint().getIntValue())), Point.MAX));
+        return new Member(id, name, phone, email, address, timestamp, updatedCredit,
+                updatePoint, updatedTransactions, reservations, tags);
     }
 
+    /**
+     * Overrides the equals method.
+     */
     @Override
     public boolean equals(Object other) {
         return other == this // short circuit if same object

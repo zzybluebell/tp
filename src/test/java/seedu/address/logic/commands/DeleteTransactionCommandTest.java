@@ -40,14 +40,14 @@ public class DeleteTransactionCommandTest {
                 .filter(transaction -> !transaction.equals(transactionToDelete)).collect(Collectors.toList());
         Credit expectedCredit = new Credit("" + Math.min(expectedTransactions.stream()
                 .mapToInt(t -> (int) t.getBilling().getDoubleValue()).sum(), Credit.MAX));
-        Point expectedPoint = new Point(String.valueOf(expectedCredit.getIntValue()
-                - memberToEdit.getCredit().getIntValue()
-                + memberToEdit.getPoint().getIntValue()));
+        Point expectedPoint = memberToEdit.getPoint();
         Member expectedMember = new MemberBuilder(memberToEdit).withCredit(expectedCredit.value)
                 .withPoint(expectedPoint.value).withTransactions(expectedTransactions.toArray(Transaction[]::new))
                 .build();
         expectedModel.setMember(memberToEdit, expectedMember);
-        String expectedMessage = String.format(DeleteTransactionCommand.MESSAGE_SUCCESS, expectedMember);
+        String expectedMessage = String.format(DeleteTransactionCommand.MESSAGE_SUCCESS, "Id: " + expectedMember.getId()
+                + "; Name: " + expectedMember.getName()
+                + "; Transaction: " + "[" + transactionToDelete + "]");
 
         assertCommandSuccess(deleteCommand, model, expectedMessage, expectedModel);
     }

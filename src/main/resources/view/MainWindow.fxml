@@ -31,6 +31,9 @@
           <Menu mnemonicParsing="false" text="Help">
             <MenuItem fx:id="helpMenuItem" mnemonicParsing="false" onAction="#handleHelp" text="Help" />
           </Menu>
+          <Menu mnemonicParsing="false" text="Summary">
+            <MenuItem fx:id="summaryMenuItem" mnemonicParsing="false" onAction="#handleSummary" text="Summary" />
+          </Menu>
         </MenuBar>
 
         <StackPane VBox.vgrow="NEVER" fx:id="commandBoxPlaceholder" styleClass="pane-with-border">
@@ -53,7 +56,7 @@
           <StackPane fx:id="memberListPanelPlaceholder" VBox.vgrow="ALWAYS"/>
         </VBox>
 
-        <StackPane fx:id="statusbarPlaceholder" VBox.vgrow="NEVER" />
+        <StackPane fx:id="statusBarPlaceholder" VBox.vgrow="NEVER" />
       </VBox>
     </Scene>
   </scene>

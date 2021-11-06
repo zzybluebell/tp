@@ -1,5 +1,8 @@
 package seedu.address.model.member;
 
+/**
+ * Represents a Tier in the ezFoodie.
+ */
 public enum Tier {
 
     BRONZE("Bronze", 0),
@@ -10,6 +13,12 @@ public enum Tier {
     private final String key;
     private final Integer value;
 
+    /**
+     * Constructs a {@code Tier} with input {@code key} and {@code  value}.
+     *
+     * @param key the different tiers for Platinum, Gold, Silver or Bronze.
+     * @param value the value of tier.
+     */
     Tier(String key, Integer value) {
         this.key = key;
         this.value = value;

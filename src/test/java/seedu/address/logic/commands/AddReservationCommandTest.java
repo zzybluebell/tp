@@ -10,7 +10,6 @@ import static seedu.address.testutil.TypicalMembers.getTypicalEzFoodie;
 
 import java.nio.file.Path;
 import java.util.Comparator;
-import java.util.HashMap;
 import java.util.function.Predicate;
 
 import org.junit.jupiter.api.Test;
@@ -47,9 +46,10 @@ public class AddReservationCommandTest {
         Reservation validReservation = new ReservationBuilder().build();
         CommandResult commandResult = new AddReservationCommand(validReservation, validId).execute(modelStub);
         Member expectedMember = model.getUpdatedMemberList().get(INDEX_FIRST_MEMBER.getZeroBased());
-        ;
 
-        assertEquals(String.format(AddReservationCommand.MESSAGE_SUCCESS, expectedMember),
+        assertEquals(String.format(AddReservationCommand.MESSAGE_SUCCESS, "Id: " + expectedMember.getId()
+                + "; Name: " + expectedMember.getName()
+                + "; Reservation: " + "[" + validReservation + "]"),
                 commandResult.getFeedbackToUser());
         assertTrue(expectedMember.getReservations().contains(validReservation));
     }
@@ -58,10 +58,10 @@ public class AddReservationCommandTest {
     public void equals() {
         Member alice = new MemberBuilder().withName("Alice").build();
         Member bob = new MemberBuilder().withName("Bob").build();
-        Reservation aliceReservation = new ReservationBuilder().withId("100001").withDateTime("2021-02-01 00:00")
+        Reservation aliceReservation = new ReservationBuilder().withId("100001").withDateTime("2099-12-29 00:00")
                 .withRemark("2 people")
                 .build();
-        Reservation bobReservation = new ReservationBuilder().withId("100002").withDateTime("2021-02-02 00:00")
+        Reservation bobReservation = new ReservationBuilder().withId("100002").withDateTime("2099-12-30 00:00")
                 .withRemark("3 people")
                 .build();
         AddReservationCommand addAliceReservationCommand = new AddReservationCommand(aliceReservation, alice.getId());
@@ -197,56 +197,6 @@ public class AddReservationCommandTest {
 
         @Override
         public void updateSortedMemberList(Comparator<Member> comparator) {
-            throw new AssertionError("This method should not be called.");
-        }
-
-        @Override
-        public int getNumberOfMembers() {
-            throw new AssertionError("This method should not be called.");
-        }
-
-        @Override
-        public HashMap<String, Integer> getNumberOfMembersByTiers() {
-            throw new AssertionError("This method should not be called.");
-        }
-
-        @Override
-        public int getNumberOfTransactions() {
-            throw new AssertionError("This method should not be called.");
-        }
-
-        @Override
-        public int getNumberOfTransactionsPastMonth() {
-            throw new AssertionError("This method should not be called.");
-        }
-
-        @Override
-        public int getNumberOfTransactionsPastThreeMonth() {
-            throw new AssertionError("This method should not be called.");
-        }
-
-        @Override
-        public int getNumberOfTransactionsPastSixMonth() {
-            throw new AssertionError("This method should not be called.");
-        }
-
-        @Override
-        public double getTotalAmountOfTransactions() {
-            throw new AssertionError("This method should not be called.");
-        }
-
-        @Override
-        public double getTotalAmountOfTransactionsPastMonth() {
-            throw new AssertionError("This method should not be called.");
-        }
-
-        @Override
-        public double getTotalAmountOfTransactionsPastThreeMonth() {
-            throw new AssertionError("This method should not be called.");
-        }
-
-        @Override
-        public double getTotalAmountOfTransactionsPastSixMonth() {
             throw new AssertionError("This method should not be called.");
         }
     }

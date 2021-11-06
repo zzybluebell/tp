@@ -25,8 +25,14 @@ import seedu.address.model.member.RegistrationDateContainsKeywordsPredicate;
  */
 public class FindCommand extends Command {
 
+    /**
+     * Stands for find command.
+     */
     public static final String COMMAND_WORD = "find";
 
+    /**
+     * Stands for the message of find command.
+     */
     public static final String MESSAGE_USAGE = COMMAND_WORD
             + ": Finds all members whose ids, names, phones or emails contain any of "
             + "the specified keywords (case-insensitive) or within a specific of registration dates "
@@ -47,26 +53,55 @@ public class FindCommand extends Command {
 
     private final Predicate<Member> predicate;
 
+    /**
+     * Constructs FindCommand through Id from input {@code predicate}.
+     */
     public FindCommand(IdContainsKeywordsPredicate predicate) {
         this.predicate = predicate;
     }
 
+    /**
+     * Constructs FindCommand through Name {@code predicate}.
+     *
+     * @param predicate the details of contain key words for name.
+     */
     public FindCommand(NameContainsKeywordsPredicate predicate) {
         this.predicate = predicate;
     }
 
+    /**
+     * Constructs FindCommand through Phone.
+     *
+     * @param predicate the details of contain key words for phone.
+     */
     public FindCommand(PhoneContainsKeywordsPredicate predicate) {
         this.predicate = predicate;
     }
 
+    /**
+     * Constructs FindCommand through Email {@code predicate}.
+     *
+     * @param predicate the details of contain key words for email.
+     */
     public FindCommand(EmailContainsKeywordsPredicate predicate) {
         this.predicate = predicate;
     }
 
+    /**
+     * Constructs FindCommand through RegistrationDate {@code predicate}.
+     *
+     * @param predicate the details of contain key words for registration date.
+     */
     public FindCommand(RegistrationDateContainsKeywordsPredicate predicate) {
         this.predicate = predicate;
     }
 
+    /**
+     * Executes the model.
+     *
+     * @param model {@code Model} which the command should operate on.
+     * @return CommandResult related to find command.
+     */
     @Override
     public CommandResult execute(Model model) {
         requireNonNull(model);
@@ -75,6 +110,9 @@ public class FindCommand extends Command {
                 String.format(Messages.MESSAGE_MEMBERS_LISTED_OVERVIEW, model.getUpdatedMemberList().size()));
     }
 
+    /**
+     * Overrides the equals method.
+     */
     @Override
     public boolean equals(Object other) {
         return other == this // short circuit if same object

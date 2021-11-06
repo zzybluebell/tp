@@ -2,7 +2,6 @@ package seedu.address.model;
 
 import java.nio.file.Path;
 import java.util.Comparator;
-import java.util.HashMap;
 import java.util.function.Predicate;
 
 import javafx.collections.ObservableList;
@@ -14,12 +13,12 @@ import seedu.address.model.member.Member;
  */
 public interface Model {
     /**
-     * {@code Predicate} that always evaluate to true
+     * {@code Predicate} that always evaluate to true.
      */
     Predicate<Member> PREDICATE_SHOW_ALL_MEMBERS = unused -> true;
 
     /**
-     * {@code Comparator} sort members by id asc
+     * {@code Comparator} sort members by id asc.
      */
     Comparator<Member> COMPARATOR_SORT_MEMBERS_BY_ID_ASC = Comparator.comparingLong(m -> m.getId().getLongValue());
 
@@ -69,7 +68,7 @@ public interface Model {
     void setAccount(ReadOnlyAccount account);
 
     /**
-     * Returns the Account
+     * Returns the account.
      */
     ReadOnlyAccount getAccount();
 
@@ -79,7 +78,7 @@ public interface Model {
     void setEzFoodie(ReadOnlyEzFoodie ezFoodie);
 
     /**
-     * Returns the EzFoodie
+     * Returns the EzFoodie.
      */
     ReadOnlyEzFoodie getEzFoodie();
 
@@ -114,13 +113,13 @@ public interface Model {
     void setMember(Member target, Member editedMember);
 
     /**
-     * Returns an unmodifiable view of the sorted or filtered member list
+     * Returns an unmodifiable view of the sorted or filtered member list.
      */
     ObservableList<Member> getUpdatedMemberList();
 
     /**
      * Returns an unmodifiable view of the sorted or filtered member list
-     * for viewCommand to use only
+     * for viewCommand to use only.
      */
     ObservableList<Member> getUpdatedMemberListForView();
 
@@ -145,64 +144,4 @@ public interface Model {
      * @throws NullPointerException if {@code comparator} is null.
      */
     void updateSortedMemberList(Comparator<Member> comparator);
-
-    /**
-     * Gets the number of all members in ezFoodie
-     * @return total count
-     */
-    int getNumberOfMembers();
-
-    /**
-     * Gets the number of members in each tier in ezFoodie
-     * @return hashmap of (tier name, count) pairs.
-     */
-    HashMap<String, Integer> getNumberOfMembersByTiers();
-
-    /**
-     * Gets the number of transactions made in all time in ezFoodie
-     * @return total count all time
-     */
-    int getNumberOfTransactions();
-
-    /**
-     * Gets the number of transactions made in the past month in ezFoodie
-     * @return total count in last 1 month
-     */
-    int getNumberOfTransactionsPastMonth();
-
-    /**
-     * Gets the number of transactions made in the past 3 months in ezFoodie
-     * @return total count in last 3 months
-     */
-    int getNumberOfTransactionsPastThreeMonth();
-
-    /**
-     * Gets the number of transactions made in the past 6 months in ezFoodie
-     * @return total count in last 6 months
-     */
-    int getNumberOfTransactionsPastSixMonth();
-
-    /**
-     * Gets the total amount of transactions made all time in ezFoodie
-     * @return total amount all time
-     */
-    double getTotalAmountOfTransactions();
-
-    /**
-     * Gets the total amount of transactions made in the past month in ezFoodie
-     * @return total amount in past 1 month
-     */
-    double getTotalAmountOfTransactionsPastMonth();
-
-    /**
-     * Gets the total amount of transactions made in the past 3 months in ezFoodie
-     * @return total amount in past 3 months
-     */
-    double getTotalAmountOfTransactionsPastThreeMonth();
-
-    /**
-     * Gets the total amount of transactions made in the past 6 months in ezFoodie
-     * @return total amount in past 6 months
-     */
-    double getTotalAmountOfTransactionsPastSixMonth();
 }
