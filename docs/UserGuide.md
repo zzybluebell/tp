@@ -125,7 +125,7 @@ Format: `list -mem`
 Example:
 * `list -mem`
 
-### Adding a member : `add -mem`
+### Adding a member : `add -m`
 
 Adds a new member to the member list.
 
