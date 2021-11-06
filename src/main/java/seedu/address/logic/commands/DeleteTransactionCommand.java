@@ -78,10 +78,10 @@ public class DeleteTransactionCommand extends DeleteCommand {
         assert transactionToDelete != null;
 
         Id id = memberToEdit.getId();
-        Name updatedName = memberToEdit.getName();
-        Phone updatedPhone = memberToEdit.getPhone();
-        Email updatedEmail = memberToEdit.getEmail();
-        Address updatedAddress = memberToEdit.getAddress();
+        Name name = memberToEdit.getName();
+        Phone phone = memberToEdit.getPhone();
+        Email email = memberToEdit.getEmail();
+        Address address = memberToEdit.getAddress();
         Timestamp timestamp = memberToEdit.getTimestamp();
         List<Transaction> transactions = memberToEdit.getTransactions();
         List<Reservation> reservations = memberToEdit.getReservations();
@@ -91,12 +91,9 @@ public class DeleteTransactionCommand extends DeleteCommand {
         updatedTransactions.remove(transactionToDelete);
         Credit updatedCredit = new Credit("" + Math.min(updatedTransactions.stream()
                 .mapToInt(t -> (int) t.getBilling().getDoubleValue()).sum(), Credit.MAX));
-        Point updatePoint = new Point(String.valueOf(updatedCredit.getIntValue()
-                - memberToEdit.getCredit().getIntValue()
-                + memberToEdit.getPoint().getIntValue()));
-
-        return new Member(id, updatedName, updatedPhone, updatedEmail, updatedAddress, timestamp, updatedCredit,
-                updatePoint, updatedTransactions, reservations, updatedTags);
+        Point point = memberToEdit.getPoint();
+        return new Member(id, name, phone, email, address, timestamp, updatedCredit,
+                point, updatedTransactions, reservations, updatedTags);
     }
 
     /**

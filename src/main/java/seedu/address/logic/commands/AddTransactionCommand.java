@@ -99,23 +99,23 @@ public class AddTransactionCommand extends AddCommand {
         assert transactionToAdd != null;
 
         seedu.address.model.member.Id id = memberToEdit.getId();
-        Name updatedName = memberToEdit.getName();
-        Phone updatedPhone = memberToEdit.getPhone();
-        Email updatedEmail = memberToEdit.getEmail();
-        Address updatedAddress = memberToEdit.getAddress();
-        Timestamp updateTimestamp = memberToEdit.getTimestamp();
+        Name name = memberToEdit.getName();
+        Phone phone = memberToEdit.getPhone();
+        Email email = memberToEdit.getEmail();
+        Address address = memberToEdit.getAddress();
+        Timestamp timestamp = memberToEdit.getTimestamp();
         List<Transaction> transactions = memberToEdit.getTransactions();
         List<Reservation> reservations = memberToEdit.getReservations();
-        Set<Tag> updatedTags = memberToEdit.getTags();
+        Set<Tag> tags = memberToEdit.getTags();
         List<Transaction> updatedTransactions = new ArrayList<>(transactions);
         updatedTransactions.add(transactionToAdd);
         Credit updatedCredit = new Credit("" + Math.min(updatedTransactions.stream()
                 .mapToInt(t -> (int) t.getBilling().getDoubleValue()).sum(), Credit.MAX));
-        Point updatePoint = new Point(String.valueOf(updatedCredit.getIntValue()
+        Point updatePoint = new Point("" + Math.min(Integer.parseInt(String.valueOf(updatedCredit.getIntValue()
                 - memberToEdit.getCredit().getIntValue()
-                + memberToEdit.getPoint().getIntValue()));
-        return new Member(id, updatedName, updatedPhone, updatedEmail, updatedAddress, updateTimestamp, updatedCredit,
-                updatePoint, updatedTransactions, reservations, updatedTags);
+                + memberToEdit.getPoint().getIntValue())), Point.MAX));
+        return new Member(id, name, phone, email, address, timestamp, updatedCredit,
+                updatePoint, updatedTransactions, reservations, tags);
     }
 
     /**
