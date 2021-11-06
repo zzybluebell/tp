@@ -40,9 +40,7 @@ public class DeleteTransactionCommandTest {
                 .filter(transaction -> !transaction.equals(transactionToDelete)).collect(Collectors.toList());
         Credit expectedCredit = new Credit("" + Math.min(expectedTransactions.stream()
                 .mapToInt(t -> (int) t.getBilling().getDoubleValue()).sum(), Credit.MAX));
-        Point expectedPoint = new Point(String.valueOf(expectedCredit.getIntValue()
-                - memberToEdit.getCredit().getIntValue()
-                + memberToEdit.getPoint().getIntValue()));
+        Point expectedPoint = memberToEdit.getPoint();
         Member expectedMember = new MemberBuilder(memberToEdit).withCredit(expectedCredit.value)
                 .withPoint(expectedPoint.value).withTransactions(expectedTransactions.toArray(Transaction[]::new))
                 .build();
