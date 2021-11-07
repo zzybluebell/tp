@@ -94,7 +94,7 @@ This User Guide aims to:
    
 * Point:
    * *The point accumulation is similar to credit.*
-   * *However, point can be redeemed as amount of cash deduction to a member, and point will be deducted
+   * *However, point can be redeemed as amounts of cash deduction to a member, and point will be deducted
    accordingly with redemption.*
    * *In delete transaction [#13](#13), the point will not be affected and keep the same.*
    * *In edit transaction [#14](#14), the point will be increased when billing amount is greater than the billing amount 
@@ -116,7 +116,7 @@ This User Guide aims to:
    * `add -mem/ -n/John Doe -p/98765432 -e/johndoe@gmail.com -a/112 Amoy Street, 069907, Singapore` : Adds a contact named `John Doe` to the member list.
 
    * `del -mem/ -i/3` : Deletes the member with index number 3 shown in the current list.
-     
+
       **Note:**: Only managers can delete members. Login as a manager before entering the delete command.
 
    * `add -txn/ -id/00001 -b/200.00` : Adds transaction with a billing $100.00 to member ID 00001 shown in the current list.
@@ -200,11 +200,11 @@ This User Guide aims to:
     * `-dt/`: dateTime
 
     * `-d/`: date
-    
+
     * `-c/`: credit
 
     * `-b/`: billing amount
-  
+
     * `-rm/`: remark
 
     * `-rd/`: redeem
@@ -320,7 +320,7 @@ Example: `del -mem/ -i/1`
 Finds members by different fields which contain any of the given keywords.
 
 * The find is case-insensitive. e.g. `hans` will match `Hans`.
-* Only full words will be matched e.g. `Han` will not match `Hans`. 
+* Only full words will be matched e.g. `Han` will not match `Hans`.
 
 **Note:** No member will be listed when an invalid member field is entered.
 
@@ -371,6 +371,7 @@ Edits different fields in a member's profile, where the member is specified by m
 **Note:** Only deals with editing member details.
    If a member's transactions need to be edited, refer to [#13](#13) below. 
    Do not mix `-mem/` and `-txn/` in one `edit` command.
+
 
 #### 11.1. Editing member name by member ID
 
@@ -527,7 +528,7 @@ Example: `sort -mem/ -c/ -d/`
 ### 19. Redeeming point `redeem -rd/`
 
 #### 19.1. Redeeming point for a member by member id: `redeem -f/ -id/`
-Redeems point is award as amount of cash deduction to a member according to member id.
+Redeems point is award as amounts of cash deduction to a member according to member id.
 
 Format: `redeem -rd/<POINT> -id/<MEMBER_ID>`
 
@@ -535,7 +536,7 @@ Example: `redeem -rd/100 -id/00001`
 
 #### 19.2. Redeeming point for a member by index: `redeem -f/ -i/`
 
-Redeems point is award as amount of cash deduction to a member whose index shown in the member list.
+Redeems point is award as amounts of cash deduction to a member whose index shown in the member list.
 
 Format: `redeem -rd/<point> -i/<INDEX>`
 
@@ -628,3 +629,4 @@ Action | Manager Only? (Y/N) | Format, Examples
 **Redeem Point from Member by Member Index** | N | *Format:* <br> `redeem -rd/<point> -i/<INDEX>` <br> *Example:* <br> `redeem -rd/100 -i/1`
 **Summary** | Y | *Format:* <br> `summary` <br> *Example:* <br> `summary`
 **Clear ezFoodie Data** | Y | `clear` <br> *Example:* <br> `clear`
+

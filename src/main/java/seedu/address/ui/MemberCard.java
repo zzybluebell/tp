@@ -12,21 +12,30 @@ import seedu.address.model.member.Tier;
 import seedu.address.model.reservation.Reservation;
 
 /**
- * An UI component that displays information of a {@code Member}.
+ * A UI component that displays information of a {@code Member}.
  */
 public class MemberCard extends UiPart<Region> {
 
+    /**
+     * Uses FXML to identify MemberListCard.
+     */
     private static final String FXML = "MemberListCard.fxml";
 
     /**
+     * Stands for current displaying member.
+     *
      * Note: Certain keywords such as "location" and "resources" are reserved keywords in JavaFX.
      * As a consequence, UI elements' variable names cannot be set to such keywords
      * or an exception will be thrown by JavaFX during runtime.
      *
      * @see <a href="https://github.com/se-edu/addressbook-level4/issues/336">The issue on AddressBook level 4</a>
      */
+
     public final Member member;
 
+    /**
+     * Stands for components to be used in FXML.
+     */
     @FXML
     private HBox cardPane;
     @FXML
@@ -73,7 +82,10 @@ public class MemberCard extends UiPart<Region> {
     }
 
     /**
-     * Overrides the equals method.
+     * Overrides equals by comparing their text and member objects.
+     *
+     * @param other object.
+     * @return true if equals, false otherwise.
      */
     @Override
     public boolean equals(Object other) {
