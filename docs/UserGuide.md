@@ -117,7 +117,9 @@ Continue reading to explore the wonders of ezFoodie and enhance the way you mana
 
 --------------------------------------------------------------------------------------------------------------------
 
-**5. Type the command in the command box and press Enter to execute it. e.g. typing **`help`** and pressing Enter will open the help window.<br>Some example commands you can try:**
+**5. Type the command in the command box and press Enter to execute it. Some example commands you can try here:**
+
+   * `help:` Opens the help window and view the related help description.
 
    * `login 123456:` Changes user permissions from staff permissions to manager permissions.
 
