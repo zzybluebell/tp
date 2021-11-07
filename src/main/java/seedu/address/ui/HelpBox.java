@@ -13,7 +13,7 @@ import javafx.scene.layout.Region;
 public class HelpBox extends UiPart<Region> {
 
     /**
-     * Official URL to our tP repository on GitHub.
+     * Stands for the official URL to our tP repository on GitHub.
      */
     public static final String OFFICIAL_URL =
             "https://ay2122s1-cs2103t-f12-4.github.io/tp/";
