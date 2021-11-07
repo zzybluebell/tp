@@ -271,7 +271,7 @@ Format: `set -pass/<PASSWORD>`
 Example: `set -pass/123456`
 <div markdown="block" class="alert alert-info">
 
-   **Note:** The `set` command is only applied in manager mode.
+   **:information_source:Note:** The `set` command is only applied in manager mode.
 </div>
 
 ### 5. Logging out as a manager : `logout`
@@ -283,7 +283,7 @@ Format: `logout`
 Example: `logout`
 <div markdown="block" class="alert alert-info">
    
-   **Note:** The `logout` command is only applied in manager mode.
+   **:information_source:Note:** The `logout` command is only applied in manager mode.
 </div>
 ### 6. Listing out a certain number of members : `list -mem/`
 
@@ -315,7 +315,7 @@ Deletes a member from the member list
 
 <div markdown="block" class="alert alert-info">
 
-   **Note:** 
+   **:information_source:Note:** 
    * The `del` member command is only applied in manager mode.
    * Only the manager is allowed to delete members. Login as manager before entering command.
 </div>
@@ -345,7 +345,7 @@ Finds members by different fields which contain any of the given keywords.
 
 <div markdown="block" class="alert alert-info">
 
-   **Note:** No member will be listed when an invalid member field is entered.
+   **:information_source:Note:** No member will be listed when an invalid member field is entered.
 </div>
 
 #### 9.1. Finding member by member id
@@ -451,9 +451,9 @@ Format: `edit -mem/ -i/<INDEX> -a/<ADDRESS>`
 
 Example: `edit -mem/ -i/1 -a/33 Benoi Crescent, 629979, Singapore`
 
-### 12. <label id="12">Adding transaction for members :</label> `add -txn/`
+### 12. Adding transaction for members : `add -txn/`
 
-Adds transaction amount corresponding to member id.
+<label id="12">Adds transaction amount corresponding to member id.</label>
 
 Format: `add -txn/ -b/<BILLING_AMOUNT> -id/<MEMBER_ID>`
 
