@@ -59,7 +59,7 @@ This User Guide aims to:
    * Phone number
    * Email address
    * Credit
-     * *Credit refers to the overall accumulated transaction amount of a member, 
+     * *Credit refers to the overall accumulated transaction amount of a member,
      starting from his registration date.*
      * *Credit is forever increasing.*
    * Point
@@ -80,19 +80,19 @@ This User Guide aims to:
    * `add -mem/ -n/John Doe -p/98765432 -e/johndoe@gmail.com -a/112 Amoy Street, 069907, Singapore` : Adds a contact named `John Doe` to the member list.
 
    * `del -mem/ -i/3` : Deletes the member with index number 3 shown in the current list.
-     
+
       **Note:**: Only managers can delete members. Login as a manager before entering the delete command.
 
    * `add -txn/ -id/10001 -b/200.00` : add transaction with a bill $100.00 to member ID 10001 shown in the current list.
 
-   * `add -rs/ -dt/2021-01-02 00:00 -rm/2 people -id/10001` : add a reservation for 2 people for 2021-01-01 00:00 to member ID 10001 shown in the current list 
+   * `add -rs/ -dt/2021-01-02 00:00 -rm/2 people -id/10001` : add a reservation for 2 people for 2021-01-01 00:00 to member ID 10001 shown in the current list
 
    * `redeem -rd/100 -id/10006` : redeem 100 points from member id 10006 shown in the current list.
 
    * `summary` : View a summary of all the data in the application in one page (**e.g.** No. of members, Past transactions).
-     
+
       **Note:**: Only managers are allowed to view the summary of data. Login as a manager before entering the summary command.
-      
+
    * `clear` : Clears the program.
 
    * `exit` : Exits the program.
@@ -139,11 +139,11 @@ This User Guide aims to:
     * `-dt/`: dateTime
 
     * `-d/`: date
-    
+
     * `-c/`: credit
 
     * `-b/`: bill amount
-  
+
     * `-rm/`: remark
 
     * `-rd/`: redeem
@@ -243,7 +243,7 @@ Example: `del -mem/ -i/1`
 Finds members by different fields which contain any of the given keywords, show top 50 records by default.
 
 * The find is case-insensitive. e.g. `hans` will match `Hans`.
-* Only full words will be matched e.g. `Han` will not match `Hans`. 
+* Only full words will be matched e.g. `Han` will not match `Hans`.
 
 **Note:** No member will be listed when an invalid member field is entered.
 
@@ -292,7 +292,7 @@ Example: `show -mem/ -id/10001`
 Edits different fields in a member's profile, where the member is specified by member ID.
 
 **Note:** #10 only deals with editing member details.
-If a member's transactions need to be edited, refer to #13 below. 
+If a member's transactions need to be edited, refer to #13 below.
 Do not mix `-mem/`and `-txn/` in one `edit` command.
 
 #### 10.1. Editing member name by member ID
@@ -351,7 +351,7 @@ Format: `add -txn/ -id/<MEMBER_ID> -b/<BILL_AMOUNT>`
 
 Example: `add -txn/ -id/10001 -b/200.00`
 
-**Note:** Transaction date and time is automatically assigned by local date and time when a transaction is added, 
+**Note:** Transaction date and time is automatically assigned by local date and time when a transaction is added,
 there is no need to manually enter the transaction date or time.
 
 ### 12. Deleting transaction for members: `del -txn/`

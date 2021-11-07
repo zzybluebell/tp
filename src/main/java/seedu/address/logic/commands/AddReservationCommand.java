@@ -20,6 +20,7 @@ import seedu.address.model.Timestamp;
 import seedu.address.model.member.Address;
 import seedu.address.model.member.Credit;
 import seedu.address.model.member.Email;
+import seedu.address.model.member.Id;
 import seedu.address.model.member.Member;
 import seedu.address.model.member.Name;
 import seedu.address.model.member.Phone;
@@ -64,7 +65,7 @@ public class AddReservationCommand extends AddCommand {
     /**
      * Constructs an {@code AddReservationCommand} to add the specified {@code Member}.
      */
-    public AddReservationCommand(Reservation reservation, seedu.address.model.member.Id id) {
+    public AddReservationCommand(Reservation reservation, Id id) {
         requireAllNonNull(reservation, id);
         reservationToAdd = reservation;
         idToAdd = id;
@@ -106,7 +107,7 @@ public class AddReservationCommand extends AddCommand {
      * Creates and returns a {@code Member} with the details of {@code memberToEdit} and {@code reservationToAdd}.
      *
      * @param memberToEdit {@code memberToEdit} which the command should operate on.
-     * @param reservation {@code reservation} which the command should operate on.
+     * @param reservationToAdd {@code reservation} which the command should operate on.
      * @return Member with updated reservations.
      */
     private static Member createEditedMember(Member memberToEdit, Reservation reservationToAdd) {

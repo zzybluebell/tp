@@ -93,7 +93,7 @@ Here's a (partial) class diagram of the `Logic` component:
 <img src="images/LogicClassDiagram.png" width="550"/>
 
 How the `Logic` component works:
-1. When `Logic` is called upon to execute a command, it uses the `AddressBookParser` class to parse the user command.
+1. When `Logic` is called upon to execute a command, it uses the `EzFoodieParser` class to parse the user command.
 1. This results in a `Command` object (more precisely, an object of one of its subclasses e.g., `AddCommand`) which is executed by the `LogicManager`.
 1. The command can communicate with the `Model` when it is executed (e.g. to add a person).
 1. The result of the command execution is encapsulated as a `CommandResult` object which is returned back from `Logic`.
@@ -107,10 +107,10 @@ The Sequence Diagram below illustrates the interactions within the `Logic` compo
 
 Here are the other classes in `Logic` (omitted from the class diagram above) that are used for parsing a user command:
 
-<img src="images/ParserClasses.png" width="600"/>
+![ParserClasses](images/ParserClasses.png)
 
 How the parsing works:
-* When called upon to parse a user command, the `AddressBookParser` class creates an `XYZCommandParser` (`XYZ` is a placeholder for the specific command name e.g., `AddCommandParser`) which uses the other classes shown above to parse the user command and create a `XYZCommand` object (e.g., `AddCommand`) which the `AddressBookParser` returns back as a `Command` object.
+* When called upon to parse a user command, the `EzFoodieParser` class creates an `XYZCommandParser` (`XYZ` is a placeholder for the specific command name e.g., `AddCommandParser`) which uses the other classes shown above to parse the user command and create a `XYZCommand` object (e.g., `AddCommand`) which the `EzFoodieParser` returns back as a `Command` object.
 * All `XYZCommandParser` classes (e.g., `AddCommandParser`, `DeleteCommandParser`, ...) inherit from the `Parser` interface so that they can be treated similarly where possible e.g, during testing.
 
 ### Model component
@@ -118,11 +118,10 @@ How the parsing works:
 
 <img src="images/ModelClassDiagram.png" width="450" />
 
-
 The `Model` component,
 
-* stores the address book data i.e., all `Person` objects (which are contained in a `UniquePersonList` object).
-* stores the currently 'selected' `Person` objects (e.g., results of a search query) as a separate _filtered_ list which is exposed to outsiders as an unmodifiable `ObservableList<Person>` that can be 'observed' e.g. the UI can be bound to this list so that the UI automatically updates when the data in the list change.
+* stores the ezFoodie data i.e., all `Member` objects (which are contained in a `UniqueMemberList` object).
+* stores the currently 'selected' `Member` objects (e.g., results of a search query) as a separate _filtered_ list which is exposed to outsiders as an unmodifiable `ObservableList<Member>` that can be 'observed' e.g. the UI can be bound to this list so that the UI automatically updates when the data in the list change.
 * stores a `UserPref` object that represents the user’s preferences. This is exposed to the outside as a `ReadOnlyUserPref` objects.
 * does not depend on any of the other three components (as the `Model` represents data entities of the domain, they should make sense on their own without depending on other components)
 
@@ -141,12 +140,12 @@ The `Model` component,
 
 The `Storage` component,
 * can save both address book data and user preference data in json format, and read them back into corresponding objects.
-* inherits from both `AddressBookStorage` and `UserPrefStorage`, which means it can be treated as either one (if only the functionality of only one is needed).
+* inherits from both `EzFoodieStorage` and `UserPrefStorage`, which means it can be treated as either one (if only the functionality of only one is needed).
 * depends on some classes in the `Model` component (because the `Storage` component's job is to save/retrieve objects that belong to the `Model`)
 
 ### Common classes
 
-Classes used by multiple components are in the `seedu.addressbook.commons` package.
+Classes used by multiple components are in the `seedu.address.commons` package.
 
 --------------------------------------------------------------------------------------------------------------------
 
@@ -314,6 +313,57 @@ Given below is an example usage scenario and how the update point feature behave
 
 #### Design consideration
 
+### Add Reservation Feature
+
+`[written by: Raja Sudalaimuthu Mukund]`
+
+#### Implementation
+
+Given below is an example usage scenario and how the add reservation mechanism behaves at each step.
+
+1. The user executes `add -rs/ -dt/2021-01-01 00:00 -rm/2 people -id/10001` command to add a reservation for 2 people at
+    2021-01-01 00:00 hrs to member id 10001's reservation list.
+
+2. The command is handled by `LogicManager#execute(String)`, which then calls and passes this command to the 
+    `EzFoodieParser#parseCommand(String)` method.
+
+3. The EzFoodieParser detects the command word `add` in the string and extracts the argument string 
+    `-rs/ -dt/2021-01-01 00:00 -rm/2 people -id/10001`.
+
+4. The EzFoodieParser creates a new `AddCommandPrefixParser` instance to parse the argument string according to the 
+    format specified for `AddCommand` and calls `AddCommandPrefixParser#parse(arguments)`.
+
+5. `AddCommandPrefixParser#parse(arguments)` detects the prefix `-rs/` and creates a new instance of 
+    `AddReservationCommandParser` and calls `AddReservationCommandParser#parse(arguments)`.
+
+6. `AddReservationCommandParser#parse(arguments)` detects the prefixes `-dt/`, `-rm/` and `-id/` and parses them through 
+    `ParseUtil` to obtain the `dateTime`, `remark` and the `memberID`.
+
+7. Using the obtained `dateTime` and `remark`, a new instance of `Reservation` is created.
+
+8. Using the new instance of `Reservation` and the obtained `memberID`, a new instance of `AddReservationCommand` is created and returned to 
+    ezFoodieParser which in turn returns it to `LogicManager`.
+
+9. `LogicManager` calls the `AddReservationCommand#execute(Model)` method.
+
+10. The `AddReservationCommand` calls `Model#getUpdatedMemberList()` and searches the list to find the member with the respective
+    `memberID` to obtain `memberToEdit`.
+
+11. The `AddReservationCommand` calls `Model#createUpdatedReservations(memberToEdit, reservationToAdd)` to create a new 
+    instance of the same member but with the new reservation added to the member's reservation list.
+
+12. The `AddReservationCommand` calls `Model#setMember(memberToEdit, editedMember)` to replace the old instance of the member
+    with its new instance.
+
+13. The `AddReservationCommand` calls `Model#updateFilteredMemberList(PREDICATE_SHOW_ALL_MEMBERS)` to update the current
+    member list with the updated member list.
+
+14. The application lists the updated member list.
+
+15. Lastly, `AddReservationCommand` creates a new instance of `CommandResult` with a success message, and returns it to Logic Manager.
+
+![AddReservationSequenceDiagram](images/AddReservationSequenceDiagram.png)
+
 ### \[Proposed\] Undo/redo feature
 
 #### Proposed Implementation
@@ -416,7 +466,7 @@ _{Explain here how the data archiving feature will be implemented}_
 
 **Target user profile story**:
 
-Ben is a restaurant manager. He found that restaurants are becoming more and more popular, the number of members is increasing, and there are a large number of reservations every day. Every day the front desk staffs spend a lot of time in excel or paper to record new members, record reservations, and find reservations. With the need to handle multiple tasks at the same time, the staffs are also prone to make careless mistakes at work due to fatigue. 😞
+Ben is a restaurant manager. He found that restaurants are becoming more and more popular, the number of members is increasing, and there are a large number of reservations every day. Every day the front desk staffs spend a lot of time in excel or on paper to record new members, record reservations and transactions, and find reservations. With the need to handle multiple tasks at the same time, the staffs are also prone to make careless mistakes at work due to fatigue. 😞
 
 More importantly, the member list is only stored in excel, it makes it difficult for Ben to manage and analyze members to formulate targeted promotional strategies, which will have bad impact on the profit expansion of the restaurant. 😞
 
@@ -426,17 +476,16 @@ As a manager who is proficient in technology and has commendable experience in U
 
 Managers and staffs who
 
-* work in a highly popular restaurant and the number of members is increasing
-* are responsible for managing a large number of member registrations and reservations daily
+* work in highly popular restaurants whose number of members is increasing
+* are responsible for managing a large number of member registrations, transactions and reservations daily
 * are required to multi-task (manage member registrations and reservations)
-* need automatic reminder
-* need to manage and analyze members to formulate promotional strategies
+* need to manage and analyze members to formulate promotional strategies
 * are proficient in technology
 * want to get things done quickly
 * are tired of tracking member details from paper or excel
 * prefer desktop apps over other types
 * can type fast
-* prefer typing to mouse interactions
+* prefer typing to using mouse
 * are reasonably comfortable using CLI apps
 
 **Value proposition**: 
