@@ -3,7 +3,6 @@ package seedu.address.model.reservation;
 import static seedu.address.testutil.Assert.assertThrows;
 
 import org.junit.jupiter.api.Test;
-import seedu.address.model.transaction.Billing;
 
 public class ReservationTest {
 

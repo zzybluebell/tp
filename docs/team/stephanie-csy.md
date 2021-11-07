@@ -23,7 +23,7 @@ Given below are my contributions to the project.
     * **What it does**: stores the details of each transaction under each `member`.
     * **Justification**: This model is essential as it is one of the core features of ezFoodie.
     * **Highlights**: This enhancement requires understanding on how `hash` works. The implementation was challenging as the `Account` information need to be hashed when it is storing in the file for the purpose of high security.
-    
+
 * **New Feature**: Added the ability to `delete` `Reservation` by `Reservation ID` [\#106](https://github.com/AY2122S1-CS2103T-F12-4/tp/pull/106)
     * **What it does**: allows the manager to `delete` `Reservation` by `Reservation ID`
     * **Justification**: This feature is essential, since each `Reservation` has its own `ID`, and the application is not able to list all the `Reservations`, it is impossible to `delete` `Reservation` by `Index`. Therefore, the `Reservation ID` is the only attribute to identify the `Reservation`.
@@ -31,10 +31,10 @@ Given below are my contributions to the project.
 
 * **Enhancements to existing models**:
     * Added the `ID` for the `Reservation` model so that the staff and manager can do operations based on the `Reservation ID` [\#106](https://github.com/AY2122S1-CS2103T-F12-4/tp/pull/106)
-   
+
 * **Enhancements to existing features**:
     * Updated the regex of `Phone` such that it will only accept numbers that are strictly 8 digits long, compared to the original which allowed any number at least 3 digits long. [\#184](https://github.com/AY2122S1-CS2103T-F12-4/tp/pull/184)
-    
+
 * **Project management**:
     * Maintained the [milestones](https://github.com/AY2122S1-CS2103T-F12-4/tp/milestones)
 
@@ -43,7 +43,7 @@ Given below are my contributions to the project.
         * Updated according to changes to code, fixed mistakes
           [\#194](https://github.com/AY2122S1-CS2103T-F12-4/tp/pull/194)
     * Developer Guide:
-        
+
 
 * **Community**:
     * PRs reviewed (with non-trivial review comments):

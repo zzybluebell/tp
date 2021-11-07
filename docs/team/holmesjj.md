@@ -9,7 +9,7 @@ This page serves to document my contributions to the project ezFoodie under NUS 
 
 ### Project: ezFoodie
 
-ezFoodie is a desktop application that helps restaurants **keep track of their ever-growing list of members**. 
+ezFoodie is a desktop application that helps restaurants **keep track of their ever-growing list of members**.
 Restaurant managers and staffs can easily view and update member status (e.g. personal information, tier, reservation, transaction, etc.) to manage and analyze members.
 Restaurant managers and staffs interact with ezFoodie using a Command Line Interface (CLI), and has a Graphical User Interface (GUI) created with JavaFX.
 
@@ -84,61 +84,61 @@ Given below are my contributions to the project.
   * README:
     * Updated formats [\#42](https://github.com/AY2122S1-CS2103T-F12-4/tp/pull/42)
   * User Guide:
-    * Added documentation for the features `find` and `sort` 
+    * Added documentation for the features `find` and `sort`
     [\#89](https://github.com/AY2122S1-CS2103T-F12-4/tp/pull/89)
-    * Updated formats and fixed bugs 
-    [\#40](https://github.com/AY2122S1-CS2103T-F12-4/tp/pull/40), 
+    * Updated formats and fixed bugs
+    [\#40](https://github.com/AY2122S1-CS2103T-F12-4/tp/pull/40),
     [\#41](https://github.com/AY2122S1-CS2103T-F12-4/tp/pull/41)
     * Updated formats for all commands [\#116](https://github.com/AY2122S1-CS2103T-F12-4/tp/pull/116)
   * Developer Guide:
-    * Updated `Product scope`, `User stories`, `Use cases`, `Non-Functional Requirements`, `Glossary` 
+    * Updated `Product scope`, `User stories`, `Use cases`, `Non-Functional Requirements`, `Glossary`
     [\#24](https://github.com/AY2122S1-CS2103T-F12-4/tp/pull/24)
-    * Added documentation for the features `find` and `sort` 
+    * Added documentation for the features `find` and `sort`
     [\#89](https://github.com/AY2122S1-CS2103T-F12-4/tp/pull/89)
-  * About Us: 
+  * About Us:
     * Updated formats [\#43](https://github.com/AY2122S1-CS2103T-F12-4/tp/pull/43)
 
 * **Community**:
-  * PRs reviewed (with non-trivial review comments): 
-  [\#46](https://github.com/AY2122S1-CS2103T-F12-4/tp/pull/46), 
-  [\#52](https://github.com/AY2122S1-CS2103T-F12-4/tp/pull/52), 
-  [\#56](https://github.com/AY2122S1-CS2103T-F12-4/tp/pull/56), 
-  [\#69](https://github.com/AY2122S1-CS2103T-F12-4/tp/pull/69), 
-  [\#71](https://github.com/AY2122S1-CS2103T-F12-4/tp/pull/71), 
-  [\#102](https://github.com/AY2122S1-CS2103T-F12-4/tp/pull/102), 
+  * PRs reviewed (with non-trivial review comments):
+  [\#46](https://github.com/AY2122S1-CS2103T-F12-4/tp/pull/46),
+  [\#52](https://github.com/AY2122S1-CS2103T-F12-4/tp/pull/52),
+  [\#56](https://github.com/AY2122S1-CS2103T-F12-4/tp/pull/56),
+  [\#69](https://github.com/AY2122S1-CS2103T-F12-4/tp/pull/69),
+  [\#71](https://github.com/AY2122S1-CS2103T-F12-4/tp/pull/71),
+  [\#102](https://github.com/AY2122S1-CS2103T-F12-4/tp/pull/102),
   [\#103](https://github.com/AY2122S1-CS2103T-F12-4/tp/pull/103)
   * Contributed to forum discussions: 
-  [\#12](https://github.com/nus-cs2103-AY2122S1/forum/issues/12), 
-  [\#13](https://github.com/nus-cs2103-AY2122S1/forum/issues/13#issuecomment-899985208), 
-  [\#24](https://github.com/nus-cs2103-AY2122S1/forum/issues/24#issuecomment-899953855), 
-  [\#45](https://github.com/nus-cs2103-AY2122S1/forum/issues/45), 
-  [\#50](https://github.com/nus-cs2103-AY2122S1/forum/issues/50), 
-  [\#65](https://github.com/nus-cs2103-AY2122S1/forum/issues/65), 
-  [\#109](https://github.com/nus-cs2103-AY2122S1/forum/issues/109#issuecomment-907304027), 
-  [\#141](https://github.com/nus-cs2103-AY2122S1/forum/issues/141#issuecomment-910317016), 
-  [\#160](https://github.com/nus-cs2103-AY2122S1/forum/issues/160#issuecomment-909923810), 
-  [\#200](https://github.com/nus-cs2103-AY2122S1/forum/issues/200#issuecomment-914391124), 
-  [\#203](https://github.com/nus-cs2103-AY2122S1/forum/issues/203#issuecomment-914375528), 
+  [\#12](https://github.com/nus-cs2103-AY2122S1/forum/issues/12),
+  [\#13](https://github.com/nus-cs2103-AY2122S1/forum/issues/13#issuecomment-899985208),
+  [\#24](https://github.com/nus-cs2103-AY2122S1/forum/issues/24#issuecomment-899953855),
+  [\#45](https://github.com/nus-cs2103-AY2122S1/forum/issues/45),
+  [\#50](https://github.com/nus-cs2103-AY2122S1/forum/issues/50),
+  [\#65](https://github.com/nus-cs2103-AY2122S1/forum/issues/65),
+  [\#109](https://github.com/nus-cs2103-AY2122S1/forum/issues/109#issuecomment-907304027),
+  [\#141](https://github.com/nus-cs2103-AY2122S1/forum/issues/141#issuecomment-910317016),
+  [\#160](https://github.com/nus-cs2103-AY2122S1/forum/issues/160#issuecomment-909923810),
+  [\#200](https://github.com/nus-cs2103-AY2122S1/forum/issues/200#issuecomment-914391124),
+  [\#203](https://github.com/nus-cs2103-AY2122S1/forum/issues/203#issuecomment-914375528),
   [\#209](https://github.com/nus-cs2103-AY2122S1/forum/issues/209)
-  * Reported bugs and suggestions for other teams in the class: 
-  [\#1](https://github.com/holmesjj/ped/issues/1), 
-  [\#2](https://github.com/holmesjj/ped/issues/2), 
-  [\#3](https://github.com/holmesjj/ped/issues/3), 
-  [\#4](https://github.com/holmesjj/ped/issues/4), 
-  [\#5](https://github.com/holmesjj/ped/issues/5), 
-  [\#6](https://github.com/holmesjj/ped/issues/6), 
-  [\#7](https://github.com/holmesjj/ped/issues/7), 
-  [\#8](https://github.com/holmesjj/ped/issues/8), 
-  [\#9](https://github.com/holmesjj/ped/issues/9), 
-  [\#10](https://github.com/holmesjj/ped/issues/10), 
-  [\#11](https://github.com/holmesjj/ped/issues/11), 
-  [\#12](https://github.com/holmesjj/ped/issues/12), 
-  [\#13](https://github.com/holmesjj/ped/issues/13), 
-  [\#14](https://github.com/holmesjj/ped/issues/14), 
-  [\#15](https://github.com/holmesjj/ped/issues/15), 
-  [\#16](https://github.com/holmesjj/ped/issues/16), 
-  [\#17](https://github.com/holmesjj/ped/issues/17), 
-  [\#18](https://github.com/holmesjj/ped/issues/18), 
-  [\#19](https://github.com/holmesjj/ped/issues/19), 
-  [\#20](https://github.com/holmesjj/ped/issues/20), 
+  * Reported bugs and suggestions for other teams in the class:
+  [\#1](https://github.com/holmesjj/ped/issues/1),
+  [\#2](https://github.com/holmesjj/ped/issues/2),
+  [\#3](https://github.com/holmesjj/ped/issues/3),
+  [\#4](https://github.com/holmesjj/ped/issues/4),
+  [\#5](https://github.com/holmesjj/ped/issues/5),
+  [\#6](https://github.com/holmesjj/ped/issues/6),
+  [\#7](https://github.com/holmesjj/ped/issues/7),
+  [\#8](https://github.com/holmesjj/ped/issues/8),
+  [\#9](https://github.com/holmesjj/ped/issues/9),
+  [\#10](https://github.com/holmesjj/ped/issues/10),
+  [\#11](https://github.com/holmesjj/ped/issues/11),
+  [\#12](https://github.com/holmesjj/ped/issues/12),
+  [\#13](https://github.com/holmesjj/ped/issues/13),
+  [\#14](https://github.com/holmesjj/ped/issues/14),
+  [\#15](https://github.com/holmesjj/ped/issues/15),
+  [\#16](https://github.com/holmesjj/ped/issues/16),
+  [\#17](https://github.com/holmesjj/ped/issues/17),
+  [\#18](https://github.com/holmesjj/ped/issues/18),
+  [\#19](https://github.com/holmesjj/ped/issues/19),
+  [\#20](https://github.com/holmesjj/ped/issues/20),
   [\#21](https://github.com/holmesjj/ped/issues/21)
