@@ -95,6 +95,7 @@ public class UiManager implements Ui {
 
     /**
      * Only returns after the user has closed the alert dialog.
+     *
      * @param owner stage.
      * @param type alert type.
      * @param title title to show.
