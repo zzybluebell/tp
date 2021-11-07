@@ -118,7 +118,7 @@ This User Guide aims to:
 
       **Note:** Only managers can delete members. Login as a manager before entering the delete command.
 
-   * `add -txn/ -id/00001 -b/200.00:` Adds transaction with a billing $100.00 to member ID 00001 shown in the current list.
+   * `add -txn/ -b/200.00 -id/00001:` Adds transaction with a billing $100.00 to member ID 00001 shown in the current list.
 
    * `add -rs/ -dt/2021-01-02 00:00 -rm/2 people -id/00001:` Adds a reservation for 2 people for 2021-01-01 00:00 to member ID 00001 shown in the current list 
 
@@ -424,9 +424,9 @@ Example: `edit -mem/ -i/1 -a/33 Benoi Crescent, 629979, Singapore`
 
 Adds transaction amount corresponding to member ID.
 
-Format: `add -txn/ -id/<MEMBER_ID> -b/<BILLING_AMOUNT>`
+Format: `add -txn/ -b/<BILLING_AMOUNT> -id/<MEMBER_ID>`
 
-Example: `add -txn/ -id/00001 -b/200.00`
+Example: `add -txn/ -b/200.00 -id/00001`
 
 **Note:** 
    * Transaction date and time is automatically assigned by local date and time when a transaction is added, 
@@ -571,7 +571,7 @@ ezFoodie data are saved in a JSON file in hard disk automatically after any comm
 
 ### 23. Editing the data file
 
-ezFoodie data are located at `[JAR file location]/data/ezFoodie.json`. Advanced users are welcome to update data directly by editing the data file.
+ezFoodie data are located at `[JAR file location]/data/ezfoodie.json`. Advanced users are welcome to update data directly by editing the data file.
 
 <div markdown="span" class="alert alert-warning">:exclamation: **Caution:**
 If any changes to the JSON file make it invalid, ezFoodie will discard all data and restart with an empty data file at the next run.
@@ -616,7 +616,7 @@ Action | Manager Only? (Y/N) | Format, Examples
 **Edit Member Phone by Index Number** | N | *Format:* <br> `edit -mem/ -i/<INDEX> -p/<PHONE>` <br> *Example:* <br> `edit -mem/ -i/1 -p/98765432`
 **Edit Member Email by Index Number** | N | *Format:* <br> `edit -mem/ -i/<INDEX> -e/<EMAIL>` <br> *Example:* <br> `edit -mem/ -i/1 -e/johndoe@gmail.com`
 **Edit Member Address by Index Number** | N | *Format:* <br> `edit -mem/ -i/<INDEX> -a/<ADDRESS>` <br> *Example:* <br> `edit -mem/ -i/1 -a/33 Benoi Crescent, 629979, Singapore`
-**Add Transaction for Member** | N | *Format:* <br> `add -txn/ -id/<MEMBER_ID> -b/<BILLING_AMOUNT>` <br> *Example:* <br> `add -txn/ -id/00001 -b/200.00`
+**Add Transaction for Member** | N | *Format:* <br> `add -txn/ -id/<MEMBER_ID> -b/<BILLING_AMOUNT>` <br> *Example:* <br> `add -txn/ -b/200.00 -id/00001`
 **Delete Transaction for Member** | Y | *Format:* <br> `del -txn/ -id/<MEMBER_ID + TRANSACTION_ID>` <br> *Example:* <br> `del -txn/ -id/00001000001`
 **Edit Transaction** | N | *Format:* <br> `edit -txn/ -id/ <MEMBER_ID + TRANSACTION_ID> -b/<BILLING_AMOUNT>` <br> *Example:* <br> `edit -txn/ -id/ 00001000002 -b/ 10.00`
 **Add Reservation** | N | *Format:* <br> `add -rs/ -dt/ <DATE_TIME yyyy-MM-dd HH:mm> -rm/ <REMARK> -id/ <MEMBER_ID>` <br> *Example:* <br> `add -rs/ -dt/ 2021-01-02 00:00 -rm/ 2 people -id/ 00001`
