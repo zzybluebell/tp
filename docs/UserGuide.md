@@ -318,8 +318,8 @@ Deletes a member from the member list
 <div markdown="block" class="alert alert-info">
 
    **Note:** 
-      * The `del` member command is only applied in manager mode.
-      * Only the manager is allowed to delete members. Login as manager before entering command.
+   * The `del` member command is only applied in manager mode.
+   * Only the manager is allowed to delete members. Login as manager before entering command.
 </div>
 
 #### 8.1.  Deleting a member by member id
@@ -464,9 +464,8 @@ Example: `add -txn/ -b/200.00 -id/00001`
 <div markdown="block" class="alert alert-info">
 
    **Note:** 
-      * Transaction date and time is automatically assigned by local date and time when a transaction is added, 
-      there is no need to manually enter the transaction date or time.
-      * The Credit and the Point will be accumulated based on billing amount. 
+   * Transaction date and time is automatically assigned by local date and time when a transaction is added, there is no need to manually enter the transaction date or time.
+   * The Credit and the Point will be accumulated based on billing amount. 
 </div>
 
 ### 13.  <label id="13">Deleting transaction for members:</label> `del -txn/`
