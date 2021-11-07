@@ -12,17 +12,17 @@ import seedu.address.model.reservation.Reservation;
 public class ReservationCard extends UiPart<Region> {
 
     /**
-     * Using FXML to identify ReservationListCard.
+     * Uses FXML to identify ReservationListCard.
      */
     private static final String FXML = "ReservationListCard.fxml";
 
     /**
-     * Current displaying reservation.
+     * Stands for current displaying reservation.
      */
     public final Reservation reservation;
 
     /**
-     * Components to be used in FXML.
+     * Stands for components to be used in FXML.
      *
      * Note: Certain keywords such as "location" and "resources" are reserved keywords in JavaFX.
      * As a consequence, UI elements' variable names cannot be set to such keywords
