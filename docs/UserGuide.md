@@ -89,15 +89,14 @@ This User Guide aims to:
 * Credit:
    * *Credit refers to the overall accumulated transaction billing of a member, 
    starting from his registration date.*
-   * *Credit depends on amounts of billing in add transaction [#12](#12), delete transaction [#13](#13),
-   and edit transaction [#14](#14)*.
+   * *Credit depends on amounts of billing in <a href="#12">add transaction</a>, <a href="#13">delete transaction</a>, and <a href="#14">edit transaction</a>*.
    
 * Point:
    * *The point accumulation is similar to credit.*
    * *However, point can be redeemed as amounts of cash deduction to a member, and point will be deducted
    accordingly with redemption.*
-   * *In delete transaction [#13](#13), the point will not be affected and keep the same.*
-   * *In edit transaction [#14](#14), the point will be increased when billing amount is greater than the billing amount 
+   * *In <a href="#13">delete transaction</a>, the point will not be affected and keep the same.*
+   * *In <a href="#14">edit transaction</a>, the point will be increased when billing amount is greater than the billing amount 
    added in last time. on the contrary the point will not be affected and keep the same when billing amount is lesser
    than the billing amount added in last time.*
    
@@ -107,35 +106,35 @@ This User Guide aims to:
 
 **5. Type the command in the command box and press Enter to execute it. e.g. typing **`help`** and pressing Enter will open the help window.<br>Some example commands you can try:**
 
-   * `login 123456` : Changes user permissions from staff permissions to manager permissions.
+   * `login 123456:` Changes user permissions from staff permissions to manager permissions.
 
-   * `logout` : Logouts of manager and change permissions to staff permissions.
+   * `logout:` Logouts of manager and change permissions to staff permissions.
 
-   * `list -mem/` : Lists all members.
+   * `list -mem/:` Lists all members.
 
-   * `add -mem/ -n/John Doe -p/98765432 -e/johndoe@gmail.com -a/112 Amoy Street, 069907, Singapore` : Adds a contact named `John Doe` to the member list.
+   * `add -mem/ -n/John Doe -p/98765432 -e/johndoe@gmail.com -a/112 Amoy Street, 069907, Singapore:` Adds a contact named `John Doe` to the member list.
 
-   * `del -mem/ -i/3` : Deletes the member with index number 3 shown in the current list.
+   * `del -mem/ -i/3:` Deletes the member with index number 3 shown in the current list.
 
-      **Note:**: Only managers can delete members. Login as a manager before entering the delete command.
+      **Note:** Only managers can delete members. Login as a manager before entering the delete command.
 
-   * `add -txn/ -id/00001 -b/200.00` : Adds transaction with a billing $100.00 to member ID 00001 shown in the current list.
+   * `add -txn/ -id/00001 -b/200.00:` Adds transaction with a billing $100.00 to member ID 00001 shown in the current list.
 
-   * `add -rs/ -dt/2021-01-02 00:00 -rm/2 people -id/00001` : Adds a reservation for 2 people for 2021-01-01 00:00 to member ID 00001 shown in the current list 
+   * `add -rs/ -dt/2021-01-02 00:00 -rm/2 people -id/00001:` Adds a reservation for 2 people for 2021-01-01 00:00 to member ID 00001 shown in the current list 
 
-   * `redeem -rd/100 -id/00001` : Redeems 100 point from member id 00001 which is shown in the current list.
+   * `redeem -rd/100 -id/00001:` Redeems 100 point from member id 00001 which is shown in the current list.
    
-   * `set -pass/ 123456` Sets and updates the password to 123456 as in manager mode.
+   * `set -pass/ 123456:` Sets and updates the password to 123456 as in manager mode.
 
-   * `summary` : Views a summary of all the data in the application in one page (**e.g.** No. of members, Past transactions).
+   * `summary:` Views a summary of all the data in the application in one page (**e.g.** No. of members, Past transactions).
      
       **Note:** Only managers are allowed to view the summary of data. Login as a manager before entering the summary command.
       
-   * `clear` : Clears the program.
+   * `clear:` Clears the program.
 
-   * `exit` : Exits the program.
+   * `exit:` Exits the program.
 
-**6. Refer to the [Features](#Features) below for details of each command.**
+**6. Please refer to the [Features](#features) below for details of each command.**
 
 --------------------------------------------------------------------------------------------------------------------
 
@@ -421,7 +420,7 @@ Format: `edit -mem/ -i/<INDEX> -a/<ADDRESS>`
 
 Example: `edit -mem/ -i/1 -a/33 Benoi Crescent, 629979, Singapore`
 
-### 12. Adding transaction for members : `add -txn/`
+### 12. <label id="12">Adding transaction for members :</label> `add -txn/`
 
 Adds transaction amount corresponding to member ID.
 
@@ -434,7 +433,7 @@ Example: `add -txn/ -id/00001 -b/200.00`
    there is no need to manually enter the transaction date or time.
    * The Credit and the Point will be accumulated based on billing amount. 
 
-### 13. Deleting transaction for members: `del -txn/`
+### 13.  <label id="13">Deleting transaction for members:</label> `del -txn/`
 
 Deletes a transaction.
 
@@ -448,7 +447,7 @@ Example: `del -txn/ -id/00001000001`
    * The Credit will be decreased based on billing amount in related transaction.
    * The Point will not be affected and keep the same.
 
-### 14. Editing transaction of a member: `edit -txn/`
+### 14. <label id="14">Editing transaction of a member:</label> `edit -txn/`
 
 Edits a member's transaction.
 
