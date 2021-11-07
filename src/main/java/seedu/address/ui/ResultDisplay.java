@@ -12,12 +12,12 @@ import javafx.scene.layout.Region;
 public class ResultDisplay extends UiPart<Region> {
 
     /**
-     * Using FXML to identify ResultDisplay.
+     * Uses FXML to identify ResultDisplay.
      */
     private static final String FXML = "ResultDisplay.fxml";
 
     /**
-     * Components to be used in FXML.
+     * Stands for components to be used in FXML.
      */
     @FXML
     private TextArea resultDisplay;
