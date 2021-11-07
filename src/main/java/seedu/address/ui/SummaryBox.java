@@ -31,7 +31,7 @@ public class SummaryBox extends UiPart<Region> {
     public final ObservableList<Member> memberList;
 
     /**
-     * Components to be used in FXML.
+     * Stands for components to be used in FXML.
      *
      * Note: Certain keywords such as "location" and "resources" are reserved keywords in JavaFX.
      * As a consequence, UI elements' variable names cannot be set to such keywords
