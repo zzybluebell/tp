@@ -16,17 +16,17 @@ import seedu.address.logic.Logic;
 public class SummaryWindow extends UiPart<Stage> {
 
     /**
-     * Using FXML to identify SummaryWindow.
+     * Uses FXML to identify SummaryWindow.
      */
     private static final String FXML = "SummaryWindow.fxml";
 
     /**
-     * Logger to log events happened in SummaryWindow.
+     * Stands for logger to log events happened in SummaryWindow.
      */
     private static final Logger logger = LogsCenter.getLogger(SummaryWindow.class);
 
     /**
-     * Components to be used in FXML.
+     * Stands for components to be used in FXML.
      */
     @FXML
     private StackPane summaryBoxPlaceholder;
