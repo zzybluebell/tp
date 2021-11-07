@@ -130,9 +130,10 @@ Continue reading to explore the wonders of ezFoodie and enhance the way you mana
    * `add -mem/ -n/John Doe -p/98765432 -e/johndoe@gmail.com -a/112 Amoy Street, 069907, Singapore:` Adds a contact named `John Doe` to the member list.
 
    * `del -mem/ -i/3:` Deletes the member with index number 3 shown in the current list.
-
+      <div markdown="block" class="alert alert-info">
+      
       **Note:** Only managers can delete members. Login as a manager before entering the delete command.
-
+      </div>
    * `add -txn/ -b/200.00 -id/00001:` Adds transaction with a billing $100.00 to member id 00001 shown in the current list.
 
    * `add -rs/ -dt/2021-01-02 00:00 -rm/2 people -id/00001:` Adds a reservation for 2 people for 2021-01-01 00:00 to member ID 00001 shown in the current list 
@@ -142,8 +143,10 @@ Continue reading to explore the wonders of ezFoodie and enhance the way you mana
    * `set -pass/ 123456:` Sets and updates the password to 123456 as in manager mode.
 
    * `summary:` Views a summary of all the data in the application in one page (**e.g.** No. of members, Past transactions).
-     
+      <div markdown="block" class="alert alert-info">
+
       **Note:** Only managers are allowed to view the summary of data. Login as a manager before entering the summary command.
+      </div>
       
    * `clear:` Clears the program.
 
@@ -268,8 +271,10 @@ Sets and updates the password in the manger mode.
 Format: `set -pass/<PASSWORD>`
 
 Example: `set -pass/123456`
+<div markdown="block" class="alert alert-info">
 
-**Note:** The `set` command is only applied in manager mode.
+   **Note:** The `set` command is only applied in manager mode.
+</div>
 
 ### 5. Logging out as a manager : `logout`
 
@@ -278,9 +283,10 @@ Logs out as a manager.
 Format: `logout`
 
 Example: `logout`
-
-**Note:** The `logout` command is only applied in manager mode.
-
+<div markdown="block" class="alert alert-info">
+   
+   **Note:** The `logout` command is only applied in manager mode.
+</div>
 ### 6. Listing out a certain number of members : `list -mem/`
 
 Lists out a certain number of members.
@@ -299,7 +305,7 @@ Example: `add -mem/ -n/John Doe -p/98765432 -e/johndoe@gmail.com -a/112 Amoy Str
 
 <div markdown="block" class="alert alert-info">
 
-**information_source: Duplicate members: **<br>
+**information_source: Duplicate members:**<br>
 
 * ezFoodie will not allow adding members with the same **phone number** or **email address** as an existing member.
 
@@ -309,9 +315,12 @@ Example: `add -mem/ -n/John Doe -p/98765432 -e/johndoe@gmail.com -a/112 Amoy Str
 
 Deletes a member from the member list
 
-**Note:** 
-   * The `del` member command is only applied in manager mode.
-   * Only the manager is allowed to delete members. Login as manager before entering command.
+<div markdown="block" class="alert alert-info">
+
+   **Note:** 
+      * The `del` member command is only applied in manager mode.
+      * Only the manager is allowed to delete members. Login as manager before entering command.
+</div>
 
 #### 8.1.  Deleting a member by member id
 
@@ -336,7 +345,10 @@ Finds members by different fields which contain any of the given keywords.
 * The find is case-insensitive. e.g. `hans` will match `Hans`.
 * Only full words will be matched e.g. `Han` will not match `Hans`.
 
-**Note:** No member will be listed when an invalid member field is entered.
+<div markdown="block" class="alert alert-info">
+
+   **Note:** No member will be listed when an invalid member field is entered.
+</div>
 
 #### 9.1. Finding member by member id
 
@@ -376,16 +388,22 @@ Format: `show -mem/ -id/ <MEMBER_ID>`
 
 Example: `show -mem/ -id/00001`
 
-**Note:** No member details will be shown when an invalid member id is entered.
+<div markdown="block" class="alert alert-info">
+
+   **Note:** No member details will be shown when an invalid member id is entered.
+</div>
 
 ### 11. Editing a member : `edit -mem/`
 
+
 Edits different fields in a member's profile, where the member is specified by member id.
 
-**Note:** Only deals with editing member details.
-   If a member's transactions need to be edited, refer to [#13](#13) below. 
-   Do not mix `-mem/` and `-txn/` in one `edit` command.
+<div markdown="block" class="alert alert-info">
 
+   **Note:** Only deals with editing member details.
+      If a member's transactions need to be edited, refer to [#13](#13) below. 
+      Do not mix `-mem/` and `-txn/` in one `edit` command.
+</div>
 
 #### 11.1. Editing member name by member id
 
@@ -443,10 +461,13 @@ Format: `add -txn/ -b/<BILLING_AMOUNT> -id/<MEMBER_ID>`
 
 Example: `add -txn/ -b/200.00 -id/00001`
 
-**Note:** 
-   * Transaction date and time is automatically assigned by local date and time when a transaction is added, 
-   there is no need to manually enter the transaction date or time.
-   * The Credit and the Point will be accumulated based on billing amount. 
+<div markdown="block" class="alert alert-info">
+
+   **Note:** 
+      * Transaction date and time is automatically assigned by local date and time when a transaction is added, 
+      there is no need to manually enter the transaction date or time.
+      * The Credit and the Point will be accumulated based on billing amount. 
+</div>
 
 ### 13.  <label id="13">Deleting transaction for members:</label> `del -txn/`
 
@@ -456,11 +477,14 @@ Format: `del -txn/ -id/<MEMBER_ID + TRANSACTION_ID>`
 
 Example: `del -txn/ -id/00001000001`
 
-**Note:** 
-   * The `del` transaction command is only applied in manager mode.
-   * Only the manager are allowed to delete transactions. Login as manager before entering command.
-   * The Credit will be decreased based on billing amount in related transaction.
-   * The Point will not be affected and keep the same.
+<div markdown="block" class="alert alert-info">
+
+   **Note:** 
+      * The `del` transaction command is only applied in manager mode.
+      * Only the manager are allowed to delete transactions. Login as manager before entering command.
+      * The Credit will be decreased based on billing amount in related transaction.
+      * The Point will not be affected and keep the same.
+</div>
 
 ### 14. <label id="14">Editing transaction of a member:</label> `edit -txn/`
 
@@ -470,12 +494,15 @@ Format: `edit -txn/ -id/<MEMBER_ID + TRANSACTION_ID> -b/ <BILLING_AMOUNT>`
 
 Example: `edit -txn/ -id/00001000002 -b/ 10.00`
 
+<div markdown="block" class="alert alert-info">
+
 **Note:** 
    * Transaction date and time cannot be modified once a transaction is added.
    * The Credit will be changed based on billing amount in related transaction.
    * The Point will be increased when billing amount is greater than the billing amount 
     added in last time. on the contrary the point will not be affected and keep the same when billing amount is lesser
     than the billing amount added in last time. 
+</div>
 
 ### 15. Adding a reservation: `add -rs/`
 
@@ -485,7 +512,9 @@ Format: `add -rs/ -dt/<yyyy-MM-dd HH:mm> -rm/ <REMARK> -id/ <MEMBER_ID>`
 
 Example: `add -rs/ -dt/2021-01-02 00:00 -rm/2 people -id/00001`
 
+<div markdown="block" class="alert alert-info">
 **Note:** Same member which based on member id cannot make multiple reservations on the same day.
+</div>
 
 ### 16. Deleting a reservation: `del -rs/`
 
@@ -495,14 +524,19 @@ Format: `del -rs/ -id/<MEMBER_ID + RESERVATION_ID>`
 
 Example: `del -rs/ -id/00001000001`
 
-      **Note:** 
-         * The `del` reservation command is only applied in manager mode.
-         * Only the manager is allowed to delete reservations. Login as manager before entering command. 
+<div markdown="block" class="alert alert-info">
+**Note:** 
+   * The `del` reservation command is only applied in manager mode.
+   * Only the manager is allowed to delete reservations. Login as manager before entering command. 
+</div>
 
 ### 17. Editing a reservation: `edit -rs/`
+
+<div markdown="block" class="alert alert-info">
 **Note:** 
    * The editing reservation date time cannot be shifted in same day based on same member id.
    * E.g. when one member make a reservation in day 2021-12-01 13:00 and 2021-12-02 13:00, the member is not allowed to shift 2 day in same day. 
+</div>
 
 #### 17.1. Editing a date time in reservation: `edit -rs/ -dt/`
 Edits a member's reservation details in date time.
@@ -560,9 +594,11 @@ Example: `redeem -rd/100 -i/1`
 
 Views the summary of stored data in ezFoodie.
 
+<div markdown="block" class="alert alert-info">
 **Note:**: 
 * The `summary` command is only applied in manager mode.
 * Only the manager is allowed to view summary. Login as manager before entering command.
+</div>
 
 Format: `summary`
 
@@ -575,11 +611,12 @@ Clears all data stored in ezFoodie. Use with Caution!
 Format: `clear`
 
 Format: `clear`
+<div markdown="block" class="alert alert-info">
 
 **Note:**
 * The `clear` command is only applied in manager mode.
 * Only managers are allowed to clear. Login as manager before entering command.
-
+</div>
 ### 22. <label id="22">Saving the data</label>
 
 ezFoodie data are saved in a JSON file in hard disk automatically after any command that changes the data. There is no need to save manually.
