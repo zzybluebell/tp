@@ -319,7 +319,7 @@ Example: `add -mem/ -n/John Doe -p/98765432 -e/johndoe@gmail.com -a/112 Amoy Str
 
 <div markdown="block" class="alert alert-info">
 
-   :information_source: **Note Duplicate members:**<br>
+   :information_source: **Duplicate members:**<br>
 
    * ezFoodie will not allow adding members with the same **phone number** or **email address** as an existing member.
 
