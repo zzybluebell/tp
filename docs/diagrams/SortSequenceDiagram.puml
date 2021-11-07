@@ -13,10 +13,10 @@ box Model MODEL_COLOR_T1
 participant "model:Model" as Model MODEL_COLOR
 participant ":SortedList" as SortedList MODEL_COLOR
 end box
-[-> LogicManager : execute("sort -m -c -a")
+[-> LogicManager : execute("sort -mem/ -c/ -a/")
 activate LogicManager
 
-LogicManager -> EzFoodieParser : parseCommand("sort -m -c -a")
+LogicManager -> EzFoodieParser : parseCommand("sort -mem/ -c/ -a/")
 activate EzFoodieParser
 
 create SortCommandParser
@@ -26,7 +26,7 @@ activate SortCommandParser
 SortCommandParser --> EzFoodieParser
 deactivate SortCommandParser
 
-EzFoodieParser -> SortCommandParser : parse(" -m -c -a")
+EzFoodieParser -> SortCommandParser : parse(" -mem/ -c/ -a/")
 activate SortCommandParser
 
 create CreditSortComparator
