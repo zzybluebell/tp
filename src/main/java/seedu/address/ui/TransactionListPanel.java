@@ -11,13 +11,22 @@ import seedu.address.model.transaction.Transaction;
  * Represents for Panel containing the list of transactions.
  */
 public class TransactionListPanel extends UiPart<Region> {
+
+    /**
+     * Uses FXML to identify TransactionListPanel.
+     */
     private static final String FXML = "TransactionListPanel.fxml";
 
+    /**
+     * Stands for components to be used in FXML.
+     */
     @FXML
     private ListView<Transaction> transactionListView;
 
     /**
-     * Creates a {@code TransactionListPanel} with the given {@code ObservableList}.
+     * Constructs a TransactionListPanel with input transactionList of a specific member.
+     *
+     * @param transactionList refers to all transactions of a specific member.
      */
     public TransactionListPanel(ObservableList<Transaction> transactionList) {
         super(FXML);

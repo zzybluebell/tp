@@ -15,11 +15,21 @@ import seedu.address.logic.Logic;
  */
 public class SummaryWindow extends UiPart<Stage> {
 
+    /**
+     * Uses FXML to identify SummaryWindow.
+     */
     private static final String FXML = "SummaryWindow.fxml";
+
+    /**
+     * Stands for logger to log events happened in SummaryWindow.
+     */
     private static final Logger logger = LogsCenter.getLogger(SummaryWindow.class);
 
+    /**
+     * Stands for components to be used in FXML.
+     */
     @FXML
-    private StackPane summaryCardPlaceholder;
+    private StackPane summaryBoxPlaceholder;
 
     /**
      * Constructs a new {@code SummaryWindow} .
@@ -29,8 +39,8 @@ public class SummaryWindow extends UiPart<Stage> {
      */
     public SummaryWindow(Stage root, Logic logic) {
         super(FXML, root);
-        SummaryCard summaryCard = new SummaryCard(logic.getUpdatedMemberList());
-        summaryCardPlaceholder.getChildren().add(summaryCard.getRoot());
+        SummaryBox summaryBox = new SummaryBox(logic.getUpdatedMemberList());
+        summaryBoxPlaceholder.getChildren().add(summaryBox.getRoot());
         getRoot().addEventFilter(KeyEvent.KEY_PRESSED, event -> {
             System.out.println(event.getCode());
             if (event.getCode() == KeyCode.ESCAPE) {
@@ -40,8 +50,11 @@ public class SummaryWindow extends UiPart<Stage> {
         });
     }
 
+
     /**
-     * Constructs a new {@code SummaryWindow} with input {@code logic}.
+     * Constructs a SummaryWindow with a default new stage.
+     *
+     * @param logic logic refers to backend logic.
      */
     public SummaryWindow(Logic logic) {
         this(new Stage(), logic);
@@ -80,14 +93,14 @@ public class SummaryWindow extends UiPart<Stage> {
     }
 
     /**
-     * Hides the summary window.
+     * Hides current opened summary window.
      */
     public void hide() {
         getRoot().hide();
     }
 
     /**
-     * Focuses on the summary window.
+     * Focuses on current opened summary window.
      */
     public void focus() {
         getRoot().requestFocus();
