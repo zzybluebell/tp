@@ -565,7 +565,7 @@ Format: `clear`
 * The `clear` command is only applied in manager mode.
 * Only managers are allowed to clear. Login as manager before entering command.
 
-### 22. Saving the data
+### 22. <label id="22">Saving the data</label>
 
 ezFoodie data are saved in a JSON file in hard disk automatically after any command that changes the data. There is no need to save manually.
 
@@ -585,7 +585,7 @@ If any changes to the JSON file make it invalid, ezFoodie will discard all data 
 **A**: Install the application in the other computer and overwrite the empty data file it creates with the file that contains the data of your previous ezFoodie home folder.
 
 **Q**: Why my ezFoodie does not have any populated sample member data?<br>
-**A**: Delete `ezFoodie.json` and restart the application. Refer to #22 in *Features* above to find this JSON file.
+**A**: Delete `ezfoodie.json` and restart the application. Refer to <a href="#22">#22</a> in *Features* above to find this JSON file.
 
 --------------------------------------------------------------------------------------------------------------------
 
