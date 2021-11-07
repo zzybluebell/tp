@@ -78,7 +78,7 @@ public class MemberCard extends UiPart<Region> {
                 .filter(reservation -> Reservation.isValidDateTime(reservation.getDateTime()))
                 .findAny().ifPresentOrElse(comingReservation -> reservation.setText(
                         comingReservation.getDateTime().value + " "
-                                + comingReservation.getRemark().value), () -> reservation.setText(""));
+                        + comingReservation.getRemark().value), () -> reservation.setText(""));
     }
 
     /**
