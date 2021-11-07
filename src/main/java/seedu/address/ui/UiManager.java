@@ -109,6 +109,7 @@ public class UiManager implements Ui {
         alert.initOwner(owner);
         alert.setTitle(title);
         alert.setHeaderText(headerText);
+        alert.setContentText(contentText);
         alert.getDialogPane().setId(ALERT_DIALOG_PANE_FIELD_ID);
         alert.showAndWait();
     }
