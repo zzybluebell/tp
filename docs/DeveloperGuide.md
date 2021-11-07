@@ -1222,7 +1222,7 @@ Manager is logged in
 * **Manager**: A special subset of staff with higher permission who can get special access to certain higher level features
 * **Normal Mode**: The mode before the manager login, Normal Mode by default
 * **Manager Mode**: The mode after the manager login
-* **Membership Tiers**: Different membership tiers give members different benefits. Tiers include Silver, Gold, and Platinum
+* **Membership Tiers**: Different membership tiers give members different benefits. Tiers include Bronze, Silver, Gold, and Platinum
 * **Member Details**: Member ID, Name, Phone, Email, Address, Membership Tiers, Registration Date, Credits, Points, Transaction
 * **Credits**: Represents total amount of money spent at the restaurant (S$1 = 1 credit), accumulated and cannot be decreased
 * **Points**: Earned 1 points for S$1, can be used to redeem gifts and will be spent
