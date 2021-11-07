@@ -20,6 +20,8 @@ ezFoodie is a desktop application that helps restaurants **keep track of their e
 
 ezFoodie is simple and user-friendly. It is optimized for using via a **Command Line Interface (CLI)** while still enjoying the benefits of a Graphical User Interface (GUI). If you can type fast, ezFoodie can get your member management tasks done faster than traditional GUI applications.
 
+ezFooide is only the version for English laguage based user. it is optimized for English-based CLI commands.
+
 Continue reading to explore the wonders of ezFoodie and enhance the way you manage and analyze your restaurant's members 🤩
 
 --------------------------------------------------------------------------------------------------------------------
@@ -64,12 +66,13 @@ Continue reading to explore the wonders of ezFoodie and enhance the way you mana
    
    <div align="center"><img height="570" alt="ezFoodie Logo" src="images/Ui.png"></div>
    <h1 align="center"><font size ="5">Congratulations! ezFoodie is now ready for your perusal. 🤩</font></h1>
+   <br>
 
    **5. Main window GUI includes the following member fields and constraints:**
     
 * **Index number in the list:**
    * *Only contains alphanumeric characters.*
-   * *It starts from `1`.*
+   * *It ranges from `1` to `99999`.*
 
 * **Name:**
    * *Only contains alphanumeric characters and spaces, and it should not be blank.*
@@ -83,9 +86,11 @@ Continue reading to explore the wonders of ezFoodie and enhance the way you mana
    * *It only has 5 digits and starts from `00001` to `99999`.*
    * *Deleted Member's id will not be occupied when adding a new member.*
    * *Member id will increase automatically when add a new member.*
+   * *EzFoodie contains max `99999` members*
    
 * **Phone number:**
    * *Phone number should only contain 8 digits, and it should start with 3, 6, 8 or 9.*
+   * *Phone and email are only verficion methood to check whether is same member.*
 
 * **Email:**
    * *Email should be the format in `local-part@domain`.*
@@ -94,15 +99,17 @@ Continue reading to explore the wonders of ezFoodie and enhance the way you mana
    any special characters.*
    * *The `domain` name is made up of domain name separated by periods.*
    * *The `domain` name must:*
-      * *Ends with a `domain` label at least 2 characters long.*
+      * *End with a `domain` label at least 2 characters long.*
       * *Have each domain label start and end with alphanumeric characters.*
-      * *have each domain label consist of alphanumeric characters, 
+      * *Have each domain label consist of alphanumeric characters, 
       separated only by hyphens, if any.*
+   *  *Phone and email are only verficion methood to check whether is same member.*
    
 * **Credit:**
    * *Credit refers to the overall accumulated transaction billing of a member, 
    starting from his registration date.*
    * *Credit depends on amounts of billing in <a href="#12">add transaction</a>, <a href="#13">delete transaction</a>, and <a href="#14">edit transaction</a>*.
+   * *Credit amount is range from `0` to `99999999`.*
    
 * **Point:**
    * *The point accumulation is similar to credit.*
@@ -112,6 +119,7 @@ Continue reading to explore the wonders of ezFoodie and enhance the way you mana
    * *In <a href="#14">edit transaction</a>, the point will be increased when billing amount is greater than the billing amount 
    added in last time. on the contrary the point will not be affected and keep the same when billing amount is lesser
    than the billing amount added in last time.*
+   * *Point amount is range from `0` to `99999999`.*
    
 * **Seat Booking Information**
 
@@ -159,6 +167,10 @@ Continue reading to explore the wonders of ezFoodie and enhance the way you mana
       * *Deleted Transaction's id will not be occupied when adding a new transaction.*
       * *Transaction id will increase automatically when add a new transaction.*
       
+   * **Billing:**
+      * *Billing is in transaction feature*
+      * *Billing should be non-negative numeric with 2 decimal places, and ranges from `0.00` to `9999.99`**
+
    * **Reservation ID:**
       * *It only has 6 digits and starts from `000001` to `999999`.*
       * *Deleted reservation's id will not be occupied when adding a new member.*
@@ -233,6 +245,9 @@ Continue reading to explore the wonders of ezFoodie and enhance the way you mana
 
     * `-d/`: descending
 
+* Requirement of input command:
+   * When user inputs a command, the specific content is not allowed including above shortcuts.
+   * E.g. address is not allowed to be "112-p/ Amoy Street-a/, 069907, Singapore"
 </div>
 
 ### 1. Viewing help : `help`
@@ -304,7 +319,7 @@ Example: `add -mem/ -n/John Doe -p/98765432 -e/johndoe@gmail.com -a/112 Amoy Str
 
 <div markdown="block" class="alert alert-info">
 
-   **:information_source: Duplicate members:**<br>
+   :information_source: **Note Duplicate members:**<br>
 
    * ezFoodie will not allow adding members with the same **phone number** or **email address** as an existing member.
 
@@ -465,6 +480,7 @@ Example: `add -txn/ -b/200.00 -id/00001`
    :information_source: **Note:** 
    * Transaction date and time is automatically assigned by local date and time when a transaction is added, there is no need to manually enter the transaction date or time.
    * The Credit and the Point will be accumulated based on billing amount. 
+   * Maximum amount of transactio is `999999`.
 </div>
 
 ### 13.  <label id="13">Deleting transaction for members:</label> `del -txn/`
@@ -512,7 +528,9 @@ Example: `add -rs/ -dt/2021-01-02 00:00 -rm/2 people -id/00001`
 
 <div markdown="block" class="alert alert-info">
 
-:information_source: **Note:** Same member which based on member id cannot make multiple reservations on the same day.
+:information_source: **Note:** 
+* Same member which based on member id cannot make multiple reservations on the same day.
+* Maximum amount of reservations is `999999`.
 </div>
 
 ### 16. Deleting a reservation: `del -rs/`
@@ -622,7 +640,7 @@ Format: `clear`
 
 ### 22. <label id="22">Saving the data</label>
 
-ezFoodie data are saved in a JSON file in hard disk automatically after any command that changes the data. There is no need to save manually.
+ezFoodie data are saved in a JSON file in hard disk `[JAR file location]/data/ezfoodie.json` automatically after any command that changes the data. There is no need to save manually.
 
 ### 23. Editing the data file
 
@@ -641,6 +659,9 @@ If any changes to the JSON file make it invalid, ezFoodie will discard all data 
 
 **Q**: Why my ezFoodie does not have any populated sample member data?<br>
 **A**: Delete `ezfoodie.json` and restart the application. Refer to <a href="#22">#22</a> in *Features* above to find this JSON file.
+
+**Q**: If I face any unexpected issues and I dont know how to solve it, how can I contact with you ?<br>
+**A**: Please do not hesitage drop an email to us in `ezfoodie@gmail.com`, thank you so much.
 
 --------------------------------------------------------------------------------------------------------------------
 
