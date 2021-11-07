@@ -18,27 +18,27 @@ import seedu.address.logic.Logic;
 public class UiManager implements Ui {
 
     /**
-     * Message to be shown about alert dialog pane.
+     * Stands for message to be shown about alert dialog pane.
      */
     public static final String ALERT_DIALOG_PANE_FIELD_ID = "alertDialogPane";
 
     /**
-     * Logger to log events happened in UiManager.
+     * Stands for logger to log events happened in UiManager.
      */
     private static final Logger logger = LogsCenter.getLogger(UiManager.class);
 
     /**
-     * Location of ezFoodie Logo.
+     * Locates ezFoodie Logo.
      */
     private static final String ICON_APPLICATION = "/images/ezfoodie_icon.png";
 
     /**
-     * Logic refers to backend logic.
+     * Refers to backend logic.
      */
     private Logic logic;
 
     /**
-     * MainWindow to be shown when user first opens ezFoodie.
+     * Refers to the window to be shown when user first opens ezFoodie.
      */
     private MainWindow mainWindow;
 
@@ -94,7 +94,7 @@ public class UiManager implements Ui {
     }
 
     /**
-     * This method only returns after the user has closed the alert dialog.
+     * Only returns after the user has closed the alert dialog.
      * @param owner stage.
      * @param type alert type.
      * @param title title to show.
