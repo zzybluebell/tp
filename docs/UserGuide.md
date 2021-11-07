@@ -20,7 +20,7 @@ ezFoodie is a desktop application that helps restaurants **keep track of their e
 
 ezFoodie is simple and user-friendly. It is optimized for using via a **Command Line Interface (CLI)** while still enjoying the benefits of a Graphical User Interface (GUI). If you can type fast, ezFoodie can get your member management tasks done faster than traditional GUI applications.
 
-ezFooide is only the version for English laguage based user. it is optimized for English-based CLI commands.
+ezFooide is only the version for English language based user. it is optimized for inputting via English-based CLI commands.
 
 Continue reading to explore the wonders of ezFoodie and enhance the way you manage and analyze your restaurant's members 🤩
 
@@ -660,7 +660,7 @@ If any changes to the JSON file make it invalid, ezFoodie will discard all data 
 **Q**: Why my ezFoodie does not have any populated sample member data?<br>
 **A**: Delete `ezfoodie.json` and restart the application. Refer to <a href="#22">#22</a> in *Features* above to find this JSON file.
 
-**Q**: If I face any unexpected issues and I dont know how to solve it, how can I contact with you ?<br>
+**Q**: If I face any unexpected issues and I dont know how to solve it, how can I contact with you?<br>
 **A**: Please do not hesitage drop an email to us in `ezfoodie@gmail.com`, thank you so much.
 
 --------------------------------------------------------------------------------------------------------------------
