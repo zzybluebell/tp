@@ -16,29 +16,30 @@ import seedu.address.model.transaction.Transaction;
 public class SummaryBox extends UiPart<Region> {
 
     /**
-     * Using FXML to identify SummaryBox.
+     * Uses FXML to identify SummaryBox.
      */
     private static final String FXML = "SummaryBox.fxml";
 
     /**
-     * Pattern used to format decimals.
+     * Stands for pattern used to format decimals.
      */
     private static final String PATTERN = "#.##";
 
     /**
-     * Current displaying memberList.
-     * <p>
+     * Stands for current displaying memberList.
+     */
+    public final ObservableList<Member> memberList;
+
+    /**
+     * Components to be used in FXML.
+     *
      * Note: Certain keywords such as "location" and "resources" are reserved keywords in JavaFX.
      * As a consequence, UI elements' variable names cannot be set to such keywords
      * or an exception will be thrown by JavaFX during runtime.
      *
      * @see <a href="https://github.com/se-edu/addressbook-level4/issues/336">The issue on AddressBook level 4</a>
      */
-    public final ObservableList<Member> memberList;
-
-    /**
-     * Components to be used in FXML.
-     */
+    
     @FXML
     private Label totalNumberOfMembers;
     @FXML
