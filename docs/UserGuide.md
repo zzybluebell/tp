@@ -495,9 +495,9 @@ Format: `del -rs/ -id/<MEMBER_ID + RESERVATION_ID>`
 
 Example: `del -rs/ -id/00001000001`
 
-**Note:** 
-   * The `del` reservation command is only applied in manager mode.
-   * Only the manager is allowed to delete reservations. Login as manager before entering command. 
+      **Note:** 
+         * The `del` reservation command is only applied in manager mode.
+         * Only the manager is allowed to delete reservations. Login as manager before entering command. 
 
 ### 17. Editing a reservation: `edit -rs/`
 **Note:** 
