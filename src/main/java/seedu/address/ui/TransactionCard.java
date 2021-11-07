@@ -13,12 +13,17 @@ import seedu.address.model.transaction.Transaction;
 public class TransactionCard extends UiPart<Region> {
 
     /**
-     * Using FXML to identify TransactionListCard.
+     * Uses FXML to identify TransactionListCard.
      */
     private static final String FXML = "TransactionListCard.fxml";
 
     /**
-     * Current displaying transaction.
+     * Stands for current displaying transaction.
+     */
+    public final Transaction transaction;
+
+    /**
+     * Stands for components to be used in FXML.
      *
      * Note: Certain keywords such as "location" and "resources" are reserved keywords in JavaFX.
      * As a consequence, UI elements' variable names cannot be set to such keywords
@@ -26,11 +31,7 @@ public class TransactionCard extends UiPart<Region> {
      *
      * @see <a href="https://github.com/se-edu/addressbook-level4/issues/336">The issue on AddressBook level 4</a>
      */
-    public final Transaction transaction;
-
-    /**
-     * Components to be used in FXML.
-     */
+    
     @FXML
     private HBox cardPane;
     @FXML
@@ -43,7 +44,6 @@ public class TransactionCard extends UiPart<Region> {
 
     /**
      * Constructs a TransactionCard with input transaction object.
-     *
      * @param transaction including transaction details to be displayed.
      */
     public TransactionCard(Transaction transaction) {
