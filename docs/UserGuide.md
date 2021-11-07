@@ -564,14 +564,14 @@ Format: `edit -rs/ -id/<MEMBER_ID + RESERVATION_ID> -dt/<DATE_TIME>`
 
 Example: `edit -rs/ -id/00001000001 -dt/2021-12-01 13:00`
 
-#### 17.2. Editing a date time in reservation: `edit -rs/ -rm`
+#### 17.2. Editing a remark reservation: `edit -rs/ -rm`
 Edits a member's reservation details in remark.
 
 Format: `edit -rs/ -id/<MEMBER_ID + RESERVATION_ID> -rm/<REMARK>`
 
 Example: `edit -rs/ -id/00001000001 -rm/3 people`
 
-#### 17.3. Editing a date time and remark in reservation: `edit -rs/ -dt -rm`
+#### 17.3. Editing a date time and a remark in reservation: `edit -rs/ -dt -rm`
 Edits a member's reservation details in date time.
 
 Format: `edit -rs/ -id/<MEMBER_ID + RESERVATION_ID> [-dt/<DATE_TIME>][-rm/<REMARK>]`
