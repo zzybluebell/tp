@@ -133,7 +133,7 @@ Continue reading to explore the wonders of ezFoodie and enhance the way you mana
 
       **Note:** Only managers can delete members. Login as a manager before entering the delete command.
 
-   * `add -txn/ -b/200.00 -id/00001:` Adds transaction with a billing $100.00 to member ID 00001 shown in the current list.
+   * `add -txn/ -b/200.00 -id/00001:` Adds transaction with a billing $100.00 to member id 00001 shown in the current list.
 
    * `add -rs/ -dt/2021-01-02 00:00 -rm/2 people -id/00001:` Adds a reservation for 2 people for 2021-01-01 00:00 to member ID 00001 shown in the current list 
 
@@ -191,7 +191,7 @@ Continue reading to explore the wonders of ezFoodie and enhance the way you mana
 
 * Meanings of shortcuts:
 
-    * `-id/`: member ID or transaction ID
+    * `-id/`: member id, transaction id or reservation id
 
     * `-i/`: index number of a member in member list
 
@@ -199,9 +199,9 @@ Continue reading to explore the wonders of ezFoodie and enhance the way you mana
 
     * `-n/`: name
 
-    * `-p/`: phone no.
+    * `-p/`: phone number
 
-    * `-e/`: email ID
+    * `-e/`: email id
 
     * `-a/`: address
 
@@ -313,7 +313,7 @@ Deletes a member from the member list
    * The `del` member command is only applied in manager mode.
    * Only the manager is allowed to delete members. Login as manager before entering command.
 
-#### 8.1.  Deleting a member by ID
+#### 8.1.  Deleting a member by member id
 
 Deletes a member using member id
 
@@ -338,7 +338,7 @@ Finds members by different fields which contain any of the given keywords.
 
 **Note:** No member will be listed when an invalid member field is entered.
 
-#### 9.1. Finding member by member ID
+#### 9.1. Finding member by member id
 
 Format: `find -mem/ -id/<MEMBER_ID>`
 
@@ -370,42 +370,42 @@ Example: `find -mem/ -d/2021-01-02`
 
 ### 10. Viewing member profile : `show -mem/`
 
-Views member from member list by member ID.
+Views member from member list by member id.
 
 Format: `show -mem/ -id/ <MEMBER_ID>`
 
 Example: `show -mem/ -id/00001`
 
-**Note:** No member details will be shown when an invalid member ID is entered.
+**Note:** No member details will be shown when an invalid member id is entered.
 
 ### 11. Editing a member : `edit -mem/`
 
-Edits different fields in a member's profile, where the member is specified by member ID.
+Edits different fields in a member's profile, where the member is specified by member id.
 
 **Note:** Only deals with editing member details.
    If a member's transactions need to be edited, refer to [#13](#13) below. 
    Do not mix `-mem/` and `-txn/` in one `edit` command.
 
 
-#### 11.1. Editing member name by member ID
+#### 11.1. Editing member name by member id
 
 Format: `edit -mem/ -id/<MEMBER_ID> -n/<NAME>`
 
 Example: `edit -mem/ -id/00001 -n/John Doe`
 
-#### 11.2. Editing member phone by member ID
+#### 11.2. Editing member phone by member id
 
 Format: `edit -mem/ -id/<MEMBER_ID> -p/<PHONE>`
 
 Example: `edit -mem/ -id/00001 -p/98765432`
 
-#### 11.3. Editing member email by member ID
+#### 11.3. Editing member email by member id
 
 Format: `edit -mem/ -id/<MEMBER_ID> -e/<EMAIL>`
 
 Example: `edit -mem/ -id/00001 -e/johndoe@gmail.com`
 
-#### 11.4. Editing member address by member ID
+#### 11.4. Editing member address by member id
 
 Format: `edit -mem/ -id/<MEMBER_ID> -a/<ADDRESS>`
 
@@ -437,7 +437,7 @@ Example: `edit -mem/ -i/1 -a/33 Benoi Crescent, 629979, Singapore`
 
 ### 12. <label id="12">Adding transaction for members :</label> `add -txn/`
 
-Adds transaction amount corresponding to member ID.
+Adds transaction amount corresponding to member id.
 
 Format: `add -txn/ -b/<BILLING_AMOUNT> -id/<MEMBER_ID>`
 
@@ -615,17 +615,17 @@ Action | Manager Only? (Y/N) | Format, Examples
 **Logout as Manager** | Y | *Format:* <br> `logout` <br> *Example:* <br> `logout`
 **List Members** | N | *Format:* <br> `list -mem/` <br> *Example:* <br> `list -mem/`
 **Add New Member** | N | *Format:* <br> `add -mem/ -n/<NAME> -p/<PHONE> -e/<EMAIL> -a/<ADDRESS>` <br> *Example:* <br> `add -mem/ -n/John Doe -p/98765432 -e/johndoe@gmail.com -a/112 Amoy Street, 069907, Singapore`
-**Delete Member by Member ID** | Y | *Format:* <br> `del -mem/ -id/<MEMBER_ID>` <br> *Example:* <br> `del -mem/ -id/ 00001` <br>
+**Delete Member by Member Id** | Y | *Format:* <br> `del -mem/ -id/<MEMBER_ID>` <br> *Example:* <br> `del -mem/ -id/ 00001` <br>
 **Delete Member by Index Number** | Y | *Format:* <br> `del -mem/ -i/<MEMBER_INDEX>` <br> *Example:* <br> `del -mem/ -i/1`
-**Find Member by Member ID** | N | *Format:* <br> `find -mem/ -id/<MEMBER_ID>` <br> *Example:* <br> `find -mem/ -id/00001`
+**Find Member by Member Id** | N | *Format:* <br> `find -mem/ -id/<MEMBER_ID>` <br> *Example:* <br> `find -mem/ -id/00001`
 **Find Members by Name** | N | *Format:* <br> `find -mem/ -n/<NAME>` <br> *Example:* <br> `find -mem/ -n/John Doe`
 **Find Members by Phone** | N | *Format:* <br> `find -mem/ -p/<PHONE>` <br> *Example:* <br> `find -mem/ -p/98765432`
 **Find Members by Email** | N | *Format:* <br> `find -mem/ -e/<EMAIL>` <br> *Example:* <br> `find -mem/ -e/johndoe@gmail.com`
 **Find Members by Registration Date** | N | *Format:* <br> `find -mem/ -d/<REGISTRATION_DATE yyyy-MM-dd>` <br> *Example:* <br> `find -mem/ -d/2021-01-02`
 **View Member Profile** | N | *Format:* <br> `show -mem/ -id/<MEMBER_ID>` <br> *Example:* <br> `show -mem/ -id/00001`
-**Edit Member Name by Member ID** | N | *Format:* <br> `edit -mem/ -id/<MEMBER_ID> -n/<NAME>` <br> *Example* <br> `edit -mem/ -id/00001 -n/John Doe`
+**Edit Member Name by Member Id** | N | *Format:* <br> `edit -mem/ -id/<MEMBER_ID> -n/<NAME>` <br> *Example* <br> `edit -mem/ -id/00001 -n/John Doe`
 **Edit Member Phone by Member ID** | N | *Format* <br> `edit -mem/ -id/<MEMBER_ID> -p/<PHONE>` <br> *Example* <br> `edit -mem/ -id/00001 -p/98765432`
-**Edit Member Email by Member ID** | N | *Format:* <br> `edit -mem/ -id/<MEMBER_ID> -e/<EMAIL>` <br> *Example:* <br> `edit -mem/ -id/00001 -e/johndoe@gmail.com`
+**Edit Member Email by Member Id** | N | *Format:* <br> `edit -mem/ -id/<MEMBER_ID> -e/<EMAIL>` <br> *Example:* <br> `edit -mem/ -id/00001 -e/johndoe@gmail.com`
 **Edit Member Address by Member ID** | N | *Format:* <br> `edit -mem/ -id/<MEMBER_ID> -a/<ADDRESS>` <br> *Example:* <br> `edit -mem/ -id/00001 -a/33 Benoi Crescent, 629979, Singapore`
 **Edit Member Name by Index Number** | N | *Format:* <br> `edit -mem/ -i/<INDEX> -n/ <NAME>` <br> *Example:* <br> `edit -mem/ -i/1 -n/John Doe`
 **Edit Member Phone by Index Number** | N | *Format:* <br> `edit -mem/ -i/<INDEX> -p/<PHONE>` <br> *Example:* <br> `edit -mem/ -i/1 -p/98765432`
