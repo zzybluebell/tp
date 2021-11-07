@@ -19,12 +19,12 @@ public class HelpBox extends UiPart<Region> {
             "https://ay2122s1-cs2103t-f12-4.github.io/tp/";
 
     /**
-     * Using FXML to identify HelpBox.
+     * Uses FXML to identify HelpBox.
      */
     private static final String FXML = "HelpBox.fxml";
 
     /**
-     * Components to be used in FXML.
+     * Stands for components to be used in FXML.
      *
      * Note: Certain keywords such as "location" and "resources" are reserved keywords in JavaFX.
      * As a consequence, UI elements' variable names cannot be set to such keywords
