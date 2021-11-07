@@ -40,15 +40,28 @@ This User Guide aims to:
 
 # Quick start
 
- **1. Ensure you have Java `11` or above installed in your computer from [here](https://www.oracle.com/java/technologies/downloads/).**
+**<label id="step1">1. Ensure you have Java `11` or above installed in your computer.</label>**
+   *  To check out the Java version you have installed in your computer, please click [here](https://www.java.com/en/download/help/version_manual.xml). 
+   * If Java is not installed on your computer, please follow [here](https://www.oracle.com/java/technologies/downloads/).
 
 **2. Download the latest `ezFoodie.jar` from [here](https://github.com/AY2122S1-CS2103T-F12-4/tp/releases).**
 
+   <div align="center"><img height="150" alt="ezFoodie Logo" src="images/downloadInstruction.png"></div>
+
 **3. Copy the file to the folder you want to use as the _home folder_ for your ezFoodie.**
+   <div align="center"><img height="415" alt="ezFoodie Logo" src="images/homefolderEzFoodie.png"></div>
 
-**4. Double-click the file to start the application. The GUI similar to the one shown below should appear in a few seconds. The application comes preloaded with sample data to test its features.<br>**
+**4. Launch the application.**
+* **If faced any issues, go back the [step 1](#step1) check with java version.**
+* **Double-click the file to start the application in windows system.** 
+* **In MacOS or Linux System, launch the termianl, go to the related directory and pin `jar -r ezfoodie.jar` command.**
+* **The details for running jar  can follow [here](https://www.wikihow.com/Run-a-.Jar-Java-File).** 
 
-   ![Ui](images/Ui.png)
+* **The GUI similar to the one shown below should appear in a few seconds. The application comes preloaded with sample data to test its features.<br>**
+   
+   <div align="center"><img height="570" alt="ezFoodie Logo" src="images/Ui.png"></div>
+
+   **Congratulations! ezFoodie is now ready for your perusal. 🤩**
 
    --------------------------------------------------------------------------------------------------------------------
 
