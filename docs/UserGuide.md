@@ -382,7 +382,7 @@ Example: `find -mem/ -d/2021-01-02`
 
 Views member from member list by member id.
 
-Format: `show -mem/ -id/ <MEMBER_ID>`
+Format: `show -mem/ -id/<MEMBER_ID>`
 
 Example: `show -mem/ -id/00001`
 
@@ -487,9 +487,9 @@ Example: `del -txn/ -id/00001000001`
 
 Edits a member's transaction.
 
-Format: `edit -txn/ -id/<MEMBER_ID + TRANSACTION_ID> -b/ <BILLING_AMOUNT>`
+Format: `edit -txn/ -id/<MEMBER_ID + TRANSACTION_ID> -b/<BILLING_AMOUNT>`
 
-Example: `edit -txn/ -id/00001000002 -b/ 10.00`
+Example: `edit -txn/ -id/00001000002 -b/10.00`
 
 <div markdown="block" class="alert alert-info">
 
@@ -505,7 +505,7 @@ Example: `edit -txn/ -id/00001000002 -b/ 10.00`
 
 Adds a reservation to a member.
 
-Format: `add -rs/ -dt/<yyyy-MM-dd HH:mm> -rm/ <REMARK> -id/ <MEMBER_ID>`
+Format: `add -rs/ -dt/<yyyy-MM-dd HH:mm> -rm/<REMARK> -id/<MEMBER_ID>`
 
 Example: `add -rs/ -dt/2021-01-02 00:00 -rm/2 people -id/00001`
 
