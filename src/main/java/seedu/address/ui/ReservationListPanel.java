@@ -16,12 +16,12 @@ import seedu.address.model.reservation.Reservation;
 public class ReservationListPanel extends UiPart<Region> {
 
     /**
-     * Using FXML to identify ReservationListPanel.
+     * Uses FXML to identify ReservationListPanel.
      */
     private static final String FXML = "ReservationListPanel.fxml";
 
     /**
-     * Components to be used in FXML.
+     * Stands for components to be used in FXML.
      */
     @FXML
     private ListView<Reservation> reservationListView;
