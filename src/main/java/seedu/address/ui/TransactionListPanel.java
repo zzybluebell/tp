@@ -13,12 +13,12 @@ import seedu.address.model.transaction.Transaction;
 public class TransactionListPanel extends UiPart<Region> {
 
     /**
-     * Using FXML to identify TransactionListPanel.
+     * Uses FXML to identify TransactionListPanel.
      */
     private static final String FXML = "TransactionListPanel.fxml";
 
     /**
-     * Components to be used in FXML.
+     * Stands for components to be used in FXML.
      */
     @FXML
     private ListView<Transaction> transactionListView;
