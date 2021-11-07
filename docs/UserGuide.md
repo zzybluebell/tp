@@ -182,7 +182,7 @@ Continue reading to explore the wonders of ezFoodie and enhance the way you mana
    * **DateTime:**
       * *The format should be in yyyy-MM-dd HH:mm*
 
-* **Please follow the instruction shown is the application command box when your are occuring constraint errors (attached below).**
+* **Please follow the instruction shown is the application command box when your are occurring constraint errors (attached below).**
 ![popup_error_example](images/popup_error_example.png)
 <br>
 
@@ -197,7 +197,7 @@ Continue reading to explore the wonders of ezFoodie and enhance the way you mana
 * Words in `UPPER_CASE` are the parameters to be supplied by the user.<br>
   e.g. in `find -mem/ -n/<NAME>`, `NAME` is a parameter which can be used as `find -mem/ -n/John Doe`.
 
-* If a parameter is expected only once in the command but you specified it multiple times, only the last occurrence of the parameter will be taken.<br>
+* If a parameter is expected only once in the command, but you specified it multiple times, only the last occurrence of the parameter will be taken.<br>
   **e.g.** if you specify `-p/12341234 -p/56785678`, only `-p/56785678` will be taken.
 
 * Extraneous parameters for commands that do not take in parameters (such as `help`, `exit` and `clear`) will be ignored.<br>
@@ -245,7 +245,7 @@ Continue reading to explore the wonders of ezFoodie and enhance the way you mana
 
     * `-d/`: descending
 
-* Requirement of input command:
+* Requirements of input command:
    * When user inputs a command, the specific content is not allowed including above shortcuts.
    * E.g. address is not allowed to be "112-p/ Amoy Street-a/, 069907, Singapore"
 </div>
@@ -480,7 +480,7 @@ Example: `add -txn/ -b/200.00 -id/00001`
    :information_source: **Note:** 
    * Transaction date and time is automatically assigned by local date and time when a transaction is added, there is no need to manually enter the transaction date or time.
    * The Credit and the Point will be accumulated based on billing amount. 
-   * Maximum amount of transactio is `999999`.
+   * The maximum amount of transactions is `999999`.
 </div>
 
 ### 13.  <label id="13">Deleting transaction for members:</label> `del -txn/`
@@ -530,7 +530,7 @@ Example: `add -rs/ -dt/2021-01-02 00:00 -rm/2 people -id/00001`
 
 :information_source: **Note:** 
 * Same member which based on member id cannot make multiple reservations on the same day.
-* Maximum amount of reservations is `999999`.
+* The maximum amount of reservations is `999999`.
 </div>
 
 ### 16. Deleting a reservation: `del -rs/`
@@ -676,7 +676,7 @@ Action | Manager Only? (Y/N) | Format, Examples
 **Logout as Manager** | Y | *Format:* <br> `logout` <br> *Example:* <br> `logout`
 **List Members** | N | *Format:* <br> `list -mem/` <br> *Example:* <br> `list -mem/`
 **Add New Member** | N | *Format:* <br> `add -mem/ -n/<NAME> -p/<PHONE> -e/<EMAIL> -a/<ADDRESS>` <br> *Example:* <br> `add -mem/ -n/John Doe -p/98765432 -e/johndoe@gmail.com -a/112 Amoy Street, 069907, Singapore`
-**Delete Member by Member Id** | Y | *Format:* <br> `del -mem/ -id/<MEMBER_ID>` <br> *Example:* <br> `del -mem/ -id/ 00001` <br>
+**Delete Member by Member Id** | Y | *Format:* <br> `del -mem/ -id/<MEMBER_ID>` <br> *Example:* <br> `del -mem/ -id/00001` <br>
 **Delete Member by Index Number** | Y | *Format:* <br> `del -mem/ -i/<MEMBER_INDEX>` <br> *Example:* <br> `del -mem/ -i/1`
 **Find Member by Member Id** | N | *Format:* <br> `find -mem/ -id/<MEMBER_ID>` <br> *Example:* <br> `find -mem/ -id/00001`
 **Find Members by Name** | N | *Format:* <br> `find -mem/ -n/<NAME>` <br> *Example:* <br> `find -mem/ -n/John Doe`
@@ -688,13 +688,13 @@ Action | Manager Only? (Y/N) | Format, Examples
 **Edit Member Phone by Member ID** | N | *Format* <br> `edit -mem/ -id/<MEMBER_ID> -p/<PHONE>` <br> *Example* <br> `edit -mem/ -id/00001 -p/98765432`
 **Edit Member Email by Member Id** | N | *Format:* <br> `edit -mem/ -id/<MEMBER_ID> -e/<EMAIL>` <br> *Example:* <br> `edit -mem/ -id/00001 -e/johndoe@gmail.com`
 **Edit Member Address by Member ID** | N | *Format:* <br> `edit -mem/ -id/<MEMBER_ID> -a/<ADDRESS>` <br> *Example:* <br> `edit -mem/ -id/00001 -a/33 Benoi Crescent, 629979, Singapore`
-**Edit Member Name by Index Number** | N | *Format:* <br> `edit -mem/ -i/<INDEX> -n/ <NAME>` <br> *Example:* <br> `edit -mem/ -i/1 -n/John Doe`
+**Edit Member Name by Index Number** | N | *Format:* <br> `edit -mem/ -i/<INDEX> -n/<NAME>` <br> *Example:* <br> `edit -mem/ -i/1 -n/John Doe`
 **Edit Member Phone by Index Number** | N | *Format:* <br> `edit -mem/ -i/<INDEX> -p/<PHONE>` <br> *Example:* <br> `edit -mem/ -i/1 -p/98765432`
 **Edit Member Email by Index Number** | N | *Format:* <br> `edit -mem/ -i/<INDEX> -e/<EMAIL>` <br> *Example:* <br> `edit -mem/ -i/1 -e/johndoe@gmail.com`
 **Edit Member Address by Index Number** | N | *Format:* <br> `edit -mem/ -i/<INDEX> -a/<ADDRESS>` <br> *Example:* <br> `edit -mem/ -i/1 -a/33 Benoi Crescent, 629979, Singapore`
 **Add Transaction for Member** | N | *Format:* <br> `add -txn/ -id/<MEMBER_ID> -b/<BILLING_AMOUNT>` <br> *Example:* <br> `add -txn/ -b/200.00 -id/00001`
 **Delete Transaction for Member** | Y | *Format:* <br> `del -txn/ -id/<MEMBER_ID + TRANSACTION_ID>` <br> *Example:* <br> `del -txn/ -id/00001000001`
-**Edit Transaction** | N | *Format:* <br> `edit -txn/ -id/ <MEMBER_ID + TRANSACTION_ID> -b/<BILLING_AMOUNT>` <br> *Example:* <br> `edit -txn/ -id/ 00001000002 -b/ 10.00`
+**Edit Transaction** | N | *Format:* <br> `edit -txn/ -id/ <MEMBER_ID + TRANSACTION_ID> -b/<BILLING_AMOUNT>` <br> *Example:* <br> `edit -txn/ -id/ 00001000002 -b/10.00`
 **Add Reservation** | N | *Format:* <br> `add -rs/ -dt/ <DATE_TIME yyyy-MM-dd HH:mm> -rm/ <REMARK> -id/ <MEMBER_ID>` <br> *Example:* <br> `add -rs/ -dt/ 2021-01-02 00:00 -rm/ 2 people -id/ 00001`
 **Delete Reservation** | Y | *Format:* <br> `del -rs/ -id/ <MEMBER_ID + RESERVATION_ID>` <br> *Example:* <br> `del -rs/ -id/ 00001000001`
 **Edit Reservation** | N | *Format:* <br> `edit -rs/ -id/<MEMBER_ID + RESERVATION_ID> [-dt/<DATE_TIME>][-rm/<REMARK>]` <br> *Example:* <br> `edit -rs/ -id/00001000001 -dt/2021-12-01 13:00 -rm/3 people`
