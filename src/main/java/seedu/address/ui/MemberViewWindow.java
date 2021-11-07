@@ -49,6 +49,7 @@ public class MemberViewWindow extends UiPart<Stage> {
 
     /**
      * Constructs a new {@code MemberViewWindow}, with a default new stage.
+     *
      * @param logic logic refers to backend logic.
      */
     public MemberViewWindow(Logic logic) {
