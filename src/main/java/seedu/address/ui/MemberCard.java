@@ -12,17 +12,17 @@ import seedu.address.model.member.Tier;
 import seedu.address.model.reservation.Reservation;
 
 /**
- * An UI component that displays information of a {@code Member}.
+ * A UI component that displays information of a {@code Member}.
  */
 public class MemberCard extends UiPart<Region> {
 
     /**
-     * Using FXML to identify MemberListCard.
+     * Uses FXML to identify MemberListCard.
      */
     private static final String FXML = "MemberListCard.fxml";
 
     /**
-     * Current displaying member.
+     * Stands for current displaying member.
      *
      * Note: Certain keywords such as "location" and "resources" are reserved keywords in JavaFX.
      * As a consequence, UI elements' variable names cannot be set to such keywords
@@ -34,7 +34,7 @@ public class MemberCard extends UiPart<Region> {
     public final Member member;
 
     /**
-     * Components to be used in FXML.
+     * Stands for components to be used in FXML.
      */
     @FXML
     private HBox cardPane;
