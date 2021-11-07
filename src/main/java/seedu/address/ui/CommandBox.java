@@ -18,17 +18,17 @@ import seedu.address.logic.parser.exceptions.ParseException;
 public class CommandBox extends UiPart<Region> {
 
     /**
-     * Error message for error style class.
+     * Stands for error message for error style class.
      */
     public static final String ERROR_STYLE_CLASS = "error";
 
     /**
-     * Using FXML to identify CommandBox.
+     * Uses FXML to identify CommandBox.
      */
     private static final String FXML = "CommandBox.fxml";
 
     /**
-     * Executor to handle input commands.
+     * Handles input commands.
      */
     private final CommandExecutor commandExecutor;
 
@@ -57,7 +57,7 @@ public class CommandBox extends UiPart<Region> {
     }
 
     /**
-     * Handle event triggered when command is entered.
+     * Handles events triggered when command is entered.
      */
     @FXML
     private void handleCommandEntered() {
