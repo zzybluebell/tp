@@ -151,8 +151,6 @@ Continue reading to explore the wonders of ezFoodie and enhance the way you mana
 
 **6. Please refer to the [Features](#features) below for details of each command.**
 
---------------------------------------------------------------------------------------------------------------------
-
 **7. Other components and constraints:**
     
    * Transaction ID:
