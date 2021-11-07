@@ -65,7 +65,7 @@ Continue reading to explore the wonders of ezFoodie and enhance the way you mana
    <div align="center"><img height="570" alt="ezFoodie Logo" src="images/Ui.png"></div>
 
 
-   <h1 align="center" >Congratulations! ezFoodie is now ready for your perusal. 🤩</h1>
+   <h1 align="center"><font size ="+1">Congratulations! ezFoodie is now ready for your perusal. 🤩</font></h1>
    <br>
 
    **5. Main window GUI includes the following member fields and constraints:**
