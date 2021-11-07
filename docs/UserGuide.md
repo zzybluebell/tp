@@ -10,7 +10,7 @@ title: User Guide
 
 --------------------------------------------------------------------------------------------------------------------
 
-# Introduction
+## Introduction
 
 Welcome to ezFoodie’s User Guide! 🤩
 
@@ -24,9 +24,9 @@ Continue reading to explore the wonders of ezFoodie and enhance the way you mana
 
 --------------------------------------------------------------------------------------------------------------------
 
-# Purpose
+## Purpose
 
-This User Guide aims to:
+**This User Guide aims to:**
 
 1. Help new users get familiar with ezFoodie.
 
@@ -38,7 +38,7 @@ This User Guide aims to:
 
 --------------------------------------------------------------------------------------------------------------------
 
-# Quick start
+## Quick start
 
 **<label id="step1">1. Ensure you have Java `11` or above installed in your computer.</label>**
    *  To check out the Java version you have installed in your computer, please click [here](https://www.java.com/en/download/help/version_manual.xml). 
@@ -174,7 +174,7 @@ This User Guide aims to:
 
 --------------------------------------------------------------------------------------------------------------------
 
-# Features
+## Features
 
 <div markdown="block" class="alert alert-info">
 
