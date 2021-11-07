@@ -55,7 +55,7 @@ public class AddReservationCommand extends AddCommand {
      */
     public static final String MESSAGE_SUCCESS = "New reservation added: %1$s";
     public static final String MESSAGE_FULL = "Reservation ID has reached " + seedu.address.model.reservation.Id.MAX;
-    public static final String MESSAGE_SAME_DATE = "Only one reservation can be added within the same day."
+    public static final String MESSAGE_SAME_DATE = "Only one reservation can be added within the same day. "
             + "Previous reservation: %1$s";
 
     private final Reservation reservationToAdd;

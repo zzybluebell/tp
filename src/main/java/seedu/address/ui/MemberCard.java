@@ -16,6 +16,9 @@ import seedu.address.model.reservation.Reservation;
  */
 public class MemberCard extends UiPart<Region> {
 
+    /**
+     * Using FXML to identify MemberListCard.
+     */
     private static final String FXML = "MemberListCard.fxml";
 
     /**
@@ -25,8 +28,15 @@ public class MemberCard extends UiPart<Region> {
      *
      * @see <a href="https://github.com/se-edu/addressbook-level4/issues/336">The issue on AddressBook level 4</a>
      */
+
+    /**
+     * Current displaying member.
+     */
     public final Member member;
 
+    /**
+     * Components to be used in FXML.
+     */
     @FXML
     private HBox cardPane;
     @FXML
@@ -69,11 +79,13 @@ public class MemberCard extends UiPart<Region> {
                 .filter(reservation -> Reservation.isValidDateTime(reservation.getDateTime()))
                 .findAny().ifPresentOrElse(comingReservation -> reservation.setText(
                         comingReservation.getDateTime().value + " "
-                        + comingReservation.getRemark().value), () -> reservation.setText(""));
+                                + comingReservation.getRemark().value), () -> reservation.setText(""));
     }
 
     /**
-     * Overrides the equals method.
+     * Overrides equals by comparing their text and member objects.
+     * @param other object.
+     * @return true if equals, false otherwise.
      */
     @Override
     public boolean equals(Object other) {

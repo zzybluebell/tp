@@ -16,15 +16,30 @@ import seedu.address.logic.Logic;
  * The manager of the UI component.
  */
 public class UiManager implements Ui {
+
     /**
-     * Stands for alert dialog pane filed id.
+     * Message to be shown about alert dialog pane.
      */
     public static final String ALERT_DIALOG_PANE_FIELD_ID = "alertDialogPane";
 
+    /**
+     * Logger to log events happened in UiManager.
+     */
     private static final Logger logger = LogsCenter.getLogger(UiManager.class);
-    private static final String ICON_APPLICATION = "/images/address_book_32.png";
 
+    /**
+     * Location of ezFoodie Logo.
+     */
+    private static final String ICON_APPLICATION = "/images/ezfoodie_icon.png";
+
+    /**
+     * Logic refers to backend logic.
+     */
     private Logic logic;
+
+    /**
+     * MainWindow to be shown when user first opens ezFoodie.
+     */
     private MainWindow mainWindow;
 
     /**
@@ -56,17 +71,35 @@ public class UiManager implements Ui {
         }
     }
 
+    /**
+     * Gets ezFoodie logo.
+     *
+     * @param imagePath path of the images stored.
+     * @return Image object of ezFoodie logo.
+     */
     private Image getImage(String imagePath) {
         return new Image(MainApp.class.getResourceAsStream(imagePath));
     }
 
+    /**
+     * Alerts user by showing alert dialog.
+     *
+     * @param type alert type.
+     * @param title tile of alert.
+     * @param headerText header text to show.
+     * @param contentText content text to show.
+     */
     void showAlertDialogAndWait(Alert.AlertType type, String title, String headerText, String contentText) {
         showAlertDialogAndWait(mainWindow.getPrimaryStage(), type, title, headerText, contentText);
     }
 
     /**
-     * Shows an alert dialog on {@code owner} with the given parameters.
      * This method only returns after the user has closed the alert dialog.
+     * @param owner stage.
+     * @param type alert type.
+     * @param title title to show.
+     * @param headerText header text to show.
+     * @param contentText content text to show.
      */
     private static void showAlertDialogAndWait(Stage owner, AlertType type, String title, String headerText,
                                                String contentText) {
@@ -75,7 +108,6 @@ public class UiManager implements Ui {
         alert.initOwner(owner);
         alert.setTitle(title);
         alert.setHeaderText(headerText);
-        alert.setContentText(contentText);
         alert.getDialogPane().setId(ALERT_DIALOG_PANE_FIELD_ID);
         alert.showAndWait();
     }

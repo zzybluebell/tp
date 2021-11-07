@@ -7,10 +7,13 @@ import javafx.scene.layout.Region;
 import seedu.address.model.reservation.Reservation;
 
 /**
- * An UI component that displays information of a {@code Reservation}.
+ * A UI component that displays information of a {@code Reservation}.
  */
 public class ReservationCard extends UiPart<Region> {
 
+    /**
+     * Using FXML to identify ReservationListCard.
+     */
     private static final String FXML = "ReservationListCard.fxml";
 
     /**
@@ -20,8 +23,15 @@ public class ReservationCard extends UiPart<Region> {
      *
      * @see <a href="https://github.com/se-edu/addressbook-level4/issues/336">The issue on AddressBook level 4</a>
      */
+
+    /**
+     * Current displaying reservation.
+     */
     public final Reservation reservation;
 
+    /**
+     * Components to be used in FXML.
+     */
     @FXML
     private HBox cardPane;
     @FXML
@@ -43,7 +53,7 @@ public class ReservationCard extends UiPart<Region> {
     }
 
     /**
-     * Overrides the equals method.
+     * Overrides equals by comparing reservation objects.
      */
     @Override
     public boolean equals(Object other) {

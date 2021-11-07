@@ -14,10 +14,13 @@ import seedu.address.model.reservation.Reservation;
 import seedu.address.model.transaction.Transaction;
 
 /**
- * An UI component that displays information of a {@code Member}.
+ * A UI component that displays information of a {@code Member}.
  */
 public class MemberDetailsCard extends UiPart<Region> {
 
+    /**
+     * Using FXML to identify MemberDetailsCard.
+     */
     private static final String FXML = "MemberDetailsCard.fxml";
 
     /**
@@ -28,8 +31,14 @@ public class MemberDetailsCard extends UiPart<Region> {
      * @see <a href="https://github.com/se-edu/addressbook-level4/issues/336">The issue on AddressBook level 4</a>
      */
 
+    /**
+     * Current displaying member.
+     */
     public final Member member;
 
+    /**
+     * Components to be used in FXML.
+     */
     @FXML
     private HBox cardPane;
     @FXML
@@ -83,6 +92,12 @@ public class MemberDetailsCard extends UiPart<Region> {
         transactionListPanelPlaceholder.getChildren().add(transactionListPanel.getRoot());
     }
 
+    /**
+     * Overrides equals by comparing their member objects.
+     *
+     * @param other object.
+     * @return true if contains the same member, false otherwise.
+     */
     @Override
     public boolean equals(Object other) {
         // short circuit if same object

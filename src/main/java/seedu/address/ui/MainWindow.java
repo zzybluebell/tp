@@ -23,10 +23,25 @@ import seedu.address.logic.parser.exceptions.ParseException;
  * a menu bar and space where other JavaFX elements can be placed.
  */
 public class MainWindow extends UiPart<Stage> {
+
+    /**
+     * Using FXML to identify MainWindow.
+     */
     private static final String FXML = "MainWindow.fxml";
+
+    /**
+     * Logger used to log events happen in MainWindow.
+     */
     private final Logger logger = LogsCenter.getLogger(getClass());
 
+    /**
+     * MainWindow is a stage to contain all Ui parts.
+     */
     private Stage primaryStage;
+
+    /**
+     * Make use of backend logic.
+     */
     private Logic logic;
 
     // Independent Ui parts residing in this Ui container
@@ -36,6 +51,9 @@ public class MainWindow extends UiPart<Stage> {
     private MemberViewWindow memberViewWindow;
     private SummaryWindow summaryWindow;
 
+    /**
+     * Components to be used in FXML.
+     */
     @FXML
     private StackPane commandBoxPlaceholder;
 
@@ -83,6 +101,9 @@ public class MainWindow extends UiPart<Stage> {
         return primaryStage;
     }
 
+    /**
+     * Default accelerator setter for mainWindow.
+     */
     private void setAccelerators() {
         setAccelerator(helpMenuItem, KeyCombination.valueOf("F1"));
         setAccelerator(summaryMenuItem, KeyCombination.valueOf("F2"));
@@ -184,7 +205,9 @@ public class MainWindow extends UiPart<Stage> {
         }
     }
 
-
+    /**
+     * Display mainWindow to user.
+     */
     void show() {
         primaryStage.show();
     }
@@ -203,6 +226,11 @@ public class MainWindow extends UiPart<Stage> {
         primaryStage.hide();
     }
 
+    /**
+     * Gets all members in a list.
+     *
+     * @return memberListPanel component.
+     */
     public MemberListPanel getMemberListPanel() {
         return memberListPanel;
     }

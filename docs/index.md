@@ -18,8 +18,15 @@ title: ezFoodie
 
 ## Acknowledgements
 
-Libraries used: [JavaFX](https://openjfx.io/), [Jackson](https://github.com/FasterXML/jackson), [JUnit5](https://github.com/junit-team/junit5)
-
 This project developed based on the **[Address Book Product Website](https://se-education.org/addressbook-level3)** project. Which is a part of the se-education.org initiative.
+
+The icons of the project were obtained from [ezfoodie_icon](https://www.brandcrowd.com/), [member_icon](https://www.percici.com/), [summary_icon](https://www.pngwing.com/)
+
+Libraries used:
+
+* [JavaFX](https://openjfx.io/)
+* [Jackson](https://github.com/FasterXML/jackson)
+* [JUnit5](https://github.com/junit-team/junit5)
+* [PlantUML](https://plantuml.com/)
 
 If you would like to contribute code to this project, see [se-education.org](https://se-education.org#https://se-education.org/#contributing) for more information.
