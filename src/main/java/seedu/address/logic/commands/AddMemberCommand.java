@@ -37,7 +37,8 @@ public class AddMemberCommand extends AddCommand {
 
     public static final String MESSAGE_SUCCESS = "New member added: %1$s";
     public static final String MESSAGE_FULL = "Member ID has reached " + Id.MAX;
-    public static final String MESSAGE_DUPLICATE_MEMBER = "This member already exists in the ezFoodie";
+    public static final String MESSAGE_DUPLICATE_MEMBER =
+            "This member (phone or email) already exists in the ezFoodie.";
 
     private final Member toAdd;
 

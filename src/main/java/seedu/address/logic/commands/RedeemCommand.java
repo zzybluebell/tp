@@ -49,9 +49,9 @@ public class RedeemCommand extends Command {
             + "Redeem by member ID: " + PREFIX_ID + " ID "
             + PREFIX_REDEEM + " POINTS\n"
             + "Example:\n"
-            + "Redeem by index number: " + PREFIX_INDEX + " 1 "
+            + "Redeem by index number: " + COMMAND_WORD + " " + PREFIX_INDEX + " 1 "
             + PREFIX_REDEEM + " 100\n"
-            + "Redeem by member ID: " + PREFIX_ID + " 10001 "
+            + "Redeem by member ID: " + COMMAND_WORD + " " + PREFIX_ID + " 10001 "
             + PREFIX_REDEEM + " 100";
 
     /**
@@ -62,7 +62,8 @@ public class RedeemCommand extends Command {
     /**
      * Stands for message for duplicate member.
      */
-    public static final String MESSAGE_DUPLICATE_MEMBER = "This member already exists in the ezFoodie.";
+    public static final String MESSAGE_DUPLICATE_MEMBER =
+            "This member (phone or email) already exists in the ezFoodie.";
 
     /**
      * Stands for message when redemption point exceed.

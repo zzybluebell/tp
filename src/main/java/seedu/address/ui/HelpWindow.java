@@ -7,6 +7,8 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.input.Clipboard;
 import javafx.scene.input.ClipboardContent;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import javafx.stage.Stage;
 import seedu.address.commons.core.LogsCenter;
 
@@ -24,18 +26,24 @@ public class HelpWindow extends UiPart<Stage> {
      * Stands for help command message.
      */
     public static final String HELP_MESSAGE = "Features:\n"
-            + "Add member: add -mem -n <NAME> -p <PHONE> -e <EMAIL> -a <ADDRESS>\n"
-            + "Search by name: find -mem -n <NAME>\n"
-            + "Search by phone: find -mem -p <PHONE>\n"
-            + "Search by email: find -mem -e <EMAIL>\n"
-            + "Search by registration date: find -mem -d <REGISTRATION_DATE>\n"
-            + "Search by member ID: find -mem -id <MEMBER_ID>\n"
-            + "Adding transaction: add -txn -b <BILLING> -id <MEMBER_ID>\n"
-            + "View member: show -mem -id <MEMBER_ID>\n"
-            + "Delete member: del -mem -id <MEMBER_ID>\n"
-            + "Add Reservation: add -rsvn -time <DATETIME> -rm <REMARK> -id <MEMBER_ID>\n"
-            + "Delete Reservation: del -rsvn -id 10001100001\n"
-            + "Redeem points: redeem -f <POINTS> -id <MEMBER_ID>\n"
+            + "Login: login ******"
+            + "logout"
+            + "List members: list -mem/"
+            + "Add member: add -mem/ -n/<NAME> -p/<PHONE> -e/<EMAIL> -a/<ADDRESS>\n"
+            + "Delete member: del -mem/ -id/<MEMBER_ID>\n"
+            + "Search: find -mem/ [-n/<NAME>][-p/<PHONE>][-e/<EMAIL>][-d/<REGISTRATION_DATE>][-id/<MEMBER_ID>]\n"
+            + "View member: show -mem/ -id/<MEMBER_ID>\n"
+            + "Edit member: edit -mem/ -id/<MEMBER_ID> [-n/<NAME>][-p/<PHONE_NUMBER>][-e/<EMAIL_ID>][-a/<ADDRESS>]"
+            + "Add transaction: add -txn -b/<BILLING> -id/<MEMBER_ID>\n"
+            + "Delete transaction: del -txn/ -id/<MEMBER_ID + TRANSACTION_ID>\n"
+            + "Edit transaction: edit -txn/ -id/<MEMBER_ID + TRANSACTION_ID> -b/<BILL_AMMOUNT>\n"
+            + "Add Reservation: add -rs/ -dt/<DATE_TIME yyyy-MM-dd HH:mm> -rm/ <REMARK> -id/<MEMBER_ID>\n"
+            + "Delete Reservation: del -rs/ -id/<MEMBER_ID + RESERVATION_ID>\n"
+            + "Edit reservation: edit -rs/ -id/<MEMBER_ID + RESERVATION_ID> [-dt/<DATE_TIME>][-rm/<REMARK>]\n"
+            + "Sort members by ascending credit: sort -mem/ -c/ -a/\n"
+            + "Sort members by descending credit: sort -mem/ -c/ -d/\n"
+            + "Redeem points: redeem -rd/<POINTS> -id/<MEMBER_ID>\n"
+            + "View summary: summary"
             + "Exit Application: exit\n"
             + "To view full user guide: " + OFFICIAL_URL;
 
@@ -56,6 +64,13 @@ public class HelpWindow extends UiPart<Stage> {
     public HelpWindow(Stage root) {
         super(FXML, root);
         helpMessage.setText(HELP_MESSAGE);
+        getRoot().addEventFilter(KeyEvent.KEY_PRESSED, event -> {
+            System.out.println(event.getCode());
+            if (event.getCode() == KeyCode.ESCAPE) {
+                Stage stage = (Stage) getRoot().getScene().getWindow();
+                stage.close();
+            }
+        });
     }
 
     /**

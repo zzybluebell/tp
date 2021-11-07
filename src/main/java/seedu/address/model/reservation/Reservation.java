@@ -15,7 +15,7 @@ import seedu.address.commons.util.DateTimeUtil;
 public class Reservation {
 
     public static final String MESSAGE_CONSTRAINTS =
-            "The given reservation data time should be after current date time.";
+            "The given reservation date time should be after current date time.";
 
     private final Id id;
     private final DateTime dateTime;
@@ -101,7 +101,7 @@ public class Reservation {
     }
 
     /**
-     * Returns true if a given data time is after current date time.
+     * Returns true if a given date time is after current date time.
      */
     public static boolean isValidDateTime(DateTime dateTime) {
         LocalDateTime otherDateTime = DateTimeUtil.parseDateTime(dateTime.value);
