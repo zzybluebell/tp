@@ -156,6 +156,10 @@
     -fx-pref-width: 300px;
 }
 
+.cell_label_width_400 {
+    -fx-pref-width: 400px;
+}
+
 .cell_label_width_500 {
     -fx-pref-width: 500px;
 }
@@ -425,5 +429,9 @@
 }
 
 #transactionList .label {
+    -fx-text-fill: white;
+}
+
+#helpBox .label {
     -fx-text-fill: white;
 }

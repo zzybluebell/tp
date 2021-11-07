@@ -9,7 +9,7 @@ This page serves to document my contributions to the project ezFoodie under NUS 
 
 ### Project: ezFoodie
 
-ezFoodie is a desktop application that helps restaurants **keep track of their ever-growing list of members**. 
+ezFoodie is a desktop application that helps restaurants **keep track of their ever-growing list of members**.
 Restaurant managers and staffs can easily view and update member status (e.g. personal information, tier, reservation, transaction, etc.) to manage and analyze members.
 Restaurant managers and staffs interact with ezFoodie using a Command Line Interface (CLI), and has a Graphical User Interface (GUI) created with JavaFX.
 
@@ -25,15 +25,15 @@ Given below are my contributions to the project.
 
 * **Documentation**:
     * README:
-    
+
     * Index:
-    
+
     * User Guide:
-    
+
     * Developer Guide:
         *Updated `add member`, `redeem`
-        
-    * About Us: 
-        
+
+    * About Us:
+
 * **Community**:
-  * Contributed to forum discussions: 
+  * Contributed to forum discussions:

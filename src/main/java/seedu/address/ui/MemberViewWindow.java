@@ -15,7 +15,14 @@ import seedu.address.logic.Logic;
  */
 public class MemberViewWindow extends UiPart<Stage> {
 
+    /**
+     * Stands for logger to log events happen in MemberViewWindow.
+     */
     private static final Logger logger = LogsCenter.getLogger(MemberViewWindow.class);
+
+    /**
+     * Uses FXML to identify MemberViewWindow.
+     */
     private static final String FXML = "MemberViewWindow.fxml";
 
     @FXML
@@ -41,7 +48,9 @@ public class MemberViewWindow extends UiPart<Stage> {
     }
 
     /**
-     * Constructs a new {@code MemberViewWindow} with input {@code logic}.
+     * Constructs a new {@code MemberViewWindow}, with a default new stage.
+     *
+     * @param logic logic refers to backend logic.
      */
     public MemberViewWindow(Logic logic) {
         this(new Stage(), logic);
@@ -73,21 +82,21 @@ public class MemberViewWindow extends UiPart<Stage> {
     }
 
     /**
-     * Returns true if the help window is currently being shown.
+     * Returns true if the MemberView window is currently being shown.
      */
     public boolean isShowing() {
         return getRoot().isShowing();
     }
 
     /**
-     * Hides the help window.
+     * Hides current opened MemberView window.
      */
     public void hide() {
         getRoot().hide();
     }
 
     /**
-     * Focuses on the help window.
+     * Focuses on current opened MemberView window.
      */
     public void focus() {
         getRoot().requestFocus();
