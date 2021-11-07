@@ -26,15 +26,13 @@ public class SummaryBox extends UiPart<Region> {
     private static final String PATTERN = "#.##";
 
     /**
+     * Current displaying memberList.
+     * <p>
      * Note: Certain keywords such as "location" and "resources" are reserved keywords in JavaFX.
      * As a consequence, UI elements' variable names cannot be set to such keywords
      * or an exception will be thrown by JavaFX during runtime.
      *
      * @see <a href="https://github.com/se-edu/addressbook-level4/issues/336">The issue on AddressBook level 4</a>
-     */
-
-    /**
-     * Current displaying memberList.
      */
     public final ObservableList<Member> memberList;
 
@@ -75,7 +73,8 @@ public class SummaryBox extends UiPart<Region> {
         totalAmountOfTransactions.textProperty().bind(
                 Bindings.createStringBinding(() -> df.format(memberList.stream()
                         .mapToDouble(member -> member.getTransactions().stream()
-                                .mapToDouble(transaction -> transaction.getBilling().getDoubleValue()).sum()).sum()), memberList));
+                                .mapToDouble(transaction -> transaction.getBilling()
+                                        .getDoubleValue()).sum()).sum()), memberList));
         totalNumberOfTransactionsInPastMonth.textProperty().bind(
                 Bindings.createStringBinding(() -> String.valueOf(memberList.stream()
                         .mapToLong(member -> member.getTransactions().stream().filter(transaction -> Transaction
@@ -85,7 +84,8 @@ public class SummaryBox extends UiPart<Region> {
                 Bindings.createStringBinding(() -> df.format(memberList.stream()
                         .mapToDouble(member -> member.getTransactions().stream().filter(transaction -> Transaction
                                         .isWithinPastMonths(transaction.getTimestamp().getLongValue(), 1))
-                                .mapToDouble(transaction -> transaction.getBilling().getDoubleValue()).sum()).sum()), memberList));
+                                .mapToDouble(transaction -> transaction.getBilling()
+                                        .getDoubleValue()).sum()).sum()), memberList));
         totalNumberOfTransactionsInPast3Months.textProperty().bind(
                 Bindings.createStringBinding(() -> String.valueOf(memberList.stream()
                         .mapToLong(member -> member.getTransactions().stream().filter(transaction -> Transaction
@@ -95,7 +95,8 @@ public class SummaryBox extends UiPart<Region> {
                 Bindings.createStringBinding(() -> df.format(memberList.stream()
                         .mapToDouble(member -> member.getTransactions().stream().filter(transaction -> Transaction
                                         .isWithinPastMonths(transaction.getTimestamp().getLongValue(), 3))
-                                .mapToDouble(transaction -> transaction.getBilling().getDoubleValue()).sum()).sum()), memberList));
+                                .mapToDouble(transaction -> transaction.getBilling()
+                                        .getDoubleValue()).sum()).sum()), memberList));
         totalNumberOfTransactionsInPast6Months.textProperty().bind(
                 Bindings.createStringBinding(() -> String.valueOf(memberList.stream()
                         .mapToLong(member -> member.getTransactions().stream().filter(transaction -> Transaction
@@ -105,6 +106,7 @@ public class SummaryBox extends UiPart<Region> {
                 Bindings.createStringBinding(() -> df.format(memberList.stream()
                         .mapToDouble(member -> member.getTransactions().stream().filter(transaction -> Transaction
                                         .isWithinPastMonths(transaction.getTimestamp().getLongValue(), 6))
-                                .mapToDouble(transaction -> transaction.getBilling().getDoubleValue()).sum()).sum()), memberList));
+                                .mapToDouble(transaction -> transaction.getBilling()
+                                        .getDoubleValue()).sum()).sum()), memberList));
     }
 }
