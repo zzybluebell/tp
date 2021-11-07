@@ -115,8 +115,6 @@ Continue reading to explore the wonders of ezFoodie and enhance the way you mana
    
 * Seat Booking Information
 
---------------------------------------------------------------------------------------------------------------------
-
 **5. Type the command in the command box and press Enter to execute it. Some example commands you can try here:**
 
    * `help:` Opens the help window and view the related help description.
