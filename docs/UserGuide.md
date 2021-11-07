@@ -43,49 +43,53 @@ Continue reading to explore the wonders of ezFoodie and enhance the way you mana
 **<label id="step1">1. Ensure you have Java `11` or above installed in your computer.</label>**
    *  To check out the Java version you have installed in your computer, please click [here](https://www.java.com/en/download/help/version_manual.xml). 
    * If Java is not installed on your computer, please follow [here](https://www.oracle.com/java/technologies/downloads/).
+<br>
 
 **2. Download the latest version of `ezfoodie.jar` from [here](https://github.com/AY2122S1-CS2103T-F12-4/tp/releases).**
 
    <div align="center"><img height="150" alt="ezFoodie Logo" src="images/downloadInstruction.png"></div>
+<br>
 
 **3. Copy the file to the folder you want to use as the _home folder_ for your ezFoodie.**
+
    <div align="center"><img height="415" alt="ezFoodie Logo" src="images/homefolderEzFoodie.png"></div>
+<br>
 
 **4. Launch the application.**
 * If faced any issues, go back the [step 1](#step1) check with java version.
 * Double-click the file to start the application in windows system.
 * In MacOS or Linux System, launch the termianl, go to the related directory and pin `jar -r ezfoodie.jar` command.
 * The details for running jar  can follow [here](https://www.wikihow.com/Run-a-.Jar-Java-File).
-
-* **The GUI similar to the one shown below should appear in a few seconds. The application comes preloaded with sample data to test its features.<br>**
+* The GUI similar to the one shown below should appear in a few seconds. The application comes preloaded with sample data to test its features.<br>
    
    <div align="center"><img height="570" alt="ezFoodie Logo" src="images/Ui.png"></div>
+<br>
 
-   **Congratulations! ezFoodie is now ready for your perusal. 🤩**
+**Congratulations! ezFoodie is now ready for your perusal. 🤩**
 
-   **Main window GUI includes the following member fields and constraints:**
+   **5. Main window GUI includes the following member fields and constraints:**
     
-* Index number in the list:
+* **Index number in the list:**
    * *Only contains alphanumeric characters.*
    * *It starts from `1`.*
 
-* Name:
+* **Name:**
    * *Only contains alphanumeric characters and spaces, and it should not be blank.*
 
-* Tier:
+* **Tier:**
    * *Bronze, Silver, Gold, Platinum.*
    * *This is automatically calculated from a member's credit.*
    * *Upgrade (e.g. Bronze -> Silver) is also automatically handled by ezFoodie.*
    
-* Member ID:
+* **Member ID:**
    * *It only has 5 digits and starts from `00001` to `99999`.*
    * *Deleted Member's id will not be occupied when adding a new member.*
    * *Member id will increase automatically when add a new member.*
    
-* Phone number:
+* **Phone number:**
    * *Phone number should only contain 8 digits, and it should start with 3, 6, 8 or 9.*
 
-* Email:
+* **Email:**
    * *Email should be the format in `local-part@domain`.*
    * *The `local-part` should only contain alphanumeric characters and
    these special characters: `+ _ . - `, and the `local-part` may not start or end with 
@@ -97,12 +101,12 @@ Continue reading to explore the wonders of ezFoodie and enhance the way you mana
       * *have each domain label consist of alphanumeric characters, 
       separated only by hyphens, if any.*
    
-* Credit:
+* **Credit:**
    * *Credit refers to the overall accumulated transaction billing of a member, 
    starting from his registration date.*
    * *Credit depends on amounts of billing in <a href="#12">add transaction</a>, <a href="#13">delete transaction</a>, and <a href="#14">edit transaction</a>*.
    
-* Point:
+* **Point:**
    * *The point accumulation is similar to credit.*
    * *However, point can be redeemed as amounts of cash deduction to a member, and point will be deducted
    accordingly with redemption.*
@@ -111,7 +115,7 @@ Continue reading to explore the wonders of ezFoodie and enhance the way you mana
    added in last time. on the contrary the point will not be affected and keep the same when billing amount is lesser
    than the billing amount added in last time.*
    
-* Seat Booking Information
+* **Seat Booking Information**
 
 **5. Type the command in the command box and press Enter to execute it. Some example commands you can try here:**
 
@@ -152,20 +156,20 @@ Continue reading to explore the wonders of ezFoodie and enhance the way you mana
 
 **7. Other components and constraints:**
     
-   * Transaction ID:
+   * **Transaction ID:**
       * *It only has 6 digits and starts from `000001` to `999999`.*
       * *Deleted Transaction's id will not be occupied when adding a new transaction.*
       * *Transaction id will increase automatically when add a new transaction.*
       
-   * Reservation ID:
+   * **Reservation ID:**
       * *It only has 6 digits and starts from `000001` to `999999`.*
       * *Deleted reservation's id will not be occupied when adding a new member.*
       * *Reservation id will increase automatically when add a new reservation.*
          
-   * Address:
+   * **Address:**
       * *Addresses can take any values, and it should not be blank.*
 
-   * DateTime:
+   * **DateTime:**
       * *The format should be in yyyy-MM-dd HH:mm*
 
 * **Please follow the instruction shown is the application command box when your are occuring constraint errors (attached below).**
@@ -269,7 +273,7 @@ Format: `set -pass/<PASSWORD>`
 Example: `set -pass/123456`
 <div markdown="block" class="alert alert-info">
 
-   :information_source:**Note:** The `set` command is only applied in manager mode.
+   :information_source: **Note:** The `set` command is only applied in manager mode.
 </div>
 
 ### 5. Logging out as a manager : `logout`
@@ -281,7 +285,7 @@ Format: `logout`
 Example: `logout`
 <div markdown="block" class="alert alert-info">
    
-   **:information_source:Note:** The `logout` command is only applied in manager mode.
+   :information_source: **Note:** The `logout` command is only applied in manager mode.
 </div>
 ### 6. Listing out a certain number of members : `list -mem/`
 
@@ -313,7 +317,7 @@ Deletes a member from the member list
 
 <div markdown="block" class="alert alert-info">
 
-   **:information_source:Note:** 
+   :information_source: **Note:** 
    * The `del` member command is only applied in manager mode.
    * Only the manager is allowed to delete members. Login as manager before entering command.
 </div>
@@ -343,7 +347,7 @@ Finds members by different fields which contain any of the given keywords.
 
 <div markdown="block" class="alert alert-info">
 
-   **:information_source:Note:** No member will be listed when an invalid member field is entered.
+   :information_source: **Note:** No member will be listed when an invalid member field is entered.
 </div>
 
 #### 9.1. Finding member by member id
@@ -386,7 +390,7 @@ Example: `show -mem/ -id/00001`
 
 <div markdown="block" class="alert alert-info">
 
-   :information_source:**Note:** No member details will be shown when an invalid member id is entered.
+   :information_source: **Note:** No member details will be shown when an invalid member id is entered.
 </div>
 
 ### 11. Editing a member : `edit -mem/`
@@ -396,7 +400,7 @@ Edits different fields in a member's profile, where the member is specified by m
 
 <div markdown="block" class="alert alert-info">
 
-   :information_source:**Note:** Only deals with editing member details.
+   :information_source: **Note:** Only deals with editing member details.
       If a member's transactions need to be edited, refer to [#13](#13) below. 
       Do not mix `-mem/` and `-txn/` in one `edit` command.
 </div>
@@ -459,7 +463,7 @@ Example: `add -txn/ -b/200.00 -id/00001`
 
 <div markdown="block" class="alert alert-info">
 
-   :information_source:**Note:** 
+   :information_source: **Note:** 
    * Transaction date and time is automatically assigned by local date and time when a transaction is added, there is no need to manually enter the transaction date or time.
    * The Credit and the Point will be accumulated based on billing amount. 
 </div>
@@ -474,7 +478,7 @@ Example: `del -txn/ -id/00001000001`
 
 <div markdown="block" class="alert alert-info">
 
-   :information_source:**Note:** 
+   :information_source: **Note:** 
    * The `del` transaction command is only applied in manager mode.
    * Only the manager are allowed to delete transactions. Login as manager before entering command.
    * The Credit will be decreased based on billing amount in related transaction.
@@ -491,7 +495,7 @@ Example: `edit -txn/ -id/00001000002 -b/10.00`
 
 <div markdown="block" class="alert alert-info">
 
-:information_source:**Note:** 
+:information_source: **Note:** 
    * Transaction date and time cannot be modified once a transaction is added.
    * The Credit will be changed based on billing amount in related transaction.
    * The Point will be increased when billing amount is greater than the billing amount 
@@ -509,7 +513,7 @@ Example: `add -rs/ -dt/2021-01-02 00:00 -rm/2 people -id/00001`
 
 <div markdown="block" class="alert alert-info">
 
-:information_source:**Note:** Same member which based on member id cannot make multiple reservations on the same day.
+:information_source: **Note:** Same member which based on member id cannot make multiple reservations on the same day.
 </div>
 
 ### 16. Deleting a reservation: `del -rs/`
@@ -522,7 +526,7 @@ Example: `del -rs/ -id/00001000001`
 
 <div markdown="block" class="alert alert-info">
 
-:information_source:**Note:** 
+:information_source: **Note:** 
    * The `del` reservation command is only applied in manager mode.
    * Only the manager is allowed to delete reservations. Login as manager before entering command. 
 </div>
@@ -531,7 +535,7 @@ Example: `del -rs/ -id/00001000001`
 
 <div markdown="block" class="alert alert-info">
 
-:information_source:**Note:** 
+:information_source: **Note:** 
    * The editing reservation date time cannot be shifted in same day based on same member id.
    * E.g. when one member make a reservation in day 2021-12-01 13:00 and 2021-12-02 13:00, the member is not allowed to shift 2 day in same day. 
 </div>
@@ -594,7 +598,7 @@ Views the summary of stored data in ezFoodie.
 
 <div markdown="block" class="alert alert-info">
 
-   :information_source:**Note:**: 
+   :information_source: **Note:**: 
    * The `summary` command is only applied in manager mode.
    * Only the manager is allowed to view summary. Login as manager before entering command.
 </div>
@@ -612,7 +616,7 @@ Format: `clear`
 Format: `clear`
 <div markdown="block" class="alert alert-info">
 
-   :information_source:**Note:**
+   :information_source: **Note:**
    * The `clear` command is only applied in manager mode.
    * Only managers are allowed to clear. Login as manager before entering command.
 </div>
