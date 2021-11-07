@@ -44,6 +44,7 @@ public class TransactionCard extends UiPart<Region> {
 
     /**
      * Constructs a TransactionCard with input transaction object.
+     *
      * @param transaction including transaction details to be displayed.
      */
     public TransactionCard(Transaction transaction) {
