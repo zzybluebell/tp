@@ -13,12 +13,12 @@ import seedu.address.model.member.Member;
 public class MemberDetailsListPanel extends UiPart<Region> {
 
     /**
-     * Using FXML to identify MemberDetailsPanel.
+     * Uses FXML to identify MemberDetailsPanel.
      */
     private static final String FXML = "MemberDetailsListPanel.fxml";
 
     /**
-     * Components to be used in FXML.
+     * Stands for components to be used in FXML.
      */
     @FXML
     private ListView<Member> memberDetailsListView;
