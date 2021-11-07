@@ -83,6 +83,7 @@ public class MemberCard extends UiPart<Region> {
 
     /**
      * Overrides equals by comparing their text and member objects.
+     *
      * @param other object.
      * @return true if equals, false otherwise.
      */
