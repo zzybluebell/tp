@@ -60,15 +60,15 @@ public class HelpBox extends UiPart<Region> {
     @FXML
     private Label addTransactionByMemberId;
     @FXML
-    private Label editTransactionByMemberId;
+    private Label editTransactionByMemberIdTransactionId;
     @FXML
-    private Label deleteTransactionByMemberId;
+    private Label deleteTransactionByMemberIdTransactionId;
     @FXML
     private Label addReservationByMemberId;
     @FXML
-    private Label editReservationByMemberId;
+    private Label editReservationByMemberIdTransactionId;
     @FXML
-    private Label deleteReservationByMemberId;
+    private Label deleteReservationByMemberIdTransactionId;
     @FXML
     private Label sortMembersByCreditInAsc;
     @FXML
@@ -100,12 +100,12 @@ public class HelpBox extends UiPart<Region> {
         editMemberByMemberId.setText("edit -mem/ -id/<MEMBER_ID> [-n/<NAME>] [-p/<PHONE>] [-e/<EMAIL>] [-a/<ADDRESS>]");
         editMemberByIndexNumber.setText("edit -mem/ -i/<INDEX> [-n/<NAME>] [-p/<PHONE>] [-e/<EMAIL>] [-a/<ADDRESS>]");
         addTransactionByMemberId.setText("add -txn/ -b/<BILLING> -id/<MEMBER_ID>");
-        editTransactionByMemberId.setText("edit -txn/ -b/<BILLING> -id/<MEMBER_ID + TRANSACTION_ID>");
-        deleteTransactionByMemberId.setText("del -txn/ -id/<MEMBER_ID + TRANSACTION_ID>");
+        editTransactionByMemberIdTransactionId.setText("edit -txn/ -b/<BILLING> -id/<MEMBER_ID + TRANSACTION_ID>");
+        deleteTransactionByMemberIdTransactionId.setText("del -txn/ -id/<MEMBER_ID + TRANSACTION_ID>");
         addReservationByMemberId.setText("add -rs/ -dt/<DATE_TIME yyyy-MM-dd HH:mm> -rm/<REMARK> -id/<MEMBER_ID>");
-        editReservationByMemberId.setText(
+        editReservationByMemberIdTransactionId.setText(
                 "edit -rs/ -id/<MEMBER_ID + RESERVATION_ID> [-dt/<DATE_TIME yyyy-MM-dd HH:mm>] [-rm/<REMARK>]");
-        deleteReservationByMemberId.setText("del -rs/ -id/<MEMBER_ID + RESERVATION_ID>");
+        deleteReservationByMemberIdTransactionId.setText("del -rs/ -id/<MEMBER_ID + RESERVATION_ID>");
         sortMembersByCreditInAsc.setText("sort -mem/ -c/ -a/");
         sortMembersByCreditInDesc.setText("sort -mem/ -c/ -d/");
         redeemPointByMemberId.setText("redeem -rd/<POINTS> -id/<MEMBER_ID>");

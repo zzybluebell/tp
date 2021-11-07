@@ -106,15 +106,21 @@
             </padding>
         </HBox>
         <HBox alignment="CENTER_LEFT">
-            <Label styleClass="cell_small_label, cell_label_width_400" text="Edit Transaction by Member ID" />
-            <Label fx:id="editTransactionByMemberId" styleClass="cell_small_label" text="\$editTransactionByMemberId" />
+            <Label styleClass="cell_small_label, cell_label_width_400"
+                   text="Edit Transaction by Member ID and Transaction ID" />
+            <Label fx:id="editTransactionByMemberIdTransactionId"
+                   styleClass="cell_small_label"
+                   text="\$editTransactionByMemberIdTransactionId" />
             <padding>
                 <Insets bottom="10" />
             </padding>
         </HBox>
         <HBox alignment="CENTER_LEFT">
-            <Label styleClass="cell_small_label, cell_label_width_400" text="Delete Transaction by Member ID" />
-            <Label fx:id="deleteTransactionByMemberId" styleClass="cell_small_label" text="\$deleteTransactionByMemberId" />
+            <Label styleClass="cell_small_label, cell_label_width_400"
+                   text="Delete Transaction by Member ID and Transaction ID" />
+            <Label fx:id="deleteTransactionByMemberIdTransactionId"
+                   styleClass="cell_small_label"
+                   text="\$deleteTransactionByMemberIdTransactionId" />
             <padding>
                 <Insets bottom="10" />
             </padding>
@@ -127,15 +133,21 @@
             </padding>
         </HBox>
         <HBox alignment="CENTER_LEFT">
-            <Label styleClass="cell_small_label, cell_label_width_400" text="Edit Reservation by Member ID" />
-            <Label fx:id="editReservationByMemberId" styleClass="cell_small_label" text="\$editReservationByMemberId" />
+            <Label styleClass="cell_small_label, cell_label_width_400"
+                   text="Edit Reservation by Member ID and Transaction ID" />
+            <Label fx:id="editReservationByMemberIdTransactionId"
+                   styleClass="cell_small_label"
+                   text="\$editReservationByMemberIdTransactionId" />
             <padding>
                 <Insets bottom="10" />
             </padding>
         </HBox>
         <HBox alignment="CENTER_LEFT">
-            <Label styleClass="cell_small_label, cell_label_width_400" text="Delete Reservation by Member ID" />
-            <Label fx:id="deleteReservationByMemberId" styleClass="cell_small_label" text="\$deleteReservationByMemberId" />
+            <Label styleClass="cell_small_label, cell_label_width_400"
+                   text="Delete Reservation by Member ID and Transaction ID" />
+            <Label fx:id="deleteReservationByMemberIdTransactionId"
+                   styleClass="cell_small_label"
+                   text="\$deleteReservationByMemberIdTransactionId" />
             <padding>
                 <Insets bottom="10" />
             </padding>
