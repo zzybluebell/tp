@@ -25,22 +25,22 @@ import seedu.address.logic.parser.exceptions.ParseException;
 public class MainWindow extends UiPart<Stage> {
 
     /**
-     * Using FXML to identify MainWindow.
+     * Uses FXML to identify MainWindow.
      */
     private static final String FXML = "MainWindow.fxml";
 
     /**
-     * Logger used to log events happen in MainWindow.
+     * Uses logger to log events happen in MainWindow.
      */
     private final Logger logger = LogsCenter.getLogger(getClass());
 
     /**
-     * MainWindow is a stage to contain all Ui parts.
+     * Stands for the main stage to contain all Ui parts in MainWindow.
      */
     private Stage primaryStage;
 
     /**
-     * Make use of backend logic.
+     * Makes use of backend logic.
      */
     private Logic logic;
 
@@ -52,7 +52,7 @@ public class MainWindow extends UiPart<Stage> {
     private SummaryWindow summaryWindow;
 
     /**
-     * Components to be used in FXML.
+     * Stands for components to be used in FXML.
      */
     @FXML
     private StackPane commandBoxPlaceholder;
@@ -102,7 +102,7 @@ public class MainWindow extends UiPart<Stage> {
     }
 
     /**
-     * Default accelerator setter for mainWindow.
+     * Stands for the default accelerator setter for mainWindow.
      */
     private void setAccelerators() {
         setAccelerator(helpMenuItem, KeyCombination.valueOf("F1"));
@@ -206,7 +206,7 @@ public class MainWindow extends UiPart<Stage> {
     }
 
     /**
-     * Display mainWindow to user.
+     * Displays mainWindow to user.
      */
     void show() {
         primaryStage.show();
