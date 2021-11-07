@@ -16,12 +16,12 @@ import seedu.address.commons.status.LoginStatus;
 public class StatusBarFooter extends UiPart<Region> {
 
     /**
-     * Using FXML to identify StatusBarFooter.
+     * Uses FXML to identify StatusBarFooter.
      */
     private static final String FXML = "StatusBarFooter.fxml";
 
     /**
-     * Components to be used in FXML.
+     * Stands for components to be used in FXML.
      */
     @FXML
     private Label saveLocationStatus;
