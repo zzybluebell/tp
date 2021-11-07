@@ -593,9 +593,9 @@ If any changes to the JSON file make it invalid, ezFoodie will discard all data 
 ## Command summary
 
 Action | Manager Only? (Y/N) | Format, Examples
---------|---|------------------
+--------------|---|------------------
 **View Help** | N | *Format:* <br> `help` <br> *Example:* <br> `help`
-**Exit Program** | N | *Format:* <br> `exi
+**Exit Program** | N | *Format:* <br> `exit` <br> *Example:* <br> `exit`
 **Login as Manager** | Y | *Format:* <br> `login <PASSWORD>` <br> *Example:* <br> `login 123456`
 **Update a password** | Y | *Format:* <br> `set -pass/<PASSWORD>` <br> *Example:* <br> `set -pass/123456`
 **Logout as Manager** | Y | *Format:* <br> `logout` <br> *Example:* <br> `logout`
