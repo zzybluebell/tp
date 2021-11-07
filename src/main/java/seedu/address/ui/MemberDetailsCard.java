@@ -19,12 +19,18 @@ import seedu.address.model.transaction.Transaction;
 public class MemberDetailsCard extends UiPart<Region> {
 
     /**
-     * Using FXML to identify MemberDetailsCard.
+     * Uses FXML to identify MemberDetailsCard.
      */
     private static final String FXML = "MemberDetailsCard.fxml";
 
     /**
-     * Current displaying member.
+     * Stands for current displaying member.
+     */
+
+    public final Member member;
+
+    /**
+     * Stands for Components to be used in FXML.
      *
      * Note: Certain keywords such as "location" and "resources" are reserved keywords in JavaFX.
      * As a consequence, UI elements' variable names cannot be set to such keywords
@@ -32,12 +38,7 @@ public class MemberDetailsCard extends UiPart<Region> {
      *
      * @see <a href="https://github.com/se-edu/addressbook-level4/issues/336">The issue on AddressBook level 4</a>
      */
-
-    public final Member member;
-
-    /**
-     * Components to be used in FXML.
-     */
+    
     @FXML
     private HBox cardPane;
     @FXML
