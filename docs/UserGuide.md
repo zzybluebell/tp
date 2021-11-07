@@ -305,9 +305,9 @@ Example: `add -mem/ -n/John Doe -p/98765432 -e/johndoe@gmail.com -a/112 Amoy Str
 
 <div markdown="block" class="alert alert-info">
 
-**information_source: Duplicate members:**<br>
+   **:information_source: Duplicate members:**<br>
 
-* ezFoodie will not allow adding members with the same **phone number** or **email address** as an existing member.
+   * ezFoodie will not allow adding members with the same **phone number** or **email address** as an existing member.
 
 </div>
 
@@ -480,10 +480,10 @@ Example: `del -txn/ -id/00001000001`
 <div markdown="block" class="alert alert-info">
 
    **Note:** 
-      * The `del` transaction command is only applied in manager mode.
-      * Only the manager are allowed to delete transactions. Login as manager before entering command.
-      * The Credit will be decreased based on billing amount in related transaction.
-      * The Point will not be affected and keep the same.
+   * The `del` transaction command is only applied in manager mode.
+   * Only the manager are allowed to delete transactions. Login as manager before entering command.
+   * The Credit will be decreased based on billing amount in related transaction.
+   * The Point will not be affected and keep the same.
 </div>
 
 ### 14. <label id="14">Editing transaction of a member:</label> `edit -txn/`
@@ -513,6 +513,7 @@ Format: `add -rs/ -dt/<yyyy-MM-dd HH:mm> -rm/ <REMARK> -id/ <MEMBER_ID>`
 Example: `add -rs/ -dt/2021-01-02 00:00 -rm/2 people -id/00001`
 
 <div markdown="block" class="alert alert-info">
+
 **Note:** Same member which based on member id cannot make multiple reservations on the same day.
 </div>
 
@@ -525,6 +526,7 @@ Format: `del -rs/ -id/<MEMBER_ID + RESERVATION_ID>`
 Example: `del -rs/ -id/00001000001`
 
 <div markdown="block" class="alert alert-info">
+
 **Note:** 
    * The `del` reservation command is only applied in manager mode.
    * Only the manager is allowed to delete reservations. Login as manager before entering command. 
@@ -533,6 +535,7 @@ Example: `del -rs/ -id/00001000001`
 ### 17. Editing a reservation: `edit -rs/`
 
 <div markdown="block" class="alert alert-info">
+
 **Note:** 
    * The editing reservation date time cannot be shifted in same day based on same member id.
    * E.g. when one member make a reservation in day 2021-12-01 13:00 and 2021-12-02 13:00, the member is not allowed to shift 2 day in same day. 
@@ -595,9 +598,10 @@ Example: `redeem -rd/100 -i/1`
 Views the summary of stored data in ezFoodie.
 
 <div markdown="block" class="alert alert-info">
-**Note:**: 
-* The `summary` command is only applied in manager mode.
-* Only the manager is allowed to view summary. Login as manager before entering command.
+
+   **Note:**: 
+   * The `summary` command is only applied in manager mode.
+   * Only the manager is allowed to view summary. Login as manager before entering command.
 </div>
 
 Format: `summary`
@@ -613,10 +617,11 @@ Format: `clear`
 Format: `clear`
 <div markdown="block" class="alert alert-info">
 
-**Note:**
-* The `clear` command is only applied in manager mode.
-* Only managers are allowed to clear. Login as manager before entering command.
+   **Note:**
+   * The `clear` command is only applied in manager mode.
+   * Only managers are allowed to clear. Login as manager before entering command.
 </div>
+
 ### 22. <label id="22">Saving the data</label>
 
 ezFoodie data are saved in a JSON file in hard disk automatically after any command that changes the data. There is no need to save manually.
