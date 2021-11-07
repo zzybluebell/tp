@@ -15,17 +15,17 @@ import seedu.address.commons.core.LogsCenter;
 public class HelpWindow extends UiPart<Stage> {
 
     /**
-     * Using FXML to identify HelpWindow.
+     * Uses FXML to identify HelpWindow.
      */
     private static final String FXML = "HelpWindow.fxml";
 
     /**
-     * Logger used to log events happen in HelpWindow.
+     * Uses logger to log events happen in HelpWindow.
      */
     private static final Logger logger = LogsCenter.getLogger(HelpWindow.class);
 
     /**
-     * Components to be used in FXML.
+     * Stands for components to be used in FXML.
      */
     @FXML
     private StackPane helpBoxPlaceholder;
