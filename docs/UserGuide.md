@@ -249,6 +249,8 @@ Exits the program.
 
 Format: `exit`
 
+Example: `exit`
+
 ### 3. Logging in as a manager : `login`
 
 Logins as a manager.
