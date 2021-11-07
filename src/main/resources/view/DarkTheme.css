@@ -174,13 +174,13 @@
 }
 
 .stack-pane {
-    -fx-background-color: derive(#1d1d1d, 20%);
+     -fx-background-color: derive(#1d1d1d, 20%);
 }
 
 .pane-with-border {
-    -fx-background-color: derive(#1d1d1d, 20%);
-    -fx-border-color: derive(#1d1d1d, 10%);
-    -fx-border-top-width: 1px;
+     -fx-background-color: derive(#1d1d1d, 20%);
+     -fx-border-color: derive(#1d1d1d, 10%);
+     -fx-border-top-width: 1px;
 }
 
 .status-bar {
@@ -270,8 +270,8 @@
 }
 
 .button:pressed, .button:default:hover:pressed {
-    -fx-background-color: white;
-    -fx-text-fill: #1d1d1d;
+  -fx-background-color: white;
+  -fx-text-fill: #1d1d1d;
 }
 
 .button:focused {
@@ -417,7 +417,7 @@
 }
 
 .split_line {
-    strokeWidth: 3.0;
+    strokeWidth=3.0
 }
 
 #summaryBox .label {
