@@ -16,12 +16,12 @@ import seedu.address.logic.Logic;
 public class MemberViewWindow extends UiPart<Stage> {
 
     /**
-     * Logger to log events happen in MemberViewWindow.
+     * Stands for logger to log events happen in MemberViewWindow.
      */
     private static final Logger logger = LogsCenter.getLogger(MemberViewWindow.class);
 
     /**
-     * Using FXML to identify MemberViewWindow.
+     * Uses FXML to identify MemberViewWindow.
      */
     private static final String FXML = "MemberViewWindow.fxml";
 
