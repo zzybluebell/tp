@@ -69,7 +69,7 @@ Continue reading to explore the wonders of ezFoodie and enhance the way you mana
    <h1 align="center"><font size ="5">Congratulation! ezFoodie is now ready for your perusal. :+1:</font></h1>
    <br>
 
-**5.This section will walk you through the layout of ezFoodie.**
+**5. This section will walk you through the layout of ezFoodie.**
    <div align="center"><img height="450" alt="ezFoodie Logo" src="images/UIMarkShow.png"></div>
    <h1 align="center"><font size ="5">Layout of Main Window</font></h1>
 
