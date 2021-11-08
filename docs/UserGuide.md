@@ -68,7 +68,8 @@ Continue reading to explore the wonders of ezFoodie and enhance the way you mana
    <h1 align="center"><font size ="5">Congratulations! ezFoodie is now ready for your perusal. 🤩</font></h1>
    <br>
 
-   **5. Main window GUI includes the following member fields and constraints:**
+
+**5. Main window GUI includes the following member fields and constraints:**
     
 * **Index number in the list:**
    * *Only contains alphanumeric characters.*
