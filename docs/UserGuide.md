@@ -65,7 +65,7 @@ Continue reading to explore the wonders of ezFoodie and enhance the way you mana
 * The GUI similar to the one shown below should appear in a few seconds. The application comes preloaded with sample data to test its features.<br>
    
    <div align="center"><img height="570" alt="ezFoodie Logo" src="images/Launch.png"></div>
-   <h1 align="center"><font size ="5">Congratulations! ezFoodie is now ready for your perusal. 🤩</font></h1>
+   <h1 align="center"><font size ="5">Congratulations! ezFoodie is now ready for your perusal. :+1:</font></h1>
    <br>
 
 
@@ -357,7 +357,7 @@ Example: `del -mem/ -i/1`
 
 ### 9. Finding members : `find -mem/`
 
-Finds members by different fields which contain any of the given keywords.
+Finds members by different fields which contain any of the given arguments.
 
 
 <div markdown="block" class="alert alert-info">
