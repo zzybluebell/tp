@@ -64,8 +64,8 @@ Continue reading to explore the wonders of ezFoodie and enhance the way you mana
 * The details for running jar  can follow [here](https://www.wikihow.com/Run-a-.Jar-Java-File).
 * The GUI similar to the one shown below should appear in a few seconds. The application comes preloaded with sample data to test its features. Notice how ezFoodie comes with sample data to get you started.<br>
 
-   <h1 align="center"><font size ="5">Congratulation! ezFoodie is now ready for your perusal. :+1:</font></h1>
    <div align="center"><img height="450" alt="ezFoodie Logo" src="images/Launch.png"></div>
+   <h1 align="center"><font size ="5">Congratulation! ezFoodie is now ready for your perusal. :+1:</font></h1>
    <br>
 
 **5. This section will walk you through the layout of ezFoodie.**
