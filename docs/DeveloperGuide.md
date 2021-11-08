@@ -158,10 +158,10 @@ How the parsing works:
 
 <img src="images/ParserClassesCase2.png" width="600"/>
 
-* Case2: `Find`, `View`, `List`, `Sort`, `Login` and `SetAccount` commands
+* Case2: `find`, `show`, `list`, `sort`, `login` and `setAccount` commands
   * When called upon to parse a user command, the `EzFoodieParser` class creates a `UVWCommandParser` (e.g., `FindCommandParser`) which uses the other classes shown above to parse the user command and create a `UVWCommand` object (e.g., `FindCommand`) which the `EzFoodieParser` returns back as a `Command` object.
 
-* Case3: `Clear`, `Exit`, `Logout`, `Help` and `Summary` commands
+* Case3: `clear`, `exit`, `logout`, `help` and `summary` commands
   * When called upon to parse a user command, the `EzFoodieParser` class creates a `UVWCommand` object directly (e.g., `ClearCommand`) which the `EzFoodieParser` returns back as a `Command` object.
 
 ### Model component
@@ -599,7 +599,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 | `* * *`  | staff   | find member by email                                      | easily find the specific member to check his/her details               |
 | `* * *`  | staff   | find members by registration date                         | easily find a member to check their details                            |
 | `* * *`  | staff   | find member by member ID                                  | easily find the specific member to check his/her details               |
-| `* * *`  | staff   | view member profile                                       | easily check the specific member's details                             |
+| `* * *`  | staff   | show member profile                                       | easily check the specific member's details                             |
 | `* * *`  | staff   | add transaction by member ID                              | easily track the transaction history of members                        |
 | `* * *`  | staff   | redeem member’s points by member ID                       | easily provide promotional offers for frequent customers               |
 | `* * *`  | staff   | redeem member’s points by index number                    | easily provide promotional offers for frequent customers               |
@@ -741,7 +741,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
   Use case ends.
 
-**Use case: UC06 - View member profile**
+**Use case: UC06 - Show member profile**
 
 **Actors: Staff**
 
@@ -1131,31 +1131,31 @@ Manager is logged in
 **MSS**
 
 1.  Staff requests to retrieve previous commands by pressing the `up` or `down` key on the keyboard.
-2.  The previous commands will be shown in the command box one by one.
+2.  The previous commands saved in the history (up to 30) will be shown in the command box one by one.
 
     Use case ends.
 
 **Extensions**
 
-* 1a. The program currently stores 30 records, and `up` key is pressed more than 30 times continuously from the beginning.
+* 1a. 30 commands saved in the history, and `up` key is pressed more than 30 times continuously from the beginning.
 
     * 1a1. ezFoodie shows empty in the command box.
 
       Use case resumes at step 1.
 
-* 1b. The program currently stores 30 records, and `down` key is pressed more than 30 times continuously from the beginning.
+* 1b. 30 commands saved in the history, and `down` key is pressed more than 30 times continuously from the beginning.
 
     * 1b1. ezFoodie shows empty in the command box.
 
       Use case resumes at step 1.
 
-* 1c. The program currently stores no more than 30 records, and `up` key is pressed more than the number of stored records continuously from the beginning.
+* 1c. No more than 30 commands saved in the history, and `up` key is pressed more than the number of stored commands history continuously from the beginning.
 
     * 1c1. ezFoodie shows empty in the command box.
 
       Use case resumes at step 1.
 
-* 1d. The program currently stores no more than 30 records, and `down` key is pressed more than the number of stored records continuously from the beginning.
+* 1d. No more than 30 commands saved in the history, and `down` key is pressed more than the number of stored commands history continuously from the beginning.
 
     * 1d1. ezFoodie shows empty in the command box.
 
@@ -1396,9 +1396,9 @@ testers are expected to do more *exploratory* testing.
    1. Other incorrect adding member commands to try: `edit -mem/ -id/00003`, `...` (where command does not contain any fields for editing)<br>
        Expected: Status message shows `At least one field to edit must be provided.`.
 
-### Viewing member profile
+### Showing member profile
 
-1. Viewing a member profile
+1. Showing a member profile
 
    1. Prerequisites: 
       1. Member wih member ID `00001` is in the member list.
@@ -1431,7 +1431,7 @@ testers are expected to do more *exploratory* testing.
 
    1. Prerequisites: 
       1. Member wih member ID `00001` is in the member list.
-      1. [Viewing member profile with member ID `00001`](#viewing-member-profile).
+      1. [Showing member profile with member ID `00001`](#showing-member-profile).
 
    1. Test case: `add -txn/ -b/23.00 -id/00001`<br>
        Expected: A new transaction with billing `23.00` is added to the transaction list of the member with member ID `00001`, which is shown in the member profile. Details of the added transaction shown in the status message.
@@ -1448,7 +1448,7 @@ testers are expected to do more *exploratory* testing.
 
    1. Prerequisites: 
       1. Member wih member ID `00001` is in the member list.
-      1. [Viewing member profile with member ID `00001`](#viewing-member-profile).
+      1. [Showing member profile with member ID `00001`](#showing-member-profile).
       1. Current date time should be before A `2021-12-01 13:00`, can be changed to any future date time if A is reached.
       1. Current date time should be after B `2020-12-01 13:00`.
 
@@ -1488,7 +1488,7 @@ testers are expected to do more *exploratory* testing.
    1. Prerequisites: 
       1. Member wih member ID `00001` is in the member list.
       1. Multiple transactions are in the transaction list of the member with member ID `00001`.
-      1. [Viewing member profile with member ID `00001`](#viewing-member-profile).
+      1. [Showing member profile with member ID `00001`](#showing-member-profile).
 
    1. Test case: `del -txn/ -id/00001000001`<br>
        Expected: Transaction with transaction ID `000001` in the transaction list of the member with member ID `00001` is deleted. Details of the deleted transaction shown in the status message.
@@ -1508,7 +1508,7 @@ testers are expected to do more *exploratory* testing.
    1. Prerequisites: 
       1. Member wih member ID `00001` is in the member list.
       1. Multiple reservations are in the reservation list of the member with member ID `00001`.
-      1. [Viewing member profile with member ID `00001`](#viewing-member-profile).
+      1. [Showing member profile with member ID `00001`](#showing-member-profile).
 
    1. Test case: `del -rs/ -id/00001000001`<br>
        Expected: Reservation with reservation ID `000001` in the reservation list of the member with member ID `00001` is deleted. Details of the deleted reservation shown in the status message.
@@ -1564,3 +1564,68 @@ testers are expected to do more *exploratory* testing.
 
    1. Test case: [Clear the program](#clearing-the-program), [Exit the program](#exiting-the-program), replace the current `[JAR file location]/data/ezFoodie.json` with the backed up ezfoodie JSON file, then relaunch the program<br>
        Expected: All the backed up data is restored.
+
+## **Appendix 3: Effort**
+
+If the effort required to create **[Address Book](https://se-education.org/addressbook-level3)** is 10, we would place the effort level required to implement the current version of **ezFoodie** at 20.
+
+Our team has put in a significant amount of effort to get ezFoodie to the current version. Below, we list out the summany of the enhancement and extension implemented by us.
+
+### Enhancement and Extension
+
+1. **Features enhancement**
+
+   As **[Address Book](https://se-education.org/addressbook-level3)** has undergone complete testing and a large number of iterations, we follow its design and architecture which allows us to ensure the robustness and stability of the program with great confidence.
+
+   Although we reused the basic features (e.g., `add`, `edit`, `delete`, and `list`), we still put much more effort to enhance these features according to the requirements of our program. For example, we can now do `add`, `edit` and `delete` operations on mutliple data models, which are `Member`, `Transaction` and `Reservation`.
+
+2. **Features extension**
+
+   We realized that the basic features in **[Address Book](https://se-education.org/addressbook-level3)** are not able to fully meet our usage scenarios, so we also put a lot of effort to extend other features that are more suitable for our program.
+
+   First we added `Account`, `Transaction` and `Reservation` model for role (manager and staff) management, transaction management and reservation management respectively.
+
+   Then we added `login`, `logout` to support role switching, `sort`, `show` and `summary` to support the statistics of current members and transactions, etc.
+
+   Lastly, we had to integrate all these new features with the existing code to become this powerful ezFoodie aaplication! 🤩
+
+   The implemention details and design considerations for these features could be found in [Implementation](#implementation) section.
+
+3. **UI extension**
+
+   The UI is designed based on **[Address Book](https://se-education.org/addressbook-level3)**. We follow the principle of its neat and simple design style to ensure the principle of ease-of-use.
+
+   In addition, Compared to **[Address Book](https://se-education.org/addressbook-level3)**, ezFoodie has much more powerful display capabilities, it can display more details through multiple windows, such as displays the member details by `show -mem/ -id/00001` command, and displays the statistics of current members and transactions by `summary` command.
+
+## **Appendix 4: Limitations and Future improvements**
+
+We acknowledge the fact that our current product is not perfect, and it still has rooms for improvement.
+Below are some limitations and future improvements of our product.
+
+### Limitations
+
+1. **Automatic reminder feature is not implemented**
+
+    The program only displays the most recent reservation of each member on the main view, but it does not support the functionality of reminding managers and staffs automatically when the members are comming. When there are a large number of users and a large number of reservations, the ability of managers and staffs to arrange seats and menus for upcoming members in a timely and efficient manner is an important manifestation of the service capabilities of the restaurant, so this feature has a potential positive impact on the growth of restaurant members.
+     
+1. **Undo/redo features are not implemented**
+
+    Having the undo/redo feature can better improve use efficiency and fault tolerance due to fast typing. It is very important and necessary optimization that the user can recover the data in time if the user accidentally performs the wrong operation.
+
+1. **Pagination feature is not implemented**
+
+    As the number of members increases, displaying all members on one page by `list -mem/` is very unuser-friendly. If the managers and staffs needs to scroll to view a large amount of information, it will go against the original intention of the project itself: to improve the efficiency of managing members through fast typing.
+     
+### Future Improvements
+
+1. **Add a timer thread**
+
+   A timer thread can be added in the background of the application to keep track of all the reservations of members. When an upcoming reservation is detected, a prompt dialog will be popped up or the relevant member reservation information will be displayed in the upper right corner of the application.
+
+1. **Implement by following the proposed [undo/redo](#undo-redo)**
+
+1. **Add a command shortcut [-pg/] for pagination**
+
+   By default, only 20 records are displayed at a time, the user and a parameter [-pg/] is added to the paging function, so that users can turn pages by typing quickly.
+
+   Continue to implement the current limitations mentioned above to make the program more user-friendly.
