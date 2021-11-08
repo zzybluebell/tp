@@ -47,7 +47,7 @@ Refer to the guide [_Setting up and getting started_](SettingUp.md).
 
 ### Architecture
 
-<img src="images/ArchitectureDiagram.png" width="280" />
+<img src="images/ArchitectureDiagram.png" width="350" />
 
 The ***Architecture Diagram*** given above explains the high-level design of the App.
 
@@ -73,7 +73,7 @@ The rest of the App consists of four components.
 
 The *Sequence Diagram* below shows how the components interact with each other for the scenario where the user issues the command `del -mem/ -i/1`.
 
-<img src="images/ArchitectureSequenceDiagram.png" width="574" />
+![Architecture Sequence Diagram](images/ArchitectureSequenceDiagram.png)
 
 Each of the four main components (also shown in the diagram above),
 
@@ -94,19 +94,19 @@ The **API** of this component is specified in [`Ui.java`](https://github.com/AY2
 
 Structure of the UI Component MainWindow
 
-<img height="300" alt="Structure of the UI Component MemberListPanel" src="images/UiClassDiagramMemberListPanel.png">
+<img width="350" alt="Structure of the UI Component MemberListPanel" src="images/UiClassDiagramMemberListPanel.png">
 
 Structure of the UI Component MemberListPanel
 
-<img height="400" alt="Structure of the UI Component MemberViewWindow" src="images/UiClassDiagramMemberViewWindow.png">
+<img width="450" alt="Structure of the UI Component MemberViewWindow" src="images/UiClassDiagramMemberViewWindow.png">
 
 Structure of the UI Component MemberViewWindow
 
-<img height="300" alt="Structure of the UI Component SummaryWindow" src="images/UiClassDiagramSummaryWindow.png">
+<img width="400" alt="Structure of the UI Component SummaryWindow" src="images/UiClassDiagramSummaryWindow.png">
 
 Structure of the UI Component SummaryWindow
 
-<img height="300" alt="Structure of the UI Component HelpWindow" src="images/UiClassDiagramHelpWindow.png">
+<img width="150" alt="Structure of the UI Component HelpWindow" src="images/UiClassDiagramHelpWindow.png">
 
 Structure of the UI Component HelpWindow
 
@@ -127,7 +127,7 @@ The `UI` component,
 
 Here's a (partial) class diagram of the `Logic` component:
 
-<img src="images/LogicClassDiagram.png" width="550"/>
+<img src="images/LogicClassDiagram.png" width="800"/>
 
 How the `Logic` component works:
 1. When `Logic` is called upon to execute a command, it uses the `EzFoodieParser` class to parse the user command.
@@ -161,13 +161,15 @@ How the parsing works:
 * Case2: `find`, `show`, `list`, `sort`, `login` and `setAccount` commands
   * When called upon to parse a user command, the `EzFoodieParser` class creates a `UVWCommandParser` (e.g., `FindCommandParser`) which uses the other classes shown above to parse the user command and create a `UVWCommand` object (e.g., `FindCommand`) which the `EzFoodieParser` returns back as a `Command` object.
 
+<br>
+
 * Case3: `clear`, `exit`, `logout`, `help` and `summary` commands
   * When called upon to parse a user command, the `EzFoodieParser` class creates a `UVWCommand` object directly (e.g., `ClearCommand`) which the `EzFoodieParser` returns back as a `Command` object.
 
 ### Model component
 **API** : [`Model.java`](https://github.com/AY2122S1-CS2103T-F12-4/tp/tree/master/src/main/java/seedu/address/model/Model.java)
 
-<img src="images/ModelClassDiagram.png" width="450" />
+![Model Class Diagram](images/ModelClassDiagram.png)
 
 The `Model` component,
 
@@ -178,7 +180,7 @@ The `Model` component,
 
 <div markdown="span" class="alert alert-info">:information_source: **Note:** An alternative (arguably, a more OOP) model is given below. It has a `Reservation` list in the `EzFoodie`, which `Member` references. This allows `EzFoodie` to only require one `Reservation` object per unique reservation, instead of each `Member` needing their own `Reservation` objects.<br>
 
-<img src="images/BetterModelClassDiagram.png" width="450" />
+![Better ModelClass Diagram](images/BetterModelClassDiagram.png)
 
 </div>
 
@@ -186,7 +188,7 @@ The `Model` component,
 
 **API** : [`Storage.java`](https://github.com/AY2122S1-CS2103T-F12-4/tp/tree/master/src/main/java/seedu/address/storage/Storage.java)
 
-<img src="images/StorageClassDiagram.png" width="550" />
+<img src="images/StorageClassDiagram.png" width="800" />
 
 The `Storage` component,
 * can save both ezFoodie data and user preference data in json format, and read them back into corresponding objects.
@@ -247,7 +249,7 @@ The above process is shown in the following sequence diagram:
 
 The following activity diagram summarizes what happens when a user executes a new command to find the members by keywords:
 
-![FindActivityDiagram](images/FindActivityDiagram.png)
+<img src="images/FindActivityDiagram.png" width="400" />
 
 **Activity diagram showcasing the find command execution flow**
 
@@ -307,7 +309,7 @@ The above process is shown in the following sequence diagram:
 
 The following activity diagram summarizes what happens when a user executes a new command to sort the members by their credits:
 
-![SortActivityDiagram](images/SortActivityDiagram.png)
+<img src="images/SortActivityDiagram.png" width="400" />
 
 **Activity diagram showcasing the sort command execution flow**
 
@@ -518,15 +520,15 @@ Given below is an example usage scenario and how the undo/redo mechanism behaves
 
 Step 1. The user launches the application for the first time. The `VersionedEzFoodie` will be initialized with the initial ezFoodie state, and the `currentStatePointer` pointing to that single ezFoodie state.
 
-![UndoRedoState0](images/UndoRedoState0.png)
+<img src="images/UndoRedoState0.png" width="400" />
 
 Step 2. The user executes `del -mem/ -i/5` command to delete the 5th Member in the ezFoodie. The `delete` command calls `Model#commitEzFoodie()`, causing the modified state of the ezfoodie after the `del -mem/ -i/5` command executes to be saved in the `ezFoodieStateList`, and the `currentStatePointer` is shifted to the newly inserted ezFoodie state.
 
-![UndoRedoState1](images/UndoRedoState1.png)
+<img src="images/UndoRedoState1.png" width="400" />
 
 Step 3. The user executes `add -mem/ -n/John Doe …​` to add a new member. The `add` command also calls `Model#commitEzFoodie()`, causing another modified ezFoodie state to be saved into the `ezFoodieStateList`.
 
-![UndoRedoState2](images/UndoRedoState2.png)
+<img src="images/UndoRedoState2.png" width="400" />
 
 <div markdown="span" class="alert alert-info">:information_source: **Note:** If a command fails its execution, it will not call `Model#commitEzFoodie()`, so the ezFoodie state will not be saved into the `ezFoodieStateList`.
 
@@ -534,7 +536,7 @@ Step 3. The user executes `add -mem/ -n/John Doe …​` to add a new member. Th
 
 Step 4. The user now decides that adding the member was a mistake, and decides to undo that action by executing the `undo` command. The `undo` command will call `Model#undoEzFoodie()`, which will shift the `currentStatePointer` once to the left, pointing it to the previous ezFoodie state, and restores the ezFoodie to that state.
 
-![UndoRedoState3](images/UndoRedoState3.png)
+<img src="images/UndoRedoState3.png" width="400" />
 
 <div markdown="span" class="alert alert-info">:information_source: **Note:** If the `currentStatePointer` is at index 0, pointing to the initial EzFoodie state, then there are no previous EzFoodie states to restore. The `undo` command uses `Model#canUndoEzFoodie()` to check if this is the case. If so, it will return an error to the user rather than attempting to perform the undo.
 
@@ -556,11 +558,11 @@ The `redo` command does the opposite — it calls `Model#redoEzFoodie()`, wh
 
 Step 5. The user then decides to execute the command `list -mem/`. Commands that do not modify the ezFoodie, such as `list -mem/`, will usually not call `Model#commitEzFoodie()`, `Model#undoEzFoodie()` or `Model#redoEzFoodie()`. Thus, the `ezFoodieStateList` remains unchanged.
 
-![UndoRedoState4](images/UndoRedoState4.png)
+<img src="images/UndoRedoState4.png" width="400" />
 
 Step 6. The user executes `clear`, which calls `Model#commitEzFoodie()`. Since the `currentStatePointer` is not pointing at the end of the `ezFoodieStateList`, all ezFoodie states after the `currentStatePointer` will be purged. Reason: It no longer makes sense to redo the `add -mem/ -n/John Doe …​` command. This is the behavior that most modern desktop applications follow.
 
-![UndoRedoState5](images/UndoRedoState5.png)
+<img src="images/UndoRedoState5.png" width="400" />
 
 The following activity diagram summarizes what happens when a user executes a new command:
 

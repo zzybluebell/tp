@@ -14,8 +14,17 @@ UniqueMemberList -right-> Member
 
 Member -up-> "*" Reservation
 
-Member *--> Name
-Member *--> Phone
-Member *--> Email
-Member *--> Address
+Member *--> "1" MemberId
+Member *--> "1" Name
+Member *--> "1" Phone
+Member *--> "1" Email
+Member *--> "1" Credit
+Member *--> "1" Point
+Member *--> "1" Tier
+Member *--> "1" RegistrationTimestamp
+Member *--> "1" Address
+Member *--> "*" Transaction
+
+Reservation *-up-> "1" Remark
+Reservation *-up-> "1" ReservationDateTime
 @enduml
