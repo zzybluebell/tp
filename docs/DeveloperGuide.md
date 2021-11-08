@@ -537,6 +537,8 @@ Given below is an example usage scenario and how the redeem mechanism behaves at
 
 6. Using the obtained `billing amount`, the `RedeemCommand` will execute and update related point. then return a  new `Member` with updated point.
 
+
+### Add reservation
 `[written by: Raja Sudalaimuthu Mukund]`
 
 #### Implementation
@@ -634,6 +636,7 @@ Given below is an example usage scenario and how the delete reservation mechanis
 
 ![DeleteReservationSequenceDiagram](images/DeleteReservationSequenceDiagram.png)
 
+<label id=udordo></label>
 ### \[Proposed\] Undo/redo feature
 
 #### Proposed Implementation
@@ -729,7 +732,7 @@ _{Explain here how the data archiving feature will be implemented}_
 
 --------------------------------------------------------------------------------------------------------------------
 
-## **Appendix: Requirements**
+## **Appendix 1: Requirements**
 
 ### Product scope
 
@@ -1464,7 +1467,7 @@ Manager is logged in
 
 --------------------------------------------------------------------------------------------------------------------
 
-## **Appendix: Instructions for manual testing**
+## **Appendix 2: Instructions for manual testing**
 
 Given below are instructions to test the app manually.
 
@@ -1800,7 +1803,7 @@ Below are some limitations and future improvements of our product.
 
    A timer thread can be added in the background of the application to keep track of all the reservations of members. When an upcoming reservation is detected, a prompt dialog will be popped up or the relevant member reservation information will be displayed in the upper right corner of the application.
 
-1. **Implement by following the proposed [undo/redo](#undo-redo)**
+1. **Implement by following the proposed [undo/redo](#udordo)**
 
 1. **Add a command shortcut [-pg/] for pagination**
 
