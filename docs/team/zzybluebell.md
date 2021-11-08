@@ -76,7 +76,7 @@ Given below are my contributions to the project.
         * etc.
 
     * Developer Guide: [\#211](https://github.com/AY2122S1-CS2103T-F12-4/tp/pull/211)
-        *Update `add member`, `Redeem Point` features and etc.
+        * Update `add member`, `Redeem Point` features and etc.
 
     * About Us: [\#206](https://github.com/AY2122S1-CS2103T-F12-4/tp/pull/206)
         * update essential self-information.
