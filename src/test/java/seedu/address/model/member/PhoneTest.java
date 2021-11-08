@@ -6,6 +6,10 @@ import static seedu.address.testutil.Assert.assertThrows;
 
 import org.junit.jupiter.api.Test;
 
+/**
+ * Tests the functionalities of
+ * {@code Phone}.
+ */
 public class PhoneTest {
 
     @Test

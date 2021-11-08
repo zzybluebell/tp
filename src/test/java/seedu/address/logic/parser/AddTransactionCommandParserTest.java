@@ -26,6 +26,10 @@ import seedu.address.model.transaction.Billing;
 import seedu.address.model.transaction.Transaction;
 import seedu.address.testutil.TransactionBuilder;
 
+/**
+ * Contains integration tests (interaction with the Model) and unit tests for
+ * {@code AddTransactionCommandParser}.
+ */
 class AddTransactionCommandParserTest {
 
     private Model model = new ModelManager();

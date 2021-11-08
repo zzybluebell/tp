@@ -22,7 +22,8 @@ import seedu.address.model.UserPrefs;
 import seedu.address.model.member.NameContainsKeywordsPredicate;
 
 /**
- * Contains integration tests (interaction with the Model) for {@code FindCommand}.
+ * Contains integration tests (interaction with the Model) for
+ * {@code FindCommand}.
  */
 public class FindCommandTest {
     private Model model = new ModelManager(new Account(), getTypicalEzFoodie(), new UserPrefs());

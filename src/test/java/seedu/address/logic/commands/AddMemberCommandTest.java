@@ -26,7 +26,8 @@ import seedu.address.model.member.Member;
 import seedu.address.testutil.MemberBuilder;
 
 /**
- * Tests the functionalities of AddMemberCommand.
+ * Contains integration tests (interaction with the Model) and unit tests for
+ * {@code AddMemberCommand}.
  */
 public class AddMemberCommandTest {
 

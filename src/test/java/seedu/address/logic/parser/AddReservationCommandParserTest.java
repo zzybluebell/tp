@@ -30,6 +30,10 @@ import seedu.address.model.reservation.Remark;
 import seedu.address.model.reservation.Reservation;
 import seedu.address.testutil.ReservationBuilder;
 
+/**
+ * Contains integration tests (interaction with the Model) and unit tests for
+ * {@code AddReservationCommandParser}.
+ */
 class AddReservationCommandParserTest {
 
     private Model model = new ModelManager();
