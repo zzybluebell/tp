@@ -8,6 +8,10 @@ import seedu.address.commons.status.LoginStatus;
 import seedu.address.model.Model;
 import seedu.address.model.ModelManager;
 
+/**
+ * Contains integration tests (interaction with the Model) and unit tests for
+ * {@code LogoutCommand}.
+ */
 public class LogoutCommandTest {
 
     @Test

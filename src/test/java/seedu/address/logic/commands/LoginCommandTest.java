@@ -10,6 +10,10 @@ import seedu.address.model.Model;
 import seedu.address.model.ModelManager;
 import seedu.address.model.account.Password;
 
+/**
+ * Contains integration tests (interaction with the Model) and unit tests for
+ * {@code LoginCommand}.
+ */
 public class LoginCommandTest {
 
     private static final String CORRECT_PLAINTEXT_PASSWORD = "123456";

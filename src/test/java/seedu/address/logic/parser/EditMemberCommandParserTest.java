@@ -46,6 +46,10 @@ import seedu.address.model.member.Phone;
 import seedu.address.model.tag.Tag;
 import seedu.address.testutil.EditMemberDescriptorBuilder;
 
+/**
+ * Contains integration tests (interaction with the Model) and unit tests for
+ * {@code EditMemberCommandParser}.
+ */
 public class EditMemberCommandParserTest {
 
     private static final String TAG_EMPTY = " " + PREFIX_TAG;

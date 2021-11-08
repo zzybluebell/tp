@@ -18,6 +18,10 @@ import seedu.address.model.ReadOnlyAccount;
 import seedu.address.model.ReadOnlyEzFoodie;
 import seedu.address.model.UserPrefs;
 
+/**
+ * Tests the functionalities of
+ * {@code StorageManager}.
+ */
 public class StorageManagerTest {
 
     @TempDir
