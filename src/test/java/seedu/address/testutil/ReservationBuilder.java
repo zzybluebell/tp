@@ -10,7 +10,7 @@ import seedu.address.model.reservation.Reservation;
  */
 public class ReservationBuilder {
 
-    public static final String DEFAULT_ID = "100001";
+    public static final String DEFAULT_ID = "000001";
     public static final String DEFAULT_DATE_TIME = "2099-12-31 10:00";
     public static final String DEFAULT_REMARK = "3 people";
 

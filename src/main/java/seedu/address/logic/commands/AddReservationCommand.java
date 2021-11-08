@@ -20,7 +20,6 @@ import seedu.address.model.Timestamp;
 import seedu.address.model.member.Address;
 import seedu.address.model.member.Credit;
 import seedu.address.model.member.Email;
-import seedu.address.model.member.Id;
 import seedu.address.model.member.Member;
 import seedu.address.model.member.Name;
 import seedu.address.model.member.Phone;
@@ -49,7 +48,7 @@ public class AddReservationCommand extends AddCommand {
             + PREFIX_RESERVATION + " "
             + PREFIX_DATE_TIME + "2021-12-01 13:00 "
             + PREFIX_REMARK + "2 people "
-            + PREFIX_ID + "10001";
+            + PREFIX_ID + "00001";
 
     /**
      * Stands for message success for new reservation added.
@@ -65,7 +64,7 @@ public class AddReservationCommand extends AddCommand {
     /**
      * Constructs an {@code AddReservationCommand} to add the specified {@code Member}.
      */
-    public AddReservationCommand(Reservation reservation, Id id) {
+    public AddReservationCommand(Reservation reservation, seedu.address.model.member.Id id) {
         requireAllNonNull(reservation, id);
         reservationToAdd = reservation;
         idToAdd = id;

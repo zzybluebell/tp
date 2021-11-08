@@ -69,7 +69,7 @@ public class SampleDataUtil {
             new Member(new seedu.address.model.member.Id("00004"),
                     new Name("David Li"), new Phone("91031282"),
                     new Email("lidavid@example.com"), new Address("Blk 436 Serangoon Gardens Street 26, #16-43"),
-                    new Timestamp("1609556400000"), new Credit("401"), new Point("401"),
+                    new Timestamp("1609632000000"), new Credit("401"), new Point("401"),
                     getTransactionList(
                             new Transaction(new seedu.address.model.transaction.Id("000001"),
                                     new Timestamp("1611111600000"), new Billing("100.50")),
@@ -88,7 +88,7 @@ public class SampleDataUtil {
             new Member(new seedu.address.model.member.Id("00005"),
                     new Name("Irfan Ibrahim"), new Phone("92492021"),
                     new Email("irfan@example.com"), new Address("Blk 47 Tampines Street 20, #17-35"),
-                    new Timestamp("1609560000000"), new Credit("1010"), new Point("1010"),
+                    new Timestamp("1609635600000"), new Credit("1010"), new Point("1010"),
                     getTransactionList(
                             new Transaction(new seedu.address.model.transaction.Id("000001"),
                                     new Timestamp("1611115200000"), new Billing("1000.00")),
@@ -103,7 +103,7 @@ public class SampleDataUtil {
             new Member(new seedu.address.model.member.Id("00006"),
                     new Name("Roy Balakrishnan"), new Phone("92624417"),
                     new Email("royb@example.com"), new Address("Blk 45 Aljunied Street 85, #11-31"),
-                    new Timestamp("1609563600000"), new Credit("110"), new Point("110"),
+                    new Timestamp("1609639200000"), new Credit("110"), new Point("110"),
                     getTransactionList(
                             new Transaction(new seedu.address.model.transaction.Id("000001"),
                                     new Timestamp("1611118800000"), new Billing("10.00")),

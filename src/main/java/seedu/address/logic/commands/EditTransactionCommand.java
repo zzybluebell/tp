@@ -48,10 +48,10 @@ public class EditTransactionCommand extends EditCommand {
             + "Parameters:\n"
             + "Edit by member ID and transaction ID: "
             + PREFIX_TRANSACTION + " " + PREFIX_ID + "member ID + transaction ID "
-            + "[" + PREFIX_BILLING + "BILLING]\n"
+            + PREFIX_BILLING + "BILLING_AMOUNT\n"
             + "Example:\n"
             + "Edit by member ID and transaction ID: "
-            + COMMAND_WORD + " " + PREFIX_TRANSACTION + " " + PREFIX_ID + "10001100001 "
+            + COMMAND_WORD + " " + PREFIX_TRANSACTION + " " + PREFIX_ID + "00001000001 "
             + PREFIX_BILLING + "123.45";
 
     /**
