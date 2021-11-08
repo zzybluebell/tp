@@ -140,7 +140,7 @@ Continue reading to explore the wonders of ezFoodie and enhance the way you mana
    * `del -mem/ -i/3:` Deletes the member with index number 3 shown in the current list.
       <div markdown="block" class="alert alert-info">
       
-      :information_source: **Note:** Only managers can delete members. Login as a manager before entering the delete command.
+      :exclamation: **Note:** Only managers can delete members. Login as a manager before entering the delete command.
       </div>
    * `add -txn/ -b/200.00 -id/00001:` Adds transaction with a billing $100.00 to member id 00001 shown in the current list.
 
@@ -153,7 +153,7 @@ Continue reading to explore the wonders of ezFoodie and enhance the way you mana
    * `summary:` Views a summary of all the data in the application in one page (**e.g.** No. of members, Past transactions).
       <div markdown="block" class="alert alert-info">
 
-      :information_source: **Note:** Only managers are allowed to view the summary of data. Login as a manager before entering the summary command.
+      :exclamation: **Note:** Only managers are allowed to view the summary of data. Login as a manager before entering the summary command.
       </div>
       
    * `clear:` Clears the program.
@@ -248,8 +248,8 @@ Continue reading to explore the wonders of ezFoodie and enhance the way you mana
     * `-d/`: descending
 
 * **Requirements of input command**:
-   * When user inputs a command, the specific content is not allowed including above prefixes.
-   * E.g. address is not allowed to be "112-p/ Amoy Street-a/, 069907, Singapore"
+   * When user inputs a command, it is not allowed to include above prefixes in the specific contents or arguments.
+   * E.g. address is not allowed to be "112`-p/` Amoy Street`-a/`, 069907, Singapore"
 </div>
 
 ### 1. Viewing help : `help`
@@ -289,7 +289,7 @@ Format: `set -pass/<PASSWORD>`
 Example: `set -pass/123456`
 <div markdown="block" class="alert alert-info">
 
-   :information_source: **Note:** The `set` command is only applied in manager mode.
+   :exclamation: **Note:** The `set` command is only applied in manager mode.
 </div>
 
 ### 5. Logging out as a manager : `logout`
@@ -301,7 +301,7 @@ Format: `logout`
 Example: `logout`
 <div markdown="block" class="alert alert-info">
    
-   :information_source: **Note:** The `logout` command is only applied in manager mode.
+   :exclamation: **Note:** The `logout` command is only applied in manager mode.
 </div>
 ### 6. Listing out a certain number of members : `list -mem/`
 
@@ -321,7 +321,7 @@ Example: `add -mem/ -n/John Doe -p/98765432 -e/johndoe@gmail.com -a/112 Amoy Str
 
 <div markdown="block" class="alert alert-info">
 
-   :information_source: **Duplicate members:**<br>
+   :exclamation: **Duplicate members:**<br>
 
    * ezFoodie will not allow adding members with the same **phone number** or **email address** as an existing member.
 
@@ -333,7 +333,7 @@ Deletes a member from the member list
 
 <div markdown="block" class="alert alert-info">
 
-   :information_source: **Note:** 
+   :exclamation: **Note:** 
    * The `del` member command is only applied in manager mode.
    * Only the manager is allowed to delete members. Login as manager before entering command.
 </div>
@@ -361,7 +361,7 @@ Finds members by different fields which contain any of the given keywords.
 
 <div markdown="block" class="alert alert-info">
 
-   :information_source: **Note:**
+   :exclamation: **Note:**
    * No member will be listed when an invalid member field is entered.
    * The find is case-insensitive. e.g. `hans` will match `Hans`.
    * Only full words will be matched e.g. `Han` will not match `Hans`.
@@ -410,7 +410,7 @@ Example: `show -mem/ -id/00001`
 
 <div markdown="block" class="alert alert-info">
 
-   :information_source: **Note:** No member details will be shown when an invalid member id is entered.
+   :exclamation: **Note:** No member details will be shown when an invalid member id is entered.
 </div>
 
 ### 11. Editing a member : `edit -mem/`
@@ -420,7 +420,7 @@ Edits different fields in a member's profile, where the member is specified by m
 
 <div markdown="block" class="alert alert-info">
 
-   :information_source: **Note:** Only deals with editing member details.
+   :exclamation: **Note:** Only deals with editing member details.
       If a member's transactions need to be edited, refer to [#14](#14) below. 
       Do not mix `-mem/` and `-txn/` in one `edit` command.
 </div>
@@ -485,7 +485,7 @@ Example: `add -txn/ -b/200.00 -id/00001`
 
 <div markdown="block" class="alert alert-info">
 
-   :information_source: **Note:** 
+   :exclamation: **Note:** 
    * Transaction date and time is automatically assigned by local date and time when a transaction is added, there is no need to manually enter the transaction date or time.
    * The Credit and the Point will be accumulated based on billing amount. 
    * The maximum amount of transactions is `999999`.
@@ -503,7 +503,7 @@ Example: `del -txn/ -id/00001000001`
 
 <div markdown="block" class="alert alert-info">
 
-   :information_source: **Note:** 
+   :exclamation: **Note:** 
    * The `del` transaction command is only applied in manager mode.
    * Only the manager are allowed to delete transactions. Login as manager before entering command.
    * The Credit will be decreased based on billing amount in related transaction.
@@ -522,7 +522,7 @@ Example: `edit -txn/ -id/00001000002 -b/10.00`
 
 <div markdown="block" class="alert alert-info">
 
-:information_source: **Note:** 
+:exclamation: **Note:** 
    * Transaction date and time cannot be modified once a transaction is added.
    * The Credit will be changed based on billing amount in related transaction.
    * The Point will be increased when billing amount is greater than the billing amount 
@@ -540,7 +540,7 @@ Example: `add -rs/ -dt/2021-01-02 00:00 -rm/2 people -id/00001`
 
 <div markdown="block" class="alert alert-info">
 
-:information_source: **Note:** 
+:exclamation: **Note:** 
 * Same member which based on member id cannot make multiple reservations on the same day.
 * The maximum amount of reservations is `999999`.
 </div>
@@ -555,7 +555,7 @@ Example: `del -rs/ -id/00001000001`
 
 <div markdown="block" class="alert alert-info">
 
-:information_source: **Note:** 
+:exclamation: **Note:** 
    * The `del` reservation command is only applied in manager mode.
    * Only the manager is allowed to delete reservations. Login as manager before entering command. 
 </div>
@@ -564,7 +564,7 @@ Example: `del -rs/ -id/00001000001`
 
 <div markdown="block" class="alert alert-info">
 
-:information_source: **Note:** 
+:exclamation: **Note:** 
    * The editing reservation date time cannot be shifted in same day based on same member id.
    * E.g. when one member make a reservation in day 2021-12-01 13:00 and 2021-12-02 13:00, the member is not allowed to shift 2 day in same day. 
 </div>
@@ -627,7 +627,7 @@ Views the summary of stored data in ezFoodie.
 
 <div markdown="block" class="alert alert-info">
 
-   :information_source: **Note:**: 
+   :exclamation: **Note:**: 
    * The `summary` command is only applied in manager mode.
    * Only the manager is allowed to view summary. Login as manager before entering command.
 </div>
@@ -645,7 +645,7 @@ Format: `clear`
 Example: `clear`
 <div markdown="block" class="alert alert-info">
 
-   :information_source: **Note:**
+   :exclamation: **Note:**
    * The `clear` command is only applied in manager mode.
    * Only managers are allowed to clear. Login as manager before entering command.
 </div>
@@ -660,7 +660,7 @@ Format: press keyboard button ⬆️  and ⬇️
 Example: press keyboard button ⬆️  and ⬇️
 <div markdown="block" class="alert alert-info">
 
-   :information_source: **Note:**
+   :exclamation: **Note:**
    * Retrive commands can only store 30 commands history.
 </div>
 
