@@ -652,10 +652,11 @@ Example: press keyboard button ⬆️ and ⬇️
 <div markdown="block" class="alert alert-info">
 
    :information_source: **Note:**
-   * Retrive commands can only store 30 commands histories.
+   * Retrive commands can only store 30 commands history.
 </div>
 
-### 23. <label id="22">Saving the data</label>
+<label id="23"></label>
+### 23. Saving the data
 
 ezFoodie data are saved in a JSON file in hard disk `[JAR file location]/data/ezfoodie.json` automatically after any command that changes the data. There is no need to save manually.
 
@@ -675,7 +676,7 @@ If any changes to the JSON file make it invalid, ezFoodie will discard all data 
 **A**: Install the application in the other computer and overwrite the empty data file it creates with the file that contains the data of your previous ezFoodie home folder.
 
 **Q**: Why my ezFoodie does not have any populated sample member data?<br>
-**A**: Delete `ezfoodie.json` and restart the application. Refer to <a href="#22">#22</a> in *Features* above to find this JSON file.
+**A**: Delete `ezfoodie.json` and restart the application. Refer to [#23](#23) in *Features* above to find this JSON file.
 
 **Q**: If I face any unexpected issues and I dont know how to solve it, how can I contact with you?<br>
 **A**: Please do not hesitage drop an email to us in `ezfoodie@gmail.com`, thank you so much.
