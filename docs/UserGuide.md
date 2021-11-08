@@ -64,11 +64,12 @@ Continue reading to explore the wonders of ezFoodie and enhance the way you mana
 * The details for running jar  can follow [here](https://www.wikihow.com/Run-a-.Jar-Java-File).
 * The GUI similar to the one shown below should appear in a few seconds. The application comes preloaded with sample data to test its features.<br>
    
-   <div align="center"><img width="100%" alt="ezFoodie Logo" src="images/Ui.png"></div>
-   <h1 align="center"><font size ="5">Congratulations! ezFoodie is now ready for your perusal. 🤩</font></h1>
+   <div align="center"><img height="570" alt="ezFoodie Logo" src="images/Launch.png"></div>
+   <h1 align="center"><font size ="5">Congratulations! ezFoodie is now ready for your perusal. :+1:</font></h1>
    <br>
 
-   **5. Main window GUI includes the following member fields and constraints:**
+
+**5. Main window GUI includes the following member fields and constraints:**
     
 * **Index number in the list:**
    * *Only contains alphanumeric characters.*
@@ -85,6 +86,7 @@ Continue reading to explore the wonders of ezFoodie and enhance the way you mana
 * **Member ID:**
    * *Member ID has only 5 digits and starts from `00001` to `99999`.*
    * *Deleted Member's id will not be occupied when adding a new member.*
+
    * *Member id will increase automatically when new member is added.*
    * *EzFoodie contains max `99999` members*
    
@@ -106,6 +108,7 @@ Continue reading to explore the wonders of ezFoodie and enhance the way you mana
    *  *Members cannot share the same phone number or email. ezFoodie uses these fields to detect duplicate members*
    
 * **Credit:**
+
    * *Credit refers to the overall accumulated transaction bills of a member, 
    starting from their registration date.*
    * *Credit depends on the bill amounts in <a href="#12">add transaction</a>, <a href="#13">delete transaction</a>, and <a href="#14">edit transaction</a>*.
@@ -115,6 +118,7 @@ Continue reading to explore the wonders of ezFoodie and enhance the way you mana
    * *The point accumulation is similar to credit.*
    * *However, points can be redeemed as transaction discounts for a member, and points will be deducted
    accordingly with redemption.*
+
    * *In <a href="#13">delete transaction</a>, the points will not be affected and will stay the same.*
    * *In <a href="#14">edit transaction</a>, the points will be increased when bill amount is greater than the bill amount 
    added in last time. On the contrary the points will not be affected and keep the same when billing amount is lesser
@@ -124,6 +128,7 @@ Continue reading to explore the wonders of ezFoodie and enhance the way you mana
 * **Seat Booking Information:**
     * Seats can be reserved using the <a href="#15">add reservation</a> feature.
     * A reservation can be edited or deleted as well using the <a href="#17">edit reservation</a> and <a href="#16">delete reservation</a> features.
+    * The maximum amount of reservations is `999999`.
 
 **6. Type the command in the command box and press Enter to execute it. Some example commands you can try here:**
 
@@ -140,7 +145,7 @@ Continue reading to explore the wonders of ezFoodie and enhance the way you mana
    * `del -mem/ -i/3:` Deletes the member with index number 3 shown in the current list.
       <div markdown="block" class="alert alert-info">
       
-      :information_source: **Note:** Only managers can delete members. Login as a manager before entering the delete command.
+      :exclamation: **Note:** Only managers can delete members. Login as a manager before entering the delete command.
       </div>
    * `add -txn/ -b/200.00 -id/00001:` Adds transaction with a billing $200.00 to member id 00001 shown in the current list.
 
@@ -148,12 +153,12 @@ Continue reading to explore the wonders of ezFoodie and enhance the way you mana
 
    * `redeem -rd/100 -id/00001:` Redeems 100 point from member id 00001 which is shown in the current list.
    
-   * `set -pass/ 123456:` Sets and updates the password to 123456 as in manager mode.
+   * `set -pass/ 123456:` Sets the password to 123456 as in manager mode.
 
    * `summary:` Views a summary of all the data in the application in one page (**e.g.** No. of members, Past transactions).
       <div markdown="block" class="alert alert-info">
 
-      :information_source: **Note:** Only managers are allowed to view the summary of data. Login as a manager before entering the summary command.
+      :exclamation: **Note:** Only managers are allowed to view the summary of data. Login as a manager before entering the summary command.
       </div>
       
    * `clear:` Clears the program.
@@ -168,7 +173,7 @@ Continue reading to explore the wonders of ezFoodie and enhance the way you mana
       * *It only has 6 digits and starts from `000001` to `999999`.*
       * *Deleted Transaction ID's will not be occupied when adding a new transaction.*
       * *Transaction id will increase automatically when adding a new transaction.*
-      
+
    * **Bill amount:**
       * *Bill amount is in the transaction feature*
       * *Bill amounts should be non-negative numeric with 2 decimal places, and ranges from `0.00` to `9999.99`**
@@ -182,7 +187,7 @@ Continue reading to explore the wonders of ezFoodie and enhance the way you mana
       * *Addresses can take any values. It should not be blank.*
 
    * **DateTime:**
-      * *The format should be in yyyy-MM-dd HH:mm*
+      * *The format should be in yyyy-MM-dd HH:mm.*
 
 * **Please follow the instruction shown is the application command box when your are occurring constraint errors (attached below).**
 ![popup_error_example](images/popup_error_example.png)
@@ -205,7 +210,7 @@ Continue reading to explore the wonders of ezFoodie and enhance the way you mana
 * Extraneous parameters for commands that do not take in parameters (such as `help`, `exit` and `clear`) will be ignored.<br>
   **e.g.** if the command specifies `help 123`, it will be interpreted as `help`.
 
-* Meanings of shortcuts:
+* Meanings of `prefix`:
 
     * `-id/`: member id, transaction id or reservation id
 
@@ -241,15 +246,17 @@ Continue reading to explore the wonders of ezFoodie and enhance the way you mana
 
     * `-tag/`: tag
 
-   **ONLY USED IN SORT COMMAND**
+   *ONLY USED IN SORT COMMAND*
 
     * `-a/`: ascending
 
     * `-d/`: descending
 
+
 * Requirements of input command:
    * When the user inputs a command, the specified content is not to be inputted before the prefixes.
    * E.g. The command `112-p/ Amoy Street-a/, 069907, Singapore` is not allowed
+
 </div>
 
 ### 1. Viewing help : `help`
@@ -303,6 +310,7 @@ Example: `logout`
    
    :information_source: **Note:** The `logout` command can only be used in manager mode.
 </div>
+
 ### 6. Listing out a certain number of members : `list -mem/`
 
 Lists out all members.
@@ -321,7 +329,7 @@ Example: `add -mem/ -n/John Doe -p/98765432 -e/johndoe@gmail.com -a/112 Amoy Str
 
 <div markdown="block" class="alert alert-info">
 
-   :information_source: **Duplicate members:**<br>
+   :exclamation: **Duplicate members:**<br>
 
    * ezFoodie will not allow new members to have the same **phone number** or **email address** as a previously existing member.
 
@@ -329,7 +337,7 @@ Example: `add -mem/ -n/John Doe -p/98765432 -e/johndoe@gmail.com -a/112 Amoy Str
 
 ### 8. Deleting a member : `del -mem/`
 
-Deletes a member from the member list
+Deletes a member from the member list.
 
 <div markdown="block" class="alert alert-info">
 
@@ -339,7 +347,7 @@ Deletes a member from the member list
 
 #### 8.1.  Deleting a member by member id
 
-Deletes a member using member id
+Deletes a member using member id.
 
 Format: `del -mem/ -id/<MEMBER_ID>`
 
@@ -347,7 +355,7 @@ Example: `del -mem/ -id/00001`
 
 #### 8.2.  Deleting a member by index number
 
-Deletes a member using member index number from the list
+Deletes a member using member index number from the list.
 
 Format: `del -mem/ -i/<MEMBER_INDEX>`
 
@@ -357,12 +365,17 @@ Example: `del -mem/ -i/1`
 
 Finds members by different fields which contain any of the given keywords.
 
-* The find is case-insensitive. e.g. `hans` will match `Hans`.
-* Only full words will be matched e.g. `Han` will not match `Hans`.
 
 <div markdown="block" class="alert alert-info">
 
-   :information_source: **Note:** No member will be listed when an invalid member field is entered.
+   :exclamation: **Note:**
+   * No member will be listed when an invalid member field is entered.
+   * The find is case-insensitive. e.g. `hans` will match `Hans`.
+   * Only full words will be matched e.g. `Han` will not match `Hans`.
+   * Find command is only allowed for **one single prefix** after **-mem/**.
+   * In one single prefix find command, it can have multiple keywords. 
+   * E.g. To find id:00001 and id:00002 members' detail: **"find -mem/ -id/00001 00002"**.
+   * It is not allowed to enter command as **"find -mem/ -id/00001 -p/98765432"**.
 </div>
 
 #### 9.1. Finding member by member id
@@ -395,9 +408,9 @@ Format: `find -mem/ -d/<yyyy-MM-dd>`
 
 Example: `find -mem/ -d/2021-01-02`
 
-### 10. Viewing member profile : `show -mem/`
+### 10. Showing member profile : `show -mem/`
 
-Views member from member list by member id.
+Shows member from member list by member id.
 
 Format: `show -mem/ -id/<MEMBER_ID>`
 
@@ -405,7 +418,7 @@ Example: `show -mem/ -id/00001`
 
 <div markdown="block" class="alert alert-info">
 
-   :information_source: **Note:** No member details will be shown when an invalid member id is entered.
+   :exclamation: **Note:** No member details will be shown when an invalid member id is entered.
 </div>
 
 ### 11. Editing a member : `edit -mem/`
@@ -415,8 +428,8 @@ Edits different fields in a member's profile, where the member is specified by m
 
 <div markdown="block" class="alert alert-info">
 
-   :information_source: **Note:** Only deals with editing member details.
-      If a member's transactions need to be edited, refer to [#13](#13) below. 
+   :exclamation: **Note:** Only deals with editing member details.
+      If a member's transactions need to be edited, refer to [#14](#14) below. 
       Do not mix `-mem/` and `-txn/` in one `edit` command.
 </div>
 
@@ -468,9 +481,11 @@ Format: `edit -mem/ -i/<INDEX> -a/<ADDRESS>`
 
 Example: `edit -mem/ -i/1 -a/33 Benoi Crescent, 629979, Singapore`
 
+<label id="12"></label>
+
 ### 12. Adding transaction for members : `add -txn/`
 
-<label id="12">Adds transaction amount corresponding to member id.</label>
+Adds transaction amount corresponding to member id.
 
 Format: `add -txn/ -b/<BILLING_AMOUNT> -id/<MEMBER_ID>`
 
@@ -478,13 +493,15 @@ Example: `add -txn/ -b/200.00 -id/00001`
 
 <div markdown="block" class="alert alert-info">
 
-   :information_source: **Note:** 
+   :exclamation: **Note:** 
    * Transaction date and time is automatically assigned by local date and time when a transaction is added, there is no need to manually enter the transaction date or time.
    * The Credit and the Point will be accumulated based on billing amount. 
    * The maximum amount of transactions is `999999`.
 </div>
 
-### 13.  <label id="13">Deleting transaction for members:</label> `del -txn/`
+<label id="13"></label> 
+
+### 13.  Deleting transaction for members:`del -txn/`
 
 Deletes a transaction.
 
@@ -500,7 +517,9 @@ Example: `del -txn/ -id/00001000001`
    * Points will not be affected and keep the same.
 </div>
 
-### 14. <label id="14">Editing transaction of a member:</label> `edit -txn/`
+<label id="14"></label>
+
+### 14. Editing transaction of a member: `edit -txn/`
 
 Edits a member's transaction.
 
@@ -510,7 +529,7 @@ Example: `edit -txn/ -id/00001000002 -b/10.00`
 
 <div markdown="block" class="alert alert-info">
 
-:information_source: **Note:** 
+:exclamation: **Note:** 
    * Transaction date and time cannot be modified once a transaction is added.
    * Credit will be changed based on billing amount in related transaction.
    * Points will be increased when billing amount is greater than the billing amount 
@@ -601,7 +620,7 @@ Format: `redeem -rd/<POINT> -id/<MEMBER_ID>`
 
 Example: `redeem -rd/100 -id/00001`
 
-#### 19.2. Redeeming point for a member by index: `redeem -f/ -i/`
+#### 19.2. Redeeming point for a member by index: `redeem -rd/ -i/`
 
 Redeems the points of a member for a discount by index of member shown in the list.
 
@@ -623,25 +642,48 @@ Format: `summary`
 
 Example: `summary`
 
-### 21. Clearing ezFoodie data : `clear`
+### 21. Clearing ezFoodie data: `clear`
 
 Clears all data stored in ezFoodie. Use with Caution!
 
 Format: `clear`
 
-Format: `clear`
+Example: `clear`
 <div markdown="block" class="alert alert-info">
 
-   :information_source: **Note:**
+   :exclamation: **Note:**
    * The `clear` command is only applied in manager mode.
    * Only managers are allowed to clear. Login as manager before entering command.
 </div>
 
-### 22. <label id="22">Saving the data</label>
+
+### 22. Retrieving commands: `keyboard.UP` and `keyboard.DOWN`
+
+Presses the keyboard "Up" button to retrieve previous command which has been entered, and "Down" button to retrieve next commands.
+
+Format: press keyboard button ⬆️  and ⬇️
+
+Example: press keyboard button ⬆️  and ⬇️
+<div markdown="block" class="alert alert-info">
+
+   :exclamation: **Note:**
+   * Retrieve commands can only store the history of 30 commands.
+</div>
+
+
+### 23. Exiting Summary, Help and Show popup window `keyboard.ESC`
+
+Presses the keyboard `ESC` button to exit Summary, Help and Show popup window.
+
+Format: press keyboard `ESC`
+
+<label id="24"></label>
+
+### 24. Saving the data
 
 ezFoodie data are saved in a JSON file in hard disk `[JAR file location]/data/ezfoodie.json` automatically after any command that changes the data. There is no need to save manually.
 
-### 23. Editing the data file
+### 25. Editing the data file
 
 ezFoodie data are located at `[JAR file location]/data/ezfoodie.json`. Advanced users are welcome to update data directly by editing the data file.
 
@@ -657,7 +699,7 @@ If any changes to the JSON file make it invalid, ezFoodie will discard all data 
 **A**: Install the application in the other computer and overwrite the empty data file it creates with the file that contains the data of your previous ezFoodie home folder.
 
 **Q**: Why my ezFoodie does not have any populated sample member data?<br>
-**A**: Delete `ezfoodie.json` and restart the application. Refer to <a href="#22">#22</a> in *Features* above to find this JSON file.
+**A**: Delete `ezfoodie.json` and restart the application. Refer to [#24](#24) in *Features* above to find this JSON file.
 
 **Q**: If I face any unexpected issues and I dont know how to solve it, how can I contact with you?<br>
 **A**: Please do not hesitage drop an email to us in `ezfoodie@gmail.com`, thank you so much.
@@ -682,7 +724,7 @@ Action | Manager Only? (Y/N) | Format, Examples
 **Find Members by Phone** | N | *Format:* <br> `find -mem/ -p/<PHONE>` <br> *Example:* <br> `find -mem/ -p/98765432`
 **Find Members by Email** | N | *Format:* <br> `find -mem/ -e/<EMAIL>` <br> *Example:* <br> `find -mem/ -e/johndoe@gmail.com`
 **Find Members by Registration Date** | N | *Format:* <br> `find -mem/ -d/<REGISTRATION_DATE yyyy-MM-dd>` <br> *Example:* <br> `find -mem/ -d/2021-01-02`
-**View Member Profile** | N | *Format:* <br> `show -mem/ -id/<MEMBER_ID>` <br> *Example:* <br> `show -mem/ -id/00001`
+**Show Member Profile** | N | *Format:* <br> `show -mem/ -id/<MEMBER_ID>` <br> *Example:* <br> `show -mem/ -id/00001`
 **Edit Member Name by Member Id** | N | *Format:* <br> `edit -mem/ -id/<MEMBER_ID> -n/<NAME>` <br> *Example* <br> `edit -mem/ -id/00001 -n/John Doe`
 **Edit Member Phone by Member ID** | N | *Format* <br> `edit -mem/ -id/<MEMBER_ID> -p/<PHONE>` <br> *Example* <br> `edit -mem/ -id/00001 -p/98765432`
 **Edit Member Email by Member Id** | N | *Format:* <br> `edit -mem/ -id/<MEMBER_ID> -e/<EMAIL>` <br> *Example:* <br> `edit -mem/ -id/00001 -e/johndoe@gmail.com`
@@ -693,14 +735,15 @@ Action | Manager Only? (Y/N) | Format, Examples
 **Edit Member Address by Index Number** | N | *Format:* <br> `edit -mem/ -i/<INDEX> -a/<ADDRESS>` <br> *Example:* <br> `edit -mem/ -i/1 -a/33 Benoi Crescent, 629979, Singapore`
 **Add Transaction for Member** | N | *Format:* <br> `add -txn/ -id/<MEMBER_ID> -b/<BILLING_AMOUNT>` <br> *Example:* <br> `add -txn/ -b/200.00 -id/00001`
 **Delete Transaction for Member** | Y | *Format:* <br> `del -txn/ -id/<MEMBER_ID + TRANSACTION_ID>` <br> *Example:* <br> `del -txn/ -id/00001000001`
-**Edit Transaction** | N | *Format:* <br> `edit -txn/ -id/ <MEMBER_ID + TRANSACTION_ID> -b/<BILLING_AMOUNT>` <br> *Example:* <br> `edit -txn/ -id/ 00001000002 -b/10.00`
-**Add Reservation** | N | *Format:* <br> `add -rs/ -dt/ <DATE_TIME yyyy-MM-dd HH:mm> -rm/ <REMARK> -id/ <MEMBER_ID>` <br> *Example:* <br> `add -rs/ -dt/ 2021-01-02 00:00 -rm/ 2 people -id/ 00001`
-**Delete Reservation** | Y | *Format:* <br> `del -rs/ -id/ <MEMBER_ID + RESERVATION_ID>` <br> *Example:* <br> `del -rs/ -id/ 00001000001`
+**Edit Transaction** | N | *Format:* <br> `edit -txn/ -id/<MEMBER_ID + TRANSACTION_ID> -b/<BILLING_AMOUNT>` <br> *Example:* <br> `edit -txn/ -id/00001000002 -b/10.00`
+**Add Reservation** | N | *Format:* <br> `add -rs/ -dt/<DATE_TIME yyyy-MM-dd HH:mm> -rm/<REMARK> -id/<MEMBER_ID>` <br> *Example:* <br> `add -rs/ -dt/2021-01-02 00:00 -rm/2 people -id/00001`
+**Delete Reservation** | Y | *Format:* <br> `del -rs/ -id/<MEMBER_ID + RESERVATION_ID>` <br> *Example:* <br> `del -rs/ -id/00001000001`
 **Edit Reservation** | N | *Format:* <br> `edit -rs/ -id/<MEMBER_ID + RESERVATION_ID> [-dt/<DATE_TIME>][-rm/<REMARK>]` <br> *Example:* <br> `edit -rs/ -id/00001000001 -dt/2021-12-01 13:00 -rm/3 people`
 **Sort Members by Credit in Ascending Order** | N | *Format:* <br> `sort -mem/ -c/ -a/` <br> *Example:* <br> `sort -mem/ -c/ -a/`
 **Sort Members by Credit in Descending Order** | N | *Format:* <br> `sort -mem/ -c/ -d/` <br> *Example:* <br> `sort -mem/ -c/ -d/`
 **Redeem Point from Member by Member Id** | N | *Format:* <br> `redeem -rd/<POINT> -id/<MEMBER_ID>` <br> *Example:* <br> `redeem -rd/100 -id/00001`
 **Redeem Point from Member by Member Index** | N | *Format:* <br> `redeem -rd/<point> -i/<INDEX>` <br> *Example:* <br> `redeem -rd/100 -i/1`
 **Summary** | Y | *Format:* <br> `summary` <br> *Example:* <br> `summary`
-**Clear ezFoodie Data** | Y | `clear` <br> *Example:* <br> `clear`
-
+**Clear ezFoodie Data** | Y | *Format:* <br> `clear` <br> *Example:* <br> `clear`
+**Retrieve command** | N | *Example:* <br> Press ⬆️  and ⬇️
+**Exiting Summary, Help and Show popup window** | Summary: Y <br> Help/View: N | *Example:* <br> Press keyboard `ESC` button
