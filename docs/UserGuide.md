@@ -108,15 +108,15 @@ Continue reading to explore the wonders of ezFoodie and enhance the way you mana
 * **Credit:**
    * *Credit refers to the overall accumulated transaction billing of a member, 
    starting from his registration date.*
-   * *Credit depends on amounts of billing in <a href="#12_1">add transaction</a>, <a href="#13_1">delete transaction</a>, and <a href="#14_1">edit transaction</a>*.
+   * *Credit depends on amounts of billing in [add transaction](#12), [delete transaction](#13), and [edit transaction](#14)*.
    * *Credit amount is range from `0` to `99999999`.*
    
 * **Point:**
    * *The point accumulation is similar to credit.*
    * *However, point can be redeemed as amounts of cash deduction to a member, and point will be deducted
    accordingly with redemption.*
-   * *In <a href="#13_1">delete transaction</a>, the point will not be affected and keep the same.*
-   * *In <a href="#14_1">edit transaction</a>, the point will be increased when billing amount is greater than the billing amount 
+   * *In [delete transaction](#13), the point will not be affected and keep the same.*
+   * *In [edit transaction](#14), the point will be increased when billing amount is greater than the billing amount 
    added in last time. on the contrary the point will not be affected and keep the same when billing amount is lesser
    than the billing amount added in last time.*
    * *Point amount is range from `0` to `99999999`.*
@@ -470,7 +470,9 @@ Format: `edit -mem/ -i/<INDEX> -a/<ADDRESS>`
 
 Example: `edit -mem/ -i/1 -a/33 Benoi Crescent, 629979, Singapore`
 
-### <label id="12_1">12. Adding transaction for members :</label> `add -txn/`
+<label id="12"></label>
+
+### 12. Adding transaction for members : `add -txn/`
 
 Adds transaction amount corresponding to member id.
 
@@ -486,7 +488,9 @@ Example: `add -txn/ -b/200.00 -id/00001`
    * The maximum amount of transactions is `999999`.
 </div>
 
-### 13.  <label id="13_1">Deleting transaction for members:</label> `del -txn/`
+<label id="13"></label> 
+
+### 13.  Deleting transaction for members:`del -txn/`
 
 Deletes a transaction.
 
@@ -503,7 +507,9 @@ Example: `del -txn/ -id/00001000001`
    * The Point will not be affected and keep the same.
 </div>
 
-### 14. <label id="14_1">Editing transaction of a member:</label> `edit -txn/`
+<label id="14"></label>
+
+### 14. Editing transaction of a member: `edit -txn/`
 
 Edits a member's transaction.
 
@@ -656,6 +662,7 @@ Example: press keyboard button ⬆️ and ⬇️
 </div>
 
 <label id="23"></label>
+
 ### 23. Saving the data
 
 ezFoodie data are saved in a JSON file in hard disk `[JAR file location]/data/ezfoodie.json` automatically after any command that changes the data. There is no need to save manually.
