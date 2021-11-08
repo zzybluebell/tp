@@ -19,6 +19,10 @@ import seedu.address.model.member.exceptions.DuplicateMemberException;
 import seedu.address.model.member.exceptions.MemberNotFoundException;
 import seedu.address.testutil.MemberBuilder;
 
+/**
+ * Tests the functionalities of
+ * {@code UniqueMemberList}.
+ */
 public class UniqueMemberListTest {
 
     private final UniqueMemberList uniqueMemberList = new UniqueMemberList();

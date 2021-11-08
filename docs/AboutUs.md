@@ -43,7 +43,7 @@ You can reach us via email, as indicated below.
 [[portfolio@zzybluebell](team/zzybluebell.md)]
 
 * Role: Developer
-* Responsibilities: Testing
+* Responsibilities: Integration, Testing and Documents
 
 ---
 
