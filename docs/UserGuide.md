@@ -126,7 +126,7 @@ Continue reading to explore the wonders of ezFoodie and enhance the way you mana
    * Comming reservation information.
    * The maximum amount of reservations is `999999`.
 
-**5. Type the command in the command box and press Enter to execute it. Some example commands you can try here:**
+**6. Type the command in the command box and press Enter to execute it. Some example commands you can try here:**
 
    * `help:` Opens the help window and view the related help description.
 
@@ -161,9 +161,9 @@ Continue reading to explore the wonders of ezFoodie and enhance the way you mana
 
    * `exit:` Exits the program.
 
-**6. Please refer to the [Features](#features) below for details of each command.**
+**7. Please refer to the [Features](#features) below for details of each command.**
 
-**7. Other components and constraints:**
+**8. Other components and constraints:**
     
    * **Transaction ID:**
       * *It only has 6 digits and starts from `000001` to `999999`.*
