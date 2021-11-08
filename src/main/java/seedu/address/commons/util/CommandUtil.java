@@ -48,4 +48,11 @@ public class CommandUtil {
             return "";
         }
     }
+
+    /**
+     * Gets size of commands that stored in storage.
+     */
+    public static int getSize() {
+        return commands.size();
+    }
 }
