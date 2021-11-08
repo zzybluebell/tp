@@ -48,7 +48,7 @@ Given below are my contributions to the project.
 <bc>
 
   * **New Feature**: Redeem points [\#103](https://github.com/AY2122S1-CS2103T-F12-4/tp/pull/103)
-  * **What it does**: Redeemed as amounts of cash deduction to a member.
+  * **What it does**: Redeemed as discounts to a member.
   * **Justification**: 
     * The feature is essentials, and the priority is medium.
     * The point accumulation is similar to credit.
@@ -75,8 +75,8 @@ Given below are my contributions to the project.
         * Unified terminology.
         * etc.
 
-    * Developer Guide: 
-        *Update `add member`, `redeem`， and etc.
+    * Developer Guide: [\#211](https://github.com/AY2122S1-CS2103T-F12-4/tp/pull/211)
+        *Update `add member`, `Redeem Point` features and etc.
 
     * About Us: [\#206](https://github.com/AY2122S1-CS2103T-F12-4/tp/pull/206)
         * update essential self-information.

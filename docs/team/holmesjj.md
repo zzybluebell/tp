@@ -57,8 +57,16 @@ Given below are my contributions to the project.
   * **Highlights**: This enhancement requires understanding on how `javafx.collections` package works. The implementation was challenging as it requires combining and synchronizing the object of the `FilteredList` and the `SortedList` so that data will not be messed up when the `find` or `sort` feature is called.
 
 * **New Feature**: Added the ability to `retrieve` history commands [\#113](https://github.com/AY2122S1-CS2103T-F12-4/tp/pull/113)
-  * **What it does**: allows the staff and manager to `retrieve` previous commands using up/down keys.
+  * **What it does**: allows the staff and manager to `retrieve` previous commands using `up`/`down` keys.
   * **Justification**: This feature improves the product significantly because the staff and manager can execute the similar commands much faster without retyping.
+
+* **New Feature**: Added the ability to escape `summary`, `show` and `help` window [\#194](https://github.com/AY2122S1-CS2103T-F12-4/tp/pull/194)
+  * **What it does**: allows the staff and manager to escape `summary`, `show` or `help` window using `esc` key.
+  * **Justification**: This feature is helpful to improve the use efficiency because the staff and manager do not need to use the mouse to exit the window.
+
+* **New Feature**: Updated a neater and better UI for the `show` feature [\#194](https://github.com/AY2122S1-CS2103T-F12-4/tp/pull/194)
+  * **What it does**: allows the staff and manager to view the member details more clearly.
+  * **Justification**: This feature improves the product significantly because the manager will be very easy to view the member details, such as transactions and reservations records.
 
 * **Enhancements to existing models**:
   * Updated the `AddressBook` to the `ezFoodie` [\#45](https://github.com/AY2122S1-CS2103T-F12-4/tp/pull/45)
@@ -95,6 +103,11 @@ Given below are my contributions to the project.
     [\#24](https://github.com/AY2122S1-CS2103T-F12-4/tp/pull/24)
     * Added documentation for the features `find` and `sort` 
     [\#89](https://github.com/AY2122S1-CS2103T-F12-4/tp/pull/89)
+    * Updated all diagrams and descriptions including sequence diagram, class diagram, activity diagram, etc.
+    * Updated `User stories` and `Use cases`
+    [\#204](https://github.com/AY2122S1-CS2103T-F12-4/tp/pull/204)
+    * Added `Appendix 3: Effort` and `Appendix 4: Limitations and Future improvements`
+    [\#207](https://github.com/AY2122S1-CS2103T-F12-4/tp/pull/207)
   * About Us: 
     * Updated formats [\#43](https://github.com/AY2122S1-CS2103T-F12-4/tp/pull/43)
 
@@ -106,7 +119,8 @@ Given below are my contributions to the project.
   [\#69](https://github.com/AY2122S1-CS2103T-F12-4/tp/pull/69), 
   [\#71](https://github.com/AY2122S1-CS2103T-F12-4/tp/pull/71), 
   [\#102](https://github.com/AY2122S1-CS2103T-F12-4/tp/pull/102), 
-  [\#103](https://github.com/AY2122S1-CS2103T-F12-4/tp/pull/103)
+  [\#103](https://github.com/AY2122S1-CS2103T-F12-4/tp/pull/103), 
+  [\#120](https://github.com/AY2122S1-CS2103T-F12-4/tp/pull/200)
   * Contributed to forum discussions: 
   [\#12](https://github.com/nus-cs2103-AY2122S1/forum/issues/12), 
   [\#13](https://github.com/nus-cs2103-AY2122S1/forum/issues/13#issuecomment-899985208), 
