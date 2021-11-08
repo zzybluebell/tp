@@ -9,6 +9,10 @@ import org.junit.jupiter.api.Test;
 
 import seedu.address.logic.commands.ListCommand;
 
+/**
+ * Contains integration tests (interaction with the Model) and unit tests for
+ * {@code ListCommandParser}.
+ */
 public class ListCommandParserTest {
 
     private ListCommandParser parser = new ListCommandParser();

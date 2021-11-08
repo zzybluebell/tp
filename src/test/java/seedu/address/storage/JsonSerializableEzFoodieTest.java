@@ -13,6 +13,10 @@ import seedu.address.commons.util.JsonUtil;
 import seedu.address.model.EzFoodie;
 import seedu.address.testutil.TypicalMembers;
 
+/**
+ * Tests the functionalities of
+ * {@code JsonSerializableEzFoodie}.
+ */
 public class JsonSerializableEzFoodieTest {
 
     private static final Path TEST_DATA_FOLDER = Paths.get("src", "test", "data", "JsonSerializableEzFoodieTest");

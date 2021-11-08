@@ -15,6 +15,9 @@ import org.junit.jupiter.api.Test;
 import seedu.address.logic.commands.EditMemberCommand.EditMemberDescriptor;
 import seedu.address.testutil.EditMemberDescriptorBuilder;
 
+/**
+ * Tests the functionalities of EditMemberDescriptor.
+ */
 public class EditMemberDescriptorTest {
 
     @Test

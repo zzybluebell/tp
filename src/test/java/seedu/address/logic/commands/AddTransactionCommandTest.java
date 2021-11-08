@@ -29,6 +29,10 @@ import seedu.address.model.transaction.Transaction;
 import seedu.address.testutil.MemberBuilder;
 import seedu.address.testutil.TransactionBuilder;
 
+/**
+ * Contains integration tests (interaction with the Model) and unit tests for
+ * {@code AddTransactionCommand}.
+ */
 public class AddTransactionCommandTest {
 
     private Model model = new ModelManager(new Account(), getTypicalEzFoodie(), new UserPrefs());
