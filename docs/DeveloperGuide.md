@@ -47,7 +47,7 @@ Refer to the guide [_Setting up and getting started_](SettingUp.md).
 
 ### Architecture
 
-<img src="images/ArchitectureDiagram.png" width="280" />
+<img src="images/ArchitectureDiagram.png" width="350" />
 
 The ***Architecture Diagram*** given above explains the high-level design of the App.
 
@@ -73,7 +73,7 @@ The rest of the App consists of four components.
 
 The *Sequence Diagram* below shows how the components interact with each other for the scenario where the user issues the command `del -mem/ -i/1`.
 
-<img src="images/ArchitectureSequenceDiagram.png" width="574" />
+![Architecture Sequence Diagram](images/ArchitectureSequenceDiagram.png)
 
 Each of the four main components (also shown in the diagram above),
 
@@ -94,19 +94,19 @@ The **API** of this component is specified in [`Ui.java`](https://github.com/AY2
 
 Structure of the UI Component MainWindow
 
-<img height="300" alt="Structure of the UI Component MemberListPanel" src="images/UiClassDiagramMemberListPanel.png">
+<img width="350" alt="Structure of the UI Component MemberListPanel" src="images/UiClassDiagramMemberListPanel.png">
 
 Structure of the UI Component MemberListPanel
 
-<img height="400" alt="Structure of the UI Component MemberViewWindow" src="images/UiClassDiagramMemberViewWindow.png">
+<img width="450" alt="Structure of the UI Component MemberViewWindow" src="images/UiClassDiagramMemberViewWindow.png">
 
 Structure of the UI Component MemberViewWindow
 
-<img height="300" alt="Structure of the UI Component SummaryWindow" src="images/UiClassDiagramSummaryWindow.png">
+<img width="400" alt="Structure of the UI Component SummaryWindow" src="images/UiClassDiagramSummaryWindow.png">
 
 Structure of the UI Component SummaryWindow
 
-<img height="300" alt="Structure of the UI Component HelpWindow" src="images/UiClassDiagramHelpWindow.png">
+<img width="150" alt="Structure of the UI Component HelpWindow" src="images/UiClassDiagramHelpWindow.png">
 
 Structure of the UI Component HelpWindow
 
@@ -127,7 +127,7 @@ The `UI` component,
 
 Here's a (partial) class diagram of the `Logic` component:
 
-<img src="images/LogicClassDiagram.png" width="550"/>
+<img src="images/LogicClassDiagram.png" width="800"/>
 
 How the `Logic` component works:
 1. When `Logic` is called upon to execute a command, it uses the `EzFoodieParser` class to parse the user command.
@@ -161,13 +161,15 @@ How the parsing works:
 * Case2: `find`, `show`, `list`, `sort`, `login` and `setAccount` commands
   * When called upon to parse a user command, the `EzFoodieParser` class creates a `UVWCommandParser` (e.g., `FindCommandParser`) which uses the other classes shown above to parse the user command and create a `UVWCommand` object (e.g., `FindCommand`) which the `EzFoodieParser` returns back as a `Command` object.
 
+<br>
+
 * Case3: `clear`, `exit`, `logout`, `help` and `summary` commands
   * When called upon to parse a user command, the `EzFoodieParser` class creates a `UVWCommand` object directly (e.g., `ClearCommand`) which the `EzFoodieParser` returns back as a `Command` object.
 
 ### Model component
 **API** : [`Model.java`](https://github.com/AY2122S1-CS2103T-F12-4/tp/tree/master/src/main/java/seedu/address/model/Model.java)
 
-<img src="images/ModelClassDiagram.png" width="450" />
+![Model Class Diagram](images/ModelClassDiagram.png)
 
 The `Model` component,
 
@@ -178,7 +180,7 @@ The `Model` component,
 
 <div markdown="span" class="alert alert-info">:information_source: **Note:** An alternative (arguably, a more OOP) model is given below. It has a `Reservation` list in the `EzFoodie`, which `Member` references. This allows `EzFoodie` to only require one `Reservation` object per unique reservation, instead of each `Member` needing their own `Reservation` objects.<br>
 
-<img src="images/BetterModelClassDiagram.png" width="450" />
+![Better ModelClass Diagram](images/BetterModelClassDiagram.png)
 
 </div>
 
@@ -186,7 +188,7 @@ The `Model` component,
 
 **API** : [`Storage.java`](https://github.com/AY2122S1-CS2103T-F12-4/tp/tree/master/src/main/java/seedu/address/storage/Storage.java)
 
-<img src="images/StorageClassDiagram.png" width="550" />
+<img src="images/StorageClassDiagram.png" width="800" />
 
 The `Storage` component,
 * can save both ezFoodie data and user preference data in json format, and read them back into corresponding objects.
@@ -247,7 +249,7 @@ The above process is shown in the following sequence diagram:
 
 The following activity diagram summarizes what happens when a user executes a new command to find the members by keywords:
 
-![FindActivityDiagram](images/FindActivityDiagram.png)
+<img src="images/FindActivityDiagram.png" width="400" />
 
 **Activity diagram showcasing the find command execution flow**
 
@@ -307,7 +309,7 @@ The above process is shown in the following sequence diagram:
 
 The following activity diagram summarizes what happens when a user executes a new command to sort the members by their credits:
 
-![SortActivityDiagram](images/SortActivityDiagram.png)
+<img src="images/SortActivityDiagram.png" width="400" />
 
 **Activity diagram showcasing the sort command execution flow**
 
@@ -322,6 +324,136 @@ The following activity diagram summarizes what happens when a user executes a ne
 * **Alternative 2:** Abstract `SortCommand`, create different classes according to different types of fields to inherit `SortCommand`, such as `SortPointCommand`, `SortCreditCommand`, etc.
   * Pros: Sufficient use of object-oriented features (inheritance and polymorphic).
   * Cons: Have to make more changes to the source code, it may cause potential bugs.
+
+
+### Add Transaction feature
+
+`[written by: Yang Yuzhao]`
+
+#### Implementation
+
+Given below is an example usage scenario and how adding transaction behaves at each step.
+
+1. The user executes `add -txn/ -b/23.00 -id/00001` command to add a transaction of billing amount `23.00` to the member with member ID `00001` in ezFoodie.
+
+2. The command is handled by `LogicManager#execute(String)`,
+   which then calls and passes this command to the `EzFoodieParser#parseCommand(String)` method.
+
+3. The `EzFoodieParser` detects the command word `add` in the string and extracts the argument string `-txn/ -b/23.00 -id/00001`.
+
+4. The `EzFoodieParser` creates a new `AddCommandPrefixParser` instance to parse the argument string
+   according to the format specified for `AddCommand`.
+
+5. The `AddCommandPrefixParser` detects the prefix word `-txn/` by the method `AddCommandPrefixParser#parse(arguments)`
+   called and creates a new `AddTransactionCommandParser` instance to parse the rest of the argument string.
+
+6. The `AddTransactionCommandParser`prefixes `-b/` and `-id/`
+   by the method `AddTransactionCommandParser#parser(arguments)` called
+   nd parse them into `billing` and `memberId` through `ParserUtil#parseBilling` and `ParserUtil#parseMemberId`.
+
+7. The `AddTransactionCommandParser#parser(arguments)` calls `ParserUtil#parseTimestamp`
+   to create a new `TimeStamp` instance `timestamp` and
+   `ParserUtil#parseTransactionId` to create a new `Id` instance `transactionId`,
+   and creates a new `Transaction` object `transaction` with `billing`, `timestamp` and `transactionId`.
+
+8. The `AddTransactionCommandParser#parser(arguments)` creates a new `AddTransactionCommand` instance
+   with `transaction` and `memberId` and returns it to `ezFoodieParser` which in turn returns it to `LogicManager`.
+
+9. The `LogicManager` calls the `AddTransactionCommand#execute(Model)` method.
+
+10. The `AddTransactionCommand` calls `Model#getUpdatedMemberList()` and
+    searches the list to find the member with the respective `memberID` to obtain `memberToEdit`.
+
+11. The `AddTransactionCommand` calls `AddTransactionCommand#createEditedMember(memberToedit, transaction)`
+    to obtain `editedMember`.
+
+12. The `AddTransactionCommand` calls `Model#setMember(memberToEdit, editedMember)`
+    to replace the old member with new transaction details.
+
+13. The `AddTransactionCommand` calls `Model#updateFilteredMemberList(PREDICATE_SHOW_ALL_MEMBERS)` to update the edited
+    member in the member list.
+
+14. The application lists the updated member list.
+
+15. Lastly, the `AddTransactionCommand` creates a new instance of `CommandResult` with a success message,
+    and returns it to `LogicManager`.
+
+The above process is shown in the following sequence diagram:
+
+![AddTransactionSequenceDiagram](images/AddTransactionSequenceDiagram.png)
+
+### Show Member Profile feature
+
+`[written by: Yang Yuzhao]`
+
+#### Implementation
+
+Given below is an example usage scenario and how showing member profile behaves at each step.
+
+1. The user executes `show -mem/ -id/00001` command to show the details of member with member ID `00001` in ezFoodie
+   in a separate window.
+
+2. The command is handled by `LogicManager#execute(String)`,
+   which then calls and passes this command to the `EzFoodieParser#parseCommand(String)` method.
+
+3. The `EzFoodieParser` detects the command word `show` in the string and extracts the argument string `-mem -id/00001`.
+
+4. The `EzFoodieParser` creates a new `ViewCommandParser` instance to parse the argument string
+   according to the format specified for `ViewCommand`.
+
+5. `ViewCommandParser` calls `ViewCommandParser#parse()` to parse the arguments into a new `Id` instance `id`
+   using `ParserUtil#parseMemberId(String)`.
+
+6. A new String array `idKeywords` is created by `value` attribute of `id`.
+
+7. `ViewCommandParser` creates a new `ViewCommand` instance with
+   a new `IdContainsKeywordsPredicate` created using `idKeywords` and
+   returns it to `ezFoodieParser` which in turn returns it to `LogicManager`.
+
+8. The `LogicManager` calls the `ViewCommand#execute(Model)` method.
+
+9. The `ViewCommand` calls `Model#updateFilteredMemberListForView(IdContainsKeywordsPredicate)`
+   to update the `filteredMembersForView` in `ModelManager` with filtered member to show.
+
+10. The `ViewCommand` creates a new instance of `CommandResult` with a success message
+    and a true value for `showMemberView`, and returns it to `LogicManager`.
+
+11. The application opens a separate `MemberViewWindow` with this member's profile.
+
+
+### Summary feature
+
+`[written by: Yang Yuzhao]`
+
+#### Implementation
+
+Given below is an example usage scenario and how showing summary behaves at each step.
+
+1. The user executes `summary` command to show statistics about `Member` existing in ezFoodie
+   as well as time-series statistics of `Transaction` data.
+
+2. The command is handled by `LogicManager#execute(String)`,
+   which then calls and passes this command to the `EzFoodieParser#parseCommand(String)` method.
+
+3. The `EzFoodieParser` detects the command word `summary` in the string.
+
+4. `LoginStatus.getLoginStatus()` is called to check whether the user has logged in as a manager.
+   If not, a new `PermissionException` instance will be thrown with `MESSAGE_PERMISSION_DENIED`.
+
+5. If the user has logged in as a manager, `EzFoodieParser` creates a new `SummaryCommand` instance
+   and returns it to `ezFoodieParser` which in turn returns it to `LogicManager`.
+
+6. The `LogicManager` calls the `SummaryCommand#execute(Model)` method.
+
+7. The `ViewCommand` creates a new instance of `CommandResult` with a success message
+   and a true value for `showSummary`, and returns it to `LogicManager`.
+
+8. The application opens a separate `SummaryWindow` with statistics to show.
+
+The above process is shown in the following sequence diagram:
+
+![SummarySequenceDiagram](images/SummarySequenceDiagram.png)
+
 
 ### Add member feature
 
@@ -520,15 +652,15 @@ Given below is an example usage scenario and how the undo/redo mechanism behaves
 
 Step 1. The user launches the application for the first time. The `VersionedEzFoodie` will be initialized with the initial ezFoodie state, and the `currentStatePointer` pointing to that single ezFoodie state.
 
-![UndoRedoState0](images/UndoRedoState0.png)
+<img src="images/UndoRedoState0.png" width="400" />
 
 Step 2. The user executes `del -mem/ -i/5` command to delete the 5th Member in the ezFoodie. The `delete` command calls `Model#commitEzFoodie()`, causing the modified state of the ezfoodie after the `del -mem/ -i/5` command executes to be saved in the `ezFoodieStateList`, and the `currentStatePointer` is shifted to the newly inserted ezFoodie state.
 
-![UndoRedoState1](images/UndoRedoState1.png)
+<img src="images/UndoRedoState1.png" width="400" />
 
 Step 3. The user executes `add -mem/ -n/John Doe …​` to add a new member. The `add` command also calls `Model#commitEzFoodie()`, causing another modified ezFoodie state to be saved into the `ezFoodieStateList`.
 
-![UndoRedoState2](images/UndoRedoState2.png)
+<img src="images/UndoRedoState2.png" width="400" />
 
 <div markdown="span" class="alert alert-info">:information_source: **Note:** If a command fails its execution, it will not call `Model#commitEzFoodie()`, so the ezFoodie state will not be saved into the `ezFoodieStateList`.
 
@@ -536,7 +668,7 @@ Step 3. The user executes `add -mem/ -n/John Doe …​` to add a new member. Th
 
 Step 4. The user now decides that adding the member was a mistake, and decides to undo that action by executing the `undo` command. The `undo` command will call `Model#undoEzFoodie()`, which will shift the `currentStatePointer` once to the left, pointing it to the previous ezFoodie state, and restores the ezFoodie to that state.
 
-![UndoRedoState3](images/UndoRedoState3.png)
+<img src="images/UndoRedoState3.png" width="400" />
 
 <div markdown="span" class="alert alert-info">:information_source: **Note:** If the `currentStatePointer` is at index 0, pointing to the initial EzFoodie state, then there are no previous EzFoodie states to restore. The `undo` command uses `Model#canUndoEzFoodie()` to check if this is the case. If so, it will return an error to the user rather than attempting to perform the undo.
 
@@ -558,11 +690,11 @@ The `redo` command does the opposite — it calls `Model#redoEzFoodie()`, wh
 
 Step 5. The user then decides to execute the command `list -mem/`. Commands that do not modify the ezFoodie, such as `list -mem/`, will usually not call `Model#commitEzFoodie()`, `Model#undoEzFoodie()` or `Model#redoEzFoodie()`. Thus, the `ezFoodieStateList` remains unchanged.
 
-![UndoRedoState4](images/UndoRedoState4.png)
+<img src="images/UndoRedoState4.png" width="400" />
 
 Step 6. The user executes `clear`, which calls `Model#commitEzFoodie()`. Since the `currentStatePointer` is not pointing at the end of the `ezFoodieStateList`, all ezFoodie states after the `currentStatePointer` will be purged. Reason: It no longer makes sense to redo the `add -mem/ -n/John Doe …​` command. This is the behavior that most modern desktop applications follow.
 
-![UndoRedoState5](images/UndoRedoState5.png)
+<img src="images/UndoRedoState5.png" width="400" />
 
 The following activity diagram summarizes what happens when a user executes a new command:
 

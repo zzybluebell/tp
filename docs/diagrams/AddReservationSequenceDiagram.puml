@@ -14,6 +14,7 @@ box Model MODEL_COLOR_T1
 participant "model:Model" as Model MODEL_COLOR
 participant "EzFoodie" as EzFoodie MODEL_COLOR
 participant "UniqueMemberList" as UniqueMemberList MODEL_COLOR
+participant "Member" as Member MODEL_COLOR
 participant "FilteredList" as FilteredList MODEL_COLOR
 end box
 
@@ -78,6 +79,52 @@ activate AddReservationCommand
 
 AddReservationCommand -> Model : getUpdatedMemberList()
 activate Model
+
+AddReservationCommand -> Member : getReservations()
+activate Member
+
+Member --> AddReservationCommand
+
+AddReservationCommand -> Member : getName()
+
+Member --> AddReservationCommand
+
+AddReservationCommand -> Member : getPhone()
+
+Member --> AddReservationCommand
+
+AddReservationCommand -> Member : getEmail()
+
+Member --> AddReservationCommand
+
+AddReservationCommand -> Member : getAddress()
+
+Member --> AddReservationCommand
+
+AddReservationCommand -> Member : getTimeStamp()
+
+Member --> AddReservationCommand
+
+AddReservationCommand -> Member : getCredit()
+
+Member --> AddReservationCommand
+
+AddReservationCommand -> Member : getPoints()
+
+Member --> AddReservationCommand
+
+AddReservationCommand -> Member : getTransactions()
+
+Member --> AddReservationCommand
+
+AddReservationCommand -> Member : getReservations()
+
+Member --> AddReservationCommand
+deactivate Member
+
+AddReservationCommand -> AddReservationCommand : createEditedMember(memberToEdit, reservationToAdd)
+
+AddReservationCommand -> Model : getReservationsList()
 
 Model --> AddReservationCommand
 

@@ -9,10 +9,8 @@ import static seedu.address.logic.parser.CliSyntax.PREFIX_REDEEM;
 import java.util.List;
 
 import seedu.address.commons.core.index.Index;
-import seedu.address.commons.status.ExecutionStatus;
 import seedu.address.logic.commands.RedeemCommand;
 import seedu.address.logic.parser.exceptions.ParseException;
-import seedu.address.model.Model;
 import seedu.address.model.member.Id;
 import seedu.address.model.member.Point;
 
@@ -20,17 +18,6 @@ import seedu.address.model.member.Point;
  * Parses input arguments and creates a new RedeemPoint object.
  */
 public class RedeemCommandParser implements Parser<RedeemCommand> {
-
-    private final Model model;
-    private final ExecutionStatus executionStatus;
-
-    /**
-     * Constructs a {@code RedeemCommandParser} with the given {@code Model} and {@code ExecutionStatus}.
-     */
-    public RedeemCommandParser(Model model, ExecutionStatus executionStatus) {
-        this.model = model;
-        this.executionStatus = executionStatus;
-    }
 
     /**
      * Parses the given {@code String} of arguments in the context of the RedeemCommand
@@ -58,7 +45,12 @@ public class RedeemCommandParser implements Parser<RedeemCommand> {
             return new RedeemCommand(pointToRedeemList, id);
         } else if (argMultimap.getValue(PREFIX_INDEX).isPresent()) {
             List<Point> pointToRedeemList = ParserUtil.parsePoints(argMultimap.getAllValues(PREFIX_REDEEM));
-            Index index = ParserUtil.parseIndex(argMultimap.getValue(PREFIX_INDEX).get());
+            Index index;
+            try {
+                index = ParserUtil.parseIndex(argMultimap.getValue(PREFIX_INDEX).get());
+            } catch (ParseException pe) {
+                throw new ParseException(String.format(pe.getMessage(), RedeemCommand.MESSAGE_USAGE), pe);
+            }
             return new RedeemCommand(pointToRedeemList, index);
         } else {
             throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, RedeemCommand.MESSAGE_USAGE));
