@@ -16,11 +16,11 @@ Welcome to ezFoodie’s User Guide! 🤩
 
 Have you faced issues when managing the members of your restaurant? ezFoodie is here!
 
-ezFoodie is a desktop application that helps restaurants **keep track of their ever-growing list of members**. Restaurant managers and staffs can easily view and update member status (e.g. personal information, tier, reservation, transaction, etc.) to manage and analyze members.
+ezFoodie is a desktop application that helps restaurants **keep track of their ever-growing list of members**. Restaurant managers and staff can easily view and update member statuses (e.g. personal information, tier, reservation, transaction, etc.) to manage and analyze members.
 
 ezFoodie is simple and user-friendly. It is optimized for using via a **Command Line Interface (CLI)** while still enjoying the benefits of a Graphical User Interface (GUI). If you can type fast, ezFoodie can get your member management tasks done faster than traditional GUI applications.
 
-ezFooide is only the version for `English Language` based user. it is optimized for inputting via English-based CLI commands.
+ezFooide‘s current version is only optimized for `English Language` based user. all CLI commands are `English-based`. As of now ezFoodie does not support other languages.
 
 Continue reading to explore the wonders of ezFoodie and enhance the way you manage and analyze your restaurant's members 🤩
 
@@ -58,9 +58,9 @@ Continue reading to explore the wonders of ezFoodie and enhance the way you mana
 <br>
 
 **4. Launch the application.**
-* If faced any issues, go back the [step 1](#step1) check with java version.
 * Double-click the file to start the application in windows system.
-* In MacOS or Linux System, launch the termianl, go to the related directory and pin `jar -r ezfoodie.jar` command.
+* In MacOS or Linux System, launch the termianl, go to the directory you saved `efoodie.jar` in, and key in the `jar -r ezfoodie.jar` command.
+* If any issues faced, go back the [step 1](#step1) and check with java version.
 * The details for running jar  can follow [here](https://www.wikihow.com/Run-a-.Jar-Java-File).
 * The GUI similar to the one shown below should appear in a few seconds. The application comes preloaded with sample data to test its features.<br>
    
@@ -81,22 +81,22 @@ Continue reading to explore the wonders of ezFoodie and enhance the way you mana
 * **Tier:**
    * *Bronze, Silver, Gold, Platinum.*
    * *This is automatically calculated from a member's credit.*
-   * *Upgrade (e.g. Bronze -> Silver) is also automatically handled by ezFoodie.*
+   * *Upgrade of Tier (e.g. Bronze -> Silver) is also automatically handled by ezFoodie.*
    
 * **Member ID:**
-   * *It only has 5 digits and starts from `00001` to `99999`.*
+   * *Member ID has only 5 digits and starts from `00001` to `99999`.*
    * *Deleted Member's id will not be occupied when adding a new member.*
-   * *Member id will increase automatically when add a new member.*
+   * *Member id will increase automatically when a new member is added.*
    * *EzFoodie contains max `99999` members.*
    
 * **Phone number:**
    * *Phone number should only contain 8 digits, and it should start with 3, 6, 8 or 9.*
-   * *Phone and email are only verification method to check whether is same member.*
+   * *Members cannot share the same phone number or email. ezFoodie uses these fields to detect duplicate members.*
 
 * **Email:**
-   * *Email should be the format in `local-part@domain`.*
+   * *Email should be of the format in `local-part@domain`.*
    * *The `local-part` should only contain alphanumeric characters and
-   these special characters: `+ _ . - `, and the `local-part` may not start or end with 
+   these special characters: `+ _ . - `, the `local-part` may not start or end with 
    any special characters.*
    * *The `domain` name is made up of domain name separated by periods.*
    * *The `domain` name must:*
@@ -104,7 +104,7 @@ Continue reading to explore the wonders of ezFoodie and enhance the way you mana
       * *Have each domain label start and end with alphanumeric characters.*
       * *Have each domain label consist of alphanumeric characters, 
       separated only by hyphens, if any.*
-   *  *Phone and email are only verficion methood to check whether is same member.*
+   *  *Members cannot share the same phone number or email. ezFoodie uses these fields to detect duplicate members.*
    
 * **Credit:**
    * *Credit refers to the overall accumulated transaction billing of a member, 
@@ -114,7 +114,7 @@ Continue reading to explore the wonders of ezFoodie and enhance the way you mana
    
 * **Point:**
    * *The point accumulation is similar to credit.*
-   * *However, point can be redeemed as amounts of cash deduction to a member, and point will be deducted
+   * *However, point can be redeemed as discounts to a member, and point will be deducted
    accordingly with redemption.*
    * *In [delete transaction](#13), the point will not be affected and keep the same.*
    * *In [edit transaction](#14), the point will be increased when billing amount is greater than the billing amount 
@@ -123,8 +123,9 @@ Continue reading to explore the wonders of ezFoodie and enhance the way you mana
    * *Point amount is range from `0` to `99999999`.*
    
 * **Researvation information:**
-   * Comming reservation information.
-   * The maximum amount of reservations is `999999`.
+   * Seats can be reserved using the [add reservation](#15) feature.
+   * A reservation can be edited or deleted as well using the <a href="#17">edit reservation</a> and <a href="#16">delete reservation</a> features.
+   * The maximum amount of reservations is `999999`
 
 **6. Type the command in the command box and press Enter to execute it. Some example commands you can try here:**
 
