@@ -20,7 +20,7 @@ ezFoodie is a desktop application that helps restaurants **keep track of their e
 
 ezFoodie is simple and user-friendly. It is optimized for using via a **Command Line Interface (CLI)** while still enjoying the benefits of a Graphical User Interface (GUI). If you can type fast, ezFoodie can get your member management tasks done faster than traditional GUI applications.
 
-ezFooide‘s current version is only optimized for `English Language` based user. all CLI commands are `English-based`. As of now ezFoodie does not support other languages.
+ezFooide‘s current version is only optimized for `English Language` based user. All CLI commands are `English-based`. As of now ezFoodie does not support other languages.
 
 Continue reading to explore the wonders of ezFoodie and enhance the way you manage and analyze your restaurant's members 🤩
 
@@ -594,14 +594,14 @@ Format: `edit -rs/ -id/<MEMBER_ID + RESERVATION_ID> -dt/<DATE_TIME>`
 
 Example: `edit -rs/ -id/00001000001 -dt/2021-12-01 13:00`
 
-#### 17.2. Editing the remark in reservation: `edit -rs/ -rm`
+#### 17.2. Editing the remark in reservation: `edit -rs/ -rm/`
 Edits a member's reservation details in remark.
 
 Format: `edit -rs/ -id/<MEMBER_ID + RESERVATION_ID> -rm/<REMARK>`
 
 Example: `edit -rs/ -id/00001000001 -rm/3 people`
 
-#### 17.3. Editing the date time and remark in reservation: `edit -rs/ -dt -rm`
+#### 17.3. Editing the date time and remark in reservation: `edit -rs/ -dt/ -rm/`
 Edits a member's reservation details in date time.
 
 Format: `edit -rs/ -id/<MEMBER_ID + RESERVATION_ID> [-dt/<DATE_TIME>][-rm/<REMARK>]`
