@@ -46,7 +46,7 @@ public class DeleteTransactionCommand extends DeleteCommand {
             + PREFIX_TRANSACTION + " " + PREFIX_ID + "member ID + transaction ID\n"
             + "Example:\n"
             + "Delete by member ID and transaction ID: "
-            + COMMAND_WORD + " " + PREFIX_TRANSACTION + " " + PREFIX_ID + "10001100001";
+            + COMMAND_WORD + " " + PREFIX_TRANSACTION + " " + PREFIX_ID + "00001000001";
 
     /**
      * Stands for succeed message of delete transaction.

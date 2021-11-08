@@ -27,7 +27,7 @@ public class ListCommand extends Command {
     /**
      * Stands for the message success listed.
      */
-    public static final String MESSAGE_SUCCESS = "Listed all members";
+    public static final String MESSAGE_SUCCESS = "Listed all members.";
 
     /**
      * Overrides and Executes the model.

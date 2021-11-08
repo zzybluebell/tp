@@ -37,13 +37,13 @@ public class AddTransactionCommand extends AddCommand {
     public static final String MESSAGE_USAGE = COMMAND_WORD + ": Adds a transaction to each member in the ezFoodie.\n"
             + "Parameters:\n"
             + PREFIX_TRANSACTION + " "
-            + PREFIX_BILLING + "BILLING (STRICTLY 2 DECIMAL PLACES) "
+            + PREFIX_BILLING + "BILLING_AMOUNT (STRICTLY 2 DECIMAL PLACES) "
             + PREFIX_ID + "ID\n"
             + "Example:\n"
             + COMMAND_WORD + " "
             + PREFIX_TRANSACTION + " "
             + PREFIX_BILLING + "23.00 "
-            + PREFIX_ID + "10001";
+            + PREFIX_ID + "00001";
 
     /**
      * Stands for the success message of new transaction added.

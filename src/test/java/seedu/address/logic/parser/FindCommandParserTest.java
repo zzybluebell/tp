@@ -35,12 +35,12 @@ public class FindCommandParserTest {
     public void parse_validIdArgs_returnsFindCommand() {
         // no leading and trailing whitespaces
         FindCommand expectedFindCommand =
-                new FindCommand(new IdContainsKeywordsPredicate(Arrays.asList("10001", "10002")));
-        assertParseSuccess(parser, " " + PREFIX_MEMBER + " " + PREFIX_ID + " 10001 10002",
+                new FindCommand(new IdContainsKeywordsPredicate(Arrays.asList("00001", "00002")));
+        assertParseSuccess(parser, " " + PREFIX_MEMBER + " " + PREFIX_ID + " 00001 00002",
                 expectedFindCommand);
 
         // multiple whitespaces between keywords
-        assertParseSuccess(parser, " " + PREFIX_MEMBER + " " + PREFIX_ID + " \n 10001 \n \t 10002  \t",
+        assertParseSuccess(parser, " " + PREFIX_MEMBER + " " + PREFIX_ID + " \n 00001 \n \t 00002  \t",
                 expectedFindCommand);
     }
 
