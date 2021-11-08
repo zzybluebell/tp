@@ -26,16 +26,23 @@ Given below are my contributions to the project.
 
 * **New Feature**: Add Member [\#71](https://github.com/AY2122S1-CS2103T-F12-4/tp/pull/71)
   * **What it does**: allows the user (manager or staff) to `add` members in the ezFoodie.
-  * **Justification**: The feature is essentials, and the priority is high. The staffs and manager should add members based on name, phone, email, address, tags and related information. 
-  It is necessary to add member by different `Phone` and `Email` of each member. This is only significant way to differentiate the different members.
-  * **Highlights**:  This enhancement requires understanding on how polymorphism works and implement it so that the application will use Object-oriented programming (OOP) sufficiently. 
-  The implementation was challenging as the `AddCommand` need to be abstracted. Similarly, the `AddCommandParser` also need to be abstracted, and inherit it with `AddMemberCommandParser`.
+  * **Justification**: 
+    * The feature is essentials, and the priority is high. 
+    * The staffs and manager should add members based on name, phone, email, address, tags and related information. 
+    * It is necessary to add member by different `Phone` and `Email` of each member. This is only significant way to differentiate the different members.
+  * **Highlights**:  
+    * This enhancement requires understanding on how polymorphism works and implement it so that the application will use Object-oriented programming (OOP) sufficiently. 
+    * The implementation was challenging as the `AddCommand` need to be abstracted. Similarly, the `AddCommandParser` also need to be abstracted, and inherit it with `AddMemberCommandParser`.
   * **Special** Add a few testcases to ensure testing coverage.
 <bc>
 
 * **New Feature**: Update credits [\#96](https://github.com/AY2122S1-CS2103T-F12-4/tp/pull/96)
-  * **What it does**: Credits refer to the overall accumulated transaction billing of a member, and depends on amounts of billing in add transaction, delete transaction, and edit transaction.
-  * **Justification**: The feature is essentials, and the priority is medium. And it also refers to the level of Tier. Credit amount is also range from `0` to `99999999`.
+  * **What it does**: Update credit for member in ezFoodie.
+  * **Justification**: 
+    * Credits refer to the overall accumulated transaction billing of a member, and depends on amounts of billing in add transaction, delete transaction, and edit transaction.
+    * The feature is essentials, and the priority is medium. 
+    * It also refers to the level of Tier. 
+    * Credit amount ranges from `0` to `99999999`.
   * **Highlights**:  This enhancement requires understanding on how polymorphism works and implement it so that the application will use Object-oriented programming (OOP) sufficiently. It requires to understand the whole process and code working for add transaction, edit transaction and delete transaction based on the essential contrainsts.
   * **Special** Add a few testcases to ensure testing coverage.
 <bc>
@@ -45,10 +52,9 @@ Given below are my contributions to the project.
   * **Justification**: 
     * The feature is essentials, and the priority is medium.
     * The point accumulation is similar to credit.
-    * However, point can be redeemed as amounts of cash deduction to a member, and point will be deducted
-    accordingly with redemption.
-    * In delete transaction, the point will not be affected and keep the same.*
-    * In edit transaction, the point will be increased when billing amount is greater than the billing amount added in last time. on the contrary the point will not be affected and keep the same when billing amount is lesser than the billing amount added in last time.*
+    * However, point can be redeemed as amounts of cash deduction to a member, and point will be deducted accordingly with redemption.
+    * In delete transaction, the point will not be affected and keep the same.
+    * In edit transaction, the point will be increased when billing amount is greater than the billing amount added in last time. on the contrary the point will not be affected and keep the same when billing amount is lesser than the billing amount added in last time.
     * Point amount is range from `0` to `99999999`.
   * **Highlights**:  This enhancement requires understanding on how polymorphism works and implement it so that the application will use Object-oriented programming (OOP) sufficiently. It requires to understand the whole process and code working for add transaction, edit transaction and delete transaction based on the essential contrainsts.
   * **Special** Add a few testcases to ensure testing coverage.
