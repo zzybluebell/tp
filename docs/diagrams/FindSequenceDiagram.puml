@@ -13,10 +13,10 @@ box Model MODEL_COLOR_T1
 participant "model:Model" as Model MODEL_COLOR
 participant ":FilteredList" as FilteredList MODEL_COLOR
 end box
-[-> LogicManager : execute("find -m -id 10001 10002")
+[-> LogicManager : execute("find -mem/ -id/00001")
 activate LogicManager
 
-LogicManager -> EzFoodieParser : parseCommand("find -m -id 10001 10002")
+LogicManager -> EzFoodieParser : parseCommand("find -mem/ -id/00001")
 activate EzFoodieParser
 
 create FindCommandParser
@@ -26,11 +26,11 @@ activate FindCommandParser
 FindCommandParser --> EzFoodieParser
 deactivate FindCommandParser
 
-EzFoodieParser -> FindCommandParser : parse(" -m -id 10001 10002")
+EzFoodieParser -> FindCommandParser : parse(" -mem/ -id/00001")
 activate FindCommandParser
 
 create IdContainsKeywordsPredicate
-FindCommandParser -> IdContainsKeywordsPredicate : IdContainsKeywordsPredicate([10001, 10002])
+FindCommandParser -> IdContainsKeywordsPredicate : IdContainsKeywordsPredicate([00001])
 activate IdContainsKeywordsPredicate
 
 IdContainsKeywordsPredicate --> FindCommandParser

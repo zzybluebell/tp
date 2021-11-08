@@ -44,15 +44,14 @@ Given below are my contributions to the project.
           [\#194](https://github.com/AY2122S1-CS2103T-F12-4/tp/pull/194)
     * Developer Guide:
 
-
 * **Community**:
     * PRs reviewed (with non-trivial review comments):
-      [\#73](https://github.com/AY2122S1-CS2103T-F12-4/tp/pull/73),
-      [\#94](https://github.com/AY2122S1-CS2103T-F12-4/tp/pull/94),
+      [\#73](https://github.com/AY2122S1-CS2103T-F12-4/tp/pull/73), 
+      [\#94](https://github.com/AY2122S1-CS2103T-F12-4/tp/pull/94)
     * Reported bugs and suggestions for other teams in the class:
-      [\#1](https://github.com/stephanie-csy/ped/issues/1),
-      [\#2](https://github.com/stephanie-csy/ped/issues/2),
-      [\#3](https://github.com/stephanie-csy/ped/issues/3),
-      [\#4](https://github.com/stephanie-csy/ped/issues/4),
-      [\#5](https://github.com/stephanie-csy/ped/issues/5),
+      [\#1](https://github.com/stephanie-csy/ped/issues/1), 
+      [\#2](https://github.com/stephanie-csy/ped/issues/2), 
+      [\#3](https://github.com/stephanie-csy/ped/issues/3), 
+      [\#4](https://github.com/stephanie-csy/ped/issues/4), 
+      [\#5](https://github.com/stephanie-csy/ped/issues/5), 
       [\#6](https://github.com/stephanie-csy/ped/issues/6)
