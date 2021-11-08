@@ -732,7 +732,7 @@ _{Explain here how the data archiving feature will be implemented}_
 
 --------------------------------------------------------------------------------------------------------------------
 
-## **Appendix: Requirements**
+## **Appendix 1: Requirements**
 
 ### Product scope
 
@@ -1467,7 +1467,7 @@ Manager is logged in
 
 --------------------------------------------------------------------------------------------------------------------
 
-## **Appendix: Instructions for manual testing**
+## **Appendix 2: Instructions for manual testing**
 
 Given below are instructions to test the app manually.
 
