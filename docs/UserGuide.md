@@ -249,7 +249,7 @@ Continue reading to explore the wonders of ezFoodie and enhance the way you mana
 
 * **Requirements of input command**:
    * When a user inputs a command, it is not allowed to include above prefixes in the specific contents or arguments.
-   * E.g. address is not allowed to be "112`-p/` Amoy Street`-a/`, 069907, Singapore"
+   * E.g. address is not allowed to be "112`-p/` Amoy Street`-a/`, 069907, Singapore".
 </div>
 
 ### 1. Viewing help : `help`
@@ -367,7 +367,8 @@ Finds members by different fields which contain any of the given keywords.
    * Only full words will be matched e.g. `Han` will not match `Hans`.
    * Find command is only allowed for **one single prefix** after **-mem/**.
    * In one single prefix find command, it can have multiple arguments. 
-   * E.g. To find id:00001 and id:00002 members' detail: "find -mem/ -id/00001 00002"
+   * E.g. To find id:00001 and id:00002 members' detail: **"find -mem/ -id/00001 00002"**.
+   * It is not allowed to enter command as **"find -mem/ -id/00001 -p/98765432"**.
 </div>
 
 #### 9.1. Finding member by member id
