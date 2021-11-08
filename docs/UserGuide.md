@@ -629,8 +629,8 @@ Example: `redeem -rd/100 -i/1`
 <div markdown="block" class="alert alert-info">
 
 :exclamation: **Note:** 
-   * In one single prefix -rd/ redeem command, it can have multiple billing amounts. 
-   * To redeem 100 point and 20 point together from member 00001: **`redeem -rd/100 -rd/10 -id/00001`**.
+   * In one single prefix -rd/ redeem command, it can have multiple points to redeem. 
+   * To redeem 100 point and 20 point together from member 00001: `redeem -rd/100 -rd/10 -id/00001`.
 </div>
 
 ### 20. Summary: `summary`
