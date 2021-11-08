@@ -636,6 +636,7 @@ Given below is an example usage scenario and how the delete reservation mechanis
 
 ![DeleteReservationSequenceDiagram](images/DeleteReservationSequenceDiagram.png)
 
+<label id=udordo></label>
 ### \[Proposed\] Undo/redo feature
 
 #### Proposed Implementation
@@ -1802,7 +1803,7 @@ Below are some limitations and future improvements of our product.
 
    A timer thread can be added in the background of the application to keep track of all the reservations of members. When an upcoming reservation is detected, a prompt dialog will be popped up or the relevant member reservation information will be displayed in the upper right corner of the application.
 
-1. **Implement by following the proposed [undo/redo](#undo-redo)**
+1. **Implement by following the proposed [undo/redo](#udordo)**
 
 1. **Add a command shortcut [-pg/] for pagination**
 
