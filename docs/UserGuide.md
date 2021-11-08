@@ -59,7 +59,7 @@ Continue reading to explore the wonders of ezFoodie and enhance the way you mana
 
 **4. Launch the application.**
 * Double-click the file to start the application in windows system.
-* If faced any issues, go back the [step 1](#step1) check with java version.
+* If any issues are faced, go back the [step 1](#step1) and check with Java version.
 * In MacOS or Linux System, launch the terminal, go to the directory you saved `ezFoodie.jar` in, and key in the command `jar -r ezfoodie.jar`.
 * The details for running jar  can follow [here](https://www.wikihow.com/Run-a-.Jar-Java-File).
 * The GUI similar to the one shown below should appear in a few seconds. The application comes preloaded with sample data to test its features.<br>
@@ -111,7 +111,7 @@ Continue reading to explore the wonders of ezFoodie and enhance the way you mana
    * *Credit depends on the bill amounts in <a href="#12">add transaction</a>, <a href="#13">delete transaction</a>, and <a href="#14">edit transaction</a>*.
    * *Credit amount ranges from `0` to `99999999`.*
    
-* **Points:**
+* **Point:**
    * *The point accumulation is similar to credit.*
    * *However, points can be redeemed as transaction discounts for a member, and points will be deducted
    accordingly with redemption.*
