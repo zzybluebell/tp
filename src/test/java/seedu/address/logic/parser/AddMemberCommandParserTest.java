@@ -43,6 +43,10 @@ import seedu.address.model.member.Phone;
 import seedu.address.model.tag.Tag;
 import seedu.address.testutil.MemberBuilder;
 
+/**
+ * Contains integration tests (interaction with the Model) and unit tests for
+ * {@code AddMemberCommandParser}.
+ */
 public class AddMemberCommandParserTest {
 
     private Model model = new ModelManager();

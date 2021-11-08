@@ -32,7 +32,8 @@ import seedu.address.testutil.EditMemberDescriptorBuilder;
 import seedu.address.testutil.MemberBuilder;
 
 /**
- * Contains integration tests (interaction with the Model) and unit tests for EditCommand.
+ * Contains integration tests (interaction with the Model) and unit tests for
+ * {@code EditMemberCommand}.
  */
 public class EditMemberCommandTest {
 
