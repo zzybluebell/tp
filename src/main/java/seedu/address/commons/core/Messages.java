@@ -9,7 +9,7 @@ public class Messages {
     /**
      * Represents the MESSAGE_UNKNOWN_COMMAND.
      */
-    public static final String MESSAGE_UNKNOWN_COMMAND = "Unknown command";
+    public static final String MESSAGE_UNKNOWN_COMMAND = "Unknown command.";
 
     /**
      * Represents the MESSAGE_INVALID_COMMAND_FORMAT.
@@ -19,22 +19,22 @@ public class Messages {
     /**
      * Represents the MESSAGE_INVALID_MEMBER_DISPLAYED_INDEX.
      */
-    public static final String MESSAGE_INVALID_MEMBER_DISPLAYED_INDEX = "The member index provided is invalid";
+    public static final String MESSAGE_INVALID_MEMBER_DISPLAYED_INDEX = "The member index provided is invalid.";
 
     /**
      * Represents the MESSAGE_INVALID_MEMBER_DISPLAYED_ID.
      */
-    public static final String MESSAGE_INVALID_MEMBER_DISPLAYED_ID = "The member ID provided is invalid";
+    public static final String MESSAGE_INVALID_MEMBER_DISPLAYED_ID = "The member ID provided is invalid.";
 
     /**
      * Represents the MESSAGE_INVALID_TRANSACTION_DISPLAYED_ID.
      */
-    public static final String MESSAGE_INVALID_TRANSACTION_DISPLAYED_ID = "The transaction ID provided is invalid";
+    public static final String MESSAGE_INVALID_TRANSACTION_DISPLAYED_ID = "The transaction ID provided is invalid.";
 
     /**
      * Represents the MESSAGE_INVALID_RESERVATION_DISPLAYED_ID.
      */
-    public static final String MESSAGE_INVALID_RESERVATION_DISPLAYED_ID = "The reservation ID provided is invalid";
+    public static final String MESSAGE_INVALID_RESERVATION_DISPLAYED_ID = "The reservation ID provided is invalid.";
 
     /**
      * Represents the MESSAGE_MEMBERS_LISTED_OVERVIEW.
@@ -44,6 +44,7 @@ public class Messages {
     /**
      * Represents the MESSAGE_PERMISSION_DENIED.
      */
-    public static final String MESSAGE_PERMISSION_DENIED = "Permission denied! Please login as " + LoginStatus.MANAGER;
+    public static final String MESSAGE_PERMISSION_DENIED =
+            "Permission denied! Please login as " + LoginStatus.MANAGER + ".";
 
 }

@@ -26,7 +26,7 @@ public class EditTransactionCommandParserTest {
         assertParseFailure(parser, VALID_NAME_AMY, MESSAGE_INVALID_FORMAT);
 
         // no field specified
-        assertParseFailure(parser, " " + PREFIX_TRANSACTION + " " + PREFIX_ID + " 10001100001",
+        assertParseFailure(parser, " " + PREFIX_TRANSACTION + " " + PREFIX_ID + " 00001000001",
                 EditTransactionCommand.MESSAGE_NOT_EDITED);
 
         // no index and no field specified
@@ -44,7 +44,7 @@ public class EditTransactionCommandParserTest {
 
     @Test
     public void parse_invalidValue_failure() {
-        assertParseFailure(parser, " " + PREFIX_TRANSACTION + " " + PREFIX_ID + " 10001100001"
+        assertParseFailure(parser, " " + PREFIX_TRANSACTION + " " + PREFIX_ID + " 00001000001"
                 + INVALID_TRANSACTION_BILLING_DESC, Billing.MESSAGE_CONSTRAINTS); // invalid billing
     }
 }
