@@ -245,8 +245,7 @@ Continue reading to explore the wonders of ezFoodie and enhance the way you mana
     * `-a/`: ascending
 
     * `-d/`: descending
-<bc>
-
+    
 * **Requirements of input commands:**
    * When the user inputs a command, the prefixes is not to be inputted inside of the specified content.
    * E.g. The command **112`-p/` Amoy Street`-e/`, 069907, Singapore** is not allowed.
