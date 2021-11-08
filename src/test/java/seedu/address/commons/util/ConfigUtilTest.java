@@ -118,18 +118,27 @@ public class ConfigUtilTest {
     }
 
     /**
-     * 
+     * Checks whether save a null config will throw NullPointerException.
      */
     @Test
     public void save_nullConfig_throwsNullPointerException() {
         assertThrows(NullPointerException.class, () -> save(null, "SomeFile.json"));
     }
 
+    /**
+     * Checks whether save a null file will throw NullPointerException.
+     */
     @Test
     public void save_nullFile_throwsNullPointerException() {
         assertThrows(NullPointerException.class, () -> save(new Config(), null));
     }
 
+    /**
+     * Checks whether saving a config all in order will succeed.
+     *
+     * @throws DataConversionException
+     * @throws IOException
+     */
     @Test
     public void saveConfig_allInOrder_success() throws DataConversionException, IOException {
         Config original = getTypicalConfig();
@@ -148,16 +157,27 @@ public class ConfigUtilTest {
         assertEquals(original, readBack);
     }
 
+    /**
+     * Saves config.
+     *
+     * @param config String representation.
+     * @param configFileInTestDataFolder String represents file location.
+     * @throws IOException
+     */
     private void save(Config config, String configFileInTestDataFolder) throws IOException {
         Path configFilePath = addToTestDataPathIfNotNull(configFileInTestDataFolder);
         ConfigUtil.saveConfig(config, configFilePath);
     }
 
+    /**
+     * Adds to test data path if not null.
+     *
+     * @param configFileInTestDataFolder String representation.
+     * @return Path.
+     */
     private Path addToTestDataPathIfNotNull(String configFileInTestDataFolder) {
         return configFileInTestDataFolder != null
                                   ? TEST_DATA_FOLDER.resolve(configFileInTestDataFolder)
                                   : null;
     }
-
-
 }
