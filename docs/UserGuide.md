@@ -248,7 +248,7 @@ Continue reading to explore the wonders of ezFoodie and enhance the way you mana
     * `-d/`: descending
 
 * **Requirements of input command**:
-   * When user inputs a command, it is not allowed to include above prefixes in the specific contents or arguments.
+   * When a user inputs a command, it is not allowed to include above prefixes in the specific contents or arguments.
    * E.g. address is not allowed to be "112`-p/` Amoy Street`-a/`, 069907, Singapore"
 </div>
 
