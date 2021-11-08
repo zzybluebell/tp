@@ -20,7 +20,7 @@ ezFoodie is a desktop application that helps restaurants **keep track of their e
 
 ezFoodie is simple and user-friendly. It is optimized for using via a **Command Line Interface (CLI)** while still enjoying the benefits of a Graphical User Interface (GUI). If you can type fast, ezFoodie can get your member management tasks done faster than traditional GUI applications.
 
-ezFooide‘s current version is only optimized for `English Language` based user. all CLI commands are `English-based`. As of now ezFoodie does not support other languages.
+ezFooide‘s current version is only optimized for `English Language` based user. All CLI commands are `English-based`. As of now ezFoodie does not support other languages.
 
 Continue reading to explore the wonders of ezFoodie and enhance the way you manage and analyze your restaurant's members 🤩
 
@@ -57,18 +57,34 @@ Continue reading to explore the wonders of ezFoodie and enhance the way you mana
    <div align="center"><img height="415" alt="ezFoodie Logo" src="images/homefolderEzFoodie.png"></div>
 <br>
 
-**4. Launch the application.**
+**4. Launch the application and view the details.**
 * Double-click the file to start the application in windows system.
-* In MacOS or Linux System, launch the termianl, go to the directory you saved `ezfoodie.jar` in, and key in the `jar -r ezfoodie.jar` command.
+* In MacOS or Linux System, launch the termianl, go to the directory you saved `ezfoodie.jar` in, and key in the `java -jar ezfoodie.jar` command.
 * If any issues faced, go back the [step 1](#step1) and check with java version.
 * The details for running jar  can follow [here](https://www.wikihow.com/Run-a-.Jar-Java-File).
-* The GUI similar to the one shown below should appear in a few seconds. The application comes preloaded with sample data to test its features.<br>
-   
-   <div align="center"><img height="570" alt="ezFoodie Logo" src="images/Launch.png"></div>
-   <h1 align="center"><font size ="5">Congratulations! ezFoodie is now ready for your perusal. :+1:</font></h1>
+* The GUI similar to the one shown below should appear in a few seconds. The application comes preloaded with sample data to test its features. Notice how ezFoodie comes with sample data to get you started.<br>
+
+   <div align="center"><img height="450" alt="ezFoodie Logo" src="images/Launch.png"></div>
+   <h1 align="center"><font size ="5">Congratulation! ezFoodie is now ready for your perusal. :+1:</font></h1>
    <br>
 
-**5. Main window GUI includes the following member fields and constraints:**
+**5. This section will walk you through the layout of ezFoodie.**
+   <h1 align="center"><font size ="5">Layout of Main Window</font></h1>
+   <div align="center"><img height="450" alt="ezFoodie Logo" src="images/UIMarkShow.png"></div>
+   
+   <h1 align="center"><font size ="5">Layout of Help Window</font></h1>
+   <div align="center"><img height="670" alt="ezFoodie Logo" src="images/MarkHelp.png"></div>
+
+   <h1 align="center"><font size ="5">Layout of Show Window</font></h1>
+   <div align="center"><img height="530" alt="ezFoodie Logo" src="images/MarkShow.png"></div>   
+
+   <h1 align="center"><font size ="5">Layout of Summary Window</font></h1>
+   <div align="center"><img height="400" alt="ezFoodie Logo" src="images/MarkSummary.png"></div>   
+   <br>
+
+**More detials can refer [Features](#features).**
+
+**6. Main window GUI includes the following member fields and constraints:**
     
 * **Index number in the list:**
    * *Only contains alphanumeric characters.*
@@ -83,7 +99,7 @@ Continue reading to explore the wonders of ezFoodie and enhance the way you mana
    * *Upgrade of Tier (e.g. Bronze -> Silver) is also automatically handled by ezFoodie.*
    
 * **Member ID:**
-   * *Member ID has only 5 digits and starts from `00001` to `99999`.*
+   * *Member ID has only 5 digits' numerical value and starts from `00001` to `99999`.*
    * *Deleted Member's id will not be occupied when adding a new member.*
    * *Member id will increase automatically when a new member is added.*
    * *EzFoodie contains max `99999` members.*
@@ -124,7 +140,7 @@ Continue reading to explore the wonders of ezFoodie and enhance the way you mana
    * A reservation can be edited or deleted as well using the [edit reservation](#17) and [delete reservation](#16) features.
    * The maximum amount of reservations is `999999`.
 
-**6. Type the command in the command box and press Enter to execute it. Some example commands you can try here:**
+**7. Type the command in the command box and press Enter to execute it. Some example commands you can try here:**
 
    * `help:` Opens the help window to view the commands and user guide.
 
@@ -159,9 +175,9 @@ Continue reading to explore the wonders of ezFoodie and enhance the way you mana
 
    * `exit:` Exits the program.
 
-**7. Please refer to the [Features](#features) below for details of each command.**
+**8. Please refer to the [Features](#features) below for details of each command.**
 
-**8. Other components and constraints:**
+**9. Other components and constraints:**
     
    * **Transaction ID:**
       * *It only has 6 digits and starts from `000001` to `999999`.*
@@ -255,8 +271,6 @@ Continue reading to explore the wonders of ezFoodie and enhance the way you mana
 ### 1. Viewing help : `help`
 
 Opens a new window to show how to use the commands, and a link to the User Guide.
-
-![help message](images/helpMessage.png)
 
 Format: `help`
 
@@ -580,14 +594,14 @@ Format: `edit -rs/ -id/<MEMBER_ID + RESERVATION_ID> -dt/<DATE_TIME>`
 
 Example: `edit -rs/ -id/00001000001 -dt/2021-12-01 13:00`
 
-#### 17.2. Editing the remark in reservation: `edit -rs/ -rm`
+#### 17.2. Editing the remark in reservation: `edit -rs/ -rm/`
 Edits a member's reservation details in remark.
 
 Format: `edit -rs/ -id/<MEMBER_ID + RESERVATION_ID> -rm/<REMARK>`
 
 Example: `edit -rs/ -id/00001000001 -rm/3 people`
 
-#### 17.3. Editing the date time and remark in reservation: `edit -rs/ -dt -rm`
+#### 17.3. Editing the date time and remark in reservation: `edit -rs/ -dt/ -rm/`
 Edits a member's reservation details in date time.
 
 Format: `edit -rs/ -id/<MEMBER_ID + RESERVATION_ID> [-dt/<DATE_TIME>][-rm/<REMARK>]`
