@@ -92,7 +92,7 @@ public class EzFoodieParser {
             return new ViewCommandParser().parse(arguments);
 
         case RedeemCommand.COMMAND_WORD:
-            return new RedeemCommandParser(model, executionStatus).parse(arguments);
+            return new RedeemCommandParser().parse(arguments);
 
         case DeleteCommand.COMMAND_WORD:
             if (LoginStatus.getLoginStatus() == LoginStatus.MANAGER) {

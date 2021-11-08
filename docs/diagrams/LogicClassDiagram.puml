@@ -7,7 +7,8 @@ skinparam classBackgroundColor LOGIC_COLOR
 package Logic {
 
 Class EzFoodieParser
-Class XYZCommand
+Class UVWXYZCommand
+Class UVWCommand
 Class CommandResult
 Class "{abstract}\nCommand" as Command
 
@@ -28,9 +29,11 @@ HiddenOutside ..> Logic
 
 LogicManager .right.|> Logic
 LogicManager -right->"1" EzFoodieParser
-EzFoodieParser ..> XYZCommand : creates >
+EzFoodieParser ..> UVWXYZCommand : creates >
+EzFoodieParser ..> UVWCommand : creates >
 
-XYZCommand -up-|> Command
+UVWXYZCommand -up-|> Command
+UVWCommand -up-|> Command
 LogicManager .left.> Command : executes >
 
 LogicManager --> Model
@@ -38,7 +41,8 @@ LogicManager --> Storage
 Storage --[hidden] Model
 Command .[hidden]up.> Storage
 Command .right.> Model
-note right of XYZCommand: XYZCommand = AddCommand, \nFindCommand, etc
+note right of UVWXYZCommand: UVW = Add, Edit, etc \nXYZ = Member, Transaction, etc \nUVWXYZCommand = AddMemberCommand, \nEditTransactionCommand, etc
+note right of UVWCommand: UVWCommand = FindCommand, \nShowCommand, etc
 
 Logic ..> CommandResult
 LogicManager .down.> CommandResult

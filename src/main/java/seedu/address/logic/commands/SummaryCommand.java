@@ -39,4 +39,13 @@ public class SummaryCommand extends Command {
         return new CommandResult(SHOWING_SUMMARY_MESSAGE,
                 false, false, false, true);
     }
+
+    /**
+     * Override the equals method.
+     */
+    @Override
+    public boolean equals(Object other) {
+        // short circuit if same object
+        return (other instanceof SummaryCommand); // instanceof handles nulls
+    }
 }

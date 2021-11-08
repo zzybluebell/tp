@@ -76,11 +76,11 @@ public class EditMemberCommandParserTest {
     public void parse_invalidPreamble_failure() {
         // negative index
         assertParseFailure(parser, " " + PREFIX_MEMBER + " " + PREFIX_INDEX + " -5" + NAME_DESC_AMY,
-                MESSAGE_INVALID_INDEX);
+                String.format(MESSAGE_INVALID_INDEX, EditMemberCommand.MESSAGE_USAGE));
 
         // zero index
         assertParseFailure(parser, " " + PREFIX_MEMBER + " " + PREFIX_INDEX + " 0" + NAME_DESC_AMY,
-                MESSAGE_INVALID_INDEX);
+                String.format(MESSAGE_INVALID_INDEX, EditMemberCommand.MESSAGE_USAGE));
 
         // invalid arguments being parsed as preamble
         assertParseFailure(parser, "1 some random string", MESSAGE_INVALID_FORMAT);

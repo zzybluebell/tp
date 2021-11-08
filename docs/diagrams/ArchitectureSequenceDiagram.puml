@@ -13,7 +13,7 @@ activate ui UI_COLOR
 ui -[UI_COLOR]> logic : execute("del -mem/ -i/1")
 activate logic LOGIC_COLOR
 
-logic -[LOGIC_COLOR]> model : deleteMember(m)
+logic -[LOGIC_COLOR]> model : deleteMember(member)
 activate model MODEL_COLOR
 
 model -[MODEL_COLOR]-> logic
