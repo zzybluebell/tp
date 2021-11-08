@@ -655,7 +655,7 @@ Example: `clear`
 
 ### 22. Retrieving commands: `keyboard.UP` and `keyboard.DOWN`
 
-Press the keyboard "Up" button to retrieve previous command which has been entered, and "Down" button to retrieve next commands.
+Presses the keyboard "Up" button to retrieve previous command which has been entered, and "Down" button to retrieve next commands.
 
 Format: press keyboard button ⬆️  and ⬇️
 
@@ -663,13 +663,13 @@ Example: press keyboard button ⬆️  and ⬇️
 <div markdown="block" class="alert alert-info">
 
    :exclamation: **Note:**
-   * Retrive commands can only store 30 commands history.
+   * Retrieve commands can only store the history of 30 commands.
 </div>
 
 
 ### 23. Exiting Summary, Help and Show popup window `keyboard.ESC`
 
-Press the keyboard `ESC` button to exit Summary, Help and Show popup window.
+Presses the keyboard `ESC` button to exit Summary, Help and Show popup window.
 
 Format: press keyboard `ESC`
 
