@@ -171,8 +171,8 @@ Continue reading to explore the wonders of ezFoodie and enhance the way you mana
       * *Transaction id will increase automatically when add a new transaction.*
       
    * **Billing:**
-      * *Billing is in transaction feature*
-      * *Billing should be non-negative numeric with 2 decimal places, and ranges from `0.00` to `9999.99`**
+      * *Billing is in transaction feature.*
+      * *Billing should be non-negative numeric with 2 decimal places, and ranges from `0.00` to `9999.99`.*
 
    * **Reservation ID:**
       * *It only has 6 digits and starts from `000001` to `999999`.*
@@ -183,7 +183,7 @@ Continue reading to explore the wonders of ezFoodie and enhance the way you mana
       * *Addresses can take any values, and it should not be blank.*
 
    * **DateTime:**
-      * *The format should be in yyyy-MM-dd HH:mm*
+      * *The format should be in yyyy-MM-dd HH:mm.*
 
 * **Please follow the instruction shown is the application command box when your are occurring constraint errors (attached below).**
 ![popup_error_example](images/popup_error_example.png)
@@ -330,7 +330,7 @@ Example: `add -mem/ -n/John Doe -p/98765432 -e/johndoe@gmail.com -a/112 Amoy Str
 
 ### 8. Deleting a member : `del -mem/`
 
-Deletes a member from the member list
+Deletes a member from the member list.
 
 <div markdown="block" class="alert alert-info">
 
@@ -341,7 +341,7 @@ Deletes a member from the member list
 
 #### 8.1.  Deleting a member by member id
 
-Deletes a member using member id
+Deletes a member using member id.
 
 Format: `del -mem/ -id/<MEMBER_ID>`
 
@@ -349,7 +349,7 @@ Example: `del -mem/ -id/00001`
 
 #### 8.2.  Deleting a member by index number
 
-Deletes a member using member index number from the list
+Deletes a member using member index number from the list.
 
 Format: `del -mem/ -i/<MEMBER_INDEX>`
 
