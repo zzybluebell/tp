@@ -68,7 +68,6 @@ Continue reading to explore the wonders of ezFoodie and enhance the way you mana
    <h1 align="center"><font size ="5">Congratulations! ezFoodie is now ready for your perusal. :+1:</font></h1>
    <br>
 
-
 **5. Main window GUI includes the following member fields and constraints:**
     
 * **Index number in the list:**
@@ -107,44 +106,42 @@ Continue reading to explore the wonders of ezFoodie and enhance the way you mana
    *  *Members cannot share the same phone number or email. ezFoodie uses these fields to detect duplicate members.*
    
 * **Credit:**
-   * *Credit refers to the overall accumulated transaction billing of a member, 
-   starting from his registration date.*
-   * *Credit depends on amounts of billing in [add transaction](#12), [delete transaction](#13), and [edit transaction](#14)*.
-   * *Credit amount is range from `0` to `99999999`.*
+   * *Credit refers to the overall accumulated transaction billing amounts of a member, 
+   starting from their registration date.*
+   * *Credit depends on the billing amounts in [add transaction](#12), [delete transaction](#13)</a>, and [edit transaction](#14)*.
+   * *Credit amount ranges from `0` to `99999999`.*
    
 * **Point:**
    * *The point accumulation is similar to credit.*
    * *However, point can be redeemed as discounts to a member, and point will be deducted
    accordingly with redemption.*
-   * *In [delete transaction](#13), the point will not be affected and keep the same.*
-   * *In [edit transaction](#14), the point will be increased when billing amount is greater than the billing amount 
-   added in last time. on the contrary the point will not be affected and keep the same when billing amount is lesser
-   than the billing amount added in last time.*
+   * *In <a href="#13">delete transaction</a>, the point will not be affected and will stay the same.*
+   * *In <a href="#14">edit transaction</a>, the point will be increased when billing amount is greater than the billing amount added in last time. On the contrary the points will not be affected and keep the same when billing amount is lesser than the billing amount added in last time.*
    * *Point amount is range from `0` to `99999999`.*
    
-* **Researvation information:**
+* **Seat Booking Information:**
    * Seats can be reserved using the [add reservation](#15) feature.
-   * A reservation can be edited or deleted as well using the <a href="#17">edit reservation</a> and <a href="#16">delete reservation</a> features.
-   * The maximum amount of reservations is `999999`
+   * A reservation can be edited or deleted as well using the [edit reservation](#17) and [delete reservation](#16) features.
+   * The maximum amount of reservations is `999999`.
 
 **6. Type the command in the command box and press Enter to execute it. Some example commands you can try here:**
 
-   * `help:` Opens the help window and view the related help description.
+   * `help:` Opens the help window to view the commands and user guide.
 
    * `login 123456:` Changes user permissions from staff permissions to manager permissions.
 
    * `logout:` Logouts of manager and change permissions to staff permissions.
 
-   * `list -mem/:` Lists all members.
-
    * `add -mem/ -n/John Doe -p/98765432 -e/johndoe@gmail.com -a/112 Amoy Street, 069907, Singapore:` Adds a contact named `John Doe` to the member list.
 
+   * `list -mem/:` Lists all members.
+   
    * `del -mem/ -i/3:` Deletes the member with index number 3 shown in the current list.
       <div markdown="block" class="alert alert-info">
       
       :exclamation: **Note:** Only managers can delete members. Login as a manager before entering the delete command.
       </div>
-   * `add -txn/ -b/200.00 -id/00001:` Adds transaction with a billing $100.00 to member id 00001 shown in the current list.
+   * `add -txn/ -b/200.00 -id/00001:` Adds transaction with a billing $200.00 to member id 00001 shown in the current list.
 
    * `add -rs/ -dt/2021-01-02 00:00 -rm/2 people -id/00001:` Adds a reservation for 2 people for 2021-01-01 00:00 to member ID 00001 shown in the current list 
 
@@ -168,20 +165,19 @@ Continue reading to explore the wonders of ezFoodie and enhance the way you mana
     
    * **Transaction ID:**
       * *It only has 6 digits and starts from `000001` to `999999`.*
-      * *Deleted Transaction's id will not be occupied when adding a new transaction.*
-      * *Transaction id will increase automatically when add a new transaction.*
-      
-   * **Billing:**
-      * *Billing is in transaction feature.*
-      * *Billing should be non-negative numeric with 2 decimal places, and ranges from `0.00` to `9999.99`.*
+      * *Deleted Transaction ID's will not be occupied when adding a new transaction.*
+      * *Transaction id will increase automatically when adding a new transaction.*
+   * **Bill amount:**
+      * *Bill amount is in the transaction feature*
+      * *Bill amounts should be non-negative numeric with 2 decimal places, and ranges from `0.00` to `9999.99`**
 
    * **Reservation ID:**
       * *It only has 6 digits and starts from `000001` to `999999`.*
-      * *Deleted reservation's id will not be occupied when adding a new member.*
-      * *Reservation id will increase automatically when add a new reservation.*
+      * *Deleted reservation ids will not be occupied when adding a new member.*
+      * *Reservation id will increase automatically when adding a new reservation.*
          
    * **Address:**
-      * *Addresses can take any values, and it should not be blank.*
+      * *Address can take any values. It should not be blank.*
 
    * **DateTime:**
       * *The format should be in yyyy-MM-dd HH:mm.*
@@ -248,10 +244,9 @@ Continue reading to explore the wonders of ezFoodie and enhance the way you mana
     * `-a/`: ascending
 
     * `-d/`: descending
-
-* **Requirements of input command**:
-   * When a user inputs a command, it is not allowed to include above prefixes in the specific contents or keywords.
-   * E.g. address is not allowed to be "112`-p/` Amoy Street`-a/`, 069907, Singapore".
+* Requirements of input command:
+   * When the user inputs a command, the specified content is not to be inputted before the prefixes.
+   * E.g. The command `112-p/ Amoy Street-a/, 069907, Singapore` is not allowed
 </div>
 
 ### 1. Viewing help : `help`
@@ -274,7 +269,7 @@ Example: `exit`
 
 ### 3. Logging in as a manager : `login`
 
-Logins as a manager.
+Logs in as a manager.
 
 Format: `login <PASSWORD>`
 
@@ -284,14 +279,14 @@ Example: `login 123456`
 
 ### 4. Setting and updating the password : `set`
 
-Sets the password in the manger mode. 
+Sets and updates the password to login as manger.
 
 Format: `set -pass/<PASSWORD>`
 
 Example: `set -pass/123456`
 <div markdown="block" class="alert alert-info">
 
-   :exclamation: **Note:** The `set` command is only applied in manager mode.
+   :information_source: **Note:** The `set` command can only be used in manager mode.
 </div>
 
 ### 5. Logging out as a manager : `logout`
@@ -302,12 +297,12 @@ Format: `logout`
 
 Example: `logout`
 <div markdown="block" class="alert alert-info">
-   
-   :exclamation: **Note:** The `logout` command is only applied in manager mode.
+
+   :information_source: **Note:** The `logout` command can only be used in manager mode.
 </div>
 ### 6. Listing out a certain number of members : `list -mem/`
 
-Lists out a certain number of members.
+Lists out all members.
 
 Format: `list -mem/`
 
@@ -325,7 +320,7 @@ Example: `add -mem/ -n/John Doe -p/98765432 -e/johndoe@gmail.com -a/112 Amoy Str
 
    :exclamation: **Duplicate members:**<br>
 
-   * ezFoodie will not allow adding members with the same **phone number** or **email address** as an existing member.
+   * ezFoodie will not allow new members to have the same **phone number** or **email address** as a previously existing member.
 
 </div>
 
@@ -335,8 +330,7 @@ Deletes a member from the member list.
 
 <div markdown="block" class="alert alert-info">
 
-   :exclamation: **Note:** 
-   * The `del` member command is only applied in manager mode.
+   :information_source: **Note:**
    * Only the manager is allowed to delete members. Login as manager before entering command.
 </div>
 
@@ -506,11 +500,10 @@ Example: `del -txn/ -id/00001000001`
 
 <div markdown="block" class="alert alert-info">
 
-   :exclamation: **Note:** 
-   * The `del` transaction command is only applied in manager mode.
+   :information_source: **Note:**
    * Only the manager are allowed to delete transactions. Login as manager before entering command.
-   * The Credit will be decreased based on billing amount in related transaction.
-   * The Point will not be affected and keep the same.
+   * Credit will be decreased based on billing amount in related transaction.
+   * Points will not be affected and keep the same.
 </div>
 
 <label id="14"></label>
@@ -527,11 +520,13 @@ Example: `edit -txn/ -id/00001000002 -b/10.00`
 
 :exclamation: **Note:** 
    * Transaction date and time cannot be modified once a transaction is added.
-   * The Credit will be changed based on billing amount in related transaction.
-   * The Point will be increased when billing amount is greater than the billing amount 
-    added in last time. on the contrary the point will not be affected and keep the same when billing amount is lesser
+   * Credit will be changed based on billing amount in related transaction.
+   * Points will be increased when billing amount is greater than the billing amount 
+    added in last time. On the contrary, points will not be affected and will stay the same when billing amount is lesser
     than the billing amount added in last time. 
 </div>
+
+<label id="15"></label>
 
 ### 15. Adding a reservation: `add -rs/`
 
@@ -543,10 +538,12 @@ Example: `add -rs/ -dt/2021-01-02 00:00 -rm/2 people -id/00001`
 
 <div markdown="block" class="alert alert-info">
 
-:exclamation: **Note:** 
-* Same member which based on member id cannot make multiple reservations on the same day.
+:information_source: **Note:**
+* A member cannot make multiple reservations on the same day.
 * The maximum amount of reservations is `999999`.
 </div>
+
+<label id="16"></label>
 
 ### 16. Deleting a reservation: `del -rs/`
 
@@ -558,35 +555,36 @@ Example: `del -rs/ -id/00001000001`
 
 <div markdown="block" class="alert alert-info">
 
-:exclamation: **Note:** 
-   * The `del` reservation command is only applied in manager mode.
+:information_source: **Note:**
    * Only the manager is allowed to delete reservations. Login as manager before entering command. 
 </div>
+
+<label id="17"></label>
 
 ### 17. Editing a reservation: `edit -rs/`
 
 <div markdown="block" class="alert alert-info">
 
-:exclamation: **Note:** 
-   * The editing reservation date time cannot be shifted in same day based on same member id.
-   * E.g. when one member make a reservation in day 2021-12-01 13:00 and 2021-12-02 13:00, the member is not allowed to shift 2 day in same day. 
+:information_source: **Note:** 
+   * When editing the date time, the updated date time cannot share the same day as another reservation.
+   * E.g. when a member makes a reservation on 2021-12-01 13:00 and another on 2021-12-02 13:00, the member is not allowed to edit the date of the 02nd december reservation to 01st december.
 </div>
 
-#### 17.1. Editing a date time in reservation: `edit -rs/ -dt/`
+#### 17.1. Editing the date time in reservation: `edit -rs/ -dt/`
 Edits a member's reservation details in date time.
 
 Format: `edit -rs/ -id/<MEMBER_ID + RESERVATION_ID> -dt/<DATE_TIME>`
 
 Example: `edit -rs/ -id/00001000001 -dt/2021-12-01 13:00`
 
-#### 17.2. Editing a remark reservation: `edit -rs/ -rm`
+#### 17.2. Editing the remark in reservation: `edit -rs/ -rm`
 Edits a member's reservation details in remark.
 
 Format: `edit -rs/ -id/<MEMBER_ID + RESERVATION_ID> -rm/<REMARK>`
 
 Example: `edit -rs/ -id/00001000001 -rm/3 people`
 
-#### 17.3. Editing a date time and a remark in reservation: `edit -rs/ -dt -rm`
+#### 17.3. Editing the date time and remark in reservation: `edit -rs/ -dt -rm`
 Edits a member's reservation details in date time.
 
 Format: `edit -rs/ -id/<MEMBER_ID + RESERVATION_ID> [-dt/<DATE_TIME>][-rm/<REMARK>]`
@@ -607,10 +605,11 @@ Format: `sort -mem/ -c/ -d/`
 
 Example: `sort -mem/ -c/ -d/`
 
-### 19. Redeeming point `redeem -rd/`
+### 19. Redeeming points `redeem -rd/`
 
-#### 19.1. Redeeming point for a member by member id: `redeem -rd/ -id/`
-Redeems point is award as amounts of cash deduction to a member according to member id.
+#### 19.1. Redeeming points for a member by member id: `redeem -f/ -id/`
+
+Redeems the points of a member for a discount by member id.
 
 Format: `redeem -rd/<POINT> -id/<MEMBER_ID>`
 
@@ -618,7 +617,7 @@ Example: `redeem -rd/100 -id/00001`
 
 #### 19.2. Redeeming point for a member by index: `redeem -rd/ -i/`
 
-Redeems point is award as amounts of cash deduction to a member whose index shown in the member list.
+Redeems the points of a member for a discount by index of member shown in the list.
 
 Format: `redeem -rd/<point> -i/<INDEX>`
 
@@ -630,8 +629,7 @@ Views the summary of stored data in ezFoodie.
 
 <div markdown="block" class="alert alert-info">
 
-   :exclamation: **Note:**: 
-   * The `summary` command is only applied in manager mode.
+   :information_source: **Note:**:
    * Only the manager is allowed to view summary. Login as manager before entering command.
 </div>
 
