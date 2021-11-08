@@ -7,9 +7,28 @@ title: Developer Guide
 
 --------------------------------------------------------------------------------------------------------------------
 
+## **Introduction**
+
+This document is the developer guide for ezFoodie, an member manamgement application for restaurant managers and staffs.
+
+This developer guide serves to provide developers with an understanding on how ezFoodie is designed and developed.
+
+--------------------------------------------------------------------------------------------------------------------
+
 ## **Acknowledgements**
 
-* {list here sources of all reused/adapted ideas, code, documentation, and third-party libraries -- include links to the original source as well}
+This project developed based on the **[Address Book Product Website](https://se-education.org/addressbook-level3)** project. Which is a part of the se-education.org initiative.
+
+The icons of the project were obtained from [ezfoodie_icon](https://www.brandcrowd.com/), [member_icon](https://www.percici.com/), [summary_icon](https://www.pngwing.com/)
+
+Libraries used:
+
+* [JavaFX](https://openjfx.io/)
+* [Jackson](https://github.com/FasterXML/jackson)
+* [JUnit5](https://github.com/junit-team/junit5)
+* [PlantUML](https://plantuml.com/)
+
+If you would like to contribute code to this project, see [se-education.org](https://se-education.org#https://se-education.org/#contributing) for more information.
 
 --------------------------------------------------------------------------------------------------------------------
 
@@ -23,7 +42,7 @@ Refer to the guide [_Setting up and getting started_](SettingUp.md).
 
 <div markdown="span" class="alert alert-primary">
 
-:bulb: **Tip:** The `.puml` files used to create diagrams in this document can be found in the [diagrams](https://github.com/se-edu/addressbook-level3/tree/master/docs/diagrams/) folder. Refer to the [_PlantUML Tutorial_ at se-edu/guides](https://se-education.org/guides/tutorials/plantUml.html) to learn how to create and edit diagrams.
+:bulb: **Tip:** The `.puml` files used to create diagrams in this document can be found in the [diagrams](https://github.com/AY2122S1-CS2103T-F12-4/tp/tree/master/docs/diagrams/) folder. Refer to the [_PlantUML Tutorial_ at se-edu/guides](https://se-education.org/guides/tutorials/plantUml.html) to learn how to create and edit diagrams.
 </div>
 
 ### Architecture
@@ -36,7 +55,7 @@ Given below is a quick overview of main components and how they interact with ea
 
 **Main components of the architecture**
 
-**`Main`** has two classes called [`Main`](https://github.com/se-edu/addressbook-level3/tree/master/src/main/java/seedu/address/Main.java) and [`MainApp`](https://github.com/se-edu/addressbook-level3/tree/master/src/main/java/seedu/address/MainApp.java). It is responsible for,
+**`Main`** has two classes called [`Main`](https://github.com/AY2122S1-CS2103T-F12-4/tp/tree/master/src/main/java/seedu/address/Main.java) and [`MainApp`](https://github.com/AY2122S1-CS2103T-F12-4/tp/tree/master/src/main/java/seedu/address/MainApp.java). It is responsible for,
 * At app launch: Initializes the components in the correct sequence, and connects them up with each other.
 * At shut down: Shuts down the components and invokes cleanup methods where necessary.
 
@@ -52,7 +71,7 @@ The rest of the App consists of four components.
 
 **How the architecture components interact with each other**
 
-The *Sequence Diagram* below shows how the components interact with each other for the scenario where the user issues the command `delete 1`.
+The *Sequence Diagram* below shows how the components interact with each other for the scenario where the user issues the command `del -mem/ -i/1`.
 
 <img src="images/ArchitectureSequenceDiagram.png" width="574" />
 
@@ -69,24 +88,42 @@ The sections below give more details of each component.
 
 ### UI component
 
-The **API** of this component is specified in [`Ui.java`](https://github.com/se-edu/addressbook-level3/tree/master/src/main/java/seedu/address/ui/Ui.java)
+The **API** of this component is specified in [`Ui.java`](https://github.com/AY2122S1-CS2103T-F12-4/tp/tree/master/src/main/java/seedu/address/ui/Ui.java)
 
-![Structure of the UI Component](images/UiClassDiagram.png)
+![Structure of the UI Component MainWindow](images/UiClassDiagramMainWindow.png)
 
-The UI consists of a `MainWindow` that is made up of parts e.g.`CommandBox`, `ResultDisplay`, `PersonListPanel`, `StatusBarFooter` etc. All these, including the `MainWindow`, inherit from the abstract `UiPart` class which captures the commonalities between classes that represent parts of the visible GUI.
+Structure of the UI Component MainWindow
 
-The `UI` component uses the JavaFx UI framework. The layout of these UI parts are defined in matching `.fxml` files that are in the `src/main/resources/view` folder. For example, the layout of the [`MainWindow`](https://github.com/se-edu/addressbook-level3/tree/master/src/main/java/seedu/address/ui/MainWindow.java) is specified in [`MainWindow.fxml`](https://github.com/se-edu/addressbook-level3/tree/master/src/main/resources/view/MainWindow.fxml)
+<img height="300" alt="Structure of the UI Component MemberListPanel" src="images/UiClassDiagramMemberListPanel.png">
+
+Structure of the UI Component MemberListPanel
+
+<img height="400" alt="Structure of the UI Component MemberViewWindow" src="images/UiClassDiagramMemberViewWindow.png">
+
+Structure of the UI Component MemberViewWindow
+
+<img height="300" alt="Structure of the UI Component SummaryWindow" src="images/UiClassDiagramSummaryWindow.png">
+
+Structure of the UI Component SummaryWindow
+
+<img height="300" alt="Structure of the UI Component HelpWindow" src="images/UiClassDiagramHelpWindow.png">
+
+Structure of the UI Component HelpWindow
+
+The UI consists of a `MainWindow` that is made up of parts e.g.`CommandBox`, `ResultDisplay`, `MemberListPanel`, `StatusBarFooter` etc. All these, including the `MainWindow`, inherit from the abstract `UiPart` class which captures the commonalities between classes that represent parts of the visible GUI.
+
+The `UI` component uses the JavaFx UI framework. The layout of these UI parts are defined in matching `.fxml` files that are in the `src/main/resources/view` folder. For example, the layout of the [`MainWindow`](https://github.com/AY2122S1-CS2103T-F12-4/tp/tree/master/src/main/java/seedu/address/ui/MainWindow.java) is specified in [`MainWindow.fxml`](https://github.com/AY2122S1-CS2103T-F12-4/tp/tree/master/src/main/resources/view/MainWindow.fxml)
 
 The `UI` component,
 
 * executes user commands using the `Logic` component.
 * listens for changes to `Model` data so that the UI can be updated with the modified data.
 * keeps a reference to the `Logic` component, because the `UI` relies on the `Logic` to execute commands.
-* depends on some classes in the `Model` component, as it displays `Person` object residing in the `Model`.
+* depends on some classes in the `Model` component, as it displays `Member` object residing in the `Model`.
 
 ### Logic component
 
-**API** : [`Logic.java`](https://github.com/se-edu/addressbook-level3/tree/master/src/main/java/seedu/address/logic/Logic.java)
+**API** : [`Logic.java`](https://github.com/AY2122S1-CS2103T-F12-4/tp/tree/master/src/main/java/seedu/address/logic/Logic.java)
 
 Here's a (partial) class diagram of the `Logic` component:
 
@@ -94,27 +131,41 @@ Here's a (partial) class diagram of the `Logic` component:
 
 How the `Logic` component works:
 1. When `Logic` is called upon to execute a command, it uses the `EzFoodieParser` class to parse the user command.
-1. This results in a `Command` object (more precisely, an object of one of its subclasses e.g., `AddCommand`) which is executed by the `LogicManager`.
-1. The command can communicate with the `Model` when it is executed (e.g. to add a person).
+1. This results in a `Command` object (more precisely, an object of one of its subclasses e.g., `AddMemberCommand`) which is executed by the `LogicManager`.
+1. The command can communicate with the `Model` when it is executed (e.g. to add a member).
 1. The result of the command execution is encapsulated as a `CommandResult` object which is returned back from `Logic`.
 
-The Sequence Diagram below illustrates the interactions within the `Logic` component for the `execute("delete 1")` API call.
+The Sequence Diagram below illustrates the interactions within the `Logic` component for the `execute("del -mem/ -i/1")` API call.
 
-![Interactions Inside the Logic Component for the `delete 1` Command](images/DeleteSequenceDiagram.png)
+![Interactions Inside the Logic Component for the `del -mem/ -i/1` Command](images/DeleteSequenceDiagram.png)
 
-<div markdown="span" class="alert alert-info">:information_source: **Note:** The lifeline for `DeleteCommandParser` should end at the destroy marker (X) but due to a limitation of PlantUML, the lifeline reaches the end of diagram.
+<div markdown="span" class="alert alert-info">:information_source: **Note:** The lifeline for `DeleteCommandPrefixParser`. `DeleteMemberCommandParser` and `DeleteMemberCommand` should end at the destroy marker (X) but due to a limitation of PlantUML, the lifeline reaches the end of diagram.
 </div>
 
 Here are the other classes in `Logic` (omitted from the class diagram above) that are used for parsing a user command:
 
-![ParserClasses](images/ParserClasses.png)
-
 How the parsing works:
-* When called upon to parse a user command, the `EzFoodieParser` class creates an `XYZCommandParser` (`XYZ` is a placeholder for the specific command name e.g., `AddCommandParser`) which uses the other classes shown above to parse the user command and create a `XYZCommand` object (e.g., `AddCommand`) which the `EzFoodieParser` returns back as a `Command` object.
-* All `XYZCommandParser` classes (e.g., `AddCommandParser`, `DeleteCommandParser`, ...) inherit from the `Parser` interface so that they can be treated similarly where possible e.g, during testing.
+* `UVW` is a placeholder for the specific type of the command e.g., `add`, `edit` and `redeem`
+* `XYZ` is a placeholder for the specific object of the command e.g., `member`, `transaction` and `reservation`
+* All `UVWXYZCommandParser` classes with the same type (e.g., `UVWMemberCommandParser`, `UVWTransactionCommandParser`, ...) extend from the `UVWCommandParser` abstract class so that they can be treated similarly where possible e.g, during testing.
+* All `UVWXYZCommandParser` classes (e.g., `AddMemberCommandParser`, `DeleteMemberCommandParser`, ...) inherit from the `Parser` interface so that they can be treated similarly where possible e.g, during testing.
+
+<img src="images/ParserClassesCase1.png" width="600"/>
+
+* Case1: `add`, `edit`, `redeem` and `delete` commands
+  * When called upon to parse a user command, the `EzFoodieParser` class creates a `UVWCommandPrefixParser` (e.g., `AddCommandPrefixParser`) which uses the other classes shown above to parse the user command by the specific object of the command (e.g., `member`, `transaction` and `reservation` for `AddCommandParser` correspond to `AddMemberCommandParser`, `AddTransactionCommandParser` and `AddReservationCommandParser` respectively) and create a `UVWXYZCommandParser` which extends from `UVWXCommandParser` (e.g., `AddMmeberCommandParser` extends from `AddCommandParser`).
+  * Then the `UVWXYZCommandParser` (e.g., `AddMmeberCommandParser`) uses the other classes shown above to parse the user command further and create a `UVWXYZCommand` object (e.g., `AddMmeberCommand`) which the `EzFoodieParser` returns back as a `Command` object.
+
+<img src="images/ParserClassesCase2.png" width="600"/>
+
+* Case2: `Find`, `View`, `List`, `Sort`, `Login` and `SetAccount` commands
+  * When called upon to parse a user command, the `EzFoodieParser` class creates a `UVWCommandParser` (e.g., `FindCommandParser`) which uses the other classes shown above to parse the user command and create a `UVWCommand` object (e.g., `FindCommand`) which the `EzFoodieParser` returns back as a `Command` object.
+
+* Case3: `Clear`, `Exit`, `Logout`, `Help` and `Summary` commands
+  * When called upon to parse a user command, the `EzFoodieParser` class creates a `UVWCommand` object directly (e.g., `ClearCommand`) which the `EzFoodieParser` returns back as a `Command` object.
 
 ### Model component
-**API** : [`Model.java`](https://github.com/se-edu/addressbook-level3/tree/master/src/main/java/seedu/address/model/Model.java)
+**API** : [`Model.java`](https://github.com/AY2122S1-CS2103T-F12-4/tp/tree/master/src/main/java/seedu/address/model/Model.java)
 
 <img src="images/ModelClassDiagram.png" width="450" />
 
@@ -125,22 +176,21 @@ The `Model` component,
 * stores a `UserPref` object that represents the user’s preferences. This is exposed to the outside as a `ReadOnlyUserPref` objects.
 * does not depend on any of the other three components (as the `Model` represents data entities of the domain, they should make sense on their own without depending on other components)
 
-<div markdown="span" class="alert alert-info">:information_source: **Note:** An alternative (arguably, a more OOP) model is given below. It has a `Tag` list in the `AddressBook`, which `Person` references. This allows `AddressBook` to only require one `Tag` object per unique tag, instead of each `Person` needing their own `Tag` objects.<br>
+<div markdown="span" class="alert alert-info">:information_source: **Note:** An alternative (arguably, a more OOP) model is given below. It has a `Reservation` list in the `EzFoodie`, which `Member` references. This allows `EzFoodie` to only require one `Reservation` object per unique reservation, instead of each `Member` needing their own `Reservation` objects.<br>
 
 <img src="images/BetterModelClassDiagram.png" width="450" />
 
 </div>
 
-
 ### Storage component
 
-**API** : [`Storage.java`](https://github.com/se-edu/addressbook-level3/tree/master/src/main/java/seedu/address/storage/Storage.java)
+**API** : [`Storage.java`](https://github.com/AY2122S1-CS2103T-F12-4/tp/tree/master/src/main/java/seedu/address/storage/Storage.java)
 
 <img src="images/StorageClassDiagram.png" width="550" />
 
 The `Storage` component,
-* can save both address book data and user preference data in json format, and read them back into corresponding objects.
-* inherits from both `EzFoodieStorage` and `UserPrefStorage`, which means it can be treated as either one (if only the functionality of only one is needed).
+* can save both ezFoodie data and user preference data in json format, and read them back into corresponding objects.
+* inherits from `AccountStorage`, `EzFoodieStorage` and `UserPrefStorage`, which means it can be treated as either one (if only the functionality of only one is needed).
 * depends on some classes in the `Model` component (because the `Storage` component's job is to save/retrieve objects that belong to the `Model`)
 
 ### Common classes
@@ -161,17 +211,17 @@ This section describes some noteworthy details on how certain features are imple
 
 Given below is an example usage scenario and how the find mechanism behaves at each step.
 
-1. The user executes `find -m -id 10001 10002` command to find the members with the member ids `10001` and `10002` in the application.
+1. The user executes `find -mem/ -id/00001` command to find the member with the member id `00001` in the application.
 
 2. The command is handled by `LogicManager#execute(String)`, which then calls and passes this command to the `EzFoodieParser#parseCommand(String)` method.
 
-3. The `EzFoodieParser` detects the command word `find` in the string and extracts the argument string `-m -id 10001 10002`.
+3. The `EzFoodieParser` detects the command word `find` in the string and extracts the argument string `-mem/ -id/00001`.
 
 4. The `EzFoodieParser` creates a new `FindCommandParser` instance to parse the argument string according to the format specified for `FindCommand`.
 
-5. The argument string is parsed to the member ids array `[10001, 10002]` using the `FindCommandParser#parse(String)` method, which also performs validation.
+5. The argument string is parsed to the member ids array `[00001]` using the `FindCommandParser#parse(String)` method, which also performs validation.
 
-6. The `FindCommandParser` creates a new `IdContainsKeywordsPredicate` instance with the member ids array `[10001, 10002]` to handle the filter.
+6. The `FindCommandParser` creates a new `IdContainsKeywordsPredicate` instance with the member ids array `[00001]` to handle the filter.
 
 7. The `FindCommandParser` creates a new `FindCommand` instance with the `IdContainsKeywordsPredicate` instance and returns it to `EzFoodieParser`, which in turn returns it to `LogicManager`.
 
@@ -179,9 +229,9 @@ Given below is an example usage scenario and how the find mechanism behaves at e
 
 9. The `FindCommand` calls the `Model#updateFilteredMemberList(IdContainsKeywordsPredicate)` method.
 
-10. The `Model` calls the `FilteredList#setPredicate(IdContainsKeywordsPredicate)` to filter the members by the member ids `10001` and `10002`
+10. The `Model` calls the `FilteredList#setPredicate(IdContainsKeywordsPredicate)` to filter the member by the member id `00001`
 
-11. The application lists the filtered members.
+11. The application lists the filtered member.
 
 12. Lastly, the `FindCommand` creates a `CommandResult` with a `SuccessMessage` and returns it to `LogicManager`.
 
@@ -221,11 +271,11 @@ The following activity diagram summarizes what happens when a user executes a ne
 
 Given below is an example usage scenario and how the sort mechanism behaves at each step.
 
-1. The user executes `sort -m -c -a` command to sort the members by their credits in ascending order in the application.
+1. The user executes `sort -mem/ -c/ -a/` command to sort the members by their credits in ascending order in the application.
 
 2. The command is handled by `LogicManager#execute(String)`, which then calls and passes this command to the `EzFoodieParser#parseCommand(String)` method.
 
-3. The `EzFoodieParser` detects the command word `sort` in the string and extracts the argument string `-m -c -a`.
+3. The `EzFoodieParser` detects the command word `sort` in the string and extracts the argument string `-mem/ -c/ -a/`.
 
 4. The `EzFoodieParser` creates a new `SortCommandParser` instance to parse the argument string according to the format specified for `SortCommand`.
 
@@ -281,7 +331,7 @@ The following activity diagram summarizes what happens when a user executes a ne
 
 Given below is an example usage scenario and how the adding members behaves at each step.
 
-1. The user executes `add -m -n -p -e -a` command to add a member in the Ezfoodie and its' storage
+1. The user executes `add -mem/ -n/John Doe -p/98765432 -e/johndoe@gmail.com -a/112 Amoy Street, 069907, Singapore` command to add a member in the Ezfoodie and its' storage
 
 #### Design consideration
 
@@ -291,25 +341,13 @@ Given below is an example usage scenario and how the adding members behaves at e
 
 #### Implementation
 
-Given below is an example usage scenario and how the update credit feature behaves at each step.
-
-1. when user add transaction , it will auto-trigger update new credit
-
-#### Design consideration
-
-### Update Point feature
-
-`[written by: Zhang Zhiyao]`
-
-#### Implementation
-
-Given below is an example usage scenario and how the update point feature behaves at each step.
+Given below is an example usage scenario and how the redeem mechanism behaves at each step.
 
 1. when user add transaction, it will auto update new point
 
-2. The user executes `redeem -r -id` command to redeem point from exist credit by user id.
+2. The user executes `redeem -rd/100 -id/00001` command to redeem point from exist credit by member ID.
 
-3. The user executes `redeem -r -index` command to redeem point from exist credit by user index listed in page.
+3. The user executes `redeem -rd/100 -i/1` command to redeem point from exist credit by index number.
 
 #### Design consideration
 
@@ -364,42 +402,95 @@ Given below is an example usage scenario and how the add reservation mechanism b
 
 ![AddReservationSequenceDiagram](images/AddReservationSequenceDiagram.png)
 
+#### Design consideration
+
+### Delete Reservation Feature
+
+`[written by: Chen Shi Yao, Stephanie]`
+
+#### Implementation
+
+Given below is an example usage scenario and how the delete reservation mechanism behaves at each step.
+
+1. The user executes `del -rs/ -id/10001100001` command to delete the reservation with reservationId 100001 for the
+    member with ID 10001.
+
+2. The command is handled by `LogicManager#execute(String)`, which then calls and passes this command to the
+   `EzFoodieParser#parseCommand(String)` method.
+
+3. The EzFoodieParser detects the command word `del` in the string and extracts the argument string
+   `-rs/ -id/10001100001`.
+
+4. The EzFoodieParser creates a new `DeleteCommandPrefixParser` instance to parse the argument string according to the
+   format specified for `DeleteCommand` and calls `DeleteCommandPrefixParser#parse(arguments)`.
+
+5. `DeleteCommandPrefixParser#parse(arguments)` detects the prefix `-rs/` and creates a new instance of
+   `DeleteReservationCommandParser` and calls `DeleteReservationCommandParser#parse(arguments)`.
+
+6. `DeleteReservationCommandParser#parse(arguments)` detects the prefixes `-id/` and parses them through
+   `ParseUtil` to obtain the `memberId` and `ReservationId`.
+
+7. Using the obtained `memberID` and `ReservationId`, a new instance of `DeleteReservationCommand` is created and returned to
+   ezFoodieParser which in turn returns it to `LogicManager`. 
+
+8. `LogicManager` calls the `DeleteReservationCommand#execute(Model)` method.
+
+9. The `DeleteReservationCommand` calls `Model#getUpdatedMemberList()` and searches the list to find the member with the respective
+    `memberID` to obtain `memberToEdit`.
+   
+10. Using the `reservationId`, the `DeleteReservationCommand` then searches the list of `Reservations` associated with the 
+    `memberToEdit` to find the `reservationToDelete`.
+
+11. The `DeleteReservationCommand` calls `DeleteReservationCommand#createEditedMember(memberToEdit, reservationToDelete)` to create a new
+    instance of the same member but with the reservation deleted from the member's reservation list.
+
+12. The `DeleteReservationCommand` calls `Model#setMember(memberToEdit, editedMember)` to replace the old instance of the member
+    with its new instance.
+
+13. The `DeleteReservationCommand` calls `Model#updateFilteredMemberList(PREDICATE_SHOW_ALL_MEMBERS)` to update the current
+    member list with the updated member list.
+
+14. The application lists the updated member list.
+
+15. Lastly, `DeleteReservationCommand` creates a new instance of `CommandResult` with a success message, and returns it to Logic Manager.
+
+![DeleteReservationSequenceDiagram](images/DeleteReservationSequenceDiagram.png)
+
 ### \[Proposed\] Undo/redo feature
 
 #### Proposed Implementation
 
-The proposed undo/redo mechanism is facilitated by `VersionedAddressBook`. It extends `AddressBook` with an undo/redo history, stored internally as an `addressBookStateList` and `currentStatePointer`. Additionally, it implements the following operations:
+The proposed undo/redo mechanism is facilitated by `VersionedEzFoodie`. It extends `EzFoodie` with an undo/redo history, stored internally as an `ezFoodieStateList` and `currentStatePointer`. Additionally, it implements the following operations:
 
-* `VersionedAddressBook#commit()` — Saves the current address book state in its history.
-* `VersionedAddressBook#undo()` — Restores the previous address book state from its history.
-* `VersionedAddressBook#redo()` — Restores a previously undone address book state from its history.
+* `VersionedEzFoodie#commit()` — Saves the current ezFoodie state in its history.
+* `VersionedEzFoodie#undo()` — Restores the previous ezFoodie state from its history.
+* `VersionedEzFoodie#redo()` — Restores a previously undone ezFoodie state from its history.
 
-These operations are exposed in the `Model` interface as `Model#commitAddressBook()`, `Model#undoAddressBook()` and `Model#redoAddressBook()` respectively.
+These operations are exposed in the `Model` interface as `Model#commitEzFoodie()`, `Model#undoEzFoodie()` and `Model#redoEzFoodie()` respectively.
 
 Given below is an example usage scenario and how the undo/redo mechanism behaves at each step.
 
-Step 1. The user launches the application for the first time. The `VersionedAddressBook` will be initialized with the initial address book state, and the `currentStatePointer` pointing to that single address book state.
+Step 1. The user launches the application for the first time. The `VersionedEzFoodie` will be initialized with the initial ezFoodie state, and the `currentStatePointer` pointing to that single ezFoodie state.
 
 ![UndoRedoState0](images/UndoRedoState0.png)
 
-Step 2. The user executes `delete 5` command to delete the 5th person in the address book. The `delete` command calls `Model#commitAddressBook()`, causing the modified state of the address book after the `delete 5` command executes to be saved in the `addressBookStateList`, and the `currentStatePointer` is shifted to the newly inserted address book state.
+Step 2. The user executes `del -mem/ -i/5` command to delete the 5th Member in the ezFoodie. The `delete` command calls `Model#commitEzFoodie()`, causing the modified state of the ezfoodie after the `del -mem/ -i/5` command executes to be saved in the `ezFoodieStateList`, and the `currentStatePointer` is shifted to the newly inserted ezFoodie state.
 
 ![UndoRedoState1](images/UndoRedoState1.png)
 
-Step 3. The user executes `add n/David …​` to add a new person. The `add` command also calls `Model#commitAddressBook()`, causing another modified address book state to be saved into the `addressBookStateList`.
+Step 3. The user executes `add -mem/ -n/John Doe …​` to add a new member. The `add` command also calls `Model#commitEzFoodie()`, causing another modified ezFoodie state to be saved into the `ezFoodieStateList`.
 
 ![UndoRedoState2](images/UndoRedoState2.png)
 
-<div markdown="span" class="alert alert-info">:information_source: **Note:** If a command fails its execution, it will not call `Model#commitAddressBook()`, so the address book state will not be saved into the `addressBookStateList`.
+<div markdown="span" class="alert alert-info">:information_source: **Note:** If a command fails its execution, it will not call `Model#commitEzFoodie()`, so the ezFoodie state will not be saved into the `ezFoodieStateList`.
 
 </div>
 
-Step 4. The user now decides that adding the person was a mistake, and decides to undo that action by executing the `undo` command. The `undo` command will call `Model#undoAddressBook()`, which will shift the `currentStatePointer` once to the left, pointing it to the previous address book state, and restores the address book to that state.
+Step 4. The user now decides that adding the member was a mistake, and decides to undo that action by executing the `undo` command. The `undo` command will call `Model#undoEzFoodie()`, which will shift the `currentStatePointer` once to the left, pointing it to the previous ezFoodie state, and restores the ezFoodie to that state.
 
 ![UndoRedoState3](images/UndoRedoState3.png)
 
-<div markdown="span" class="alert alert-info">:information_source: **Note:** If the `currentStatePointer` is at index 0, pointing to the initial AddressBook state, then there are no previous AddressBook states to restore. The `undo` command uses `Model#canUndoAddressBook()` to check if this is the case. If so, it will return an error to the user rather
-than attempting to perform the undo.
+<div markdown="span" class="alert alert-info">:information_source: **Note:** If the `currentStatePointer` is at index 0, pointing to the initial EzFoodie state, then there are no previous EzFoodie states to restore. The `undo` command uses `Model#canUndoEzFoodie()` to check if this is the case. If so, it will return an error to the user rather than attempting to perform the undo.
 
 </div>
 
@@ -411,17 +502,17 @@ The following sequence diagram shows how the undo operation works:
 
 </div>
 
-The `redo` command does the opposite — it calls `Model#redoAddressBook()`, which shifts the `currentStatePointer` once to the right, pointing to the previously undone state, and restores the address book to that state.
+The `redo` command does the opposite — it calls `Model#redoEzFoodie()`, which shifts the `currentStatePointer` once to the right, pointing to the previously undone state, and restores the ezFoodie to that state.
 
-<div markdown="span" class="alert alert-info">:information_source: **Note:** If the `currentStatePointer` is at index `addressBookStateList.size() - 1`, pointing to the latest address book state, then there are no undone AddressBook states to restore. The `redo` command uses `Model#canRedoAddressBook()` to check if this is the case. If so, it will return an error to the user rather than attempting to perform the redo.
+<div markdown="span" class="alert alert-info">:information_source: **Note:** If the `currentStatePointer` is at index `ezFoodieStateList.size() - 1`, pointing to the latest ezFoodie state, then there are no undone EzFoodie states to restore. The `redo` command uses `Model#canRedoEzFoodie()` to check if this is the case. If so, it will return an error to the user rather than attempting to perform the redo.
 
 </div>
 
-Step 5. The user then decides to execute the command `list`. Commands that do not modify the address book, such as `list`, will usually not call `Model#commitAddressBook()`, `Model#undoAddressBook()` or `Model#redoAddressBook()`. Thus, the `addressBookStateList` remains unchanged.
+Step 5. The user then decides to execute the command `list -mem/`. Commands that do not modify the ezFoodie, such as `list -mem/`, will usually not call `Model#commitEzFoodie()`, `Model#undoEzFoodie()` or `Model#redoEzFoodie()`. Thus, the `ezFoodieStateList` remains unchanged.
 
 ![UndoRedoState4](images/UndoRedoState4.png)
 
-Step 6. The user executes `clear`, which calls `Model#commitAddressBook()`. Since the `currentStatePointer` is not pointing at the end of the `addressBookStateList`, all address book states after the `currentStatePointer` will be purged. Reason: It no longer makes sense to redo the `add n/David …​` command. This is the behavior that most modern desktop applications follow.
+Step 6. The user executes `clear`, which calls `Model#commitEzFoodie()`. Since the `currentStatePointer` is not pointing at the end of the `ezFoodieStateList`, all ezFoodie states after the `currentStatePointer` will be purged. Reason: It no longer makes sense to redo the `add -mem/ -n/John Doe …​` command. This is the behavior that most modern desktop applications follow.
 
 ![UndoRedoState5](images/UndoRedoState5.png)
 
@@ -433,12 +524,12 @@ The following activity diagram summarizes what happens when a user executes a ne
 
 **Aspect: How undo & redo executes:**
 
-* **Alternative 1 (current choice):** Saves the entire address book.
+* **Alternative 1 (current choice):** Saves the entire ezFoodie.
   * Pros: Easy to implement.
   * Cons: May have performance issues in terms of memory usage.
 
 * **Alternative 2:** Individual command knows how to undo/redo by itself.
-  * Pros: Will use less memory (e.g. for `delete`, just save the person being deleted).
+  * Pros: Will use less memory (e.g. for `delete`, just save the member being deleted).
   * Cons: We must ensure that the implementation of each individual command are correct.
 
 _{more aspects and alternatives to be added}_
@@ -466,7 +557,7 @@ _{Explain here how the data archiving feature will be implemented}_
 
 **Target user profile story**:
 
-Ben is a restaurant manager. He found that restaurants are becoming more and more popular, the number of members is increasing, and there are a large number of reservations every day. Every day the front desk staffs spend a lot of time in excel or on paper to record new members, record reservations and transactions, and find reservations. With the need to handle multiple tasks at the same time, the staffs are also prone to make careless mistakes at work due to fatigue. 😞
+Ben is a restaurant manager. He found that restaurants are becoming more and more popular, the number of members is increasing, and there are a large number of reservations every day. Every day the front desk staffs spend a lot of time in excel or paper to record new members, record reservations, and find reservations. With the need to handle multiple tasks at the same time, the staffs are also prone to make careless mistakes at work due to fatigue. 😞
 
 More importantly, the member list is only stored in excel, it makes it difficult for Ben to manage and analyze members to formulate targeted promotional strategies, which will have bad impact on the profit expansion of the restaurant. 😞
 
@@ -476,16 +567,17 @@ As a manager who is proficient in technology and has commendable experience in U
 
 Managers and staffs who
 
-* work in highly popular restaurants whose number of members is increasing
-* are responsible for managing a large number of member registrations, transactions and reservations daily
+* work in a highly popular restaurant and the number of members is increasing
+* are responsible for managing a large number of member registrations and reservations daily
 * are required to multi-task (manage member registrations and reservations)
-* need to manage and analyze members to formulate promotional strategies
+* need automatic reminder
+* need to manage and analyze members to formulate promotional strategies
 * are proficient in technology
 * want to get things done quickly
 * are tired of tracking member details from paper or excel
 * prefer desktop apps over other types
 * can type fast
-* prefer typing to using mouse
+* prefer typing to mouse interactions
 * are reasonably comfortable using CLI apps
 
 **Value proposition**: 
@@ -500,41 +592,39 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 | -------- | --------| --------------------------------------------------------- | ---------------------------------------------------------------------- |
 | `* * *`  | staff   | view help                                                 | easily check how to use the commands and access the user guide         |
 | `* * *`  | staff   | exit the program                                          |                                                                        |
-| `* * *`  | staff   | list out a certain number of members                      | easily view and access the member basic information                    |
-| `* * *`  | staff   | add new members                                           | easily the track member statuses                                       |
+| `* * *`  | staff   | list out all members                                      | easily view and access the member basic information                    |
+| `* * *`  | staff   | add new member                                            | easily the track member statuses                                       |
 | `* * *`  | staff   | find members by name                                      | easily find the specific members to check their details                |
 | `* * *`  | staff   | find member by phone                                      | easily find the specific member to check his/her details               |
 | `* * *`  | staff   | find member by email                                      | easily find the specific member to check his/her details               |
 | `* * *`  | staff   | find members by registration date                         | easily find a member to check their details                            |
 | `* * *`  | staff   | find member by member ID                                  | easily find the specific member to check his/her details               |
 | `* * *`  | staff   | view member profile                                       | easily check the specific member's details                             |
-| `* * *`  | staff   | add transaction for members                               | easily track the transaction history of members                        |
-| `* * *`  | staff   | redeem a member’s points                                  |                                                                        |
-| `* * *`  | staff   | mark reservation for member                               |                                                                        |
-| `* * *`  | manager | clear the program                                         | Initialize the entire program                                          |
+| `* * *`  | staff   | add transaction by member ID                              | easily track the transaction history of members                        |
+| `* * *`  | staff   | redeem member’s points by member ID                       | easily provide promotional offers for frequent customers               |
+| `* * *`  | staff   | redeem member’s points by index number                    | easily provide promotional offers for frequent customers               |
+| `* * *`  | staff   | add reservation by member ID                              | easily reserve seats for the comming customers                         |
+| `* * *`  | manager | clear the program                                         | initialize the entire program                                          |
 | `* * *`  | manager | login as a manager                                        | access manager-only features, e.g. sort the members by their credits   |
 | `* * *`  | manager | logout as a manager                                       | prevent staff from accessing manager-only features                     |
-| `* * *`  | manager | sort members by tier                                      | easily analyze the members' consumption and distribution               |
-| `* * *`  | manager | sort members by credit                                    | easily offer promotions to the members with the highest consumption    |
-| `* * *`  | manager | edit member name                                          | update member information to latest                                    |
-| `* * *`  | manager | edit member phone                                         | update member information to latest                                    |
-| `* * *`  | manager | edit member email                                         | update member information to latest                                    |
+| `* * *`  | manager | update login password                                     | improve the program security                                           |
+| `* * *`  | manager | sort members by credit                                    | easily analyze the members' consumption and distribution               |
+| `* * *`  | manager | edit member name by member ID                             | update member information to latest                                    |
+| `* * *`  | manager | edit member phone by member ID                            | update member information to latest                                    |
+| `* * *`  | manager | edit member email by member ID                            | update member information to latest                                    |
+| `* * *`  | manager | edit member address by member ID                          | update member information to latest                                    |
+| `* * *`  | manager | edit member name by index number                          | update member information to latest                                    |
+| `* * *`  | manager | edit member phone by index number                         | update member information to latest                                    |
+| `* * *`  | manager | edit member email by index number                         | update member information to latest                                    |
+| `* * *`  | manager | edit member address by index number                       | update member information to latest                                    |
 | `* * *`  | manager | delete member by member ID                                | remove member that I no longer need                                    |
-| `* *  `  | staff   | unmark reservation for member                             | remove reservation for member that I no longer need                    |
-| `* *  `  | staff   | edit reservation for member                               | update reservation for member to latest                                |
-| `* *  `  | staff   | find reservations by date                                 | easily find the coming reservations                                    |
-| `* *  `  | staff   | be automatically reminded when a reservation is coming    | prepare for seats for the member in time                               |
-| `*    `  | staff   | undo previous command                                     | easily cancel previous command with accidental mistakes                |
-| `*    `  | staff   | redo previous command                                     | easily speed up the typing speed of command                            |
-| `*    `  | staff   | retrieve previous command                                 | easily speed up the typing speed of command                            |
-| `*    `  | manager | delete a transaction detail                               | correct any accidental mistakes                                        |
-| `*    `  | manager | edit a transaction detail                                 | correct any accidental mistakes                                        |
-| `*    `  | manager | view a visualisation of the summary in a certain period   | know the summary details in a certain period, e.g. total registrations |
-| `*    `  | manager | edit the amount of credit needed for each membership tier | easily control the number of members for each tier                     |
-| `*    `  | manager | list number of registrations in a certain month           | easily manage and analyze members                                      |
-| `*    `  | manager | list number of registrations in a few past weeks          | easily manage and analyze members                                      |
-| `*    `  | manager | list number of registrations in a certain period          | easily manage and analyze members                                      |
-| `*    `  | Manager | add promo code for members                                | easily implement promotional strategies                                |
+| `* * *`  | manager | delete member by index number                             | remove member that I no longer need                                    |
+| `* *  `  | staff   | edit reservation by member ID and transaction ID          | update reservation for member to latest                                |
+| `* *  `  | manager | delete reservation by member ID and transaction ID        | remove reservation for member that I no longer need                    |
+| `*    `  | staff   | retrieve previous commands                                | easily speed up the typing speed of command                            |
+| `*    `  | manager | delete transaction by member ID and transaction ID        | correct any accidental mistakes                                        |
+| `*    `  | manager | edit transaction by member ID and transaction ID          | correct any accidental mistakes                                        |
+| `*    `  | manager | view summary for registrations and transactions           | know the summary details in a certain period, e.g. total registrations |
 
 *{More to be added}*
 
@@ -580,14 +670,14 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
       Use case ends.
 
-<b>Use case: <label id="UC03">UC03</label> - List out a certain number of members</b>
+<b>Use case: <label id="UC03">UC03</label> - List out all members</b>
 
 **Actors: Staff**
 
 **MSS**
 
-1.  Staff requests to list out a certain number of members by page.
-2.  ezFoodie shows a list of members by page.
+1.  Staff requests to list out all members.
+2.  ezFoodie shows a list of members.
 
     Use case ends.
 
@@ -599,24 +689,18 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
       Use case ends.
 
-* 1b. The given page number exceeded the maximum number of pages.
-
-    * 1b1. ezFoodie shows an error message.
-
-      Use case ends.
-
-* 2a. The list is empty.
+* 2a. The member list is empty.
 
   Use case ends.
 
-**Use Case: UC04 - Add a member**
+**Use Case: UC04 - Add new member**
 
 **Actors: Staff**
 
 **MSS**
 
-1.  Staff requests to add the information of a member to the list.
-2.  The member is created in ezFoodie with the given information.
+1.  Staff requests to add the information of a member to the member list.
+2.  The member is added in ezFoodie with the given information.
 
     Use case ends.
 
@@ -628,7 +712,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
       
       Use case ends.
 
-* 1b. The member (phone or email) already exists in the list.
+* 1b. The member (phone or email) already exists in the member list.
 
     * 1b1. ezFoodie shows an error message.
 
@@ -653,7 +737,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
       Use case ends.
 
-* 2a. The list is empty.
+* 2a. The member list is empty.
 
   Use case ends.
 
@@ -664,7 +748,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 **MSS**
 
 1.  Staff requests to <u>list a set of members (<a href="#UC03">UC03</a> or <a href="#UC05">UC05</a>)</u>.
-2.  Staff requests to view a specific member in the list by member ID.
+2.  Staff requests to view a specific member in the member list by member ID.
 3.  ezFoodie shows the specific member's details.
 
     Use case ends.
@@ -677,13 +761,13 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
       Use case resumes at step 1.
 
-* 2b. The given member ID does not exist in the list.
+* 2b. The given member ID does not exist in the member list.
 
     * 2b1. ezFoodie shows an error message.
 
       Use case resumes at step 1.
 
-**Use case: UC07 - Add a transaction for a member**
+**Use case: UC07 - Add transaction by member ID**
 
 **Actors: Staff**
 
@@ -691,7 +775,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 1.  Staff requests to <u>list a set of members (<a href="#UC03">UC03</a> or <a href="#UC05">UC05</a>)</u>.
 2.  Staff requests to add transaction details for a member by member ID.
-3.  The transaction of the member is created in ezFoodie.
+3.  The transaction of the member is added in ezFoodie.
 
     Use case ends.
 
@@ -703,21 +787,23 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
       Use case resumes at step 1.
 
-* 2b. The given member ID does not exist in the list.
+* 2b. The given member ID does not exist in the member list.
 
     * 2b1. ezFoodie shows an error message.
 
       Use case resumes at step 1.
 
-**Use case: UC08 - Redeem a member’s points**
+**Use case: UC08 - Redeem member’s points by [field]**
 
 **Actors: Staff**
 
 **MSS**
 
 1.  Staff requests to <u>list a set of members (<a href="#UC03">UC03</a> or <a href="#UC05">UC05</a>)</u>.
-2.  Staff requests to redeem one gift (e.g. 1 item = 100 points) for a member by member ID.
+2.  Staff requests to redeem one gift (e.g. 1 item = 100 points) for a member by [field], [field] can be member ID or index number.
 3.  The points of the member are deducted (e.g. -100 points) in ezFoodie.
+
+    Use case ends.
 
 **Extensions**
 
@@ -727,7 +813,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
       Use case resumes at step 1.
 
-* 2b. The given member ID does not exist in the list.
+* 2b. The given [field] does not exist in the member list.
 
     * 2b1. ezFoodie shows an error message.
 
@@ -739,15 +825,17 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
       Use case resumes at step 1.
 
-**Use case: UC09 - Mark reservation for member**
+**Use case: UC09 - Add reservation by member ID**
 
 **Actors: Staff**
 
 **MSS**
 
 1.  Staff requests to <u>list a set of members (<a href="#UC03">UC03</a> or <a href="#UC05">UC05</a>)</u>.
-2.  Staff requests to mark reservation for the member by member ID.
-3.  A reservation date time of the member is marked in ezFoodie.
+2.  Staff requests to add reservation for the member by member ID.
+3.  A reservation date time and remark of the member are added in ezFoodie.
+
+    Use case ends.
 
 **Extensions**
 
@@ -757,7 +845,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
       Use case resumes at step 1.
 
-* 2b. The given member ID does not exist in the list.
+* 2b. The given member ID does not exist in the member list.
 
     * 2b1. ezFoodie shows an error message.
 
@@ -766,6 +854,12 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 * 2c. The reservation date time is not after the current date time.
 
     * 2c1. ezFoodie shows an error message.
+
+      Use case resumes at step 1.
+
+* 2d. Multiple reservations on the same day are added for the same member.
+
+    * 2d1. ezFoodie shows an error message.
 
       Use case resumes at step 1.
 
@@ -781,6 +875,8 @@ Manager is logged in
 
 1.  Manager requests to clear and initialize the entire program.
 2.  All the data in ezFoodie is removed.
+
+    Use case ends.
 
 **Extensions**
 
@@ -798,6 +894,8 @@ Manager is logged in
 
 1.  Manager requests to login as a manager.
 2.  ezFoodie switch to Manager Mode.
+
+    Use case ends.
 
 **Extensions**
 
@@ -826,6 +924,8 @@ Manager is logged in
 1.  Manager requests to logout as a manager.
 2.  ezFoodie switch to Normal Mode.
 
+    Use case ends.
+
 **Extensions**
 
 * 1a. The given input is invalid.
@@ -834,7 +934,7 @@ Manager is logged in
 
       Use case ends.
 
-**Use case: UC13 - Sort members by [field]**
+**Use case: UC13 - Update login password**
 
 **Actors: Manager**
 
@@ -844,8 +944,8 @@ Manager is logged in
 
 **MSS**
 
-1.  Manager requests to sort members by [field], [field] can be name, phone or email.
-2.  ezFoodie shows a list of members sorted by the [field].
+1.  Manager requests to update the login password.
+2.  A new login password is updated in ezFoodie.
 
     Use case ends.
 
@@ -857,11 +957,34 @@ Manager is logged in
 
       Use case ends.
 
-* 2a. The list is empty.
+**Use case: UC14 - Sort members by credit in [field]**
+
+**Actors: Manager**
+
+**Preconditions**
+
+Manager is logged in
+
+**MSS**
+
+1.  Manager requests to sort members by credit in [field], [field] can be ascending order or descending order.
+2.  ezFoodie shows a list of members sorted by credit in [field].
+
+    Use case ends.
+
+**Extensions**
+
+* 1a. The given input is invalid.
+
+    * 1a1. ezFoodie shows an error message.
+
+      Use case ends.
+
+* 2a. The member list is empty.
 
   Use case ends.
 
-**Use case: UC14 - Edit member [field]**
+**Use case: UC15 - Edit member [field1] by [field2]**
 
 **Actors: Manager**
 
@@ -872,7 +995,7 @@ Manager is logged in
 **MSS**
 
 1.  Manager requests to <u>list a set of members (<a href="#UC03">UC03</a> or <a href="#UC05">UC05</a>)</u>.
-2.  Manager requests to edit member [field] by member ID, [field] can be name, phone or email.
+2.  Manager requests to edit member [field1] by [field2], [field1] can be name, phone, email or address, [field2] can be member ID or index number.
 3.  ezFoodie shows the updated information of the member.
 
     Use case ends.
@@ -885,19 +1008,19 @@ Manager is logged in
 
       Use case resumes at step 1.
 
-* 2b. The given member ID does not exist in the list.
+* 2b. The given [field2] does not exist in the member list.
 
     * 2b1. ezFoodie shows an error message.
 
       Use case resumes at step 1.
 
-* 2c. The new phone or email already exists in the list.
+* 2c. The new phone or email already exists in the member list.
 
     * 2c1. ezFoodie shows an error message.
 
       Use case resumes at step 1.
 
-**Use case: UC15 - Delete member by member ID**
+**Use case: UC16 - Delete member by [field]**
 
 **Actors: Manager**
 
@@ -908,7 +1031,7 @@ Manager is logged in
 **MSS**
 
 1.  Manager requests to <u>list a set of members (<a href="#UC03">UC03</a> or <a href="#UC05">UC05</a>)</u>.
-2.  Manager requests to delete the member by member ID.
+2.  Manager requests to delete the member by [field], [field] can be member ID or index number.
 3.  The member is deleted from ezFoodie.
 
     Use case ends.
@@ -921,21 +1044,23 @@ Manager is logged in
 
       Use case resumes at step 1.
 
-* 2b. The given member ID does not exist in the list.
+* 2b. The given [field] does not exist in the member list.
 
     * 2b1. ezFoodie shows an error message.
 
       Use case resumes at step 1.
 
-**Use case: UC16 - Unmark reservation for member**
+**Use case: UC17 - Edit reservation by member ID and reservation ID**
 
 **Actors: Staff**
 
 **MSS**
 
 1.  Staff requests to <u>list a set of members (<a href="#UC03">UC03</a> or <a href="#UC05">UC05</a>)</u>.
-2.  Staff requests to unmark reservation for the member by member ID.
-3.  A reservation date time of the member is unmarked in ezFoodie.
+2.  Staff requests to edit reservation by member ID and reservation ID.
+3.  The reservation of the member is updated in ezFoodie.
+
+    Use case ends.
 
 **Extensions**
 
@@ -945,50 +1070,178 @@ Manager is logged in
 
       Use case resumes at step 1.
 
-* 2b. The given member ID does not exist in the list.
+* 2b. The given member ID does not exist in the member list.
 
     * 2b1. ezFoodie shows an error message.
 
       Use case resumes at step 1.
 
-**Use case: UC17 - Edit reservation for member**
-
-**Actors: Staff**
-
-**MSS**
-
-1.  Staff requests to <u>list a set of members (<a href="#UC03">UC03</a> or <a href="#UC05">UC05</a>)</u>.
-2.  Staff requests to edit reservation for the member by member ID.
-3.  A reservation date time of the member is updated in ezFoodie.
-
-**Extensions**
-
-* 2a. The given input is invalid.
-
-    * 2a1. ezFoodie shows an error message.
-
-      Use case resumes at step 1.
-
-* 2b. The given member ID does not exist in the list.
-
-    * 2b1. ezFoodie shows an error message.
-
-      Use case resumes at step 1.
-
-* 2c. The reservation date time is not after the current date time.
+* 2c. The given reservation ID does not exist in the member with the given member ID.
 
     * 2c1. ezFoodie shows an error message.
 
       Use case resumes at step 1.
 
-**Use case: UC18 - find reservations by date**
+* 2d. The reservation date time is not after the current date time.
+
+    * 2d1. ezFoodie shows an error message.
+
+      Use case resumes at step 1.
+
+**Use case: UC18 - Delete reservation by member ID and reservation ID**
+
+**Actors: Manager**
+
+**Preconditions**
+
+Manager is logged in
+
+**MSS**
+
+1.  Manager requests to <u>list a set of members (<a href="#UC03">UC03</a> or <a href="#UC05">UC05</a>)</u>.
+2.  Manager requests to delete reservation by member ID and reservation ID.
+3.  The reservation of the member is deleted from ezFoodie.
+
+    Use case ends.
+
+**Extensions**
+
+* 2a. The given input is invalid.
+
+    * 2a1. ezFoodie shows an error message.
+
+      Use case resumes at step 1.
+
+* 2b. The given member ID does not exist in the member list.
+
+    * 2b1. ezFoodie shows an error message.
+
+      Use case resumes at step 1.
+
+* 2c. The given reservation ID does not exist in the member with the given member ID.
+
+    * 2c1. ezFoodie shows an error message.
+
+      Use case resumes at step 1.
+
+**Use case: UC19 - Retrieve previous commands**
 
 **Actors: Staff**
 
 **MSS**
 
-1.  Staff requests to find reservations by date.
-2.  ezFoodie shows a list of reservations for the date.
+1.  Staff requests to retrieve previous commands by pressing the `up` or `down` key on the keyboard.
+2.  The previous commands will be shown in the command box one by one.
+
+    Use case ends.
+
+**Extensions**
+
+* 1a. The program currently stores 30 records, and `up` key is pressed more than 30 times continuously from the beginning.
+
+    * 1a1. ezFoodie shows empty in the command box.
+
+      Use case resumes at step 1.
+
+* 1b. The program currently stores 30 records, and `down` key is pressed more than 30 times continuously from the beginning.
+
+    * 1b1. ezFoodie shows empty in the command box.
+
+      Use case resumes at step 1.
+
+* 1c. The program currently stores no more than 30 records, and `up` key is pressed more than the number of stored records continuously from the beginning.
+
+    * 1c1. ezFoodie shows empty in the command box.
+
+      Use case resumes at step 1.
+
+* 1d. The program currently stores no more than 30 records, and `down` key is pressed more than the number of stored records continuously from the beginning.
+
+    * 1d1. ezFoodie shows empty in the command box.
+
+      Use case resumes at step 1.
+
+**Use case: UC20 - Edit transaction by member ID and transaction ID**
+
+**Actors: Staff**
+
+**MSS**
+
+1.  Staff requests to <u>list a set of members (<a href="#UC03">UC03</a> or <a href="#UC05">UC05</a>)</u>.
+2.  Staff requests to edit transaction by member ID and transaction ID.
+3.  The transaction of the member is updated in ezFoodie.
+
+    Use case ends.
+
+**Extensions**
+
+* 2a. The given input is invalid.
+
+    * 2a1. ezFoodie shows an error message.
+
+      Use case resumes at step 1.
+
+* 2b. The given member ID does not exist in the member list.
+
+    * 2b1. ezFoodie shows an error message.
+
+      Use case resumes at step 1.
+
+* 2c. The given transaction ID does not exist in the member with the given member ID.
+
+    * 2c1. ezFoodie shows an error message.
+
+      Use case resumes at step 1.
+
+**Use case: UC21 - Delete transaction by member ID and transaction ID**
+
+**Actors: Manager**
+
+**Preconditions**
+
+Manager is logged in
+
+**MSS**
+
+1.  Manager requests to <u>list a set of members (<a href="#UC03">UC03</a> or <a href="#UC05">UC05</a>)</u>.
+2.  Manager requests to delete transaction by member ID and transaction ID.
+3.  The transaction of the member is deleted from ezFoodie.
+
+    Use case ends.
+
+**Extensions**
+
+* 2a. The given input is invalid.
+
+    * 2a1. ezFoodie shows an error message.
+
+      Use case resumes at step 1.
+
+* 2b. The given member ID does not exist in the member list.
+
+    * 2b1. ezFoodie shows an error message.
+
+      Use case resumes at step 1.
+
+* 2c. The given transaction ID does not exist in the member with the given member ID.
+
+    * 2c1. ezFoodie shows an error message.
+
+      Use case resumes at step 1.
+
+
+**Use case: UC22 - View summary for registrations and transactions**
+
+**Actors: Manager**
+
+**Preconditions**
+
+Manager is logged in
+
+**MSS**
+
+1.  Manager requests to view summary for member registrations and transactions details.
+2.  ezFoodie shows a list of statistics including total number of member registrations, total number and amount of transactions in past months.
 
     Use case ends.
 
@@ -1000,9 +1253,6 @@ Manager is logged in
 
       Use case ends.
 
-* 2a. The list is empty.
-
-  Use case ends.
 
 *{More to be added}*
 
@@ -1026,14 +1276,13 @@ Manager is logged in
 * **Manager**: A special subset of staff with higher permission who can get special access to certain higher level features
 * **Normal Mode**: The mode before the manager login, Normal Mode by default
 * **Manager Mode**: The mode after the manager login
-* **Membership Tiers**: Different membership tiers give members different benefits. Tiers include Silver, Gold, and Platinum
-* **Member Details**: Member ID, Name, Phone, Membership Tiers, Registration Date, Email, Credits, Points, Transaction
+* **Membership Tiers**: Different membership tiers give members different benefits. Tiers include Bronze, Silver, Gold, and Platinum
+* **Member Details**: Member ID, Name, Phone, Email, Address, Membership Tiers, Registration Date, Credits, Points, Transaction
 * **Credits**: Represents total amount of money spent at the restaurant (S$1 = 1 credit), accumulated and cannot be decreased
-* **Points**: Earned by 6 times of spending money, can be used to redeem gifts and will be spent
+* **Points**: Earned 1 points for S$1, can be used to redeem gifts and will be spent
 * **Transaction**: A payment made by a customer at the restaurant
-* **Promo Code**: A string that when used by the customer, gives customer benefits such as discounts or free items
 * **Redemption**: Points that a member has can be redeemed for free items, and the points will then be deducted from the member’s account
-* **Reservation**: A tag contains specific date time represents when the member will come for a meal
+* **Reservation**: A tag contains specific date time and remark that represents when the member will come for a meal
 
 --------------------------------------------------------------------------------------------------------------------
 
@@ -1050,7 +1299,7 @@ testers are expected to do more *exploratory* testing.
 
 1. Initial launch
 
-   1. Download the jar file and copy into an empty folder
+   1. [Download the jar file](https://github.com/AY2122S1-CS2103T-F12-4/tp/releases) and copy into an empty folder
 
    1. Double-click the jar file Expected: Shows the GUI with a set of sample contacts. The window size may not be optimum.
 
@@ -1061,29 +1310,257 @@ testers are expected to do more *exploratory* testing.
    1. Re-launch the app by double-clicking the jar file.<br>
        Expected: The most recent window size and location is retained.
 
-1. _{ more test cases …​ }_
+### Opening help window
 
-### Deleting a person
+1. Opening help window
 
-1. Deleting a person while all persons are being shown
+   1. Test case: `help`<br>
+       Expected: a help window will be popped up to display a list of commands and their respective format, and also a link to the user guide.
 
-   1. Prerequisites: List all persons using the `list` command. Multiple persons in the list.
+### Listing out all members
 
-   1. Test case: `delete 1`<br>
-      Expected: First contact is deleted from the list. Details of the deleted contact shown in the status message. Timestamp in the status bar is updated.
+1. Listing out all members
 
-   1. Test case: `delete 0`<br>
-      Expected: No person is deleted. Error details shown in the status message. Status bar remains the same.
+   1. Prerequisites: There are multiple members exist in ezFoodie.
+    
+   1. Test case: `list -mem/`<br>
+       Expected: all members with their own member ID, index number, name, tier, phone, email, credit, point and coming reservation (if exists) will be shwon.
 
-   1. Other incorrect delete commands to try: `delete`, `delete x`, `...` (where x is larger than the list size)<br>
-      Expected: Similar to previous.
+### Adding new member
 
-1. _{ more test cases …​ }_
+1. Adding a new member while all members are being shownn
+
+   1. Prerequisites: List all members using the `list -mem/` command. Multiple members in the member list.
+    
+   1. Test case: `add -mem/ -n/John Doe -p/92345678 -e/johnd@example.com -a/311, Clementi Ave 2, #02-25`<br>
+       Expected: A new member with name `John Doe`, phone `92345678`, email `johnd@example.com` and address `311, Clementi Ave 2, #02-25` is added to the member list.
+
+   1. Test case: `add -mem/ -n/John Bob -p/92345678 -e/johnb@example.com -a/113, Clementi Ave 3, #03-36`<br>
+       Expected: No member is added because the phone `92345678` already exists in the member list. Status message shows that `This member (phone or email) already exists in the ezFoodie.`.
+
+   1. Test case: `add -mem/ -n/John Doe -p/92345678 -e/johnd@example.com`<br>
+       Expected: No member is added because not all compulsory field is filled. Status message shows `Invalid command format!`.
+
+   1. Other incorrect adding member commands to try: `add -mem/ -n/John Doe`, `...` (where command is not in correct format)<br>
+       Expected: Status message shows `Invalid command format!`.
+
+### Finding members by [field]
+
+1. Finding members while all members are being shown
+
+   1. Prerequisites:
+      1. List all members using the `list -mem/` command. Multiple members are in the member list.
+      1. The [field] can be member ID, name, phone, email or registration date.
+
+   1. Test case: `find -mem/ -id/00001`<br>
+       Expected: Member with member ID `00001` will be displayed.
+      
+   1. Test case: `find -mem/ -id/00001 00002`<br>
+       Expected: Members with member ID `00001` and `00002` will be displayed.
+      
+   1. Test case: `find -mem/ -n/Alex`<br>
+       Expected: Members with name `Alex` will be displayed.
+      
+   1. Test case: `find -mem/ -p/87438807`<br>
+       Expected: Member with phone `87438807` will be displayed.
+
+   1. Prerequisites: member wih member ID `99999` is not in the member list.
+      1. Test case: `find -mem/ -id/00001`<br>
+          Expected: No member will be displayed. Status message shows `0 members listed!`.
+
+   1. Other incorrect adding member commands to try: `find -mem/`, `...` (where command is not in correct format)<br>
+       Expected: Status message shows `Invalid command format!`.
+
+### Editing member [field] by member ID
+
+1. Editing a member while all members are being shown
+
+   1. Prerequisites:
+      1. List all members using the `list -mem/` command. Multiple members are in the member list.
+      1. The [field] can be name, phone or email.
+
+   1. Test case: `edit -mem/ -id/00002 -p/91234567 -e/berniceyu123@example.com`<br>
+       Expected: The phone and email of the with member ID `00002` are updated to `91234567` and `berniceyu123@example.com`.
+
+   1. Prerequisites: member wih member ID `99999` is not in the member list.
+      1. Test case: `edit -mem/ -id/99999 -p/92233445 -e/johndoe@example.com`<br>
+          Expected: No member is updated. Status message shows `The member ID provided is invalid.`.
+
+   1. Test case: `edit -mem/ -id/00002 -p/92233445 -p/82233445 -e/berniceyu456@example.com`<br>
+       Expected: The phone and email of the with member ID `00002` are updated to `82233445` and `berniceyu456@example.com`.
+
+   1. Prerequisites: member with phone `87438807` is in the member list.
+      1. Test case: `edit -mem/ -id/00003 -p/87438807 -e/charlotte123@example.com`<br>
+          Expected: No member is updated. Status message shows `This member (phone or email) already exists in the ezFoodie.`.
+
+   1. Other incorrect adding member commands to try: `edit -mem/ -id/00003`, `...` (where command does not contain any fields for editing)<br>
+       Expected: Status message shows `At least one field to edit must be provided.`.
+
+### Viewing member profile
+
+1. Viewing a member profile
+
+   1. Prerequisites: 
+      1. Member wih member ID `00001` is in the member list.
+      1. Member wih member ID `99999` is not in the member list.
+
+   1. Test case: `show -mem/ -id/00001`<br>
+       Expected: A summary window will be popped up to display the details of the member with member ID `00001`.
+
+   1. Test case: `show -mem/ -id/99999`<br>
+       Expected: No member details will be shown. Status message shows `The member ID provided is invalid.`.
+
+   1. Other incorrect delete commands to try: `show -mem/`, `...` (where command is not in correct format)<br>
+       Expected: Status message shows `Invalid command format!`.
+
+### Logging in as a manager
+
+1. Logging in as a manager
+
+   1. Prerequisites: Login password is `123456`.
+
+   1. Test case: `login 123456`<br>
+       Expected: Logged in successfully and the role shown on bottom right corner of the program will become `MANAGER`.
+
+   1. Test case: `login 654321`<br>
+       Expected: Failed to login and the role shown on bottom right corner of the program is still `STAFF`.
+
+### Adding transaction by member ID
+
+1. Adding transaction by member ID
+
+   1. Prerequisites: 
+      1. Member wih member ID `00001` is in the member list.
+      1. [Viewing member profile with member ID `00001`](#viewing-member-profile).
+
+   1. Test case: `add -txn/ -b/23.00 -id/00001`<br>
+       Expected: A new transaction with billing `23.00` is added to the transaction list of the member with member ID `00001`, which is shown in the member profile. Details of the added transaction shown in the status message.
+
+   1. Test case: `add -txn/ -b/99999999.00 -id/00001`<br>
+       Expected: No transaction will be added. Status message shows `Billings should be non-negative numeric with 2 decimal places, and max amount is 9999.99.`.
+
+   1. Other incorrect delete commands to try: `add -txn/ -b/123.00`, `...` (where command is not in correct format)<br>
+       Expected: Status message shows `Invalid command format!`.
+
+### Adding reservation by member ID
+
+1. Adding reservation by member ID
+
+   1. Prerequisites: 
+      1. Member wih member ID `00001` is in the member list.
+      1. [Viewing member profile with member ID `00001`](#viewing-member-profile).
+      1. Current date time should be before A `2021-12-01 13:00`, can be changed to any future date time if A is reached.
+      1. Current date time should be after B `2020-12-01 13:00`.
+
+   1. Test case: `add -rs/ -dt/2021-12-01 13:00 -rm/2 people -id/00001`<br>
+       Expected: A new reservation with date time `2021-12-01 13:00` and remark `2 people` is added to the reservation list of the member with member ID `00001`, which is shown in the member profile. Details of the added reservation shown in the status message.
+
+   1. Test case: `add -rs/ -dt/2020-12-01 13:00 -rm/2 people -id/00001`<br>
+       Expected: No reservation will be added. Status message shows `The given reservation date time should be after current date time.`.
+
+   1. Test case: `add -rs/ -dt/2021-12-01 14:00 -rm/2 people -id/00001`, this date also need to be changed to be the same as A if A is changed<br>
+       Expected: No reservation will be added. Status message shows `Only one reservation can be added within the same day.`.
+
+   1. Other incorrect delete commands to try: `add -txn/ -b/123.00`, `...` (where command is not in correct format)<br>
+       Expected: Status message shows `Invalid command format!`.
+
+### Sorting members by credit in [field]
+
+1. Sorting members by credit in [field], [field] can be ascending order or descending order.
+
+   1. Prerequisites:
+      1. List all members using the `list -mem/` command. Multiple members in the member list.
+      1. [Logged in as a manager](#logging-in-as-a-manager).
+
+   1. Test case: `sort -mem/ -c/ -a/`<br>
+       Expected: the members are sorted by credit in ascending order.
+
+   1. Test case: `sort -mem/ -c/ -d/`<br>
+       Expected: the members are sorted by credit in descending order.
+
+   1. Other incorrect delete commands to try: `sort -mem/`, `...` (where command is not in correct format)<br>
+       Expected: Status message shows `Invalid command format!`.
+
+### Deleting transaction by member ID and transaction ID
+
+1. Deleting transaction by member ID
+
+   1. Prerequisites: 
+      1. Member wih member ID `00001` is in the member list.
+      1. Multiple transactions are in the transaction list of the member with member ID `00001`.
+      1. [Viewing member profile with member ID `00001`](#viewing-member-profile).
+
+   1. Test case: `del -txn/ -id/00001000001`<br>
+       Expected: Transaction with transaction ID `000001` in the transaction list of the member with member ID `00001` is deleted. Details of the deleted transaction shown in the status message.
+
+   1. Prerequisites: member wih member ID `99999` is not in the member list.
+      1. Test case: `del -txn/ -id/99999000001`<br>
+          Expected: No transaction will be deleted. Status message shows `The member ID provided is invalid.`.
+
+   1. Prerequisites: transaction wih transaction ID `999999` is not in the transaction list.
+      1. Test case: `del -txn/ -id/00001999999`<br>
+          Expected: No transaction will be deleted. Status message shows `The transaction ID provided is invalid.`.
+
+### Deleting reservation by member ID and reservation ID
+
+1. Deleting reservation by member ID
+
+   1. Prerequisites: 
+      1. Member wih member ID `00001` is in the member list.
+      1. Multiple reservations are in the reservation list of the member with member ID `00001`.
+      1. [Viewing member profile with member ID `00001`](#viewing-member-profile).
+
+   1. Test case: `del -rs/ -id/00001000001`<br>
+       Expected: Reservation with reservation ID `000001` in the reservation list of the member with member ID `00001` is deleted. Details of the deleted reservation shown in the status message.
+
+   1. Prerequisites: member wih member ID `99999` is not in the member list.
+      1. Test case: `del -rs/ -id/99999000001`<br>
+          Expected: No reservation will be deleted. Status message shows `The member ID provided is invalid.`.
+
+   1. Prerequisites: reservation wih reservation ID `999999` is not in the reservation list.
+      1. Test case: `del -rs/ -id/00001999999`<br>
+          Expected: No reservation will be deleted. Status message shows `The reservation ID provided is invalid.`.
+
+### Deleting member by member ID
+
+1. Deleting a member while all members are being shown
+
+   1. Prerequisites:
+      1. List all members using the `list -mem/` command. Multiple members in the member list.
+      1. [Logged in as a manager](#logging-in-as-a-manager)
+
+   1. Test case: `del -mem/ -id/00001`<br>
+       Expected: member with member ID `00001` is deleted from the member list. Details of the deleted contact shown in the status message.
+
+   1. Test case: `del -mem/ -id/000001`<br>
+       Expected: No member is deleted. Status message shows `Member IDs should only contain 5 digits and it should not be blank, and max ID is 99999`.
+
+   1. Do not have member with member ID `99999`
+      1. Test case: `del -mem/ -id/99999`<br>
+          Expected: No member is deleted. Status message shows `The member ID provided is invalid.`.
+
+### Clearing the program
+
+1. Clearing the program
+   
+   1. Test case: `clear`<br>
+       Expected: All data will be cleared.
+
+### Exiting the program
+
+1. Exiting the program
+   
+   1. Test case: `exit`<br>
+       Expected: The window of the program will close.
 
 ### Saving data
 
-1. Dealing with missing/corrupted data files
+1. Saving data and restoring data when it is cleared by accident
 
-   1. _{explain how to simulate a missing/corrupted file, and the expected behavior}_
+   1. Prerequisites:
+      1. List all members using the `list -mem/` command. Multiple members in the member list.
+      1. Locate the ezfoodie JSON file at the default location: `[JAR file location]/data/ezFoodie.json`.
+      1. Back up the ezfoodie JSON file.
 
-1. _{ more test cases …​ }_
+   1. Test case: [Clear the program](#clearing-the-program), [Exit the program](#exiting-the-program), replace the current `[JAR file location]/data/ezFoodie.json` with the backed up ezfoodie JSON file, then relaunch the program<br>
+       Expected: All the backed up data is restored.

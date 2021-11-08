@@ -67,7 +67,7 @@ public class EditMemberCommand extends EditCommand {
             + "Edit by index number: " + COMMAND_WORD + " " + PREFIX_MEMBER + " " + PREFIX_INDEX + "1 "
             + PREFIX_PHONE + "91234567 "
             + PREFIX_EMAIL + "johndoe@example.com\n"
-            + "Edit by member ID: " + COMMAND_WORD + " " + PREFIX_MEMBER + " " + PREFIX_ID + "10001 "
+            + "Edit by member ID: " + COMMAND_WORD + " " + PREFIX_MEMBER + " " + PREFIX_ID + "00001 "
             + PREFIX_PHONE + "91234567 "
             + PREFIX_EMAIL + "johndoe@example.com";
 

@@ -36,7 +36,7 @@ public class AddMemberCommand extends AddCommand {
             + PREFIX_ADDRESS + "311, Clementi Ave 2, #02-25";
 
     public static final String MESSAGE_SUCCESS = "New member added: %1$s";
-    public static final String MESSAGE_FULL = "Member ID has reached " + Id.MAX;
+    public static final String MESSAGE_FULL = "Member ID has reached " + Id.MAX + ".";
     public static final String MESSAGE_DUPLICATE_MEMBER =
             "This member (phone or email) already exists in the ezFoodie.";
 

@@ -33,7 +33,7 @@ public class ViewCommand extends Command {
             + "Parameters:\n"
             + PREFIX_MEMBER + " " + PREFIX_ID + "ID\n"
             + "Example:\n"
-            + COMMAND_WORD + " " + PREFIX_MEMBER + " " + PREFIX_ID + "10001";
+            + COMMAND_WORD + " " + PREFIX_MEMBER + " " + PREFIX_ID + "00001";
 
     private final IdContainsKeywordsPredicate predicate;
 
