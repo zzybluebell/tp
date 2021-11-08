@@ -59,7 +59,7 @@ Continue reading to explore the wonders of ezFoodie and enhance the way you mana
 
 **4. Launch the application.**
 * Double-click the file to start the application in windows system.
-* In MacOS or Linux System, launch the termianl, go to the directory you saved `ezfoodie.jar` in, and key in the `jar -r ezfoodie.jar` command.
+* In MacOS or Linux System, launch the termianl, go to the directory you saved `ezfoodie.jar` in, and key in the `java -jar ezfoodie.jar` command.
 * If any issues faced, go back the [step 1](#step1) and check with java version.
 * The details for running jar  can follow [here](https://www.wikihow.com/Run-a-.Jar-Java-File).
 * The GUI similar to the one shown below should appear in a few seconds. The application comes preloaded with sample data to test its features.<br>
