@@ -124,6 +124,7 @@ Continue reading to explore the wonders of ezFoodie and enhance the way you mana
 * **Seat Booking Information:**
     * Seats can be reserved using the <a href="#15">add reservation</a> feature.
     * A reservation can be edited or deleted as well using the <a href="#17">edit reservation</a> and <a href="#16">delete reservation</a> features.
+    * The maximum amount of reservations is `999999`.
 
 **6. Type the command in the command box and press Enter to execute it. Some example commands you can try here:**
 
@@ -168,7 +169,6 @@ Continue reading to explore the wonders of ezFoodie and enhance the way you mana
       * *It only has 6 digits and starts from `000001` to `999999`.*
       * *Deleted Transaction ID's will not be occupied when adding a new transaction.*
       * *Transaction id will increase automatically when adding a new transaction.*
-      
    * **Bill amount:**
       * *Bill amount is in the transaction feature*
       * *Bill amounts should be non-negative numeric with 2 decimal places, and ranges from `0.00` to `9999.99`**
@@ -246,7 +246,6 @@ Continue reading to explore the wonders of ezFoodie and enhance the way you mana
     * `-a/`: ascending
 
     * `-d/`: descending
-    
 * Requirements of input command:
    * When the user inputs a command, the specified content is not to be inputted before the prefixes.
    * E.g. The command `112-p/ Amoy Street-a/, 069907, Singapore` is not allowed
