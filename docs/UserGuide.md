@@ -149,7 +149,7 @@ Continue reading to explore the wonders of ezFoodie and enhance the way you mana
 
    * `redeem -rd/100 -id/00001:` Redeems 100 point from member id 00001 which is shown in the current list.
    
-   * `set -pass/ 123456:` Sets and updates the password to 123456 as in manager mode.
+   * `set -pass/ 123456:` Sets the password to 123456 as in manager mode.
 
    * `summary:` Views a summary of all the data in the application in one page (**e.g.** No. of members, Past transactions).
       <div markdown="block" class="alert alert-info">
@@ -283,7 +283,7 @@ Example: `login 123456`
 
 ### 4. Setting and updating the password : `set`
 
-Sets and updates the password in the manger mode. 
+Sets the password in the manger mode. 
 
 Format: `set -pass/<PASSWORD>`
 
@@ -666,13 +666,20 @@ Example: press keyboard button ⬆️  and ⬇️
    * Retrive commands can only store 30 commands history.
 </div>
 
-<label id="23"></label>
 
-### 23. Saving the data
+### 23. Exiting Summary, Help and Show popup window `keyboard.ESC`
+
+Press the keyboard `ESC` button to exit Summary, Help and Show popup window.
+
+Format: press keyboard `ESC`
+
+<label id="24"></label>
+
+### 24. Saving the data
 
 ezFoodie data are saved in a JSON file in hard disk `[JAR file location]/data/ezfoodie.json` automatically after any command that changes the data. There is no need to save manually.
 
-### 24. Editing the data file
+### 25. Editing the data file
 
 ezFoodie data are located at `[JAR file location]/data/ezfoodie.json`. Advanced users are welcome to update data directly by editing the data file.
 
@@ -688,7 +695,7 @@ If any changes to the JSON file make it invalid, ezFoodie will discard all data 
 **A**: Install the application in the other computer and overwrite the empty data file it creates with the file that contains the data of your previous ezFoodie home folder.
 
 **Q**: Why my ezFoodie does not have any populated sample member data?<br>
-**A**: Delete `ezfoodie.json` and restart the application. Refer to [#23](#23) in *Features* above to find this JSON file.
+**A**: Delete `ezfoodie.json` and restart the application. Refer to [#24](#24) in *Features* above to find this JSON file.
 
 **Q**: If I face any unexpected issues and I dont know how to solve it, how can I contact with you?<br>
 **A**: Please do not hesitage drop an email to us in `ezfoodie@gmail.com`, thank you so much.
@@ -735,4 +742,4 @@ Action | Manager Only? (Y/N) | Format, Examples
 **Summary** | Y | *Format:* <br> `summary` <br> *Example:* <br> `summary`
 **Clear ezFoodie Data** | Y | *Format:* <br> `clear` <br> *Example:* <br> `clear`
 **Retrieve command** | N | *Example:* <br> Press ⬆️  and ⬇️
-
+**Exiting Summary, Help and Show popup window** | Summary: Y <br> Help/View: N | *Example:* <br> Press keyboard `ESC` button
