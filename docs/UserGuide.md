@@ -204,7 +204,7 @@ Continue reading to explore the wonders of ezFoodie and enhance the way you mana
 * Extraneous parameters for commands that do not take in parameters (such as `help`, `exit` and `clear`) will be ignored.<br>
   **e.g.** if the command specifies `help 123`, it will be interpreted as `help`.
 
-* Meanings of shortcuts:
+* Meanings of `prefixs`:
 
     * `-id/`: member id, transaction id or reservation id
 
@@ -247,7 +247,7 @@ Continue reading to explore the wonders of ezFoodie and enhance the way you mana
     * `-d/`: descending
 
 * **Requirements of input command**:
-   * When user inputs a command, the specific content is not allowed including above shortcuts.
+   * When user inputs a command, the specific content is not allowed including above prefixs.
    * E.g. address is not allowed to be "112-p/ Amoy Street-a/, 069907, Singapore"
 </div>
 
@@ -364,7 +364,9 @@ Finds members by different fields which contain any of the given keywords.
    * No member will be listed when an invalid member field is entered.
    * The find is case-insensitive. e.g. `hans` will match `Hans`.
    * Only full words will be matched e.g. `Han` will not match `Hans`.
-   * Find command shortcuts can combined together. E.g. "find -mem/ -id/<MEMBER_ID> -d/<yyyy-MM-dd>"
+   * Find command is only allowed for **one single prefix** after **-mem/**.
+   * In one single prefix find command, it can have mupltiple arguments. 
+   * E.g. To find id:00001 and id:00002 members' detail: "find -mem/ -id/00001 00002"
 </div>
 
 #### 9.1. Finding member by member id
@@ -418,7 +420,7 @@ Edits different fields in a member's profile, where the member is specified by m
 <div markdown="block" class="alert alert-info">
 
    :information_source: **Note:** Only deals with editing member details.
-      If a member's transactions need to be edited, refer to [#14](#14_1) below. 
+      If a member's transactions need to be edited, refer to [#14](#14) below. 
       Do not mix `-mem/` and `-txn/` in one `edit` command.
 </div>
 
