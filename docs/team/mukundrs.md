@@ -38,13 +38,24 @@ Given below are my contributions to the project.
 * **Documentation**:
     * User Guide:
         * Updated according to changes to code, fixed mistakes
-          [\#185](https://github.com/AY2122S1-CS2103T-F12-4/tp/pull/185)
+          [\#185](https://github.com/AY2122S1-CS2103T-F12-4/tp/pull/185),
+          [\#193](https://github.com/AY2122S1-CS2103T-F12-4/tp/pull/193),
+          [\#199](https://github.com/AY2122S1-CS2103T-F12-4/tp/pull/199),
+          [\#208](https://github.com/AY2122S1-CS2103T-F12-4/tp/pull/208),
+          [\#218](https://github.com/AY2122S1-CS2103T-F12-4/tp/pull/218)
     * Developer Guide:
         * Added documentation for add reservation feature, fixed mistakes and bugs
-          [\#199](https://github.com/AY2122S1-CS2103T-F12-4/tp/pull/199)
+          [\#199](https://github.com/AY2122S1-CS2103T-F12-4/tp/pull/199),
+          [\#218](https://github.com/AY2122S1-CS2103T-F12-4/tp/pull/218)
         
 * **Community**:
     * PRs reviewed (with non-trivial review comments):
+      [\217](https://github.com/AY2122S1-CS2103T-F12-4/tp/pull/217),
+      [\215](https://github.com/AY2122S1-CS2103T-F12-4/tp/pull/215),
+      [\212](https://github.com/AY2122S1-CS2103T-F12-4/tp/pull/212),
+      [\207](https://github.com/AY2122S1-CS2103T-F12-4/tp/pull/207),
+      [\205](https://github.com/AY2122S1-CS2103T-F12-4/tp/pull/205),
+      [\204](https://github.com/AY2122S1-CS2103T-F12-4/tp/pull/204),
       [\197](https://github.com/AY2122S1-CS2103T-F12-4/tp/pull/197),
       [\55](https://github.com/AY2122S1-CS2103T-F12-4/tp/pull/55),
       [\51](https://github.com/AY2122S1-CS2103T-F12-4/tp/pull/51),
