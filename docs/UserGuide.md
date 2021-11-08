@@ -167,9 +167,10 @@ Continue reading to explore the wonders of ezFoodie and enhance the way you mana
       * *It only has 6 digits and starts from `000001` to `999999`.*
       * *Deleted Transaction ID's will not be occupied when adding a new transaction.*
       * *Transaction id will increase automatically when adding a new transaction.*
-   * **Bill amount:**
-      * *Bill amount is in the transaction feature*
-      * *Bill amounts should be non-negative numeric with 2 decimal places, and ranges from `0.00` to `9999.99`**
+
+   * **Billing amount:**
+      * *Billing amount is in the transaction feature*
+      * *Billing amount should be non-negative numeric with 2 decimal places, and ranges from `0.00` to `9999.99`**
 
    * **Reservation ID:**
       * *It only has 6 digits and starts from `000001` to `999999`.*
@@ -244,9 +245,11 @@ Continue reading to explore the wonders of ezFoodie and enhance the way you mana
     * `-a/`: ascending
 
     * `-d/`: descending
-* Requirements of input command:
-   * When the user inputs a command, the specified content is not to be inputted before the prefixes.
-   * E.g. The command `112-p/ Amoy Street-a/, 069907, Singapore` is not allowed
+<bc>
+
+* **Requirements of input commands:**
+   * When the user inputs a command, the prefixes is not to be inputted inside of the specified content.
+   * E.g. The command **112`-p/` Amoy Street`-e/`, 069907, Singapore** is not allowed.
 </div>
 
 ### 1. Viewing help : `help`
@@ -286,7 +289,7 @@ Format: `set -pass/<PASSWORD>`
 Example: `set -pass/123456`
 <div markdown="block" class="alert alert-info">
 
-   :information_source: **Note:** The `set` command can only be used in manager mode.
+   :exclamation: **Note:** The `set` command can only be used in manager mode.
 </div>
 
 ### 5. Logging out as a manager : `logout`
@@ -298,7 +301,7 @@ Format: `logout`
 Example: `logout`
 <div markdown="block" class="alert alert-info">
 
-   :information_source: **Note:** The `logout` command can only be used in manager mode.
+   :exclamation: **Note:** The `logout` command can only be used in manager mode.
 </div>
 ### 6. Listing out a certain number of members : `list -mem/`
 
@@ -330,7 +333,7 @@ Deletes a member from the member list.
 
 <div markdown="block" class="alert alert-info">
 
-   :information_source: **Note:**
+   :exclamation: **Note:**
    * Only the manager is allowed to delete members. Login as manager before entering command.
 </div>
 
@@ -500,7 +503,7 @@ Example: `del -txn/ -id/00001000001`
 
 <div markdown="block" class="alert alert-info">
 
-   :information_source: **Note:**
+   :exclamation: **Note:**
    * Only the manager are allowed to delete transactions. Login as manager before entering command.
    * Credit will be decreased based on billing amount in related transaction.
    * Points will not be affected and keep the same.
@@ -538,7 +541,7 @@ Example: `add -rs/ -dt/2021-01-02 00:00 -rm/2 people -id/00001`
 
 <div markdown="block" class="alert alert-info">
 
-:information_source: **Note:**
+:exclamation: **Note:**
 * A member cannot make multiple reservations on the same day.
 * The maximum amount of reservations is `999999`.
 </div>
@@ -555,7 +558,7 @@ Example: `del -rs/ -id/00001000001`
 
 <div markdown="block" class="alert alert-info">
 
-:information_source: **Note:**
+:exclamation: **Note:**
    * Only the manager is allowed to delete reservations. Login as manager before entering command. 
 </div>
 
@@ -565,7 +568,7 @@ Example: `del -rs/ -id/00001000001`
 
 <div markdown="block" class="alert alert-info">
 
-:information_source: **Note:** 
+:exclamation: **Note:** 
    * When editing the date time, the updated date time cannot share the same day as another reservation.
    * E.g. when a member makes a reservation on 2021-12-01 13:00 and another on 2021-12-02 13:00, the member is not allowed to edit the date of the 02nd december reservation to 01st december.
 </div>
@@ -607,7 +610,7 @@ Example: `sort -mem/ -c/ -d/`
 
 ### 19. Redeeming points `redeem -rd/`
 
-#### 19.1. Redeeming points for a member by member id: `redeem -f/ -id/`
+#### 19.1. Redeeming points for a member by member id: `redeem -rd/ -id/`
 
 Redeems the points of a member for a discount by member id.
 
@@ -623,13 +626,18 @@ Format: `redeem -rd/<point> -i/<INDEX>`
 
 Example: `redeem -rd/100 -i/1`
 
+:exclamation: **Note:** 
+   * In one single prefix -rd/ find command, it can have multiple billing amounts. 
+   * To redeem 100 point and 20 point together from member 00001: **`redeem -rd/100 -rd/10 -id/00001`**.
+</div>
+
 ### 20. Summary: `summary`
 
 Views the summary of stored data in ezFoodie.
 
 <div markdown="block" class="alert alert-info">
 
-   :information_source: **Note:**:
+   :exclamation: **Note:**:
    * Only the manager is allowed to view summary. Login as manager before entering command.
 </div>
 
