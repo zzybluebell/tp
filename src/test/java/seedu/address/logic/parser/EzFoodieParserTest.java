@@ -84,7 +84,7 @@ public class EzFoodieParserTest {
 
     @Test
     public void parseCommand_deleteMemberById() throws Exception {
-        Id id = new Id("10001");
+        Id id = new Id("00001");
         LoginStatus.setLoginStatus(LoginStatus.MANAGER);
         DeleteMemberCommand command = (DeleteMemberCommand) parser.parseCommand(DeleteMemberCommand.COMMAND_WORD
                 + " " + PREFIX_MEMBER + " " + PREFIX_ID + " " + id.value);
@@ -137,7 +137,7 @@ public class EzFoodieParserTest {
 
     @Test
     public void parseCommand_findById() throws Exception {
-        List<String> keywords = Arrays.asList("10001", "10002", "10003");
+        List<String> keywords = Arrays.asList("00001", "00002", "00003");
         FindCommand command = (FindCommand) parser.parseCommand(
                 FindCommand.COMMAND_WORD + " " + PREFIX_MEMBER + " " + PREFIX_ID + " "
                         + keywords.stream().collect(Collectors.joining(" ")));

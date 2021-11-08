@@ -36,6 +36,8 @@ public class HelpBox extends UiPart<Region> {
     @FXML
     private Label login;
     @FXML
+    private Label setPassword;
+    @FXML
     private Label addNewMember;
     @FXML
     private Label deleteMemberByMemberId;
@@ -88,6 +90,7 @@ public class HelpBox extends UiPart<Region> {
     public HelpBox() {
         super(FXML);
         login.setText("login <PASSWORD>");
+        setPassword.setText("set -pass/<PASSWORD>");
         addNewMember.setText("add -mem/ -n/<NAME> -p/<PHONE> -e/<EMAIL> -a/<ADDRESS>");
         deleteMemberByMemberId.setText("del -mem/ -id/<MEMBER_ID>");
         deleteMemberByIndexNumber.setText("del -mem/ -i/<MEMBER_INDEX>");
@@ -99,8 +102,9 @@ public class HelpBox extends UiPart<Region> {
         viewMemberProfile.setText("show -mem/ -id/<MEMBER_ID>");
         editMemberByMemberId.setText("edit -mem/ -id/<MEMBER_ID> [-n/<NAME>] [-p/<PHONE>] [-e/<EMAIL>] [-a/<ADDRESS>]");
         editMemberByIndexNumber.setText("edit -mem/ -i/<INDEX> [-n/<NAME>] [-p/<PHONE>] [-e/<EMAIL>] [-a/<ADDRESS>]");
-        addTransactionByMemberId.setText("add -txn/ -b/<BILLING> -id/<MEMBER_ID>");
-        editTransactionByMemberIdTransactionId.setText("edit -txn/ -b/<BILLING> -id/<MEMBER_ID + TRANSACTION_ID>");
+        addTransactionByMemberId.setText("add -txn/ -b/<BILLING_AMOUNT> -id/<MEMBER_ID>");
+        editTransactionByMemberIdTransactionId.setText(
+                "edit -txn/ -id/<MEMBER_ID + TRANSACTION_ID> -b/<BILLING_AMOUNT>");
         deleteTransactionByMemberIdTransactionId.setText("del -txn/ -id/<MEMBER_ID + TRANSACTION_ID>");
         addReservationByMemberId.setText("add -rs/ -dt/<DATE_TIME yyyy-MM-dd HH:mm> -rm/<REMARK> -id/<MEMBER_ID>");
         editReservationByMemberIdTransactionId.setText(

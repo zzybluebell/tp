@@ -35,7 +35,7 @@ public class DeleteMemberCommand extends DeleteCommand {
             + "Delete by member ID: " + PREFIX_MEMBER + " " + PREFIX_ID + "ID\n"
             + "Example:\n"
             + "Delete by index number: " + COMMAND_WORD + " " + PREFIX_MEMBER + " " + PREFIX_INDEX + "1\n"
-            + "Delete by member ID: " + COMMAND_WORD + " " + PREFIX_MEMBER + " " + PREFIX_ID + "10001";
+            + "Delete by member ID: " + COMMAND_WORD + " " + PREFIX_MEMBER + " " + PREFIX_ID + "00001";
 
     /**
      * Stands for succeed message of delete member.
