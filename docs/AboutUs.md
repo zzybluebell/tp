@@ -28,6 +28,7 @@ You can reach us via email, as indicated below.
 <img src="images/mukundrs.png" width="200px">
 
 [[github@mukundrs](https://github.com/mukundrs)]
+[[portfolio@mukundrs](team/mukundrs.md)]
 
 * Role: Developer
 * Responsibilities: Documentation, deliverables and deadlines
@@ -51,6 +52,7 @@ You can reach us via email, as indicated below.
 <img src="images/stephanie-csy.png" width="200px">
 
 [[github@stephanie-csy](http://github.com/stephanie-csy)]
+[[portfolio@stephanie-csy](team/stephanie-csy.md)]
 
 * Role: Developer
 * Responsibilities: Code quality
@@ -61,7 +63,8 @@ You can reach us via email, as indicated below.
 
 <img src="images/morrow1ndy.png" width="200px">
 
-[[github@Morrow1ndy](http://github.com/Morrow1ndy)]
+[[github@morrow1ndy](http://github.com/morrow1ndy)]
+[[portfolio@morrow1ndy](team/morrow1ndy.md)]
 
 * Role: Developer
 * Responsibilities: Integration
