@@ -7,8 +7,14 @@ import static seedu.address.testutil.Assert.assertThrows;
 
 import org.junit.jupiter.api.Test;
 
+/**
+ * Tests functionalities of Index.
+ */
 public class IndexTest {
 
+    /**
+     * Creates indexes which are based on one.
+     */
     @Test
     public void createOneBasedIndex() {
         // invalid index
@@ -23,6 +29,9 @@ public class IndexTest {
         assertEquals(4, Index.fromOneBased(5).getZeroBased());
     }
 
+    /**
+     * Creates indexes which are based on one.
+     */
     @Test
     public void createZeroBasedIndex() {
         // invalid index
@@ -37,6 +46,10 @@ public class IndexTest {
         assertEquals(6, Index.fromZeroBased(5).getOneBased());
     }
 
+    /**
+     * Stands for equals method
+     * which checks whether behaviours of indexes are expected.
+     */
     @Test
     public void equals() {
         final Index fifthMemberIndex = Index.fromOneBased(5);
