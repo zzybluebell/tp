@@ -331,9 +331,36 @@ The following activity diagram summarizes what happens when a user executes a ne
 
 Given below is an example usage scenario and how the adding members behaves at each step.
 
-1. The user executes `add -mem/ -n/John Doe -p/98765432 -e/johndoe@gmail.com -a/112 Amoy Street, 069907, Singapore` command to add a member in the Ezfoodie and its' storage
+1. The user executes `add -mem/ -n/John Doe -p/98765432 -e/johndoe@gmail.com -a/112 Amoy Street, 069907, Singapore` command to add a member `John Doe` in the Ezfoodie and its' storage.
+
+2. The command is handled by `LogicManager#execute(String)`, which then calls and passes this command to the `EzFoodieParser#parseCommand(String)` method.
+
+3. The EzFoodieParser detects the command word `add` in the string and extracts the argument string 
+    `-mem/ -n/John Doe -p/98765432 -e/johndoe@gmail.com -a/112 Amoy Street, 069907, Singapore`.
+
+4. The `EzFoodieParser` creates a new `AddCommandPrefixParser` instance to parse the argument string according to the format specified for `AddCommand` and calls `AddCommandPrefixParser#parse(arguments)`.
+
+5. `AddCommandPrefixParser#parse(arguments)` detects the prefix `-mem/` and creates a new instance of  `AddMemberCommandParser` and calls `AddMemberCommandParser#parse(arguments)`.
+
+6. `AddMemberCommandParser#parse(arguments)` detects the prefixes `-n/`, `-p/`, `-e/` and `-a/`  and parses them through `ParseUtil` to obtain the `name`, `phone`,`email` and `address`. 
+
+7. Through the `ParseUtil`, it will get default `timestamp`, `credit`, `point`, `tagList`, `transactionList` and `reservationList`.
+
+7. Using the obtained `name`, `phone`,`email`, `address`, `timestamp`, `credit`,`point`, `tagList`, `transactionList` and `reservationList`. a new instance of `Member` is created.
+
+8. Using a new instance `Member`, a new instance of `AddMemberCommand` is created and returned to `ezFoodieParser` which in turn returns it to `LogicManager`.
+
+9. `LogicManager` calls the `AddMemberCommand#execute(Model)` method.
+
+10.  Lastly, `AddMemberCommand` creates a new instance of `CommandResult` with a success message, and returns it to Logic Manager.
 
 #### Design consideration
+
+**What is the default value of `timestamp` ?**
+* **default value** is the timestamp auto registerred by system at fist time add in the member.
+
+**What is the default value of `credit`,`point`, `tagList`, `transactionList` and `reservationList` ?**
+* **default value** will all be set as 0 and empty list.
 
 ### Update Credit feature
 
@@ -343,15 +370,40 @@ Given below is an example usage scenario and how the adding members behaves at e
 
 Given below is an example usage scenario and how the redeem mechanism behaves at each step.
 
-1. when user add transaction, it will auto update new point
+1. The user executes `add -txn/ -b/200.00 -id/00001` command to add transaction.
 
-2. The user executes `redeem -rd/100 -id/00001` command to redeem point from exist credit by member ID.
+2. The command is handled by `LogicManager#execute(String)`, which then calls and passes this command to the `EzFoodieParser#parseCommand(String)` method.
 
-3. The user executes `redeem -rd/100 -i/1` command to redeem point from exist credit by index number.
+3. The EzFoodieParser detects the command word `add` in the string and extracts the argument string `-txn/ -b/200.00 -id/00001`.
 
-#### Design consideration
+4. The EzFoodieParser creates a new `AddCommandPrefixParser` instance to parse the argument string according to the format specified for `AddCommand` and calls `AddCommandPrefixParser#parse(arguments)`.
 
-### Add Reservation Feature
+5. `AddCommandPrefixParser#parse(arguments)` detects the prefix `-txn/` and creates a new instance of `AddTransactionCommandParser` and calls `AddTransactionCommandParser#parse(arguments)`.
+
+6. `AddTransactionCommandParser#parse(arguments)` detects the prefixes `-b/` and ` -id/` and parses them through `ParseUtil` to obtain the `billing amount` and the `memberID`.
+
+7. Using the obtained `billing amount`, a new instance of `Transaction` is created. According to the `billing amount`, the credit has been updated.
+
+
+### Redeem point feature
+
+`[written by: Zhang Zhiyao]`
+
+#### Implementation
+
+Given below is an example usage scenario and how the redeem mechanism behaves at each step.
+
+1. when user redeem point, the user executes `redeem -rd/100 -id/00001` command。
+
+2. The command is handled by `LogicManager#execute(String)`, which then calls and passes this command to the `EzFoodieParser#parseCommand(String)` method.
+
+3. The EzFoodieParser detects the command word `redeem` in the string and extracts the argument string `-rd/100 -id/00001`.
+
+4. The EzFoodieParser creates a new `RedeemCommandParser` instance to parse the argument string according to the format specified for `RedeemCommand`, and calls `RedeemCommandParser`. 
+
+5. The `RedeemCommandParser` detects the prefixes `-b/`, `-id/` and parses them through `ParseUtil` to obtain the `billing amount`, the `memberID`.
+
+6. Using the obtained `billing amount`, the `RedeemCommand` will execute and update related point. then return a  new `Member` with updated point.
 
 `[written by: Raja Sudalaimuthu Mukund]`
 
@@ -362,20 +414,15 @@ Given below is an example usage scenario and how the add reservation mechanism b
 1. The user executes `add -rs/ -dt/2021-01-01 00:00 -rm/2 people -id/10001` command to add a reservation for 2 people at
     2021-01-01 00:00 hrs to member id 10001's reservation list.
 
-2. The command is handled by `LogicManager#execute(String)`, which then calls and passes this command to the 
-    `EzFoodieParser#parseCommand(String)` method.
+2. The command is handled by `LogicManager#execute(String)`, which then calls and passes this command to the `EzFoodieParser#parseCommand(String)` method.
 
-3. The EzFoodieParser detects the command word `add` in the string and extracts the argument string 
-    `-rs/ -dt/2021-01-01 00:00 -rm/2 people -id/10001`.
+3. The EzFoodieParser detects the command word `add` in the string and extracts the argument string `-rs/ -dt/2021-01-01 00:00 -rm/2 people -id/10001`.
 
-4. The EzFoodieParser creates a new `AddCommandPrefixParser` instance to parse the argument string according to the 
-    format specified for `AddCommand` and calls `AddCommandPrefixParser#parse(arguments)`.
+4. The EzFoodieParser creates a new `AddCommandPrefixParser` instance to parse the argument string according to the format specified for `AddCommand` and calls `AddCommandPrefixParser#parse(arguments)`.
 
-5. `AddCommandPrefixParser#parse(arguments)` detects the prefix `-rs/` and creates a new instance of 
-    `AddReservationCommandParser` and calls `AddReservationCommandParser#parse(arguments)`.
+5. `AddCommandPrefixParser#parse(arguments)` detects the prefix `-rs/` and creates a new instance of `AddReservationCommandParser` and calls `AddReservationCommandParser#parse(arguments)`.
 
-6. `AddReservationCommandParser#parse(arguments)` detects the prefixes `-dt/`, `-rm/` and `-id/` and parses them through 
-    `ParseUtil` to obtain the `dateTime`, `remark` and the `memberID`.
+6. `AddReservationCommandParser#parse(arguments)` detects the prefixes `-dt/`, `-rm/` and `-id/` and parses them through `ParseUtil` to obtain the `dateTime`, `remark` and the `memberID`.
 
 7. Using the obtained `dateTime` and `remark`, a new instance of `Reservation` is created.
 
@@ -384,8 +431,7 @@ Given below is an example usage scenario and how the add reservation mechanism b
 
 9. `LogicManager` calls the `AddReservationCommand#execute(Model)` method.
 
-10. The `AddReservationCommand` calls `Model#getUpdatedMemberList()` and searches the list to find the member with the respective
-    `memberID` to obtain `memberToEdit`.
+10. The `AddReservationCommand` calls `Model#getUpdatedMemberList()` and searches the list to find the member with the respective `memberID` to obtain `memberToEdit`.
 
 11. The `AddReservationCommand` calls `Model#createUpdatedReservations(memberToEdit, reservationToAdd)` to create a new 
     instance of the same member but with the new reservation added to the member's reservation list.
@@ -607,7 +653,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 | `* * *`  | manager | clear the program                                         | initialize the entire program                                          |
 | `* * *`  | manager | login as a manager                                        | access manager-only features, e.g. sort the members by their credits   |
 | `* * *`  | manager | logout as a manager                                       | prevent staff from accessing manager-only features                     |
-| `* * *`  | manager | update login password                                     | improve the program security                                           |
+| `* * *`  | manager | set login password                                     | improve the program security                                           |
 | `* * *`  | manager | sort members by credit                                    | easily analyze the members' consumption and distribution               |
 | `* * *`  | manager | edit member name by member ID                             | update member information to latest                                    |
 | `* * *`  | manager | edit member phone by member ID                            | update member information to latest                                    |
