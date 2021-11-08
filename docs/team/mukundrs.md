@@ -40,8 +40,9 @@ Given below are my contributions to the project.
         * Updated according to changes to code, fixed mistakes
           [\#185](https://github.com/AY2122S1-CS2103T-F12-4/tp/pull/185)
     * Developer Guide:
-
-
+        * Added documentation for add reservation feature, fixed mistakes and bugs
+          [\#199](https://github.com/AY2122S1-CS2103T-F12-4/tp/pull/199)
+        
 * **Community**:
     * PRs reviewed (with non-trivial review comments):
       [\197](https://github.com/AY2122S1-CS2103T-F12-4/tp/pull/197),
