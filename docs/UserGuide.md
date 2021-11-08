@@ -64,23 +64,22 @@ Continue reading to explore the wonders of ezFoodie and enhance the way you mana
 * The details for running jar  can follow [here](https://www.wikihow.com/Run-a-.Jar-Java-File).
 * The GUI similar to the one shown below should appear in a few seconds. The application comes preloaded with sample data to test its features. Notice how ezFoodie comes with sample data to get you started.<br>
 
-   
-   <div align="center"><img height="450" alt="ezFoodie Logo" src="images/Launch.png"></div>
    <h1 align="center"><font size ="5">Congratulation! ezFoodie is now ready for your perusal. :+1:</font></h1>
+   <div align="center"><img height="450" alt="ezFoodie Logo" src="images/Launch.png"></div>
    <br>
 
 **5. This section will walk you through the layout of ezFoodie.**
-   <div align="center"><img height="450" alt="ezFoodie Logo" src="images/UIMarkShow.png"></div>
    <h1 align="center"><font size ="5">Layout of Main Window</font></h1>
-
-   <div align="center"><img height="670" alt="ezFoodie Logo" src="images/MarkHelp.png"></div>
+   <div align="center"><img height="450" alt="ezFoodie Logo" src="images/UIMarkShow.png"></div>
+   
    <h1 align="center"><font size ="5">Layout of Help Window</font></h1>
+   <div align="center"><img height="670" alt="ezFoodie Logo" src="images/MarkHelp.png"></div>
 
-   <div align="center"><img height="530" alt="ezFoodie Logo" src="images/MarkShow.png"></div>   
    <h1 align="center"><font size ="5">Layout of Show Window</font></h1>
+   <div align="center"><img height="530" alt="ezFoodie Logo" src="images/MarkShow.png"></div>   
 
-   <div align="center"><img height="400" alt="ezFoodie Logo" src="images/MarkSummary.png"></div>   
    <h1 align="center"><font size ="5">Layout of Summary Window</font></h1>
+   <div align="center"><img height="400" alt="ezFoodie Logo" src="images/MarkSummary.png"></div>   
    <br>
 
 **More detials can refer [Features](#features).**
