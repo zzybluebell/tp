@@ -364,6 +364,60 @@ Given below is an example usage scenario and how the add reservation mechanism b
 
 ![AddReservationSequenceDiagram](images/AddReservationSequenceDiagram.png)
 
+#### Design consideration
+
+### Delete Reservation Feature
+
+`[written by: Chen Shi Yao, Stephanie]`
+
+#### Implementation
+
+Given below is an example usage scenario and how the delete reservation mechanism behaves at each step.
+
+1. The user executes `del -rs/ -id/10001100001` command to delete the reservation with reservationId 100001 for the
+    member with ID 10001.
+
+2. The command is handled by `LogicManager#execute(String)`, which then calls and passes this command to the
+   `EzFoodieParser#parseCommand(String)` method.
+
+3. The EzFoodieParser detects the command word `del` in the string and extracts the argument string
+   `-rs/ -id/10001100001`.
+
+4. The EzFoodieParser creates a new `DeleteCommandPrefixParser` instance to parse the argument string according to the
+   format specified for `DeleteCommand` and calls `DeleteCommandPrefixParser#parse(arguments)`.
+
+5. `DeleteCommandPrefixParser#parse(arguments)` detects the prefix `-rs/` and creates a new instance of
+   `DeleteReservationCommandParser` and calls `DeleteReservationCommandParser#parse(arguments)`.
+
+6. `DeleteReservationCommandParser#parse(arguments)` detects the prefixes `-id/` and parses them through
+   `ParseUtil` to obtain the `memberId` and `ReservationId`.
+
+7. Using the obtained `memberID` and `ReservationId`, a new instance of `DeleteReservationCommand` is created and returned to
+   ezFoodieParser which in turn returns it to `LogicManager`. 
+
+8. `LogicManager` calls the `DeleteReservationCommand#execute(Model)` method.
+
+9. The `DeleteReservationCommand` calls `Model#getUpdatedMemberList()` and searches the list to find the member with the respective
+    `memberID` to obtain `memberToEdit`.
+   
+10. Using the `reservationId`, the `DeleteReservationCommand` then searches the list of `Reservations` associated with the 
+    `memberToEdit` to find the `reservationToDelete`.
+
+11. The `DeleteReservationCommand` calls `DeleteReservationCommand#createEditedMember(memberToEdit, reservationToDelete)` to create a new
+    instance of the same member but with the reservation deleted from the member's reservation list.
+
+12. The `DeleteReservationCommand` calls `Model#setMember(memberToEdit, editedMember)` to replace the old instance of the member
+    with its new instance.
+
+13. The `DeleteReservationCommand` calls `Model#updateFilteredMemberList(PREDICATE_SHOW_ALL_MEMBERS)` to update the current
+    member list with the updated member list.
+
+14. The application lists the updated member list.
+
+15. Lastly, `DeleteReservationCommand` creates a new instance of `CommandResult` with a success message, and returns it to Logic Manager.
+
+![DeleteReservationSequenceDiagram](images/DeleteReservationSequenceDiagram.png)
+
 ### \[Proposed\] Undo/redo feature
 
 #### Proposed Implementation
