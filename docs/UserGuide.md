@@ -86,11 +86,11 @@ Continue reading to explore the wonders of ezFoodie and enhance the way you mana
    * *It only has 5 digits and starts from `00001` to `99999`.*
    * *Deleted Member's id will not be occupied when adding a new member.*
    * *Member id will increase automatically when add a new member.*
-   * *EzFoodie contains max `99999` members*
+   * *EzFoodie contains max `99999` members.*
    
 * **Phone number:**
    * *Phone number should only contain 8 digits, and it should start with 3, 6, 8 or 9.*
-   * *Phone and email are only verficion methood to check whether is same member.*
+   * *Phone and email are only verification method to check whether is same member.*
 
 * **Email:**
    * *Email should be the format in `local-part@domain`.*
@@ -204,7 +204,7 @@ Continue reading to explore the wonders of ezFoodie and enhance the way you mana
 * Extraneous parameters for commands that do not take in parameters (such as `help`, `exit` and `clear`) will be ignored.<br>
   **e.g.** if the command specifies `help 123`, it will be interpreted as `help`.
 
-* Meanings of `prefixs`:
+* Meanings of `prefix`:
 
     * `-id/`: member id, transaction id or reservation id
 
@@ -247,7 +247,7 @@ Continue reading to explore the wonders of ezFoodie and enhance the way you mana
     * `-d/`: descending
 
 * **Requirements of input command**:
-   * When user inputs a command, the specific content is not allowed including above prefixs.
+   * When user inputs a command, the specific content is not allowed including above prefixes.
    * E.g. address is not allowed to be "112-p/ Amoy Street-a/, 069907, Singapore"
 </div>
 
@@ -365,7 +365,7 @@ Finds members by different fields which contain any of the given keywords.
    * The find is case-insensitive. e.g. `hans` will match `Hans`.
    * Only full words will be matched e.g. `Han` will not match `Hans`.
    * Find command is only allowed for **one single prefix** after **-mem/**.
-   * In one single prefix find command, it can have mupltiple arguments. 
+   * In one single prefix find command, it can have multiple arguments. 
    * E.g. To find id:00001 and id:00002 members' detail: "find -mem/ -id/00001 00002"
 </div>
 
@@ -650,9 +650,9 @@ Example: `clear`
 </div>
 
 
-### 22. Retriving commands: `keyboard.UP` and `keyboard.DOWN`
+### 22. Retrieving commands: `keyboard.UP` and `keyboard.DOWN`
 
-Press the keyboard "Up" button to retrive pervious command which has been enter and "Down" button to retrive next commands.
+Press the keyboard "Up" button to retrieve previous command which has been entered， and "Down" button to retrieve next commands.
 
 Format: press keyboard button ⬆️ and ⬇️
 
