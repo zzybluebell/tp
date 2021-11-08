@@ -13,6 +13,10 @@ import seedu.address.commons.status.ExecutionStatus;
 import seedu.address.logic.commands.EditTransactionCommand;
 import seedu.address.model.transaction.Billing;
 
+/**
+ * Contains integration tests (interaction with the Model) and unit tests for
+ * {@code EditTransactionCommandParser}.
+ */
 public class EditTransactionCommandParserTest {
 
     private static final String MESSAGE_INVALID_FORMAT =

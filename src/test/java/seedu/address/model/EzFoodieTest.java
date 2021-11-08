@@ -22,6 +22,10 @@ import seedu.address.model.member.Member;
 import seedu.address.model.member.exceptions.DuplicateMemberException;
 import seedu.address.testutil.MemberBuilder;
 
+/**
+ * Tests the functionalities of
+ * {@code ezFoodie}.
+ */
 public class EzFoodieTest {
 
     private final EzFoodie ezFoodie = new EzFoodie();
