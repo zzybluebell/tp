@@ -186,8 +186,8 @@ Continue reading to explore the wonders of ezFoodie and enhance the way you mana
       * *Transaction id will increase automatically when adding a new transaction.*
 
    * **Bill amount:**
-      * *Bill amount is in the transaction feature*
-      * *Bill amounts should be non-negative numeric with 2 decimal places, and ranges from `0.00` to `9999.99`*
+      * *Bill amount is in the transaction feature.*
+      * *Bill amounts should be non-negative numeric with 2 decimal places, and ranges from `0.00` to `9999.99`.*
 
    * **Reservation ID:**
       * *It only has 6 digits and starts from `000001` to `999999`.*
