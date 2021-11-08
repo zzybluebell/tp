@@ -101,6 +101,6 @@ public class CliSyntax {
     /**
      * Stands for PREFIX_DESCENDING_ORDER.
      */
-    public static final Prefix PREFIX_DESC = new Prefix("-d");
+    public static final Prefix PREFIX_DESC = new Prefix("-d/");
 
 }

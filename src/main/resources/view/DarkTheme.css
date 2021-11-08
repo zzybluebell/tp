@@ -164,6 +164,10 @@
     -fx-pref-width: 500px;
 }
 
+.cell_label_width_600 {
+    -fx-pref-width: 600px;
+}
+
 .cell_label_width_700 {
     -fx-pref-width: 700px;
 }

@@ -28,7 +28,7 @@ public class DeleteMemberCommandParserTest {
     public void parse_validArgs_returnsDeleteMemberCommand() {
         assertParseSuccess(parser, " " + PREFIX_MEMBER + " "
                 + PREFIX_INDEX + " 1", new DeleteMemberCommand(INDEX_FIRST_MEMBER));
-        Id id = new Id("10001");
+        Id id = new Id("00001");
         assertParseSuccess(parser, " " + PREFIX_MEMBER + " "
                 + PREFIX_ID + " " + id.value, new DeleteMemberCommand(id));
     }
