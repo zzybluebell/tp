@@ -76,7 +76,12 @@ public class EditMemberCommandParser extends EditCommandParser implements Parser
         }
 
         if (argMultimap.getValue(PREFIX_INDEX).isPresent()) {
-            Index index = ParserUtil.parseIndex(argMultimap.getValue(PREFIX_INDEX).get());
+            Index index;
+            try {
+                index = ParserUtil.parseIndex(argMultimap.getValue(PREFIX_INDEX).get());
+            } catch (ParseException pe) {
+                throw new ParseException(String.format(pe.getMessage(), EditMemberCommand.MESSAGE_USAGE), pe);
+            }
             return new EditMemberCommand(index, editMemberDescriptor);
         }
 

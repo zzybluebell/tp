@@ -32,7 +32,8 @@ import seedu.address.model.transaction.Billing;
  */
 public class ParserUtil {
 
-    public static final String MESSAGE_INVALID_INDEX = "Index is not a non-zero unsigned integer.";
+    public static final String MESSAGE_INVALID_INDEX =
+            "Index is not a non-zero unsigned integer (range: 1 ~ 2147483647). \n%1$s";
 
     /**
      * Parses {@code oneBasedIndex} into an {@code Index} and returns it. Leading and trailing whitespaces will be

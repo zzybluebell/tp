@@ -47,6 +47,7 @@ public class LoginCommandTest {
         Password password = new Password(EncryptUtil.hash(CORRECT_PLAINTEXT_PASSWORD));
 
         assertCommandSuccess(new LoginCommand(password), model, LoginCommand.MESSAGE_ALREADY_IN_STATUS, expectedModel);
+        LoginStatus.setLoginStatus(LoginStatus.MANAGER);
     }
 
 }

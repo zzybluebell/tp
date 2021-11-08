@@ -20,7 +20,7 @@ ezFoodie is a desktop application that helps restaurants **keep track of their e
 
 ezFoodie is simple and user-friendly. It is optimized for using via a **Command Line Interface (CLI)** while still enjoying the benefits of a Graphical User Interface (GUI). If you can type fast, ezFoodie can get your member management tasks done faster than traditional GUI applications.
 
-ezFooide's current version is optimized for the English language based user, i.e, all CLI commands are *English-based*. As of now ezFoodie does not support other languages.
+ezFooide's current version is optimized for the **English language based user**, i.e, all CLI commands are **English-based**. As of now ezFoodie does not support other languages.
 
 Continue reading to explore the wonders of ezFoodie and enhance the way you manage and analyze your restaurant's members 🤩
 
@@ -44,31 +44,47 @@ Continue reading to explore the wonders of ezFoodie and enhance the way you mana
 
 **<label id="step1">1. Ensure you have Java `11` or above installed in your computer.</label>**
    *  To check out the Java version you have installed in your computer, please click [here](https://www.java.com/en/download/help/version_manual.xml). 
-   * If Java is not installed on your computer, please follow [here](https://www.oracle.com/java/technologies/downloads/).
+   * If Java is not installed on your computer, please follow this [link](https://www.oracle.com/java/technologies/downloads/).
 <br>
 
 **2. Download the latest version of `ezfoodie.jar` from [here](https://github.com/AY2122S1-CS2103T-F12-4/tp/releases).**
 
-   <div align="center"><img height="150" alt="ezFoodie Logo" src="images/downloadInstruction.png"></div>
+   <div align="center"><img height="150" alt="downloadInstruction" src="images/downloadInstruction.png"></div>
 <br>
 
 **3. Copy the file to the folder you want to use as the _home folder_ for your ezFoodie.**
 
-   <div align="center"><img height="415" alt="ezFoodie Logo" src="images/homefolderEzFoodie.png"></div>
+   <div align="center"><img height="415" alt="homefolder" src="images/homefolderEzFoodie.png"></div>
 <br>
 
-**4. Launch the application.**
+**4. Launch the application and view the details.**
 * Double-click the file to start the application in windows system.
 * If any issues are faced, go back to [step 1](#step1) and check Java version.
 * In MacOS or Linux System, launch the terminal, go to the directory you saved `ezFoodie.jar` in, and key in the command `jar -r ezfoodie.jar`.
 * You can find details on how to run the JAR file [here](https://www.wikihow.com/Run-a-.Jar-Java-File).
 * The GUI similar to the one shown below should appear in a few seconds. The application comes preloaded with sample data to test its features.<br>
-   
-   <div align="center"><img height="570" alt="ezFoodie Logo" src="images/Launch.png"></div>
-   <h1 align="center"><font size ="5">Congratulations! ezFoodie is now ready for your perusal. :+1:</font></h1>
+
+   <div align="center"><img height="450" alt="Launch" src="images/Launch.png"></div>
+   <h1 align="center"><font size ="5">Congratulation! ezFoodie is now ready for your perusal. :+1:</font></h1>
    <br>
 
-**5. Main window GUI includes the following member fields and constraints:**
+**5. This section will walk you through the layout of ezFoodie.**
+   <h1 align="center"><font size ="5">Layout of Main Window</font></h1>
+   <div align="center"><img height="450" alt="UIMarkShow" src="images/UIMarkShow.png"></div>
+   
+   <h1 align="center"><font size ="5">Layout of Help Window</font></h1>
+   <div align="center"><img height="670" alt="MarkHelp" src="images/MarkHelp.png"></div>
+
+   <h1 align="center"><font size ="5">Layout of Show Window</font></h1>
+   <div align="center"><img height="530" alt="MarkShow" src="images/MarkShow.png"></div>   
+
+   <h1 align="center"><font size ="5">Layout of Summary Window</font></h1>
+   <div align="center"><img height="400" alt="MarkSummary" src="images/MarkSummary.png"></div>   
+   <br>
+
+**For more details, can refer to [Features](#features).**
+
+**6. Main window GUI includes the following member fields and constraints:**
     
 * **Index number in the list:**
    * *Only contains alphanumeric characters.*
@@ -79,23 +95,23 @@ Continue reading to explore the wonders of ezFoodie and enhance the way you mana
 
 * **Tier:**
    * *Bronze, Silver, Gold, Platinum.*
-   * *This is automatically calculated from a member's credit, which increases based on the transactions added.*
-   * *Upgrade of tier (e.g. Bronze -> Silver) is also automatically handled by ezFoodie.*
+   * *This is automatically calculated from a member's credit.*
+   * *Upgrade of Tier (e.g. Bronze -> Silver) is also automatically handled by ezFoodie.*
    
 * **Member ID:**
-   * *Member ID has only 5 digits and starts from `00001` to `99999`.*
+   * *Member ID has only 5 digits' numerical value and starts from `00001` to `99999`.*
    * *Deleted Member's id will not be occupied when adding a new member.*
-   * *Member id will increase automatically when new member is added.*
-   * *EzFoodie contains max `99999` members*
+   * *Member id will increase automatically when a new member is added.*
+   * *EzFoodie contains max `99999` members.*
    
 * **Phone number:**
    * *Phone number should only contain 8 digits, and it should start with 3, 6, 8 or 9.*
-   * *Members cannot share the same phone number or email. ezFoodie uses these fields to detect duplicate members*
+   * *Members cannot share the same phone number or email. ezFoodie uses these fields to detect duplicate members.*
 
 * **Email:**
-   * *Email should be of the format `local-part@domain`.*
+   * *Email should be of the format in `local-part@domain`.*
    * *The `local-part` should only contain alphanumeric characters and
-   these special characters: `+ _ . - `. The `local-part` may not start or end with 
+   these special characters: `+ _ . - `, the `local-part` may not start or end with 
    any special characters.*
    * *The `domain` name is made up of domain name separated by periods.*
    * *The `domain` name must:*
@@ -103,30 +119,28 @@ Continue reading to explore the wonders of ezFoodie and enhance the way you mana
       * *Have each domain label start and end with alphanumeric characters.*
       * *Have each domain label consist of alphanumeric characters, 
       separated only by hyphens, if any.*
-   *  *Members cannot share the same phone number or email. ezFoodie uses these fields to detect duplicate members*
+   *  *Members cannot share the same phone number or email. ezFoodie uses these fields to detect duplicate members.*
    
 * **Credit:**
-   * *Credit refers to the overall accumulated transaction bills of a member, 
+   * *Credit refers to the overall accumulated transaction billing amounts of a member, 
    starting from their registration date.*
-   * *Credit depends on the bill amounts in <a href="#12">add transaction</a>, <a href="#13">delete transaction</a>, and <a href="#14">edit transaction</a>*.
+   * *Credit depends on the billing amounts in [add transaction](#12), [delete transaction](#13)</a>, and [edit transaction](#14)*.
    * *Credit amount ranges from `0` to `99999999`.*
    
 * **Point:**
    * *The point accumulation is similar to credit.*
-   * *However, points can be redeemed as transaction discounts for a member, and points will be deducted
+   * *However, point can be redeemed as discounts to a member, and point will be deducted
    accordingly with redemption.*
-   * *In <a href="#13">delete transaction</a>, the points will not be affected and will stay the same.*
-   * *In <a href="#14">edit transaction</a>, the points will be increased when bill amount is greater than the bill amount 
-   added in last time. On the contrary the points will not be affected and keep the same when billing amount is lesser
-   than the billing amount added in last time.*
+   * *In <a href="#13">delete transaction</a>, the point will not be affected and will stay the same.*
+   * *In <a href="#14">edit transaction</a>, the point will be increased when billing amount is greater than the billing amount added in last time. On the contrary the point will not be affected and keep the same when billing amount is lesser than the billing amount added in last time.*
    * *Point amount is range from `0` to `99999999`.*
    
-* **Seat Booking Information:**
-    * Seats can be reserved using the <a href="#15">add reservation</a> feature.
-    * A reservation can be edited or deleted as well using the <a href="#17">edit reservation</a> and <a href="#16">delete reservation</a> features.
-    * The maximum amount of reservations is `999999`.
+* **Coming Seat Booking Information:**
+   * Seats can be reserved using the [add reservation](#15) feature.
+   * A reservation can be edited or deleted as well using the [edit reservation](#17) and [delete reservation](#16) features.
+   * The maximum amount of reservations is `999999`.
 
-**6. Type the command in the command box and press Enter to execute it. Some example commands you can try here:**
+**7. Type the command in the command box and press Enter to execute it. Some example commands you can try here:**
 
    * `help`: Opens the help window to view the commands and user guide.
 
@@ -163,14 +177,15 @@ Continue reading to explore the wonders of ezFoodie and enhance the way you mana
 
    * `exit`: Exits the program.
 
-**7. Please refer to the [Features](#features) below for details of each command.**
+**8. Please refer to the [Features](#features) below for details of each command.**
 
-**8. Other components and constraints:**
+**9. Other components and constraints:**
     
    * **Transaction ID:**
       * *It only has 6 digits and starts from `000001` to `999999`.*
       * *Deleted Transaction ID's will not be occupied when adding a new transaction.*
       * *Transaction id will increase automatically when adding a new transaction.*
+
    * **Bill amount:**
       * *Bill amount is in the transaction feature*
       * *Bill amounts should be non-negative numeric with 2 decimal places, and ranges from `0.00` to `9999.99`*
@@ -181,7 +196,7 @@ Continue reading to explore the wonders of ezFoodie and enhance the way you mana
       * *Reservation id will increase automatically when adding a new reservation.*
          
    * **Address:**
-      * *Addresses can take any values. It should not be blank.*
+      * *Address can take any values. It should not be blank.*
 
    * **DateTime:**
       * *The format should be in yyyy-MM-dd HH:mm.*
@@ -248,16 +263,16 @@ Continue reading to explore the wonders of ezFoodie and enhance the way you mana
     * `-a/`: ascending
 
     * `-d/`: descending
-* Requirements of input command:
-   * When the user inputs a command, the specified content is not to be inputted before the prefixes.
-   * E.g. The command `112-p/ Amoy Street-a/, 069907, Singapore` is not allowed
+    
+* **Requirements of input commands:**
+   * When the user inputs a command, the prefixes is not to be inputted inside of the specified content.
+   * E.g. The command "112`-p/` Amoy Street`-e/`, 069907, Singapore" is not allowed.
+
 </div>
 
 ### 1. Viewing help : `help`
 
 Opens a new window to show how to use the commands, and a link to the User Guide.
-
-![help message](images/helpMessage.png)
 
 Format: `help`
 
@@ -290,7 +305,7 @@ Format: `set -pass/<PASSWORD>`
 Example: `set -pass/123456`
 <div markdown="block" class="alert alert-info">
 
-   :information_source: **Note:** The `set` command can only be used in manager mode.
+   :exclamation: **Note:** The `set` command can only be used in manager mode.
 </div>
 
 ### 5. Logging out as a manager : `logout`
@@ -302,7 +317,7 @@ Format: `logout`
 Example: `logout`
 <div markdown="block" class="alert alert-info">
 
-   :information_source: **Note:** The `logout` command can only be used in manager mode.
+   :exclamation: **Note:** The `logout` command can only be used in manager mode.
 </div>
 ### 6. Listing out a certain number of members : `list -mem/`
 
@@ -322,9 +337,9 @@ Example: `add -mem/ -n/John Doe -p/98765432 -e/johndoe@gmail.com -a/112 Amoy Str
 
 <div markdown="block" class="alert alert-info">
 
-   :exclamation: **Duplicate members:**<br>
+   :exclamation: **Note:**<br>
 
-   * ezFoodie will not allow new members to have the same **phone number** or **email address** as a previously existing member.
+   * ezFoodie will not allow duplicate members and new members to have the same **phone number** or **email address** as a previously existing member.
 
 </div>
 
@@ -334,7 +349,7 @@ Deletes a member from the member list.
 
 <div markdown="block" class="alert alert-info">
 
-   :information_source: **Note:**
+   :exclamation: **Note:**
    * Only the manager is allowed to delete members. Login as manager before entering command.
 </div>
 
@@ -506,7 +521,7 @@ Example: `del -txn/ -id/00001000001`
 
    :information_source: **Note:**
    * Only the manager is allowed to delete transactions. Login as manager before entering command.
-   * Credit will be decreased based on billing amount in related transaction.
+   * Credit will be decreased based on bill amount in the deleted transaction.
    * Points will not be affected and will stay the same.
 </div>
 
@@ -527,8 +542,10 @@ Example: `edit -txn/ -id/00001000002 -b/10.00`
    * Credit will be changed based on the bill amount of added transaction.
    * Points will be increased when bill amount is greater than the bill amount 
     added in last time. On the contrary, points will not be affected and will stay the same when the bill amount is lesser
-    than the billing amount added in last time. 
+    than the bill amount added in last time. 
 </div>
+
+<label id="15"></label>
 
 ### 15. Adding a reservation: `add -rs/`
 
@@ -545,6 +562,8 @@ Example: `add -rs/ -dt/2021-01-02 00:00 -rm/2 people -id/00001`
 * The maximum amount of reservations is `999999`.
 </div>
 
+<label id="16"></label>
+
 ### 16. Deleting a reservation: `del -rs/`
 
 Deletes a reservation from a member's reservation list.
@@ -555,15 +574,17 @@ Example: `del -rs/ -id/00001000001`
 
 <div markdown="block" class="alert alert-info">
 
-:information_source: **Note:**
+:exclamation: **Note:**
    * Only the manager is allowed to delete reservations. Login as manager before entering command. 
 </div>
+
+<label id="17"></label>
 
 ### 17. Editing a reservation: `edit -rs/`
 
 <div markdown="block" class="alert alert-info">
 
-:information_source: **Note:** 
+:exclamation: **Note:** 
    * When editing the date time, the updated date time cannot share the same day as another reservation.
    * E.g. when a member makes a reservation for 2021-12-01 13:00 and another for 2021-12-02 13:00, the member is not allowed to edit the date of the 2nd december reservation to 1st december.
 </div>
@@ -603,11 +624,11 @@ Format: `sort -mem/ -c/ -d/`
 
 Example: `sort -mem/ -c/ -d/`
 
-### 19. Redeeming points `redeem -rd/`
+### 19. Redeeming point `redeem -rd/`
 
-#### 19.1. Redeeming points for a member by member id: `redeem -f/ -id/`
+#### 19.1. Redeeming point for a member by member id: `redeem -rd/ -id/`
 
-Redeems the points of a member for a discount by member id.
+Redeems the point of a member for a discount by member id.
 
 Format: `redeem -rd/<POINT> -id/<MEMBER_ID>`
 
@@ -615,11 +636,18 @@ Example: `redeem -rd/100 -id/00001`
 
 #### 19.2. Redeeming point for a member by index: `redeem -rd/ -i/`
 
-Redeems the points of a member for a discount by index of member shown in the list.
+Redeems the point of a member for a discount by index of member shown in the list.
 
 Format: `redeem -rd/<point> -i/<INDEX>`
 
 Example: `redeem -rd/100 -i/1`
+
+<div markdown="block" class="alert alert-info">
+
+:exclamation: **Note:** 
+   * Multiple redemptions can be made from one `-rd/` command 
+   * To redeem 100 points and 20 points together from member 00001: `redeem -rd/100 -rd/10 -id/00001`.
+</div>
 
 ### 20. Summary: `summary`
 
@@ -627,7 +655,7 @@ Views the summary of stored data in ezFoodie.
 
 <div markdown="block" class="alert alert-info">
 
-   :information_source: **Note:**:
+   :exclamation: **Note:**:
    * Only the manager is allowed to view summary. Login as manager before entering command.
 </div>
 
