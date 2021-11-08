@@ -57,18 +57,38 @@ Continue reading to explore the wonders of ezFoodie and enhance the way you mana
    <div align="center"><img height="415" alt="ezFoodie Logo" src="images/homefolderEzFoodie.png"></div>
 <br>
 
-**4. Launch the application.**
+**4. Launch the application and view the details.**
 * Double-click the file to start the application in windows system.
 * In MacOS or Linux System, launch the termianl, go to the directory you saved `ezfoodie.jar` in, and key in the `java -jar ezfoodie.jar` command.
 * If any issues faced, go back the [step 1](#step1) and check with java version.
 * The details for running jar  can follow [here](https://www.wikihow.com/Run-a-.Jar-Java-File).
-* The GUI similar to the one shown below should appear in a few seconds. The application comes preloaded with sample data to test its features.<br>
+* The GUI similar to the one shown below should appear in a few seconds. The application comes preloaded with sample data to test its features. Notice how ezFoodie comes with sample data to get you started.<br>
+
    
-   <div align="center"><img height="570" alt="ezFoodie Logo" src="images/Launch.png"></div>
-   <h1 align="center"><font size ="5">Congratulations! ezFoodie is now ready for your perusal. :+1:</font></h1>
+   <div align="center"><img height="450" alt="ezFoodie Logo" src="images/Launch.png"></div>
+   <h1 align="center"><font size ="5">Congratulation! ezFoodie is now ready for your perusal. :+1:</font></h1>
    <br>
 
-**5. Main window GUI includes the following member fields and constraints:**
+**5.This section will walk you through the layout of ezFoodie.**
+   <div align="center"><img height="450" alt="ezFoodie Logo" src="images/UIMarkShow.png"></div>
+   <h1 align="center"><font size ="5">Layout of Main Window</font></h1>
+   <br>
+
+   <div align="center"><img height="670" alt="ezFoodie Logo" src="images/MarkHelp.png"></div>
+   <h1 align="center"><font size ="5">Layout of Help Window</font></h1>
+   <br>
+
+   <div align="center"><img height="530" alt="ezFoodie Logo" src="images/MarkShow.png"></div>   
+   <h1 align="center"><font size ="5">Layout of Show Window</font></h1>
+   <br>
+
+   <div align="center"><img height="400" alt="ezFoodie Logo" src="images/MarkSummary.png"></div>   
+   <h1 align="center"><font size ="5">Layout of Summary Window</font></h1>
+   <br>
+
+**More detials can refer [Features](#features).**
+
+**6. Main window GUI includes the following member fields and constraints:**
     
 * **Index number in the list:**
    * *Only contains alphanumeric characters.*
@@ -124,7 +144,7 @@ Continue reading to explore the wonders of ezFoodie and enhance the way you mana
    * A reservation can be edited or deleted as well using the [edit reservation](#17) and [delete reservation](#16) features.
    * The maximum amount of reservations is `999999`.
 
-**6. Type the command in the command box and press Enter to execute it. Some example commands you can try here:**
+**7. Type the command in the command box and press Enter to execute it. Some example commands you can try here:**
 
    * `help:` Opens the help window to view the commands and user guide.
 
@@ -159,9 +179,9 @@ Continue reading to explore the wonders of ezFoodie and enhance the way you mana
 
    * `exit:` Exits the program.
 
-**7. Please refer to the [Features](#features) below for details of each command.**
+**8. Please refer to the [Features](#features) below for details of each command.**
 
-**8. Other components and constraints:**
+**9. Other components and constraints:**
     
    * **Transaction ID:**
       * *It only has 6 digits and starts from `000001` to `999999`.*
