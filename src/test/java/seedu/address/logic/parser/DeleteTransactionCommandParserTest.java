@@ -23,8 +23,8 @@ public class DeleteTransactionCommandParserTest {
 
     @Test
     public void parse_validArgs_returnsDeleteTransactionCommand() {
-        seedu.address.model.member.Id memberId = new seedu.address.model.member.Id("10001");
-        seedu.address.model.transaction.Id transactionId = new seedu.address.model.transaction.Id("100001");
+        seedu.address.model.member.Id memberId = new seedu.address.model.member.Id("00001");
+        seedu.address.model.transaction.Id transactionId = new seedu.address.model.transaction.Id("000001");
         assertParseSuccess(parser, " " + PREFIX_TRANSACTION + " " + PREFIX_ID + " "
                 + memberId.value + transactionId.value, new DeleteTransactionCommand(memberId, transactionId));
     }

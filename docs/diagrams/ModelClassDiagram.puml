@@ -22,7 +22,8 @@ Class Address
 Class Email
 Class Name
 Class Phone
-Class Tag
+Class Transaction
+Class Reservation
 
 }
 
@@ -44,7 +45,8 @@ Member *--> Name
 Member *--> Phone
 Member *--> Email
 Member *--> Address
-Member *--> "*" Tag
+Member *--> "*" Transaction
+Member *--> "*" Reservation
 
 Name -[hidden]right-> Phone
 Phone -[hidden]right-> Address

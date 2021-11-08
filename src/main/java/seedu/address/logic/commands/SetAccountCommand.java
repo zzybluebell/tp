@@ -23,7 +23,7 @@ public class SetAccountCommand extends Command {
             + "Example: "
             + COMMAND_WORD + " " + PREFIX_PASS + "123456";
 
-    public static final String MESSAGE_SUCCESS = "Password updated";
+    public static final String MESSAGE_SUCCESS = "Password updated.";
 
     private final EditAccountDescriptor editAccountDescriptor;
 

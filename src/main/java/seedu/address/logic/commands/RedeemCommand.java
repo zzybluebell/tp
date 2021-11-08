@@ -51,7 +51,7 @@ public class RedeemCommand extends Command {
             + "Example:\n"
             + "Redeem by index number: " + COMMAND_WORD + " " + PREFIX_INDEX + " 1 "
             + PREFIX_REDEEM + " 100\n"
-            + "Redeem by member ID: " + COMMAND_WORD + " " + PREFIX_ID + " 10001 "
+            + "Redeem by member ID: " + COMMAND_WORD + " " + PREFIX_ID + " 00001 "
             + PREFIX_REDEEM + " 100";
 
     /**
@@ -68,9 +68,8 @@ public class RedeemCommand extends Command {
     /**
      * Stands for message when redemption point exceed.
      */
-    public static final String MESSAGE_INVALID_POINTS_LESS_THAN_ZERO = "Redeemed point has already exceeded\n"
-            + "Points can't redeemed less than 0\n"
-            + "Please try again";
+    public static final String MESSAGE_INVALID_POINTS_LESS_THAN_ZERO = "Redeemed point has already exceeded.\n"
+            + "Points can't redeemed less than 0, please try again.";
 
     private final List<Point> pointsToRedeemList = new ArrayList<>();
     private final Id idToRedeem;

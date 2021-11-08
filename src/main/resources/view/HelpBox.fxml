@@ -42,6 +42,15 @@
         </HBox>
         <HBox alignment="CENTER_LEFT">
             <Label styleClass="cell_small_label, cell_label_width_400"
+                   text="Set Password"/>
+            <Label fx:id="setPassword" styleClass="cell_small_label"
+                   text="\$setPassword"/>
+            <padding>
+                <Insets bottom="10"/>
+            </padding>
+        </HBox>
+        <HBox alignment="CENTER_LEFT">
+            <Label styleClass="cell_small_label, cell_label_width_400"
                    text="List Members"/>
             <Label styleClass="cell_small_label"
                    text="list -mem/"/>

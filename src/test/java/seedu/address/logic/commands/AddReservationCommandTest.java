@@ -58,10 +58,10 @@ public class AddReservationCommandTest {
     public void equals() {
         Member alice = new MemberBuilder().withName("Alice").build();
         Member bob = new MemberBuilder().withName("Bob").build();
-        Reservation aliceReservation = new ReservationBuilder().withId("100001").withDateTime("2099-12-29 00:00")
+        Reservation aliceReservation = new ReservationBuilder().withId("000001").withDateTime("2099-12-29 00:00")
                 .withRemark("2 people")
                 .build();
-        Reservation bobReservation = new ReservationBuilder().withId("100002").withDateTime("2099-12-30 00:00")
+        Reservation bobReservation = new ReservationBuilder().withId("000002").withDateTime("2099-12-30 00:00")
                 .withRemark("3 people")
                 .build();
         AddReservationCommand addAliceReservationCommand = new AddReservationCommand(aliceReservation, alice.getId());

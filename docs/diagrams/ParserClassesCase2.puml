@@ -10,7 +10,7 @@ Class XYZCommand
 package "Parser classes"{
 Interface Parser <<Interface>>
 Class EzFoodieParser
-Class XYZCommandParser
+Class UVWCommandParser
 Class CliSyntax
 Class ParserUtil
 Class ArgumentMultimap
@@ -21,17 +21,17 @@ Class Prefix
 Class HiddenOutside #FFFFFF
 HiddenOutside ..> EzFoodieParser
 
-EzFoodieParser .down.> XYZCommandParser: creates >
+EzFoodieParser .down.> UVWCommandParser: creates >
 
-XYZCommandParser ..> XYZCommand : creates >
+UVWCommandParser ..> XYZCommand : creates >
 EzFoodieParser ..> Command : returns >
-XYZCommandParser .up.|> Parser
-XYZCommandParser ..> ArgumentMultimap
-XYZCommandParser ..> ArgumentTokenizer
+UVWCommandParser .up.|> Parser
+UVWCommandParser ..> ArgumentMultimap
+UVWCommandParser ..> ArgumentTokenizer
 ArgumentTokenizer .left.> ArgumentMultimap
-XYZCommandParser ..> CliSyntax
+UVWCommandParser ..> CliSyntax
 CliSyntax ..> Prefix
-XYZCommandParser ..> ParserUtil
+UVWCommandParser ..> ParserUtil
 ParserUtil .down.> Prefix
 ArgumentTokenizer .down.> Prefix
 XYZCommand -up-|> Command

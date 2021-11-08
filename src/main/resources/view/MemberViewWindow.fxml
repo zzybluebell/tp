@@ -3,7 +3,9 @@
 <?import java.net.URL?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.Scene?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.image.Image?>
+<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
 
@@ -20,6 +22,7 @@
         <URL value="@Extensions.css" />
       </stylesheets>
 
+      <VBox>
       <VBox fx:id="memberDetailsList" styleClass="pane-with-border" minWidth="1230" prefWidth="1230"
             minHeight="680" prefHeight="680"
             VBox.vgrow="ALWAYS">
@@ -27,6 +30,13 @@
           <Insets top="10" right="10" bottom="10" left="10" />
         </padding>
         <StackPane fx:id="memberDetailsListPlaceholder" VBox.vgrow="ALWAYS"/>
+      </VBox>
+        <HBox alignment="CENTER_RIGHT" styleClass="status-bar">
+          <Label alignment="CENTER_RIGHT" styleClass="cell_small_label" text="Press ESC to exit..."/>
+          <padding>
+            <Insets right="10" />
+          </padding>
+        </HBox>
       </VBox>
     </Scene>
   </scene>

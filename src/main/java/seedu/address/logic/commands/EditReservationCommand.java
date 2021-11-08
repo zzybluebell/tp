@@ -54,7 +54,7 @@ public class EditReservationCommand extends EditCommand {
             + "[" + PREFIX_REMARK + "REMARK]\n"
             + "Example:\n"
             + "Edit by member ID and reservation ID: "
-            + COMMAND_WORD + " " + PREFIX_RESERVATION + " " + PREFIX_ID + "10001100001 "
+            + COMMAND_WORD + " " + PREFIX_RESERVATION + " " + PREFIX_ID + "00001000001 "
             + PREFIX_DATE_TIME + "2021-12-01 13:00 "
             + PREFIX_REMARK + "3 people";
 

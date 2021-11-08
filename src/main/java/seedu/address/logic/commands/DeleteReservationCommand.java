@@ -45,7 +45,7 @@ public class DeleteReservationCommand extends DeleteCommand {
             + PREFIX_RESERVATION + " " + PREFIX_ID + "member ID + reservation ID\n"
             + "Example:\n"
             + "Delete by member ID and reservation ID: "
-            + COMMAND_WORD + " " + PREFIX_RESERVATION + " " + PREFIX_ID + "10001100001";
+            + COMMAND_WORD + " " + PREFIX_RESERVATION + " " + PREFIX_ID + "00001000001";
 
     /**
      * Stands for succeed message of delete reservation.
