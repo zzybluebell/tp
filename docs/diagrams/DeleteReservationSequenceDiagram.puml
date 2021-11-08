@@ -14,6 +14,7 @@ box Model MODEL_COLOR_T1
 participant "model:Model" as Model MODEL_COLOR
 participant "EzFoodie" as EzFoodie MODEL_COLOR
 participant "UniqueMemberList" as UniqueMemberList MODEL_COLOR
+participant "Member" as Member MODEL_COLOR
 participant "FilteredList" as FilteredList MODEL_COLOR
 end box
 
@@ -75,7 +76,47 @@ activate DeleteReservationCommand
 DeleteReservationCommand -> Model : getUpdatedMemberList()
 activate Model
 
+DeleteReservationCommand -> Member : getReservations()
+activate Member
+
 Model --> DeleteReservationCommand
+
+DeleteReservationCommand -> Member : getName()
+
+Member --> DeleteReservationCommand
+
+DeleteReservationCommand -> Member : getPhone()
+
+Member --> DeleteReservationCommand
+
+DeleteReservationCommand -> Member : getEmail()
+
+Member --> DeleteReservationCommand
+
+DeleteReservationCommand -> Member : getAddress()
+
+Member --> DeleteReservationCommand
+
+DeleteReservationCommand -> Member : getTimeStamp()
+
+Member --> DeleteReservationCommand
+
+DeleteReservationCommand -> Member : getCredit()
+
+Member --> DeleteReservationCommand
+
+DeleteReservationCommand -> Member : getPoints()
+
+Member --> DeleteReservationCommand
+
+DeleteReservationCommand -> Member : getTransactions()
+
+Member --> DeleteReservationCommand
+
+DeleteReservationCommand -> Member : getReservations()
+
+Member --> DeleteReservationCommand
+deactivate Member
 
 DeleteReservationCommand -> Model : setMember(memberToEdit, editedMember)
 

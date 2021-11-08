@@ -20,7 +20,7 @@ ezFoodie is a desktop application that helps restaurants **keep track of their e
 
 ezFoodie is simple and user-friendly. It is optimized for using via a **Command Line Interface (CLI)** while still enjoying the benefits of a Graphical User Interface (GUI). If you can type fast, ezFoodie can get your member management tasks done faster than traditional GUI applications.
 
-ezFooide's current version is optimized for the English language based user, i.e, all CLI commands are English-based. As of now ezFoodie does not support other languages.
+ezFooide's current version is optimized for the English language based user, i.e, all CLI commands are *English-based*. As of now ezFoodie does not support other languages.
 
 Continue reading to explore the wonders of ezFoodie and enhance the way you manage and analyze your restaurant's members 🤩
 
@@ -59,9 +59,9 @@ Continue reading to explore the wonders of ezFoodie and enhance the way you mana
 
 **4. Launch the application.**
 * Double-click the file to start the application in windows system.
-* If any issues are faced, go back the [step 1](#step1) and check with Java version.
+* If any issues are faced, go back to [step 1](#step1) and check Java version.
 * In MacOS or Linux System, launch the terminal, go to the directory you saved `ezFoodie.jar` in, and key in the command `jar -r ezfoodie.jar`.
-* The details for running jar  can follow [here](https://www.wikihow.com/Run-a-.Jar-Java-File).
+* You can find details on how to run the JAR file [here](https://www.wikihow.com/Run-a-.Jar-Java-File).
 * The GUI similar to the one shown below should appear in a few seconds. The application comes preloaded with sample data to test its features.<br>
    
    <div align="center"><img height="570" alt="ezFoodie Logo" src="images/Launch.png"></div>
@@ -128,38 +128,40 @@ Continue reading to explore the wonders of ezFoodie and enhance the way you mana
 
 **6. Type the command in the command box and press Enter to execute it. Some example commands you can try here:**
 
-   * `help:` Opens the help window to view the commands and user guide.
+   * `help`: Opens the help window to view the commands and user guide.
 
-   * `login 123456:` Changes user permissions from staff permissions to manager permissions.
+   * `login 123456`: Changes user permissions from staff permissions to manager permissions.
 
-   * `logout:` Logouts of manager and change permissions to staff permissions.
+   * `logout`: Logs out of manager and changes permissions to staff permissions.
 
-   * `add -mem/ -n/John Doe -p/98765432 -e/johndoe@gmail.com -a/112 Amoy Street, 069907, Singapore:` Adds a contact named `John Doe` to the member list.
+   * `add -mem/ -n/John Doe -p/98765432 -e/johndoe@gmail.com -a/112 Amoy Street, 069907, Singapore`: Adds a contact named `John Doe` to the member list.
 
-   * `list -mem/:` Lists all members.
+   * `list -mem/`: Lists all members.
    
-   * `del -mem/ -i/3:` Deletes the member with index number 3 shown in the current list.
+   * `del -mem/ -i/3`: Deletes the member with index number 3 shown in the current list.
       <div markdown="block" class="alert alert-info">
       
       :exclamation: **Note:** Only managers can delete members. Login as a manager before entering the delete command.
       </div>
-   * `add -txn/ -b/200.00 -id/00001:` Adds transaction with a billing $200.00 to member id 00001 shown in the current list.
+   * `add -txn/ -b/200.00 -id/00001`: Adds transaction with a bill amount of $200.00 to member id 00001 shown in the current list.
 
-   * `add -rs/ -dt/2021-01-02 00:00 -rm/2 people -id/00001:` Adds a reservation for 2 people for 2021-01-01 00:00 to member ID 00001 shown in the current list 
+   * `add -rs/ -dt/2021-12-25 00:00 -rm/2 people -id/00001`: Adds a reservation for 2 people for 2021-01-01 00:00 to member ID 00001 shown in the current list 
 
-   * `redeem -rd/100 -id/00001:` Redeems 100 point from member id 00001 which is shown in the current list.
+   * `show -mem/ -id/00001`: View all the details of a member, including all their transactions and reservations.
+
+   * `redeem -rd/100 -id/00001`: Redeems 100 point from member id 00001 which is shown in the current list.
    
-   * `set -pass/ 123456:` Sets the password to 123456 as in manager mode.
+   * `set -pass/ 123456`: Sets the password to 123456 as in manager mode.
 
-   * `summary:` Views a summary of all the data in the application in one page (**e.g.** No. of members, Past transactions).
+   * `summary`: Views a summary of all the data in the application in one page (**e.g.** No. of members, Past transactions).
       <div markdown="block" class="alert alert-info">
 
       :exclamation: **Note:** Only managers are allowed to view the summary of data. Login as a manager before entering the summary command.
       </div>
       
-   * `clear:` Clears the program.
+   * `clear`: Clears the program.
 
-   * `exit:` Exits the program.
+   * `exit`: Exits the program.
 
 **7. Please refer to the [Features](#features) below for details of each command.**
 
@@ -171,7 +173,7 @@ Continue reading to explore the wonders of ezFoodie and enhance the way you mana
       * *Transaction id will increase automatically when adding a new transaction.*
    * **Bill amount:**
       * *Bill amount is in the transaction feature*
-      * *Bill amounts should be non-negative numeric with 2 decimal places, and ranges from `0.00` to `9999.99`**
+      * *Bill amounts should be non-negative numeric with 2 decimal places, and ranges from `0.00` to `9999.99`*
 
    * **Reservation ID:**
       * *It only has 6 digits and starts from `000001` to `999999`.*
@@ -184,7 +186,7 @@ Continue reading to explore the wonders of ezFoodie and enhance the way you mana
    * **DateTime:**
       * *The format should be in yyyy-MM-dd HH:mm.*
 
-* **Please follow the instruction shown is the application command box when your are occurring constraint errors (attached below).**
+* **Please follow the instructions shown in the application command box when you are facing constraint errors (attached below).**
 ![popup_error_example](images/popup_error_example.png)
 <br>
 
@@ -503,9 +505,9 @@ Example: `del -txn/ -id/00001000001`
 <div markdown="block" class="alert alert-info">
 
    :information_source: **Note:**
-   * Only the manager are allowed to delete transactions. Login as manager before entering command.
+   * Only the manager is allowed to delete transactions. Login as manager before entering command.
    * Credit will be decreased based on billing amount in related transaction.
-   * Points will not be affected and keep the same.
+   * Points will not be affected and will stay the same.
 </div>
 
 <label id="14"></label>
@@ -522,9 +524,9 @@ Example: `edit -txn/ -id/00001000002 -b/10.00`
 
 :exclamation: **Note:** 
    * Transaction date and time cannot be modified once a transaction is added.
-   * Credit will be changed based on billing amount in related transaction.
-   * Points will be increased when billing amount is greater than the billing amount 
-    added in last time. On the contrary, points will not be affected and will stay the same when billing amount is lesser
+   * Credit will be changed based on the bill amount of added transaction.
+   * Points will be increased when bill amount is greater than the bill amount 
+    added in last time. On the contrary, points will not be affected and will stay the same when the bill amount is lesser
     than the billing amount added in last time. 
 </div>
 
@@ -539,7 +541,7 @@ Example: `add -rs/ -dt/2021-01-02 00:00 -rm/2 people -id/00001`
 <div markdown="block" class="alert alert-info">
 
 :information_source: **Note:**
-* A member cannot make multiple reservations on the same day.
+* A member cannot make multiple reservations for the same day.
 * The maximum amount of reservations is `999999`.
 </div>
 
@@ -563,25 +565,25 @@ Example: `del -rs/ -id/00001000001`
 
 :information_source: **Note:** 
    * When editing the date time, the updated date time cannot share the same day as another reservation.
-   * E.g. when a member makes a reservation on 2021-12-01 13:00 and another on 2021-12-02 13:00, the member is not allowed to edit the date of the 02nd december reservation to 01st december.
+   * E.g. when a member makes a reservation for 2021-12-01 13:00 and another for 2021-12-02 13:00, the member is not allowed to edit the date of the 2nd december reservation to 1st december.
 </div>
 
 #### 17.1. Editing the date time in reservation: `edit -rs/ -dt/`
-Edits a member's reservation details in date time.
+Edits the date time of a member's reservation details.
 
 Format: `edit -rs/ -id/<MEMBER_ID + RESERVATION_ID> -dt/<DATE_TIME>`
 
 Example: `edit -rs/ -id/00001000001 -dt/2021-12-01 13:00`
 
 #### 17.2. Editing the remark in reservation: `edit -rs/ -rm`
-Edits a member's reservation details in remark.
+Edits the remark of a member's reservation details.
 
 Format: `edit -rs/ -id/<MEMBER_ID + RESERVATION_ID> -rm/<REMARK>`
 
 Example: `edit -rs/ -id/00001000001 -rm/3 people`
 
 #### 17.3. Editing the date time and remark in reservation: `edit -rs/ -dt -rm`
-Edits a member's reservation details in date time.
+Edits the date time and remark member's reservation details.
 
 Format: `edit -rs/ -id/<MEMBER_ID + RESERVATION_ID> [-dt/<DATE_TIME>][-rm/<REMARK>]`
 
@@ -643,7 +645,6 @@ Example: `clear`
 <div markdown="block" class="alert alert-info">
 
    :exclamation: **Note:**
-   * The `clear` command is only applied in manager mode.
    * Only managers are allowed to clear. Login as manager before entering command.
 </div>
 
@@ -654,7 +655,6 @@ Presses the keyboard "Up" button to retrieve previous command which has been ent
 
 Format: press keyboard button ⬆️  and ⬇️
 
-Example: press keyboard button ⬆️  and ⬇️
 <div markdown="block" class="alert alert-info">
 
    :exclamation: **Note:**
@@ -679,7 +679,7 @@ ezFoodie data are saved in a JSON file in hard disk `[JAR file location]/data/ez
 ezFoodie data are located at `[JAR file location]/data/ezfoodie.json`. Advanced users are welcome to update data directly by editing the data file.
 
 <div markdown="span" class="alert alert-warning">:exclamation: **Caution:**
-If any changes to the JSON file make it invalid, ezFoodie will discard all data and restart with an empty data file at the next run.
+If any changes to the JSON file renders it invalid, ezFoodie will discard all data and restart with an empty data file on the next run.
 </div>
 
 --------------------------------------------------------------------------------------------------------------------
@@ -689,11 +689,11 @@ If any changes to the JSON file make it invalid, ezFoodie will discard all data 
 **Q**: How do I transfer my data to another Computer?<br>
 **A**: Install the application in the other computer and overwrite the empty data file it creates with the file that contains the data of your previous ezFoodie home folder.
 
-**Q**: Why my ezFoodie does not have any populated sample member data?<br>
+**Q**: Why does my ezFoodie not have any populated sample member data?<br>
 **A**: Delete `ezfoodie.json` and restart the application. Refer to [#24](#24) in *Features* above to find this JSON file.
 
-**Q**: If I face any unexpected issues and I dont know how to solve it, how can I contact with you?<br>
-**A**: Please do not hesitage drop an email to us in `ezfoodie@gmail.com`, thank you so much.
+**Q**: If I face any unexpected issues and I dont know how to solve it, how can I contact you?<br>
+**A**: Please do not hesitate to drop us an email at `ezfoodie@gmail.com`.
 
 --------------------------------------------------------------------------------------------------------------------
 
