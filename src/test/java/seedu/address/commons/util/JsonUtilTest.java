@@ -16,7 +16,7 @@ import seedu.address.testutil.TestUtil;
 public class JsonUtilTest {
 
     /**
-     * Stands fot the path of serialization file.
+     * Stands for the path of serialization file.
      */
     private static final Path SERIALIZATION_FILE = TestUtil.getFilePathInSandboxFolder("serialize.json");
 
