@@ -14,6 +14,10 @@ import seedu.address.commons.status.SortStatus;
 import seedu.address.logic.commands.SortCommand;
 import seedu.address.model.member.CreditSortComparator;
 
+/**
+ * Contains integration tests (interaction with the Model) and unit tests for
+ * {@code SortCommandParser}.
+ */
 public class SortCommandParserTest {
 
     private SortCommandParser parser = new SortCommandParser();

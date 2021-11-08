@@ -20,6 +20,10 @@ import seedu.address.model.member.CreditSortComparator;
 import seedu.address.model.member.NameContainsKeywordsPredicate;
 import seedu.address.testutil.EzFoodieBuilder;
 
+/**
+ * Tests the functionalities of
+ * {@code ModelManager}.
+ */
 public class ModelManagerTest {
 
     private ModelManager modelManager = new ModelManager();

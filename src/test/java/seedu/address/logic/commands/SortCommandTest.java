@@ -25,7 +25,8 @@ import seedu.address.model.UserPrefs;
 import seedu.address.model.member.CreditSortComparator;
 
 /**
- * Contains integration tests (interaction with the Model) for {@code FindCommand}.
+ * Contains integration tests (interaction with the Model) for
+ * {@code FindCommand}.
  */
 public class SortCommandTest {
     private Model model = new ModelManager(new Account(), getTypicalEzFoodie(), new UserPrefs());

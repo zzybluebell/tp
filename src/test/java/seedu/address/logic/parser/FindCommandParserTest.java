@@ -21,6 +21,10 @@ import seedu.address.model.member.NameContainsKeywordsPredicate;
 import seedu.address.model.member.PhoneContainsKeywordsPredicate;
 import seedu.address.model.member.RegistrationDateContainsKeywordsPredicate;
 
+/**
+ * Contains integration tests (interaction with the Model) and unit tests for
+ * {@code FindCommandParser}.
+ */
 public class FindCommandParserTest {
 
     private FindCommandParser parser = new FindCommandParser();

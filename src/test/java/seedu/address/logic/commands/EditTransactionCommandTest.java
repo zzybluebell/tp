@@ -23,7 +23,8 @@ import seedu.address.testutil.MemberBuilder;
 import seedu.address.testutil.TransactionBuilder;
 
 /**
- * Contains integration tests (interaction with the Model) and unit tests for EditCommand.
+ * Contains integration tests (interaction with the Model) and unit tests for
+ * {@code EditTransactionCommand}.
  */
 public class EditTransactionCommandTest {
 

@@ -55,6 +55,10 @@ import seedu.address.testutil.EditMemberDescriptorBuilder;
 import seedu.address.testutil.MemberBuilder;
 import seedu.address.testutil.MemberUtil;
 
+/**
+ * Contains integration tests (interaction with the Model) and unit tests for
+ * {@code EzFoodieParser}.
+ */
 public class EzFoodieParserTest {
 
     private Model model = new ModelManager();
