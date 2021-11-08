@@ -72,15 +72,12 @@ Continue reading to explore the wonders of ezFoodie and enhance the way you mana
 **5.This section will walk you through the layout of ezFoodie.**
    <div align="center"><img height="450" alt="ezFoodie Logo" src="images/UIMarkShow.png"></div>
    <h1 align="center"><font size ="5">Layout of Main Window</font></h1>
-   <br>
 
    <div align="center"><img height="670" alt="ezFoodie Logo" src="images/MarkHelp.png"></div>
    <h1 align="center"><font size ="5">Layout of Help Window</font></h1>
-   <br>
 
    <div align="center"><img height="530" alt="ezFoodie Logo" src="images/MarkShow.png"></div>   
    <h1 align="center"><font size ="5">Layout of Show Window</font></h1>
-   <br>
 
    <div align="center"><img height="400" alt="ezFoodie Logo" src="images/MarkSummary.png"></div>   
    <h1 align="center"><font size ="5">Layout of Summary Window</font></h1>
@@ -103,7 +100,7 @@ Continue reading to explore the wonders of ezFoodie and enhance the way you mana
    * *Upgrade of Tier (e.g. Bronze -> Silver) is also automatically handled by ezFoodie.*
    
 * **Member ID:**
-   * *Member ID has only 5 digits and starts from `00001` to `99999`.*
+   * *Member ID has only 5 digits' numerical value and starts from `00001` to `99999`.*
    * *Deleted Member's id will not be occupied when adding a new member.*
    * *Member id will increase automatically when a new member is added.*
    * *EzFoodie contains max `99999` members.*
@@ -275,8 +272,6 @@ Continue reading to explore the wonders of ezFoodie and enhance the way you mana
 ### 1. Viewing help : `help`
 
 Opens a new window to show how to use the commands, and a link to the User Guide.
-
-![help message](images/helpMessage.png)
 
 Format: `help`
 
