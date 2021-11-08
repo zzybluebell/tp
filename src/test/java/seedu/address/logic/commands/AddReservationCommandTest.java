@@ -29,6 +29,10 @@ import seedu.address.model.reservation.Reservation;
 import seedu.address.testutil.MemberBuilder;
 import seedu.address.testutil.ReservationBuilder;
 
+/**
+ * Contains integration tests (interaction with the Model) and unit tests for
+ * {@code AddReservationCommand}.
+ */
 public class AddReservationCommandTest {
 
     private Model model = new ModelManager(new Account(), getTypicalEzFoodie(), new UserPrefs());
@@ -86,7 +90,7 @@ public class AddReservationCommandTest {
     }
 
     /**
-     * A default model stub that have all of the methods failing.
+     * A default model stub that have all the methods failing.
      */
     private class ModelStub implements Model {
         @Override

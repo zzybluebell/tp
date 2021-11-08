@@ -11,6 +11,9 @@ import org.junit.jupiter.api.Test;
 
 import seedu.address.testutil.MemberBuilder;
 
+/**
+ * Tests the functionalities of predicate which checks if name contains keywords.
+ */
 public class NameContainsKeywordsPredicateTest {
 
     @Test

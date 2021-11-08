@@ -19,6 +19,10 @@ import seedu.address.commons.exceptions.DataConversionException;
 import seedu.address.model.EzFoodie;
 import seedu.address.model.ReadOnlyEzFoodie;
 
+/**
+ * Tests the functionalities of
+ * {@code JsonEzFoodieStorage}.
+ */
 public class JsonEzFoodieStorageTest {
     private static final Path TEST_DATA_FOLDER = Paths.get("src", "test", "data", "JsonEzFoodieStorageTest");
 

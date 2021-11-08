@@ -21,6 +21,10 @@ import seedu.address.model.member.Name;
 import seedu.address.model.member.Phone;
 import seedu.address.model.member.Point;
 
+/**
+ * Tests the functionalities of
+ * {@code JsonAdaptedMember}.
+ */
 public class JsonAdaptedMemberTest {
     private static final String INVALID_ID = "3A001";
     private static final String INVALID_NAME = "R@chel";

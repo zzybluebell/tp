@@ -19,6 +19,10 @@ import org.junit.jupiter.api.Test;
 
 import seedu.address.testutil.MemberBuilder;
 
+/**
+ * Tests the functionalities of
+ * {@code Member}.
+ */
 public class MemberTest {
 
     @Test
