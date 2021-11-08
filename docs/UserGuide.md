@@ -59,7 +59,7 @@ Continue reading to explore the wonders of ezFoodie and enhance the way you mana
 
 **4. Launch the application.**
 * Double-click the file to start the application in windows system.
-* In MacOS or Linux System, launch the termianl, go to the directory you saved `efoodie.jar` in, and key in the `jar -r ezfoodie.jar` command.
+* In MacOS or Linux System, launch the termianl, go to the directory you saved `ezfoodie.jar` in, and key in the `jar -r ezfoodie.jar` command.
 * If any issues faced, go back the [step 1](#step1) and check with java version.
 * The details for running jar  can follow [here](https://www.wikihow.com/Run-a-.Jar-Java-File).
 * The GUI similar to the one shown below should appear in a few seconds. The application comes preloaded with sample data to test its features.<br>
@@ -116,7 +116,7 @@ Continue reading to explore the wonders of ezFoodie and enhance the way you mana
    * *However, point can be redeemed as discounts to a member, and point will be deducted
    accordingly with redemption.*
    * *In <a href="#13">delete transaction</a>, the point will not be affected and will stay the same.*
-   * *In <a href="#14">edit transaction</a>, the point will be increased when billing amount is greater than the billing amount added in last time. On the contrary the points will not be affected and keep the same when billing amount is lesser than the billing amount added in last time.*
+   * *In <a href="#14">edit transaction</a>, the point will be increased when billing amount is greater than the billing amount added in last time. On the contrary the point will not be affected and keep the same when billing amount is lesser than the billing amount added in last time.*
    * *Point amount is range from `0` to `99999999`.*
    
 * **Seat Booking Information:**
@@ -248,7 +248,7 @@ Continue reading to explore the wonders of ezFoodie and enhance the way you mana
     
 * **Requirements of input commands:**
    * When the user inputs a command, the prefixes is not to be inputted inside of the specified content.
-   * E.g. The command **112`-p/` Amoy Street`-e/`, 069907, Singapore** is not allowed.
+   * E.g. The command "112`-p/` Amoy Street`-e/`, 069907, Singapore" is not allowed.
 
 </div>
 
@@ -321,9 +321,9 @@ Example: `add -mem/ -n/John Doe -p/98765432 -e/johndoe@gmail.com -a/112 Amoy Str
 
 <div markdown="block" class="alert alert-info">
 
-   :exclamation: **Duplicate members:**<br>
+   :exclamation: **Note:**<br>
 
-   * ezFoodie will not allow new members to have the same **phone number** or **email address** as a previously existing member.
+   * ezFoodie will not allow duplicate members and new members to have the same **phone number** or **email address** as a previously existing member.
 
 </div>
 
@@ -525,7 +525,7 @@ Example: `edit -txn/ -id/00001000002 -b/10.00`
    * Transaction date and time cannot be modified once a transaction is added.
    * Credit will be changed based on billing amount in related transaction.
    * Points will be increased when billing amount is greater than the billing amount 
-    added in last time. On the contrary, points will not be affected and will stay the same when billing amount is lesser
+    added in last time. On the contrary, point will not be affected and will stay the same when billing amount is lesser
     than the billing amount added in last time. 
 </div>
 
@@ -608,11 +608,11 @@ Format: `sort -mem/ -c/ -d/`
 
 Example: `sort -mem/ -c/ -d/`
 
-### 19. Redeeming points `redeem -rd/`
+### 19. Redeeming point `redeem -rd/`
 
-#### 19.1. Redeeming points for a member by member id: `redeem -rd/ -id/`
+#### 19.1. Redeeming point for a member by member id: `redeem -rd/ -id/`
 
-Redeems the points of a member for a discount by member id.
+Redeems the point of a member for a discount by member id.
 
 Format: `redeem -rd/<POINT> -id/<MEMBER_ID>`
 
@@ -620,11 +620,13 @@ Example: `redeem -rd/100 -id/00001`
 
 #### 19.2. Redeeming point for a member by index: `redeem -rd/ -i/`
 
-Redeems the points of a member for a discount by index of member shown in the list.
+Redeems the point of a member for a discount by index of member shown in the list.
 
 Format: `redeem -rd/<point> -i/<INDEX>`
 
 Example: `redeem -rd/100 -i/1`
+
+<div markdown="block" class="alert alert-info">
 
 :exclamation: **Note:** 
    * In one single prefix -rd/ find command, it can have multiple billing amounts. 
