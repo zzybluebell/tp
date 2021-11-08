@@ -1131,31 +1131,31 @@ Manager is logged in
 **MSS**
 
 1.  Staff requests to retrieve previous commands by pressing the `up` or `down` key on the keyboard.
-2.  The previous commands will be shown in the command box one by one.
+2.  The previous commands saved in the history (up to 30) will be shown in the command box one by one.
 
     Use case ends.
 
 **Extensions**
 
-* 1a. The program currently stores up 30 commands history, and `up` key is pressed more than 30 times continuously from the beginning.
+* 1a. 30 commands saved in the history, and `up` key is pressed more than 30 times continuously from the beginning.
 
     * 1a1. ezFoodie shows empty in the command box.
 
       Use case resumes at step 1.
 
-* 1b. The program currently stores 30 commands history, and `down` key is pressed more than 30 times continuously from the beginning.
+* 1b. 30 commands saved in the history, and `down` key is pressed more than 30 times continuously from the beginning.
 
     * 1b1. ezFoodie shows empty in the command box.
 
       Use case resumes at step 1.
 
-* 1c. The program currently stores no more than 30 commands history, and `up` key is pressed more than the number of stored commands history continuously from the beginning.
+* 1c. No more than 30 commands saved in the history, and `up` key is pressed more than the number of stored commands history continuously from the beginning.
 
     * 1c1. ezFoodie shows empty in the command box.
 
       Use case resumes at step 1.
 
-* 1d. The program currently stores no more than 30 commands history, and `down` key is pressed more than the number of stored commands history continuously from the beginning.
+* 1d. No more than 30 commands saved in the history, and `down` key is pressed more than the number of stored commands history continuously from the beginning.
 
     * 1d1. ezFoodie shows empty in the command box.
 
