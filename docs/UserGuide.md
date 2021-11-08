@@ -119,7 +119,7 @@ Continue reading to explore the wonders of ezFoodie and enhance the way you mana
    * *In <a href="#14">edit transaction</a>, the point will be increased when billing amount is greater than the billing amount added in last time. On the contrary the point will not be affected and keep the same when billing amount is lesser than the billing amount added in last time.*
    * *Point amount is range from `0` to `99999999`.*
    
-* **Seat Booking Information:**
+* **Coming Seat Booking Information:**
    * Seats can be reserved using the [add reservation](#15) feature.
    * A reservation can be edited or deleted as well using the [edit reservation](#17) and [delete reservation](#16) features.
    * The maximum amount of reservations is `999999`.
