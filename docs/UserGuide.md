@@ -123,6 +123,7 @@ Continue reading to explore the wonders of ezFoodie and enhance the way you mana
    
 * **Researvation information:**
    * Comming reservation information.
+   * The maximum amount of reservations is `999999`.
 
 **5. Type the command in the command box and press Enter to execute it. Some example commands you can try here:**
 
@@ -652,11 +653,11 @@ Example: `clear`
 
 ### 22. Retrieving commands: `keyboard.UP` and `keyboard.DOWN`
 
-Press the keyboard "Up" button to retrieve previous command which has been entered， and "Down" button to retrieve next commands.
+Press the keyboard "Up" button to retrieve previous command which has been entered, and "Down" button to retrieve next commands.
 
-Format: press keyboard button ⬆️ and ⬇️
+Format: press keyboard button ⬆️  and ⬇️
 
-Example: press keyboard button ⬆️ and ⬇️
+Example: press keyboard button ⬆️  and ⬇️
 <div markdown="block" class="alert alert-info">
 
    :information_source: **Note:**
@@ -730,5 +731,6 @@ Action | Manager Only? (Y/N) | Format, Examples
 **Redeem Point from Member by Member Id** | N | *Format:* <br> `redeem -rd/<POINT> -id/<MEMBER_ID>` <br> *Example:* <br> `redeem -rd/100 -id/00001`
 **Redeem Point from Member by Member Index** | N | *Format:* <br> `redeem -rd/<point> -i/<INDEX>` <br> *Example:* <br> `redeem -rd/100 -i/1`
 **Summary** | Y | *Format:* <br> `summary` <br> *Example:* <br> `summary`
-**Clear ezFoodie Data** | Y | `clear` <br> *Example:* <br> `clear`
+**Clear ezFoodie Data** | Y | *Format:* <br> `clear` <br> *Example:* <br> `clear`
+**Retrieve command** | N | *Example:* <br> Press ⬆️  and ⬇️
 
