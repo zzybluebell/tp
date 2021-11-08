@@ -24,11 +24,14 @@ import java.util.stream.Collectors;
 
 import org.junit.jupiter.api.Test;
 
+import seedu.address.commons.core.Messages;
+import seedu.address.commons.exceptions.PermissionException;
 import seedu.address.commons.status.ExecutionStatus;
 import seedu.address.commons.status.LoginStatus;
 import seedu.address.commons.status.SortStatus;
 import seedu.address.logic.commands.AddMemberCommand;
 import seedu.address.logic.commands.ClearCommand;
+import seedu.address.logic.commands.DeleteCommand;
 import seedu.address.logic.commands.DeleteMemberCommand;
 import seedu.address.logic.commands.EditMemberCommand;
 import seedu.address.logic.commands.EditMemberCommand.EditMemberDescriptor;
@@ -70,8 +73,10 @@ public class EzFoodieParserTest {
 
     @Test
     public void parseCommand_clear() throws Exception {
+        LoginStatus.setLoginStatus(LoginStatus.MANAGER);
         assertTrue(parser.parseCommand(ClearCommand.COMMAND_WORD) instanceof ClearCommand);
         assertTrue(parser.parseCommand(ClearCommand.COMMAND_WORD + " 3") instanceof ClearCommand);
+        LoginStatus.setLoginStatus(LoginStatus.STAFF);
     }
 
     @Test
@@ -80,6 +85,7 @@ public class EzFoodieParserTest {
         DeleteMemberCommand command = (DeleteMemberCommand) parser.parseCommand(DeleteMemberCommand.COMMAND_WORD
                 + " " + PREFIX_MEMBER + " " + PREFIX_INDEX + " " + INDEX_FIRST_MEMBER.getOneBased());
         assertEquals(new DeleteMemberCommand(INDEX_FIRST_MEMBER), command);
+        LoginStatus.setLoginStatus(LoginStatus.STAFF);
     }
 
     @Test
@@ -89,6 +95,7 @@ public class EzFoodieParserTest {
         DeleteMemberCommand command = (DeleteMemberCommand) parser.parseCommand(DeleteMemberCommand.COMMAND_WORD
                 + " " + PREFIX_MEMBER + " " + PREFIX_ID + " " + id.value);
         assertEquals(new DeleteMemberCommand(id), command);
+        LoginStatus.setLoginStatus(LoginStatus.STAFF);
     }
 
     @Test
@@ -97,6 +104,7 @@ public class EzFoodieParserTest {
         SortCommand command = (SortCommand) parser.parseCommand(SortCommand.COMMAND_WORD + " "
                 + PREFIX_MEMBER + " " + PREFIX_CREDIT + " " + PREFIX_ASC);
         assertEquals(new SortCommand(new CreditSortComparator(SortStatus.ASC)), command);
+        LoginStatus.setLoginStatus(LoginStatus.STAFF);
     }
 
     @Test
@@ -105,6 +113,7 @@ public class EzFoodieParserTest {
         SortCommand command = (SortCommand) parser.parseCommand(SortCommand.COMMAND_WORD + " "
                 + PREFIX_MEMBER + " " + PREFIX_CREDIT + " " + PREFIX_DESC);
         assertEquals(new SortCommand(new CreditSortComparator(SortStatus.DESC)), command);
+        LoginStatus.setLoginStatus(LoginStatus.STAFF);
     }
 
     @Test
@@ -201,5 +210,11 @@ public class EzFoodieParserTest {
     @Test
     public void parseCommand_unknownCommand_throwsParseException() {
         assertThrows(ParseException.class, MESSAGE_UNKNOWN_COMMAND, () -> parser.parseCommand("unknownCommand"));
+    }
+
+    @Test
+    public void parseCommand_noPermission_throwsPermissionException() {
+        assertThrows(PermissionException.class, Messages.MESSAGE_PERMISSION_DENIED, () -> parser.parseCommand(
+                DeleteCommand.COMMAND_WORD + " " + PREFIX_MEMBER + " " + PREFIX_INDEX + " 1"));
     }
 }

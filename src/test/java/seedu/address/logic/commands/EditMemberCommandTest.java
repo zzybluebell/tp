@@ -26,7 +26,6 @@ import seedu.address.model.Model;
 import seedu.address.model.ModelManager;
 import seedu.address.model.UserPrefs;
 import seedu.address.model.member.Member;
-import seedu.address.model.reservation.Reservation;
 import seedu.address.model.transaction.Transaction;
 import seedu.address.testutil.EditMemberDescriptorBuilder;
 import seedu.address.testutil.MemberBuilder;
@@ -37,26 +36,6 @@ import seedu.address.testutil.MemberBuilder;
 public class EditMemberCommandTest {
 
     private Model model = new ModelManager(new Account(), getTypicalEzFoodie(), new UserPrefs());
-
-    @Test
-    public void execute_allFieldsSpecifiedUnfilteredList_success() {
-        Member memberToEdit = model.getUpdatedMemberList().get(INDEX_FIRST_MEMBER.getZeroBased());
-        Member editedMember = new MemberBuilder().withId(memberToEdit.getId().value)
-                .withTimestamp(memberToEdit.getTimestamp().value)
-                .withCredit(memberToEdit.getCredit().value)
-                .withPoint(memberToEdit.getPoint().value)
-                .withTransactions(memberToEdit.getTransactions().toArray(Transaction[]::new))
-                .withReservations(memberToEdit.getReservations().toArray(Reservation[]::new)).build();
-        EditMemberCommand.EditMemberDescriptor descriptor = new EditMemberDescriptorBuilder(editedMember).build();
-        EditMemberCommand editCommand = new EditMemberCommand(INDEX_FIRST_MEMBER, descriptor);
-
-        String expectedMessage = String.format(EditMemberCommand.MESSAGE_SUCCESS, editedMember);
-
-        Model expectedModel = new ModelManager(new Account(), new EzFoodie(model.getEzFoodie()), new UserPrefs());
-        expectedModel.setMember(memberToEdit, editedMember);
-
-        assertCommandSuccess(editCommand, model, expectedMessage, expectedModel);
-    }
 
     @Test
     public void execute_someFieldsSpecifiedUnfilteredList_success() {

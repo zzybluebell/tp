@@ -68,4 +68,12 @@ public class LoginCommand extends Command {
         }
         return new CommandResult(MESSAGE_FAILURE);
     }
+
+    /**
+     * Overrides the equals method.
+     */
+    @Override
+    public boolean equals(Object other) {
+        return other instanceof LoginCommand;
+    }
 }

@@ -43,16 +43,18 @@ public class RedeemCommand extends Command {
      */
     public static final String MESSAGE_USAGE = COMMAND_WORD + ": Redeems points from member id in the ezFoodie.\n"
             + "Parameters:\n"
-            + "Redeem by index number: " + PREFIX_INDEX + " INDEX "
+            + "Redeem by index number: " + PREFIX_INDEX + "INDEX "
             + "(INDEX must be a positive integer) "
-            + PREFIX_REDEEM + " POINTS\n"
-            + "Redeem by member ID: " + PREFIX_ID + " ID "
-            + PREFIX_REDEEM + " POINTS\n"
+            + "[" + PREFIX_REDEEM + " POINTS]...\n"
+            + "Redeem by member ID: " + PREFIX_ID + "ID "
+            + "[" + PREFIX_REDEEM + " POINTS]...\n"
             + "Example:\n"
-            + "Redeem by index number: " + COMMAND_WORD + " " + PREFIX_INDEX + " 1 "
-            + PREFIX_REDEEM + " 100\n"
-            + "Redeem by member ID: " + COMMAND_WORD + " " + PREFIX_ID + " 00001 "
-            + PREFIX_REDEEM + " 100";
+            + "Redeem by index number: " + COMMAND_WORD + " " + PREFIX_INDEX + "1 "
+            + PREFIX_REDEEM + "10 "
+            + PREFIX_REDEEM + "20\n"
+            + "Redeem by member ID: " + COMMAND_WORD + " " + PREFIX_ID + "00001 "
+            + PREFIX_REDEEM + "10 "
+            + PREFIX_REDEEM + "20";
 
     /**
      * Stands for message for redeem points successfully.

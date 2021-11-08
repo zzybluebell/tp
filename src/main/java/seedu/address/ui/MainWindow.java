@@ -61,9 +61,6 @@ public class MainWindow extends UiPart<Stage> {
     private MenuItem helpMenuItem;
 
     @FXML
-    private MenuItem summaryMenuItem;
-
-    @FXML
     private StackPane memberListPanelPlaceholder;
 
     @FXML
@@ -106,7 +103,6 @@ public class MainWindow extends UiPart<Stage> {
      */
     private void setAccelerators() {
         setAccelerator(helpMenuItem, KeyCombination.valueOf("F1"));
-        setAccelerator(summaryMenuItem, KeyCombination.valueOf("F2"));
     }
 
     /**

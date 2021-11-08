@@ -43,7 +43,12 @@ public class DeleteMemberCommandParser extends DeleteCommandParser implements Pa
         }
 
         if (argMultimap.getValue(PREFIX_INDEX).isPresent()) {
-            Index index = ParserUtil.parseIndex(argMultimap.getValue(PREFIX_INDEX).get());
+            Index index;
+            try {
+                index = ParserUtil.parseIndex(argMultimap.getValue(PREFIX_INDEX).get());
+            } catch (ParseException pe) {
+                throw new ParseException(String.format(pe.getMessage(), DeleteMemberCommand.MESSAGE_USAGE), pe);
+            }
             return new DeleteMemberCommand(index);
         }
 
