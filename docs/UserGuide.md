@@ -42,22 +42,22 @@ Continue reading to explore the wonders of ezFoodie and enhance the way you mana
 
 ## Quick start
 
-### **<label id="step1">1. Ensure you have Java `11` or above installed in your computer.</label>**
-      *  To check out the Java version you have installed in your computer, please click [here](https://www.java.com/en/download/help/version_manual.xml). 
-      * If Java is not installed on your computer, please follow this [link](https://www.oracle.com/java/technologies/downloads/).
+**<label id="step1">1. Ensure you have Java `11` or above installed in your computer.</label>**
+   *  To check out the Java version you have installed in your computer, please click [here](https://www.java.com/en/download/help/version_manual.xml). 
+   * If Java is not installed on your computer, please follow this [link](https://www.oracle.com/java/technologies/downloads/).
+<br>
+
+**2. Download the latest version of `ezfoodie.jar` from [here](https://github.com/AY2122S1-CS2103T-F12-4/tp/releases).**
+
+   <div align="center"><img width ="600" alt="downloadInstruction" src="images/downloadInstruction.png"></div>
    <br>
 
-### **2. Download the latest version of `ezfoodie.jar` from [here](https://github.com/AY2122S1-CS2103T-F12-4/tp/releases).**
+**3. Copy the file to the folder you want to use as the _home folder_ for your ezFoodie.**
 
-      <div align="center"><img width ="600" alt="downloadInstruction" src="images/downloadInstruction.png"></div>
+   <div align="center"><img width ="600" alt="homefolder" src="images/homefolderEzFoodie.png"></div>
    <br>
 
-### **3. Copy the file to the folder you want to use as the _home folder_ for your ezFoodie.**
-
-      <div align="center"><img width ="600" alt="homefolder" src="images/homefolderEzFoodie.png"></div>
-   <br>
-
-### **4. Launch the application and view the details.**
+**4. Launch the application and view the details.**
    * In `Windows` system, `double click` the file to start the application.
      * If any issues are faced, go back to [step 1](#step1) and check Java version.
      
@@ -77,7 +77,7 @@ Continue reading to explore the wonders of ezFoodie and enhance the way you mana
       **Congratulation! ezFoodie is now ready for your perusal. :+1:** </font></h1>
       <br>
 
-### **5. This section will walk you through the layout of ezFoodie.**
+**5. This section will walk you through the layout of ezFoodie.**
    <h1 align="center"><font size ="3"> 
    
    **Layout of List Member Details**</font></h1>
@@ -106,7 +106,7 @@ Continue reading to explore the wonders of ezFoodie and enhance the way you mana
 
 **For more details, can refer to [Features](#features).**
 
-### **6. Special Format Illustration:**
+**6. Special Format Illustration:**
    <div markdown="block" class="alert alert-info">
 
    ❗️ **Warning:** Warnings are very important messages to take note, and should avoid any unintended consequences of these command!
@@ -115,102 +115,102 @@ Continue reading to explore the wonders of ezFoodie and enhance the way you mana
 
 
 
-### **7. Main window GUI includes the following member fields and constraints:**
+**7. Main window GUI includes the following member fields and constraints:**
     
-   * **Index number in the list:**
-      * *Only contains alphanumeric characters.*
-      * *It ranges from `1` to `99999`.*
+ * **Index number in the list:**
+    * *Only contains alphanumeric characters.*
+    * *It ranges from `1` to `99999`.*
 
-   * **Name:**
-      * *Only contains alphanumeric characters and spaces, and it should not be blank.*
+ * **Name:**
+    * *Only contains alphanumeric characters and spaces, and it should not be blank.*
 
-   * **Tier:**
-      * *Bronze, Silver, Gold, Platinum.*
-      * *This is automatically calculated from a member's credit.*
-      * *Upgrade of Tier (e.g. Bronze -> Silver) is also automatically handled by ezFoodie.*
+ * **Tier:**
+    * *Bronze, Silver, Gold, Platinum.*
+    * *This is automatically calculated from a member's credit.*
+    * *Upgrade of Tier (e.g. Bronze -> Silver) is also automatically handled by ezFoodie.*
+    
+ * **Member id:**
+    * *Member id has only 5 digits' numerical value and starts from `00001` to `99999`.*
+    * *Deleted Member's id will not be occupied when adding a new member.*
+    * *Member id will increase automatically when a new member is added.*
+    * *The ezFoodie contains max `99999` members.*
+    
+ * **Phone number:**
+    * *Phone number should only contain 8 digits, and it should start with 3, 6, 8 or 9.*
+    * *Members cannot share the same phone number or email. ezFoodie uses these fields to detect duplicate members.*
+
+ * **Email:**
+    * *Email should be of the format in `local-part@domain`.*
+    * *The `local-part` should only contain alphanumeric characters and
+    these special characters: `+ _ . - `, the `local-part` may not start or end with 
+    any special characters.*
+    * *The `domain` name is made up of domain name separated by periods.*
+    * *The `domain` name must:*
+       * *End with a `domain` label at least 2 characters long.*
+       * *Have each domain label start and end with alphanumeric characters.*
+       * *Have each domain label consist of alphanumeric characters, 
+       separated only by hyphens, if any.*
+    *  *Members cannot share the same phone number or email. ezFoodie uses these fields to detect duplicate members.*
+    
+ * **Credit:**
+    * *Credit refers to the overall accumulated transaction bill amounts of a member, 
+    starting from their registration date.*
+    * *Credit depends on the bill amount in [add transaction](#12), [delete transaction](#13), and [edit transaction](#14)*.
+    * *Credit amount ranges from `0` to `99999999`.*
+    
+ * **Point:**
+    * *The point accumulation is similar to credit.*
+    * *However, point can be redeemed as discounts to a member, and point will be deducted
+    accordingly with redemption.*
+    * *In <a href="#13">delete transaction</a>, the point will not be affected and will stay the same.*
+    * *In <a href="#14">edit transaction</a>, the point will be increased when bill amount is greater than the bill amount added in last time. On the contrary the point will not be affected and keep the same when bill amount is lesser than the bill amount added in last time.*
+    * *Point amount is range from `0` to `99999999`.*
+    
+ * **Coming Seat Booking Information:**
+    * Seats can be reserved using the [add reservation](#15) feature.
+    * A reservation can be edited or deleted as well using the [edit reservation](#17) and [delete reservation](#16) features.
+    * The maximum amount of reservations is `999999`.
+
+**8. Type the command in the command box and press Enter to execute it. Some example commands you can try here:**
+
+   * `help`: Opens the help window to view the commands and user guide.
+
+   * `login 123456`: Changes user permissions from staff permissions to manager permissions.
+
+   * `logout`: Logs out of manager and changes permissions to staff permissions.
+
+   * `add -mem/ -n/John Doe -p/98765432 -e/johndoe@gmail.com -a/112 Amoy Street, 069907, Singapore`: Adds a contact named `John Doe` to the member list.
+
+   * `list -mem/`: Lists all members.
+   
+   * `del -mem/ -i/3`: Deletes the member with index number 3 shown in the current list.
+      <div markdown="block" class="alert alert-info">
       
-   * **Member id:**
-      * *Member id has only 5 digits' numerical value and starts from `00001` to `99999`.*
-      * *Deleted Member's id will not be occupied when adding a new member.*
-      * *Member id will increase automatically when a new member is added.*
-      * *The ezFoodie contains max `99999` members.*
+      ❗️ **Warning:** Only managers can delete members. Login as a manager before entering the delete command.
+      </div>
+   * `add -txn/ -b/200.00 -id/00001`: Adds transaction with a bill amount of $200.00 to member id 00001 shown in the current list.
+
+   * `add -rs/ -dt/2021-12-25 00:00 -rm/2 people -id/00001`: Adds a reservation for 2 people for 2021-01-01 00:00 to member id 00001 shown in the current list 
+
+   * `show -mem/ -id/00001`: Views all the details of a member, including all their transactions and reservations.
+
+   * `redeem -rd/100 -id/00001`: Redeems 100 point from member id 00001 which is shown in the current list.
+   
+   * `set -pass/ 123456`:Sets the password to 123456 as in manager mode.
+
+   * `summary`: Views a summary of all the data in the application in one page (e.g. No. of members, Past transactions).
+      <div markdown="block" class="alert alert-info">
+
+      ❗️ **Warning:** Only managers are allowed to view the summary of data. Login as a manager before entering the summary command.
+      </div>
       
-   * **Phone number:**
-      * *Phone number should only contain 8 digits, and it should start with 3, 6, 8 or 9.*
-      * *Members cannot share the same phone number or email. ezFoodie uses these fields to detect duplicate members.*
+   * `clear`: Clears the program.
 
-   * **Email:**
-      * *Email should be of the format in `local-part@domain`.*
-      * *The `local-part` should only contain alphanumeric characters and
-      these special characters: `+ _ . - `, the `local-part` may not start or end with 
-      any special characters.*
-      * *The `domain` name is made up of domain name separated by periods.*
-      * *The `domain` name must:*
-         * *End with a `domain` label at least 2 characters long.*
-         * *Have each domain label start and end with alphanumeric characters.*
-         * *Have each domain label consist of alphanumeric characters, 
-         separated only by hyphens, if any.*
-      *  *Members cannot share the same phone number or email. ezFoodie uses these fields to detect duplicate members.*
-      
-   * **Credit:**
-      * *Credit refers to the overall accumulated transaction bill amounts of a member, 
-      starting from their registration date.*
-      * *Credit depends on the bill amount in [add transaction](#12), [delete transaction](#13), and [edit transaction](#14)*.
-      * *Credit amount ranges from `0` to `99999999`.*
-      
-   * **Point:**
-      * *The point accumulation is similar to credit.*
-      * *However, point can be redeemed as discounts to a member, and point will be deducted
-      accordingly with redemption.*
-      * *In <a href="#13">delete transaction</a>, the point will not be affected and will stay the same.*
-      * *In <a href="#14">edit transaction</a>, the point will be increased when bill amount is greater than the bill amount added in last time. On the contrary the point will not be affected and keep the same when bill amount is lesser than the bill amount added in last time.*
-      * *Point amount is range from `0` to `99999999`.*
-      
-   * **Coming Seat Booking Information:**
-      * Seats can be reserved using the [add reservation](#15) feature.
-      * A reservation can be edited or deleted as well using the [edit reservation](#17) and [delete reservation](#16) features.
-      * The maximum amount of reservations is `999999`.
+   * `exit`: Exits the program.
 
-### **8. Type the command in the command box and press Enter to execute it. Some example commands you can try here:**
+**9. Please refer to the [Features](#features) below for details of each command.**
 
-     * `help`: Opens the help window to view the commands and user guide.
-
-     * `login 123456`: Changes user permissions from staff permissions to manager permissions.
-
-     * `logout`: Logs out of manager and changes permissions to staff permissions.
-
-     * `add -mem/ -n/John Doe -p/98765432 -e/johndoe@gmail.com -a/112 Amoy Street, 069907, Singapore`: Adds a contact named `John Doe` to the member list.
-
-     * `list -mem/`: Lists all members.
-     
-     * `del -mem/ -i/3`: Deletes the member with index number 3 shown in the current list.
-        <div markdown="block" class="alert alert-info">
-        
-        ❗️ **Warning:** Only managers can delete members. Login as a manager before entering the delete command.
-        </div>
-     * `add -txn/ -b/200.00 -id/00001`: Adds transaction with a bill amount of $200.00 to member id 00001 shown in the current list.
-
-     * `add -rs/ -dt/2021-12-25 00:00 -rm/2 people -id/00001`: Adds a reservation for 2 people for 2021-01-01 00:00 to member id 00001 shown in the current list 
-
-     * `show -mem/ -id/00001`: Views all the details of a member, including all their transactions and reservations.
-
-     * `redeem -rd/100 -id/00001`: Redeems 100 point from member id 00001 which is shown in the current list.
-     
-     * `set -pass/ 123456`:Sets the password to 123456 as in manager mode.
-
-     * `summary`: Views a summary of all the data in the application in one page (e.g. No. of members, Past transactions).
-        <div markdown="block" class="alert alert-info">
-
-        ❗️ **Warning:** Only managers are allowed to view the summary of data. Login as a manager before entering the summary command.
-        </div>
-        
-     * `clear`: Clears the program.
-
-     * `exit`: Exits the program.
-
-### **9. Please refer to the [Features](#features) below for details of each command.**
-
-### **10. Other components and constraints:**
+**10. Other components and constraints:**
     
    * **Transaction id:**
       * *It only has 6 digits and starts from `000001` to `999999`.*
