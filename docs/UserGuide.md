@@ -684,15 +684,15 @@ Example: `redeem -rd/100 -i/1`
 
 Views the summary of stored data in ezFoodie.
 
+Format: `summary`
+
+Example: `summary`
+
 <div markdown="block" class="alert alert-info">
 
    ❗️ **Warning:**:
    * Only the manager is allowed to view summary. Login as manager before entering command.
 </div>
-
-Format: `summary`
-
-Example: `summary`
 
 ### 21. Clearing ezFoodie data: `clear`
 
@@ -701,6 +701,7 @@ Clears all data stored in ezFoodie. Use with Caution!
 Format: `clear`
 
 Example: `clear`
+
 <div markdown="block" class="alert alert-info">
 
    ❗️ **Warning:**
