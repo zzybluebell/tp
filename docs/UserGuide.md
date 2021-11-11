@@ -58,9 +58,17 @@ Continue reading to explore the wonders of ezFoodie and enhance the way you mana
 <br>
 
 **4. Launch the application and view the details.**
-* Double-click the file to start the application in windows system.
-* If any issues are faced, go back to [step 1](#step1) and check Java version.
-* In MacOS or Linux System, launch the termianl, go to the directory you saved `ezfoodie.jar` in, and key in the `java -jar ezfoodie.jar` command.* You can find details on how to run the JAR file [here](https://www.wikihow.com/Run-a-.Jar-Java-File).
+* In `Windows` system, `double click` the file to start the application.
+  * If any issues are faced, go back to [step 1](#step1) and check Java version.
+  
+* In `MacOS` or `Linux` System:
+  * Create a folder and name as `ezFoodie` save `ezfoodie.jar` in side it, right click and follow the picture blow.
+   <div align="center"><img height="415" alt="MarkInstruction" src="images/MarkInstruction.png"></div>
+  
+  * Key in the `java -jar ezfoodie.jar` command in the terminal. You can find details on how to run the JAR file [here](https://www.wikihow.com/Run-a-.Jar-Java-File).
+  <div align="center"><img height="415" alt="MarkRun" src="images/MarkRun.png"></div>
+   
+
 * The GUI similar to the one shown below should appear in a few seconds. The application comes preloaded with sample data to test its features.<br>
 
    <div align="center"><img height="450" alt="Launch" src="images/Launch.png"></div>
@@ -68,9 +76,12 @@ Continue reading to explore the wonders of ezFoodie and enhance the way you mana
    <br>
 
 **5. This section will walk you through the layout of ezFoodie.**
+   <h1 align="center"><font size ="5">Layout of List Member Details</font></h1>
+   <div align="center"><img height="300" alt="GUIDetails.png" src="images/GUIDetails.png"></div>
+
    <h1 align="center"><font size ="5">Layout of Main Window</font></h1>
    <div align="center"><img height="450" alt="UIMarkShow" src="images/UIMarkShow.png"></div>
-   
+
    <h1 align="center"><font size ="5">Layout of Help Window</font></h1>
    <div align="center"><img height="670" alt="MarkHelp" src="images/MarkHelp.png"></div>
 
@@ -83,7 +94,15 @@ Continue reading to explore the wonders of ezFoodie and enhance the way you mana
 
 **For more details, can refer to [Features](#features).**
 
-**6. Main window GUI includes the following member fields and constraints:**
+**6. Special Format Illustration:**
+<div markdown="block" class="alert alert-info">
+
+❗️ **Warning:** Warnings are very important messages to take note, and should avoid any unintended consequences of these command!</div>
+<bc>
+
+
+
+**7. Main window GUI includes the following member fields and constraints:**
     
 * **Index number in the list:**
    * *Only contains alphanumeric characters.*
@@ -154,7 +173,7 @@ Continue reading to explore the wonders of ezFoodie and enhance the way you mana
    * `del -mem/ -i/3`: Deletes the member with index number 3 shown in the current list.
       <div markdown="block" class="alert alert-info">
       
-      :information_source: **Note:** Only managers can delete members. Login as a manager before entering the delete command.
+      ❗️ **Warning:** Only managers can delete members. Login as a manager before entering the delete command.
       </div>
    * `add -txn/ -b/200.00 -id/00001`: Adds transaction with a bill amount of $200.00 to member id 00001 shown in the current list.
 
@@ -169,7 +188,7 @@ Continue reading to explore the wonders of ezFoodie and enhance the way you mana
    * `summary`: Views a summary of all the data in the application in one page (**e.g.** No. of members, Past transactions).
       <div markdown="block" class="alert alert-info">
 
-      :information_source: **Note:** Only managers are allowed to view the summary of data. Login as a manager before entering the summary command.
+      ❗️ **Warning:** Only managers are allowed to view the summary of data. Login as a manager before entering the summary command.
       </div>
       
    * `clear`: Clears the program.
@@ -304,7 +323,7 @@ Format: `set -pass/<PASSWORD>`
 Example: `set -pass/123456`
 <div markdown="block" class="alert alert-info">
 
-   :information_source: **Note:** The `set` command can only be used in manager mode.
+   ❗️ **Warning:** The `set` command can only be used in manager mode.
 </div>
 
 ### 5. Logging out as a manager : `logout`
@@ -316,7 +335,7 @@ Format: `logout`
 Example: `logout`
 <div markdown="block" class="alert alert-info">
 
-   :information_source: **Note:** The `logout` command can only be used in manager mode.
+   ❗️ **Warning:** The `logout` command can only be used in manager mode.
 </div>
 ### 6. Listing out a certain number of members : `list -mem/`
 
@@ -336,7 +355,7 @@ Example: `add -mem/ -n/John Doe -p/98765432 -e/johndoe@gmail.com -a/112 Amoy Str
 
 <div markdown="block" class="alert alert-info">
 
-   :information_source: **Note:**<br>
+   ❗️ **Warning:**<br>
 
    * ezFoodie will not allow duplicate members and new members to have the same **phone number** or **email address** as a previously existing member.
 
@@ -348,7 +367,7 @@ Deletes a member from the member list.
 
 <div markdown="block" class="alert alert-info">
 
-   :information_source: **Note:**
+   ❗️ **Warning:**
    * Only the manager is allowed to delete members. Login as manager before entering command.
 </div>
 
@@ -375,7 +394,7 @@ Finds members by different fields which contain any of the given keywords.
 
 <div markdown="block" class="alert alert-info">
 
-   :information_source: **Note:**
+   ❗️ **Warning:**
    * No member will be listed when an invalid member field is entered.
    * The find is case-insensitive. e.g. `hans` will match `Hans`.
    * Only full words will be matched e.g. `Han` will not match `Hans`.
@@ -425,7 +444,7 @@ Example: `show -mem/ -id/00001`
 
 <div markdown="block" class="alert alert-info">
 
-   :information_source: **Note:** No member details will be shown when an invalid member id is entered.
+   ❗️ **Warning:** No member details will be shown when an invalid member id is entered.
 </div>
 
 ### 11. Editing a member : `edit -mem/`
@@ -435,7 +454,7 @@ Edits different fields in a member's profile, where the member is specified by m
 
 <div markdown="block" class="alert alert-info">
 
-   :information_source: **Note:** Only deals with editing member details.
+   ❗️ **Warning:** Only deals with editing member details.
       If a member's transactions need to be edited, refer to [#14](#14) below. 
       Do not mix `-mem/` and `-txn/` in one `edit` command.
 </div>
@@ -500,7 +519,7 @@ Example: `add -txn/ -b/200.00 -id/00001`
 
 <div markdown="block" class="alert alert-info">
 
-   :information_source: **Note:** 
+   ❗️ **Warning:** 
    * Transaction date and time is automatically assigned by local date and time when a transaction is added, there is no need to manually enter the transaction date or time.
    * The Credit and the Point will be accumulated based on billing amount. 
    * The maximum amount of transactions is `999999`.
@@ -518,7 +537,7 @@ Example: `del -txn/ -id/00001000001`
 
 <div markdown="block" class="alert alert-info">
 
-   :information_source: **Note:**
+   ❗️ **Warning:**
    * Only the manager is allowed to delete transactions. Login as manager before entering command.
    * Credit will be decreased based on bill amount in the deleted transaction.
    * Points will not be affected and will stay the same.
@@ -536,7 +555,7 @@ Example: `edit -txn/ -id/00001000002 -b/10.00`
 
 <div markdown="block" class="alert alert-info">
 
-:information_source: **Note:** 
+❗️ **Warning:** 
    * Transaction date and time cannot be modified once a transaction is added.
    * Credit will be changed based on the bill amount of added transaction.
    * Points will be increased when bill amount is greater than the bill amount 
@@ -556,7 +575,7 @@ Example: `add -rs/ -dt/2021-01-02 00:00 -rm/2 people -id/00001`
 
 <div markdown="block" class="alert alert-info">
 
-:information_source: **Note:**
+❗️ **Warning:**
 * A member cannot make multiple reservations for the same day.
 * The maximum amount of reservations is `999999`.
 </div>
@@ -573,7 +592,7 @@ Example: `del -rs/ -id/00001000001`
 
 <div markdown="block" class="alert alert-info">
 
-:information_source: **Note:**
+❗️ **Warning:**
    * Only the manager is allowed to delete reservations. Login as manager before entering command. 
 </div>
 
@@ -583,7 +602,7 @@ Example: `del -rs/ -id/00001000001`
 
 <div markdown="block" class="alert alert-info">
 
-:information_source: **Note:** 
+❗️ **Warning:** 
    * When editing the date time, the updated date time cannot share the same day as another reservation.
    * E.g. when a member makes a reservation for 2021-12-01 13:00 and another for 2021-12-02 13:00, the member is not allowed to edit the date of the 2nd december reservation to 1st december.
 </div>
@@ -643,7 +662,7 @@ Example: `redeem -rd/100 -i/1`
 
 <div markdown="block" class="alert alert-info">
 
-:information_source: **Note:** 
+❗️ **Warning:** 
    * Multiple redemptions can be made from one `-rd/` command 
    * To redeem 100 points and 20 points together from member 00001: `redeem -rd/100 -rd/10 -id/00001`.
 </div>
@@ -654,7 +673,7 @@ Views the summary of stored data in ezFoodie.
 
 <div markdown="block" class="alert alert-info">
 
-   :information_source: **Note:**:
+   ❗️ **Warning:**:
    * Only the manager is allowed to view summary. Login as manager before entering command.
 </div>
 
@@ -671,7 +690,7 @@ Format: `clear`
 Example: `clear`
 <div markdown="block" class="alert alert-info">
 
-   :information_source: **Note:**
+   ❗️ **Warning:**
    * Only managers are allowed to clear. Login as manager before entering command.
 </div>
 
@@ -684,7 +703,7 @@ Format: press keyboard button ⬆️  and ⬇️
 
 <div markdown="block" class="alert alert-info">
 
-   :information_source: **Note:**
+   ❗️ **Warning:**
    * Retrieve commands can only store the history of 30 commands.
 </div>
 
@@ -705,7 +724,7 @@ ezFoodie data are saved in a JSON file in hard disk `[JAR file location]/data/ez
 
 ezFoodie data are located at `[JAR file location]/data/ezfoodie.json`. Advanced users are welcome to update data directly by editing the data file.
 
-<div markdown="span" class="alert alert-warning">:information_source: **Caution:**
+<div markdown="span" class="alert alert-warning">❗️ Caution:
 If any changes to the JSON file renders it invalid, ezFoodie will discard all data and restart with an empty data file on the next run.
 </div>
 
