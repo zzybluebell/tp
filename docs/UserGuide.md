@@ -73,34 +73,32 @@ Continue reading to explore the wonders of ezFoodie and enhance the way you mana
 
       <div align="center"><img width ="600" alt="Launch" src="images/Launch.png"></div>
       <h1 align="center"><font size ="3">
-      
-      **Congratulation! ezFoodie is now ready for your perusal.**:+1: </font></h1>
+      <b>Congratulation! ezFoodie is now ready for your perusal.:+1:</b> </font></h1>
       <br>
 
 **5. This section will walk you through the layout of ezFoodie.**
    <h1 align="center"><font size ="3"> 
-   
-   **Layout of List Member Details**</font></h1>
+   <b>Layout of List Member Details</b></font></h1>
    <div align="center"><img width ="600" alt="GUIDetails.png" src="images/GUIDetails.png"></div>
 
    <h1 align="center"><font size ="3">
    
-   **Layout of Main Window**</font></h1>
+   <b>Layout of Main Window</b></font></h1>
    <div align="center"><img width ="600" alt="UIMarkShow" src="images/UIMarkShow.png"></div>
 
    <h1 align="center"><font size ="3">
    
-   **Layout of Help Window**</font></h1>
+   <b>Layout of Help Window</b></font></h1>
    <div align="center"><img width ="600" alt="MarkHelp" src="images/MarkHelp.png"></div>
 
    <h1 align="center"><font size ="3">
    
-   **Layout of Show Window**</font></h1>
+   <b>Layout of Show Window</b></font></h1>
    <div align="center"><img width ="600" alt="MarkShow" src="images/MarkShow.png"></div>   
 
    <h1 align="center"><font size ="3">
    
-   **Layout of Summary Window**</font></h1>
+   <b>Layout of Summary Window</b></font></h1>
    <div align="center"><img width ="600" alt="MarkSummary" src="images/MarkSummary.png"></div>   
    <br>
 
