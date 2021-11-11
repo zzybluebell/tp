@@ -18,11 +18,11 @@ It is written in Java, and has about 35 kLoC, of which I contributed about 4 kLo
 Given below are my contributions to the project.
 
 * **Code contributed**: [RepoSense link](https://nus-cs2103-ay2122s1.github.io/tp-dashboard/?breakdown=true&search=zzybluebell)
-<bc>
+<br>
 
 * **Project management**:
   * Helps the team to assign the task and review the pull request.
-<bc>
+<br>
 
 * **New Feature**: Add Member [\#71](https://github.com/AY2122S1-CS2103T-F12-4/tp/pull/71)
 * **What it does**: allows the user (manager or staff) to `add` members in the ezFoodie.
@@ -34,7 +34,7 @@ Given below are my contributions to the project.
   * This enhancement requires understanding on how polymorphism works and implement it so that the application will use Object-oriented programming (OOP) sufficiently. 
   * The implementation was challenging as the `AddCommand` need to be abstracted. Similarly, the `AddCommandParser` also need to be abstracted, and inherit it with `AddMemberCommandParser`.
 * **Special** Add a few testcases to ensure testing coverage.
-<bc>
+<br>
 
 * **New Feature**: Update credits [\#96](https://github.com/AY2122S1-CS2103T-F12-4/tp/pull/96)
 * **What it does**: Update credit for member in ezFoodie.
@@ -45,7 +45,7 @@ Given below are my contributions to the project.
   * Credit amount ranges from `0` to `99999999`.
 * **Highlights**:  This enhancement requires understanding on how polymorphism works and implement it so that the application will use Object-oriented programming (OOP) sufficiently. It requires to understand the whole process and code working for add transaction, edit transaction and delete transaction based on the essential contrainsts.
 * **Special** Add a few testcases to ensure testing coverage.
-<bc>
+<br>
 
 * **New Feature**: Redeem points [\#103](https://github.com/AY2122S1-CS2103T-F12-4/tp/pull/103)
 * **What it does**: Redeemed as discounts to a member.
