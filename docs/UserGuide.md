@@ -65,7 +65,7 @@ Continue reading to explore the wonders of ezFoodie and enhance the way you mana
   * Create a folder and name as `ezFoodie` save `ezfoodie.jar` in side it, right click and follow the picture blow.
    <div align="center"><img height="415" alt="MarkInstruction" src="images/MarkInstruction.png"></div>
   
-  * Key in the `java -jar ezfoodie.jar` command in the terminal. You can find details on how to run the JAR file [here](https://www.wikihow.com/Run-a-.Jar-Java-File).
+  * Key in the `java -jar ezfoodie.jar` command in the terminal shown below. You can find more details on how to run the JAR file [here](https://www.wikihow.com/Run-a-.Jar-Java-File).
   <div align="center"><img height="415" alt="MarkRun" src="images/MarkRun.png"></div>
    
 
