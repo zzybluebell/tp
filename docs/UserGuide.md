@@ -69,7 +69,7 @@ Continue reading to explore the wonders of ezFoodie and enhance the way you mana
   <div align="center"><img height="415" alt="MarkRun" src="images/MarkRun.png"></div>
    
 
-* The GUI similar to the one shown below should appear in a few seconds. The application comes preloaded with sample data to test its features.<br>
+* The GUI which is similar to the one shown below should appear in a few seconds. The application comes preloaded with sample data to test its features.<br>
 
    <div align="center"><img height="450" alt="Launch" src="images/Launch.png"></div>
    <h1 align="center"><font size ="5">Congratulation! ezFoodie is now ready for your perusal. :+1:</font></h1>
