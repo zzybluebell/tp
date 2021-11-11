@@ -74,7 +74,7 @@ Continue reading to explore the wonders of ezFoodie and enhance the way you mana
       <div align="center"><img width ="600" alt="Launch" src="images/Launch.png"></div>
       <h1 align="center"><font size ="3">
       
-      **Congratulation! ezFoodie is now ready for your perusal. :+1:** </font></h1>
+      **Congratulation! ezFoodie is now ready for your perusal.**:+1: </font></h1>
       <br>
 
 **5. This section will walk you through the layout of ezFoodie.**
