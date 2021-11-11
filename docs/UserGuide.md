@@ -49,12 +49,12 @@ Continue reading to explore the wonders of ezFoodie and enhance the way you mana
 
 **2. Download the latest version of `ezfoodie.jar` from [here](https://github.com/AY2122S1-CS2103T-F12-4/tp/releases).**
 
-   <div align="center"><img height="150" alt="downloadInstruction" src="images/downloadInstruction.png"></div>
+   <div align="center"><img width ="600" alt="downloadInstruction" src="images/downloadInstruction.png"></div>
 <br>
 
 **3. Copy the file to the folder you want to use as the _home folder_ for your ezFoodie.**
 
-   <div align="center"><img height="415" alt="homefolder" src="images/homefolderEzFoodie.png"></div>
+   <div align="center"><img width ="600" alt="homefolder" src="images/homefolderEzFoodie.png"></div>
 <br>
 
 **4. Launch the application and view the details.**
@@ -63,33 +63,34 @@ Continue reading to explore the wonders of ezFoodie and enhance the way you mana
   
 * In `MacOS` or `Linux` System:
   * Create a folder and name as `ezFoodie` save `ezfoodie.jar` in side it, right click and follow the picture blow.
-   <div align="center"><img height="415" alt="MarkInstruction" src="images/MarkInstruction.png"></div>
-  
+   <div align="center"><img width ="600" alt="MarkInstruction" src="images/MarkInstruction.png"></div>
+  <bc>
+
   * Key in the `java -jar ezfoodie.jar` command in the terminal shown below. You can find more details on how to run the JAR file [here](https://www.wikihow.com/Run-a-.Jar-Java-File).
-  <div align="center"><img height="415" alt="MarkRun" src="images/MarkRun.png"></div>
+  <div align="center"><img width ="600" alt="MarkRun" src="images/MarkRun.png"></div>
    
 
 * The GUI which is similar to the one shown below should appear in a few seconds. The application comes preloaded with sample data to test its features.<br>
 
-   <div align="center"><img height="450" alt="Launch" src="images/Launch.png"></div>
+   <div align="center"><img width ="600" alt="Launch" src="images/Launch.png"></div>
    <h1 align="center"><font size ="5">Congratulation! ezFoodie is now ready for your perusal. :+1:</font></h1>
    <br>
 
 **5. This section will walk you through the layout of ezFoodie.**
    <h1 align="center"><font size ="5">Layout of List Member Details</font></h1>
-   <div align="center"><img height="300" alt="GUIDetails.png" src="images/GUIDetails.png"></div>
+   <div align="center"><img width ="600" alt="GUIDetails.png" src="images/GUIDetails.png"></div>
 
    <h1 align="center"><font size ="5">Layout of Main Window</font></h1>
-   <div align="center"><img height="450" alt="UIMarkShow" src="images/UIMarkShow.png"></div>
+   <div align="center"><img width ="600" alt="UIMarkShow" src="images/UIMarkShow.png"></div>
 
    <h1 align="center"><font size ="5">Layout of Help Window</font></h1>
-   <div align="center"><img height="670" alt="MarkHelp" src="images/MarkHelp.png"></div>
+   <div align="center"><img width ="600" alt="MarkHelp" src="images/MarkHelp.png"></div>
 
    <h1 align="center"><font size ="5">Layout of Show Window</font></h1>
-   <div align="center"><img height="530" alt="MarkShow" src="images/MarkShow.png"></div>   
+   <div align="center"><img width ="600" alt="MarkShow" src="images/MarkShow.png"></div>   
 
    <h1 align="center"><font size ="5">Layout of Summary Window</font></h1>
-   <div align="center"><img height="400" alt="MarkSummary" src="images/MarkSummary.png"></div>   
+   <div align="center"><img width ="600" alt="MarkSummary" src="images/MarkSummary.png"></div>   
    <br>
 
 **For more details, can refer to [Features](#features).**
