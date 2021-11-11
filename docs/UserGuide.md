@@ -43,7 +43,7 @@ Continue reading to explore the wonders of ezFoodie and enhance the way you mana
 ## Quick start
 
 **<label id="step1">1. Ensure you have Java `11` or above installed in your computer.</label>**
-   *  To check out the Java version you have installed in your computer, please click [here](https://www.java.com/en/download/help/version_manual.xml). 
+   * To check out the Java version you have installed in your computer, please click [here](https://www.java.com/en/download/help/version_manual.xml). 
    * If Java is not installed on your computer, please follow this [link](https://www.oracle.com/java/technologies/downloads/).
 <br>
 
