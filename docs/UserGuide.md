@@ -774,9 +774,9 @@ Action | Manager Only? (Y/N) | Format, Examples
 **Find Members by Registration Date** | N | *Format:* <br> `find -mem/ -d/<REGISTRATION_DATE yyyy-MM-dd>` <br> *Example:* <br> `find -mem/ -d/2021-01-02`
 **Show Member Profile** | N | *Format:* <br> `show -mem/ -id/<MEMBER_ID>` <br> *Example:* <br> `show -mem/ -id/00001`
 **Edit Member Name by Member Id** | N | *Format:* <br> `edit -mem/ -id/<MEMBER_ID> -n/<NAME>` <br> *Example* <br> `edit -mem/ -id/00001 -n/John Doe`
-**Edit Member Phone by Member ID** | N | *Format* <br> `edit -mem/ -id/<MEMBER_ID> -p/<PHONE>` <br> *Example* <br> `edit -mem/ -id/00001 -p/98765432`
+**Edit Member Phone by Member Id** | N | *Format* <br> `edit -mem/ -id/<MEMBER_ID> -p/<PHONE>` <br> *Example* <br> `edit -mem/ -id/00001 -p/98765432`
 **Edit Member Email by Member Id** | N | *Format:* <br> `edit -mem/ -id/<MEMBER_ID> -e/<EMAIL>` <br> *Example:* <br> `edit -mem/ -id/00001 -e/johndoe@gmail.com`
-**Edit Member Address by Member ID** | N | *Format:* <br> `edit -mem/ -id/<MEMBER_ID> -a/<ADDRESS>` <br> *Example:* <br> `edit -mem/ -id/00001 -a/33 Benoi Crescent, 629979, Singapore`
+**Edit Member Address by Member Id** | N | *Format:* <br> `edit -mem/ -id/<MEMBER_ID> -a/<ADDRESS>` <br> *Example:* <br> `edit -mem/ -id/00001 -a/33 Benoi Crescent, 629979, Singapore`
 **Edit Member Name by Index Number** | N | *Format:* <br> `edit -mem/ -i/<INDEX> -n/<NAME>` <br> *Example:* <br> `edit -mem/ -i/1 -n/John Doe`
 **Edit Member Phone by Index Number** | N | *Format:* <br> `edit -mem/ -i/<INDEX> -p/<PHONE>` <br> *Example:* <br> `edit -mem/ -i/1 -p/98765432`
 **Edit Member Email by Index Number** | N | *Format:* <br> `edit -mem/ -i/<INDEX> -e/<EMAIL>` <br> *Example:* <br> `edit -mem/ -i/1 -e/johndoe@gmail.com`
