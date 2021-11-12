@@ -36,7 +36,7 @@ Continue reading to explore the wonders of ezFoodie and enhance the way you mana
 
 3. Show detailed explanations of all commands and possible issues users may face.
 
-4. Frequently asked questions and answers.
+4. Answer frequently asked questions
 
 --------------------------------------------------------------------------------------------------------------------
 
@@ -57,19 +57,19 @@ Continue reading to explore the wonders of ezFoodie and enhance the way you mana
    <div align="center"><img width ="600" alt="homefolder" src="images/homefolderEzFoodie.png"></div>
    <br>
 
-**4. Launch the application and view the details.**
+**4. Launch the application.**
    * In `Windows` system, `double click` the file to start the application.
-     * If any issues are faced, go back to [step 1](#step1) and check Java version.
+     * If any issues are faced, go back to [step 1](#step1) and check your Java version.
      
    * In `MacOS` or `Linux` (similar to MacOS) System:
-     * Create a folder and name as `ezFoodie` save `ezfoodie.jar` in side it, right click and follow the picture blow.
+     *  Create a folder, name it `ezFoodie`, and move `ezFoodie.jar` into the folder. Then, right click the folder and click `New Terminal at Folder`, as shown in the picture below..
       <div align="center"><img width ="600" alt="MarkInstruction" src="images/MarkInstruction.png"></div>
      <br>
 
-     * Key in the `java -jar ezfoodie.jar` command in the terminal shown below. You can find more details on how to run the JAR file [here](https://www.wikihow.com/Run-a-.Jar-Java-File).
+     * Key in the command `java -jar ezfoodie.jar` in the terminal shown below. You can find more details on how to run the JAR file [here](https://www.wikihow.com/Run-a-.Jar-Java-File).
      <div align="center"><img width ="600" alt="MarkRun" src="images/MarkRun.png"></div>
    
-   * The GUI which is similar to the one shown below should appear in a few seconds. The application comes preloaded with sample data to test its features.<br>
+   * The GUI similar to the one shown below should appear in a few seconds. The application comes preloaded with sample data to test its features.<br>
 
       <div align="center"><img width ="600" alt="Launch" src="images/Launch.png"></div>
       <h1 align="center"><font size ="3">
@@ -101,12 +101,12 @@ Continue reading to explore the wonders of ezFoodie and enhance the way you mana
    <div align="center"><img width ="600" alt="MarkSummary" src="images/MarkSummary.png"></div>   
    <br>
 
-**For more details, can refer to [Features](#features).**
+**For more details, please refer to [Features](#features).**
 
 **6. Special Format Illustration:**
    <div markdown="block" class="alert alert-info">
 
-   ❗️ **Warning:** Warnings are very important messages to take note, and should avoid any unintended consequences of these command!
+   ❗️ **Warning:** Warnings look like this and are very important messages to take note of, to avoid any unintended consequences of these command!
    </div>
    <br>
 
@@ -115,8 +115,8 @@ Continue reading to explore the wonders of ezFoodie and enhance the way you mana
 **7. Main window GUI includes the following member fields and constraints:**
     
  * **Index number in the list:**
-    * *Only contains alphanumeric characters.*
-    * *It ranges from `1` to `99999`.*
+    * *Contains only alphanumeric characters.*
+    * *Ranges from `1` to `99999`.*
 
  * **Name:**
     * *Only contains alphanumeric characters and spaces, and it should not be blank.*
@@ -127,8 +127,8 @@ Continue reading to explore the wonders of ezFoodie and enhance the way you mana
     * *Upgrade of Tier (e.g. Bronze -> Silver) is also automatically handled by ezFoodie.*
     
  * **Member id:**
-    * *Member id has only 5 digits' numerical value and starts from `00001` to `99999`.*
-    * *Deleted Member's id will not be occupied when adding a new member.*
+    * *Has 5 numerical digits and starts from `00001` to `99999`.*
+    * *The IDs of deleted members will not be occupied when adding a new member.*
     * *Member id will increase automatically when a new member is added.*
     * *The ezFoodie contains max `99999` members.*
     
@@ -157,18 +157,18 @@ Continue reading to explore the wonders of ezFoodie and enhance the way you mana
     
  * **Point:**
     * *The point accumulation is similar to credit.*
-    * *However, point can be redeemed as discounts to a member, and point will be deducted
+    * *However, points can be redeemed as discounts for a member, and point will be deducted
     accordingly with redemption.*
-    * *In <a href="#13">delete transaction</a>, the point will not be affected and will stay the same.*
-    * *In <a href="#14">edit transaction</a>, the point will be increased when bill amount is greater than the bill amount added in last time. On the contrary the point will not be affected and keep the same when bill amount is lesser than the bill amount added in last time.*
-    * *Point amount is range from `0` to `99999999`.*
+    * *In <a href="#13">delete transaction</a>, the points will not be affected and will stay the same.*
+    * *In <a href="#14">edit transaction</a>, the points will be increased when bill amount is greater than the bill amount added perviously. On the contrary, points will not be affected and kept the same when bill amount is less than the bill amount added in last time.*
+    * *Point amount ranges from `0` to `99999999`.*
     
  * **Coming Seat Booking Information:**
     * Seats can be reserved using the [add reservation](#15) feature.
     * A reservation can be edited or deleted as well using the [edit reservation](#17) and [delete reservation](#16) features.
     * The maximum amount of reservations is `999999`.
 
-**8. Type the command in the command box and press Enter to execute it. Some example commands you can try here:**
+**8. Type the command in the command box and press Enter to execute it. Some example commands you can try:**
 
    * `help`: Opens the help window to view the commands and user guide.
 
@@ -193,7 +193,7 @@ Continue reading to explore the wonders of ezFoodie and enhance the way you mana
 
    * `redeem -rd/100 -id/00001`: Redeems 100 point from member id 00001 which is shown in the current list.
    
-   * `set -pass/ 123456`:Sets the password to 123456 as in manager mode.
+   * `set -pass/ 123456`:Sets the password to 123456 in manager mode.
 
    * `summary`: Views a summary of all the data in the application in one page (e.g. No. of members, Past transactions).
       <div markdown="block" class="alert alert-info">
@@ -215,7 +215,7 @@ Continue reading to explore the wonders of ezFoodie and enhance the way you mana
       * *Transaction id will increase automatically when adding a new transaction.*
 
    * **Bill amount:**
-      * *Bill amount is in the transaction feature.*
+      * *Bill amount is part of the transaction feature.*
       * *Bill amount should be non-negative numeric with 2 decimal places, and ranges from `0.00` to `9999.99`.*
 
    * **Reservation id:**
@@ -224,7 +224,7 @@ Continue reading to explore the wonders of ezFoodie and enhance the way you mana
       * *Reservation id will increase automatically when adding a new reservation.*
          
    * **Address:**
-      * *Address can take any values. It should not be blank.*
+      * *Address can take any value. It should not be blank.*
 
    * **DateTime:**
       * *The format should be in yyyy-MM-dd HH:mm.*
@@ -326,7 +326,7 @@ Example: `login 123456`
 
 ### 4. Setting and updating the password : `set`
 
-Sets and updates the password to login as manger.
+Sets and updates the password used to login as manager.
 
 Format: `set -pass/<PASSWORD>`
 
@@ -409,9 +409,9 @@ Finds members by different fields which contain any of the given keywords.
    * The find is case-insensitive. e.g. `hans` will match `Hans`.
    * Only full words will be matched e.g. `Han` will not match `Hans`.
    * Find command is only allowed for **one single prefix** after **-mem/**.
+   * It is not allowed to enter command as **"find -mem/ -id/00001 -p/98765432"**.
    * In one single prefix find command, it can have multiple keywords. 
    * E.g. To find id:00001 and id:00002 members' detail: **"find -mem/ -id/00001 00002"**.
-   * It is not allowed to enter command as **"find -mem/ -id/00001 -p/98765432"**.
 </div>
 
 #### 9.1. Finding member by member id
